@@ -1,0 +1,304 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-04 02:14+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Academy"
+msgstr "Académie"
+
+msgid "roles"
+msgstr "rôles"
+
+msgid "Enter a phone number or an e-mail address."
+msgstr "Indique un numéro de téléphone ou une adresse e-mail."
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Preferences"
+msgstr "Préférences"
+
+msgid "Roles and permissions"
+msgstr "Rôles et permissions"
+
+msgid "Dates"
+msgstr "Dates"
+
+msgid "Accounts"
+msgstr "Comptes"
+
+msgid "phone number"
+msgstr "numéro de téléphone"
+
+msgid "International format, e.g. +229 01 97 00 00 00."
+msgstr "Format international, par exemple +229 01 97 00 00 00."
+
+msgid "e-mail address"
+msgstr "adresse e-mail"
+
+msgid "first name"
+msgstr "prénom"
+
+msgid "last name"
+msgstr "nom"
+
+msgid "country"
+msgstr "pays"
+
+msgid "preferred language"
+msgstr "langue préférée"
+
+msgid "preferred currency"
+msgstr "devise préférée"
+
+msgid "active"
+msgstr "actif"
+
+msgid "admin access"
+msgstr "accès à l'admin"
+
+msgid "Can sign in to the back office."
+msgstr "Peut se connecter au back-office."
+
+msgid "user"
+msgstr "utilisateur"
+
+msgid "users"
+msgstr "utilisateurs"
+
+msgid "A user with this e-mail address already exists."
+msgstr "Un compte existe déjà avec cette adresse e-mail."
+
+msgid "Ads"
+msgstr "Publicité"
+
+msgid "Booking"
+msgstr "Rendez-vous"
+
+msgid "scope"
+msgstr "portée"
+
+msgid "All countries"
+msgstr "Tous les pays"
+
+msgid "Leave empty to enable for every role."
+msgstr "Laisse vide pour activer pour tous les rôles."
+
+msgid "Some information is missing or incorrect."
+msgstr "Certaines informations manquent ou sont incorrectes."
+
+msgid "Platform"
+msgstr "Plateforme"
+
+msgid "Client"
+msgstr "Cliente"
+
+msgid "Professional"
+msgstr "Pro"
+
+msgid "Staff"
+msgstr "Équipe"
+
+msgid "created at"
+msgstr "créé le"
+
+msgid "updated at"
+msgstr "modifié le"
+
+msgid "code"
+msgstr "code"
+
+msgid "Use a 3-letter ISO 4217 code."
+msgstr "Utilise un code ISO 4217 de 3 lettres."
+
+msgid "ISO 4217 code, e.g. XOF or EUR."
+msgstr "Code ISO 4217, par exemple XOF ou EUR."
+
+msgid "name"
+msgstr "nom"
+
+msgid "symbol"
+msgstr "symbole"
+
+msgid "decimal places"
+msgstr "décimales"
+
+msgid "Number of decimals of the currency: 0 for XOF, 2 for EUR."
+msgstr "Nombre de décimales de la devise : 0 pour XOF, 2 pour EUR."
+
+msgid "currency"
+msgstr "devise"
+
+msgid "currencies"
+msgstr "devises"
+
+#, python-format
+msgid "This currency has %(n)s decimal places."
+msgstr "Cette devise a %(n)s décimales."
+
+msgid "Use a 2-letter ISO 3166 code."
+msgstr "Utilise un code ISO 3166 de 2 lettres."
+
+msgid "ISO 3166-1 alpha-2 code, e.g. BJ or FR."
+msgstr "Code ISO 3166-1 alpha-2, par exemple BJ ou FR."
+
+msgid "phone prefix"
+msgstr "indicatif téléphonique"
+
+msgid "Use the format +229."
+msgstr "Utilise le format +229."
+
+msgid "default currency"
+msgstr "devise par défaut"
+
+msgid "default language"
+msgstr "langue par défaut"
+
+msgid "time zone"
+msgstr "fuseau horaire"
+
+msgid "countries"
+msgstr "pays"
+
+msgid "Text"
+msgstr "Texte"
+
+msgid "Whole number"
+msgstr "Nombre entier"
+
+msgid "Decimal number"
+msgstr "Nombre décimal"
+
+msgid "Yes / no"
+msgstr "Oui / non"
+
+msgid "JSON"
+msgstr "JSON"
+
+msgid "key"
+msgstr "clé"
+
+msgid "Use lowercase words separated by dots, e.g. escrow.ship_deadline_days."
+msgstr "Utilise des mots en minuscules séparés par des points, par exemple escrow.ship_deadline_days."
+
+msgid "Leave empty for the default value used in every country."
+msgstr "Laisse vide pour la valeur par défaut, utilisée dans tous les pays."
+
+msgid "type"
+msgstr "type"
+
+msgid "value"
+msgstr "valeur"
+
+msgid "Booleans: true or false. Decimals use a dot: 12.5."
+msgstr "Oui/non : true ou false. Décimales avec un point : 12.5."
+
+msgid "description"
+msgstr "description"
+
+msgid "platform setting"
+msgstr "réglage"
+
+msgid "platform settings"
+msgstr "réglages"
+
+msgid "all countries"
+msgstr "tous les pays"
+
+msgid "Enter a whole number."
+msgstr "Indique un nombre entier."
+
+msgid "Enter a decimal number, e.g. 12.5."
+msgstr "Indique un nombre décimal, par exemple 12.5."
+
+msgid "Enter true or false."
+msgstr "Indique true ou false."
+
+msgid "Enter valid JSON."
+msgstr "Indique un JSON valide."
+
+msgid "Unknown type."
+msgstr "Type inconnu."
+
+msgid "enabled"
+msgstr "activé"
+
+msgid "Leave empty to enable in every country."
+msgstr "Laisse vide pour activer dans tous les pays."
+
+msgid "feature flag"
+msgstr "module activable"
+
+msgid "feature flags"
+msgstr "modules activables"
+
+msgid "Gamification"
+msgstr "Côté ludique"
+
+msgid "Messaging"
+msgstr "Messagerie"
+
+msgid "Moderation"
+msgstr "Modération"
+
+msgid "Notifications"
+msgstr "Notifications"
+
+msgid "Payments"
+msgstr "Paiements"
+
+msgid "Pros"
+msgstr "Pros"
+
+msgid "France Selection"
+msgstr "Sélection France"
+
+msgid "Shop"
+msgstr "Boutiques"
+
+msgid "Social"
+msgstr "Réseau social"
+
+msgid "French"
+msgstr "Français"
+
+msgid "English"
+msgstr "Anglais"
+
+msgid "Slovak"
+msgstr "Slovaque"
+
+msgid "Back office"
+msgstr "Back-office"
+
+msgid "Countries"
+msgstr "Pays"
+
+msgid "Currencies"
+msgstr "Devises"
+
+msgid "Platform settings"
+msgstr "Réglages"
+
+msgid "Feature flags"
+msgstr "Modules activables"
+
+msgid "Users"
+msgstr "Utilisateurs"
+
+msgid "Groups"
+msgstr "Groupes"

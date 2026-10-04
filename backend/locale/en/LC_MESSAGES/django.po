@@ -1,0 +1,304 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-04 02:14+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Academy"
+msgstr ""
+
+msgid "roles"
+msgstr ""
+
+msgid "Enter a phone number or an e-mail address."
+msgstr ""
+
+msgid "Profile"
+msgstr ""
+
+msgid "Preferences"
+msgstr ""
+
+msgid "Roles and permissions"
+msgstr ""
+
+msgid "Dates"
+msgstr ""
+
+msgid "Accounts"
+msgstr ""
+
+msgid "phone number"
+msgstr ""
+
+msgid "International format, e.g. +229 01 97 00 00 00."
+msgstr ""
+
+msgid "e-mail address"
+msgstr ""
+
+msgid "first name"
+msgstr ""
+
+msgid "last name"
+msgstr ""
+
+msgid "country"
+msgstr ""
+
+msgid "preferred language"
+msgstr ""
+
+msgid "preferred currency"
+msgstr ""
+
+msgid "active"
+msgstr ""
+
+msgid "admin access"
+msgstr ""
+
+msgid "Can sign in to the back office."
+msgstr ""
+
+msgid "user"
+msgstr ""
+
+msgid "users"
+msgstr ""
+
+msgid "A user with this e-mail address already exists."
+msgstr ""
+
+msgid "Ads"
+msgstr ""
+
+msgid "Booking"
+msgstr ""
+
+msgid "scope"
+msgstr ""
+
+msgid "All countries"
+msgstr ""
+
+msgid "Leave empty to enable for every role."
+msgstr ""
+
+msgid "Some information is missing or incorrect."
+msgstr ""
+
+msgid "Platform"
+msgstr ""
+
+msgid "Client"
+msgstr ""
+
+msgid "Professional"
+msgstr ""
+
+msgid "Staff"
+msgstr ""
+
+msgid "created at"
+msgstr ""
+
+msgid "updated at"
+msgstr ""
+
+msgid "code"
+msgstr ""
+
+msgid "Use a 3-letter ISO 4217 code."
+msgstr ""
+
+msgid "ISO 4217 code, e.g. XOF or EUR."
+msgstr ""
+
+msgid "name"
+msgstr ""
+
+msgid "symbol"
+msgstr ""
+
+msgid "decimal places"
+msgstr ""
+
+msgid "Number of decimals of the currency: 0 for XOF, 2 for EUR."
+msgstr ""
+
+msgid "currency"
+msgstr ""
+
+msgid "currencies"
+msgstr ""
+
+#, python-format
+msgid "This currency has %(n)s decimal places."
+msgstr ""
+
+msgid "Use a 2-letter ISO 3166 code."
+msgstr ""
+
+msgid "ISO 3166-1 alpha-2 code, e.g. BJ or FR."
+msgstr ""
+
+msgid "phone prefix"
+msgstr ""
+
+msgid "Use the format +229."
+msgstr ""
+
+msgid "default currency"
+msgstr ""
+
+msgid "default language"
+msgstr ""
+
+msgid "time zone"
+msgstr ""
+
+msgid "countries"
+msgstr ""
+
+msgid "Text"
+msgstr ""
+
+msgid "Whole number"
+msgstr ""
+
+msgid "Decimal number"
+msgstr ""
+
+msgid "Yes / no"
+msgstr ""
+
+msgid "JSON"
+msgstr ""
+
+msgid "key"
+msgstr ""
+
+msgid "Use lowercase words separated by dots, e.g. escrow.ship_deadline_days."
+msgstr ""
+
+msgid "Leave empty for the default value used in every country."
+msgstr ""
+
+msgid "type"
+msgstr ""
+
+msgid "value"
+msgstr ""
+
+msgid "Booleans: true or false. Decimals use a dot: 12.5."
+msgstr ""
+
+msgid "description"
+msgstr ""
+
+msgid "platform setting"
+msgstr ""
+
+msgid "platform settings"
+msgstr ""
+
+msgid "all countries"
+msgstr ""
+
+msgid "Enter a whole number."
+msgstr ""
+
+msgid "Enter a decimal number, e.g. 12.5."
+msgstr ""
+
+msgid "Enter true or false."
+msgstr ""
+
+msgid "Enter valid JSON."
+msgstr ""
+
+msgid "Unknown type."
+msgstr ""
+
+msgid "enabled"
+msgstr ""
+
+msgid "Leave empty to enable in every country."
+msgstr ""
+
+msgid "feature flag"
+msgstr ""
+
+msgid "feature flags"
+msgstr ""
+
+msgid "Gamification"
+msgstr ""
+
+msgid "Messaging"
+msgstr ""
+
+msgid "Moderation"
+msgstr ""
+
+msgid "Notifications"
+msgstr ""
+
+msgid "Payments"
+msgstr ""
+
+msgid "Pros"
+msgstr ""
+
+msgid "France Selection"
+msgstr ""
+
+msgid "Shop"
+msgstr ""
+
+msgid "Social"
+msgstr ""
+
+msgid "French"
+msgstr ""
+
+msgid "English"
+msgstr ""
+
+msgid "Slovak"
+msgstr ""
+
+msgid "Back office"
+msgstr ""
+
+msgid "Countries"
+msgstr ""
+
+msgid "Currencies"
+msgstr ""
+
+msgid "Platform settings"
+msgstr ""
+
+msgid "Feature flags"
+msgstr ""
+
+msgid "Users"
+msgstr ""
+
+msgid "Groups"
+msgstr ""

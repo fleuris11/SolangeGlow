@@ -1,0 +1,304 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-04 02:14+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: sk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
+
+msgid "Academy"
+msgstr "Akadémia"
+
+msgid "roles"
+msgstr "roly"
+
+msgid "Enter a phone number or an e-mail address."
+msgstr "Zadaj telefónne číslo alebo e-mailovú adresu."
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Preferences"
+msgstr "Predvoľby"
+
+msgid "Roles and permissions"
+msgstr "Roly a oprávnenia"
+
+msgid "Dates"
+msgstr "Dátumy"
+
+msgid "Accounts"
+msgstr "Účty"
+
+msgid "phone number"
+msgstr "telefónne číslo"
+
+msgid "International format, e.g. +229 01 97 00 00 00."
+msgstr "Medzinárodný formát, napríklad +229 01 97 00 00 00."
+
+msgid "e-mail address"
+msgstr "e-mailová adresa"
+
+msgid "first name"
+msgstr "meno"
+
+msgid "last name"
+msgstr "priezvisko"
+
+msgid "country"
+msgstr "krajina"
+
+msgid "preferred language"
+msgstr "preferovaný jazyk"
+
+msgid "preferred currency"
+msgstr "preferovaná mena"
+
+msgid "active"
+msgstr "aktívny"
+
+msgid "admin access"
+msgstr "prístup do administrácie"
+
+msgid "Can sign in to the back office."
+msgstr "Môže sa prihlásiť do administrácie."
+
+msgid "user"
+msgstr "používateľ"
+
+msgid "users"
+msgstr "používatelia"
+
+msgid "A user with this e-mail address already exists."
+msgstr "Účet s touto e-mailovou adresou už existuje."
+
+msgid "Ads"
+msgstr "Reklama"
+
+msgid "Booking"
+msgstr "Rezervácie"
+
+msgid "scope"
+msgstr "rozsah"
+
+msgid "All countries"
+msgstr "Všetky krajiny"
+
+msgid "Leave empty to enable for every role."
+msgstr "Nechaj prázdne pre všetky roly."
+
+msgid "Some information is missing or incorrect."
+msgstr "Niektoré údaje chýbajú alebo sú nesprávne."
+
+msgid "Platform"
+msgstr "Platforma"
+
+msgid "Client"
+msgstr "Klientka"
+
+msgid "Professional"
+msgstr "Profesionálka"
+
+msgid "Staff"
+msgstr "Tím"
+
+msgid "created at"
+msgstr "vytvorené"
+
+msgid "updated at"
+msgstr "upravené"
+
+msgid "code"
+msgstr "kód"
+
+msgid "Use a 3-letter ISO 4217 code."
+msgstr "Použi 3-písmenový kód ISO 4217."
+
+msgid "ISO 4217 code, e.g. XOF or EUR."
+msgstr "Kód ISO 4217, napríklad XOF alebo EUR."
+
+msgid "name"
+msgstr "názov"
+
+msgid "symbol"
+msgstr "symbol"
+
+msgid "decimal places"
+msgstr "desatinné miesta"
+
+msgid "Number of decimals of the currency: 0 for XOF, 2 for EUR."
+msgstr "Počet desatinných miest meny: 0 pre XOF, 2 pre EUR."
+
+msgid "currency"
+msgstr "mena"
+
+msgid "currencies"
+msgstr "meny"
+
+#, python-format
+msgid "This currency has %(n)s decimal places."
+msgstr "Táto mena má %(n)s desatinných miest."
+
+msgid "Use a 2-letter ISO 3166 code."
+msgstr "Použi 2-písmenový kód ISO 3166."
+
+msgid "ISO 3166-1 alpha-2 code, e.g. BJ or FR."
+msgstr "Kód ISO 3166-1 alpha-2, napríklad BJ alebo FR."
+
+msgid "phone prefix"
+msgstr "telefónna predvoľba"
+
+msgid "Use the format +229."
+msgstr "Použi formát +229."
+
+msgid "default currency"
+msgstr "predvolená mena"
+
+msgid "default language"
+msgstr "predvolený jazyk"
+
+msgid "time zone"
+msgstr "časové pásmo"
+
+msgid "countries"
+msgstr "krajiny"
+
+msgid "Text"
+msgstr "Text"
+
+msgid "Whole number"
+msgstr "Celé číslo"
+
+msgid "Decimal number"
+msgstr "Desatinné číslo"
+
+msgid "Yes / no"
+msgstr "Áno / nie"
+
+msgid "JSON"
+msgstr "JSON"
+
+msgid "key"
+msgstr "kľúč"
+
+msgid "Use lowercase words separated by dots, e.g. escrow.ship_deadline_days."
+msgstr "Použi malé písmená oddelené bodkami, napríklad escrow.ship_deadline_days."
+
+msgid "Leave empty for the default value used in every country."
+msgstr "Nechaj prázdne pre predvolenú hodnotu vo všetkých krajinách."
+
+msgid "type"
+msgstr "typ"
+
+msgid "value"
+msgstr "hodnota"
+
+msgid "Booleans: true or false. Decimals use a dot: 12.5."
+msgstr "Áno/nie: true alebo false. Desatinné čísla s bodkou: 12.5."
+
+msgid "description"
+msgstr "popis"
+
+msgid "platform setting"
+msgstr "nastavenie"
+
+msgid "platform settings"
+msgstr "nastavenia"
+
+msgid "all countries"
+msgstr "všetky krajiny"
+
+msgid "Enter a whole number."
+msgstr "Zadaj celé číslo."
+
+msgid "Enter a decimal number, e.g. 12.5."
+msgstr "Zadaj desatinné číslo, napríklad 12.5."
+
+msgid "Enter true or false."
+msgstr "Zadaj true alebo false."
+
+msgid "Enter valid JSON."
+msgstr "Zadaj platný JSON."
+
+msgid "Unknown type."
+msgstr "Neznámy typ."
+
+msgid "enabled"
+msgstr "zapnuté"
+
+msgid "Leave empty to enable in every country."
+msgstr "Nechaj prázdne pre všetky krajiny."
+
+msgid "feature flag"
+msgstr "prepínač funkcie"
+
+msgid "feature flags"
+msgstr "prepínače funkcií"
+
+msgid "Gamification"
+msgstr "Gamifikácia"
+
+msgid "Messaging"
+msgstr "Správy"
+
+msgid "Moderation"
+msgstr "Moderovanie"
+
+msgid "Notifications"
+msgstr "Upozornenia"
+
+msgid "Payments"
+msgstr "Platby"
+
+msgid "Pros"
+msgstr "Profesionálky"
+
+msgid "France Selection"
+msgstr "Výber z Francúzska"
+
+msgid "Shop"
+msgstr "Obchody"
+
+msgid "Social"
+msgstr "Sociálna sieť"
+
+msgid "French"
+msgstr "Francúzština"
+
+msgid "English"
+msgstr "Angličtina"
+
+msgid "Slovak"
+msgstr "Slovenčina"
+
+msgid "Back office"
+msgstr "Administrácia"
+
+msgid "Countries"
+msgstr "Krajiny"
+
+msgid "Currencies"
+msgstr "Meny"
+
+msgid "Platform settings"
+msgstr "Nastavenia"
+
+msgid "Feature flags"
+msgstr "Prepínače funkcií"
+
+msgid "Users"
+msgstr "Používatelia"
+
+msgid "Groups"
+msgstr "Skupiny"
