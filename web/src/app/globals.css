@@ -2,37 +2,164 @@
 @import "../styles/tokens.css";
 
 @theme inline {
+  /* Colours (from tokens.css, swapped automatically in dark mode). */
   --color-hibiscus: var(--hibiscus);
+  --color-hibiscus-press: var(--hibiscus-press);
+  --color-sur-hibiscus: var(--sur-hibiscus);
   --color-prune: var(--prune);
   --color-prune-doux: var(--prune-doux);
   --color-lait: var(--lait);
   --color-poudre: var(--poudre);
   --color-carte: var(--carte);
   --color-or: var(--or);
+  --color-sur-or: var(--sur-or);
   --color-feuille: var(--feuille);
   --color-alerte: var(--alerte);
   --color-trait: var(--trait);
+  --color-voile: var(--voile);
 
-  --text-base: 1.0625rem;
-  --text-base--line-height: 1.625rem;
+  /* Fonts (next/font variables set on <html>). */
+  --font-sans: var(--font-atkinson), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+
+  /* Type scale: 13/18, 15/22, 17/26 (body), 20/28, 24/30, 30/36, 40/44, 52/56. */
+  --text-mention: 0.8125rem;
+  --text-mention--line-height: 1.125rem;
+  --text-small: 0.9375rem;
+  --text-small--line-height: 1.375rem;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.625rem;
+  --text-lead: 1.25rem;
+  --text-lead--line-height: 1.75rem;
+  --text-title: 1.5rem;
+  --text-title--line-height: 1.875rem;
+  --text-headline: 1.875rem;
+  --text-headline--line-height: 2.25rem;
+  --text-display: 2.5rem;
+  --text-display--line-height: 2.75rem;
+  --text-hero: 3.25rem;
+  --text-hero--line-height: 3.5rem;
+
+  /* Radii: pills for chips and buttons, 14 fields, 20 cards, 28 sheets, 16 photos. */
+  --radius-field: 0.875rem;
+  --radius-card: 1.25rem;
+  --radius-sheet: 1.75rem;
+  --radius-photo: 1rem;
+
+  --shadow-float: var(--ombre-flottante);
+
+  /* Motion: functional only, 150 to 200 ms, ease-out. */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-halo: halo-pulse 1.4s var(--ease-out-soft) 1 both;
+  --animate-shimmer: shimmer 1.6s ease-in-out infinite;
 }
 
-html {
-  background-color: var(--lait);
-  color: var(--prune);
+@keyframes halo-pulse {
+  0% {
+    transform: scale(0.94);
+    opacity: 0.4;
+  }
+  55% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
-body {
-  min-height: 100dvh;
-  background-color: var(--lait);
-  color: var(--prune);
-  font-size: var(--text-base);
-  line-height: var(--text-base--line-height);
+@keyframes shimmer {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
 }
 
-:focus-visible {
-  outline: 3px solid var(--hibiscus);
-  outline-offset: 2px;
+@keyframes petal-open {
+  0% {
+    transform: rotate(var(--petal-angle)) translateY(0) scale(0.2);
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(var(--petal-angle)) translateY(-34%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes check-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@layer base {
+  html {
+    background-color: var(--lait);
+    color: var(--prune);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    min-height: 100dvh;
+    background-color: var(--lait);
+    color: var(--prune);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+  }
+
+  /* Themed regions (e.g. the light/dark panels of /design) repaint themselves. */
+  [data-theme] {
+    background-color: var(--lait);
+    color: var(--prune);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--hibiscus);
+    outline-offset: 2px;
+  }
+
+  button,
+  [role="button"] {
+    cursor: pointer;
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  font-variation-settings:
+    "SOFT" 100,
+    "WONK" 1;
+}
+
+/* Lotus petal shape: top-left and bottom-right corners at 50 %, the other two at 16 %. */
+@utility petal {
+  mask-image: url("/masks/petal.svg");
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+}
+
+@utility pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 @media (prefers-reduced-motion: reduce) {

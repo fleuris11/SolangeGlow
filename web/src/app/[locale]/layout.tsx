@@ -8,7 +8,9 @@ import { Providers } from "@/components/providers";
 import { ServiceWorkerRegistration } from "@/components/pwa/service-worker-registration";
 import { brand } from "@/lib/brand";
 import { routing } from "@/lib/i18n/routing";
+import { preferencesInitScript } from "@/lib/preferences/preferences";
 
+import { atkinson, fraunces } from "../fonts";
 import "../globals.css";
 
 type Props = {
@@ -23,7 +25,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Omit<Props, "children">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({
-    locale: hasLocale(routing.locales, locale) ? locale : "fr",
+    locale: hasLocale(routing.locales, locale) ? locale : routing.defaultLocale,
     namespace: "metadata",
   });
 
@@ -42,6 +44,7 @@ export async function generateMetadata({ params }: Omit<Props, "children">): Pro
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  viewportFit: "cover",
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: brand.backgroundLight },
     { media: "(prefers-color-scheme: dark)", color: brand.backgroundDark },
@@ -56,7 +59,16 @@ export default async function LocaleLayout({ children, params }: Props) {
   setRequestLocale(locale);
 
   return (
-    <html lang={locale}>
+    <html
+      lang={locale}
+      className={`${fraunces.variable} ${atkinson.variable}`}
+      data-text-size="normal"
+      suppressHydrationWarning
+    >
+      <head>
+        {/* Applies the saved theme and text size before the first paint. */}
+        <script dangerouslySetInnerHTML={{ __html: preferencesInitScript }} />
+      </head>
       <body className="antialiased">
         <NextIntlClientProvider>
           <Providers>{children}</Providers>

@@ -1,24 +1,45 @@
 /*
  * Solange Glow design tokens (see the solange-design guide).
  * The only place where colors are written; components use the Tailwind names.
+ *
+ * Theme: follows the system, or is forced with data-theme="light" | "dark" on <html>
+ * (or on any element, e.g. the light/dark panels of the /design catalogue).
+ * Text size: data-text-size="normal" | "large" | "xlarge" on <html> scales every rem.
  */
-:root {
+
+:root,
+[data-theme="light"] {
   --hibiscus: #c8102e;
+  --hibiscus-press: #a50d26;
+  --sur-hibiscus: #ffffff;
   --prune: #3b1233;
   --prune-doux: #7a4e6e;
   --lait: #fff7f5;
   --poudre: #f9e1e7;
   --carte: #ffffff;
   --or: #e8b04b;
+  --sur-or: #3b1233;
   --feuille: #1f7a5a;
   --alerte: #b54708;
   --trait: #ebd9de;
+  --voile: rgb(59 18 51 / 0.45);
+  --ombre-flottante: 0 12px 40px -12px rgb(59 18 51 / 0.28);
+
+  /* Skin tones and hair colours of the placeholder portraits (illustrations only). */
+  --peau-1: #f1c9a5;
+  --peau-2: #c68a5e;
+  --peau-3: #a0663f;
+  --peau-4: #7a4a2c;
+  --peau-5: #4f2e1c;
+  --cheveux: #241018;
   color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --hibiscus: #ff6b7d;
+    --hibiscus-press: #ff8a98;
+    --sur-hibiscus: #1a0915;
     --prune: #fceff2;
     --prune-doux: #b9a3b2;
     --lait: #1a0915;
@@ -27,12 +48,17 @@
     --feuille: #5cc79e;
     --alerte: #f5a25d;
     --trait: #3a1e33;
+    --voile: rgb(0 0 0 / 0.6);
+    --ombre-flottante: 0 12px 40px -12px rgb(0 0 0 / 0.7);
+    --cheveux: #120609;
     color-scheme: dark;
   }
 }
 
-:root[data-theme="dark"] {
+[data-theme="dark"] {
   --hibiscus: #ff6b7d;
+  --hibiscus-press: #ff8a98;
+  --sur-hibiscus: #1a0915;
   --prune: #fceff2;
   --prune-doux: #b9a3b2;
   --lait: #1a0915;
@@ -41,5 +67,17 @@
   --feuille: #5cc79e;
   --alerte: #f5a25d;
   --trait: #3a1e33;
+  --voile: rgb(0 0 0 / 0.6);
+  --ombre-flottante: 0 12px 40px -12px rgb(0 0 0 / 0.7);
+  --cheveux: #120609;
   color-scheme: dark;
+}
+
+/* Reading comfort: every size is in rem, so this scales the whole interface. */
+html[data-text-size="large"] {
+  font-size: 112.5%;
+}
+
+html[data-text-size="xlarge"] {
+  font-size: 125%;
 }
