@@ -13,23 +13,24 @@ from django_celery_beat.models import (
     SolarSchedule,
 )
 from modeltranslation.admin import TabbedTranslationAdmin
-from unfold.admin import ModelAdmin
 from unfold.decorators import display
 from unfold.widgets import UnfoldAdminCheckboxSelectMultipleWidget, UnfoldAdminSelectWidget
 
+from .audit.admin import AuditedModelAdmin
 from .choices import Role
+from .media import admin as media_admin  # noqa: F401  (registers the media screens)
 from .models import Country, Currency, FeatureFlag, PlatformSetting
 
 
 @admin.register(Currency)
-class CurrencyAdmin(ModelAdmin, TabbedTranslationAdmin):
+class CurrencyAdmin(AuditedModelAdmin, TabbedTranslationAdmin):
     list_display = ["code", "name", "symbol", "decimal_places", "is_active"]
     list_filter = ["is_active"]
     search_fields = ["code", "name"]
 
 
 @admin.register(Country)
-class CountryAdmin(ModelAdmin, TabbedTranslationAdmin):
+class CountryAdmin(AuditedModelAdmin, TabbedTranslationAdmin):
     list_display = ["code", "name", "phone_prefix", "default_currency", "default_language"]
     list_filter = ["is_active", "default_currency"]
     search_fields = ["code", "name"]
@@ -37,7 +38,7 @@ class CountryAdmin(ModelAdmin, TabbedTranslationAdmin):
 
 
 @admin.register(PlatformSetting)
-class PlatformSettingAdmin(ModelAdmin, TabbedTranslationAdmin):
+class PlatformSettingAdmin(AuditedModelAdmin, TabbedTranslationAdmin):
     list_display = ["key", "scope", "value", "value_type", "updated_at"]
     list_filter = ["value_type", "country"]
     search_fields = ["key", "description"]
@@ -65,7 +66,7 @@ class FeatureFlagForm(forms.ModelForm):
 
 
 @admin.register(FeatureFlag)
-class FeatureFlagAdmin(ModelAdmin, TabbedTranslationAdmin):
+class FeatureFlagAdmin(AuditedModelAdmin, TabbedTranslationAdmin):
     form = FeatureFlagForm
     list_display = ["key", "name", "is_enabled", "updated_at"]
     list_filter = ["is_enabled", "countries"]
@@ -91,25 +92,25 @@ class UnfoldPeriodicTaskForm(PeriodicTaskForm):
 
 
 @admin.register(PeriodicTask)
-class PeriodicTaskAdmin(BasePeriodicTaskAdmin, ModelAdmin):
+class PeriodicTaskAdmin(BasePeriodicTaskAdmin, AuditedModelAdmin):
     form = UnfoldPeriodicTaskForm
 
 
 @admin.register(IntervalSchedule)
-class IntervalScheduleAdmin(ModelAdmin):
+class IntervalScheduleAdmin(AuditedModelAdmin):
     pass
 
 
 @admin.register(CrontabSchedule)
-class CrontabScheduleAdmin(BaseCrontabScheduleAdmin, ModelAdmin):
+class CrontabScheduleAdmin(BaseCrontabScheduleAdmin, AuditedModelAdmin):
     pass
 
 
 @admin.register(SolarSchedule)
-class SolarScheduleAdmin(ModelAdmin):
+class SolarScheduleAdmin(AuditedModelAdmin):
     pass
 
 
 @admin.register(ClockedSchedule)
-class ClockedScheduleAdmin(BaseClockedScheduleAdmin, ModelAdmin):
+class ClockedScheduleAdmin(BaseClockedScheduleAdmin, AuditedModelAdmin):
     pass
