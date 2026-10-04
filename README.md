@@ -34,6 +34,7 @@ Le premier démarrage prend quelques minutes. Ensuite :
 | http://localhost:8000/admin/ | Back-office |
 | http://localhost:8000/api/docs/ | Documentation de l'API |
 | http://localhost:8000/api/v1/health | État du serveur |
+| http://localhost:3000/fr/design | Catalogue du design system (interne) |
 
 Au démarrage, le back-end applique les migrations et crée les données de base
 (pays BJ et FR, devises XOF et EUR, premiers réglages du paiement sécurisé).
@@ -64,6 +65,7 @@ docker compose exec web npm test
 docker compose exec web npm run lint
 docker compose exec web npm run typecheck
 docker compose exec web npm run format
+docker compose run --rm e2e                                # accessibilité (axe) + captures d'écran
 
 # Conteneurs
 docker compose logs -f backend worker                      # journaux
@@ -86,6 +88,7 @@ web/                    Next.js
   src/lib/              API, i18n
   src/messages/         traductions (fr, en, sk)
   src/styles/tokens.css couleurs de la marque
+  e2e/                  tests navigateur (Playwright + axe), captures dans e2e/screenshots/
 docker-compose.yml
 ```
 
