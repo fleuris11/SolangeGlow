@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
   output: "standalone",
   reactStrictMode: true,
   poweredByHeader: false,
+  // Keeps screenshots clean; the e2e container reaches the dev server as "web".
+  devIndicators: false,
+  allowedDevOrigins: ["web"],
   // Django URLs end with a slash: let them through untouched.
   skipTrailingSlashRedirect: true,
   async rewrites() {

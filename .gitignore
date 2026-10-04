@@ -50,6 +50,9 @@ node_modules/
 .next/
 out/
 web/coverage/
+web/e2e/screenshots/
+web/test-results/
+web/playwright-report/
 *.tsbuildinfo
 next-env.d.ts
 npm-debug.log*
