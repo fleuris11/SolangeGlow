@@ -7,10 +7,170 @@
     "shortName": "Solange Glow",
     "description": "Trouve ta pro beauté, réserve et achète en sécurité."
   },
+  "common": {
+    "close": "Fermer",
+    "skipToContent": "Aller au contenu"
+  },
+  "nav": {
+    "label": "Menu principal",
+    "home": "Accueil",
+    "explore": "Explorer",
+    "create": "Publier",
+    "messages": "Messages",
+    "me": "Moi"
+  },
+  "header": {
+    "search": "Chercher"
+  },
+  "city": {
+    "change": "Ville : {city}. Changer de ville",
+    "title": "Choisis ta ville",
+    "description": "On te montre les pros près de chez toi.",
+    "saved": "Ville choisie : {city}"
+  },
+  "audio": {
+    "mode": "Audio",
+    "listen": "Écouter",
+    "listenTo": "Écouter : {text}",
+    "stop": "Arrêter la lecture",
+    "stopShort": "Arrêter"
+  },
+  "code": {
+    "digit": "Chiffre {position} sur {total}"
+  },
+  "stepper": {
+    "back": "Retour",
+    "progress": "Étape {current} sur {total}"
+  },
+  "search": {
+    "label": "Chercher une pro ou un look",
+    "placeholder": "Tresses, maquillage…",
+    "speak": "Parler",
+    "listening": "J'écoute"
+  },
+  "trades": {
+    "makeup": "Maquillage",
+    "hair": "Coiffure",
+    "braids": "Tresses",
+    "nails": "Ongles",
+    "sewing": "Couture",
+    "headwrap": "Foulard",
+    "skincare": "Esthétique"
+  },
   "home": {
-    "tagline": "La beauté et la mode, du Bénin à la France.",
-    "underConstruction": "On prépare ton nouveau salon. Reviens très vite.",
-    "languages": "Langue"
+    "question": "Tu cherches quoi aujourd'hui ?",
+    "available": {
+      "title": "Libres aujourd'hui",
+      "subtitle": "Réserve un créneau près de toi.",
+      "seeAll": "Tout voir",
+      "freeAt": "Libre à",
+      "rating": "{rating} ({count} avis)",
+      "from": "dès"
+    },
+    "looks": {
+      "title": "Réalisations",
+      "subtitle": "Avant, après : le vrai travail des pros.",
+      "verified": "Pro vérifiée",
+      "before": "Avant",
+      "after": "Après",
+      "duration": "{hours, plural, =0 {{minutes} min} other {{minutes, plural, =0 {{hours} h} other {{hours} h {minutes}}}}}",
+      "likes": "{count} j'aime",
+      "book": "Réserver ce look"
+    },
+    "france": {
+      "title": "Sélection France",
+      "subtitle": "Les produits tendance de France, livrés au Bénin.",
+      "shelves": {
+        "smallPrices": "Petits prix",
+        "trending": "Tendance",
+        "luxury": "Luxe"
+      },
+      "promise": "Prix final : livraison et douane comprises. Ton argent est bloqué jusqu'à la réception.",
+      "cta": "Voir la sélection"
+    },
+    "gift": {
+      "title": "Offrir au pays",
+      "text": "Offre une coiffure à ta mère à {city}. Tu paies en euros, elle reçoit un bon sur WhatsApp.",
+      "from": "dès",
+      "cta": "Offrir une prestation"
+    },
+    "join": {
+      "title": "Rejoins Solange Glow",
+      "clientTitle": "Je cherche une pro",
+      "clientText": "Réserve, achète et paie en sécurité.",
+      "proTitle": "Je suis une pro",
+      "proText": "Montre ton travail et remplis ton agenda."
+    }
+  },
+  "aside": {
+    "prosNearby": "Pros près de toi",
+    "giftTitle": "Offrir au pays",
+    "giftText": "Fais plaisir à un proche au Bénin.",
+    "from": "dès",
+    "giftCta": "Offrir"
+  },
+  "explore": {
+    "title": "Explorer",
+    "trades": "Métiers",
+    "emptyTitle": "Les pros arrivent bientôt",
+    "emptyTradeTitle": "{trade} : les pros arrivent bientôt",
+    "emptyText": "On ouvre d'abord à Cotonou et Abomey-Calavi. Inscris-toi pour être prévenue.",
+    "notify": "Être prévenue",
+    "proFirst": "Tu es une pro ? Inscris-toi la première"
+  },
+  "create": {
+    "title": "Publier",
+    "emptyTitle": "Montre ton travail",
+    "emptyText": "Crée ton compte pour publier une photo avant, après.",
+    "cta": "Créer mon compte"
+  },
+  "messages": {
+    "title": "Messages",
+    "emptyTitle": "Aucun message pour l'instant",
+    "emptyText": "Écris à une pro depuis son profil. Tes échanges restent ici.",
+    "cta": "Trouver une pro"
+  },
+  "me": {
+    "title": "Moi",
+    "guestTitle": "Tu n'as pas encore de compte",
+    "guestText": "Avec un compte, tu réserves, tu achètes et tu gagnes des Glow Points.",
+    "cta": "Créer mon compte",
+    "language": "Langue"
+  },
+  "join": {
+    "title": "Inscription",
+    "soonTitle": "L'inscription ouvre très bientôt",
+    "soonClient": "Tu pourras réserver et acheter en sécurité. Reviens dans quelques jours.",
+    "soonPro": "Tu pourras créer ta vitrine et recevoir des réservations. Reviens dans quelques jours.",
+    "home": "Retour à l'accueil"
+  },
+  "settings": {
+    "title": "Affichage",
+    "theme": "Thème",
+    "themes": {
+      "system": "Comme le téléphone",
+      "light": "Clair",
+      "dark": "Sombre"
+    },
+    "textSize": "Taille du texte",
+    "textSizes": {
+      "normal": "Normal",
+      "large": "Grand",
+      "xlarge": "Très grand"
+    },
+    "dataSaver": "Économie de données",
+    "dataSaverText": "Images plus légères, vidéos lancées seulement au toucher.",
+    "audioMode": "Mode audio",
+    "audioModeText": "Un bouton « Écouter » lit les textes importants à voix haute.",
+    "saved": "Réglage enregistré",
+    "on": "Oui",
+    "off": "Non"
+  },
+  "locales": {
+    "label": "Langue",
+    "fr": "Français",
+    "en": "English",
+    "sk": "Slovenčina"
   },
   "health": {
     "title": "État du serveur",
@@ -19,9 +179,57 @@
     "error": "Le serveur ne répond pas. Vérifie que Docker tourne, puis recharge la page.",
     "retry": "Réessayer"
   },
-  "locales": {
-    "fr": "Français",
-    "en": "English",
-    "sk": "Slovenčina"
+  "design": {
+    "title": "Design system",
+    "intro": "Catalogue interne des composants, en clair et en sombre. Page non indexée.",
+    "themes": {
+      "light": "Thème clair",
+      "dark": "Thème sombre"
+    },
+    "sections": {
+      "colors": "Couleurs",
+      "type": "Typographie",
+      "bloom": "Éclosion (Bloom)"
+    },
+    "sample": {
+      "display": "Paiement reçu",
+      "headline": "Réserve ta coiffeuse",
+      "title": "Libres aujourd'hui",
+      "lead": "Ton argent est bloqué jusqu'à la réception.",
+      "body": "Le corps de texte est à 17 px, pour être lu sans effort sur un petit téléphone.",
+      "small": "Texte secondaire, 15 px.",
+      "mention": "Mention, 13 px.",
+      "book": "Réserver samedi 10 h",
+      "secondary": "Voir le profil",
+      "quiet": "Plus tard",
+      "disabled": "Indisponible",
+      "pay": "Payer 15 000 FCFA",
+      "messages": "Messages",
+      "receiptCode": "Donne ton code de réception seulement quand tu as ton colis.",
+      "from": "dès",
+      "nameLabel": "Ton prénom",
+      "nameHint": "Les pros le verront.",
+      "phoneLabel": "Ton numéro WhatsApp",
+      "phoneError": "Ce numéro est incomplet. Vérifie les 10 chiffres après +229.",
+      "codeLabel": "Code reçu sur WhatsApp",
+      "codeError": "Le code ne correspond pas. Vérifie les 6 chiffres reçus sur WhatsApp.",
+      "openSheet": "Ouvrir la feuille",
+      "sheetTitle": "Choisis un créneau",
+      "sheetText": "Samedi, chez Aïcha à Fidjrossè.",
+      "sheetCta": "Réserver 14 h",
+      "nextStep": "Étape suivante",
+      "showToast": "Afficher un message",
+      "showWarning": "Afficher un avertissement",
+      "toastSaved": "Publié",
+      "toastWarning": "Paie dans l'appli pour être protégée.",
+      "levelIcon": "Icône",
+      "verified": "Pro vérifiée",
+      "emptyTitle": "Aucune commande",
+      "emptyText": "Découvre les boutiques des pros près de toi.",
+      "emptyCta": "Voir les boutiques",
+      "bloom": "Paiement reçu",
+      "replay": "Rejouer",
+      "bottomNav": "La barre du bas est visible en bas de cette page sur mobile."
+    }
   }
 }

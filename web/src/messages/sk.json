@@ -7,10 +7,170 @@
     "shortName": "Solange Glow",
     "description": "Nájdi si profesionálku, rezervuj a nakupuj bezpečne."
   },
+  "common": {
+    "close": "Zavrieť",
+    "skipToContent": "Prejsť na obsah"
+  },
+  "nav": {
+    "label": "Hlavné menu",
+    "home": "Domov",
+    "explore": "Objavovať",
+    "create": "Pridať",
+    "messages": "Správy",
+    "me": "Ja"
+  },
+  "header": {
+    "search": "Hľadať"
+  },
+  "city": {
+    "change": "Mesto: {city}. Zmeniť mesto",
+    "title": "Vyber si mesto",
+    "description": "Ukážeme ti profesionálky vo tvojom okolí.",
+    "saved": "Vybrané mesto: {city}"
+  },
+  "audio": {
+    "mode": "Zvuk",
+    "listen": "Počúvať",
+    "listenTo": "Počúvať: {text}",
+    "stop": "Zastaviť čítanie",
+    "stopShort": "Stop"
+  },
+  "code": {
+    "digit": "Číslica {position} z {total}"
+  },
+  "stepper": {
+    "back": "Späť",
+    "progress": "Krok {current} z {total}"
+  },
+  "search": {
+    "label": "Hľadaj profesionálku alebo účes",
+    "placeholder": "Vrkôčiky, líčenie…",
+    "speak": "Hovoriť",
+    "listening": "Počúvam"
+  },
+  "trades": {
+    "makeup": "Líčenie",
+    "hair": "Kaderníctvo",
+    "braids": "Vrkôčiky",
+    "nails": "Nechty",
+    "sewing": "Krajčírstvo",
+    "headwrap": "Šatka",
+    "skincare": "Kozmetika"
+  },
   "home": {
-    "tagline": "Krása a móda, od Beninu po Francúzsko.",
-    "underConstruction": "Pripravujeme tvoj nový salón. Vráť sa čoskoro.",
-    "languages": "Jazyk"
+    "question": "Čo dnes hľadáš?",
+    "available": {
+      "title": "Voľné dnes",
+      "subtitle": "Rezervuj si termín nablízku.",
+      "seeAll": "Všetko",
+      "freeAt": "Voľné o",
+      "rating": "{rating} ({count} hodnotení)",
+      "from": "od"
+    },
+    "looks": {
+      "title": "Výtvory",
+      "subtitle": "Pred a po: skutočná práca profesionálok.",
+      "verified": "Overená profesionálka",
+      "before": "Pred",
+      "after": "Po",
+      "duration": "{hours, plural, =0 {{minutes} min} other {{minutes, plural, =0 {{hours} h} other {{hours} h {minutes}}}}}",
+      "likes": "{count} páči sa mi",
+      "book": "Rezervovať tento účes"
+    },
+    "france": {
+      "title": "Výber z Francúzska",
+      "subtitle": "Trendové produkty z Francúzska, doručené do Beninu.",
+      "shelves": {
+        "smallPrices": "Nízke ceny",
+        "trending": "Trendy",
+        "luxury": "Luxus"
+      },
+      "promise": "Konečná cena: doprava a clo v cene. Peniaze sú blokované, kým tovar neprevezmeš.",
+      "cta": "Pozrieť výber"
+    },
+    "gift": {
+      "title": "Daruj domov",
+      "text": "Daruj mame v meste {city} nový účes. Platíš v eurách, ona dostane poukaz cez WhatsApp.",
+      "from": "od",
+      "cta": "Darovať službu"
+    },
+    "join": {
+      "title": "Pridaj sa k Solange Glow",
+      "clientTitle": "Hľadám profesionálku",
+      "clientText": "Rezervuj, nakupuj a plať bezpečne.",
+      "proTitle": "Som profesionálka",
+      "proText": "Ukáž svoju prácu a naplň si kalendár."
+    }
+  },
+  "aside": {
+    "prosNearby": "Profesionálky nablízku",
+    "giftTitle": "Daruj domov",
+    "giftText": "Poteš blízkeho v Benine.",
+    "from": "od",
+    "giftCta": "Darovať"
+  },
+  "explore": {
+    "title": "Objavovať",
+    "trades": "Odbory",
+    "emptyTitle": "Profesionálky čoskoro pribudnú",
+    "emptyTradeTitle": "{trade}: profesionálky čoskoro pribudnú",
+    "emptyText": "Najprv otvárame v Cotonou a Abomey-Calavi. Zaregistruj sa a dáme ti vedieť.",
+    "notify": "Upozorniť ma",
+    "proFirst": "Si profesionálka? Pridaj sa ako prvá"
+  },
+  "create": {
+    "title": "Pridať",
+    "emptyTitle": "Ukáž svoju prácu",
+    "emptyText": "Vytvor si účet a pridaj fotku pred a po.",
+    "cta": "Vytvoriť účet"
+  },
+  "messages": {
+    "title": "Správy",
+    "emptyTitle": "Zatiaľ žiadne správy",
+    "emptyText": "Napíš profesionálke z jej profilu. Konverzácie zostanú tu.",
+    "cta": "Nájsť profesionálku"
+  },
+  "me": {
+    "title": "Ja",
+    "guestTitle": "Ešte nemáš účet",
+    "guestText": "S účtom rezervuješ, nakupuješ a zbieraš Glow body.",
+    "cta": "Vytvoriť účet",
+    "language": "Jazyk"
+  },
+  "join": {
+    "title": "Registrácia",
+    "soonTitle": "Registrácia sa čoskoro otvorí",
+    "soonClient": "Budeš môcť bezpečne rezervovať a nakupovať. Vráť sa o pár dní.",
+    "soonPro": "Budeš si môcť vytvoriť profil a prijímať rezervácie. Vráť sa o pár dní.",
+    "home": "Späť domov"
+  },
+  "settings": {
+    "title": "Zobrazenie",
+    "theme": "Téma",
+    "themes": {
+      "system": "Ako v telefóne",
+      "light": "Svetlá",
+      "dark": "Tmavá"
+    },
+    "textSize": "Veľkosť textu",
+    "textSizes": {
+      "normal": "Normálna",
+      "large": "Veľká",
+      "xlarge": "Najväčšia"
+    },
+    "dataSaver": "Šetrenie dát",
+    "dataSaverText": "Ľahšie obrázky, videá sa spustia len po dotyku.",
+    "audioMode": "Zvukový režim",
+    "audioModeText": "Tlačidlo „Počúvať“ prečíta dôležité texty nahlas.",
+    "saved": "Nastavenie uložené",
+    "on": "Áno",
+    "off": "Nie"
+  },
+  "locales": {
+    "label": "Jazyk",
+    "fr": "Français",
+    "en": "English",
+    "sk": "Slovenčina"
   },
   "health": {
     "title": "Stav servera",
@@ -19,9 +179,57 @@
     "error": "Server neodpovedá. Skontroluj, či beží Docker, a obnov stránku.",
     "retry": "Skúsiť znova"
   },
-  "locales": {
-    "fr": "Français",
-    "en": "English",
-    "sk": "Slovenčina"
+  "design": {
+    "title": "Dizajnový systém",
+    "intro": "Interný katalóg komponentov vo svetlej a tmavej téme. Neindexované.",
+    "themes": {
+      "light": "Svetlá téma",
+      "dark": "Tmavá téma"
+    },
+    "sections": {
+      "colors": "Farby",
+      "type": "Typografia",
+      "bloom": "Rozkvet (Bloom)"
+    },
+    "sample": {
+      "display": "Platba prijatá",
+      "headline": "Rezervuj si kaderníčku",
+      "title": "Voľné dnes",
+      "lead": "Peniaze sú blokované, kým tovar neprevezmeš.",
+      "body": "Základný text má 17 px, aby sa dal ľahko čítať aj na malom telefóne.",
+      "small": "Vedľajší text, 15 px.",
+      "mention": "Poznámka, 13 px.",
+      "book": "Rezervovať v sobotu o 10:00",
+      "secondary": "Zobraziť profil",
+      "quiet": "Neskôr",
+      "disabled": "Nedostupné",
+      "pay": "Zaplatiť 15 000 FCFA",
+      "messages": "Správy",
+      "receiptCode": "Kód prevzatia daj až vtedy, keď máš balík v rukách.",
+      "from": "od",
+      "nameLabel": "Tvoje meno",
+      "nameHint": "Profesionálky ho uvidia.",
+      "phoneLabel": "Tvoje číslo WhatsApp",
+      "phoneError": "Číslo je neúplné. Skontroluj 10 číslic po +229.",
+      "codeLabel": "Kód z WhatsAppu",
+      "codeError": "Kód nesedí. Skontroluj 6 číslic z WhatsAppu.",
+      "openSheet": "Otvoriť panel",
+      "sheetTitle": "Vyber si termín",
+      "sheetText": "Sobota, u Aïchy vo Fidjrossè.",
+      "sheetCta": "Rezervovať 14:00",
+      "nextStep": "Ďalší krok",
+      "showToast": "Zobraziť správu",
+      "showWarning": "Zobraziť upozornenie",
+      "toastSaved": "Pridané",
+      "toastWarning": "Plať v aplikácii, aby si bola chránená.",
+      "levelIcon": "Ikona",
+      "verified": "Overená profesionálka",
+      "emptyTitle": "Žiadne objednávky",
+      "emptyText": "Objav obchody profesionálok nablízku.",
+      "emptyCta": "Pozrieť obchody",
+      "bloom": "Platba prijatá",
+      "replay": "Prehrať znova",
+      "bottomNav": "Spodná lišta je na mobile zobrazená v dolnej časti stránky."
+    }
   }
 }

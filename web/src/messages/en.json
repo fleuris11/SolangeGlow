@@ -7,10 +7,170 @@
     "shortName": "Solange Glow",
     "description": "Find your beauty pro, book and shop safely."
   },
+  "common": {
+    "close": "Close",
+    "skipToContent": "Skip to content"
+  },
+  "nav": {
+    "label": "Main menu",
+    "home": "Home",
+    "explore": "Explore",
+    "create": "Post",
+    "messages": "Messages",
+    "me": "Me"
+  },
+  "header": {
+    "search": "Search"
+  },
+  "city": {
+    "change": "City: {city}. Change city",
+    "title": "Choose your city",
+    "description": "We show you pros near you.",
+    "saved": "City chosen: {city}"
+  },
+  "audio": {
+    "mode": "Audio",
+    "listen": "Listen",
+    "listenTo": "Listen: {text}",
+    "stop": "Stop reading",
+    "stopShort": "Stop"
+  },
+  "code": {
+    "digit": "Digit {position} of {total}"
+  },
+  "stepper": {
+    "back": "Back",
+    "progress": "Step {current} of {total}"
+  },
+  "search": {
+    "label": "Search a pro or a look",
+    "placeholder": "Braids, makeup…",
+    "speak": "Speak",
+    "listening": "Listening"
+  },
+  "trades": {
+    "makeup": "Makeup",
+    "hair": "Hair",
+    "braids": "Braids",
+    "nails": "Nails",
+    "sewing": "Sewing",
+    "headwrap": "Headwrap",
+    "skincare": "Skincare"
+  },
   "home": {
-    "tagline": "Beauty and fashion, from Benin to France.",
-    "underConstruction": "We are getting your new salon ready. Come back soon.",
-    "languages": "Language"
+    "question": "What are you looking for today?",
+    "available": {
+      "title": "Free today",
+      "subtitle": "Book a slot near you.",
+      "seeAll": "See all",
+      "freeAt": "Free at",
+      "rating": "{rating} ({count, plural, one {# review} other {# reviews}})",
+      "from": "from"
+    },
+    "looks": {
+      "title": "Latest looks",
+      "subtitle": "Before and after: real work by pros.",
+      "verified": "Verified pro",
+      "before": "Before",
+      "after": "After",
+      "duration": "{hours, plural, =0 {{minutes} min} other {{minutes, plural, =0 {{hours} h} other {{hours} h {minutes}}}}}",
+      "likes": "{count, plural, one {# like} other {# likes}}",
+      "book": "Book this look"
+    },
+    "france": {
+      "title": "France Selection",
+      "subtitle": "Trendy products from France, delivered to Benin.",
+      "shelves": {
+        "smallPrices": "Small prices",
+        "trending": "Trending",
+        "luxury": "Luxury"
+      },
+      "promise": "Final price: delivery and customs included. Your money is held until you receive it.",
+      "cta": "See the selection"
+    },
+    "gift": {
+      "title": "Send a gift home",
+      "text": "Treat your mother in {city} to a new hairstyle. You pay in euros, she gets a voucher on WhatsApp.",
+      "from": "from",
+      "cta": "Offer a service"
+    },
+    "join": {
+      "title": "Join Solange Glow",
+      "clientTitle": "I'm looking for a pro",
+      "clientText": "Book, shop and pay safely.",
+      "proTitle": "I'm a pro",
+      "proText": "Show your work and fill your calendar."
+    }
+  },
+  "aside": {
+    "prosNearby": "Pros near you",
+    "giftTitle": "Send a gift home",
+    "giftText": "Treat a loved one in Benin.",
+    "from": "from",
+    "giftCta": "Offer"
+  },
+  "explore": {
+    "title": "Explore",
+    "trades": "Trades",
+    "emptyTitle": "Pros are coming soon",
+    "emptyTradeTitle": "{trade}: pros are coming soon",
+    "emptyText": "We open first in Cotonou and Abomey-Calavi. Sign up to be told.",
+    "notify": "Notify me",
+    "proFirst": "Are you a pro? Be the first to join"
+  },
+  "create": {
+    "title": "Post",
+    "emptyTitle": "Show your work",
+    "emptyText": "Create your account to post a before and after photo.",
+    "cta": "Create my account"
+  },
+  "messages": {
+    "title": "Messages",
+    "emptyTitle": "No messages yet",
+    "emptyText": "Write to a pro from her profile. Your chats stay here.",
+    "cta": "Find a pro"
+  },
+  "me": {
+    "title": "Me",
+    "guestTitle": "You don't have an account yet",
+    "guestText": "With an account, you book, shop and earn Glow Points.",
+    "cta": "Create my account",
+    "language": "Language"
+  },
+  "join": {
+    "title": "Sign up",
+    "soonTitle": "Sign-up opens very soon",
+    "soonClient": "You'll be able to book and shop safely. Come back in a few days.",
+    "soonPro": "You'll be able to open your showcase and get bookings. Come back in a few days.",
+    "home": "Back to home"
+  },
+  "settings": {
+    "title": "Display",
+    "theme": "Theme",
+    "themes": {
+      "system": "Like my phone",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "textSize": "Text size",
+    "textSizes": {
+      "normal": "Normal",
+      "large": "Large",
+      "xlarge": "Extra large"
+    },
+    "dataSaver": "Data saver",
+    "dataSaverText": "Lighter images, videos only play when you tap.",
+    "audioMode": "Audio mode",
+    "audioModeText": "A \"Listen\" button reads important texts aloud.",
+    "saved": "Setting saved",
+    "on": "On",
+    "off": "Off"
+  },
+  "locales": {
+    "label": "Language",
+    "fr": "Français",
+    "en": "English",
+    "sk": "Slovenčina"
   },
   "health": {
     "title": "Server status",
@@ -19,9 +179,57 @@
     "error": "The server is not responding. Check that Docker is running, then reload the page.",
     "retry": "Try again"
   },
-  "locales": {
-    "fr": "Français",
-    "en": "English",
-    "sk": "Slovenčina"
+  "design": {
+    "title": "Design system",
+    "intro": "Internal catalogue of components, in light and dark. Not indexed.",
+    "themes": {
+      "light": "Light theme",
+      "dark": "Dark theme"
+    },
+    "sections": {
+      "colors": "Colours",
+      "type": "Typography",
+      "bloom": "Bloom"
+    },
+    "sample": {
+      "display": "Payment received",
+      "headline": "Book your hairdresser",
+      "title": "Free today",
+      "lead": "Your money is held until you receive it.",
+      "body": "Body text is 17 px, to read without effort on a small phone.",
+      "small": "Secondary text, 15 px.",
+      "mention": "Note, 13 px.",
+      "book": "Book Saturday 10 am",
+      "secondary": "See profile",
+      "quiet": "Later",
+      "disabled": "Unavailable",
+      "pay": "Pay 15,000 FCFA",
+      "messages": "Messages",
+      "receiptCode": "Give your receipt code only once you have your parcel.",
+      "from": "from",
+      "nameLabel": "Your first name",
+      "nameHint": "Pros will see it.",
+      "phoneLabel": "Your WhatsApp number",
+      "phoneError": "This number is incomplete. Check the 10 digits after +229.",
+      "codeLabel": "Code received on WhatsApp",
+      "codeError": "The code doesn't match. Check the 6 digits received on WhatsApp.",
+      "openSheet": "Open the sheet",
+      "sheetTitle": "Choose a slot",
+      "sheetText": "Saturday, at Aïcha's in Fidjrossè.",
+      "sheetCta": "Book 2 pm",
+      "nextStep": "Next step",
+      "showToast": "Show a message",
+      "showWarning": "Show a warning",
+      "toastSaved": "Posted",
+      "toastWarning": "Pay in the app to be protected.",
+      "levelIcon": "Icon",
+      "verified": "Verified pro",
+      "emptyTitle": "No orders",
+      "emptyText": "Discover the shops of pros near you.",
+      "emptyCta": "See the shops",
+      "bloom": "Payment received",
+      "replay": "Replay",
+      "bottomNav": "The bottom bar is shown at the bottom of this page on mobile."
+    }
   }
 }
