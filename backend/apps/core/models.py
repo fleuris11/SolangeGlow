@@ -223,3 +223,8 @@ class FeatureFlag(BaseModel):
 
     def __str__(self):
         return self.name
+
+
+# Models living in sub-packages of core.
+from .audit.models import AuditEvent  # noqa: E402, F401
+from .media.models import MediaAsset  # noqa: E402, F401
