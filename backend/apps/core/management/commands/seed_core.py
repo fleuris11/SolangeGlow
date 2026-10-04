@@ -53,9 +53,56 @@ COUNTRIES = [
 
 INT = PlatformSetting.ValueType.INTEGER
 
-# Secure payment (escrow) deadlines. Starting values, to be confirmed by the owner;
-# they are edited in the admin, never in the code.
+# Secure payment (escrow) deadlines, from module 5 of the specification (v2).
+# They are edited in the admin, never in the code.
 SETTINGS = [
+    {
+        "key": "escrow.ship_deadline_days",
+        "country": None,
+        "value_type": INT,
+        "value": "3",
+        "description_fr": "Jours laissés à la vendeuse pour expédier ou remettre la commande. "
+        "Passé ce délai, la commande est annulée et la cliente remboursée.",
+        "description_en": "Days the seller has to ship or hand over the order. After "
+        "that, the order is cancelled and the client refunded.",
+    },
+    {
+        "key": "escrow.auto_release_days",
+        "country": None,
+        "value_type": INT,
+        "value": "7",
+        "description_fr": "Jours après un suivi transporteur « livré » sans code de réception : "
+        "relances à la cliente, puis argent versé à la vendeuse si elle ne dit rien.",
+        "description_en": "Days after a carrier 'delivered' status without receipt code: "
+        "the client is reminded, then the money is released to the seller.",
+    },
+    {
+        "key": "escrow.auto_dispute_days",
+        "country": None,
+        "value_type": INT,
+        "value": "7",
+        "description_fr": "Jours après la date de livraison prévue, sans code ni preuve de "
+        "livraison, au bout desquels un litige s'ouvre automatiquement.",
+        "description_en": "Days after the expected delivery date, without code or proof of "
+        "delivery, after which a dispute opens automatically.",
+    },
+    {
+        "key": "escrow.dispute_response_hours",
+        "country": None,
+        "value_type": INT,
+        "value": "48",
+        "description_fr": "Heures laissées à chaque partie pour répondre et déposer ses "
+        "preuves dans un litige.",
+        "description_en": "Hours each party has to answer and upload evidence in a dispute.",
+    },
+    {
+        "key": "escrow.receipt_code_max_attempts",
+        "country": None,
+        "value_type": INT,
+        "value": "5",
+        "description_fr": "Nombre d'essais autorisés pour saisir le code de réception.",
+        "description_en": "Number of attempts allowed to enter the receipt code.",
+    },
     {
         "key": "escrow.payment_timeout_minutes",
         "country": None,
@@ -65,50 +112,6 @@ SETTINGS = [
         "avant l'annulation de la commande.",
         "description_en": "Minutes the client has to complete a payment before the "
         "order is cancelled.",
-    },
-    {
-        "key": "escrow.ship_deadline_days",
-        "country": None,
-        "value_type": INT,
-        "value": "3",
-        "description_fr": "Jours laissés à la pro pour expédier ou remettre la commande. "
-        "Passé ce délai, la cliente est remboursée automatiquement.",
-        "description_en": "Days the seller has to ship or hand over the order. After "
-        "that, the client is refunded automatically.",
-    },
-    {
-        "key": "escrow.ship_deadline_days",
-        "country": "FR",
-        "value_type": INT,
-        "value": "5",
-        "description_fr": "Délai d'expédition pour les commandes en France.",
-        "description_en": "Shipping deadline for orders in France.",
-    },
-    {
-        "key": "escrow.auto_release_days",
-        "country": None,
-        "value_type": INT,
-        "value": "7",
-        "description_fr": "Jours après la livraison sans code de réception ni litige, "
-        "au bout desquels l'argent bloqué est versé à la pro.",
-        "description_en": "Days after delivery, without receipt code or dispute, after "
-        "which the held money is released to the seller.",
-    },
-    {
-        "key": "escrow.dispute_resolution_days",
-        "country": None,
-        "value_type": INT,
-        "value": "7",
-        "description_fr": "Jours dont l'équipe dispose pour trancher un litige.",
-        "description_en": "Days the team has to settle a dispute.",
-    },
-    {
-        "key": "escrow.receipt_code_max_attempts",
-        "country": None,
-        "value_type": INT,
-        "value": "5",
-        "description_fr": "Nombre d'essais autorisés pour saisir le code de réception.",
-        "description_en": "Number of attempts allowed to enter the receipt code.",
     },
 ]
 

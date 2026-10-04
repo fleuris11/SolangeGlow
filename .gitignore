@@ -4,6 +4,8 @@ CLAUDE.md
 PROMPTS.md
 /solangeglow-kit.zip
 /*.docx
+/docs/*.docx
+/docs/*.pdf
 ~$*
 /Logo.png
 

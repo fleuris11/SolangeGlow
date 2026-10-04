@@ -15,7 +15,10 @@ def test_seed_core_creates_reference_data():
     assert Country.objects.get(code="BJ").default_currency.code == "XOF"
     assert Currency.objects.get(code="EUR").decimal_places == 2
     assert get_setting("escrow.ship_deadline_days", country="BJ") == 3
-    assert get_setting("escrow.ship_deadline_days", country="FR") == 5
+    assert get_setting("escrow.ship_deadline_days", country="FR") == 3
+    assert get_setting("escrow.auto_release_days") == 7
+    assert get_setting("escrow.auto_dispute_days") == 7
+    assert get_setting("escrow.dispute_response_hours") == 48
 
 
 def test_seed_core_is_idempotent_and_keeps_admin_edits():
@@ -28,5 +31,5 @@ def test_seed_core_is_idempotent_and_keeps_admin_edits():
 
     assert Currency.objects.count() == 2
     assert Country.objects.count() == 2
-    assert PlatformSetting.objects.filter(key="escrow.ship_deadline_days").count() == 2
+    assert PlatformSetting.objects.filter(key__startswith="escrow.").count() == 6
     assert get_setting("escrow.auto_release_days") == 10
