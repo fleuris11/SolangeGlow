@@ -1,53 +1,40 @@
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { use } from "react";
 
-import { HealthStatus } from "@/components/features/system/health-status";
-import { Link } from "@/lib/i18n/navigation";
-import { routing, type Locale } from "@/lib/i18n/routing";
+import { AvailableToday } from "@/components/features/home/available-today";
+import { FranceSelectionBand, GiftBand, JoinBand } from "@/components/features/home/bands";
+import { LooksFeed } from "@/components/features/home/looks-feed";
+import { SearchBar } from "@/components/features/search/search-bar";
+import { TradePetals } from "@/components/features/trades/trade-petals";
+import { SpeakButton } from "@/components/ui/speak-button";
+import type { Locale } from "@/lib/i18n/routing";
 
 type Props = { params: Promise<{ locale: Locale }> };
 
 export default function HomePage({ params }: Props) {
   const { locale } = use(params);
   setRequestLocale(locale);
-  const t = useTranslations();
+  const t = useTranslations("home");
 
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-[640px] flex-col gap-8 px-4 py-12">
-      <header className="flex flex-col items-start gap-4">
-        <Image
-          src="/icons/logo.png"
-          alt={t("metadata.title")}
-          width={200}
-          height={98}
-          priority
-          className="rounded-2xl"
-        />
-        <h1 className="text-[30px] leading-9 font-bold">{t("home.tagline")}</h1>
-        <p className="text-prune-doux">{t("home.underConstruction")}</p>
-      </header>
+    <div className="flex flex-col gap-12">
+      <section aria-labelledby="home-title" className="flex flex-col gap-6">
+        <div className="flex items-start justify-between gap-3">
+          <h1 id="home-title" className="font-display text-display lg:text-hero font-black">
+            {t("question")}
+          </h1>
+          <SpeakButton text={t("question")} className="mt-1" />
+        </div>
+        <SearchBar />
+        <TradePetals />
+      </section>
 
-      <HealthStatus />
-
-      <nav aria-label={t("home.languages")}>
-        <ul className="flex flex-wrap gap-2">
-          {routing.locales.map((code) => (
-            <li key={code}>
-              <Link
-                href="/"
-                locale={code}
-                hrefLang={code}
-                aria-current={code === locale ? "true" : undefined}
-                className="border-trait bg-poudre aria-[current=true]:border-hibiscus inline-flex min-h-12 items-center rounded-full border px-5"
-              >
-                {t(`locales.${code}`)}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </main>
+      <AvailableToday />
+      <LooksFeed />
+      <FranceSelectionBand />
+      <GiftBand />
+      <JoinBand />
+    </div>
   );
 }
