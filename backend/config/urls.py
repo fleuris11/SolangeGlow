@@ -4,10 +4,14 @@ from django.contrib import admin
 from django.urls import include, path
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
-from apps.core.api.views import HealthView
+from apps.core.api.views import CountryListView, HealthView
+from apps.pros.views import TradeListView
 
 api_v1 = [
     path("health", HealthView.as_view(), name="health"),
+    path("countries", CountryListView.as_view(), name="countries"),
+    path("trades", TradeListView.as_view(), name="trades"),
+    path("", include("apps.accounts.urls")),
 ]
 
 urlpatterns = [
