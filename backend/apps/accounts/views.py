@@ -25,16 +25,19 @@ from .cookies import (
 from .models import GuestIdentity, User
 from .otp.console import DEV_CODE_CACHE_PREFIX
 from .serializers import (
-    AvatarSerializer,
     CodeRequestResultSerializer,
     CodeRequestSerializer,
     CodeVerifySerializer,
+    ContactChangeConfirmSerializer,
+    ContactChangeRequestSerializer,
     DeleteAccountSerializer,
+    DeletionScheduledSerializer,
     GuestSerializer,
     MeSerializer,
     OnboardingSerializer,
     PasswordLoginSerializer,
     PasswordSetSerializer,
+    PhotoSerializer,
     SignInSerializer,
 )
 from .throttling import SettingRateThrottle
@@ -67,10 +70,18 @@ class PublicView(APIView):
         return 'Bearer realm="api"'
 
 
-def signed_in_response(request, user: User, *, created: bool) -> Response:
-    data = SignInSerializer({"created": created, "user": user}, context={"request": request}).data
-    response = Response(data, status=status.HTTP_201_CREATED if created else status.HTTP_200_OK)
-    set_auth_cookies(response, RefreshToken.for_user(user))
+def signed_in_response(request, result: services.SignInResult) -> Response:
+    data = SignInSerializer(
+        {
+            "created": result.created,
+            "deletion_cancelled": result.deletion_cancelled,
+            "user": result.user,
+        },
+        context={"request": request},
+    ).data
+    code = status.HTTP_201_CREATED if result.created else status.HTTP_200_OK
+    response = Response(data, status=code)
+    set_auth_cookies(response, RefreshToken.for_user(result.user))
     clear_guest_cookie(response)
     return response
 
@@ -115,7 +126,7 @@ class CodeVerifyView(PublicView):
             locale=serializer.validated_data.get("locale") or request.LANGUAGE_CODE,
             guest_id=request.COOKIES.get(GUEST_COOKIE),
         )
-        return signed_in_response(request, result.user, created=result.created)
+        return signed_in_response(request, result)
 
 
 class PasswordLoginView(PublicView):
@@ -127,13 +138,13 @@ class PasswordLoginView(PublicView):
     def post(self, request):
         serializer = PasswordLoginSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = services.login_with_password(
+        result = services.login_with_password(
             identifier=serializer.validated_data["identifier"],
             password=serializer.validated_data["password"],
             ip=client_ip(request),
             user_agent=user_agent(request),
         )
-        return signed_in_response(request, user, created=False)
+        return signed_in_response(request, result)
 
 
 class RefreshView(PublicView):
@@ -208,32 +219,81 @@ class MeView(APIView):
         serializer.save()
         return Response(serializer.data)
 
-    @extend_schema(tags=["me"], request=DeleteAccountSerializer, responses={204: None})
+    @extend_schema(
+        tags=["me"], request=DeleteAccountSerializer, responses={202: DeletionScheduledSerializer}
+    )
     def delete(self, request):
+        """Asks for deletion: erased after the grace period unless she signs in again."""
         serializer = DeleteAccountSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        services.delete_account(request.user)
-        response = Response(status=status.HTTP_204_NO_CONTENT)
+        erase_after = services.request_deletion(request.user)
+        response = Response(
+            DeletionScheduledSerializer({"erase_after": erase_after}).data,
+            status=status.HTTP_202_ACCEPTED,
+        )
         clear_auth_cookies(response)
         return response
 
 
-class AvatarView(APIView):
+class PhotoView(APIView):
     permission_classes = [IsAuthenticated]
     parser_classes = [MultiPartParser, FormParser]
     throttle_classes = [SettingRateThrottle]
-    throttle_scope = "profile"
+    throttle_scope = "media_upload"
 
-    @extend_schema(tags=["me"], request=AvatarSerializer, responses=MeSerializer)
+    @extend_schema(tags=["me"], request=PhotoSerializer, responses={202: MeSerializer})
     def post(self, request):
-        serializer = AvatarSerializer(data=request.data)
+        """New profile photo: processed in the background (status "processing" then "ready")."""
+        serializer = PhotoSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = services.save_avatar(request.user, serializer.validated_data["photo"])
-        return Response(MeSerializer(user, context={"request": request}).data)
+        user = services.set_photo(request.user, serializer.validated_data["photo"])
+        data = MeSerializer(user, context={"request": request}).data
+        return Response(data, status=status.HTTP_202_ACCEPTED)
 
     @extend_schema(tags=["me"], request=None, responses=MeSerializer)
     def delete(self, request):
-        user = services.remove_avatar(request.user)
+        user = services.remove_photo(request.user)
+        return Response(MeSerializer(user, context={"request": request}).data)
+
+
+class ContactChangeRequestView(APIView):
+    permission_classes = [IsAuthenticated]
+    throttle_classes = [SettingRateThrottle]
+    throttle_scope = "otp_request"
+
+    @extend_schema(
+        tags=["me"],
+        request=ContactChangeRequestSerializer,
+        responses={202: CodeRequestResultSerializer},
+        summary="Send a code to a new number or e-mail before changing it.",
+    )
+    def post(self, request):
+        serializer = ContactChangeRequestSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        result = services.request_contact_change(
+            request.user,
+            phone=serializer.validated_data.get("phone"),
+            email=serializer.validated_data.get("email"),
+            ip=client_ip(request),
+            locale=serializer.validated_data.get("locale") or request.LANGUAGE_CODE,
+        )
+        return Response(CodeRequestResultSerializer(result).data, status=status.HTTP_202_ACCEPTED)
+
+
+class ContactChangeConfirmView(APIView):
+    permission_classes = [IsAuthenticated]
+    throttle_classes = [SettingRateThrottle]
+    throttle_scope = "auth"
+
+    @extend_schema(tags=["me"], request=ContactChangeConfirmSerializer, responses=MeSerializer)
+    def post(self, request):
+        serializer = ContactChangeConfirmSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = services.confirm_contact_change(
+            request.user,
+            challenge_id=str(serializer.validated_data["challenge_id"]),
+            code=serializer.validated_data["code"],
+        )
         return Response(MeSerializer(user, context={"request": request}).data)
 
 
@@ -259,6 +319,7 @@ class OnboardingView(APIView):
         user = services.complete_onboarding(
             request.user,
             mode=data["mode"],
+            birth_date=data["birth_date"],
             trade_keys=data.get("trades"),
             language=data.get("language"),
             city=data.get("city", ""),

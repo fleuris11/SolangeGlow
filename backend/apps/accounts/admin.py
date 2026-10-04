@@ -10,6 +10,7 @@ from unfold.contrib.filters.admin import RangeDateFilter
 from unfold.forms import AdminPasswordChangeForm, UserChangeForm, UserCreationForm
 from unfold.widgets import UnfoldAdminCheckboxSelectMultipleWidget
 
+from apps.core.audit.admin import AuditedModelAdmin
 from apps.core.choices import Role
 
 from . import services
@@ -94,7 +95,7 @@ class LoginEventInline(TabularInline):
 
 
 @admin.register(User)
-class UserAdmin(BaseUserAdmin, ModelAdmin):
+class UserAdmin(BaseUserAdmin, AuditedModelAdmin):
     form = UserAdminChangeForm
     add_form = UserAdminCreationForm
     change_password_form = AdminPasswordChangeForm
@@ -137,7 +138,10 @@ class UserAdmin(BaseUserAdmin, ModelAdmin):
 
     fieldsets = (
         (None, {"fields": ("email", "phone", "password")}),
-        (_("Profile"), {"fields": ("first_name", "last_name", "country", "city", "avatar")}),
+        (
+            _("Profile"),
+            {"fields": ("first_name", "last_name", "birth_date", "country", "city", "photo")},
+        ),
         (
             _("Preferences"),
             {
@@ -207,7 +211,7 @@ class UserAdmin(BaseUserAdmin, ModelAdmin):
     def suspend_users(self, request, queryset):
         count = 0
         for user in queryset.filter(is_active=True).exclude(pk=request.user.pk):
-            services.suspend(user)
+            services.suspend(user, actor=request.user)
             self.log_change(request, user, _("Suspended"))
             count += 1
         self.message_user(
@@ -221,7 +225,7 @@ class UserAdmin(BaseUserAdmin, ModelAdmin):
     def reactivate_users(self, request, queryset):
         count = 0
         for user in queryset.filter(is_active=False, deleted_at__isnull=True):
-            services.reactivate(user)
+            services.reactivate(user, actor=request.user)
             self.log_change(request, user, _("Reactivated"))
             count += 1
         self.message_user(
@@ -289,7 +293,7 @@ class OtpChallengeAdmin(ModelAdmin):
 
 
 @admin.register(GuestIdentity)
-class GuestIdentityAdmin(ModelAdmin):
+class GuestIdentityAdmin(AuditedModelAdmin):
     list_display = ["first_name", "phone", "user", "converted_at", "created_at"]
     list_filter = [("created_at", RangeDateFilter)]
     list_filter_submit = True
@@ -301,5 +305,5 @@ admin.site.unregister(Group)
 
 
 @admin.register(Group)
-class GroupAdmin(BaseGroupAdmin, ModelAdmin):
+class GroupAdmin(BaseGroupAdmin, AuditedModelAdmin):
     pass

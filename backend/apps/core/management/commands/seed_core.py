@@ -222,6 +222,171 @@ SETTINGS += [
 ]
 
 
+BOOL = PlatformSetting.ValueType.BOOLEAN
+MB = 1024 * 1024
+
+
+def _s(key, value_type, value, fr, en):
+    return {
+        "key": key,
+        "country": None,
+        "value_type": value_type,
+        "value": value,
+        "description_fr": fr,
+        "description_en": en,
+    }
+
+
+# Accounts: ages, minors, deletion grace period.
+SETTINGS += [
+    _s(
+        "accounts.minimum_age",
+        INT,
+        "16",
+        "Âge minimum pour créer un compte (en années).",
+        "Minimum age to create an account (years).",
+    ),
+    _s(
+        "accounts.adult_age",
+        INT,
+        "18",
+        "Âge à partir duquel un compte n'est plus limité (achats, messages).",
+        "Age from which an account is no longer limited (purchases, messages).",
+    ),
+    _s(
+        "accounts.minors_can_purchase",
+        BOOL,
+        "false",
+        "Les comptes mineurs peuvent-ils acheter ? (true ou false)",
+        "Can minor accounts buy? (true or false)",
+    ),
+    _s(
+        "accounts.minors_receive_messages_from_strangers",
+        BOOL,
+        "false",
+        "Les comptes mineurs peuvent-ils recevoir des messages de personnes "
+        "qu'ils ne suivent pas ?",
+        "Can minor accounts get messages from people they do not follow?",
+    ),
+    _s(
+        "accounts.deletion_grace_days",
+        INT,
+        "30",
+        "Jours entre la demande de suppression et l'effacement. Se reconnecter annule.",
+        "Days between the deletion request and erasure. Signing in again cancels it.",
+    ),
+]
+
+# Media: sizes, durations, quality, signed links.
+SETTINGS += [
+    _s(
+        "media.image_max_bytes",
+        INT,
+        str(15 * MB),
+        "Taille maximale d'une photo envoyée, en octets.",
+        "Maximum size of a picture, in bytes.",
+    ),
+    _s(
+        "media.video_max_bytes",
+        INT,
+        str(200 * MB),
+        "Taille maximale d'une vidéo envoyée, en octets.",
+        "Maximum size of a video, in bytes.",
+    ),
+    _s(
+        "media.audio_max_bytes",
+        INT,
+        str(10 * MB),
+        "Taille maximale d'une note vocale, en octets.",
+        "Maximum size of a voice note, in bytes.",
+    ),
+    _s(
+        "media.video_max_seconds",
+        INT,
+        "600",
+        "Durée maximale d'une vidéo, en secondes.",
+        "Maximum length of a video, in seconds.",
+    ),
+    _s(
+        "media.audio_max_seconds",
+        INT,
+        "120",
+        "Durée maximale d'une note vocale, en secondes.",
+        "Maximum length of a voice note, in seconds.",
+    ),
+    _s(
+        "media.image_sizes",
+        JSON,
+        '{"thumb": 160, "medium": 640, "large": 1280}',
+        "Tailles des photos produites (plus grand côté, en pixels).",
+        "Sizes of the pictures produced (longest side, in pixels).",
+    ),
+    _s(
+        "media.webp_quality",
+        INT,
+        "80",
+        "Qualité des photos WebP (0 à 100).",
+        "Quality of WebP pictures (0 to 100).",
+    ),
+    _s(
+        "media.video_qualities",
+        JSON,
+        '{"low": {"height": 360, "crf": 30, "audio": "64k"}, '
+        '"medium": {"height": 720, "crf": 26, "audio": "96k"}}',
+        "Qualités vidéo produites : « low » sert à l'économie de données.",
+        'Video qualities produced: "low" is used by the data saver.',
+    ),
+    _s(
+        "media.audio_bitrate",
+        STR,
+        "32k",
+        "Débit des notes vocales (Opus).",
+        "Bitrate of voice notes (Opus).",
+    ),
+    _s(
+        "media.signed_url_ttl_seconds",
+        INT,
+        "600",
+        "Durée de validité d'un lien vers un fichier privé, en secondes.",
+        "How long a link to a private file stays valid, in seconds.",
+    ),
+    _s(
+        "media.ffmpeg_timeout_seconds",
+        INT,
+        "600",
+        "Temps maximal de conversion d'une vidéo, en secondes.",
+        "Maximum time to convert a video, in seconds.",
+    ),
+    _s(
+        "throttle.media_upload",
+        STR,
+        "30/hour",
+        "Limite d'envois de fichiers par adresse IP.",
+        "File upload limit per IP address.",
+    ),
+]
+
+# Notifications.
+SETTINGS += [
+    _s(
+        "notifications.quiet_hours",
+        JSON,
+        '{"start": "22:00", "end": "07:00"}',
+        "Heures de silence par défaut (heure du pays) : pas d'alerte sur le téléphone, "
+        "ni WhatsApp, ni SMS. Chaque personne peut les changer.",
+        "Default quiet hours (country time): no phone alert, WhatsApp or SMS. "
+        "Everyone can change them.",
+    ),
+    _s(
+        "throttle.notification_test",
+        STR,
+        "10/hour",
+        "Limite de notifications de test par adresse IP.",
+        "Test notification limit per IP address.",
+    ),
+]
+
+
 class Command(BaseCommand):
     help = "Create countries (BJ, FR), currencies (XOF, EUR) and the platform settings."
 

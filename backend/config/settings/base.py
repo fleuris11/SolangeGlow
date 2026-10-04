@@ -9,6 +9,7 @@ from datetime import timedelta
 from pathlib import Path
 
 import environ
+from celery.schedules import crontab
 from django.templatetags.static import static
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
@@ -82,6 +83,7 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "apps.core.audit.context.AuditContextMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
@@ -171,8 +173,38 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
+# Media on an S3-compatible object storage (ADR-002): MinIO locally, OVH in production.
+# One bucket, "public/" readable by anyone, "private/" through signed links only.
+AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAME", default="")
+AWS_S3_ENDPOINT_URL = env("AWS_S3_ENDPOINT_URL", default="") or None
+AWS_S3_REGION_NAME = env("AWS_S3_REGION_NAME", default="") or None
+AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID", default="")
+AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY", default="")
+AWS_S3_ADDRESSING_STYLE = env("AWS_S3_ADDRESSING_STYLE", default="path")
+AWS_S3_SIGNATURE_VERSION = "s3v4"
+AWS_DEFAULT_ACL = None
+AWS_QUERYSTRING_EXPIRE = 600
+# Base used in media links instead of the storage endpoint (e.g. "/s3", proxied by the
+# web app to MinIO). Empty when the endpoint itself is public (production).
+MEDIA_PUBLIC_BASE_URL = env("MEDIA_PUBLIC_BASE_URL", default="")
+
+if AWS_STORAGE_BUCKET_NAME:
+    _public_media = {"BACKEND": "apps.core.media.storage.PublicMediaStorage"}
+    _private_media = {"BACKEND": "apps.core.media.storage.PrivateMediaStorage"}
+else:  # no bucket configured (e.g. a quick script): files on disk
+    _public_media = {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "OPTIONS": {"location": BASE_DIR / "media" / "public", "base_url": "/media/public/"},
+    }
+    _private_media = {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "OPTIONS": {"location": BASE_DIR / "media" / "private", "base_url": "/media/private/"},
+    }
+
 STORAGES = {
-    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+    "default": _public_media,
+    "media_public": _public_media,
+    "media_private": _private_media,
     "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"},
 }
 
@@ -238,7 +270,20 @@ AUTH_CLIENT_HEADER = "X-SG-Client"
 ACCOUNTS_OTP_CONSOLE = env.bool("ACCOUNTS_OTP_CONSOLE", default=False)
 # Exposes the last code sent to a destination, for automated browser tests. Development only.
 ACCOUNTS_DEV_OTP_ENDPOINT = env.bool("ACCOUNTS_DEV_OTP_ENDPOINT", default=False)
-OTP_HTTP_TIMEOUT = env.float("OTP_HTTP_TIMEOUT", default=8.0)
+
+# --- External providers (ADR-003) -----------------------------------------------
+# Console/Fake clients instead of real providers without keys. Never in production.
+PROVIDERS_CONSOLE = env.bool("PROVIDERS_CONSOLE", default=False)
+# Seconds to wait for WhatsApp, SMS or push services before giving up (then retry).
+PROVIDERS_HTTP_TIMEOUT = env.float("PROVIDERS_HTTP_TIMEOUT", default=8.0)
+
+# Web Push (VAPID). Empty in development: keys are created in backend/.vapid.json.
+VAPID_PUBLIC_KEY = env("VAPID_PUBLIC_KEY", default="")
+VAPID_PRIVATE_KEY = env("VAPID_PRIVATE_KEY", default="")
+VAPID_SUBJECT = env("VAPID_SUBJECT", default="mailto:contact@solangeglow.com")
+
+# Public address of the web app (links in e-mails).
+SITE_URL = env("SITE_URL", default="http://localhost:3000")
 
 WHATSAPP_ACCESS_TOKEN = env("WHATSAPP_ACCESS_TOKEN", default="")
 WHATSAPP_PHONE_NUMBER_ID = env("WHATSAPP_PHONE_NUMBER_ID", default="")
@@ -274,6 +319,13 @@ CELERY_TASK_REJECT_ON_WORKER_LOST = True
 CELERY_WORKER_PREFETCH_MULTIPLIER = 1
 CELERY_TASK_TIME_LIMIT = env.int("CELERY_TASK_TIME_LIMIT", default=300)
 CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
+# Periodic tasks (copied into the admin by the scheduler; business delays stay settings).
+CELERY_BEAT_SCHEDULE = {
+    "accounts.purge_deleted_accounts": {
+        "task": "apps.accounts.tasks.purge_deleted_accounts",
+        "schedule": crontab(hour=3, minute=30),
+    },
+}
 
 # --- Platform settings cache ----------------------------------------------------
 

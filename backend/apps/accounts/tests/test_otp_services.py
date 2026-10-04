@@ -46,8 +46,27 @@ def test_sms_is_the_fallback_when_whatsapp_fails(senders, fixed_code):
 
     result = request(phone=BENIN_PHONE)
 
-    assert result.channel == "sms"
+    # The answer announces the first channel; the background task fell back to SMS.
+    assert result.channel == "whatsapp"
+    challenge = OtpChallenge.objects.get(pk=result.challenge_id)
+    assert challenge.channel == "sms"
+    assert challenge.sent_at is not None
     assert senders["sms"].sent[0].code == CODE
+
+
+def test_the_code_waits_encrypted_then_is_erased_once_sent(senders, fixed_code, monkeypatch):
+    monkeypatch.setattr("apps.accounts.tasks.send_otp_code.delay", lambda *args: None)
+    result = request(phone=BENIN_PHONE)
+    challenge = OtpChallenge.objects.get(pk=result.challenge_id)
+    assert challenge.code_encrypted and CODE not in challenge.code_encrypted
+    assert challenge.planned_channels == ["whatsapp", "sms"]
+
+    assert services.send_challenge(result.challenge_id) == "whatsapp"
+
+    challenge.refresh_from_db()
+    assert challenge.code_encrypted == ""
+    assert services.send_challenge(result.challenge_id) == "done"  # idempotent
+    assert len(senders["whatsapp"].sent) == 1
 
 
 def test_unconfigured_channel_is_skipped(senders):
@@ -78,12 +97,33 @@ def test_channel_order_can_differ_per_country(senders):
     assert request(phone=BENIN_PHONE).channel == "whatsapp"
 
 
-def test_delivery_failure_on_every_channel(senders):
-    senders["whatsapp"].fails = True
-    senders["sms"].fails = True
+def test_no_configured_channel_is_refused_at_once(senders):
+    senders["whatsapp"].available = False
+    senders["sms"].available = False
 
     with pytest.raises(errors.DeliveryFailed):
         request(phone=BENIN_PHONE)
+
+
+def test_every_channel_failing_is_retried_then_marked(senders, monkeypatch):
+    monkeypatch.setattr("apps.accounts.tasks.send_otp_code.delay", lambda *args: None)
+    senders["whatsapp"].fails = True
+    senders["sms"].fails = True
+    challenge_id = request(phone=BENIN_PHONE).challenge_id
+
+    with pytest.raises(services.CodeNotSentYet):
+        services.send_challenge(challenge_id)
+
+    from celery.exceptions import Retry
+
+    from apps.accounts.tasks import send_otp_code
+
+    with pytest.raises(Retry):  # first attempts: tried again a little later
+        send_otp_code.apply(args=[challenge_id])
+    assert send_otp_code.apply(args=[challenge_id], retries=3).get() == "failed"
+    challenge = OtpChallenge.objects.get(pk=challenge_id)
+    assert challenge.delivery_failed_at is not None
+    assert challenge.code_encrypted == ""
 
 
 def test_email_goes_through_the_email_channel(senders):

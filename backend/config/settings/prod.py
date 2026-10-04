@@ -6,6 +6,7 @@ from .base import env
 DEBUG = False
 ACCOUNTS_OTP_CONSOLE = False
 ACCOUNTS_DEV_OTP_ENDPOINT = False
+PROVIDERS_CONSOLE = False
 AUTH_COOKIES = {**AUTH_COOKIES, "SECURE": True}
 
 # Serve static files (admin assets) straight from the application server.
@@ -29,17 +30,6 @@ EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", default="")
 EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=True)
 
 STORAGES = {
-    "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
+    **STORAGES,
     "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
 }
-
-# Media on an S3-compatible object storage when a bucket is configured.
-AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAME", default="")
-if AWS_STORAGE_BUCKET_NAME:
-    AWS_S3_ENDPOINT_URL = env("AWS_S3_ENDPOINT_URL", default="") or None
-    AWS_S3_REGION_NAME = env("AWS_S3_REGION_NAME", default="") or None
-    AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID")
-    AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY")
-    AWS_DEFAULT_ACL = None
-    AWS_QUERYSTRING_AUTH = True
-    STORAGES["default"] = {"BACKEND": "storages.backends.s3.S3Storage"}

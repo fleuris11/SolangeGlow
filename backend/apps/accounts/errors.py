@@ -68,3 +68,24 @@ class InvalidImage(DomainError):
 class ImageTooLarge(DomainError):
     code = "image_too_large"
     message = _("This photo is too large. Choose a photo under %(size)s MB.")
+
+
+class SameContact(DomainError):
+    code = "same_contact"
+    message = _("This is already your number or e-mail.")
+
+
+class ContactTaken(DomainError):
+    code = "contact_taken"
+    message = _("This number or e-mail is already used by another account.")
+
+
+class InvalidBirthDate(DomainError):
+    code = "invalid_birth_date"
+    message = _("This date of birth is not valid. Check the day, month and year.")
+
+
+class TooYoung(DomainError):
+    code = "too_young"
+    status_code = 403
+    message = _("Solange Glow is for people aged %(age)s and over.")

@@ -27,8 +27,14 @@ django-celery-beat==2.9.0
 # Outgoing HTTP (WhatsApp, SMS providers)
 httpx==0.28.1
 
-# Images (profile photos: checked, re-encoded, metadata removed)
+# Images (checked, re-encoded, metadata removed) and their blur preview
 Pillow==12.3.0
+blurhash==1.1.5
+
+# Short-lived secrets encrypted at rest; Web Push notifications (VAPID)
+cryptography==50.0.2
+pywebpush==2.5.0
+py-vapid==1.9.4
 
 # Files and static
 django-storages[s3]==1.14.6

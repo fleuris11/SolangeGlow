@@ -1,12 +1,13 @@
 from django.contrib import admin
 from modeltranslation.admin import TabbedTranslationAdmin
-from unfold.admin import ModelAdmin
+
+from apps.core.audit.admin import AuditedModelAdmin
 
 from .models import ProProfile, Trade
 
 
 @admin.register(Trade)
-class TradeAdmin(ModelAdmin, TabbedTranslationAdmin):
+class TradeAdmin(AuditedModelAdmin, TabbedTranslationAdmin):
     list_display = ["name", "key", "icon", "position", "is_active"]
     list_editable = ["position", "is_active"]
     list_filter = ["is_active"]
@@ -14,7 +15,7 @@ class TradeAdmin(ModelAdmin, TabbedTranslationAdmin):
 
 
 @admin.register(ProProfile)
-class ProProfileAdmin(ModelAdmin):
+class ProProfileAdmin(AuditedModelAdmin):
     list_display = ["user", "kind", "created_at"]
     list_filter = ["kind", "trades"]
     search_fields = ["user__email", "user__phone", "user__first_name"]

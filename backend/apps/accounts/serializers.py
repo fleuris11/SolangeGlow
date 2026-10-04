@@ -1,11 +1,15 @@
 from django.conf import settings
 from django.contrib.auth.password_validation import validate_password
 from django.utils.translation import gettext_lazy as _
+from drf_spectacular.utils import extend_schema_field
 from rest_framework import serializers
 
 from apps.core.choices import Role
+from apps.core.media.api import MediaPayload
+from apps.core.media.services import asset_payload
 from apps.core.models import Country, Currency
 
+from . import selectors
 from .models import GuestIdentity, User
 
 LANGUAGE_CHOICES = [code for code, _name in settings.LANGUAGES]
@@ -24,7 +28,7 @@ class CodeRequestSerializer(serializers.Serializer):
 
 class CodeRequestResultSerializer(serializers.Serializer):
     challenge_id = serializers.UUIDField()
-    channel = serializers.CharField()
+    channel = serializers.ChoiceField(choices=["whatsapp", "sms", "email", "console"])
     resend_after = serializers.IntegerField(help_text="Seconds before a new code can be asked.")
     expires_in = serializers.IntegerField(help_text="Seconds before the code expires.")
 
@@ -54,10 +58,15 @@ class MeSerializer(serializers.ModelSerializer):
         required=False,
     )
     phone = serializers.CharField(read_only=True, allow_null=True)
-    avatar_url = serializers.SerializerMethodField()
+    email = serializers.EmailField(read_only=True, allow_null=True)
+    birth_date = serializers.DateField(read_only=True, allow_null=True)
+    photo = serializers.SerializerMethodField()
     has_password = serializers.SerializerMethodField()
     is_pro = serializers.SerializerMethodField()
+    is_minor = serializers.SerializerMethodField()
     onboarding_required = serializers.SerializerMethodField()
+    quiet_hours_start = serializers.TimeField(format="%H:%M", allow_null=True, required=False)
+    quiet_hours_end = serializers.TimeField(format="%H:%M", allow_null=True, required=False)
 
     class Meta:
         model = User
@@ -67,6 +76,7 @@ class MeSerializer(serializers.ModelSerializer):
             "email",
             "first_name",
             "last_name",
+            "birth_date",
             "city",
             "country",
             "preferred_language",
@@ -78,17 +88,21 @@ class MeSerializer(serializers.ModelSerializer):
             "notify_whatsapp",
             "notify_email",
             "notify_push",
+            "quiet_hours_start",
+            "quiet_hours_end",
             "roles",
             "is_pro",
-            "avatar_url",
+            "is_minor",
+            "photo",
             "has_password",
             "onboarding_required",
             "created_at",
         ]
-        read_only_fields = ["id", "email", "roles", "created_at"]
+        read_only_fields = ["id", "roles", "created_at"]
 
-    def get_avatar_url(self, user) -> str | None:
-        return user.avatar.url if user.avatar else None
+    @extend_schema_field(MediaPayload)
+    def get_photo(self, user):
+        return asset_payload(user.photo)
 
     def get_has_password(self, user) -> bool:
         return user.has_usable_password()
@@ -96,17 +110,24 @@ class MeSerializer(serializers.ModelSerializer):
     def get_is_pro(self, user) -> bool:
         return Role.PRO in user.roles
 
+    def get_is_minor(self, user) -> bool:
+        return selectors.is_minor(user)
+
     def get_onboarding_required(self, user) -> bool:
-        return user.onboarded_at is None
+        return user.onboarded_at is None or user.birth_date is None
 
 
 class SignInSerializer(serializers.Serializer):
     created = serializers.BooleanField()
+    deletion_cancelled = serializers.BooleanField(
+        help_text="The account was waiting to be deleted: signing in kept it."
+    )
     user = MeSerializer()
 
 
 class OnboardingSerializer(serializers.Serializer):
     mode = serializers.ChoiceField(choices=[Role.CLIENT, Role.PRO])
+    birth_date = serializers.DateField()
     trades = serializers.ListField(
         child=serializers.SlugField(max_length=40), required=False, max_length=7
     )
@@ -117,6 +138,15 @@ class OnboardingSerializer(serializers.Serializer):
         if attrs["mode"] == Role.PRO and not attrs.get("trades"):
             raise serializers.ValidationError({"trades": _("Choose at least one trade.")})
         return attrs
+
+
+class ContactChangeRequestSerializer(CodeRequestSerializer):
+    pass
+
+
+class ContactChangeConfirmSerializer(serializers.Serializer):
+    challenge_id = serializers.UUIDField()
+    code = serializers.RegexField(r"^\d{6}$", error_messages={"invalid": _("Enter the 6 digits.")})
 
 
 class PasswordSetSerializer(serializers.Serializer):
@@ -136,7 +166,13 @@ class DeleteAccountSerializer(serializers.Serializer):
         return value
 
 
-class AvatarSerializer(serializers.Serializer):
+class DeletionScheduledSerializer(serializers.Serializer):
+    erase_after = serializers.DateTimeField(
+        help_text="Signing in again before this date keeps the account."
+    )
+
+
+class PhotoSerializer(serializers.Serializer):
     photo = serializers.FileField()
 
 

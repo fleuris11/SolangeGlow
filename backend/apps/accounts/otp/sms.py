@@ -1,10 +1,8 @@
-import httpx
-from django.conf import settings
+from apps.core.providers import ProviderError, ProviderNotConfigured
+from apps.core.providers.clients import TwilioSmsClient
 
 from .base import OtpDeliveryError, OtpMessage, OtpSender
 from .texts import code_text
-
-TWILIO_URL = "https://api.twilio.com/2010-04-01/Accounts/{sid}/Messages.json"
 
 
 class SmsOtpSender(OtpSender):
@@ -14,23 +12,14 @@ class SmsOtpSender(OtpSender):
     destination_kind = "phone"
 
     def is_available(self) -> bool:
-        return bool(
-            settings.TWILIO_ACCOUNT_SID and settings.TWILIO_AUTH_TOKEN and settings.TWILIO_FROM
-        )
+        try:
+            TwilioSmsClient()
+        except ProviderNotConfigured:
+            return False
+        return True
 
     def send(self, message: OtpMessage) -> None:
         try:
-            response = httpx.post(
-                TWILIO_URL.format(sid=settings.TWILIO_ACCOUNT_SID),
-                data={
-                    "To": message.destination,
-                    "From": settings.TWILIO_FROM,
-                    "Body": code_text(message),
-                },
-                auth=(settings.TWILIO_ACCOUNT_SID, settings.TWILIO_AUTH_TOKEN),
-                timeout=settings.OTP_HTTP_TIMEOUT,
-            )
-        except httpx.HTTPError as exc:
-            raise OtpDeliveryError("sms: network error") from exc
-        if response.status_code >= 400:
-            raise OtpDeliveryError(f"sms: HTTP {response.status_code}")
+            TwilioSmsClient().send(message.destination, code_text(message))
+        except (ProviderError, ProviderNotConfigured) as exc:
+            raise OtpDeliveryError(str(exc)) from exc

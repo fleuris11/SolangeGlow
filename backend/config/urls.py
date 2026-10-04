@@ -5,6 +5,7 @@ from django.urls import include, path
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 from apps.core.api.views import CountryListView, HealthView
+from apps.core.media.api import MediaDetailView, MediaUploadView
 from apps.pros.views import TradeListView
 
 api_v1 = [
@@ -12,6 +13,9 @@ api_v1 = [
     path("countries", CountryListView.as_view(), name="countries"),
     path("trades", TradeListView.as_view(), name="trades"),
     path("", include("apps.accounts.urls")),
+    path("", include("apps.notifications.urls")),
+    path("media", MediaUploadView.as_view(), name="media-upload"),
+    path("media/<uuid:asset_id>", MediaDetailView.as_view(), name="media-detail"),
 ]
 
 urlpatterns = [

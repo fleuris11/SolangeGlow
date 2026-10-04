@@ -36,7 +36,7 @@ def test_suspend_then_reactivate_from_the_admin(admin_client, owner):
 
 def test_deleted_accounts_are_not_reactivated(admin_client):
     awa = User.objects.create_user(phone="+2290197123456")
-    services.delete_account(awa)
+    services.anonymize_account(awa)
 
     admin_client.post(
         reverse("admin:accounts_user_changelist"),

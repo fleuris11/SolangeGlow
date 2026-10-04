@@ -7,9 +7,10 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PIP_NO_CACHE_DIR=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=1
 
-# GeoDjango needs GDAL, GEOS and PROJ; gettext compiles the translations.
+# GeoDjango needs GDAL, GEOS and PROJ; gettext compiles the translations;
+# ffmpeg converts videos and voice notes.
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends gdal-bin binutils gettext \
+    && apt-get install -y --no-install-recommends gdal-bin binutils gettext ffmpeg \
     && rm -rf /var/lib/apt/lists/*
 
 RUN groupadd --system app && useradd --system --gid app --home-dir /app app

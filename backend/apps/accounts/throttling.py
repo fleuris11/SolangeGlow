@@ -7,6 +7,8 @@ DEFAULT_RATES = {
     "otp_request": "10/minute",
     "guest": "10/hour",
     "profile": "60/minute",
+    "media_upload": "30/hour",
+    "notification_test": "10/hour",
 }
 
 

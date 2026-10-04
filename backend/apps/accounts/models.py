@@ -21,7 +21,7 @@ def default_roles():
 
 
 def avatar_upload_to(instance, filename):
-    # The file name never reveals the person: a random name per upload.
+    # Kept for the 0003 migration; photos now live in core.MediaAsset.
     return f"avatars/{instance.pk}/{uuid.uuid4().hex}.webp"
 
 
@@ -109,11 +109,22 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     )
 
     city = models.CharField(_("city"), max_length=80, blank=True)
-    avatar = models.ImageField(_("photo"), upload_to=avatar_upload_to, blank=True)
+    birth_date = models.DateField(_("date of birth"), null=True, blank=True)
+    photo = models.ForeignKey(
+        "core.MediaAsset",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="+",
+        verbose_name=_("photo"),
+    )
 
     notify_whatsapp = models.BooleanField(_("WhatsApp notifications"), default=True)
     notify_email = models.BooleanField(_("e-mail notifications"), default=True)
     notify_push = models.BooleanField(_("push notifications"), default=True)
+    # Quiet hours, in the time zone of the country. Empty = platform default.
+    quiet_hours_start = models.TimeField(_("quiet hours start"), null=True, blank=True)
+    quiet_hours_end = models.TimeField(_("quiet hours end"), null=True, blank=True)
 
     signup_channel = models.CharField(
         _("sign-up channel"), max_length=8, choices=SignupChannel.choices, blank=True
@@ -123,6 +134,8 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     onboarded_at = models.DateTimeField(_("welcome completed at"), null=True, blank=True)
     # Every token issued before this moment is refused ("sign out on every device").
     tokens_revoked_at = models.DateTimeField(_("tokens revoked at"), null=True, blank=True)
+    # Deletion asked: the account is erased after the grace period unless she signs in again.
+    deletion_requested_at = models.DateTimeField(_("deletion requested at"), null=True, blank=True)
     deleted_at = models.DateTimeField(_("deleted at"), null=True, blank=True)
 
     objects = UserManager()
@@ -194,14 +207,35 @@ class OtpChallenge(BaseModel):
         PHONE = "phone", _("Phone")
         EMAIL = "email", _("E-mail")
 
+    class Purpose(models.TextChoices):
+        SIGN_IN = "sign_in", _("Sign-up or sign-in")
+        CHANGE_CONTACT = "change_contact", _("New number or e-mail")
+
     destination_kind = models.CharField(
         _("destination type"), max_length=8, choices=DestinationKind.choices
+    )
+    purpose = models.CharField(
+        _("purpose"), max_length=16, choices=Purpose.choices, default=Purpose.SIGN_IN
+    )
+    # Set for a change of number or e-mail: the account asking for it.
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="otp_challenges",
+        verbose_name=_("account"),
     )
     destination = models.CharField(_("destination"), max_length=254)
     destination_hash = models.CharField(max_length=64, db_index=True, editable=False)
     country_code = models.CharField(_("country"), max_length=2, blank=True)
     code_hash = models.CharField(max_length=64, editable=False)
     channel = models.CharField(_("channel"), max_length=10, choices=OtpChannel.choices, blank=True)
+    planned_channels = models.JSONField(_("channels to try"), default=list, blank=True)
+    # The code waits encrypted until the background task sends it, then is erased.
+    code_encrypted = models.TextField(blank=True, editable=False)
+    sent_at = models.DateTimeField(_("sent at"), null=True, blank=True)
+    delivery_failed_at = models.DateTimeField(_("delivery failed at"), null=True, blank=True)
     expires_at = models.DateTimeField(_("expires at"))
     attempts = models.PositiveSmallIntegerField(_("attempts"), default=0)
     max_attempts = models.PositiveSmallIntegerField(_("maximum attempts"))
