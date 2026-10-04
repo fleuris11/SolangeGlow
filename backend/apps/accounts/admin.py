@@ -61,7 +61,19 @@ class UserAdmin(BaseUserAdmin, ModelAdmin):
     fieldsets = (
         (None, {"fields": ("email", "phone", "password")}),
         (_("Profile"), {"fields": ("first_name", "last_name", "country")}),
-        (_("Preferences"), {"fields": ("preferred_language", "preferred_currency")}),
+        (
+            _("Preferences"),
+            {
+                "fields": (
+                    "preferred_language",
+                    "preferred_currency",
+                    "theme",
+                    "text_size",
+                    "data_saver",
+                    "audio_mode",
+                )
+            },
+        ),
         (
             _("Roles and permissions"),
             {

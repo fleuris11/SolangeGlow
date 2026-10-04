@@ -112,3 +112,20 @@ def test_inactive_user_cannot_authenticate():
     User.objects.create_user(email="off@example.com", password="s3cret-pass", is_active=False)
 
     assert authenticate(username="off@example.com", password="s3cret-pass") is None
+
+
+def test_display_preferences_have_comfortable_defaults():
+    user = User.objects.create_user(email="prefs@example.com")
+
+    assert user.theme == "system"
+    assert user.text_size == "normal"
+    assert user.data_saver is False
+    assert user.audio_mode is False
+
+
+def test_display_preferences_are_validated():
+    user = User.objects.create_user(email="prefs@example.com")
+    user.text_size = "huge"
+
+    with pytest.raises(ValidationError):
+        user.full_clean(exclude=["password"])

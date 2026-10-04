@@ -18,6 +18,18 @@ def default_roles():
     return [Role.CLIENT]
 
 
+class Theme(models.TextChoices):
+    SYSTEM = "system", _("Like the device")
+    LIGHT = "light", _("Light")
+    DARK = "dark", _("Dark")
+
+
+class TextSize(models.TextChoices):
+    NORMAL = "normal", _("Normal")
+    LARGE = "large", _("Large")
+    XLARGE = "xlarge", _("Extra large")
+
+
 class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     """A person using Solange Glow.
 
@@ -58,6 +70,18 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         related_name="users",
         verbose_name=_("preferred currency"),
     )
+    # Display preferences, mirrored from the web app once the user is signed in.
+    theme = models.CharField(_("theme"), max_length=8, choices=Theme.choices, default=Theme.SYSTEM)
+    text_size = models.CharField(
+        _("text size"), max_length=8, choices=TextSize.choices, default=TextSize.NORMAL
+    )
+    data_saver = models.BooleanField(_("data saver"), default=False)
+    audio_mode = models.BooleanField(
+        _("audio mode"),
+        default=False,
+        help_text=_("Shows buttons that read important texts aloud."),
+    )
+
     roles = ArrayField(
         models.CharField(max_length=16, choices=Role.choices),
         default=default_roles,

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-04 02:14+0200\n"
+"POT-Creation-Date: 2026-10-04 18:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,6 +41,24 @@ msgstr "Dátumy"
 msgid "Accounts"
 msgstr "Účty"
 
+msgid "Like the device"
+msgstr "Ako v zariadení"
+
+msgid "Light"
+msgstr "Svetlá"
+
+msgid "Dark"
+msgstr "Tmavá"
+
+msgid "Normal"
+msgstr "Normálna"
+
+msgid "Large"
+msgstr "Veľká"
+
+msgid "Extra large"
+msgstr "Najväčšia"
+
 msgid "phone number"
 msgstr "telefónne číslo"
 
@@ -64,6 +82,21 @@ msgstr "preferovaný jazyk"
 
 msgid "preferred currency"
 msgstr "preferovaná mena"
+
+msgid "theme"
+msgstr "téma"
+
+msgid "text size"
+msgstr "veľkosť textu"
+
+msgid "data saver"
+msgstr "šetrenie dát"
+
+msgid "audio mode"
+msgstr "zvukový režim"
+
+msgid "Shows buttons that read important texts aloud."
+msgstr "Zobrazí tlačidlá, ktoré nahlas prečítajú dôležité texty."
 
 msgid "active"
 msgstr "aktívny"

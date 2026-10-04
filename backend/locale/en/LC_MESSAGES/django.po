@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-04 02:14+0200\n"
+"POT-Creation-Date: 2026-10-04 18:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,6 +41,24 @@ msgstr ""
 msgid "Accounts"
 msgstr ""
 
+msgid "Like the device"
+msgstr ""
+
+msgid "Light"
+msgstr ""
+
+msgid "Dark"
+msgstr ""
+
+msgid "Normal"
+msgstr ""
+
+msgid "Large"
+msgstr ""
+
+msgid "Extra large"
+msgstr ""
+
 msgid "phone number"
 msgstr ""
 
@@ -63,6 +81,21 @@ msgid "preferred language"
 msgstr ""
 
 msgid "preferred currency"
+msgstr ""
+
+msgid "theme"
+msgstr ""
+
+msgid "text size"
+msgstr ""
+
+msgid "data saver"
+msgstr ""
+
+msgid "audio mode"
+msgstr ""
+
+msgid "Shows buttons that read important texts aloud."
 msgstr ""
 
 msgid "active"
