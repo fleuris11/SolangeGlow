@@ -16,7 +16,11 @@ const nextConfig: NextConfig = {
   skipTrailingSlashRedirect: true,
   async rewrites() {
     // The browser calls /api/* on the web origin; Next forwards it to Django.
-    return [{ source: "/api/:path*", destination: `${apiInternalUrl}/api/:path*` }];
+    return [
+      { source: "/api/:path*", destination: `${apiInternalUrl}/api/:path*` },
+      // Uploaded files (profile photos) are served by the backend.
+      { source: "/media/:path*", destination: `${apiInternalUrl}/media/:path*` },
+    ];
   },
   async headers() {
     return [

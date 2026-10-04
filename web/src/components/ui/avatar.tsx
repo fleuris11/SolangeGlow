@@ -37,7 +37,15 @@ export function Avatar({ name, src, picture, size = "md", halo = false, classNam
   const { box, px, text } = sizes[size];
 
   const content = src ? (
-    <Image src={src} alt={name} width={px} height={px} className="size-full object-cover" />
+    <Image
+      src={src}
+      alt={name}
+      width={px}
+      height={px}
+      // Profile photos are already resized and re-encoded by the backend.
+      unoptimized
+      className="size-full object-cover"
+    />
   ) : picture ? (
     <span role="img" aria-label={name} className="block size-full">
       {picture}

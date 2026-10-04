@@ -13,8 +13,8 @@ import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
 import { Chip } from "@/components/ui/chip";
+import { SwitchRow } from "@/components/ui/switch-row";
 import { useToast } from "@/components/ui/toast";
-import { cn } from "@/lib/cn";
 import type { Preferences, TextSize, Theme } from "@/lib/preferences/preferences";
 import { usePreferences } from "@/lib/preferences/preferences-provider";
 
@@ -71,14 +71,14 @@ export function DisplaySettings() {
         ))}
       </Group>
 
-      <Toggle
+      <SwitchRow
         icon={<CellSignalLow size={28} weight="duotone" />}
         label={t("dataSaver")}
         description={t("dataSaverText")}
         checked={prefs.dataSaver}
         onChange={(dataSaver) => set({ dataSaver })}
       />
-      <Toggle
+      <SwitchRow
         icon={<SpeakerHigh size={28} weight="duotone" />}
         label={t("audioMode")}
         description={t("audioModeText")}
@@ -95,57 +95,5 @@ function Group({ title, children }: { title: string; children: ReactNode }) {
       <legend className="mb-3 font-bold">{title}</legend>
       <div className="flex flex-wrap gap-2">{children}</div>
     </fieldset>
-  );
-}
-
-function Toggle({
-  icon,
-  label,
-  description,
-  checked,
-  onChange,
-}: {
-  icon: ReactNode;
-  label: string;
-  description: string;
-  checked: boolean;
-  onChange: (value: boolean) => void;
-}) {
-  const t = useTranslations("settings");
-  return (
-    <button
-      type="button"
-      role="switch"
-      aria-checked={checked}
-      onClick={() => onChange(!checked)}
-      className="border-trait bg-carte rounded-card flex w-full items-center gap-4 border p-4 text-left"
-    >
-      <span aria-hidden className="text-hibiscus shrink-0">
-        {icon}
-      </span>
-      <span className="flex min-w-0 flex-1 flex-col">
-        <span className="font-bold">{label}</span>
-        <span className="text-small text-prune-doux">{description}</span>
-      </span>
-      <span className="flex shrink-0 flex-col items-center gap-1">
-        <span
-          aria-hidden
-          className={cn(
-            "relative inline-flex h-8 w-14 rounded-full transition-colors duration-150",
-            checked ? "bg-feuille" : "bg-trait",
-          )}
-        >
-          <span
-            className={cn(
-              "bg-carte absolute top-1 size-6 rounded-full transition-transform duration-150",
-              checked ? "translate-x-7" : "translate-x-1",
-            )}
-          />
-        </span>
-        <span aria-hidden className="text-mention font-bold">
-          {checked ? t("on") : t("off")}
-        </span>
-      </span>
-    </button>
   );
 }
