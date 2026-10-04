@@ -95,7 +95,7 @@ export function LooksFeed() {
                   </p>
                   <PriceTag amountMinor={look.amountMinor} currency={look.currency} size="lg" />
                   <Button asChild fullWidth size="lg">
-                    <Link href="/join?as=client">
+                    <Link href="/auth?as=client">
                       <CalendarCheck aria-hidden size={22} weight="bold" />
                       {t("book")}
                     </Link>

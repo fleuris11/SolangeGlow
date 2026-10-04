@@ -72,9 +72,9 @@ export default function ExplorePage({ params, searchParams }: Props) {
         action={
           <div className="flex flex-col items-center gap-3">
             <Button asChild size="lg">
-              <Link href="/join?as=client">{t("notify")}</Link>
+              <Link href="/auth?as=client">{t("notify")}</Link>
             </Button>
-            <Link href="/join?as=pro" className="text-hibiscus min-h-12 py-3 font-bold underline">
+            <Link href="/auth?as=pro" className="text-hibiscus min-h-12 py-3 font-bold underline">
               {t("proFirst")}
             </Link>
           </div>

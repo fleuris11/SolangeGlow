@@ -11,10 +11,19 @@ type Props = {
   error?: string;
   onComplete?: (code: string) => void;
   disabled?: boolean;
+  /** Put the cursor in the first box when shown. */
+  autoFocus?: boolean;
 };
 
 /** One big box per digit: typing moves forward, pasting fills everything. */
-export function CodeInput({ length = 6, label, error, onComplete, disabled = false }: Props) {
+export function CodeInput({
+  length = 6,
+  label,
+  error,
+  onComplete,
+  disabled = false,
+  autoFocus = false,
+}: Props) {
   const t = useTranslations("code");
   const [digits, setDigits] = useState<string[]>(() => Array(length).fill(""));
   const refs = useRef<Array<HTMLInputElement | null>>([]);
@@ -70,6 +79,7 @@ export function CodeInput({ length = 6, label, error, onComplete, disabled = fal
             value={digit}
             inputMode="numeric"
             autoComplete={index === 0 ? "one-time-code" : "off"}
+            autoFocus={autoFocus && index === 0}
             pattern="[0-9]*"
             maxLength={length}
             aria-label={t("digit", { position: index + 1, total: length })}

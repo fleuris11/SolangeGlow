@@ -9,7 +9,8 @@
   },
   "common": {
     "close": "Close",
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "backHome": "Back to home"
   },
   "nav": {
     "label": "Main menu",
@@ -132,17 +133,10 @@
   },
   "me": {
     "title": "Me",
-    "guestTitle": "You don't have an account yet",
-    "guestText": "With an account, you book, shop and earn Glow Points.",
-    "cta": "Create my account",
+    "guestTitle": "You are not signed in",
+    "guestText": "Sign in or create your account with your number: book, shop and earn Glow Points.",
+    "cta": "Sign in or sign up",
     "language": "Language"
-  },
-  "join": {
-    "title": "Sign up",
-    "soonTitle": "Sign-up opens very soon",
-    "soonClient": "You'll be able to book and shop safely. Come back in a few days.",
-    "soonPro": "You'll be able to open your showcase and get bookings. Come back in a few days.",
-    "home": "Back to home"
   },
   "settings": {
     "title": "Display",
@@ -231,5 +225,146 @@
       "replay": "Replay",
       "bottomNav": "The bottom bar is shown at the bottom of this page on mobile."
     }
+  },
+  "auth": {
+    "metaTitle": "Sign in",
+    "title": "Welcome to Solange Glow",
+    "titlePro": "Join Solange Glow as a pro",
+    "subtitle": "Your number is enough. We send you a 6-digit code.",
+    "method": "How do you want to get your code?",
+    "byPhone": "Phone",
+    "byEmail": "E-mail",
+    "emailLabel": "Your e-mail address",
+    "sendCode": "Get my code",
+    "privacy": "Your number stays private: pros cannot see it.",
+    "welcomeBack": "Welcome back!",
+    "phone": {
+      "label": "Your phone number",
+      "country": "Country",
+      "countries": {
+        "BJ": "Benin",
+        "FR": "France",
+        "other": "Other country"
+      },
+      "placeholders": {
+        "BJ": "01 97 00 00 00",
+        "FR": "06 12 34 56 78",
+        "other": "+421 900 123 456"
+      }
+    },
+    "channels": {
+      "whatsapp": "WhatsApp",
+      "sms": "SMS",
+      "email": "e-mail",
+      "console": "the server logs (development mode)"
+    },
+    "code": {
+      "title": "Type your code",
+      "label": "6-digit code",
+      "sentTo": "Code sent by {channel} to {destination}.",
+      "sentToConsole": "Development mode: the code is printed in the server logs (docker compose logs backend).",
+      "resend": "Send the code again",
+      "resendIn": "Send again in {seconds} s",
+      "changePhone": "Change number",
+      "changeEmail": "Change e-mail"
+    },
+    "password": {
+      "use": "I have a password",
+      "useCode": "Get a code instead",
+      "label": "Your password",
+      "submit": "Sign in"
+    },
+    "errors": {
+      "network": "The connection failed. Check your internet, then try again."
+    }
+  },
+  "welcome": {
+    "metaTitle": "Welcome",
+    "next": "Continue",
+    "finish": "Let's go",
+    "error": "We could not save. Check your internet, then try again.",
+    "role": {
+      "title": "What brings you here?",
+      "client": "I'm looking for a pro",
+      "pro": "I'm a pro",
+      "trades": "Your trades"
+    },
+    "language": {
+      "title": "Your language"
+    },
+    "city": {
+      "title": "Your city",
+      "other": "Another city"
+    },
+    "done": {
+      "title": "Welcome!",
+      "client": "Find your pro, book and pay safely.",
+      "pro": "Your showcase is coming soon. Meanwhile, discover other pros.",
+      "cta": "Discover"
+    }
+  },
+  "profile": {
+    "noName": "Your profile",
+    "addPhoto": "Add a photo",
+    "changePhoto": "Change photo",
+    "removePhoto": "Remove photo",
+    "photoSaved": "Photo saved",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "city": "City",
+    "country": "Country",
+    "countryNone": "Choose a country",
+    "language": "Language",
+    "currency": "Price currency",
+    "currencies": {
+      "XOF": "CFA franc (FCFA)",
+      "EUR": "Euro (€)"
+    },
+    "save": "Save",
+    "saved": "Profile saved",
+    "error": "We could not save. Try again in a moment."
+  },
+  "account": {
+    "saved": "Setting saved",
+    "error": "That did not work. Try again in a moment.",
+    "notifications": "Notifications",
+    "notifyWhatsapp": "On WhatsApp",
+    "notifyWhatsappText": "Bookings, orders and messages when you are not in the app.",
+    "notifyEmail": "By e-mail",
+    "notifyEmailText": "Receipts and summaries.",
+    "notifyPush": "On this phone",
+    "notifyPushText": "Small alerts in the installed app.",
+    "password": {
+      "title": "Password",
+      "textNone": "Optional: you can always sign in with a code.",
+      "textSet": "You have a password. A code always works too.",
+      "create": "Choose a password",
+      "change": "New password",
+      "save": "Save password",
+      "saved": "Password saved"
+    },
+    "sessions": "Sign-in",
+    "signOut": "Sign out",
+    "signOutEverywhere": "Sign out on all my devices",
+    "signedOut": "You are signed out. See you soon!",
+    "signedOutEverywhere": "Signed out on all your devices",
+    "delete": {
+      "title": "Delete my account",
+      "text": "Your personal information is erased at once.",
+      "cta": "Delete my account",
+      "confirmTitle": "Delete your account?",
+      "confirmText": "Your number, name and photo will be erased. This cannot be undone.",
+      "confirm": "Yes, delete my account",
+      "cancel": "Keep my account",
+      "done": "Your account is deleted"
+    }
+  },
+  "guest": {
+    "title": "Book without an account",
+    "text": "Your first name and number are enough. You can create your account later without losing anything.",
+    "firstName": "Your first name",
+    "cta": "Continue as a guest",
+    "saved": "You are registered as a guest: {name}, {phone}.",
+    "error": "We could not register you. Check your number."
   }
 }

@@ -75,7 +75,7 @@ export function GiftBand() {
         />
       </p>
       <Button asChild variant="secondary" className="self-start">
-        <Link href="/join?as=client">
+        <Link href="/auth?as=client">
           <Gift aria-hidden size={22} weight="bold" />
           {t("cta")}
         </Link>
@@ -94,7 +94,7 @@ export function JoinBand() {
       </h2>
       <div className="grid gap-3 sm:grid-cols-2">
         <Link
-          href="/join?as=client"
+          href="/auth?as=client"
           className="bg-hibiscus text-sur-hibiscus rounded-card flex min-h-32 flex-col justify-between gap-4 p-5"
         >
           <Sparkle aria-hidden size={36} weight="fill" />
@@ -104,7 +104,7 @@ export function JoinBand() {
           </span>
         </Link>
         <Link
-          href="/join?as=pro"
+          href="/auth?as=pro"
           className="border-prune text-prune hover:bg-poudre rounded-card flex min-h-32 flex-col justify-between gap-4 border-2 p-5"
         >
           <Scissors aria-hidden size={36} weight="duotone" className="text-hibiscus" />

@@ -9,7 +9,8 @@
   },
   "common": {
     "close": "Fermer",
-    "skipToContent": "Aller au contenu"
+    "skipToContent": "Aller au contenu",
+    "backHome": "Retour à l'accueil"
   },
   "nav": {
     "label": "Menu principal",
@@ -132,17 +133,10 @@
   },
   "me": {
     "title": "Moi",
-    "guestTitle": "Tu n'as pas encore de compte",
-    "guestText": "Avec un compte, tu réserves, tu achètes et tu gagnes des Glow Points.",
-    "cta": "Créer mon compte",
+    "guestTitle": "Tu n'es pas connectée",
+    "guestText": "Connecte-toi ou crée ton compte avec ton numéro : tu réserves, tu achètes et tu gagnes des Glow Points.",
+    "cta": "Me connecter ou m'inscrire",
     "language": "Langue"
-  },
-  "join": {
-    "title": "Inscription",
-    "soonTitle": "L'inscription ouvre très bientôt",
-    "soonClient": "Tu pourras réserver et acheter en sécurité. Reviens dans quelques jours.",
-    "soonPro": "Tu pourras créer ta vitrine et recevoir des réservations. Reviens dans quelques jours.",
-    "home": "Retour à l'accueil"
   },
   "settings": {
     "title": "Affichage",
@@ -231,5 +225,146 @@
       "replay": "Rejouer",
       "bottomNav": "La barre du bas est visible en bas de cette page sur mobile."
     }
+  },
+  "auth": {
+    "metaTitle": "Connexion",
+    "title": "Bienvenue sur Solange Glow",
+    "titlePro": "Rejoins Solange Glow en pro",
+    "subtitle": "Ton numéro suffit. On t'envoie un code à 6 chiffres.",
+    "method": "Comment veux-tu recevoir ton code ?",
+    "byPhone": "Téléphone",
+    "byEmail": "E-mail",
+    "emailLabel": "Ton adresse e-mail",
+    "sendCode": "Recevoir mon code",
+    "privacy": "Ton numéro reste privé : les pros ne le voient pas.",
+    "welcomeBack": "Te revoilà !",
+    "phone": {
+      "label": "Ton numéro de téléphone",
+      "country": "Pays",
+      "countries": {
+        "BJ": "Bénin",
+        "FR": "France",
+        "other": "Autre pays"
+      },
+      "placeholders": {
+        "BJ": "01 97 00 00 00",
+        "FR": "06 12 34 56 78",
+        "other": "+421 900 123 456"
+      }
+    },
+    "channels": {
+      "whatsapp": "WhatsApp",
+      "sms": "SMS",
+      "email": "e-mail",
+      "console": "les journaux du serveur (mode développement)"
+    },
+    "code": {
+      "title": "Tape ton code",
+      "label": "Code à 6 chiffres",
+      "sentTo": "Code envoyé par {channel} au {destination}.",
+      "sentToConsole": "Mode développement : le code est affiché dans les journaux du serveur (docker compose logs backend).",
+      "resend": "Renvoyer le code",
+      "resendIn": "Renvoyer dans {seconds} s",
+      "changePhone": "Changer de numéro",
+      "changeEmail": "Changer d'e-mail"
+    },
+    "password": {
+      "use": "J'ai un mot de passe",
+      "useCode": "Recevoir un code à la place",
+      "label": "Ton mot de passe",
+      "submit": "Me connecter"
+    },
+    "errors": {
+      "network": "La connexion a échoué. Vérifie ton internet, puis réessaie."
+    }
+  },
+  "welcome": {
+    "metaTitle": "Bienvenue",
+    "next": "Continuer",
+    "finish": "C'est parti",
+    "error": "On n'a pas pu enregistrer. Vérifie ton internet, puis réessaie.",
+    "role": {
+      "title": "Tu viens pour quoi ?",
+      "client": "Je cherche une pro",
+      "pro": "Je suis une pro",
+      "trades": "Tes métiers"
+    },
+    "language": {
+      "title": "Ta langue"
+    },
+    "city": {
+      "title": "Ta ville",
+      "other": "Une autre ville"
+    },
+    "done": {
+      "title": "Bienvenue !",
+      "client": "Trouve ta pro, réserve et paie en sécurité.",
+      "pro": "Ta vitrine arrive bientôt. En attendant, découvre les autres pros.",
+      "cta": "Découvrir"
+    }
+  },
+  "profile": {
+    "noName": "Ton profil",
+    "addPhoto": "Ajouter une photo",
+    "changePhoto": "Changer la photo",
+    "removePhoto": "Retirer la photo",
+    "photoSaved": "Photo enregistrée",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "city": "Ville",
+    "country": "Pays",
+    "countryNone": "Choisis un pays",
+    "language": "Langue",
+    "currency": "Devise des prix",
+    "currencies": {
+      "XOF": "Franc CFA (FCFA)",
+      "EUR": "Euro (€)"
+    },
+    "save": "Enregistrer",
+    "saved": "Profil enregistré",
+    "error": "On n'a pas pu enregistrer. Réessaie dans un instant."
+  },
+  "account": {
+    "saved": "Réglage enregistré",
+    "error": "Ça n'a pas marché. Réessaie dans un instant.",
+    "notifications": "Notifications",
+    "notifyWhatsapp": "Sur WhatsApp",
+    "notifyWhatsappText": "Rendez-vous, commandes et messages quand tu n'es pas dans l'appli.",
+    "notifyEmail": "Par e-mail",
+    "notifyEmailText": "Reçus et récapitulatifs.",
+    "notifyPush": "Sur ce téléphone",
+    "notifyPushText": "Petites alertes dans l'appli installée.",
+    "password": {
+      "title": "Mot de passe",
+      "textNone": "Facultatif : tu peux toujours te connecter avec un code.",
+      "textSet": "Tu as un mot de passe. Le code reste toujours possible.",
+      "create": "Choisis un mot de passe",
+      "change": "Nouveau mot de passe",
+      "save": "Enregistrer le mot de passe",
+      "saved": "Mot de passe enregistré"
+    },
+    "sessions": "Connexion",
+    "signOut": "Me déconnecter",
+    "signOutEverywhere": "Me déconnecter de tous mes appareils",
+    "signedOut": "Tu es déconnectée. À bientôt !",
+    "signedOutEverywhere": "Déconnectée de tous tes appareils",
+    "delete": {
+      "title": "Supprimer mon compte",
+      "text": "Tes informations personnelles sont effacées tout de suite.",
+      "cta": "Supprimer mon compte",
+      "confirmTitle": "Supprimer ton compte ?",
+      "confirmText": "Ton numéro, ton nom et ta photo seront effacés. Ce n'est pas réversible.",
+      "confirm": "Oui, supprimer mon compte",
+      "cancel": "Garder mon compte",
+      "done": "Ton compte est supprimé"
+    }
+  },
+  "guest": {
+    "title": "Réserver sans compte",
+    "text": "Ton prénom et ton numéro suffisent. Tu pourras créer ton compte plus tard sans rien perdre.",
+    "firstName": "Ton prénom",
+    "cta": "Continuer en invitée",
+    "saved": "Tu es enregistrée comme invitée : {name}, {phone}.",
+    "error": "On n'a pas pu t'enregistrer. Vérifie ton numéro."
   }
 }

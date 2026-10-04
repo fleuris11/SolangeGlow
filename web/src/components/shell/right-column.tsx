@@ -49,7 +49,7 @@ export function RightColumn() {
           />
         </p>
         <Button asChild variant="secondary" className="mt-4">
-          <Link href="/join?as=client">{t("giftCta")}</Link>
+          <Link href="/auth?as=client">{t("giftCta")}</Link>
         </Button>
       </section>
     </aside>

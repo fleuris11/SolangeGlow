@@ -9,7 +9,8 @@
   },
   "common": {
     "close": "Zavrieť",
-    "skipToContent": "Prejsť na obsah"
+    "skipToContent": "Prejsť na obsah",
+    "backHome": "Späť domov"
   },
   "nav": {
     "label": "Hlavné menu",
@@ -132,17 +133,10 @@
   },
   "me": {
     "title": "Ja",
-    "guestTitle": "Ešte nemáš účet",
-    "guestText": "S účtom rezervuješ, nakupuješ a zbieraš Glow body.",
-    "cta": "Vytvoriť účet",
+    "guestTitle": "Nie si prihlásená",
+    "guestText": "Prihlás sa alebo si vytvor účet s číslom: rezervuj, nakupuj a zbieraj Glow body.",
+    "cta": "Prihlásiť sa alebo zaregistrovať",
     "language": "Jazyk"
-  },
-  "join": {
-    "title": "Registrácia",
-    "soonTitle": "Registrácia sa čoskoro otvorí",
-    "soonClient": "Budeš môcť bezpečne rezervovať a nakupovať. Vráť sa o pár dní.",
-    "soonPro": "Budeš si môcť vytvoriť profil a prijímať rezervácie. Vráť sa o pár dní.",
-    "home": "Späť domov"
   },
   "settings": {
     "title": "Zobrazenie",
@@ -231,5 +225,146 @@
       "replay": "Prehrať znova",
       "bottomNav": "Spodná lišta je na mobile zobrazená v dolnej časti stránky."
     }
+  },
+  "auth": {
+    "metaTitle": "Prihlásenie",
+    "title": "Vitaj v Solange Glow",
+    "titlePro": "Pridaj sa k Solange Glow ako profesionálka",
+    "subtitle": "Stačí tvoje číslo. Pošleme ti 6-miestny kód.",
+    "method": "Ako chceš dostať kód?",
+    "byPhone": "Telefón",
+    "byEmail": "E-mail",
+    "emailLabel": "Tvoja e-mailová adresa",
+    "sendCode": "Poslať kód",
+    "privacy": "Tvoje číslo zostáva súkromné: profesionálky ho nevidia.",
+    "welcomeBack": "Vitaj späť!",
+    "phone": {
+      "label": "Tvoje telefónne číslo",
+      "country": "Krajina",
+      "countries": {
+        "BJ": "Benin",
+        "FR": "Francúzsko",
+        "other": "Iná krajina"
+      },
+      "placeholders": {
+        "BJ": "01 97 00 00 00",
+        "FR": "06 12 34 56 78",
+        "other": "+421 900 123 456"
+      }
+    },
+    "channels": {
+      "whatsapp": "WhatsApp",
+      "sms": "SMS",
+      "email": "e-mail",
+      "console": "denník servera (vývojový režim)"
+    },
+    "code": {
+      "title": "Zadaj kód",
+      "label": "6-miestny kód",
+      "sentTo": "Kód sme poslali cez {channel} na {destination}.",
+      "sentToConsole": "Vývojový režim: kód je v denníku servera (docker compose logs backend).",
+      "resend": "Poslať kód znova",
+      "resendIn": "Znova o {seconds} s",
+      "changePhone": "Zmeniť číslo",
+      "changeEmail": "Zmeniť e-mail"
+    },
+    "password": {
+      "use": "Mám heslo",
+      "useCode": "Radšej poslať kód",
+      "label": "Tvoje heslo",
+      "submit": "Prihlásiť sa"
+    },
+    "errors": {
+      "network": "Pripojenie zlyhalo. Skontroluj internet a skús znova."
+    }
+  },
+  "welcome": {
+    "metaTitle": "Vitaj",
+    "next": "Pokračovať",
+    "finish": "Poďme na to",
+    "error": "Nepodarilo sa uložiť. Skontroluj internet a skús znova.",
+    "role": {
+      "title": "Prečo si tu?",
+      "client": "Hľadám profesionálku",
+      "pro": "Som profesionálka",
+      "trades": "Tvoje odbory"
+    },
+    "language": {
+      "title": "Tvoj jazyk"
+    },
+    "city": {
+      "title": "Tvoje mesto",
+      "other": "Iné mesto"
+    },
+    "done": {
+      "title": "Vitaj!",
+      "client": "Nájdi si profesionálku, rezervuj a plať bezpečne.",
+      "pro": "Tvoj profil čoskoro pribudne. Medzitým objav ďalšie profesionálky.",
+      "cta": "Objavovať"
+    }
+  },
+  "profile": {
+    "noName": "Tvoj profil",
+    "addPhoto": "Pridať fotku",
+    "changePhoto": "Zmeniť fotku",
+    "removePhoto": "Odstrániť fotku",
+    "photoSaved": "Fotka uložená",
+    "firstName": "Meno",
+    "lastName": "Priezvisko",
+    "city": "Mesto",
+    "country": "Krajina",
+    "countryNone": "Vyber krajinu",
+    "language": "Jazyk",
+    "currency": "Mena cien",
+    "currencies": {
+      "XOF": "Frank CFA (FCFA)",
+      "EUR": "Euro (€)"
+    },
+    "save": "Uložiť",
+    "saved": "Profil uložený",
+    "error": "Nepodarilo sa uložiť. Skús to o chvíľu."
+  },
+  "account": {
+    "saved": "Nastavenie uložené",
+    "error": "Nepodarilo sa. Skús to o chvíľu.",
+    "notifications": "Upozornenia",
+    "notifyWhatsapp": "Cez WhatsApp",
+    "notifyWhatsappText": "Rezervácie, objednávky a správy, keď nie si v aplikácii.",
+    "notifyEmail": "E-mailom",
+    "notifyEmailText": "Potvrdenia a prehľady.",
+    "notifyPush": "Na tomto telefóne",
+    "notifyPushText": "Krátke upozornenia v nainštalovanej aplikácii.",
+    "password": {
+      "title": "Heslo",
+      "textNone": "Nepovinné: vždy sa môžeš prihlásiť kódom.",
+      "textSet": "Máš heslo. Kód funguje vždy tiež.",
+      "create": "Vyber si heslo",
+      "change": "Nové heslo",
+      "save": "Uložiť heslo",
+      "saved": "Heslo uložené"
+    },
+    "sessions": "Prihlásenie",
+    "signOut": "Odhlásiť sa",
+    "signOutEverywhere": "Odhlásiť sa na všetkých zariadeniach",
+    "signedOut": "Si odhlásená. Dovidenia!",
+    "signedOutEverywhere": "Odhlásená na všetkých zariadeniach",
+    "delete": {
+      "title": "Zmazať účet",
+      "text": "Tvoje osobné údaje sa hneď vymažú.",
+      "cta": "Zmazať môj účet",
+      "confirmTitle": "Zmazať účet?",
+      "confirmText": "Číslo, meno a fotka sa vymažú. Nedá sa to vrátiť.",
+      "confirm": "Áno, zmazať účet",
+      "cancel": "Ponechať účet",
+      "done": "Účet je zmazaný"
+    }
+  },
+  "guest": {
+    "title": "Rezervovať bez účtu",
+    "text": "Stačí meno a číslo. Účet si môžeš vytvoriť neskôr a nič nestratíš.",
+    "firstName": "Tvoje meno",
+    "cta": "Pokračovať ako hosť",
+    "saved": "Si zapísaná ako hosť: {name}, {phone}.",
+    "error": "Nepodarilo sa ťa zapísať. Skontroluj číslo."
   }
 }

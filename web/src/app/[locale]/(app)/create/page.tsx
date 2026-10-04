@@ -31,7 +31,7 @@ export default function CreatePage({ params }: Props) {
         description={t("emptyText")}
         action={
           <Button asChild size="lg">
-            <Link href="/join">{t("cta")}</Link>
+            <Link href="/auth">{t("cta")}</Link>
           </Button>
         }
       />
