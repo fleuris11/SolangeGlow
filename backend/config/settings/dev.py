@@ -12,3 +12,8 @@ CSRF_TRUSTED_ORIGINS = env.list(
 )
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+# Local http: cookies cannot be "Secure". Codes are printed in the backend logs.
+AUTH_COOKIES = {**AUTH_COOKIES, "SECURE": env.bool("AUTH_COOKIE_SECURE", default=False)}
+ACCOUNTS_OTP_CONSOLE = env.bool("ACCOUNTS_OTP_CONSOLE", default=True)
+ACCOUNTS_DEV_OTP_ENDPOINT = env.bool("ACCOUNTS_DEV_OTP_ENDPOINT", default=True)

@@ -180,7 +180,7 @@ STORAGES = {
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "apps.accounts.authentication.CookieJWTAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     ],
     "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated"],
@@ -217,6 +217,43 @@ SIMPLE_JWT = {
     "SIGNING_KEY": env("JWT_SIGNING_KEY", default="") or SECRET_KEY,
     "AUTH_HEADER_TYPES": ("Bearer",),
 }
+
+# Web sign-in: tokens live in httpOnly cookies, never readable by JavaScript.
+AUTH_COOKIES = {
+    "ACCESS_NAME": "sg_access",
+    "REFRESH_NAME": "sg_refresh",
+    "REFRESH_PATH": "/api/v1/auth/",
+    "SECURE": env.bool("AUTH_COOKIE_SECURE", default=True),
+    "SAMESITE": "Lax",
+    "DOMAIN": env("AUTH_COOKIE_DOMAIN", default="") or None,
+}
+# Requests authenticated by cookie must carry this header when they change data: other
+# sites cannot add it, which blocks cross-site request forgery.
+AUTH_CLIENT_HEADER = "X-SG-Client"
+
+# --- One-time codes (OTP) ---------------------------------------------------------
+# Business limits (lifetime, attempts, channels order) are platform settings in the admin.
+
+# Prints codes in the logs. Development only, never in production.
+ACCOUNTS_OTP_CONSOLE = env.bool("ACCOUNTS_OTP_CONSOLE", default=False)
+# Exposes the last code sent to a destination, for automated browser tests. Development only.
+ACCOUNTS_DEV_OTP_ENDPOINT = env.bool("ACCOUNTS_DEV_OTP_ENDPOINT", default=False)
+OTP_HTTP_TIMEOUT = env.float("OTP_HTTP_TIMEOUT", default=8.0)
+
+WHATSAPP_ACCESS_TOKEN = env("WHATSAPP_ACCESS_TOKEN", default="")
+WHATSAPP_PHONE_NUMBER_ID = env("WHATSAPP_PHONE_NUMBER_ID", default="")
+WHATSAPP_TEMPLATE_NAME = env("WHATSAPP_TEMPLATE_NAME", default="solange_glow_code")
+WHATSAPP_API_VERSION = env("WHATSAPP_API_VERSION", default="v23.0")
+
+TWILIO_ACCOUNT_SID = env("TWILIO_ACCOUNT_SID", default="")
+TWILIO_AUTH_TOKEN = env("TWILIO_AUTH_TOKEN", default="")
+TWILIO_FROM = env("TWILIO_FROM", default="")
+
+DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", default="Solange Glow <no-reply@solangeglow.com>")
+
+# Profile photos.
+FILE_UPLOAD_MAX_MEMORY_SIZE = 5 * 1024 * 1024
+DATA_UPLOAD_MAX_MEMORY_SIZE = 6 * 1024 * 1024
 
 # --- Channels -----------------------------------------------------------------
 
@@ -352,6 +389,21 @@ UNFOLD = {
                         "title": _("Users"),
                         "icon": "group",
                         "link": reverse_lazy("admin:accounts_user_changelist"),
+                    },
+                    {
+                        "title": _("Sign-in journal"),
+                        "icon": "history",
+                        "link": reverse_lazy("admin:accounts_loginevent_changelist"),
+                    },
+                    {
+                        "title": _("Guests"),
+                        "icon": "person_outline",
+                        "link": reverse_lazy("admin:accounts_guestidentity_changelist"),
+                    },
+                    {
+                        "title": _("Trades"),
+                        "icon": "content_cut",
+                        "link": reverse_lazy("admin:pros_trade_changelist"),
                     },
                     {
                         "title": _("Groups"),

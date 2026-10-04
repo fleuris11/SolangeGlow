@@ -4,5 +4,6 @@ pytest==9.1.1
 pytest-django==4.14.0
 pytest-cov==7.1.0
 factory-boy==3.3.3
+respx==0.23.1
 ruff==0.16.10
 pre-commit==4.6.2

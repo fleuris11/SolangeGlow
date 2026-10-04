@@ -116,8 +116,114 @@ SETTINGS = [
 ]
 
 
+STR = PlatformSetting.ValueType.STRING
+JSON = PlatformSetting.ValueType.JSON
+
+# Sign-in with one-time codes and request limits.
+SETTINGS += [
+    {
+        "key": "otp.code_ttl_seconds",
+        "country": None,
+        "value_type": INT,
+        "value": "600",
+        "description_fr": "Durée de validité d'un code de connexion, en secondes.",
+        "description_en": "How long a sign-in code stays valid, in seconds.",
+    },
+    {
+        "key": "otp.max_attempts",
+        "country": None,
+        "value_type": INT,
+        "value": "5",
+        "description_fr": "Essais autorisés pour taper un code avant d'en demander un nouveau.",
+        "description_en": "Attempts allowed to type a code before asking for a new one.",
+    },
+    {
+        "key": "otp.resend_cooldown_seconds",
+        "country": None,
+        "value_type": INT,
+        "value": "60",
+        "description_fr": "Secondes à attendre avant de pouvoir redemander un code.",
+        "description_en": "Seconds to wait before a new code can be asked.",
+    },
+    {
+        "key": "otp.max_requests_per_destination_per_hour",
+        "country": None,
+        "value_type": INT,
+        "value": "5",
+        "description_fr": "Codes envoyés au maximum par heure à un même numéro ou e-mail.",
+        "description_en": "Maximum codes sent per hour to the same number or e-mail.",
+    },
+    {
+        "key": "otp.max_requests_per_ip_per_hour",
+        "country": None,
+        "value_type": INT,
+        "value": "20",
+        "description_fr": "Codes demandés au maximum par heure depuis une même adresse IP.",
+        "description_en": "Maximum codes asked per hour from the same IP address.",
+    },
+    {
+        "key": "otp.phone_channels",
+        "country": None,
+        "value_type": JSON,
+        "value": '["whatsapp", "sms"]',
+        "description_fr": "Canaux d'envoi des codes vers un téléphone, dans l'ordre : le "
+        "suivant sert de secours. Valeurs : whatsapp, sms.",
+        "description_en": "Channels used to send codes to a phone, in order: the next one is "
+        "the fallback. Values: whatsapp, sms.",
+    },
+    {
+        "key": "otp.email_channels",
+        "country": None,
+        "value_type": JSON,
+        "value": '["email"]',
+        "description_fr": "Canaux d'envoi des codes vers une adresse e-mail.",
+        "description_en": "Channels used to send codes to an e-mail address.",
+    },
+    {
+        "key": "accounts.avatar_max_bytes",
+        "country": None,
+        "value_type": INT,
+        "value": str(5 * 1024 * 1024),
+        "description_fr": "Taille maximale d'une photo de profil, en octets.",
+        "description_en": "Maximum size of a profile photo, in bytes.",
+    },
+    {
+        "key": "throttle.auth",
+        "country": None,
+        "value_type": STR,
+        "value": "30/minute",
+        "description_fr": "Limite de connexions par adresse IP (format : 30/minute).",
+        "description_en": "Sign-in limit per IP address (format: 30/minute).",
+    },
+    {
+        "key": "throttle.otp_request",
+        "country": None,
+        "value_type": STR,
+        "value": "10/minute",
+        "description_fr": "Limite de demandes de code par adresse IP (format : 10/minute).",
+        "description_en": "Code request limit per IP address (format: 10/minute).",
+    },
+    {
+        "key": "throttle.guest",
+        "country": None,
+        "value_type": STR,
+        "value": "10/hour",
+        "description_fr": "Limite de créations d'identité invitée par adresse IP.",
+        "description_en": "Guest identity creation limit per IP address.",
+    },
+    {
+        "key": "throttle.profile",
+        "country": None,
+        "value_type": STR,
+        "value": "60/minute",
+        "description_fr": "Limite de modifications du profil par adresse IP.",
+        "description_en": "Profile update limit per IP address.",
+    },
+]
+
+
 class Command(BaseCommand):
-    help = "Create countries (BJ, FR), currencies (XOF, EUR) and the first platform settings."
+    help = "Create countries (BJ, FR), currencies (XOF, EUR) and the platform settings."
 
     @transaction.atomic
     def handle(self, *args, **options):

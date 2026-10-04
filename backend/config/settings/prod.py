@@ -4,6 +4,9 @@ from .base import *  # noqa: F403
 from .base import env
 
 DEBUG = False
+ACCOUNTS_OTP_CONSOLE = False
+ACCOUNTS_DEV_OTP_ENDPOINT = False
+AUTH_COOKIES = {**AUTH_COOKIES, "SECURE": True}
 
 # Serve static files (admin assets) straight from the application server.
 MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")
@@ -24,7 +27,6 @@ EMAIL_PORT = env.int("EMAIL_PORT", default=587)
 EMAIL_HOST_USER = env("EMAIL_HOST_USER", default="")
 EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD", default="")
 EMAIL_USE_TLS = env.bool("EMAIL_USE_TLS", default=True)
-DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL", default="Solange Glow <no-reply@solangeglow.com>")
 
 STORAGES = {
     "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},

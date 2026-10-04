@@ -18,4 +18,7 @@ STORAGES = {
     "default": {"BACKEND": "django.core.files.storage.InMemoryStorage"},
     "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"},
 }
+AUTH_COOKIES = {**AUTH_COOKIES, "SECURE": False}
+ACCOUNTS_OTP_CONSOLE = True
+ACCOUNTS_DEV_OTP_ENDPOINT = False
 REST_FRAMEWORK = {**REST_FRAMEWORK, "DEFAULT_THROTTLE_CLASSES": []}

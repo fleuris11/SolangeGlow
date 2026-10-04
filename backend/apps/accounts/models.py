@@ -1,3 +1,5 @@
+import uuid
+
 from django.conf import settings
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
@@ -16,6 +18,17 @@ from .managers import UserManager, normalize_email
 
 def default_roles():
     return [Role.CLIENT]
+
+
+def avatar_upload_to(instance, filename):
+    # The file name never reveals the person: a random name per upload.
+    return f"avatars/{instance.pk}/{uuid.uuid4().hex}.webp"
+
+
+class SignupChannel(models.TextChoices):
+    PHONE = "phone", _("Phone")
+    EMAIL = "email", _("E-mail")
+    ADMIN = "admin", _("Created in the admin")
 
 
 class Theme(models.TextChoices):
@@ -95,8 +108,22 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         help_text=_("Can sign in to the back office."),
     )
 
-    # OTP sign-in (WhatsApp, SMS, e-mail) will plug in here: a dedicated model in this
-    # app storing hashed one-time codes, plus `phone_verified_at` / `email_verified_at`.
+    city = models.CharField(_("city"), max_length=80, blank=True)
+    avatar = models.ImageField(_("photo"), upload_to=avatar_upload_to, blank=True)
+
+    notify_whatsapp = models.BooleanField(_("WhatsApp notifications"), default=True)
+    notify_email = models.BooleanField(_("e-mail notifications"), default=True)
+    notify_push = models.BooleanField(_("push notifications"), default=True)
+
+    signup_channel = models.CharField(
+        _("sign-up channel"), max_length=8, choices=SignupChannel.choices, blank=True
+    )
+    phone_verified_at = models.DateTimeField(_("phone verified at"), null=True, blank=True)
+    email_verified_at = models.DateTimeField(_("e-mail verified at"), null=True, blank=True)
+    onboarded_at = models.DateTimeField(_("welcome completed at"), null=True, blank=True)
+    # Every token issued before this moment is refused ("sign out on every device").
+    tokens_revoked_at = models.DateTimeField(_("tokens revoked at"), null=True, blank=True)
+    deleted_at = models.DateTimeField(_("deleted at"), null=True, blank=True)
 
     objects = UserManager()
 
@@ -147,3 +174,102 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     def save(self, *args, **kwargs):
         self._normalize_identifiers()
         super().save(*args, **kwargs)
+
+
+class OtpChannel(models.TextChoices):
+    WHATSAPP = "whatsapp", _("WhatsApp")
+    SMS = "sms", _("SMS")
+    EMAIL = "email", _("E-mail")
+    CONSOLE = "console", _("Console (development)")
+
+
+class OtpChallenge(BaseModel):
+    """A one-time code sent to a phone number or an e-mail address.
+
+    The code itself is never stored: only an HMAC of it. Lookups by destination use
+    `destination_hash`, so rate limits do not need to scan personal data.
+    """
+
+    class DestinationKind(models.TextChoices):
+        PHONE = "phone", _("Phone")
+        EMAIL = "email", _("E-mail")
+
+    destination_kind = models.CharField(
+        _("destination type"), max_length=8, choices=DestinationKind.choices
+    )
+    destination = models.CharField(_("destination"), max_length=254)
+    destination_hash = models.CharField(max_length=64, db_index=True, editable=False)
+    country_code = models.CharField(_("country"), max_length=2, blank=True)
+    code_hash = models.CharField(max_length=64, editable=False)
+    channel = models.CharField(_("channel"), max_length=10, choices=OtpChannel.choices, blank=True)
+    expires_at = models.DateTimeField(_("expires at"))
+    attempts = models.PositiveSmallIntegerField(_("attempts"), default=0)
+    max_attempts = models.PositiveSmallIntegerField(_("maximum attempts"))
+    verified_at = models.DateTimeField(_("verified at"), null=True, blank=True)
+    ip_hash = models.CharField(max_length=64, db_index=True, blank=True, editable=False)
+
+    class Meta:
+        verbose_name = _("one-time code")
+        verbose_name_plural = _("one-time codes")
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"{self.get_destination_kind_display()} {self.created_at:%Y-%m-%d %H:%M}"
+
+
+class LoginEvent(BaseModel):
+    """Sign-in journal, successes and failures, shown in the admin."""
+
+    class Method(models.TextChoices):
+        OTP = "otp", _("One-time code")
+        PASSWORD = "password", _("Password")
+
+    user = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="login_events",
+        verbose_name=_("user"),
+    )
+    method = models.CharField(_("method"), max_length=10, choices=Method.choices)
+    channel = models.CharField(_("channel"), max_length=10, choices=OtpChannel.choices, blank=True)
+    success = models.BooleanField(_("success"))
+    failure_reason = models.CharField(_("reason"), max_length=40, blank=True)
+    ip_address = models.GenericIPAddressField(_("IP address"), null=True, blank=True)
+    user_agent = models.CharField(_("device"), max_length=255, blank=True)
+
+    class Meta:
+        verbose_name = _("sign-in")
+        verbose_name_plural = _("sign-in journal")
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"{self.user or '-'} {self.created_at:%Y-%m-%d %H:%M}"
+
+
+class GuestIdentity(BaseModel):
+    """A visitor without an account who left a first name and a phone number (e.g. to book).
+
+    When she creates an account, the identity is attached to it, so nothing is lost.
+    """
+
+    first_name = models.CharField(_("first name"), max_length=150)
+    phone = PhoneNumberField(_("phone number"))
+    user = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="guest_identities",
+        verbose_name=_("account"),
+    )
+    converted_at = models.DateTimeField(_("converted at"), null=True, blank=True)
+
+    class Meta:
+        verbose_name = _("guest")
+        verbose_name_plural = _("guests")
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return self.first_name
