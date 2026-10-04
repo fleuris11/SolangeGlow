@@ -1,0 +1,29 @@
+# Core framework
+Django==5.2.17
+djangorestframework==3.18.1
+drf-spectacular==0.30.0
+django-filter==26.2
+djangorestframework-simplejwt==5.5.1
+
+# Configuration, admin, i18n
+django-environ==0.14.0
+django-unfold==0.108.0
+django-modeltranslation==0.20.6
+django-phonenumber-field==8.5.0
+phonenumbers==9.0.40
+
+# Database
+psycopg[binary]==3.3.6
+
+# Real time, cache, background jobs
+channels==4.3.2
+channels-redis==4.3.0
+daphne==4.2.3
+redis==8.1.0
+django-redis==7.0.0
+celery==5.6.3
+django-celery-beat==2.9.0
+
+# Files and static
+django-storages[s3]==1.14.6
+whitenoise==6.12.0
