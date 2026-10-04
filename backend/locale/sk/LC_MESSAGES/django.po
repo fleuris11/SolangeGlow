@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-04 18:59+0200\n"
+"POT-Creation-Date: 2026-10-04 21:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,6 +26,21 @@ msgstr "roly"
 msgid "Enter a phone number or an e-mail address."
 msgstr "Zadaj telefónne číslo alebo e-mailovú adresu."
 
+msgid "role"
+msgstr "rola"
+
+msgid "status"
+msgstr "stav"
+
+msgid "Active"
+msgstr "Aktívny"
+
+msgid "Suspended"
+msgstr "Pozastavený"
+
+msgid "Deleted"
+msgstr "Zmazaný"
+
 msgid "Profile"
 msgstr "Profil"
 
@@ -38,8 +53,85 @@ msgstr "Roly a oprávnenia"
 msgid "Dates"
 msgstr "Dátumy"
 
+msgid "Suspend the selected accounts"
+msgstr "Pozastaviť vybrané účty"
+
+#, python-format
+msgid "%(count)d account suspended."
+msgid_plural "%(count)d accounts suspended."
+msgstr[0] "%(count)d účet pozastavený."
+msgstr[1] "%(count)d účty pozastavené."
+msgstr[2] "%(count)d účtu pozastaveného."
+msgstr[3] "%(count)d účtov pozastavených."
+
+msgid "Reactivate the selected accounts"
+msgstr "Znovu aktivovať vybrané účty"
+
+msgid "Reactivated"
+msgstr "Znovu aktivovaný"
+
+#, python-format
+msgid "%(count)d account reactivated."
+msgid_plural "%(count)d accounts reactivated."
+msgstr[0] "%(count)d účet znovu aktivovaný."
+msgstr[1] "%(count)d účty znovu aktivované."
+msgstr[2] "%(count)d účtu znovu aktivovaného."
+msgstr[3] "%(count)d účtov znovu aktivovaných."
+
 msgid "Accounts"
 msgstr "Účty"
+
+msgid "Request refused. Reload the page and try again."
+msgstr "Požiadavka zamietnutá. Obnov stránku a skús znova."
+
+msgid "You were signed out. Sign in again."
+msgstr "Bola si odhlásená. Prihlás sa znova."
+
+msgid "This number or e-mail address is not valid. Check it and try again."
+msgstr "Toto číslo alebo e-mail nie je platný. Skontroluj ho a skús znova."
+
+msgid "You asked for many codes. Wait a little, then try again."
+msgstr "Vyžiadala si veľa kódov. Chvíľu počkaj a skús znova."
+
+msgid "A code was just sent. Wait a few seconds before asking for a new one."
+msgstr "Kód bol práve odoslaný. Pred ďalšou žiadosťou počkaj pár sekúnd."
+
+msgid "We could not send the code. Check the number, then try again in a minute."
+msgstr "Kód sa nepodarilo poslať. Skontroluj číslo a skús to o minútu."
+
+msgid "The code does not match. Check the 6 digits you received."
+msgstr "Kód nesedí. Skontroluj 6 číslic, ktoré si dostala."
+
+msgid "This code has expired. Ask for a new code."
+msgstr "Platnosť kódu vypršala. Vyžiadaj si nový kód."
+
+msgid "Too many wrong codes. Ask for a new code."
+msgstr "Príliš veľa nesprávnych kódov. Vyžiadaj si nový kód."
+
+msgid "This code is no longer valid. Ask for a new code."
+msgstr "Tento kód už neplatí. Vyžiadaj si nový kód."
+
+msgid "This account is suspended. Write to our team to find out why."
+msgstr "Tento účet je pozastavený. Napíš nášmu tímu a zistíš prečo."
+
+msgid "The number, e-mail or password is not correct. You can also sign in with a code."
+msgstr "Číslo, e-mail alebo heslo nie je správne. Môžeš sa prihlásiť aj kódom."
+
+msgid "This file is not a photo we can use. Choose a JPEG, PNG or WebP photo."
+msgstr "Tento súbor nie je použiteľná fotka. Vyber fotku JPEG, PNG alebo WebP."
+
+#, python-format
+msgid "This photo is too large. Choose a photo under %(size)s MB."
+msgstr "Fotka je príliš veľká. Vyber fotku menšiu ako %(size)s MB."
+
+msgid "Phone"
+msgstr "Telefón"
+
+msgid "E-mail"
+msgstr "E-mail"
+
+msgid "Created in the admin"
+msgstr "Vytvorené v administrácii"
 
 msgid "Like the device"
 msgstr "Ako v zariadení"
@@ -107,6 +199,39 @@ msgstr "prístup do administrácie"
 msgid "Can sign in to the back office."
 msgstr "Môže sa prihlásiť do administrácie."
 
+msgid "city"
+msgstr "mesto"
+
+msgid "photo"
+msgstr "fotka"
+
+msgid "WhatsApp notifications"
+msgstr "upozornenia cez WhatsApp"
+
+msgid "e-mail notifications"
+msgstr "upozornenia e-mailom"
+
+msgid "push notifications"
+msgstr "push upozornenia"
+
+msgid "sign-up channel"
+msgstr "kanál registrácie"
+
+msgid "phone verified at"
+msgstr "telefón overený"
+
+msgid "e-mail verified at"
+msgstr "e-mail overený"
+
+msgid "welcome completed at"
+msgstr "uvítanie dokončené"
+
+msgid "tokens revoked at"
+msgstr "relácie zrušené"
+
+msgid "deleted at"
+msgstr "zmazané"
+
 msgid "user"
 msgstr "používateľ"
 
@@ -115,6 +240,98 @@ msgstr "používatelia"
 
 msgid "A user with this e-mail address already exists."
 msgstr "Účet s touto e-mailovou adresou už existuje."
+
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+msgid "SMS"
+msgstr "SMS"
+
+msgid "Console (development)"
+msgstr "Konzola (vývoj)"
+
+msgid "destination type"
+msgstr "typ cieľa"
+
+msgid "destination"
+msgstr "cieľ"
+
+msgid "channel"
+msgstr "kanál"
+
+msgid "expires at"
+msgstr "platí do"
+
+msgid "attempts"
+msgstr "pokusy"
+
+msgid "maximum attempts"
+msgstr "maximum pokusov"
+
+msgid "verified at"
+msgstr "overené"
+
+msgid "one-time code"
+msgstr "jednorazový kód"
+
+msgid "one-time codes"
+msgstr "jednorazové kódy"
+
+msgid "One-time code"
+msgstr "Jednorazový kód"
+
+msgid "Password"
+msgstr "Heslo"
+
+msgid "method"
+msgstr "spôsob"
+
+msgid "success"
+msgstr "úspech"
+
+msgid "reason"
+msgstr "dôvod"
+
+msgid "IP address"
+msgstr "IP adresa"
+
+msgid "device"
+msgstr "zariadenie"
+
+msgid "sign-in"
+msgstr "prihlásenie"
+
+msgid "sign-in journal"
+msgstr "denník prihlásení"
+
+msgid "account"
+msgstr "účet"
+
+msgid "converted at"
+msgstr "účet vytvorený"
+
+msgid "guest"
+msgstr "hosť"
+
+msgid "guests"
+msgstr "hostia"
+
+#, python-format
+msgid "Solange Glow: your code is %(code)s. It expires in %(minutes)s minutes. Never share it."
+msgstr "Solange Glow: tvoj kód je %(code)s. Platí %(minutes)s minút. Nikomu ho nehovor."
+
+#, python-format
+msgid "Your Solange Glow code: %(code)s"
+msgstr "Tvoj kód Solange Glow: %(code)s"
+
+msgid "Enter the 6 digits."
+msgstr "Zadaj 6 číslic."
+
+msgid "Choose at least one trade."
+msgstr "Vyber aspoň jeden odbor."
+
+msgid "Confirm that you want to delete your account."
+msgstr "Potvrď, že chceš zmazať svoj účet."
 
 msgid "Ads"
 msgstr "Reklama"
@@ -297,6 +514,51 @@ msgstr "Platby"
 msgid "Pros"
 msgstr "Profesionálky"
 
+msgid "Lipstick"
+msgstr "Rúž"
+
+msgid "Comb"
+msgstr "Hrebeň"
+
+msgid "Braid"
+msgstr "Vrkoč"
+
+msgid "Nail polish"
+msgstr "Lak na nechty"
+
+msgid "Thread spool"
+msgstr "Cievka nite"
+
+msgid "Headwrap"
+msgstr "Šatka"
+
+msgid "Cream jar"
+msgstr "Téglik krému"
+
+msgid "pictogram"
+msgstr "piktogram"
+
+msgid "position"
+msgstr "poradie"
+
+msgid "trade"
+msgstr "odbor"
+
+msgid "trades"
+msgstr "odbory"
+
+msgid "Independent"
+msgstr "Samostatná"
+
+msgid "Salon or business"
+msgstr "Salón alebo firma"
+
+msgid "pro profile"
+msgstr "profil profesionálky"
+
+msgid "pro profiles"
+msgstr "profily profesionálok"
+
 msgid "France Selection"
 msgstr "Výber z Francúzska"
 
@@ -332,6 +594,15 @@ msgstr "Prepínače funkcií"
 
 msgid "Users"
 msgstr "Používatelia"
+
+msgid "Sign-in journal"
+msgstr "Denník prihlásení"
+
+msgid "Guests"
+msgstr "Hostia"
+
+msgid "Trades"
+msgstr "Odbory"
 
 msgid "Groups"
 msgstr "Skupiny"

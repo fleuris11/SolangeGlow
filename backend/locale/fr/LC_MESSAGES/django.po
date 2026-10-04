@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-04 18:59+0200\n"
+"POT-Creation-Date: 2026-10-04 21:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,6 +26,21 @@ msgstr "rôles"
 msgid "Enter a phone number or an e-mail address."
 msgstr "Indique un numéro de téléphone ou une adresse e-mail."
 
+msgid "role"
+msgstr "rôle"
+
+msgid "status"
+msgstr "statut"
+
+msgid "Active"
+msgstr "Actif"
+
+msgid "Suspended"
+msgstr "Suspendu"
+
+msgid "Deleted"
+msgstr "Supprimé"
+
 msgid "Profile"
 msgstr "Profil"
 
@@ -38,8 +53,81 @@ msgstr "Rôles et permissions"
 msgid "Dates"
 msgstr "Dates"
 
+msgid "Suspend the selected accounts"
+msgstr "Suspendre les comptes choisis"
+
+#, python-format
+msgid "%(count)d account suspended."
+msgid_plural "%(count)d accounts suspended."
+msgstr[0] "%(count)d compte suspendu."
+msgstr[1] "%(count)d comptes suspendus."
+
+msgid "Reactivate the selected accounts"
+msgstr "Réactiver les comptes choisis"
+
+msgid "Reactivated"
+msgstr "Réactivé"
+
+#, python-format
+msgid "%(count)d account reactivated."
+msgid_plural "%(count)d accounts reactivated."
+msgstr[0] "%(count)d compte réactivé."
+msgstr[1] "%(count)d comptes réactivés."
+
 msgid "Accounts"
 msgstr "Comptes"
+
+msgid "Request refused. Reload the page and try again."
+msgstr "Demande refusée. Recharge la page et réessaie."
+
+msgid "You were signed out. Sign in again."
+msgstr "Tu as été déconnectée. Reconnecte-toi."
+
+msgid "This number or e-mail address is not valid. Check it and try again."
+msgstr "Ce numéro ou cet e-mail n'est pas valide. Vérifie-le et réessaie."
+
+msgid "You asked for many codes. Wait a little, then try again."
+msgstr "Tu as demandé beaucoup de codes. Attends un peu, puis réessaie."
+
+msgid "A code was just sent. Wait a few seconds before asking for a new one."
+msgstr "Un code vient d'être envoyé. Attends quelques secondes avant d'en redemander un."
+
+msgid "We could not send the code. Check the number, then try again in a minute."
+msgstr "On n'a pas pu envoyer le code. Vérifie le numéro, puis réessaie dans une minute."
+
+msgid "The code does not match. Check the 6 digits you received."
+msgstr "Le code ne correspond pas. Vérifie les 6 chiffres reçus."
+
+msgid "This code has expired. Ask for a new code."
+msgstr "Ce code a expiré. Demande un nouveau code."
+
+msgid "Too many wrong codes. Ask for a new code."
+msgstr "Trop de codes faux. Demande un nouveau code."
+
+msgid "This code is no longer valid. Ask for a new code."
+msgstr "Ce code n'est plus valable. Demande un nouveau code."
+
+msgid "This account is suspended. Write to our team to find out why."
+msgstr "Ce compte est suspendu. Écris à notre équipe pour savoir pourquoi."
+
+msgid "The number, e-mail or password is not correct. You can also sign in with a code."
+msgstr "Le numéro, l'e-mail ou le mot de passe n'est pas correct. Tu peux aussi te connecter avec un code."
+
+msgid "This file is not a photo we can use. Choose a JPEG, PNG or WebP photo."
+msgstr "Ce fichier n'est pas une photo utilisable. Choisis une photo JPEG, PNG ou WebP."
+
+#, python-format
+msgid "This photo is too large. Choose a photo under %(size)s MB."
+msgstr "Cette photo est trop lourde. Choisis une photo de moins de %(size)s Mo."
+
+msgid "Phone"
+msgstr "Téléphone"
+
+msgid "E-mail"
+msgstr "E-mail"
+
+msgid "Created in the admin"
+msgstr "Créé dans l'admin"
 
 msgid "Like the device"
 msgstr "Comme le téléphone"
@@ -107,6 +195,39 @@ msgstr "accès à l'admin"
 msgid "Can sign in to the back office."
 msgstr "Peut se connecter au back-office."
 
+msgid "city"
+msgstr "ville"
+
+msgid "photo"
+msgstr "photo"
+
+msgid "WhatsApp notifications"
+msgstr "notifications WhatsApp"
+
+msgid "e-mail notifications"
+msgstr "notifications par e-mail"
+
+msgid "push notifications"
+msgstr "notifications push"
+
+msgid "sign-up channel"
+msgstr "canal d'inscription"
+
+msgid "phone verified at"
+msgstr "téléphone vérifié le"
+
+msgid "e-mail verified at"
+msgstr "e-mail vérifié le"
+
+msgid "welcome completed at"
+msgstr "accueil terminé le"
+
+msgid "tokens revoked at"
+msgstr "sessions fermées le"
+
+msgid "deleted at"
+msgstr "supprimé le"
+
 msgid "user"
 msgstr "utilisateur"
 
@@ -115,6 +236,98 @@ msgstr "utilisateurs"
 
 msgid "A user with this e-mail address already exists."
 msgstr "Un compte existe déjà avec cette adresse e-mail."
+
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+msgid "SMS"
+msgstr "SMS"
+
+msgid "Console (development)"
+msgstr "Console (développement)"
+
+msgid "destination type"
+msgstr "type de destination"
+
+msgid "destination"
+msgstr "destination"
+
+msgid "channel"
+msgstr "canal"
+
+msgid "expires at"
+msgstr "expire le"
+
+msgid "attempts"
+msgstr "essais"
+
+msgid "maximum attempts"
+msgstr "essais maximum"
+
+msgid "verified at"
+msgstr "vérifié le"
+
+msgid "one-time code"
+msgstr "code de connexion"
+
+msgid "one-time codes"
+msgstr "codes de connexion"
+
+msgid "One-time code"
+msgstr "Code de connexion"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "method"
+msgstr "méthode"
+
+msgid "success"
+msgstr "réussie"
+
+msgid "reason"
+msgstr "raison"
+
+msgid "IP address"
+msgstr "adresse IP"
+
+msgid "device"
+msgstr "appareil"
+
+msgid "sign-in"
+msgstr "connexion"
+
+msgid "sign-in journal"
+msgstr "journal des connexions"
+
+msgid "account"
+msgstr "compte"
+
+msgid "converted at"
+msgstr "compte créé le"
+
+msgid "guest"
+msgstr "invitée"
+
+msgid "guests"
+msgstr "invitées"
+
+#, python-format
+msgid "Solange Glow: your code is %(code)s. It expires in %(minutes)s minutes. Never share it."
+msgstr "Solange Glow : ton code est %(code)s. Il expire dans %(minutes)s minutes. Ne le partage jamais."
+
+#, python-format
+msgid "Your Solange Glow code: %(code)s"
+msgstr "Ton code Solange Glow : %(code)s"
+
+msgid "Enter the 6 digits."
+msgstr "Tape les 6 chiffres."
+
+msgid "Choose at least one trade."
+msgstr "Choisis au moins un métier."
+
+msgid "Confirm that you want to delete your account."
+msgstr "Confirme que tu veux supprimer ton compte."
 
 msgid "Ads"
 msgstr "Publicité"
@@ -297,6 +510,51 @@ msgstr "Paiements"
 msgid "Pros"
 msgstr "Pros"
 
+msgid "Lipstick"
+msgstr "Rouge à lèvres"
+
+msgid "Comb"
+msgstr "Peigne"
+
+msgid "Braid"
+msgstr "Tresse"
+
+msgid "Nail polish"
+msgstr "Vernis"
+
+msgid "Thread spool"
+msgstr "Bobine de fil"
+
+msgid "Headwrap"
+msgstr "Foulard"
+
+msgid "Cream jar"
+msgstr "Pot de crème"
+
+msgid "pictogram"
+msgstr "pictogramme"
+
+msgid "position"
+msgstr "position"
+
+msgid "trade"
+msgstr "métier"
+
+msgid "trades"
+msgstr "métiers"
+
+msgid "Independent"
+msgstr "Indépendante"
+
+msgid "Salon or business"
+msgstr "Salon ou entreprise"
+
+msgid "pro profile"
+msgstr "profil pro"
+
+msgid "pro profiles"
+msgstr "profils pros"
+
 msgid "France Selection"
 msgstr "Sélection France"
 
@@ -332,6 +590,15 @@ msgstr "Modules activables"
 
 msgid "Users"
 msgstr "Utilisateurs"
+
+msgid "Sign-in journal"
+msgstr "Journal des connexions"
+
+msgid "Guests"
+msgstr "Invitées"
+
+msgid "Trades"
+msgstr "Métiers"
 
 msgid "Groups"
 msgstr "Groupes"
