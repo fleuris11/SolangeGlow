@@ -14,6 +14,13 @@ x-backend-env: &backend-env
   CELERY_BROKER_URL: redis://redis:6379/1
   CELERY_RESULT_BACKEND: redis://redis:6379/2
   CHANNELS_REDIS_URL: redis://redis:6379/3
+  # Media on MinIO (S3); links go through the web app at /s3 (see web/next.config.ts).
+  AWS_STORAGE_BUCKET_NAME: solangeglow
+  AWS_S3_ENDPOINT_URL: http://minio:9000
+  AWS_S3_REGION_NAME: us-east-1
+  AWS_ACCESS_KEY_ID: ${MINIO_ROOT_USER:-solange}
+  AWS_SECRET_ACCESS_KEY: ${MINIO_ROOT_PASSWORD:-solange-minio-dev}
+  MEDIA_PUBLIC_BASE_URL: /s3
 
 x-backend: &backend
   build:
@@ -31,6 +38,8 @@ x-backend: &backend
       condition: service_healthy
     redis:
       condition: service_healthy
+    createbuckets:
+      condition: service_completed_successfully
   restart: unless-stopped
 
 services:
@@ -60,6 +69,33 @@ services:
       retries: 20
     restart: unless-stopped
 
+  # S3-compatible storage for media (ADR-002). Console: http://localhost:9001
+  minio:
+    # Community build of MinIO (MinIO no longer publishes images, see ADR-002).
+    image: pgsty/minio:latest
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-solange}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-solange-minio-dev}
+    volumes:
+      - minio_data:/data
+    ports:
+      - "9001:9001"
+    restart: unless-stopped
+
+  # Creates the bucket once MinIO answers; "public/" is readable without signature.
+  createbuckets:
+    image: pgsty/mc:latest
+    depends_on:
+      - minio
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-solange}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-solange-minio-dev}
+    entrypoint: >
+      sh -c "until mc alias set local http://minio:9000 $$MINIO_ROOT_USER $$MINIO_ROOT_PASSWORD; do sleep 1; done;
+      mc mb --ignore-existing local/solangeglow &&
+      mc anonymous set download local/solangeglow/public"
+
   backend:
     <<: *backend
     environment:
@@ -80,7 +116,8 @@ services:
 
   worker:
     <<: *backend
-    command: celery -A config worker --loglevel=info
+    # Restarted automatically when the Python code changes.
+    command: watchfiles --filter python "celery -A config worker --loglevel=info" /app/apps /app/config
     depends_on:
       backend:
         condition: service_healthy
@@ -102,6 +139,7 @@ services:
         required: false
     environment:
       API_INTERNAL_URL: http://backend:8000
+      S3_INTERNAL_URL: http://minio:9000
       NEXT_TELEMETRY_DISABLED: "1"
       # File watching through Docker Desktop on Windows needs polling.
       WATCHPACK_POLLING: "true"
@@ -132,6 +170,7 @@ services:
     command: npx playwright test
 
 volumes:
+  minio_data:
   postgres_data:
   redis_data:
   web_node_modules:

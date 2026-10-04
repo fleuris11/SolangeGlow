@@ -4,6 +4,7 @@ import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin("./src/lib/i18n/request.ts");
 
 const apiInternalUrl = process.env.API_INTERNAL_URL ?? "http://localhost:8000";
+const s3InternalUrl = process.env.S3_INTERNAL_URL ?? "http://localhost:9000";
 
 const nextConfig: NextConfig = {
   output: "standalone",
@@ -18,8 +19,8 @@ const nextConfig: NextConfig = {
     // The browser calls /api/* on the web origin; Next forwards it to Django.
     return [
       { source: "/api/:path*", destination: `${apiInternalUrl}/api/:path*` },
-      // Uploaded files (profile photos) are served by the backend.
-      { source: "/media/:path*", destination: `${apiInternalUrl}/media/:path*` },
+      // Media stored on S3 (MinIO locally): signed links stay valid through this proxy.
+      { source: "/s3/:path*", destination: `${s3InternalUrl}/:path*` },
     ];
   },
   async headers() {

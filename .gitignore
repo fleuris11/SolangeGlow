@@ -44,6 +44,7 @@ backend/staticfiles/
 *.sqlite3
 celerybeat-schedule*
 celerybeat.pid
+backend/.vapid.json
 
 # --- Node / Next.js ---
 node_modules/
@@ -67,8 +68,8 @@ docker-compose.override.yml
 *.sql.gz
 
 # --- Local media and uploads ---
-media/
-uploads/
+/media/
+/uploads/
 
 # --- Editors and OS ---
 .vscode/*
