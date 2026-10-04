@@ -48,6 +48,28 @@ docker compose exec backend python manage.py createsuperuser
 Un fichier `.env` n'est pas obligatoire en local. Pour changer une valeur, copie
 `.env.example` en `.env` : chaque variable y est expliquée.
 
+## Tester l'inscription en local
+
+En local, aucun WhatsApp ni SMS n'est envoyé : le code s'affiche dans les journaux du
+back-end.
+
+1. Ouvre http://localhost:3000/fr/auth (ou « Moi » > « Me connecter ou m'inscrire »).
+2. Tape un numéro du Bénin (par exemple `01 97 12 34 56`) ou de France, puis
+   « Recevoir mon code ».
+3. Dans un terminal, lis le code :
+
+   ```bash
+   docker compose logs backend | findstr "One-time code"     # Windows (PowerShell, cmd)
+   docker compose logs backend | grep "One-time code"        # macOS, Linux
+   ```
+
+   La ligne ressemble à `[DEV] One-time code for +229***56: 482913`.
+4. Tape les 6 chiffres : le compte est créé, puis viennent les 3 écrans d'accueil.
+
+Les réglages (durée du code, essais, délai de renvoi, limites, ordre des canaux
+WhatsApp puis SMS) sont dans le back-office : Plateforme > Réglages, clés `otp.*`.
+Le journal des connexions est dans Comptes > Journal des connexions.
+
 ## Commandes utiles
 
 ```bash
