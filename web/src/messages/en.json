@@ -1,0 +1,27 @@
+{
+  "metadata": {
+    "title": "Solange Glow",
+    "description": "Beauty and fashion, from Benin to France. Find your pro near you."
+  },
+  "manifest": {
+    "shortName": "Solange Glow",
+    "description": "Find your beauty pro, book and shop safely."
+  },
+  "home": {
+    "tagline": "Beauty and fashion, from Benin to France.",
+    "underConstruction": "We are getting your new salon ready. Come back soon.",
+    "languages": "Language"
+  },
+  "health": {
+    "title": "Server status",
+    "checking": "Checking",
+    "ok": "The server is responding",
+    "error": "The server is not responding. Check that Docker is running, then reload the page.",
+    "retry": "Try again"
+  },
+  "locales": {
+    "fr": "Français",
+    "en": "English",
+    "sk": "Slovenčina"
+  }
+}

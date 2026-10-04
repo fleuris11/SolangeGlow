@@ -1,0 +1,27 @@
+{
+  "metadata": {
+    "title": "Solange Glow",
+    "description": "La beauté et la mode, du Bénin à la France. Trouve ta pro près de chez toi."
+  },
+  "manifest": {
+    "shortName": "Solange Glow",
+    "description": "Trouve ta pro beauté, réserve et achète en sécurité."
+  },
+  "home": {
+    "tagline": "La beauté et la mode, du Bénin à la France.",
+    "underConstruction": "On prépare ton nouveau salon. Reviens très vite.",
+    "languages": "Langue"
+  },
+  "health": {
+    "title": "État du serveur",
+    "checking": "Vérification en cours",
+    "ok": "Le serveur répond",
+    "error": "Le serveur ne répond pas. Vérifie que Docker tourne, puis recharge la page.",
+    "retry": "Réessayer"
+  },
+  "locales": {
+    "fr": "Français",
+    "en": "English",
+    "sk": "Slovenčina"
+  }
+}

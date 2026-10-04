@@ -1,0 +1,45 @@
+/*
+ * Solange Glow design tokens (see the solange-design guide).
+ * The only place where colors are written; components use the Tailwind names.
+ */
+:root {
+  --hibiscus: #c8102e;
+  --prune: #3b1233;
+  --prune-doux: #7a4e6e;
+  --lait: #fff7f5;
+  --poudre: #f9e1e7;
+  --carte: #ffffff;
+  --or: #e8b04b;
+  --feuille: #1f7a5a;
+  --alerte: #b54708;
+  --trait: #ebd9de;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --hibiscus: #ff6b7d;
+    --prune: #fceff2;
+    --prune-doux: #b9a3b2;
+    --lait: #1a0915;
+    --poudre: #2a1024;
+    --carte: #24101f;
+    --feuille: #5cc79e;
+    --alerte: #f5a25d;
+    --trait: #3a1e33;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --hibiscus: #ff6b7d;
+  --prune: #fceff2;
+  --prune-doux: #b9a3b2;
+  --lait: #1a0915;
+  --poudre: #2a1024;
+  --carte: #24101f;
+  --feuille: #5cc79e;
+  --alerte: #f5a25d;
+  --trait: #3a1e33;
+  color-scheme: dark;
+}

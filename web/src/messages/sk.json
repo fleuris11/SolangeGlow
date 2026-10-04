@@ -1,0 +1,27 @@
+{
+  "metadata": {
+    "title": "Solange Glow",
+    "description": "Krása a móda, od Beninu po Francúzsko. Nájdi si profesionálku vo svojom okolí."
+  },
+  "manifest": {
+    "shortName": "Solange Glow",
+    "description": "Nájdi si profesionálku, rezervuj a nakupuj bezpečne."
+  },
+  "home": {
+    "tagline": "Krása a móda, od Beninu po Francúzsko.",
+    "underConstruction": "Pripravujeme tvoj nový salón. Vráť sa čoskoro.",
+    "languages": "Jazyk"
+  },
+  "health": {
+    "title": "Stav servera",
+    "checking": "Overujeme",
+    "ok": "Server odpovedá",
+    "error": "Server neodpovedá. Skontroluj, či beží Docker, a obnov stránku.",
+    "retry": "Skúsiť znova"
+  },
+  "locales": {
+    "fr": "Français",
+    "en": "English",
+    "sk": "Slovenčina"
+  }
+}

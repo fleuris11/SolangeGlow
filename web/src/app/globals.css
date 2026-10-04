@@ -1,0 +1,47 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+@theme inline {
+  --color-hibiscus: var(--hibiscus);
+  --color-prune: var(--prune);
+  --color-prune-doux: var(--prune-doux);
+  --color-lait: var(--lait);
+  --color-poudre: var(--poudre);
+  --color-carte: var(--carte);
+  --color-or: var(--or);
+  --color-feuille: var(--feuille);
+  --color-alerte: var(--alerte);
+  --color-trait: var(--trait);
+
+  --text-base: 1.0625rem;
+  --text-base--line-height: 1.625rem;
+}
+
+html {
+  background-color: var(--lait);
+  color: var(--prune);
+}
+
+body {
+  min-height: 100dvh;
+  background-color: var(--lait);
+  color: var(--prune);
+  font-size: var(--text-base);
+  line-height: var(--text-base--line-height);
+}
+
+:focus-visible {
+  outline: 3px solid var(--hibiscus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
