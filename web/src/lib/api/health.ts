@@ -1,9 +1,5 @@
-import { apiFetch } from "./client";
-
-export type Health = { status: "ok" };
+import { api, unwrap } from "./client";
 
 export const healthQueryKey = ["health"] as const;
 
-export function getHealth(): Promise<Health> {
-  return apiFetch<Health>("/health");
-}
+export const getHealth = () => unwrap(api.GET("/api/v1/health"));

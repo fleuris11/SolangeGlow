@@ -7,36 +7,61 @@ type Route = {
   body?: unknown;
 };
 
+export type Recorded = { path: string; method: string; body: unknown };
+
 /**
  * Replaces fetch with fixed answers per "METHOD /api/v1/path".
- * Returns the mock to inspect calls.
+ * Accepts URLs and Request objects (the generated client sends Requests).
+ * Every call is recorded in `fetchMock.records`.
  */
 export function mockApi(routes: Route[]) {
-  const fetchMock = vi.fn(async (url: string, init?: RequestInit) => {
-    const method = (init?.method ?? "GET").toUpperCase();
-    const route = routes.find(
-      (r) => (r.method ?? "GET").toUpperCase() === method && url === `/api/v1${r.path}`,
-    );
-    if (!route) {
-      return new Response(JSON.stringify({ code: "not_found" }), { status: 404 });
-    }
-    const status = route.status ?? 200;
-    return new Response(status === 204 ? null : JSON.stringify(route.body ?? {}), {
-      status,
-      headers: { "Content-Type": "application/json" },
-    });
-  });
+  const records: Recorded[] = [];
+  const fetchMock = Object.assign(
+    vi.fn(async (input: RequestInfo | URL, init?: RequestInit) => {
+      const request =
+        input instanceof Request
+          ? input
+          : new Request(new URL(String(input), "http://localhost:3000"), init);
+      const { pathname } = new URL(request.url);
+      const method = request.method.toUpperCase();
+      const text = await request.clone().text();
+      let body: unknown;
+      try {
+        body = text ? JSON.parse(text) : undefined;
+      } catch {
+        body = text;
+      }
+      records.push({ path: pathname, method, body });
+
+      const route = routes.find(
+        (r) => (r.method ?? "GET").toUpperCase() === method && pathname === `/api/v1${r.path}`,
+      );
+      if (!route) {
+        return new Response(JSON.stringify({ code: "not_found" }), { status: 404 });
+      }
+      const status = route.status ?? 200;
+      return new Response(status === 204 ? null : JSON.stringify(route.body ?? {}), {
+        status,
+        headers: { "Content-Type": "application/json" },
+      });
+    }),
+    { records },
+  );
   vi.stubGlobal("fetch", fetchMock);
   return fetchMock;
 }
 
 /** Body sent with the n-th call to a path that carried one (POST, PATCH, DELETE). */
 export function sentBody(fetchMock: ReturnType<typeof mockApi>, path: string, index = 0) {
-  const calls = fetchMock.mock.calls.filter(
-    ([url, init]) => url === `/api/v1${path}` && (init as RequestInit | undefined)?.body,
+  return fetchMock.records.filter((r) => r.path === `/api/v1${path}` && r.body !== undefined)[index]
+    ?.body as Record<string, unknown> | undefined;
+}
+
+/** True when the path was called (optionally with this method). */
+export function called(fetchMock: ReturnType<typeof mockApi>, path: string, method?: string) {
+  return fetchMock.records.some(
+    (r) => r.path === `/api/v1${path}` && (!method || r.method === method),
   );
-  const init = calls[index]?.[1] as RequestInit | undefined;
-  return init?.body ? JSON.parse(init.body as string) : undefined;
 }
 
 export const ME = {
@@ -58,7 +83,11 @@ export const ME = {
   notify_push: true,
   roles: ["client"],
   is_pro: false,
-  avatar_url: null,
+  photo: null,
+  birth_date: "1995-04-12",
+  is_minor: false,
+  quiet_hours_start: null,
+  quiet_hours_end: null,
   has_password: false,
   onboarding_required: true,
   created_at: "2026-10-04T10:00:00Z",

@@ -1,31 +1,24 @@
 import { screen } from "@testing-library/react";
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import messages from "@/messages/fr.json";
+import { called, mockApi } from "@/test/fetch-mock";
 import { renderWithProviders } from "@/test/render";
 
 import { HealthStatus } from "./health-status";
 
-function mockFetch(response: Partial<Response>) {
-  vi.stubGlobal("fetch", vi.fn().mockResolvedValue(response));
-}
-
 describe("HealthStatus", () => {
-  afterEach(() => {
-    vi.unstubAllGlobals();
-  });
-
   it("shows that the server responds", async () => {
-    mockFetch({ ok: true, status: 200, json: async () => ({ status: "ok" }) });
+    const fetchMock = mockApi([{ path: "/health", body: { status: "ok" } }]);
 
     renderWithProviders(<HealthStatus />);
 
     expect(await screen.findByText(messages.health.ok)).toBeInTheDocument();
-    expect(fetch).toHaveBeenCalledWith("/api/v1/health", expect.anything());
+    expect(called(fetchMock, "/health", "GET")).toBe(true);
   });
 
   it("explains what to do when the server is down", async () => {
-    mockFetch({ ok: false, status: 502, json: async () => ({}) });
+    mockApi([{ path: "/health", status: 502, body: {} }]);
 
     renderWithProviders(<HealthStatus />);
 
