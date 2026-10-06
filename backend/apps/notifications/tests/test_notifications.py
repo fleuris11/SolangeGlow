@@ -313,7 +313,7 @@ def test_websocket_sends_the_unread_counter():
         communicator = WebsocketCommunicator(
             application,
             "/ws/notifications/",
-            headers=[(b"cookie", f"sg_access={token}".encode()), (b"origin", b"http://localhost")],
+            headers=[(b"cookie", f"sg_access={token}".encode()), (b"origin", b"http://testserver")],
         )
         connected, _ = await communicator.connect()
         assert connected
@@ -330,7 +330,7 @@ def test_websocket_refuses_visitors():
 
     async def scenario():
         communicator = WebsocketCommunicator(
-            application, "/ws/notifications/", headers=[(b"origin", b"http://localhost")]
+            application, "/ws/notifications/", headers=[(b"origin", b"http://testserver")]
         )
         connected, _ = await communicator.connect()
         return connected
