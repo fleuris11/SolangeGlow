@@ -276,7 +276,8 @@
     },
     "errors": {
       "network": "Pripojenie zlyhalo. Skontroluj internet a skús znova."
-    }
+    },
+    "deletionCancelled": "Vitaj späť! Tvoj účet sa nezmaže."
   },
   "welcome": {
     "metaTitle": "Vitaj",
@@ -293,7 +294,7 @@
       "title": "Tvoj jazyk"
     },
     "city": {
-      "title": "Tvoje mesto",
+      "title": "Tvoje mesto a dátum narodenia",
       "other": "Iné mesto"
     },
     "done": {
@@ -301,6 +302,13 @@
       "client": "Nájdi si profesionálku, rezervuj a plať bezpečne.",
       "pro": "Tvoj profil čoskoro pribudne. Medzitým objav ďalšie profesionálky.",
       "cta": "Objavovať"
+    },
+    "birth": {
+      "label": "Tvoj dátum narodenia",
+      "day": "Deň",
+      "month": "Mesiac",
+      "year": "Rok",
+      "why": "Chráni najmladších. Nikdy sa nezobrazuje."
     }
   },
   "profile": {
@@ -322,18 +330,13 @@
     },
     "save": "Uložiť",
     "saved": "Profil uložený",
-    "error": "Nepodarilo sa uložiť. Skús to o chvíľu."
+    "error": "Nepodarilo sa uložiť. Skús to o chvíľu.",
+    "photoProcessing": "Fotka sa pripravuje, ešte pár sekúnd.",
+    "photoRejected": "Túto fotku nebolo možné použiť. Vyber inú."
   },
   "account": {
-    "saved": "Nastavenie uložené",
     "error": "Nepodarilo sa. Skús to o chvíľu.",
     "notifications": "Upozornenia",
-    "notifyWhatsapp": "Cez WhatsApp",
-    "notifyWhatsappText": "Rezervácie, objednávky a správy, keď nie si v aplikácii.",
-    "notifyEmail": "E-mailom",
-    "notifyEmailText": "Potvrdenia a prehľady.",
-    "notifyPush": "Na tomto telefóne",
-    "notifyPushText": "Krátke upozornenia v nainštalovanej aplikácii.",
     "password": {
       "title": "Heslo",
       "textNone": "Nepovinné: vždy sa môžeš prihlásiť kódom.",
@@ -350,14 +353,15 @@
     "signedOutEverywhere": "Odhlásená na všetkých zariadeniach",
     "delete": {
       "title": "Zmazať účet",
-      "text": "Tvoje osobné údaje sa hneď vymažú.",
+      "text": "Účet sa hneď zatvorí a po čase vymaže. Ak si to rozmyslíš, prihlás sa znova.",
       "cta": "Zmazať môj účet",
       "confirmTitle": "Zmazať účet?",
-      "confirmText": "Číslo, meno a fotka sa vymažú. Nedá sa to vrátiť.",
+      "confirmText": "Číslo, meno a fotka sa vymažú po uplynutí lehoty.",
       "confirm": "Áno, zmazať účet",
       "cancel": "Ponechať účet",
-      "done": "Účet je zmazaný"
-    }
+      "done": "Účet sa vymaže {date}. Ak ho chceš ponechať, prihlás sa predtým."
+    },
+    "notificationsText": "Upozornenia, e-mail, WhatsApp a tiché hodiny."
   },
   "guest": {
     "title": "Rezervovať bez účtu",
@@ -366,5 +370,58 @@
     "cta": "Pokračovať ako hosť",
     "saved": "Si zapísaná ako hosť: {name}, {phone}.",
     "error": "Nepodarilo sa ťa zapísať. Skontroluj číslo."
+  },
+  "notifications": {
+    "title": "Upozornenia",
+    "bell": "Správy",
+    "bellUnread": "Upozornenia: {count} nové",
+    "listTitle": "Tvoje upozornenia",
+    "markAll": "Označiť všetko ako prečítané",
+    "new": "Nové",
+    "more": "Zobraziť viac",
+    "emptyTitle": "Zatiaľ žiadne upozornenia",
+    "emptyText": "Tu sa zobrazia tvoje rezervácie, objednávky a správy.",
+    "visitorTitle": "Prihlás sa a dostávaj upozornenia",
+    "visitorText": "Dáme ti vedieť, keď profesionálka odpovie alebo sa objednávka pohne.",
+    "signIn": "Prihlásiť sa",
+    "settings": {
+      "title": "Ako ti dáme vedieť?",
+      "saved": "Nastavenie uložené",
+      "push": "Upozornenia na tomto telefóne",
+      "pushText": "Krátke upozornenie, aj keď je aplikácia zatvorená.",
+      "pushUnsupported": "Tento prehliadač nevie zobraziť upozornenia. Nainštaluj aplikáciu alebo skús Chrome.",
+      "pushDenied": "Upozornenia sú zablokované. Povoľ ich v nastaveniach telefónu.",
+      "pushError": "Upozornenia sa nepodarilo zapnúť. Skús to o chvíľu.",
+      "email": "E-mailom",
+      "emailText": "Na {email}",
+      "emailMissing": "Pridaj e-mail v časti „Ja“ a zapni to.",
+      "whatsapp": "Cez WhatsApp",
+      "whatsappText": "Rezervácie a objednávky, keď nie si v aplikácii.",
+      "quietTitle": "Tiché hodiny",
+      "quietText": "Počas týchto hodín žiadne upozornenia, WhatsApp ani SMS.",
+      "quietFrom": "Od",
+      "quietTo": "Do",
+      "quietSave": "Uložiť hodiny",
+      "test": "Poslať testovacie upozornenie",
+      "testSent": "Testovacie upozornenie odoslané"
+    }
+  },
+  "contact": {
+    "title": "Číslo a e-mail",
+    "phone": "Telefónne číslo",
+    "email": "E-mailová adresa",
+    "none": "Zatiaľ nepridané",
+    "change": "Zmeniť",
+    "add": "Pridať",
+    "sheetPhone": "Nové číslo",
+    "sheetEmail": "Nový e-mail",
+    "sheetText": "Pošleme ti kód, aby sme overili, že je tvoj.",
+    "codeSent": "Zadaj 6-miestny kód, ktorý si dostala.",
+    "codeLabel": "6-miestny kód",
+    "newEmail": "Tvoja nová e-mailová adresa",
+    "sendCode": "Poslať kód",
+    "phoneSaved": "Číslo zmenené",
+    "emailSaved": "E-mail uložený",
+    "error": "Nepodarilo sa. Skús to o chvíľu."
   }
 }

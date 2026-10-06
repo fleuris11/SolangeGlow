@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-04 21:01+0200\n"
+"POT-Creation-Date: 2026-10-06 20:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,6 +120,19 @@ msgstr "Ce fichier n'est pas une photo utilisable. Choisis une photo JPEG, PNG o
 msgid "This photo is too large. Choose a photo under %(size)s MB."
 msgstr "Cette photo est trop lourde. Choisis une photo de moins de %(size)s Mo."
 
+msgid "This is already your number or e-mail."
+msgstr "C'est déjà ton numéro ou ton e-mail."
+
+msgid "This number or e-mail is already used by another account."
+msgstr "Ce numéro ou cet e-mail est déjà utilisé par un autre compte."
+
+msgid "This date of birth is not valid. Check the day, month and year."
+msgstr "Cette date de naissance n'est pas valide. Vérifie le jour, le mois et l'année."
+
+#, python-format
+msgid "Solange Glow is for people aged %(age)s and over."
+msgstr "Solange Glow est réservé aux personnes de %(age)s ans et plus."
+
 msgid "Phone"
 msgstr "Téléphone"
 
@@ -198,6 +211,9 @@ msgstr "Peut se connecter au back-office."
 msgid "city"
 msgstr "ville"
 
+msgid "date of birth"
+msgstr "date de naissance"
+
 msgid "photo"
 msgstr "photo"
 
@@ -209,6 +225,12 @@ msgstr "notifications par e-mail"
 
 msgid "push notifications"
 msgstr "notifications push"
+
+msgid "quiet hours start"
+msgstr "début des heures de silence"
+
+msgid "quiet hours end"
+msgstr "fin des heures de silence"
 
 msgid "sign-up channel"
 msgstr "canal d'inscription"
@@ -224,6 +246,9 @@ msgstr "accueil terminé le"
 
 msgid "tokens revoked at"
 msgstr "sessions fermées le"
+
+msgid "deletion requested at"
+msgstr "suppression demandée le"
 
 msgid "deleted at"
 msgstr "supprimé le"
@@ -246,14 +271,35 @@ msgstr "SMS"
 msgid "Console (development)"
 msgstr "Console (développement)"
 
+msgid "Sign-up or sign-in"
+msgstr "Inscription ou connexion"
+
+msgid "New number or e-mail"
+msgstr "Nouveau numéro ou e-mail"
+
 msgid "destination type"
 msgstr "type de destination"
+
+msgid "purpose"
+msgstr "usage"
+
+msgid "account"
+msgstr "compte"
 
 msgid "destination"
 msgstr "destination"
 
 msgid "channel"
 msgstr "canal"
+
+msgid "channels to try"
+msgstr "canaux à essayer"
+
+msgid "sent at"
+msgstr "envoyé le"
+
+msgid "delivery failed at"
+msgstr "échec d'envoi le"
 
 msgid "expires at"
 msgstr "expire le"
@@ -299,9 +345,6 @@ msgstr "connexion"
 
 msgid "sign-in journal"
 msgstr "journal des connexions"
-
-msgid "account"
-msgstr "compte"
 
 msgid "converted at"
 msgstr "compte créé le"
@@ -350,6 +393,42 @@ msgstr "Certaines informations manquent ou sont incorrectes."
 msgid "Platform"
 msgstr "Plateforme"
 
+msgid "Object"
+msgstr "Objet"
+
+msgid "Changes"
+msgstr "Modifications"
+
+msgid "by"
+msgstr "par"
+
+msgid "action"
+msgstr "action"
+
+msgid "object type"
+msgstr "type d'objet"
+
+msgid "object id"
+msgstr "identifiant de l'objet"
+
+msgid "object"
+msgstr "objet"
+
+msgid "before"
+msgstr "avant"
+
+msgid "after"
+msgstr "après"
+
+msgid "details"
+msgstr "détails"
+
+msgid "audit event"
+msgstr "ligne du journal"
+
+msgid "audit journal"
+msgstr "journal d'audit"
+
 msgid "Client"
 msgstr "Cliente"
 
@@ -358,6 +437,106 @@ msgstr "Pro"
 
 msgid "Staff"
 msgstr "Équipe"
+
+msgid "preview"
+msgstr "aperçu"
+
+msgid "Process the selected media again"
+msgstr "Retraiter les médias choisis"
+
+msgid "Processing started again."
+msgstr "Le traitement a été relancé."
+
+msgid "This file cannot be used here."
+msgstr "Ce fichier ne peut pas être utilisé ici."
+
+msgid "This type of file is not accepted here. Choose a picture, a video or a voice note."
+msgstr "Ce type de fichier n'est pas accepté ici. Choisis une photo, une vidéo ou une note vocale."
+
+#, python-format
+msgid "This file is too large. Choose a file under %(size)s MB."
+msgstr "Ce fichier est trop lourd. Choisis un fichier de moins de %(size)s Mo."
+
+msgid "This file does not exist or is not yours."
+msgstr "Ce fichier n'existe pas ou ne t'appartient pas."
+
+msgid "Picture"
+msgstr "Photo"
+
+msgid "Video"
+msgstr "Vidéo"
+
+msgid "Voice note"
+msgstr "Note vocale"
+
+msgid "Public"
+msgstr "Public"
+
+msgid "Private (signed links)"
+msgstr "Privé (liens signés)"
+
+msgid "Waiting"
+msgstr "En attente"
+
+msgid "Processing"
+msgstr "En cours"
+
+msgid "Ready"
+msgstr "Prêt"
+
+msgid "Refused"
+msgstr "Refusé"
+
+msgid "Failed"
+msgstr "Échec"
+
+msgid "owner"
+msgstr "propriétaire"
+
+msgid "type"
+msgstr "type"
+
+msgid "use"
+msgstr "usage"
+
+msgid "visibility"
+msgstr "visibilité"
+
+msgid "original file"
+msgstr "fichier d'origine"
+
+msgid "file name"
+msgstr "nom du fichier"
+
+msgid "content type"
+msgstr "type de contenu"
+
+msgid "size"
+msgstr "taille"
+
+msgid "width"
+msgstr "largeur"
+
+msgid "height"
+msgstr "hauteur"
+
+msgid "duration (s)"
+msgstr "durée (s)"
+
+msgid "variants"
+msgstr "versions"
+
+msgid "blur preview"
+msgstr "aperçu flou"
+
+msgid "error"
+msgstr "erreur"
+
+msgid "processed at"
+msgstr "traité le"
+
+msgid "media"
+msgstr "média"
 
 msgid "created at"
 msgstr "créé le"
@@ -444,9 +623,6 @@ msgstr "Utilise des mots en minuscules séparés par des points, par exemple esc
 msgid "Leave empty for the default value used in every country."
 msgstr "Laisse vide pour la valeur par défaut, utilisée dans tous les pays."
 
-msgid "type"
-msgstr "type"
-
 msgid "value"
 msgstr "valeur"
 
@@ -501,8 +677,92 @@ msgstr "Messagerie"
 msgid "Moderation"
 msgstr "Modération"
 
+msgid "Send this event to me (test)"
+msgstr "M'envoyer cet événement (test)"
+
+msgid "Test sent to your account."
+msgstr "Test envoyé sur ton compte."
+
 msgid "Notifications"
 msgstr "Notifications"
+
+msgid "In the app"
+msgstr "Dans l'appli"
+
+msgid "Phone alert (push)"
+msgstr "Alerte sur le téléphone (push)"
+
+msgid "event"
+msgstr "événement"
+
+msgid "e.g. booking.confirmed"
+msgstr "ex. booking.confirmed"
+
+msgid "title"
+msgstr "titre"
+
+msgid "text"
+msgstr "texte"
+
+msgid "link"
+msgstr "lien"
+
+msgid "Page opened on tap, e.g. /me"
+msgstr "Page ouverte au toucher, ex. /me"
+
+msgid "when is it sent?"
+msgstr "quand est-il envoyé ?"
+
+msgid "notification template"
+msgstr "modèle de notification"
+
+msgid "notification templates"
+msgstr "modèles de notification"
+
+msgid "person"
+msgstr "personne"
+
+msgid "shown in the app"
+msgstr "visible dans l'appli"
+
+msgid "read at"
+msgstr "lu le"
+
+msgid "notification"
+msgstr "notification"
+
+msgid "notifications"
+msgstr "notifications"
+
+msgid "Scheduled"
+msgstr "Programmé"
+
+msgid "Sent"
+msgstr "Envoyé"
+
+msgid "Not sent (channel off)"
+msgstr "Non envoyé (canal coupé)"
+
+msgid "planned for"
+msgstr "prévu pour"
+
+msgid "sending"
+msgstr "envoi"
+
+msgid "sendings"
+msgstr "envois"
+
+msgid "address"
+msgstr "adresse"
+
+msgid "last used"
+msgstr "dernière utilisation"
+
+msgid "push subscription"
+msgstr "abonnement aux alertes"
+
+msgid "push subscriptions"
+msgstr "abonnements aux alertes"
 
 msgid "Payments"
 msgstr "Paiements"
@@ -588,6 +848,21 @@ msgstr "Réglages"
 msgid "Feature flags"
 msgstr "Modules activables"
 
+msgid "Media"
+msgstr "Médias"
+
+msgid "Audit journal"
+msgstr "Journal d'audit"
+
+msgid "Notification templates"
+msgstr "Modèles de notification"
+
+msgid "Sent notifications"
+msgstr "Notifications envoyées"
+
+msgid "Push subscriptions"
+msgstr "Abonnements aux alertes"
+
 msgid "Users"
 msgstr "Utilisateurs"
 
@@ -602,3 +877,6 @@ msgstr "Métiers"
 
 msgid "Groups"
 msgstr "Groupes"
+
+#~ msgid "Sendings"
+#~ msgstr "Envois"

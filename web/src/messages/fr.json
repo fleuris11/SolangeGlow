@@ -276,7 +276,8 @@
     },
     "errors": {
       "network": "La connexion a échoué. Vérifie ton internet, puis réessaie."
-    }
+    },
+    "deletionCancelled": "Te revoilà ! Ton compte ne sera pas supprimé."
   },
   "welcome": {
     "metaTitle": "Bienvenue",
@@ -293,7 +294,7 @@
       "title": "Ta langue"
     },
     "city": {
-      "title": "Ta ville",
+      "title": "Ta ville et ta date de naissance",
       "other": "Une autre ville"
     },
     "done": {
@@ -301,6 +302,13 @@
       "client": "Trouve ta pro, réserve et paie en sécurité.",
       "pro": "Ta vitrine arrive bientôt. En attendant, découvre les autres pros.",
       "cta": "Découvrir"
+    },
+    "birth": {
+      "label": "Ta date de naissance",
+      "day": "Jour",
+      "month": "Mois",
+      "year": "Année",
+      "why": "Elle sert à protéger les plus jeunes. Elle n'est jamais affichée."
     }
   },
   "profile": {
@@ -322,18 +330,13 @@
     },
     "save": "Enregistrer",
     "saved": "Profil enregistré",
-    "error": "On n'a pas pu enregistrer. Réessaie dans un instant."
+    "error": "On n'a pas pu enregistrer. Réessaie dans un instant.",
+    "photoProcessing": "Ta photo est en préparation, encore quelques secondes.",
+    "photoRejected": "Cette photo n'a pas pu être utilisée. Choisis une autre photo."
   },
   "account": {
-    "saved": "Réglage enregistré",
     "error": "Ça n'a pas marché. Réessaie dans un instant.",
     "notifications": "Notifications",
-    "notifyWhatsapp": "Sur WhatsApp",
-    "notifyWhatsappText": "Rendez-vous, commandes et messages quand tu n'es pas dans l'appli.",
-    "notifyEmail": "Par e-mail",
-    "notifyEmailText": "Reçus et récapitulatifs.",
-    "notifyPush": "Sur ce téléphone",
-    "notifyPushText": "Petites alertes dans l'appli installée.",
     "password": {
       "title": "Mot de passe",
       "textNone": "Facultatif : tu peux toujours te connecter avec un code.",
@@ -350,14 +353,15 @@
     "signedOutEverywhere": "Déconnectée de tous tes appareils",
     "delete": {
       "title": "Supprimer mon compte",
-      "text": "Tes informations personnelles sont effacées tout de suite.",
+      "text": "Ton compte est fermé tout de suite, puis effacé après un délai. Tu peux changer d'avis en te reconnectant.",
       "cta": "Supprimer mon compte",
       "confirmTitle": "Supprimer ton compte ?",
-      "confirmText": "Ton numéro, ton nom et ta photo seront effacés. Ce n'est pas réversible.",
+      "confirmText": "Ton numéro, ton nom et ta photo seront effacés à la fin du délai.",
       "confirm": "Oui, supprimer mon compte",
       "cancel": "Garder mon compte",
-      "done": "Ton compte est supprimé"
-    }
+      "done": "Ton compte sera effacé le {date}. Reconnecte-toi avant pour le garder."
+    },
+    "notificationsText": "Alertes, e-mail, WhatsApp et heures de silence."
   },
   "guest": {
     "title": "Réserver sans compte",
@@ -366,5 +370,58 @@
     "cta": "Continuer en invitée",
     "saved": "Tu es enregistrée comme invitée : {name}, {phone}.",
     "error": "On n'a pas pu t'enregistrer. Vérifie ton numéro."
+  },
+  "notifications": {
+    "title": "Notifications",
+    "bell": "Alertes",
+    "bellUnread": "Alertes : {count, plural, one {# nouvelle} other {# nouvelles}}",
+    "listTitle": "Tes alertes",
+    "markAll": "Tout marquer comme lu",
+    "new": "Nouveau",
+    "more": "Voir plus",
+    "emptyTitle": "Aucune alerte pour l'instant",
+    "emptyText": "Tes rendez-vous, commandes et messages s'afficheront ici.",
+    "visitorTitle": "Connecte-toi pour recevoir tes alertes",
+    "visitorText": "On te prévient quand une pro répond ou qu'une commande avance.",
+    "signIn": "Me connecter",
+    "settings": {
+      "title": "Comment te prévenir ?",
+      "saved": "Réglage enregistré",
+      "push": "Alertes sur ce téléphone",
+      "pushText": "Une petite alerte même quand l'appli est fermée.",
+      "pushUnsupported": "Ce navigateur ne permet pas les alertes. Installe l'appli ou essaie Chrome.",
+      "pushDenied": "Les alertes sont bloquées. Autorise-les dans les réglages du téléphone.",
+      "pushError": "On n'a pas pu activer les alertes. Réessaie dans un instant.",
+      "email": "Par e-mail",
+      "emailText": "À {email}",
+      "emailMissing": "Ajoute ton e-mail dans « Moi » pour l'activer.",
+      "whatsapp": "Sur WhatsApp",
+      "whatsappText": "Rendez-vous et commandes, quand tu n'es pas dans l'appli.",
+      "quietTitle": "Heures de silence",
+      "quietText": "Pas d'alerte sur le téléphone, ni WhatsApp, ni SMS pendant ces heures.",
+      "quietFrom": "De",
+      "quietTo": "À",
+      "quietSave": "Enregistrer les heures",
+      "test": "M'envoyer une alerte de test",
+      "testSent": "Alerte de test envoyée"
+    }
+  },
+  "contact": {
+    "title": "Numéro et e-mail",
+    "phone": "Numéro de téléphone",
+    "email": "Adresse e-mail",
+    "none": "Pas encore ajouté",
+    "change": "Changer",
+    "add": "Ajouter",
+    "sheetPhone": "Nouveau numéro",
+    "sheetEmail": "Nouvel e-mail",
+    "sheetText": "On t'envoie un code pour vérifier qu'il est bien à toi.",
+    "codeSent": "Tape le code à 6 chiffres reçu.",
+    "codeLabel": "Code à 6 chiffres",
+    "newEmail": "Ta nouvelle adresse e-mail",
+    "sendCode": "Recevoir le code",
+    "phoneSaved": "Numéro changé",
+    "emailSaved": "E-mail enregistré",
+    "error": "Ça n'a pas marché. Réessaie dans un instant."
   }
 }

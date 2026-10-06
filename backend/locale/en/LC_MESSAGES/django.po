@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-04 21:01+0200\n"
+"POT-Creation-Date: 2026-10-06 20:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -120,6 +120,19 @@ msgstr ""
 msgid "This photo is too large. Choose a photo under %(size)s MB."
 msgstr ""
 
+msgid "This is already your number or e-mail."
+msgstr ""
+
+msgid "This number or e-mail is already used by another account."
+msgstr ""
+
+msgid "This date of birth is not valid. Check the day, month and year."
+msgstr ""
+
+#, python-format
+msgid "Solange Glow is for people aged %(age)s and over."
+msgstr ""
+
 msgid "Phone"
 msgstr ""
 
@@ -198,6 +211,9 @@ msgstr ""
 msgid "city"
 msgstr ""
 
+msgid "date of birth"
+msgstr ""
+
 msgid "photo"
 msgstr ""
 
@@ -208,6 +224,12 @@ msgid "e-mail notifications"
 msgstr ""
 
 msgid "push notifications"
+msgstr ""
+
+msgid "quiet hours start"
+msgstr ""
+
+msgid "quiet hours end"
 msgstr ""
 
 msgid "sign-up channel"
@@ -223,6 +245,9 @@ msgid "welcome completed at"
 msgstr ""
 
 msgid "tokens revoked at"
+msgstr ""
+
+msgid "deletion requested at"
 msgstr ""
 
 msgid "deleted at"
@@ -246,13 +271,34 @@ msgstr ""
 msgid "Console (development)"
 msgstr ""
 
+msgid "Sign-up or sign-in"
+msgstr ""
+
+msgid "New number or e-mail"
+msgstr ""
+
 msgid "destination type"
+msgstr ""
+
+msgid "purpose"
+msgstr ""
+
+msgid "account"
 msgstr ""
 
 msgid "destination"
 msgstr ""
 
 msgid "channel"
+msgstr ""
+
+msgid "channels to try"
+msgstr ""
+
+msgid "sent at"
+msgstr ""
+
+msgid "delivery failed at"
 msgstr ""
 
 msgid "expires at"
@@ -298,9 +344,6 @@ msgid "sign-in"
 msgstr ""
 
 msgid "sign-in journal"
-msgstr ""
-
-msgid "account"
 msgstr ""
 
 msgid "converted at"
@@ -350,6 +393,42 @@ msgstr ""
 msgid "Platform"
 msgstr ""
 
+msgid "Object"
+msgstr ""
+
+msgid "Changes"
+msgstr ""
+
+msgid "by"
+msgstr ""
+
+msgid "action"
+msgstr ""
+
+msgid "object type"
+msgstr ""
+
+msgid "object id"
+msgstr ""
+
+msgid "object"
+msgstr ""
+
+msgid "before"
+msgstr ""
+
+msgid "after"
+msgstr ""
+
+msgid "details"
+msgstr ""
+
+msgid "audit event"
+msgstr ""
+
+msgid "audit journal"
+msgstr ""
+
 msgid "Client"
 msgstr ""
 
@@ -357,6 +436,106 @@ msgid "Professional"
 msgstr ""
 
 msgid "Staff"
+msgstr ""
+
+msgid "preview"
+msgstr ""
+
+msgid "Process the selected media again"
+msgstr ""
+
+msgid "Processing started again."
+msgstr ""
+
+msgid "This file cannot be used here."
+msgstr ""
+
+msgid "This type of file is not accepted here. Choose a picture, a video or a voice note."
+msgstr ""
+
+#, python-format
+msgid "This file is too large. Choose a file under %(size)s MB."
+msgstr ""
+
+msgid "This file does not exist or is not yours."
+msgstr ""
+
+msgid "Picture"
+msgstr ""
+
+msgid "Video"
+msgstr ""
+
+msgid "Voice note"
+msgstr ""
+
+msgid "Public"
+msgstr ""
+
+msgid "Private (signed links)"
+msgstr ""
+
+msgid "Waiting"
+msgstr ""
+
+msgid "Processing"
+msgstr ""
+
+msgid "Ready"
+msgstr ""
+
+msgid "Refused"
+msgstr ""
+
+msgid "Failed"
+msgstr ""
+
+msgid "owner"
+msgstr ""
+
+msgid "type"
+msgstr ""
+
+msgid "use"
+msgstr ""
+
+msgid "visibility"
+msgstr ""
+
+msgid "original file"
+msgstr ""
+
+msgid "file name"
+msgstr ""
+
+msgid "content type"
+msgstr ""
+
+msgid "size"
+msgstr ""
+
+msgid "width"
+msgstr ""
+
+msgid "height"
+msgstr ""
+
+msgid "duration (s)"
+msgstr ""
+
+msgid "variants"
+msgstr ""
+
+msgid "blur preview"
+msgstr ""
+
+msgid "error"
+msgstr ""
+
+msgid "processed at"
+msgstr ""
+
+msgid "media"
 msgstr ""
 
 msgid "created at"
@@ -444,9 +623,6 @@ msgstr ""
 msgid "Leave empty for the default value used in every country."
 msgstr ""
 
-msgid "type"
-msgstr ""
-
 msgid "value"
 msgstr ""
 
@@ -501,7 +677,91 @@ msgstr ""
 msgid "Moderation"
 msgstr ""
 
+msgid "Send this event to me (test)"
+msgstr ""
+
+msgid "Test sent to your account."
+msgstr ""
+
 msgid "Notifications"
+msgstr ""
+
+msgid "In the app"
+msgstr ""
+
+msgid "Phone alert (push)"
+msgstr ""
+
+msgid "event"
+msgstr ""
+
+msgid "e.g. booking.confirmed"
+msgstr ""
+
+msgid "title"
+msgstr ""
+
+msgid "text"
+msgstr ""
+
+msgid "link"
+msgstr ""
+
+msgid "Page opened on tap, e.g. /me"
+msgstr ""
+
+msgid "when is it sent?"
+msgstr ""
+
+msgid "notification template"
+msgstr ""
+
+msgid "notification templates"
+msgstr ""
+
+msgid "person"
+msgstr ""
+
+msgid "shown in the app"
+msgstr ""
+
+msgid "read at"
+msgstr ""
+
+msgid "notification"
+msgstr ""
+
+msgid "notifications"
+msgstr ""
+
+msgid "Scheduled"
+msgstr ""
+
+msgid "Sent"
+msgstr ""
+
+msgid "Not sent (channel off)"
+msgstr ""
+
+msgid "planned for"
+msgstr ""
+
+msgid "sending"
+msgstr ""
+
+msgid "sendings"
+msgstr ""
+
+msgid "address"
+msgstr ""
+
+msgid "last used"
+msgstr ""
+
+msgid "push subscription"
+msgstr ""
+
+msgid "push subscriptions"
 msgstr ""
 
 msgid "Payments"
@@ -586,6 +846,21 @@ msgid "Platform settings"
 msgstr ""
 
 msgid "Feature flags"
+msgstr ""
+
+msgid "Media"
+msgstr ""
+
+msgid "Audit journal"
+msgstr ""
+
+msgid "Notification templates"
+msgstr ""
+
+msgid "Sent notifications"
+msgstr ""
+
+msgid "Push subscriptions"
 msgstr ""
 
 msgid "Users"

@@ -276,7 +276,8 @@
     },
     "errors": {
       "network": "The connection failed. Check your internet, then try again."
-    }
+    },
+    "deletionCancelled": "Welcome back! Your account will not be deleted."
   },
   "welcome": {
     "metaTitle": "Welcome",
@@ -293,7 +294,7 @@
       "title": "Your language"
     },
     "city": {
-      "title": "Your city",
+      "title": "Your city and date of birth",
       "other": "Another city"
     },
     "done": {
@@ -301,6 +302,13 @@
       "client": "Find your pro, book and pay safely.",
       "pro": "Your showcase is coming soon. Meanwhile, discover other pros.",
       "cta": "Discover"
+    },
+    "birth": {
+      "label": "Your date of birth",
+      "day": "Day",
+      "month": "Month",
+      "year": "Year",
+      "why": "It protects the youngest. It is never shown."
     }
   },
   "profile": {
@@ -322,18 +330,13 @@
     },
     "save": "Save",
     "saved": "Profile saved",
-    "error": "We could not save. Try again in a moment."
+    "error": "We could not save. Try again in a moment.",
+    "photoProcessing": "Your photo is being prepared, a few more seconds.",
+    "photoRejected": "This photo could not be used. Choose another photo."
   },
   "account": {
-    "saved": "Setting saved",
     "error": "That did not work. Try again in a moment.",
     "notifications": "Notifications",
-    "notifyWhatsapp": "On WhatsApp",
-    "notifyWhatsappText": "Bookings, orders and messages when you are not in the app.",
-    "notifyEmail": "By e-mail",
-    "notifyEmailText": "Receipts and summaries.",
-    "notifyPush": "On this phone",
-    "notifyPushText": "Small alerts in the installed app.",
     "password": {
       "title": "Password",
       "textNone": "Optional: you can always sign in with a code.",
@@ -350,14 +353,15 @@
     "signedOutEverywhere": "Signed out on all your devices",
     "delete": {
       "title": "Delete my account",
-      "text": "Your personal information is erased at once.",
+      "text": "Your account is closed at once, then erased after a delay. You can change your mind by signing in again.",
       "cta": "Delete my account",
       "confirmTitle": "Delete your account?",
-      "confirmText": "Your number, name and photo will be erased. This cannot be undone.",
+      "confirmText": "Your number, name and photo will be erased when the delay ends.",
       "confirm": "Yes, delete my account",
       "cancel": "Keep my account",
-      "done": "Your account is deleted"
-    }
+      "done": "Your account will be erased on {date}. Sign in before then to keep it."
+    },
+    "notificationsText": "Alerts, e-mail, WhatsApp and quiet hours."
   },
   "guest": {
     "title": "Book without an account",
@@ -366,5 +370,58 @@
     "cta": "Continue as a guest",
     "saved": "You are registered as a guest: {name}, {phone}.",
     "error": "We could not register you. Check your number."
+  },
+  "notifications": {
+    "title": "Notifications",
+    "bell": "Alerts",
+    "bellUnread": "Alerts: {count, plural, one {# new} other {# new}}",
+    "listTitle": "Your alerts",
+    "markAll": "Mark all as read",
+    "new": "New",
+    "more": "See more",
+    "emptyTitle": "No alerts yet",
+    "emptyText": "Your bookings, orders and messages will show here.",
+    "visitorTitle": "Sign in to get your alerts",
+    "visitorText": "We tell you when a pro answers or an order moves on.",
+    "signIn": "Sign in",
+    "settings": {
+      "title": "How should we tell you?",
+      "saved": "Setting saved",
+      "push": "Alerts on this phone",
+      "pushText": "A small alert even when the app is closed.",
+      "pushUnsupported": "This browser cannot show alerts. Install the app or try Chrome.",
+      "pushDenied": "Alerts are blocked. Allow them in the phone settings.",
+      "pushError": "We could not turn alerts on. Try again in a moment.",
+      "email": "By e-mail",
+      "emailText": "To {email}",
+      "emailMissing": "Add your e-mail in \"Me\" to turn it on.",
+      "whatsapp": "On WhatsApp",
+      "whatsappText": "Bookings and orders, when you are not in the app.",
+      "quietTitle": "Quiet hours",
+      "quietText": "No phone alert, WhatsApp or SMS during these hours.",
+      "quietFrom": "From",
+      "quietTo": "To",
+      "quietSave": "Save the hours",
+      "test": "Send me a test alert",
+      "testSent": "Test alert sent"
+    }
+  },
+  "contact": {
+    "title": "Number and e-mail",
+    "phone": "Phone number",
+    "email": "E-mail address",
+    "none": "Not added yet",
+    "change": "Change",
+    "add": "Add",
+    "sheetPhone": "New number",
+    "sheetEmail": "New e-mail",
+    "sheetText": "We send you a code to check it is yours.",
+    "codeSent": "Type the 6-digit code you received.",
+    "codeLabel": "6-digit code",
+    "newEmail": "Your new e-mail address",
+    "sendCode": "Get the code",
+    "phoneSaved": "Number changed",
+    "emailSaved": "E-mail saved",
+    "error": "That did not work. Try again in a moment."
   }
 }

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-04 21:01+0200\n"
+"POT-Creation-Date: 2026-10-06 20:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -124,6 +124,19 @@ msgstr "Tento súbor nie je použiteľná fotka. Vyber fotku JPEG, PNG alebo Web
 msgid "This photo is too large. Choose a photo under %(size)s MB."
 msgstr "Fotka je príliš veľká. Vyber fotku menšiu ako %(size)s MB."
 
+msgid "This is already your number or e-mail."
+msgstr "Toto už je tvoje číslo alebo e-mail."
+
+msgid "This number or e-mail is already used by another account."
+msgstr "Toto číslo alebo e-mail už používa iný účet."
+
+msgid "This date of birth is not valid. Check the day, month and year."
+msgstr "Tento dátum narodenia nie je platný. Skontroluj deň, mesiac a rok."
+
+#, python-format
+msgid "Solange Glow is for people aged %(age)s and over."
+msgstr "Solange Glow je pre ľudí od %(age)s rokov."
+
 msgid "Phone"
 msgstr "Telefón"
 
@@ -202,6 +215,9 @@ msgstr "Môže sa prihlásiť do administrácie."
 msgid "city"
 msgstr "mesto"
 
+msgid "date of birth"
+msgstr "dátum narodenia"
+
 msgid "photo"
 msgstr "fotka"
 
@@ -213,6 +229,12 @@ msgstr "upozornenia e-mailom"
 
 msgid "push notifications"
 msgstr "push upozornenia"
+
+msgid "quiet hours start"
+msgstr "začiatok tichých hodín"
+
+msgid "quiet hours end"
+msgstr "koniec tichých hodín"
 
 msgid "sign-up channel"
 msgstr "kanál registrácie"
@@ -228,6 +250,9 @@ msgstr "uvítanie dokončené"
 
 msgid "tokens revoked at"
 msgstr "relácie zrušené"
+
+msgid "deletion requested at"
+msgstr "zmazanie požadované"
 
 msgid "deleted at"
 msgstr "zmazané"
@@ -250,14 +275,35 @@ msgstr "SMS"
 msgid "Console (development)"
 msgstr "Konzola (vývoj)"
 
+msgid "Sign-up or sign-in"
+msgstr "Registrácia alebo prihlásenie"
+
+msgid "New number or e-mail"
+msgstr "Nové číslo alebo e-mail"
+
 msgid "destination type"
 msgstr "typ cieľa"
+
+msgid "purpose"
+msgstr "účel"
+
+msgid "account"
+msgstr "účet"
 
 msgid "destination"
 msgstr "cieľ"
 
 msgid "channel"
 msgstr "kanál"
+
+msgid "channels to try"
+msgstr "kanály na vyskúšanie"
+
+msgid "sent at"
+msgstr "odoslané"
+
+msgid "delivery failed at"
+msgstr "odoslanie zlyhalo"
 
 msgid "expires at"
 msgstr "platí do"
@@ -303,9 +349,6 @@ msgstr "prihlásenie"
 
 msgid "sign-in journal"
 msgstr "denník prihlásení"
-
-msgid "account"
-msgstr "účet"
 
 msgid "converted at"
 msgstr "účet vytvorený"
@@ -354,6 +397,42 @@ msgstr "Niektoré údaje chýbajú alebo sú nesprávne."
 msgid "Platform"
 msgstr "Platforma"
 
+msgid "Object"
+msgstr "Objekt"
+
+msgid "Changes"
+msgstr "Zmeny"
+
+msgid "by"
+msgstr "kto"
+
+msgid "action"
+msgstr "akcia"
+
+msgid "object type"
+msgstr "typ objektu"
+
+msgid "object id"
+msgstr "ID objektu"
+
+msgid "object"
+msgstr "objekt"
+
+msgid "before"
+msgstr "predtým"
+
+msgid "after"
+msgstr "potom"
+
+msgid "details"
+msgstr "podrobnosti"
+
+msgid "audit event"
+msgstr "záznam denníka"
+
+msgid "audit journal"
+msgstr "denník auditu"
+
 msgid "Client"
 msgstr "Klientka"
 
@@ -362,6 +441,106 @@ msgstr "Profesionálka"
 
 msgid "Staff"
 msgstr "Tím"
+
+msgid "preview"
+msgstr "náhľad"
+
+msgid "Process the selected media again"
+msgstr "Znova spracovať vybrané médiá"
+
+msgid "Processing started again."
+msgstr "Spracovanie sa znova spustilo."
+
+msgid "This file cannot be used here."
+msgstr "Tento súbor sa tu nedá použiť."
+
+msgid "This type of file is not accepted here. Choose a picture, a video or a voice note."
+msgstr "Tento typ súboru tu nie je povolený. Vyber fotku, video alebo hlasovú správu."
+
+#, python-format
+msgid "This file is too large. Choose a file under %(size)s MB."
+msgstr "Súbor je príliš veľký. Vyber súbor menší ako %(size)s MB."
+
+msgid "This file does not exist or is not yours."
+msgstr "Tento súbor neexistuje alebo nie je tvoj."
+
+msgid "Picture"
+msgstr "Fotka"
+
+msgid "Video"
+msgstr "Video"
+
+msgid "Voice note"
+msgstr "Hlasová správa"
+
+msgid "Public"
+msgstr "Verejné"
+
+msgid "Private (signed links)"
+msgstr "Súkromné (podpísané odkazy)"
+
+msgid "Waiting"
+msgstr "Čaká"
+
+msgid "Processing"
+msgstr "Spracúva sa"
+
+msgid "Ready"
+msgstr "Pripravené"
+
+msgid "Refused"
+msgstr "Odmietnuté"
+
+msgid "Failed"
+msgstr "Zlyhalo"
+
+msgid "owner"
+msgstr "vlastník"
+
+msgid "type"
+msgstr "typ"
+
+msgid "use"
+msgstr "použitie"
+
+msgid "visibility"
+msgstr "viditeľnosť"
+
+msgid "original file"
+msgstr "pôvodný súbor"
+
+msgid "file name"
+msgstr "názov súboru"
+
+msgid "content type"
+msgstr "typ obsahu"
+
+msgid "size"
+msgstr "veľkosť"
+
+msgid "width"
+msgstr "šírka"
+
+msgid "height"
+msgstr "výška"
+
+msgid "duration (s)"
+msgstr "trvanie (s)"
+
+msgid "variants"
+msgstr "verzie"
+
+msgid "blur preview"
+msgstr "rozmazaný náhľad"
+
+msgid "error"
+msgstr "chyba"
+
+msgid "processed at"
+msgstr "spracované"
+
+msgid "media"
+msgstr "médiá"
 
 msgid "created at"
 msgstr "vytvorené"
@@ -448,9 +627,6 @@ msgstr "Použi malé písmená oddelené bodkami, napríklad escrow.ship_deadlin
 msgid "Leave empty for the default value used in every country."
 msgstr "Nechaj prázdne pre predvolenú hodnotu vo všetkých krajinách."
 
-msgid "type"
-msgstr "typ"
-
 msgid "value"
 msgstr "hodnota"
 
@@ -505,8 +681,92 @@ msgstr "Správy"
 msgid "Moderation"
 msgstr "Moderovanie"
 
+msgid "Send this event to me (test)"
+msgstr "Poslať mi túto udalosť (test)"
+
+msgid "Test sent to your account."
+msgstr "Test odoslaný na tvoj účet."
+
 msgid "Notifications"
 msgstr "Upozornenia"
+
+msgid "In the app"
+msgstr "V aplikácii"
+
+msgid "Phone alert (push)"
+msgstr "Upozornenie na telefóne (push)"
+
+msgid "event"
+msgstr "udalosť"
+
+msgid "e.g. booking.confirmed"
+msgstr "napr. booking.confirmed"
+
+msgid "title"
+msgstr "nadpis"
+
+msgid "text"
+msgstr "text"
+
+msgid "link"
+msgstr "odkaz"
+
+msgid "Page opened on tap, e.g. /me"
+msgstr "Stránka otvorená po dotyku, napr. /me"
+
+msgid "when is it sent?"
+msgstr "kedy sa posiela?"
+
+msgid "notification template"
+msgstr "šablóna upozornenia"
+
+msgid "notification templates"
+msgstr "šablóny upozornení"
+
+msgid "person"
+msgstr "osoba"
+
+msgid "shown in the app"
+msgstr "zobrazené v aplikácii"
+
+msgid "read at"
+msgstr "prečítané"
+
+msgid "notification"
+msgstr "upozornenie"
+
+msgid "notifications"
+msgstr "upozornenia"
+
+msgid "Scheduled"
+msgstr "Naplánované"
+
+msgid "Sent"
+msgstr "Odoslané"
+
+msgid "Not sent (channel off)"
+msgstr "Neodoslané (kanál vypnutý)"
+
+msgid "planned for"
+msgstr "naplánované na"
+
+msgid "sending"
+msgstr "odoslanie"
+
+msgid "sendings"
+msgstr "odoslania"
+
+msgid "address"
+msgstr "adresa"
+
+msgid "last used"
+msgstr "naposledy použité"
+
+msgid "push subscription"
+msgstr "odber upozornení"
+
+msgid "push subscriptions"
+msgstr "odbery upozornení"
 
 msgid "Payments"
 msgstr "Platby"
@@ -592,6 +852,21 @@ msgstr "Nastavenia"
 msgid "Feature flags"
 msgstr "Prepínače funkcií"
 
+msgid "Media"
+msgstr "Médiá"
+
+msgid "Audit journal"
+msgstr "Denník auditu"
+
+msgid "Notification templates"
+msgstr "Šablóny upozornení"
+
+msgid "Sent notifications"
+msgstr "Odoslané upozornenia"
+
+msgid "Push subscriptions"
+msgstr "Odbery upozornení"
+
 msgid "Users"
 msgstr "Používatelia"
 
@@ -606,3 +881,6 @@ msgstr "Odbory"
 
 msgid "Groups"
 msgstr "Skupiny"
+
+#~ msgid "Sendings"
+#~ msgstr "Odoslania"
