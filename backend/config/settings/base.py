@@ -433,6 +433,37 @@ UNFOLD = {
                         "icon": "toggle_on",
                         "link": reverse_lazy("admin:core_featureflag_changelist"),
                     },
+                    {
+                        "title": _("Media"),
+                        "icon": "perm_media",
+                        "link": reverse_lazy("admin:core_mediaasset_changelist"),
+                    },
+                    {
+                        "title": _("Audit journal"),
+                        "icon": "manage_search",
+                        "link": reverse_lazy("admin:core_auditevent_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("Notifications"),
+                "separator": True,
+                "items": [
+                    {
+                        "title": _("Notification templates"),
+                        "icon": "edit_note",
+                        "link": reverse_lazy("admin:notifications_notificationtemplate_changelist"),
+                    },
+                    {
+                        "title": _("Sent notifications"),
+                        "icon": "notifications",
+                        "link": reverse_lazy("admin:notifications_notification_changelist"),
+                    },
+                    {
+                        "title": _("Push subscriptions"),
+                        "icon": "phonelink_ring",
+                        "link": reverse_lazy("admin:notifications_pushsubscription_changelist"),
+                    },
                 ],
             },
             {
