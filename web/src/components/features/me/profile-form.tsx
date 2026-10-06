@@ -1,7 +1,6 @@
 "use client";
 
-import { zodResolver } from "@/lib/forms/zod-resolver";
-import { Camera, Trash, User } from "@phosphor-icons/react";
+import { Camera, CircleNotch, Trash, User, WarningCircle } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
@@ -10,13 +9,17 @@ import { z } from "zod";
 
 import { ErrorMessage } from "@/components/features/auth/error-message";
 import { Avatar } from "@/components/ui/avatar";
+import { BlurPreview } from "@/components/ui/blur-preview";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/toast";
-import { getCountries, removeAvatar, updateMe, uploadAvatar, type Me } from "@/lib/api/accounts";
+import { getCountries, removePhoto, updateMe, uploadPhoto, type Me } from "@/lib/api/accounts";
 import { ApiError } from "@/lib/api/client";
 import { useSetMe } from "@/lib/auth/use-me";
+import { zodResolver } from "@/lib/forms/zod-resolver";
 import { routing } from "@/lib/i18n/routing";
+
+import { ContactChange } from "./contact-change";
 
 const CURRENCIES = ["XOF", "EUR"] as const;
 
@@ -74,7 +77,7 @@ export function ProfileForm({ me }: { me: Me }) {
     setError(undefined);
     setPhotoBusy(true);
     try {
-      setMe(await uploadAvatar(file));
+      setMe(await uploadPhoto(file));
       toast(t("photoSaved"));
     } catch (err) {
       setError(err instanceof ApiError && err.body.message ? err.body.message : t("error"));
@@ -85,22 +88,25 @@ export function ProfileForm({ me }: { me: Me }) {
   };
 
   const displayName = [me.first_name, me.last_name].filter(Boolean).join(" ") || t("noName");
+  const photo = me.photo;
+  const photoReady = photo?.status === "ready";
+  const photoProcessing = photo?.status === "pending" || photo?.status === "processing";
+  const photoUrl = photoReady ? (photo.urls.medium ?? photo.urls.large) : undefined;
+  const hasName = !!(me.first_name || me.last_name);
+  // While the photo is prepared (a few seconds), its blurred preview stands in.
+  const picture =
+    photoProcessing && photo?.blurhash ? (
+      <BlurPreview hash={photo.blurhash} />
+    ) : hasName ? undefined : (
+      <span className="flex size-full items-center justify-center">
+        <User size={64} weight="duotone" />
+      </span>
+    );
 
   return (
     <section aria-labelledby="profile-title" className="flex flex-col gap-6">
       <div className="flex items-center gap-4">
-        <Avatar
-          name={displayName}
-          src={me.avatar_url ?? undefined}
-          size="xl"
-          picture={
-            me.first_name || me.last_name ? undefined : (
-              <span className="flex size-full items-center justify-center">
-                <User size={64} weight="duotone" />
-              </span>
-            )
-          }
-        />
+        <Avatar name={displayName} src={photoUrl} size="xl" picture={picture} />
         <div className="flex min-w-0 flex-col gap-2">
           <h2 id="profile-title" className="font-display text-headline font-black break-words">
             {displayName}
@@ -108,6 +114,19 @@ export function ProfileForm({ me }: { me: Me }) {
           <p className="text-prune-doux">{me.phone ?? me.email}</p>
         </div>
       </div>
+
+      {photoProcessing && (
+        <p role="status" className="text-small text-prune-doux flex items-center gap-2">
+          <CircleNotch aria-hidden size={20} className="animate-spin motion-reduce:animate-none" />
+          {t("photoProcessing")}
+        </p>
+      )}
+      {photo && (photo.status === "rejected" || photo.status === "failed") && (
+        <p role="alert" className="text-small text-alerte flex items-start gap-2 font-bold">
+          <WarningCircle aria-hidden size={20} weight="fill" className="mt-0.5 shrink-0" />
+          {t("photoRejected")}
+        </p>
+      )}
 
       <div className="flex flex-wrap gap-2">
         <input
@@ -117,7 +136,7 @@ export function ProfileForm({ me }: { me: Me }) {
           className="sr-only"
           id="avatar-file"
           tabIndex={-1}
-          aria-label={me.avatar_url ? t("changePhoto") : t("addPhoto")}
+          aria-label={photo ? t("changePhoto") : t("addPhoto")}
           onChange={(event) => void onPhoto(event.target.files?.[0])}
         />
         <Button
@@ -126,19 +145,21 @@ export function ProfileForm({ me }: { me: Me }) {
           disabled={photoBusy}
           onClick={() => fileInput.current?.click()}
         >
-          {me.avatar_url ? t("changePhoto") : t("addPhoto")}
+          {photo ? t("changePhoto") : t("addPhoto")}
         </Button>
-        {me.avatar_url && (
+        {photo && (
           <Button
             variant="quiet"
             icon={<Trash size={22} weight="duotone" />}
             disabled={photoBusy}
-            onClick={async () => setMe(await removeAvatar())}
+            onClick={async () => setMe(await removePhoto())}
           >
             {t("removePhoto")}
           </Button>
         )}
       </div>
+
+      <ContactChange me={me} />
 
       <form onSubmit={onSubmit} className="flex flex-col gap-5" noValidate>
         <Input label={t("firstName")} autoComplete="given-name" {...form.register("first_name")} />

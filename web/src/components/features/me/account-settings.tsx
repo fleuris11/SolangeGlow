@@ -1,53 +1,30 @@
 "use client";
 
-import {
-  BellRinging,
-  DeviceMobile,
-  EnvelopeSimple,
-  Key,
-  SignOut,
-  Trash,
-  WhatsappLogo,
-} from "@phosphor-icons/react";
-import { useTranslations } from "next-intl";
+import { BellRinging, CaretRight, DeviceMobile, Key, SignOut, Trash } from "@phosphor-icons/react";
+import { useLocale, useTranslations } from "next-intl";
 import { useState, type FormEvent } from "react";
 
 import { ErrorMessage } from "@/components/features/auth/error-message";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet } from "@/components/ui/sheet";
-import { SwitchRow } from "@/components/ui/switch-row";
 import { useToast } from "@/components/ui/toast";
-import {
-  deleteAccount,
-  logout,
-  logoutEverywhere,
-  setPassword,
-  updateMe,
-  type Me,
-} from "@/lib/api/accounts";
+import { deleteAccount, logout, logoutEverywhere, setPassword, type Me } from "@/lib/api/accounts";
 import { ApiError } from "@/lib/api/client";
 import { useSetMe } from "@/lib/auth/use-me";
-import { useRouter } from "@/lib/i18n/navigation";
+import { Link, useRouter } from "@/lib/i18n/navigation";
 
-/** Notifications, optional password, sessions and account deletion. */
+/** Link to notifications, optional password, sessions and account deletion. */
 export function AccountSettings({ me }: { me: Me }) {
   const t = useTranslations("account");
   const toast = useToast();
   const setMe = useSetMe();
   const router = useRouter();
+  const locale = useLocale();
   const [password, setPasswordValue] = useState("");
   const [passwordError, setPasswordError] = useState<string>();
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [busy, setBusy] = useState(false);
-
-  const toggle = async (
-    field: "notify_whatsapp" | "notify_email" | "notify_push",
-    value: boolean,
-  ) => {
-    setMe(await updateMe({ [field]: value }));
-    toast(t("saved"));
-  };
 
   const savePassword = async (event: FormEvent) => {
     event.preventDefault();
@@ -78,32 +55,17 @@ export function AccountSettings({ me }: { me: Me }) {
 
   return (
     <div className="flex flex-col gap-10">
-      <section aria-labelledby="notify-title" className="flex flex-col gap-3">
-        <h2 id="notify-title" className="text-title font-bold">
-          {t("notifications")}
-        </h2>
-        <SwitchRow
-          icon={<WhatsappLogo size={28} weight="duotone" />}
-          label={t("notifyWhatsapp")}
-          description={t("notifyWhatsappText")}
-          checked={me.notify_whatsapp}
-          onChange={(value) => void toggle("notify_whatsapp", value)}
-        />
-        <SwitchRow
-          icon={<EnvelopeSimple size={28} weight="duotone" />}
-          label={t("notifyEmail")}
-          description={t("notifyEmailText")}
-          checked={me.notify_email}
-          onChange={(value) => void toggle("notify_email", value)}
-        />
-        <SwitchRow
-          icon={<BellRinging size={28} weight="duotone" />}
-          label={t("notifyPush")}
-          description={t("notifyPushText")}
-          checked={me.notify_push}
-          onChange={(value) => void toggle("notify_push", value)}
-        />
-      </section>
+      <Link
+        href="/notifications"
+        className="border-trait bg-carte rounded-card flex items-center gap-4 border p-4"
+      >
+        <BellRinging aria-hidden size={28} weight="duotone" className="text-hibiscus shrink-0" />
+        <span className="flex min-w-0 flex-1 flex-col">
+          <span className="font-bold">{t("notifications")}</span>
+          <span className="text-small text-prune-doux">{t("notificationsText")}</span>
+        </span>
+        <CaretRight aria-hidden size={20} weight="bold" />
+      </Link>
 
       <section aria-labelledby="password-title" className="flex flex-col gap-3">
         <h2 id="password-title" className="text-title font-bold">
@@ -174,7 +136,13 @@ export function AccountSettings({ me }: { me: Me }) {
               size="lg"
               fullWidth
               disabled={busy}
-              onClick={() => void leave(deleteAccount, t("delete.done"))}
+              onClick={async () => {
+                const { erase_after: eraseAfter } = await deleteAccount();
+                const date = new Intl.DateTimeFormat(locale, { dateStyle: "long" }).format(
+                  new Date(eraseAfter),
+                );
+                await leave(async () => undefined, t("delete.done", { date }));
+              }}
             >
               {t("delete.confirm")}
             </Button>

@@ -168,12 +168,18 @@ describe("WelcomeFlow", () => {
     await userEvent.click(screen.getByRole("radio", { name: "English" }));
     await userEvent.click(screen.getByRole("button", { name: "Continuer" }));
 
+    expect(screen.getByRole("heading", { name: "Ta ville et ta date de naissance" })).toBeVisible();
     await userEvent.click(screen.getByRole("button", { name: "Abomey-Calavi" }));
+    expect(screen.getByRole("button", { name: "C'est parti" })).toBeDisabled();
+    await userEvent.selectOptions(screen.getByLabelText("Jour"), "12");
+    await userEvent.selectOptions(screen.getByLabelText("Mois"), "4");
+    await userEvent.selectOptions(screen.getByLabelText("Année"), "1995");
     await userEvent.click(screen.getByRole("button", { name: "C'est parti" }));
 
     expect(await screen.findByRole("img", { name: "Bienvenue !" })).toBeInTheDocument();
     expect(sentBody(fetchMock, "/me/onboarding")).toEqual({
       mode: "pro",
+      birth_date: "1995-04-12",
       trades: ["braids"],
       language: "en",
       city: "Abomey-Calavi",

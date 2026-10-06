@@ -22,6 +22,7 @@ import { useRouter } from "@/lib/i18n/navigation";
 import { routing, type Locale } from "@/lib/i18n/routing";
 import { usePreferences } from "@/lib/preferences/preferences-provider";
 
+import { BirthDateField, EMPTY_BIRTH_DATE, toIsoDate, type BirthDate } from "./birth-date-field";
 import { ErrorMessage } from "./error-message";
 
 type Mode = "client" | "pro";
@@ -44,6 +45,7 @@ export function WelcomeFlow({ as }: { as?: Mode }) {
   const [language, setLanguage] = useState<Locale>(locale);
   const [city, setCity] = useState(prefs.city);
   const [otherCity, setOtherCity] = useState("");
+  const [birthDate, setBirthDate] = useState<BirthDate>(EMPTY_BIRTH_DATE);
   const [done, setDone] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string>();
@@ -59,8 +61,13 @@ export function WelcomeFlow({ as }: { as?: Mode }) {
     trades.data?.map((trade) => ({ key: trade.key, name: trade.name })) ??
     TRADES.map((key) => ({ key, name: tTrades(key) }));
 
+  const birthIso = toIsoDate(birthDate);
   const canContinue =
-    step === 1 ? mode === "client" || (mode === "pro" && chosenTrades.length > 0) : true;
+    step === 1
+      ? mode === "client" || (mode === "pro" && chosenTrades.length > 0)
+      : step === 3
+        ? birthIso !== null
+        : true;
 
   const finish = async () => {
     setError(undefined);
@@ -69,6 +76,7 @@ export function WelcomeFlow({ as }: { as?: Mode }) {
     try {
       const updated = await completeOnboarding({
         mode: mode ?? "client",
+        birth_date: birthIso ?? "",
         trades: mode === "pro" ? chosenTrades : undefined,
         language,
         city: finalCity,
@@ -213,6 +221,7 @@ export function WelcomeFlow({ as }: { as?: Mode }) {
             maxLength={80}
             autoComplete="address-level2"
           />
+          <BirthDateField value={birthDate} onChange={setBirthDate} />
         </>
       )}
 

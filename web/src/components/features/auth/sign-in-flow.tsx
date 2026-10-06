@@ -79,7 +79,7 @@ export function SignInFlow({ as }: { as?: "client" | "pro" }) {
     }
   };
 
-  const signedIn = async ({ created, user }: SignIn) => {
+  const signedIn = async ({ created, user, deletion_cancelled: deletionCancelled }: SignIn) => {
     let me = user;
     if (created) {
       // Nothing is lost: choices made as a visitor become the profile's.
@@ -89,7 +89,7 @@ export function SignInFlow({ as }: { as?: "client" | "pro" }) {
     if (me.onboarding_required) {
       router.replace(as ? { pathname: "/welcome", query: { as } } : "/welcome");
     } else {
-      toast(t("welcomeBack"));
+      toast(deletionCancelled ? t("deletionCancelled") : t("welcomeBack"));
       router.replace("/");
     }
   };
