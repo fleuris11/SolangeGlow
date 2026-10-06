@@ -6,7 +6,7 @@ import io
 
 import blurhash
 from django.core.files.base import ContentFile
-from PIL import Image, ImageOps, UnidentifiedImageError
+from PIL import Image, ImageOps
 
 from apps.core.selectors import get_setting
 
@@ -27,7 +27,7 @@ def open_image(data: bytes) -> Image.Image:
         probe.verify()
         image = Image.open(io.BytesIO(data))
         image.load()
-    except (UnidentifiedImageError, OSError, SyntaxError, Image.DecompressionBombError) as exc:
+    except (OSError, SyntaxError, Image.DecompressionBombError) as exc:  # OSError: unidentified
         raise InvalidImage(str(exc)) from exc
     # Turn the picture upright, then forget every metadata (EXIF, GPS, ICC).
     image = ImageOps.exif_transpose(image)
@@ -37,7 +37,8 @@ def open_image(data: bytes) -> Image.Image:
 def compute_blurhash(image: Image.Image) -> str:
     small = image.convert("RGB").copy()
     small.thumbnail((32, 32))
-    pixels = list(small.getdata())
+    raw = small.tobytes()
+    pixels = [tuple(raw[i : i + 3]) for i in range(0, len(raw), 3)]
     rows = [pixels[y * small.width : (y + 1) * small.width] for y in range(small.height)]
     return blurhash.encode(rows, components_x=4, components_y=3)
 
