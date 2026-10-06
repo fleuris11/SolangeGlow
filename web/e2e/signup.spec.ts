@@ -8,13 +8,40 @@ function newBeninNumber(): string {
   return `0197${String(Math.floor(Math.random() * 1_000_000)).padStart(6, "0")}`;
 }
 
-/** Reads the code the way the person would read it on WhatsApp (dev-only endpoint). */
+/**
+ * Reads the code the way the person would read it on WhatsApp (dev-only endpoint).
+ * The code is sent by the Celery worker: wait until it is there.
+ */
 async function lastCode(page: Page, international: string): Promise<string> {
-  const response = await page.request.get(
-    `/api/v1/dev/last-code?destination=${encodeURIComponent(international)}`,
-  );
-  expect(response.ok(), "dev code endpoint (development only)").toBeTruthy();
-  return (await response.json()).code;
+  const url = `/api/v1/dev/last-code?destination=${encodeURIComponent(international)}`;
+  let code = "";
+  await expect
+    .poll(
+      async () => {
+        const response = await page.request.get(url);
+        code = response.ok() ? (await response.json()).code : "";
+        return code;
+      },
+      { timeout: 30_000, message: "code sent by the worker (dev endpoint)" },
+    )
+    .toMatch(/^\d{6}$/);
+  return code;
+}
+
+/** A small PNG, generated in the page, as an uploaded profile photo. */
+async function photoFile(page: Page): Promise<Buffer> {
+  const dataUrl = await page.evaluate(() => {
+    const canvas = document.createElement("canvas");
+    canvas.width = 600;
+    canvas.height = 400;
+    const context = canvas.getContext("2d")!;
+    context.fillStyle = "#c8102e";
+    context.fillRect(0, 0, 600, 400);
+    context.fillStyle = "#e8b04b";
+    context.fillRect(200, 100, 200, 200);
+    return canvas.toDataURL("image/png");
+  });
+  return Buffer.from(dataUrl.split(",")[1]!, "base64");
 }
 
 async function expectNoSeriousA11yIssue(page: Page) {
@@ -40,8 +67,7 @@ test.describe("sign-up on a small phone", () => {
   });
 
   test("phone number → code → welcome → home, signed in", async ({ page }) => {
-    // Needs the Django backend in development mode (codes read from /api/v1/dev/last-code).
-    test.skip(!!process.env.CI && !process.env.E2E_WITH_BACKEND, "runs with docker compose");
+    test.setTimeout(240_000);
     const national = newBeninNumber();
     const international = `+229${national}`;
 
@@ -84,8 +110,13 @@ test.describe("sign-up on a small phone", () => {
     await expect(page.getByRole("heading", { name: "Ta langue" })).toBeVisible();
     await page.getByRole("button", { name: "Continuer" }).click();
 
-    await expect(page.getByRole("heading", { name: "Ta ville" })).toBeVisible();
+    await expect(
+      page.getByRole("heading", { name: "Ta ville et ta date de naissance" }),
+    ).toBeVisible();
     await page.getByRole("button", { name: "Abomey-Calavi" }).click();
+    await page.getByLabel("Jour").selectOption("12");
+    await page.getByLabel("Mois").selectOption("4");
+    await page.getByLabel("Année").selectOption("1995");
     await page.screenshot({ path: "e2e/screenshots/welcome-3-city.png", fullPage: true });
     await page.getByRole("button", { name: "C'est parti" }).click();
 
@@ -100,10 +131,36 @@ test.describe("sign-up on a small phone", () => {
       .last()
       .getByRole("link", { name: "Moi" })
       .click();
-    await expect(page.getByText(international)).toBeVisible();
+    await expect(page.getByText(international).first()).toBeVisible();
     await expect(page.getByLabel("Ville", { exact: true })).toHaveValue("Abomey-Calavi");
     await expectNoSeriousA11yIssue(page);
     await page.screenshot({ path: "e2e/screenshots/me-signed-in.png", fullPage: true });
+
+    // Profile photo: processed by the worker, stored on MinIO, served through /s3.
+    await page.getByLabel("Ajouter une photo").setInputFiles({
+      name: "moi.png",
+      mimeType: "image/png",
+      buffer: await photoFile(page),
+    });
+    const photo = page.locator('img[src*="/s3/"]').first();
+    await expect(photo).toHaveAttribute("src", /\/s3\/.+\.webp/, { timeout: 60_000 });
+    await expect
+      .poll(async () => photo.evaluate((img: HTMLImageElement) => img.naturalWidth))
+      .toBeGreaterThan(0);
+    await page.screenshot({ path: "e2e/screenshots/me-photo.png", fullPage: true });
+
+    // The welcome notification is waiting; reading it clears the counter.
+    await page
+      .getByRole("link", { name: /Alertes : 1 nouvelle/ })
+      .first()
+      .click();
+    await expect(page).toHaveURL(/\/fr\/notifications$/);
+    await expect(page.getByRole("button", { name: /Bienvenue sur Solange Glow/ })).toBeVisible();
+    await expectNoSeriousA11yIssue(page);
+    await page.screenshot({ path: "e2e/screenshots/notifications.png", fullPage: true });
+    await page.getByRole("button", { name: "Tout marquer comme lu" }).click();
+    await expect(page.getByRole("link", { name: "Alertes", exact: true }).first()).toBeVisible();
+    await page.goto("/fr/me");
 
     // Signing out: "Me" invites to sign in again.
     await page.getByRole("button", { name: "Me déconnecter", exact: true }).click();
