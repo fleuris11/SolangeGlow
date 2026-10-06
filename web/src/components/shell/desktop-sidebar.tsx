@@ -10,6 +10,7 @@ import { Link, usePathname } from "@/lib/i18n/navigation";
 import { AudioToggle } from "./audio-toggle";
 import { CityPicker } from "./city-picker";
 import { isActive, NAV_ITEMS } from "./nav-items";
+import { NotificationBell } from "./notification-bell";
 
 /** Computer layout: navigation on the left, always visible. */
 export function DesktopSidebar() {
@@ -48,6 +49,9 @@ export function DesktopSidebar() {
               </li>
             );
           })}
+          <li>
+            <NotificationBell layout="row" />
+          </li>
         </ul>
       </nav>
       <div className="border-trait flex flex-col items-start gap-2 border-t pt-4">

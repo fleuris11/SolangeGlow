@@ -2,18 +2,15 @@
 
 import { useEffect } from "react";
 
-/** Registers the offline cache in production builds only (it would fight hot reload). */
+/**
+ * Registers the service worker: offline cache + phone alerts in production;
+ * phone alerts only in development (`?dev=1` turns the cache off, see public/sw.js).
+ */
 export function ServiceWorkerRegistration() {
   useEffect(() => {
     if (!("serviceWorker" in navigator)) return;
-    if (process.env.NODE_ENV === "production") {
-      navigator.serviceWorker.register("/sw.js", { scope: "/" }).catch(() => undefined);
-    } else {
-      navigator.serviceWorker
-        .getRegistrations()
-        .then((registrations) => registrations.forEach((r) => r.unregister()))
-        .catch(() => undefined);
-    }
+    const url = process.env.NODE_ENV === "production" ? "/sw.js" : "/sw.js?dev=1";
+    navigator.serviceWorker.register(url, { scope: "/" }).catch(() => undefined);
   }, []);
 
   return null;

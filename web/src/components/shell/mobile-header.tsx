@@ -5,6 +5,7 @@ import { Link } from "@/lib/i18n/navigation";
 
 import { AudioToggle } from "./audio-toggle";
 import { CityPicker } from "./city-picker";
+import { NotificationBell } from "./notification-bell";
 
 /** Mobile header: chosen city, search, audio mode. */
 export function MobileHeader() {
@@ -21,6 +22,7 @@ export function MobileHeader() {
           <span>{t("search")}</span>
         </Link>
         <AudioToggle compact />
+        <NotificationBell />
       </div>
     </header>
   );
