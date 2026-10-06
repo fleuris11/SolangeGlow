@@ -71,6 +71,10 @@ docker-compose.override.yml
 /media/
 /uploads/
 
+# --- API schema exported by the CI (the web client types are versioned instead) ---
+backend/openapi.json
+web/openapi.json
+
 # --- Editors and OS ---
 .vscode/*
 !.vscode/extensions.json
