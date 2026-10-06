@@ -238,6 +238,8 @@ SPECTACULAR_SETTINGS = {
     "SERVE_INCLUDE_SCHEMA": False,
     "SCHEMA_PATH_PREFIX": r"/api/v[0-9]+",
     "COMPONENT_SPLIT_REQUEST": True,
+    # One name for every language field (the CI fails on schema warnings).
+    "ENUM_NAME_OVERRIDES": {"LanguageEnum": LANGUAGES},
 }
 
 SIMPLE_JWT = {

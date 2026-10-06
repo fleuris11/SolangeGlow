@@ -1,4 +1,4 @@
-from drf_spectacular.utils import extend_schema, inline_serializer
+from drf_spectacular.utils import extend_schema
 from rest_framework import serializers, status
 from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.permissions import IsAuthenticated
@@ -10,22 +10,24 @@ from apps.accounts.throttling import SettingRateThrottle
 from . import services
 from .purposes import PURPOSES
 
-MediaPayload = inline_serializer(
-    "Media",
-    {
-        "id": serializers.UUIDField(),
-        "kind": serializers.ChoiceField(choices=["image", "video", "audio"]),
-        "status": serializers.ChoiceField(
-            choices=["pending", "processing", "ready", "rejected", "failed"]
-        ),
-        "error": serializers.CharField(allow_null=True),
-        "blurhash": serializers.CharField(allow_null=True),
-        "width": serializers.IntegerField(allow_null=True),
-        "height": serializers.IntegerField(allow_null=True),
-        "duration": serializers.FloatField(allow_null=True),
-        "urls": serializers.DictField(child=serializers.CharField()),
-    },
-)
+
+class MediaSerializer(serializers.Serializer):
+    """What the web app needs to show a media (see services.asset_payload)."""
+
+    id = serializers.UUIDField()
+    kind = serializers.ChoiceField(choices=["image", "video", "audio"])
+    status = serializers.ChoiceField(
+        choices=["pending", "processing", "ready", "rejected", "failed"]
+    )
+    error = serializers.CharField(allow_null=True)
+    blurhash = serializers.CharField(allow_null=True)
+    width = serializers.IntegerField(allow_null=True)
+    height = serializers.IntegerField(allow_null=True)
+    duration = serializers.FloatField(allow_null=True)
+    urls = serializers.DictField(child=serializers.CharField())
+
+
+MediaPayload = MediaSerializer
 
 
 class MediaUploadSerializer(serializers.Serializer):

@@ -6,3 +6,6 @@ class AccountsConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
     name = "apps.accounts"
     verbose_name = _("Accounts")
+
+    def ready(self):
+        from . import schema  # noqa: F401  (registers the OpenAPI description of the sign-in)

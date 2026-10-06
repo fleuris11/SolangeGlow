@@ -31,6 +31,8 @@ class NotificationListView(ListAPIView):
     serializer_class = NotificationSerializer
 
     def get_queryset(self):
+        if getattr(self, "swagger_fake_view", False):  # schema generation
+            return Notification.objects.none()
         return Notification.objects.filter(user=self.request.user, in_app=True)
 
     @extend_schema(tags=["notifications"])

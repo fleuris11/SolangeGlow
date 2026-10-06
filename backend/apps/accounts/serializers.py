@@ -5,14 +5,14 @@ from drf_spectacular.utils import extend_schema_field
 from rest_framework import serializers
 
 from apps.core.choices import Role
-from apps.core.media.api import MediaPayload
+from apps.core.media.api import MediaSerializer
 from apps.core.media.services import asset_payload
 from apps.core.models import Country, Currency
 
 from . import selectors
 from .models import GuestIdentity, User
 
-LANGUAGE_CHOICES = [code for code, _name in settings.LANGUAGES]
+LANGUAGE_CHOICES = settings.LANGUAGES  # same choice set as the models (one enum in the schema)
 
 
 class CodeRequestSerializer(serializers.Serializer):
@@ -99,8 +99,25 @@ class MeSerializer(serializers.ModelSerializer):
             "created_at",
         ]
         read_only_fields = ["id", "roles", "created_at"]
+        # Always present in answers (PATCH stays partial): typed as required in the schema.
+        extra_kwargs = {
+            name: {"required": True}
+            for name in [
+                "first_name",
+                "last_name",
+                "city",
+                "preferred_language",
+                "theme",
+                "text_size",
+                "data_saver",
+                "audio_mode",
+                "notify_whatsapp",
+                "notify_email",
+                "notify_push",
+            ]
+        }
 
-    @extend_schema_field(MediaPayload)
+    @extend_schema_field(MediaSerializer(allow_null=True))
     def get_photo(self, user):
         return asset_payload(user.photo)
 

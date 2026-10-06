@@ -3,7 +3,7 @@ import contextlib
 from django.conf import settings
 from django.core.cache import cache
 from django.utils.translation import gettext_lazy as _
-from drf_spectacular.utils import OpenApiParameter, extend_schema, inline_serializer
+from drf_spectacular.utils import extend_schema, inline_serializer
 from rest_framework import exceptions, serializers, status
 from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework.permissions import AllowAny, IsAuthenticated
@@ -250,7 +250,7 @@ class PhotoView(APIView):
         data = MeSerializer(user, context={"request": request}).data
         return Response(data, status=status.HTTP_202_ACCEPTED)
 
-    @extend_schema(tags=["me"], request=None, responses=MeSerializer)
+    @extend_schema(tags=["me"], request=None, responses={200: MeSerializer})
     def delete(self, request):
         user = services.remove_photo(request.user)
         return Response(MeSerializer(user, context={"request": request}).data)
@@ -357,11 +357,7 @@ class DevLastCodeView(PublicView):
 
     throttle_classes = []
 
-    @extend_schema(
-        tags=["dev"],
-        parameters=[OpenApiParameter("destination", str, required=True)],
-        responses=inline_serializer("DevCode", {"code": serializers.CharField()}),
-    )
+    @extend_schema(exclude=True)  # development only: never part of the public API
     def get(self, request):
         if not settings.ACCOUNTS_DEV_OTP_ENDPOINT:
             raise exceptions.NotFound()
