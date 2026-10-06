@@ -343,3 +343,25 @@ def test_seeded_templates_exist_in_three_languages():
 
     assert template.title_fr and template.title_en and template.title_sk
     assert timezone.now()
+
+
+def test_generate_vapid_keys_prints_env_lines(settings):
+    from io import StringIO
+
+    from django.core.management import call_command
+
+    from apps.notifications import vapid
+
+    out = StringIO()
+    call_command("generate_vapid_keys", stdout=out)
+    public_line, private_line = out.getvalue().strip().splitlines()
+    public_key = public_line.removeprefix("VAPID_PUBLIC_KEY=")
+    private_key = private_line.removeprefix("VAPID_PRIVATE_KEY=").strip('"')
+    settings.VAPID_PUBLIC_KEY = public_key
+    settings.VAPID_PRIVATE_KEY = private_key
+    vapid.keys.cache_clear()
+    try:
+        assert vapid.public_key() == public_key
+        assert vapid.signer().private_key is not None
+    finally:
+        vapid.keys.cache_clear()
