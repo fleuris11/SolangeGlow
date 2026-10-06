@@ -3,10 +3,17 @@ import userEvent from "@testing-library/user-event";
 import { useRouter as getRouterMock } from "next/navigation";
 import { describe, expect, it, vi } from "vitest";
 
-import { ME, mockApi, sentBody } from "@/test/fetch-mock";
+import { called, ME, mockApi, sentBody } from "@/test/fetch-mock";
 import { renderWithProviders } from "@/test/render";
 
 import { MeContent } from "./me-content";
+
+// The signed-in screens are loaded on demand (next/dynamic): load them before the tests
+// so that the first render does not wait for the module graph.
+import "./account-settings";
+import "./guest-card";
+import "./profile-form";
+import "@/components/features/settings/display-settings";
 
 const routerMock = getRouterMock() as unknown as { replace: ReturnType<typeof vi.fn> };
 const SIGNED_IN = { ...ME, first_name: "Awa", onboarding_required: false };
@@ -24,8 +31,10 @@ describe("MeContent for a visitor", () => {
       "href",
       "/fr/auth",
     );
-    expect(screen.getByRole("heading", { name: "Réserver sans compte" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Affichage" })).toBeInTheDocument();
+    expect(
+      await screen.findByRole("heading", { name: "Réserver sans compte" }),
+    ).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: "Affichage" })).toBeInTheDocument();
   });
 
   it("registers a guest with a first name and a number", async () => {
@@ -67,7 +76,7 @@ describe("MeContent when signed in", () => {
     renderWithProviders(<MeContent />);
 
     expect(await screen.findByRole("heading", { name: "Awa" })).toBeInTheDocument();
-    expect(screen.getByText("+2290197123456")).toBeInTheDocument();
+    expect(screen.getAllByText("+2290197123456").length).toBeGreaterThan(0);
 
     await userEvent.type(screen.getByLabelText("Ville"), "Cotonou");
     await userEvent.click(screen.getByRole("button", { name: "Enregistrer" }));
@@ -89,20 +98,25 @@ describe("MeContent when signed in", () => {
     );
 
     await waitFor(() => expect(routerMock.replace).toHaveBeenCalled());
-    expect(fetchMock.mock.calls.some(([url]) => url === "/api/v1/auth/logout-all")).toBe(true);
+    expect(called(fetchMock, "/auth/logout-all", "POST")).toBe(true);
   });
 
   it("deletes the account only after confirmation", async () => {
     signIn();
     const fetchMock = mockApi([
       { path: "/me", body: SIGNED_IN },
-      { method: "DELETE", path: "/me", status: 204 },
+      {
+        method: "DELETE",
+        path: "/me",
+        status: 202,
+        body: { erase_after: "2026-11-04T10:00:00Z" },
+      },
     ]);
     renderWithProviders(<MeContent />);
 
     await userEvent.click(await screen.findByRole("button", { name: "Supprimer mon compte" }));
     const dialog = await screen.findByRole("dialog", { name: "Supprimer ton compte ?" });
-    expect(fetchMock.mock.calls.some(([, init]) => init?.method === "DELETE")).toBe(false);
+    expect(called(fetchMock, "/me", "DELETE")).toBe(false);
 
     await userEvent.click(
       within(dialog).getByRole("button", { name: "Oui, supprimer mon compte" }),
@@ -110,5 +124,6 @@ describe("MeContent when signed in", () => {
 
     await waitFor(() => expect(sentBody(fetchMock, "/me")).toEqual({ confirm: true }));
     await waitFor(() => expect(routerMock.replace).toHaveBeenCalled());
+    expect(await screen.findByText(/sera effacé le/)).toBeInTheDocument();
   });
 });

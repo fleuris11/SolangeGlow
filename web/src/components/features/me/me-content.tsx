@@ -2,17 +2,24 @@
 
 import { SignIn, UserCirclePlus } from "@phosphor-icons/react";
 import { useTranslations } from "next-intl";
+import dynamic from "next/dynamic";
 
-import { DisplaySettings } from "@/components/features/settings/display-settings";
 import { Button } from "@/components/ui/button";
 import { LocaleSwitcher } from "@/components/ui/locale-switcher";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useMe } from "@/lib/auth/use-me";
 import { Link } from "@/lib/i18n/navigation";
 
-import { AccountSettings } from "./account-settings";
-import { GuestCard } from "./guest-card";
-import { ProfileForm } from "./profile-form";
+// Signed-in screens (forms, validation) are downloaded only for signed-in people:
+// a visitor's first load stays within the JavaScript budget (ADR-004).
+const ProfileForm = dynamic(() => import("./profile-form").then((m) => m.ProfileForm), {
+  loading: () => <Skeleton className="h-64" />,
+});
+const AccountSettings = dynamic(() => import("./account-settings").then((m) => m.AccountSettings));
+const GuestCard = dynamic(() => import("./guest-card").then((m) => m.GuestCard));
+const DisplaySettings = dynamic(() =>
+  import("@/components/features/settings/display-settings").then((m) => m.DisplaySettings),
+);
 
 /** "Me": the profile once signed in; otherwise sign-in, guest booking and display settings. */
 export function MeContent() {
