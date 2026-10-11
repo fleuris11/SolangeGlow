@@ -5,6 +5,8 @@ import { routing } from "./lib/i18n/routing";
 export default createMiddleware(routing);
 
 export const config = {
-  // Every page except the API proxy, Next internals and static files (sw.js, icons…).
-  matcher: "/((?!api|_next|_vercel|.*\..*).*)",
+  // Every page except the API and media proxies, Next internals and files with an
+  // extension (sw.js, icons…). Short links like /aicha get their language (/fr/aicha).
+  // The dot is escaped twice: once for the string, once for the pattern.
+  matcher: "/((?!api|s3|_next|_vercel|.*\\..*).*)",
 };
