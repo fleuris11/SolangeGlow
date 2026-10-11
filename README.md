@@ -42,8 +42,9 @@ Le premier démarrage prend quelques minutes. Ensuite :
 Au démarrage, le back-end applique les migrations et crée les données de base
 (pays BJ et FR, devises XOF et EUR, premiers réglages du paiement sécurisé).
 
-Remplir l'application avec des données de démonstration réalistes (pros de Cotonou,
-Abomey-Calavi, Porto-Novo et Paris, clientes, notifications) — en local uniquement :
+Remplir l'application avec des données de démonstration réalistes (30 pros de Cotonou,
+Abomey-Calavi, Porto-Novo, Paris et Brest avec prestations, horaires et positions,
+clientes, notifications) — en local uniquement :
 
 ```bash
 docker compose exec backend python manage.py seed_demo
@@ -95,6 +96,27 @@ l'effacement d'un compte supprimé (30 jours) sont dans les clés `accounts.*`.
   `notifications.quiet_hours`.
 - Le journal d'audit (qui a changé quoi) est dans Plateforme > Journal d'audit.
 
+## Tester les pros en local
+
+Après `seed_demo` :
+
+- Explorer : http://localhost:3000/fr/explore — métiers, « Près de moi », filtres
+  (ville, ouvert maintenant, à domicile, note, prix), vue « Carte », recherche par mots
+  ou à la voix (« tresses à Calavi »).
+- Une vitrine : http://localhost:3000/fr/aicha — le lien court http://localhost:3000/aicha
+  redirige dans la langue du navigateur.
+- Devenir pro : « Moi » > « Devenir pro » (ou http://localhost:3000/fr/pro/start), puis
+  « Ma vitrine » (http://localhost:3000/fr/pro) pour tout remplir et publier : infos et
+  photos, prestations (durée, temps de pose, options), horaires, réalisations, lieu
+  (carte ou GPS, repères écrits et vocaux, vidéo d'itinéraire), déplacement à domicile,
+  lien et QR code (image, affiche A4 et stickers en PDF), vérification d'identité.
+- Back-office : Pros > Vitrines (filtres, suspension), Pros > Carte des pros,
+  Pros > Vérifications d'identité (visible seulement par le groupe « Verification » et
+  le super-administrateur ; chaque ouverture d'une pièce est inscrite au journal d'audit).
+- Les limites (nombre de prestations, rayon maximum, durée de la vidéo d'itinéraire…),
+  la carte (`maps.style_url`, `maps.attribution`, `maps.default_center`) et la recherche
+  (`search.*`) se règlent dans Plateforme > Réglages, clés `pros.*`, `maps.*`, `search.*`.
+
 ## Client de l'API (web)
 
 Les types du client web sont générés depuis le schéma de l'API. Après toute
@@ -144,6 +166,9 @@ backend/                Django
                         médias (images, vidéos, audio), journal d'audit, fournisseurs externes
   apps/accounts/        comptes (téléphone ou e-mail)
   apps/notifications/   notifications (appli, e-mail, push, WhatsApp, SMS)
+  apps/pros/            vitrines des pros, prestations, horaires, recherche, QR codes,
+                        vérification d'identité (coffre chiffré)
+  assets/fonts/         polices de la marque (OFL) pour les affiches et stickers
   apps/<module>/        un module par grande fonctionnalité
   locale/               traductions (fr, en, sk)
 web/                    Next.js
