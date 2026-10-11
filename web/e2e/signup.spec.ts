@@ -1,7 +1,6 @@
-import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
 
-import { openWith, VIEWPORTS } from "./helpers";
+import { expectNoSeriousA11yIssue, openWith, VIEWPORTS } from "./helpers";
 
 /** A new Benin mobile number for each run (10 digits since 2024). */
 function newBeninNumber(): string {
@@ -44,30 +43,16 @@ async function photoFile(page: Page): Promise<Buffer> {
   return Buffer.from(dataUrl.split(",")[1]!, "base64");
 }
 
-async function expectNoSeriousA11yIssue(page: Page) {
-  const results = await new AxeBuilder({ page })
-    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
-    .analyze();
-  const serious = results.violations.filter((v) =>
-    ["serious", "critical"].includes(v.impact ?? ""),
-  );
-  expect(
-    serious,
-    JSON.stringify(
-      serious.map((v) => [v.id, v.nodes[0]?.target]),
-      null,
-      2,
-    ),
-  ).toEqual([]);
-}
-
 test.describe("sign-up on a small phone", () => {
   test.beforeEach(async ({ page }) => {
     await page.setViewportSize(VIEWPORTS.mobile);
   });
 
-  test("phone number → code → welcome → home, signed in", async ({ page }) => {
-    test.setTimeout(240_000);
+  test("phone number → code → welcome → my showcase → published", async ({ page, context }) => {
+    test.setTimeout(420_000);
+    // The pro is at her salon in Abomey-Calavi: her phone gives this position.
+    await context.grantPermissions(["geolocation"]);
+    await context.setGeolocation({ latitude: 6.4486, longitude: 2.3418 });
     const national = newBeninNumber();
     const international = `+229${national}`;
 
@@ -122,10 +107,67 @@ test.describe("sign-up on a small phone", () => {
 
     await expect(page.getByRole("heading", { name: "Bienvenue !" })).toBeVisible();
     await page.screenshot({ path: "e2e/screenshots/welcome-done.png", fullPage: true });
-    await page.getByRole("button", { name: "Découvrir" }).click();
+    await page.getByRole("button", { name: "Créer ma vitrine" }).click();
+
+    // « Become a pro »: name, trades, place (GPS), photo.
+    await expect(page).toHaveURL(/\/fr\/pro\/start$/);
+    await expect(page.getByRole("heading", { name: "Le nom de ton activité" })).toBeVisible();
+    await expectNoSeriousA11yIssue(page);
+    await page.screenshot({ path: "e2e/screenshots/become-1-name.png", fullPage: true });
+    const business = `Salon Test ${national.slice(-4)}`;
+    await page.getByLabel("Nom de ton activité").fill(business);
+    await page.getByRole("button", { name: "Continuer" }).click();
+    await page.getByRole("button", { name: "Tresses" }).click();
+    await page.screenshot({ path: "e2e/screenshots/become-2-trades.png", fullPage: true });
+    await page.getByRole("button", { name: "Continuer" }).click();
+    await page.getByLabel("Ville").fill("Abomey-Calavi");
+    await page.getByLabel("Quartier").fill("Calavi centre");
+    await page.getByRole("button", { name: /utiliser ma position/ }).click();
+    await expect(page.getByText("Point placé")).toBeVisible();
+    await expectNoSeriousA11yIssue(page);
+    await page.screenshot({ path: "e2e/screenshots/become-3-place.png", fullPage: true });
+    await page.getByRole("button", { name: "Continuer" }).click();
+    await page.getByRole("button", { name: "Créer ma vitrine" }).click();
+
+    // « Ma vitrine »: one service is missing before publishing.
+    await expect(page).toHaveURL(/\/fr\/pro$/);
+    await expect(page.getByText("Pour publier, il manque :")).toBeVisible();
+    await expectNoSeriousA11yIssue(page);
+    await page.screenshot({ path: "e2e/screenshots/my-showcase-draft.png", fullPage: true });
+    await page.getByRole("link", { name: /Au moins une prestation/ }).click();
+    await page.getByRole("button", { name: "Ajouter une prestation" }).click();
+    await page.getByLabel("Nom", { exact: true }).fill("Nattes collées");
+    await page.getByLabel("Montant (FCFA)").fill("5000");
+    await page.getByLabel("Temps de travail").selectOption("90");
+    await page.screenshot({ path: "e2e/screenshots/my-service-form.png", fullPage: true });
+    await page.getByRole("button", { name: "Enregistrer la prestation" }).click();
+    await expect(page.getByText("Prestation enregistrée")).toBeVisible();
+    await expectNoSeriousA11yIssue(page);
+    await page.getByRole("link", { name: "Retour à ma vitrine" }).click();
+
+    await page.getByRole("button", { name: /Publier ma vitrine/ }).click();
+    await expect(page.getByText("Publié ! Ta vitrine est en ligne.")).toBeVisible();
+    await page.screenshot({ path: "e2e/screenshots/my-showcase-published.png", fullPage: true });
+
+    // QR code and posters.
+    await page.getByRole("link", { name: /Lien et QR code/ }).click();
+    const card = page.getByRole("img", { name: /QR code qui ouvre/ });
+    await expect
+      .poll(async () => card.evaluate((img: HTMLImageElement) => img.naturalWidth), {
+        timeout: 30_000,
+      })
+      .toBeGreaterThan(0);
+    await expectNoSeriousA11yIssue(page);
+    await page.screenshot({ path: "e2e/screenshots/my-share.png", fullPage: true });
+
+    // The public showcase, found by search.
+    await page.goto("/fr/explore?q=" + encodeURIComponent(business));
+    await page.getByRole("link", { name: new RegExp(business) }).click();
+    await expect(page.getByRole("heading", { level: 1, name: business })).toBeVisible();
+    await expect(page.getByText("Nattes collées")).toBeVisible();
 
     // Home, signed in: "Me" shows the profile and the city chosen.
-    await expect(page).toHaveURL(/\/fr$/);
+    await page.goto("/fr");
     await page
       .getByRole("navigation", { name: "Menu principal" })
       .last()
@@ -151,7 +193,7 @@ test.describe("sign-up on a small phone", () => {
 
     // The welcome notification is waiting; reading it clears the counter.
     await page
-      .getByRole("link", { name: /Alertes : 1 nouvelle/ })
+      .getByRole("link", { name: /Alertes : 2 nouvelles/ })
       .first()
       .click();
     await expect(page).toHaveURL(/\/fr\/notifications$/);

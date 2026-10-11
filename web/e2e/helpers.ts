@@ -1,4 +1,5 @@
-import type { Page } from "@playwright/test";
+import AxeBuilder from "@axe-core/playwright";
+import { expect, type Page } from "@playwright/test";
 
 export const VIEWPORTS = {
   mobile: { width: 360, height: 740 },
@@ -26,4 +27,22 @@ export async function openWith(
   );
   await page.goto(path, { waitUntil: "networkidle" });
   await page.evaluate(() => document.fonts.ready);
+}
+
+/** No serious or critical accessibility violation (WCAG 2.2 AA) on the current page. */
+export async function expectNoSeriousA11yIssue(page: Page) {
+  const results = await new AxeBuilder({ page })
+    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"])
+    .analyze();
+  const serious = results.violations.filter((v) =>
+    ["serious", "critical"].includes(v.impact ?? ""),
+  );
+  expect(
+    serious,
+    JSON.stringify(
+      serious.map((v) => [v.id, v.nodes[0]?.target, v.nodes[0]?.failureSummary]),
+      null,
+      2,
+    ),
+  ).toEqual([]);
 }
