@@ -172,9 +172,14 @@ jobs:
           docker compose ps
           exit 1
 
+      - name: Demo data (pros of Cotonou, Calavi, Porto-Novo, Paris, Brest)
+        run: docker compose exec -T backend python manage.py seed_demo
+
       - name: Compile the pages once (development server)
         run: |
-          for page in fr en sk fr/auth fr/welcome fr/me fr/notifications fr/design; do
+          pages="fr en sk fr/auth fr/welcome fr/me fr/notifications fr/design"
+          pages="$pages fr/aicha fr/gloria fr/explore fr/pro fr/pro/start fr/pro/services"
+          for page in $pages "fr/explore?view=map"; do
             curl -s -o /dev/null --max-time 180 "http://localhost:3000/$page" || true
           done
 
