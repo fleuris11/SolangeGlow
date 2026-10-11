@@ -36,6 +36,9 @@ cryptography==50.0.2
 pywebpush==2.5.0
 py-vapid==1.9.4
 
+# QR codes of the pros' short links (posters and stickers drawn with Pillow)
+segno==1.6.6
+
 # Files and static
 django-storages[s3]==1.14.6
 whitenoise==6.12.0
