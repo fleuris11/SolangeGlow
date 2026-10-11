@@ -102,6 +102,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/config/map": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Map tiles (style URL and attribution set in the admin) and the starting view. */
+    get: operations["config_map_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/countries": {
     parameters: {
       query?: never;
@@ -246,6 +263,301 @@ export interface paths {
     /** @description New profile photo: processed in the background (status "processing" then "ready"). */
     post: operations["me_photo_create"];
     delete: operations["me_photo_destroy"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/pro": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["me_pro_retrieve"];
+    put?: never;
+    /** @description « Become a pro »: creates (or resumes) a draft showcase. */
+    post: operations["me_pro_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch: operations["me_pro_partial_update"];
+    trace?: never;
+  };
+  "/api/v1/me/pro/categories": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["me_pro_categories_list"];
+    put?: never;
+    post: operations["me_pro_categories_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/pro/categories/{category_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete: operations["me_pro_categories_destroy"];
+    options?: never;
+    head?: never;
+    patch: operations["me_pro_categories_partial_update"];
+    trace?: never;
+  };
+  "/api/v1/me/pro/closures": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["me_pro_closures_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/pro/closures/{closure_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete: operations["me_pro_closures_destroy"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/pro/hours": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["me_pro_hours_retrieve"];
+    /** @description Replaces the whole week (several periods on a day = breaks between them). */
+    put: operations["me_pro_hours_update"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/pro/location": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put: operations["me_pro_location_update"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/pro/media/{field}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Photo, cover, voice notes and itinerary video of the showcase. */
+    post: operations["me_pro_media_create"];
+    /** @description Photo, cover, voice notes and itinerary video of the showcase. */
+    delete: operations["me_pro_media_destroy"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/pro/portfolio": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["me_pro_portfolio_list"];
+    put?: never;
+    post: operations["me_pro_portfolio_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/pro/portfolio/{item_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete: operations["me_pro_portfolio_destroy"];
+    options?: never;
+    head?: never;
+    patch: operations["me_pro_portfolio_partial_update"];
+    trace?: never;
+  };
+  "/api/v1/me/pro/publication": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Publish: the showcase becomes visible in searches and at its short link. */
+    post: operations["me_pro_publication_create"];
+    /** @description Back to draft: hidden from everyone but her. */
+    delete: operations["me_pro_publication_destroy"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/pro/services": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["me_pro_services_list"];
+    put?: never;
+    post: operations["me_pro_services_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/pro/services/{service_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete: operations["me_pro_services_destroy"];
+    options?: never;
+    head?: never;
+    patch: operations["me_pro_services_partial_update"];
+    trace?: never;
+  };
+  "/api/v1/me/pro/services/{service_id}/photos": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["me_pro_services_photos_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/pro/services/{service_id}/photos/{photo_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete: operations["me_pro_services_photos_destroy"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/pro/slug": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["me_pro_slug_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/pro/travel": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put: operations["me_pro_travel_update"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/pro/verification": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["me_pro_verification_retrieve"];
+    put?: never;
+    /** @description Identity document + selfie, encrypted and sent to the verification team. */
+    post: operations["me_pro_verification_create"];
+    delete?: never;
     options?: never;
     head?: never;
     patch?: never;
@@ -396,6 +708,108 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/pros": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Pros by words, trade, place, distance, price, rating, opening hours, home visits. */
+    get: operations["pros_search"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/pros/{slug}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Public page of a pro. Its owner also sees it before publication (preview). */
+    get: operations["pro_showcase"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/pros/{slug}/arrival": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description « I am outside »: tells the pro right away that her client is at the door. */
+    post: operations["pros_arrival_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/pros/{slug}/print/{name}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description QR code of the short link: card (PNG), A4 poster (PDF), sticker sheet (PDF). */
+    get: operations["pros_print_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/pros/map": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Points of the pros in the visible part of the map (GeoJSON; grouped by the app). */
+    get: operations["pros_map_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/pros/places": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Cities and districts with published pros (filters of Explore). */
+    get: operations["pros_places_list"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/trades": {
     parameters: {
       query?: never;
@@ -417,6 +831,48 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
   schemas: {
+    Arrival: {
+      sent: boolean;
+    };
+    BecomeProRequest: {
+      business_name: string;
+      kind?: components["schemas"]["ProKindEnum"];
+      trades?: string[];
+      city?: string;
+      district?: string;
+    };
+    Card: {
+      slug: string;
+      business_name: string;
+      photo: components["schemas"]["Media"] | null;
+      trades: components["schemas"]["Trade"][];
+      city: string;
+      district: string;
+      distance_m: number | null;
+      /** Format: double */
+      latitude: number | null;
+      /** Format: double */
+      longitude: number | null;
+      /** Format: double */
+      rating_average: number | null;
+      rating_count: number;
+      min_price: number | null;
+      currency: string;
+      open_now: boolean;
+      receives_clients: boolean;
+      travels_to_clients: boolean;
+      verified: boolean;
+    };
+    Category: {
+      /** Format: uuid */
+      readonly id: string;
+      name: string;
+      position?: number;
+    };
+    CategoryRequest: {
+      name: string;
+      position?: number;
+    };
     /**
      * @description * `whatsapp` - whatsapp
      *     * `sms` - sms
@@ -425,6 +881,40 @@ export interface components {
      * @enum {string}
      */
     ChannelEnum: "whatsapp" | "sms" | "email" | "console";
+    City: {
+      country: string;
+      city: string;
+      pros: number;
+      districts: string[];
+    };
+    Closure: {
+      /** Format: uuid */
+      readonly id: string;
+      /**
+       * From
+       * Format: date
+       */
+      starts_on: string;
+      /**
+       * To
+       * Format: date
+       */
+      ends_on: string;
+      reason?: string;
+    };
+    ClosureRequest: {
+      /**
+       * From
+       * Format: date
+       */
+      starts_on: string;
+      /**
+       * To
+       * Format: date
+       */
+      ends_on: string;
+      reason?: string;
+    };
     CodeRequestRequest: {
       phone?: string;
       email?: string;
@@ -470,6 +960,18 @@ export interface components {
        */
       erase_after: string;
     };
+    /**
+     * @description * `id_card` - Identity card
+     *     * `passport` - Passport
+     *     * `residence_permit` - Residence permit
+     *     * `driving_licence` - Driving licence
+     * @enum {string}
+     */
+    DocumentTypeEnum: "id_card" | "passport" | "residence_permit" | "driving_licence";
+    FileUploadRequest: {
+      /** Format: binary */
+      file: string;
+    };
     Guest: {
       /** Format: uuid */
       readonly id: string;
@@ -483,6 +985,13 @@ export interface components {
     Health: {
       status: string;
     };
+    Hours: {
+      periods: components["schemas"]["Period"][];
+      readonly closures: components["schemas"]["Closure"][];
+    };
+    HoursRequest: {
+      periods: components["schemas"]["PeriodRequest"][];
+    };
     /**
      * @description * `makeup` - Lipstick
      *     * `hair` - Comb
@@ -494,13 +1003,10 @@ export interface components {
      * @enum {string}
      */
     IconEnum: "makeup" | "hair" | "braids" | "nails" | "sewing" | "headwrap" | "skincare";
-    /**
-     * @description * `image` - image
-     *     * `video` - video
-     *     * `audio` - audio
-     * @enum {string}
-     */
-    KindEnum: "image" | "video" | "audio";
+    Language: {
+      code: string;
+      label: string;
+    };
     /**
      * @description * `fr` - French
      *     * `en` - English
@@ -508,6 +1014,80 @@ export interface components {
      * @enum {string}
      */
     LanguageEnum: "fr" | "en" | "sk";
+    /**
+     * @description * `fr` - French
+     *     * `en` - English
+     *     * `fon` - Fon
+     *     * `yo` - Yoruba
+     *     * `guw` - Goun
+     *     * `gej` - Mina
+     *     * `ee` - Ewe
+     *     * `bba` - Bariba
+     *     * `ddn` - Dendi
+     *     * `ha` - Hausa
+     *     * `wo` - Wolof
+     *     * `ln` - Lingala
+     *     * `ar` - Arabic
+     *     * `es` - Spanish
+     *     * `pt` - Portuguese
+     *     * `sk` - Slovak
+     * @enum {string}
+     */
+    LanguagesEnum:
+      | "fr"
+      | "en"
+      | "fon"
+      | "yo"
+      | "guw"
+      | "gej"
+      | "ee"
+      | "bba"
+      | "ddn"
+      | "ha"
+      | "wo"
+      | "ln"
+      | "ar"
+      | "es"
+      | "pt"
+      | "sk";
+    LocationRequest: {
+      /** Format: double */
+      latitude: number;
+      /** Format: double */
+      longitude: number;
+      /** @default map */
+      source: components["schemas"]["SourceEnum"];
+    };
+    MapConfig: {
+      style_url: string;
+      attribution: string;
+      /** Format: double */
+      latitude: number;
+      /** Format: double */
+      longitude: number;
+      /** Format: double */
+      zoom: number;
+    };
+    MapFeature: {
+      type: string;
+      geometry: {
+        [key: string]: unknown;
+      };
+      properties: components["schemas"]["MapFeatureProperties"];
+    };
+    MapFeatureProperties: {
+      slug: string;
+      name: string;
+      trade: string | null;
+      /** Format: double */
+      rating: number | null;
+      verified: boolean;
+    };
+    MapResults: {
+      type: string;
+      features: components["schemas"]["MapFeature"][];
+      truncated: boolean;
+    };
     MarkReadRequest: {
       /** @description Leave out to mark everything as read. */
       ids?: string[];
@@ -556,8 +1136,8 @@ export interface components {
     Media: {
       /** Format: uuid */
       id: string;
-      kind: components["schemas"]["KindEnum"];
-      status: components["schemas"]["StatusEnum"];
+      kind: components["schemas"]["MediaKindEnum"];
+      status: components["schemas"]["MediaStatusEnum"];
       error: string | null;
       blurhash: string | null;
       width: number | null;
@@ -568,11 +1148,27 @@ export interface components {
         [key: string]: string;
       };
     };
+    /**
+     * @description * `image` - Picture
+     *     * `video` - Video
+     *     * `audio` - Voice note
+     * @enum {string}
+     */
+    MediaKindEnum: "image" | "video" | "audio";
+    /**
+     * @description * `pending` - Waiting
+     *     * `processing` - Processing
+     *     * `ready` - Ready
+     *     * `rejected` - Refused
+     *     * `failed` - Failed
+     * @enum {string}
+     */
+    MediaStatusEnum: "pending" | "processing" | "ready" | "rejected" | "failed";
     MediaUploadRequest: {
       /** Format: binary */
       file: string;
       purpose: components["schemas"]["PurposeEnum"];
-      kind?: components["schemas"]["KindEnum"];
+      kind?: components["schemas"]["MediaKindEnum"];
     };
     /**
      * @description * `client` - client
@@ -580,6 +1176,43 @@ export interface components {
      * @enum {string}
      */
     ModeEnum: "client" | "pro";
+    /** @description The pro's own showcase, with what only she sees. */
+    MyPro: {
+      slug: string;
+      short_link: string;
+      business_name: string;
+      kind: components["schemas"]["ProKindEnum"];
+      status: components["schemas"]["ProStatusEnum"];
+      bio: string;
+      bio_voice: components["schemas"]["Media"] | null;
+      photo: components["schemas"]["Media"] | null;
+      cover: components["schemas"]["Media"] | null;
+      trades: components["schemas"]["Trade"][];
+      social_links: {
+        [key: string]: string;
+      };
+      languages: components["schemas"]["Language"][];
+      verified: boolean;
+      /** Format: double */
+      rating_average: number | null;
+      rating_count: number;
+      currency: string;
+      opening: components["schemas"]["OpeningStatus"];
+      hours: components["schemas"]["Period"][];
+      closures: components["schemas"]["Closure"][];
+      categories: components["schemas"]["Category"][];
+      services: components["schemas"]["Service"][];
+      portfolio: components["schemas"]["PortfolioItem"][];
+      place: components["schemas"]["Place"];
+      travel: components["schemas"]["Travel"];
+      /** Format: date-time */
+      published_at: string | null;
+      /** Format: date-time */
+      updated_at: string;
+      missing: string[];
+      verification: components["schemas"]["VerificationState"];
+      suspension_reason: string | null;
+    };
     Notification: {
       /** Format: uuid */
       readonly id: string;
@@ -604,6 +1237,36 @@ export interface components {
       language?: components["schemas"]["LanguageEnum"];
       city?: string;
     };
+    OpeningStatus: {
+      is_open: boolean;
+      /** Format: date-time */
+      closes_at: string | null;
+      /** Format: date-time */
+      next_opening: string | null;
+      closed_today: boolean;
+      has_hours: boolean;
+      time_zone: string;
+    };
+    Option: {
+      name: string;
+      /**
+       * Extra price
+       * Format: int64
+       */
+      price_minor?: number;
+      /** Extra time (min) */
+      extra_minutes?: number;
+    };
+    OptionRequest: {
+      name: string;
+      /**
+       * Extra price
+       * Format: int64
+       */
+      price_minor?: number;
+      /** Extra time (min) */
+      extra_minutes?: number;
+    };
     PaginatedNotificationList: {
       /**
        * Format: uri
@@ -623,6 +1286,10 @@ export interface components {
     };
     PasswordSetRequest: {
       password: string;
+    };
+    PatchedCategoryRequest: {
+      name?: string;
+      position?: number;
     };
     PatchedMeRequest: {
       first_name?: string;
@@ -649,19 +1316,147 @@ export interface components {
       /** Format: time */
       quiet_hours_end?: string | null;
     };
+    PatchedPortfolioUpdateRequest: {
+      caption?: string;
+      /** Format: uuid */
+      service_id?: string | null;
+      position?: number;
+    };
+    PatchedProUpdateRequest: {
+      business_name?: string;
+      slug?: string;
+      kind?: components["schemas"]["ProKindEnum"];
+      bio?: string;
+      trades?: string[];
+      social_links?: {
+        [key: string]: string;
+      };
+      languages?: components["schemas"]["LanguagesEnum"][];
+      city?: string;
+      district?: string;
+      address?: string;
+      landmarks?: string;
+      receives_clients?: boolean;
+    };
+    PatchedServiceWriteRequest: {
+      name?: string;
+      description?: string;
+      /** Format: uuid */
+      category_id?: string | null;
+      trade_key?: string | null;
+      price_kind?: components["schemas"]["PriceKindEnum"];
+      price_minor?: number | null;
+      available_at_home?: boolean;
+      is_active?: boolean;
+      position?: number;
+      steps?: components["schemas"]["StepRequest"][];
+      options?: components["schemas"]["OptionRequest"][];
+    };
+    Period: {
+      /** Day */
+      weekday: components["schemas"]["WeekdayEnum"];
+      /** Format: time */
+      opens_at: string;
+      /** Format: time */
+      closes_at: string;
+    };
+    PeriodRequest: {
+      /** Day */
+      weekday: components["schemas"]["WeekdayEnum"];
+      /** Format: time */
+      opens_at: string;
+      /** Format: time */
+      closes_at: string;
+    };
     PhotoRequest: {
       /** Format: binary */
       photo: string;
     };
+    Place: {
+      country: string | null;
+      city: string;
+      district: string;
+      receives_clients: boolean;
+      address: string | null;
+      /** Format: double */
+      latitude: number | null;
+      /** Format: double */
+      longitude: number | null;
+      directions_url: string | null;
+      landmarks: string;
+      landmarks_voice: components["schemas"]["Media"] | null;
+      itinerary_video: components["schemas"]["Media"] | null;
+    };
+    PortfolioItem: {
+      /** Format: uuid */
+      readonly id: string;
+      readonly media: components["schemas"]["Media"];
+      readonly before: components["schemas"]["Media"] | null;
+      caption: string;
+      /** Format: uuid */
+      service_id: string | null;
+      readonly service_name: string | null;
+      position: number;
+    };
+    PortfolioUploadRequest: {
+      /**
+       * Format: binary
+       * @description Picture or video of the result.
+       */
+      file: string;
+      /**
+       * Format: binary
+       * @description Optional picture before.
+       */
+      before?: string;
+      caption?: string;
+      /** Format: uuid */
+      service_id?: string | null;
+    };
+    /**
+     * @description * `fixed` - Fixed price
+     *     * `from` - From
+     *     * `quote` - On quote
+     * @enum {string}
+     */
+    PriceKindEnum: "fixed" | "from" | "quote";
+    /**
+     * @description * `independent` - Independent
+     *     * `business` - Salon or business
+     * @enum {string}
+     */
+    ProKindEnum: "independent" | "business";
+    /**
+     * @description * `draft` - Draft
+     *     * `published` - Published
+     *     * `suspended` - Suspended
+     * @enum {string}
+     */
+    ProStatusEnum: "draft" | "published" | "suspended";
     /**
      * @description * `avatar` - avatar
      *     * `identity_document` - identity_document
      *     * `itinerary_video` - itinerary_video
+     *     * `portfolio` - portfolio
      *     * `post` - post
+     *     * `pro_cover` - pro_cover
+     *     * `pro_photo` - pro_photo
+     *     * `pro_voice` - pro_voice
+     *     * `service_photo` - service_photo
      *     * `voice_note` - voice_note
      * @enum {string}
      */
-    PurposeEnum: "avatar" | "identity_document" | "itinerary_video" | "post" | "voice_note";
+    PurposeEnum:
+      | "avatar"
+      | "identity_document"
+      | "itinerary_video"
+      | "portfolio"
+      | "post"
+      | "pro_cover"
+      | "pro_photo"
+      | "pro_voice"
+      | "service_photo"
+      | "voice_note";
     PushKey: {
       public_key: string | null;
     };
@@ -685,21 +1480,135 @@ export interface components {
      * @enum {string}
      */
     RolesEnum: "client" | "pro" | "staff";
+    SearchResults: {
+      results: components["schemas"]["Card"][];
+      next: string | null;
+      count: number;
+    };
+    Service: {
+      /** Format: uuid */
+      readonly id: string;
+      name: string;
+      description: string;
+      /** Format: uuid */
+      category_id: string | null;
+      readonly trade: string | null;
+      /** Price */
+      price_kind: components["schemas"]["PriceKindEnum"];
+      /**
+       * Amount
+       * Format: int64
+       * @description In the smallest unit of the currency. Empty for a quote.
+       */
+      price_minor: number | null;
+      currency: string;
+      /**
+       * Total duration (min)
+       * @description Sum of the steps.
+       */
+      duration_minutes: number;
+      work_minutes: number;
+      waiting_minutes: number;
+      /** Also at the client's home */
+      available_at_home: boolean;
+      /** Shown */
+      is_active: boolean;
+      position: number;
+      steps: components["schemas"]["Step"][];
+      options: components["schemas"]["Option"][];
+      readonly photos: components["schemas"]["ServicePhoto"][];
+    };
+    ServicePhoto: {
+      /** Format: uuid */
+      id: string;
+      media: components["schemas"]["Media"];
+    };
+    ServiceWriteRequest: {
+      name: string;
+      description?: string;
+      /** Format: uuid */
+      category_id?: string | null;
+      trade_key?: string | null;
+      price_kind: components["schemas"]["PriceKindEnum"];
+      price_minor?: number | null;
+      available_at_home?: boolean;
+      is_active?: boolean;
+      position?: number;
+      steps?: components["schemas"]["StepRequest"][];
+      options?: components["schemas"]["OptionRequest"][];
+    };
+    /** @description Public page of a pro (also its preview for herself). */
+    Showcase: {
+      slug: string;
+      short_link: string;
+      business_name: string;
+      kind: components["schemas"]["ProKindEnum"];
+      status: components["schemas"]["ProStatusEnum"];
+      bio: string;
+      bio_voice: components["schemas"]["Media"] | null;
+      photo: components["schemas"]["Media"] | null;
+      cover: components["schemas"]["Media"] | null;
+      trades: components["schemas"]["Trade"][];
+      social_links: {
+        [key: string]: string;
+      };
+      languages: components["schemas"]["Language"][];
+      verified: boolean;
+      /** Format: double */
+      rating_average: number | null;
+      rating_count: number;
+      currency: string;
+      opening: components["schemas"]["OpeningStatus"];
+      hours: components["schemas"]["Period"][];
+      closures: components["schemas"]["Closure"][];
+      categories: components["schemas"]["Category"][];
+      services: components["schemas"]["Service"][];
+      portfolio: components["schemas"]["PortfolioItem"][];
+      place: components["schemas"]["Place"];
+      travel: components["schemas"]["Travel"];
+      /** Format: date-time */
+      published_at: string | null;
+      /** Format: date-time */
+      updated_at: string;
+    };
     SignIn: {
       created: boolean;
       /** @description The account was waiting to be deleted: signing in kept it. */
       deletion_cancelled: boolean;
       user: components["schemas"]["Me"];
     };
+    SlugCheck: {
+      slug: string;
+      available: boolean;
+      short_link: string;
+    };
     /**
-     * @description * `pending` - pending
-     *     * `processing` - processing
-     *     * `ready` - ready
-     *     * `rejected` - rejected
-     *     * `failed` - failed
+     * @description * `map` - Placed on the map
+     *     * `gps` - Phone GPS
+     *     * `admin` - Set by the team
      * @enum {string}
      */
-    StatusEnum: "pending" | "processing" | "ready" | "rejected" | "failed";
+    SourceEnum: "map" | "gps" | "admin";
+    Step: {
+      /** Type */
+      kind?: components["schemas"]["StepKindEnum"];
+      label?: string;
+      /** Duration (min) */
+      duration_minutes: number;
+    };
+    /**
+     * @description * `work` - Work
+     *     * `wait` - Waiting time (product acting)
+     * @enum {string}
+     */
+    StepKindEnum: "work" | "wait";
+    StepRequest: {
+      /** Type */
+      kind?: components["schemas"]["StepKindEnum"];
+      label?: string;
+      /** Duration (min) */
+      duration_minutes: number;
+    };
     /**
      * @description * `normal` - Normal
      *     * `large` - Large
@@ -720,9 +1629,55 @@ export interface components {
       /** Pictogram */
       icon: components["schemas"]["IconEnum"];
     };
+    Travel: {
+      travels_to_clients: boolean;
+      radius_km: number | null;
+      area: number[][] | null;
+      fee_minor: number | null;
+      currency: string;
+    };
+    TravelUpdateRequest: {
+      travels_to_clients: boolean;
+      radius_km?: number | null;
+      area?: number[][] | null;
+      fee_minor?: number | null;
+    };
     UnreadCount: {
       unread: number;
     };
+    VerificationState: {
+      status: components["schemas"]["VerificationStateStatusEnum"];
+      rejection_reason: string | null;
+      /** Format: date-time */
+      submitted_at: string | null;
+      can_collect_payments: boolean;
+    };
+    /**
+     * @description * `none` - Not sent
+     *     * `pending` - Waiting for review
+     *     * `verified` - Verified pro
+     *     * `rejected` - Refused
+     * @enum {string}
+     */
+    VerificationStateStatusEnum: "none" | "pending" | "verified" | "rejected";
+    VerificationUploadRequest: {
+      document_type: components["schemas"]["DocumentTypeEnum"];
+      /** Format: binary */
+      document: string;
+      /** Format: binary */
+      selfie: string;
+    };
+    /**
+     * @description * `0` - Monday
+     *     * `1` - Tuesday
+     *     * `2` - Wednesday
+     *     * `3` - Thursday
+     *     * `4` - Friday
+     *     * `5` - Saturday
+     *     * `6` - Sunday
+     * @enum {integer}
+     */
+    WeekdayEnum: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   };
   responses: never;
   parameters: never;
@@ -868,6 +1823,27 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["Ok"];
+        };
+      };
+    };
+  };
+  config_map_retrieve: {
+    parameters: {
+      query?: {
+        country?: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MapConfig"];
         };
       };
     };
@@ -1160,6 +2136,660 @@ export interface operations {
       };
     };
   };
+  me_pro_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MyPro"];
+        };
+      };
+    };
+  };
+  me_pro_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["BecomeProRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["BecomeProRequest"];
+        "multipart/form-data": components["schemas"]["BecomeProRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MyPro"];
+        };
+      };
+    };
+  };
+  me_pro_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PatchedProUpdateRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PatchedProUpdateRequest"];
+        "multipart/form-data": components["schemas"]["PatchedProUpdateRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MyPro"];
+        };
+      };
+    };
+  };
+  me_pro_categories_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Category"][];
+        };
+      };
+    };
+  };
+  me_pro_categories_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CategoryRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Category"];
+        };
+      };
+    };
+  };
+  me_pro_categories_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        category_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  me_pro_categories_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        category_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PatchedCategoryRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Category"];
+        };
+      };
+    };
+  };
+  me_pro_closures_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ClosureRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Closure"];
+        };
+      };
+    };
+  };
+  me_pro_closures_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        closure_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  me_pro_hours_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Hours"];
+        };
+      };
+    };
+  };
+  me_pro_hours_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["HoursRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Hours"];
+        };
+      };
+    };
+  };
+  me_pro_location_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["LocationRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MyPro"];
+        };
+      };
+    };
+  };
+  me_pro_media_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        field: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "multipart/form-data": components["schemas"]["FileUploadRequest"];
+      };
+    };
+    responses: {
+      202: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MyPro"];
+        };
+      };
+    };
+  };
+  me_pro_media_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        field: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MyPro"];
+        };
+      };
+    };
+  };
+  me_pro_portfolio_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PortfolioItem"][];
+        };
+      };
+    };
+  };
+  me_pro_portfolio_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "multipart/form-data": components["schemas"]["PortfolioUploadRequest"];
+      };
+    };
+    responses: {
+      202: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PortfolioItem"];
+        };
+      };
+    };
+  };
+  me_pro_portfolio_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        item_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  me_pro_portfolio_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        item_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PatchedPortfolioUpdateRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PortfolioItem"];
+        };
+      };
+    };
+  };
+  me_pro_publication_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MyPro"];
+        };
+      };
+    };
+  };
+  me_pro_publication_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MyPro"];
+        };
+      };
+    };
+  };
+  me_pro_services_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Service"][];
+        };
+      };
+    };
+  };
+  me_pro_services_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ServiceWriteRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Service"];
+        };
+      };
+    };
+  };
+  me_pro_services_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        service_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  me_pro_services_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        service_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PatchedServiceWriteRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Service"];
+        };
+      };
+    };
+  };
+  me_pro_services_photos_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        service_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "multipart/form-data": components["schemas"]["FileUploadRequest"];
+      };
+    };
+    responses: {
+      202: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Service"];
+        };
+      };
+    };
+  };
+  me_pro_services_photos_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        photo_id: string;
+        service_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  me_pro_slug_retrieve: {
+    parameters: {
+      query: {
+        slug: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SlugCheck"];
+        };
+      };
+    };
+  };
+  me_pro_travel_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["TravelUpdateRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MyPro"];
+        };
+      };
+    };
+  };
+  me_pro_verification_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["VerificationState"];
+        };
+      };
+    };
+  };
+  me_pro_verification_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "multipart/form-data": components["schemas"]["VerificationUploadRequest"];
+      };
+    };
+    responses: {
+      202: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["VerificationState"];
+        };
+      };
+    };
+  };
   media_create: {
     parameters: {
       query?: never;
@@ -1354,6 +2984,173 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["UnreadCount"];
+        };
+      };
+    };
+  };
+  pros_search: {
+    parameters: {
+      query?: {
+        at_home?: boolean;
+        city?: string;
+        currency?: string;
+        cursor?: string;
+        district?: string;
+        lat?: number;
+        lng?: number;
+        open_now?: boolean;
+        price_max?: number;
+        q?: string;
+        radius_km?: number;
+        rating_min?: number;
+        /**
+         * @description * `relevance` - relevance
+         *     * `distance` - distance
+         *     * `rating` - rating
+         *     * `price` - price
+         */
+        sort?: "relevance" | "distance" | "rating" | "price";
+        trade?: string;
+        verified?: boolean;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SearchResults"];
+        };
+      };
+    };
+  };
+  pro_showcase: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        slug: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Showcase"];
+        };
+      };
+    };
+  };
+  pros_arrival_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        slug: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Arrival"];
+        };
+      };
+    };
+  };
+  pros_print_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        name: string;
+        slug: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/octet-stream": string;
+        };
+      };
+    };
+  };
+  pros_map_retrieve: {
+    parameters: {
+      query: {
+        at_home?: boolean;
+        /** @description min_lng,min_lat,max_lng,max_lat */
+        bbox: string;
+        city?: string;
+        currency?: string;
+        cursor?: string;
+        district?: string;
+        lat?: number;
+        lng?: number;
+        open_now?: boolean;
+        price_max?: number;
+        q?: string;
+        radius_km?: number;
+        rating_min?: number;
+        /**
+         * @description * `relevance` - relevance
+         *     * `distance` - distance
+         *     * `rating` - rating
+         *     * `price` - price
+         */
+        sort?: "relevance" | "distance" | "rating" | "price";
+        trade?: string;
+        verified?: boolean;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MapResults"];
+        };
+      };
+    };
+  };
+  pros_places_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["City"][];
         };
       };
     };
