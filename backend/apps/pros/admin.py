@@ -466,12 +466,17 @@ class ProVerificationAdmin(ModelAdmin):
         response["X-Robots-Tag"] = "noindex"
         return response
 
-    @action(description=_("Save and approve: verified pro"), permissions=[REVIEW_PERMISSION])
+    def has_review_identity_permission(self, request, object_id=None):
+        # A method, not "pros.review_identity": Unfold would look the permission up in
+        # the database while starting, before the first migration.
+        return request.user.has_perm(REVIEW_PERMISSION)
+
+    @action(description=_("Save and approve: verified pro"), permissions=["review_identity"])
     def approve(self, request, obj):
         services.review_verification(obj, actor=request.user, approve=True)
         self.message_user(request, _("The pro is verified."), messages.SUCCESS)
 
-    @action(description=_("Save and refuse (reason above)"), permissions=[REVIEW_PERMISSION])
+    @action(description=_("Save and refuse (reason above)"), permissions=["review_identity"])
     def reject(self, request, obj):
         if not obj.rejection_reason.strip():
             self.message_user(request, _("Write the reason of the refusal first."), messages.ERROR)
