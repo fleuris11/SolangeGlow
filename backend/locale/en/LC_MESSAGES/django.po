@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-06 20:50+0200\n"
+"POT-Creation-Date: 2026-10-11 10:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -767,7 +767,160 @@ msgstr ""
 msgid "Payments"
 msgstr ""
 
+msgid "latitude"
+msgstr ""
+
+msgid "longitude"
+msgstr ""
+
+msgid "Showcase"
+msgstr ""
+
+msgid "Place"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Media"
+msgstr ""
+
+msgid "business name"
+msgstr ""
+
+msgid "short link"
+msgstr ""
+
+msgid "verification"
+msgstr ""
+
+msgid "Suspend the selected showcases"
+msgstr ""
+
+msgid "Rules not followed."
+msgstr ""
+
+#, python-format
+msgid "%(n)d showcase suspended."
+msgid_plural "%(n)d showcases suspended."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "End the suspension of the selected showcases"
+msgstr ""
+
+#, python-format
+msgid "%(n)d showcase back online."
+msgid_plural "%(n)d showcases back online."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Save and suspend (reason above)"
+msgstr ""
+
+msgid "The showcase is suspended."
+msgstr ""
+
+msgid "Save and end the suspension"
+msgstr ""
+
+msgid "The showcase is back."
+msgstr ""
+
+msgid "Map of the pros"
+msgstr ""
+
+msgid "documents"
+msgstr ""
+
+msgid "Each opening of these pictures is written in the audit journal."
+msgstr ""
+
+msgid "Save and approve: verified pro"
+msgstr ""
+
+msgid "The pro is verified."
+msgstr ""
+
+msgid "Save and refuse (reason above)"
+msgstr ""
+
+msgid "Write the reason of the refusal first."
+msgstr ""
+
+msgid "The pro was told why."
+msgstr ""
+
 msgid "Pros"
+msgstr ""
+
+msgid "You do not have a showcase yet. Start with « Become a pro »."
+msgstr ""
+
+msgid "This pro does not exist or is not visible any more."
+msgstr ""
+
+msgid "Use 3 to 40 lowercase letters, digits or dashes, e.g. aicha-tresses."
+msgstr ""
+
+msgid "This link is already used. Try another one, e.g. with your district."
+msgstr ""
+
+msgid "This link is not valid. Paste the address of your page or your @name."
+msgstr ""
+
+msgid "This position is not valid. Place the point on the map again."
+msgstr ""
+
+msgid "This area is not valid. Draw it again with at least 3 points."
+msgstr ""
+
+#, python-format
+msgid "The travel radius cannot be more than %(km)s km."
+msgstr ""
+
+msgid "Give a price, or choose « On quote »."
+msgstr ""
+
+msgid "Give a name to this service."
+msgstr ""
+
+msgid "Give the time of the service, in minutes."
+msgstr ""
+
+#, python-format
+msgid "You reached the limit of %(limit)s. Remove one before adding another."
+msgstr ""
+
+#, python-format
+msgid "The hours of %(day)s overlap or close before they open. Check them."
+msgstr ""
+
+msgid "The last day of the closure must be after the first one."
+msgstr ""
+
+msgid "Your showcase is not complete yet. Fill in what is missing."
+msgstr ""
+
+msgid "Your showcase is suspended. Write to the support team to know why."
+msgstr ""
+
+msgid "This file is not ready or was refused. Send it again."
+msgstr ""
+
+msgid "Your documents are being checked. You will get an answer soon."
+msgstr ""
+
+msgid "You are already a verified pro."
+msgstr ""
+
+msgid "The pro was just told you are here. Wait a few minutes."
+msgstr ""
+
+msgid "This pro does not receive clients at a place. Write to her instead."
+msgstr ""
+
+msgid "Sign in, or give your first name and number, to tell the pro you are here."
 msgstr ""
 
 msgid "Lipstick"
@@ -803,10 +956,160 @@ msgstr ""
 msgid "trades"
 msgstr ""
 
+msgid "French"
+msgstr ""
+
+msgid "English"
+msgstr ""
+
+msgid "Fon"
+msgstr ""
+
+msgid "Yoruba"
+msgstr ""
+
+msgid "Goun"
+msgstr ""
+
+msgid "Mina"
+msgstr ""
+
+msgid "Ewe"
+msgstr ""
+
+msgid "Bariba"
+msgstr ""
+
+msgid "Dendi"
+msgstr ""
+
+msgid "Hausa"
+msgstr ""
+
+msgid "Wolof"
+msgstr ""
+
+msgid "Lingala"
+msgstr ""
+
+msgid "Arabic"
+msgstr ""
+
+msgid "Spanish"
+msgstr ""
+
+msgid "Portuguese"
+msgstr ""
+
+msgid "Slovak"
+msgstr ""
+
+msgid "Website"
+msgstr ""
+
 msgid "Independent"
 msgstr ""
 
 msgid "Salon or business"
+msgstr ""
+
+msgid "Draft"
+msgstr ""
+
+msgid "Published"
+msgstr ""
+
+msgid "Not sent"
+msgstr ""
+
+msgid "Waiting for review"
+msgstr ""
+
+msgid "Verified pro"
+msgstr ""
+
+msgid "Placed on the map"
+msgstr ""
+
+msgid "Phone GPS"
+msgstr ""
+
+msgid "Set by the team"
+msgstr ""
+
+msgid "solangeglow.com/<short link>: lowercase letters, digits and dashes."
+msgstr ""
+
+msgid "presentation"
+msgstr ""
+
+msgid "presentation (voice note)"
+msgstr ""
+
+msgid "cover picture"
+msgstr ""
+
+msgid "social networks"
+msgstr ""
+
+msgid "Network: link or handle."
+msgstr ""
+
+msgid "languages spoken"
+msgstr ""
+
+msgid "district"
+msgstr ""
+
+msgid "position given by"
+msgstr ""
+
+msgid "receives clients"
+msgstr ""
+
+msgid "Off: she only goes to her clients; her address and position stay private."
+msgstr ""
+
+msgid "itinerary video"
+msgstr ""
+
+msgid "landmarks"
+msgstr ""
+
+msgid "landmarks (voice note)"
+msgstr ""
+
+msgid "goes to the client's home"
+msgstr ""
+
+msgid "travel radius (km)"
+msgstr ""
+
+msgid "travel area"
+msgstr ""
+
+msgid "travel fee"
+msgstr ""
+
+msgid "In the smallest unit of the currency (FCFA, cents)."
+msgstr ""
+
+msgid "published at"
+msgstr ""
+
+msgid "suspended at"
+msgstr ""
+
+msgid "reason of the suspension"
+msgstr ""
+
+msgid "average rating"
+msgstr ""
+
+msgid "number of reviews"
+msgstr ""
+
+msgid "search words"
 msgstr ""
 
 msgid "pro profile"
@@ -815,6 +1118,216 @@ msgstr ""
 msgid "pro profiles"
 msgstr ""
 
+msgid "pro"
+msgstr ""
+
+msgid "service category"
+msgstr ""
+
+msgid "service categories"
+msgstr ""
+
+msgid "Fixed price"
+msgstr ""
+
+msgid "From"
+msgstr ""
+
+msgid "On quote"
+msgstr ""
+
+msgid "category"
+msgstr ""
+
+msgid "price"
+msgstr ""
+
+msgid "amount"
+msgstr ""
+
+msgid "In the smallest unit of the currency. Empty for a quote."
+msgstr ""
+
+msgid "total duration (min)"
+msgstr ""
+
+msgid "Sum of the steps."
+msgstr ""
+
+msgid "also at the client's home"
+msgstr ""
+
+msgid "shown"
+msgstr ""
+
+msgid "archived at"
+msgstr ""
+
+msgid "service"
+msgstr ""
+
+msgid "services"
+msgstr ""
+
+msgid "Work"
+msgstr ""
+
+msgid "Waiting time (product acting)"
+msgstr ""
+
+msgid "label"
+msgstr ""
+
+msgid "duration (min)"
+msgstr ""
+
+msgid "needs someone"
+msgstr ""
+
+msgid "step"
+msgstr ""
+
+msgid "steps"
+msgstr ""
+
+msgid "extra price"
+msgstr ""
+
+msgid "extra time (min)"
+msgstr ""
+
+msgid "option"
+msgstr ""
+
+msgid "options"
+msgstr ""
+
+msgid "picture"
+msgstr ""
+
+msgid "service picture"
+msgstr ""
+
+msgid "service pictures"
+msgstr ""
+
+msgid "Monday"
+msgstr ""
+
+msgid "Tuesday"
+msgstr ""
+
+msgid "Wednesday"
+msgstr ""
+
+msgid "Thursday"
+msgstr ""
+
+msgid "Friday"
+msgstr ""
+
+msgid "Saturday"
+msgstr ""
+
+msgid "Sunday"
+msgstr ""
+
+msgid "day"
+msgstr ""
+
+msgid "opens at"
+msgstr ""
+
+msgid "closes at"
+msgstr ""
+
+msgid "opening hours"
+msgstr ""
+
+msgid "from"
+msgstr ""
+
+msgid "to"
+msgstr ""
+
+msgid "closure"
+msgstr ""
+
+msgid "closures"
+msgstr ""
+
+msgid "result"
+msgstr ""
+
+msgid "caption"
+msgstr ""
+
+msgid "portfolio item"
+msgstr ""
+
+msgid "portfolio"
+msgstr ""
+
+msgid "Approved"
+msgstr ""
+
+msgid "Identity card"
+msgstr ""
+
+msgid "Passport"
+msgstr ""
+
+msgid "Residence permit"
+msgstr ""
+
+msgid "Driving licence"
+msgstr ""
+
+msgid "document"
+msgstr ""
+
+msgid "identity document"
+msgstr ""
+
+msgid "selfie"
+msgstr ""
+
+msgid "reviewed by"
+msgstr ""
+
+msgid "reviewed at"
+msgstr ""
+
+msgid "reason of the refusal"
+msgstr ""
+
+msgid "Sent to the pro."
+msgstr ""
+
+msgid "identity check"
+msgstr ""
+
+msgid "identity checks"
+msgstr ""
+
+msgid "Can see identity documents and verify pros"
+msgstr ""
+
+msgid "Book an appointment with"
+msgstr ""
+
+msgid "Scan with the camera of your phone"
+msgstr ""
+
+msgid "Scan me to book"
+msgstr ""
+
+#, python-format
+msgid "%(counter)s pro placed on the map."
+msgid_plural "%(counter)s pros placed on the map."
+msgstr[0] ""
+msgstr[1] ""
+
 msgid "France Selection"
 msgstr ""
 
@@ -822,15 +1335,6 @@ msgid "Shop"
 msgstr ""
 
 msgid "Social"
-msgstr ""
-
-msgid "French"
-msgstr ""
-
-msgid "English"
-msgstr ""
-
-msgid "Slovak"
 msgstr ""
 
 msgid "Back office"
@@ -848,10 +1352,16 @@ msgstr ""
 msgid "Feature flags"
 msgstr ""
 
-msgid "Media"
+msgid "Audit journal"
 msgstr ""
 
-msgid "Audit journal"
+msgid "Showcases"
+msgstr ""
+
+msgid "Identity checks"
+msgstr ""
+
+msgid "Trades"
 msgstr ""
 
 msgid "Notification templates"
@@ -870,9 +1380,6 @@ msgid "Sign-in journal"
 msgstr ""
 
 msgid "Guests"
-msgstr ""
-
-msgid "Trades"
 msgstr ""
 
 msgid "Groups"

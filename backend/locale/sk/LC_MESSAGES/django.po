@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-06 20:50+0200\n"
+"POT-Creation-Date: 2026-10-11 10:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -771,8 +771,165 @@ msgstr "odbery upozornení"
 msgid "Payments"
 msgstr "Platby"
 
+msgid "latitude"
+msgstr "zemepisná šírka"
+
+msgid "longitude"
+msgstr "zemepisná dĺžka"
+
+msgid "Showcase"
+msgstr "Vitrína"
+
+msgid "Place"
+msgstr "Miesto"
+
+msgid "Status"
+msgstr "Stav"
+
+msgid "Media"
+msgstr "Médiá"
+
+msgid "business name"
+msgstr "obchodný názov"
+
+msgid "short link"
+msgstr "krátky odkaz"
+
+msgid "verification"
+msgstr "overenie"
+
+msgid "Suspend the selected showcases"
+msgstr "Pozastaviť vybrané vitríny"
+
+msgid "Rules not followed."
+msgstr "Pravidlá neboli dodržané."
+
+#, python-format
+msgid "%(n)d showcase suspended."
+msgid_plural "%(n)d showcases suspended."
+msgstr[0] "%(n)d vitrína pozastavená."
+msgstr[1] "%(n)d vitríny pozastavené."
+msgstr[2] "%(n)d vitríny pozastavenej."
+msgstr[3] "%(n)d vitrín pozastavených."
+
+msgid "End the suspension of the selected showcases"
+msgstr "Zrušiť pozastavenie vybraných vitrín"
+
+#, python-format
+msgid "%(n)d showcase back online."
+msgid_plural "%(n)d showcases back online."
+msgstr[0] "%(n)d vitrína je späť online."
+msgstr[1] "%(n)d vitríny sú späť online."
+msgstr[2] "%(n)d vitríny je späť online."
+msgstr[3] "%(n)d vitrín je späť online."
+
+msgid "Save and suspend (reason above)"
+msgstr "Uložiť a pozastaviť (dôvod vyššie)"
+
+msgid "The showcase is suspended."
+msgstr "Vitrína je pozastavená."
+
+msgid "Save and end the suspension"
+msgstr "Uložiť a zrušiť pozastavenie"
+
+msgid "The showcase is back."
+msgstr "Vitrína je späť."
+
+msgid "Map of the pros"
+msgstr "Mapa profesionálok"
+
+msgid "documents"
+msgstr "dokumenty"
+
+msgid "Each opening of these pictures is written in the audit journal."
+msgstr "Každé otvorenie týchto obrázkov sa zapíše do denníka auditu."
+
+msgid "Save and approve: verified pro"
+msgstr "Uložiť a schváliť: overená"
+
+msgid "The pro is verified."
+msgstr "Profesionálka je overená."
+
+msgid "Save and refuse (reason above)"
+msgstr "Uložiť a zamietnuť (dôvod vyššie)"
+
+msgid "Write the reason of the refusal first."
+msgstr "Najprv napíš dôvod zamietnutia."
+
+msgid "The pro was told why."
+msgstr "Profesionálka dostala dôvod."
+
 msgid "Pros"
 msgstr "Profesionálky"
+
+msgid "You do not have a showcase yet. Start with « Become a pro »."
+msgstr "Zatiaľ nemáš vitrínu. Začni cez « Staň sa profesionálkou »."
+
+msgid "This pro does not exist or is not visible any more."
+msgstr "Táto profesionálka neexistuje alebo už nie je viditeľná."
+
+msgid "Use 3 to 40 lowercase letters, digits or dashes, e.g. aicha-tresses."
+msgstr "Použi 3 až 40 malých písmen, číslic alebo pomlčiek, napr. aicha-tresses."
+
+msgid "This link is already used. Try another one, e.g. with your district."
+msgstr "Tento odkaz je obsadený. Skús iný, napríklad so štvrťou."
+
+msgid "This link is not valid. Paste the address of your page or your @name."
+msgstr "Odkaz nie je platný. Vlož adresu stránky alebo @meno."
+
+msgid "This position is not valid. Place the point on the map again."
+msgstr "Poloha nie je platná. Umiestni bod na mape znova."
+
+msgid "This area is not valid. Draw it again with at least 3 points."
+msgstr "Oblasť nie je platná. Nakresli ju znova s aspoň 3 bodmi."
+
+#, python-format
+msgid "The travel radius cannot be more than %(km)s km."
+msgstr "Polomer cesty nemôže byť viac ako %(km)s km."
+
+msgid "Give a price, or choose « On quote »."
+msgstr "Zadaj cenu alebo vyber « Na dopyt »."
+
+msgid "Give a name to this service."
+msgstr "Pomenuj túto službu."
+
+msgid "Give the time of the service, in minutes."
+msgstr "Zadaj trvanie služby v minútach."
+
+#, python-format
+msgid "You reached the limit of %(limit)s. Remove one before adding another."
+msgstr "Dosiahla si limit %(limit)s. Najprv jeden odstráň."
+
+#, python-format
+msgid "The hours of %(day)s overlap or close before they open. Check them."
+msgstr "Hodiny dňa %(day)s sa prekrývajú alebo končia pred začiatkom. Skontroluj ich."
+
+msgid "The last day of the closure must be after the first one."
+msgstr "Posledný deň zatvorenia musí byť po prvom."
+
+msgid "Your showcase is not complete yet. Fill in what is missing."
+msgstr "Vitrína ešte nie je úplná. Doplň, čo chýba."
+
+msgid "Your showcase is suspended. Write to the support team to know why."
+msgstr "Vitrína je pozastavená. Napíš podpore, prečo."
+
+msgid "This file is not ready or was refused. Send it again."
+msgstr "Súbor nie je pripravený alebo bol odmietnutý. Pošli ho znova."
+
+msgid "Your documents are being checked. You will get an answer soon."
+msgstr "Dokumenty sa kontrolujú. Čoskoro dostaneš odpoveď."
+
+msgid "You are already a verified pro."
+msgstr "Už si overená profesionálka."
+
+msgid "The pro was just told you are here. Wait a few minutes."
+msgstr "Profesionálka už vie, že si tu. Počkaj pár minút."
+
+msgid "This pro does not receive clients at a place. Write to her instead."
+msgstr "Táto profesionálka neprijíma na mieste. Radšej jej napíš."
+
+msgid "Sign in, or give your first name and number, to tell the pro you are here."
+msgstr "Prihlás sa alebo zadaj meno a číslo, aby si dala vedieť, že si tu."
 
 msgid "Lipstick"
 msgstr "Rúž"
@@ -807,17 +964,379 @@ msgstr "odbor"
 msgid "trades"
 msgstr "odbory"
 
+msgid "French"
+msgstr "Francúzština"
+
+msgid "English"
+msgstr "Angličtina"
+
+msgid "Fon"
+msgstr "Fon"
+
+msgid "Yoruba"
+msgstr "Jorubčina"
+
+msgid "Goun"
+msgstr "Gun"
+
+msgid "Mina"
+msgstr "Mina"
+
+msgid "Ewe"
+msgstr "Eweština"
+
+msgid "Bariba"
+msgstr "Bariba"
+
+msgid "Dendi"
+msgstr "Dendi"
+
+msgid "Hausa"
+msgstr "Hauština"
+
+msgid "Wolof"
+msgstr "Wolof"
+
+msgid "Lingala"
+msgstr "Lingala"
+
+msgid "Arabic"
+msgstr "Arabčina"
+
+msgid "Spanish"
+msgstr "Španielčina"
+
+msgid "Portuguese"
+msgstr "Portugalčina"
+
+msgid "Slovak"
+msgstr "Slovenčina"
+
+msgid "Website"
+msgstr "Webová stránka"
+
 msgid "Independent"
 msgstr "Samostatná"
 
 msgid "Salon or business"
 msgstr "Salón alebo firma"
 
+msgid "Draft"
+msgstr "Koncept"
+
+msgid "Published"
+msgstr "Zverejnená"
+
+msgid "Not sent"
+msgstr "Neodoslané"
+
+msgid "Waiting for review"
+msgstr "Čaká na kontrolu"
+
+msgid "Verified pro"
+msgstr "Overená profesionálka"
+
+msgid "Placed on the map"
+msgstr "Umiestnené na mape"
+
+msgid "Phone GPS"
+msgstr "GPS telefónu"
+
+msgid "Set by the team"
+msgstr "Nastavil tím"
+
+msgid "solangeglow.com/<short link>: lowercase letters, digits and dashes."
+msgstr "solangeglow.com/<krátky odkaz>: malé písmená, číslice a pomlčky."
+
+msgid "presentation"
+msgstr "predstavenie"
+
+msgid "presentation (voice note)"
+msgstr "predstavenie (hlasová správa)"
+
+msgid "cover picture"
+msgstr "titulná fotka"
+
+msgid "social networks"
+msgstr "sociálne siete"
+
+msgid "Network: link or handle."
+msgstr "Sieť: odkaz alebo @meno."
+
+msgid "languages spoken"
+msgstr "jazyky"
+
+msgid "district"
+msgstr "štvrť"
+
+msgid "position given by"
+msgstr "polohu zadal(a)"
+
+msgid "receives clients"
+msgstr "prijíma klientky"
+
+msgid "Off: she only goes to her clients; her address and position stay private."
+msgstr "Vypnuté: len chodí ku klientkam; adresa a poloha zostávajú súkromné."
+
+msgid "itinerary video"
+msgstr "video cesty"
+
+msgid "landmarks"
+msgstr "orientačné body"
+
+msgid "landmarks (voice note)"
+msgstr "orientačné body (hlasová správa)"
+
+msgid "goes to the client's home"
+msgstr "chodí ku klientkam"
+
+msgid "travel radius (km)"
+msgstr "polomer cesty (km)"
+
+msgid "travel area"
+msgstr "oblasť cesty"
+
+msgid "travel fee"
+msgstr "príplatok za cestu"
+
+msgid "In the smallest unit of the currency (FCFA, cents)."
+msgstr "V najmenšej jednotke meny (FCFA, centy)."
+
+msgid "published at"
+msgstr "zverejnené"
+
+msgid "suspended at"
+msgstr "pozastavené"
+
+msgid "reason of the suspension"
+msgstr "dôvod pozastavenia"
+
+msgid "average rating"
+msgstr "priemerné hodnotenie"
+
+msgid "number of reviews"
+msgstr "počet hodnotení"
+
+msgid "search words"
+msgstr "slová na vyhľadávanie"
+
 msgid "pro profile"
 msgstr "profil profesionálky"
 
 msgid "pro profiles"
 msgstr "profily profesionálok"
+
+msgid "pro"
+msgstr "profesionálka"
+
+msgid "service category"
+msgstr "kategória služieb"
+
+msgid "service categories"
+msgstr "kategórie služieb"
+
+msgid "Fixed price"
+msgstr "Pevná cena"
+
+msgid "From"
+msgstr "Od"
+
+msgid "On quote"
+msgstr "Na dopyt"
+
+msgid "category"
+msgstr "kategória"
+
+msgid "price"
+msgstr "cena"
+
+msgid "amount"
+msgstr "suma"
+
+msgid "In the smallest unit of the currency. Empty for a quote."
+msgstr "V najmenšej jednotke meny. Prázdne pri cene na dopyt."
+
+msgid "total duration (min)"
+msgstr "celkové trvanie (min)"
+
+msgid "Sum of the steps."
+msgstr "Súčet krokov."
+
+msgid "also at the client's home"
+msgstr "aj u klientky doma"
+
+msgid "shown"
+msgstr "zobrazená"
+
+msgid "archived at"
+msgstr "archivované"
+
+msgid "service"
+msgstr "služba"
+
+msgid "services"
+msgstr "služby"
+
+msgid "Work"
+msgstr "Práca"
+
+msgid "Waiting time (product acting)"
+msgstr "Čas pôsobenia (produkt pôsobí)"
+
+msgid "label"
+msgstr "označenie"
+
+msgid "duration (min)"
+msgstr "trvanie (min)"
+
+msgid "needs someone"
+msgstr "vyžaduje osobu"
+
+msgid "step"
+msgstr "krok"
+
+msgid "steps"
+msgstr "kroky"
+
+msgid "extra price"
+msgstr "príplatok"
+
+msgid "extra time (min)"
+msgstr "čas navyše (min)"
+
+msgid "option"
+msgstr "možnosť"
+
+msgid "options"
+msgstr "možnosti"
+
+msgid "picture"
+msgstr "fotka"
+
+msgid "service picture"
+msgstr "fotka služby"
+
+msgid "service pictures"
+msgstr "fotky služieb"
+
+msgid "Monday"
+msgstr "Pondelok"
+
+msgid "Tuesday"
+msgstr "Utorok"
+
+msgid "Wednesday"
+msgstr "Streda"
+
+msgid "Thursday"
+msgstr "Štvrtok"
+
+msgid "Friday"
+msgstr "Piatok"
+
+msgid "Saturday"
+msgstr "Sobota"
+
+msgid "Sunday"
+msgstr "Nedeľa"
+
+msgid "day"
+msgstr "deň"
+
+msgid "opens at"
+msgstr "otvára o"
+
+msgid "closes at"
+msgstr "zatvára o"
+
+msgid "opening hours"
+msgstr "otváracie hodiny"
+
+msgid "from"
+msgstr "prvý deň"
+
+msgid "to"
+msgstr "posledný deň"
+
+msgid "closure"
+msgstr "zatvorenie"
+
+msgid "closures"
+msgstr "zatvorenia"
+
+msgid "result"
+msgstr "výsledok"
+
+msgid "caption"
+msgstr "popis"
+
+msgid "portfolio item"
+msgstr "práca"
+
+msgid "portfolio"
+msgstr "práce"
+
+msgid "Approved"
+msgstr "Schválené"
+
+msgid "Identity card"
+msgstr "Občiansky preukaz"
+
+msgid "Passport"
+msgstr "Pas"
+
+msgid "Residence permit"
+msgstr "Povolenie na pobyt"
+
+msgid "Driving licence"
+msgstr "Vodičský preukaz"
+
+msgid "document"
+msgstr "doklad"
+
+msgid "identity document"
+msgstr "doklad totožnosti"
+
+msgid "selfie"
+msgstr "selfie"
+
+msgid "reviewed by"
+msgstr "skontroloval(a)"
+
+msgid "reviewed at"
+msgstr "skontrolované"
+
+msgid "reason of the refusal"
+msgstr "dôvod zamietnutia"
+
+msgid "Sent to the pro."
+msgstr "Odošle sa profesionálke."
+
+msgid "identity check"
+msgstr "overenie totožnosti"
+
+msgid "identity checks"
+msgstr "overenia totožnosti"
+
+msgid "Can see identity documents and verify pros"
+msgstr "Môže vidieť doklady a overovať profesionálky"
+
+msgid "Book an appointment with"
+msgstr "Rezervuj si termín u"
+
+msgid "Scan with the camera of your phone"
+msgstr "Naskenuj fotoaparátom telefónu"
+
+msgid "Scan me to book"
+msgstr "Naskenuj ma a rezervuj"
+
+#, python-format
+msgid "%(counter)s pro placed on the map."
+msgid_plural "%(counter)s pros placed on the map."
+msgstr[0] "%(counter)s profesionálka na mape."
+msgstr[1] "%(counter)s profesionálky na mape."
+msgstr[2] "%(counter)s profesionálky na mape."
+msgstr[3] "%(counter)s profesionáliek na mape."
 
 msgid "France Selection"
 msgstr "Výber z Francúzska"
@@ -827,15 +1346,6 @@ msgstr "Obchody"
 
 msgid "Social"
 msgstr "Sociálna sieť"
-
-msgid "French"
-msgstr "Francúzština"
-
-msgid "English"
-msgstr "Angličtina"
-
-msgid "Slovak"
-msgstr "Slovenčina"
 
 msgid "Back office"
 msgstr "Administrácia"
@@ -852,11 +1362,17 @@ msgstr "Nastavenia"
 msgid "Feature flags"
 msgstr "Prepínače funkcií"
 
-msgid "Media"
-msgstr "Médiá"
-
 msgid "Audit journal"
 msgstr "Denník auditu"
+
+msgid "Showcases"
+msgstr "Vitríny"
+
+msgid "Identity checks"
+msgstr "Overenia totožnosti"
+
+msgid "Trades"
+msgstr "Odbory"
 
 msgid "Notification templates"
 msgstr "Šablóny upozornení"
@@ -875,9 +1391,6 @@ msgstr "Denník prihlásení"
 
 msgid "Guests"
 msgstr "Hostia"
-
-msgid "Trades"
-msgstr "Odbory"
 
 msgid "Groups"
 msgstr "Skupiny"

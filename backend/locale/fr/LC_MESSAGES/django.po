@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-06 20:50+0200\n"
+"POT-Creation-Date: 2026-10-11 10:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -767,8 +767,161 @@ msgstr "abonnements aux alertes"
 msgid "Payments"
 msgstr "Paiements"
 
+msgid "latitude"
+msgstr "latitude"
+
+msgid "longitude"
+msgstr "longitude"
+
+msgid "Showcase"
+msgstr "Vitrine"
+
+msgid "Place"
+msgstr "Lieu"
+
+msgid "Status"
+msgstr "Statut"
+
+msgid "Media"
+msgstr "Médias"
+
+msgid "business name"
+msgstr "nom commercial"
+
+msgid "short link"
+msgstr "lien court"
+
+msgid "verification"
+msgstr "vérification"
+
+msgid "Suspend the selected showcases"
+msgstr "Suspendre les vitrines choisies"
+
+msgid "Rules not followed."
+msgstr "Règles non respectées."
+
+#, python-format
+msgid "%(n)d showcase suspended."
+msgid_plural "%(n)d showcases suspended."
+msgstr[0] "%(n)d vitrine suspendue."
+msgstr[1] "%(n)d vitrines suspendues."
+
+msgid "End the suspension of the selected showcases"
+msgstr "Lever la suspension des vitrines choisies"
+
+#, python-format
+msgid "%(n)d showcase back online."
+msgid_plural "%(n)d showcases back online."
+msgstr[0] "%(n)d vitrine de nouveau en ligne."
+msgstr[1] "%(n)d vitrines de nouveau en ligne."
+
+msgid "Save and suspend (reason above)"
+msgstr "Enregistrer et suspendre (raison ci-dessus)"
+
+msgid "The showcase is suspended."
+msgstr "La vitrine est suspendue."
+
+msgid "Save and end the suspension"
+msgstr "Enregistrer et lever la suspension"
+
+msgid "The showcase is back."
+msgstr "La vitrine est de retour."
+
+msgid "Map of the pros"
+msgstr "Carte des pros"
+
+msgid "documents"
+msgstr "documents"
+
+msgid "Each opening of these pictures is written in the audit journal."
+msgstr "Chaque ouverture de ces images est inscrite dans le journal d'audit."
+
+msgid "Save and approve: verified pro"
+msgstr "Enregistrer et valider : pro vérifiée"
+
+msgid "The pro is verified."
+msgstr "La pro est vérifiée."
+
+msgid "Save and refuse (reason above)"
+msgstr "Enregistrer et refuser (raison ci-dessus)"
+
+msgid "Write the reason of the refusal first."
+msgstr "Écris d'abord la raison du refus."
+
+msgid "The pro was told why."
+msgstr "La pro a été prévenue de la raison."
+
 msgid "Pros"
 msgstr "Pros"
+
+msgid "You do not have a showcase yet. Start with « Become a pro »."
+msgstr "Tu n'as pas encore de vitrine. Commence par « Devenir pro »."
+
+msgid "This pro does not exist or is not visible any more."
+msgstr "Cette pro n'existe pas ou n'est plus visible."
+
+msgid "Use 3 to 40 lowercase letters, digits or dashes, e.g. aicha-tresses."
+msgstr "Utilise 3 à 40 lettres minuscules, chiffres ou tirets, ex. aicha-tresses."
+
+msgid "This link is already used. Try another one, e.g. with your district."
+msgstr "Ce lien est déjà pris. Essaie-en un autre, par exemple avec ton quartier."
+
+msgid "This link is not valid. Paste the address of your page or your @name."
+msgstr "Ce lien n'est pas valide. Colle l'adresse de ta page ou ton @nom."
+
+msgid "This position is not valid. Place the point on the map again."
+msgstr "Cette position n'est pas valide. Place à nouveau le point sur la carte."
+
+msgid "This area is not valid. Draw it again with at least 3 points."
+msgstr "Cette zone n'est pas valide. Redessine-la avec au moins 3 points."
+
+#, python-format
+msgid "The travel radius cannot be more than %(km)s km."
+msgstr "Le rayon de déplacement ne peut pas dépasser %(km)s km."
+
+msgid "Give a price, or choose « On quote »."
+msgstr "Indique un prix, ou choisis « Sur devis »."
+
+msgid "Give a name to this service."
+msgstr "Donne un nom à cette prestation."
+
+msgid "Give the time of the service, in minutes."
+msgstr "Indique la durée de la prestation, en minutes."
+
+#, python-format
+msgid "You reached the limit of %(limit)s. Remove one before adding another."
+msgstr "Tu as atteint la limite de %(limit)s. Retires-en un avant d'en ajouter."
+
+#, python-format
+msgid "The hours of %(day)s overlap or close before they open. Check them."
+msgstr "Les horaires du %(day)s se chevauchent ou ferment avant d'ouvrir. Vérifie-les."
+
+msgid "The last day of the closure must be after the first one."
+msgstr "Le dernier jour de fermeture doit être après le premier."
+
+msgid "Your showcase is not complete yet. Fill in what is missing."
+msgstr "Ta vitrine n'est pas encore complète. Remplis ce qui manque."
+
+msgid "Your showcase is suspended. Write to the support team to know why."
+msgstr "Ta vitrine est suspendue. Écris au support pour savoir pourquoi."
+
+msgid "This file is not ready or was refused. Send it again."
+msgstr "Ce fichier n'est pas prêt ou a été refusé. Envoie-le à nouveau."
+
+msgid "Your documents are being checked. You will get an answer soon."
+msgstr "Tes documents sont en cours de contrôle. Tu auras une réponse bientôt."
+
+msgid "You are already a verified pro."
+msgstr "Tu es déjà une pro vérifiée."
+
+msgid "The pro was just told you are here. Wait a few minutes."
+msgstr "La pro vient d'être prévenue. Attends quelques minutes."
+
+msgid "This pro does not receive clients at a place. Write to her instead."
+msgstr "Cette pro ne reçoit pas dans un lieu. Écris-lui plutôt."
+
+msgid "Sign in, or give your first name and number, to tell the pro you are here."
+msgstr "Connecte-toi, ou donne ton prénom et ton numéro, pour prévenir la pro."
 
 msgid "Lipstick"
 msgstr "Rouge à lèvres"
@@ -803,17 +956,377 @@ msgstr "métier"
 msgid "trades"
 msgstr "métiers"
 
+msgid "French"
+msgstr "Français"
+
+msgid "English"
+msgstr "Anglais"
+
+msgid "Fon"
+msgstr "Fon"
+
+msgid "Yoruba"
+msgstr "Yoruba"
+
+msgid "Goun"
+msgstr "Goun"
+
+msgid "Mina"
+msgstr "Mina"
+
+msgid "Ewe"
+msgstr "Éwé"
+
+msgid "Bariba"
+msgstr "Bariba"
+
+msgid "Dendi"
+msgstr "Dendi"
+
+msgid "Hausa"
+msgstr "Haoussa"
+
+msgid "Wolof"
+msgstr "Wolof"
+
+msgid "Lingala"
+msgstr "Lingala"
+
+msgid "Arabic"
+msgstr "Arabe"
+
+msgid "Spanish"
+msgstr "Espagnol"
+
+msgid "Portuguese"
+msgstr "Portugais"
+
+msgid "Slovak"
+msgstr "Slovaque"
+
+msgid "Website"
+msgstr "Site web"
+
 msgid "Independent"
 msgstr "Indépendante"
 
 msgid "Salon or business"
 msgstr "Salon ou entreprise"
 
+msgid "Draft"
+msgstr "Brouillon"
+
+msgid "Published"
+msgstr "Publiée"
+
+msgid "Not sent"
+msgstr "Pas envoyée"
+
+msgid "Waiting for review"
+msgstr "En attente de contrôle"
+
+msgid "Verified pro"
+msgstr "Pro vérifiée"
+
+msgid "Placed on the map"
+msgstr "Placé sur la carte"
+
+msgid "Phone GPS"
+msgstr "GPS du téléphone"
+
+msgid "Set by the team"
+msgstr "Fixé par l'équipe"
+
+msgid "solangeglow.com/<short link>: lowercase letters, digits and dashes."
+msgstr "solangeglow.com/<lien court> : lettres minuscules, chiffres et tirets."
+
+msgid "presentation"
+msgstr "présentation"
+
+msgid "presentation (voice note)"
+msgstr "présentation (note vocale)"
+
+msgid "cover picture"
+msgstr "photo de couverture"
+
+msgid "social networks"
+msgstr "réseaux sociaux"
+
+msgid "Network: link or handle."
+msgstr "Réseau : lien ou @nom."
+
+msgid "languages spoken"
+msgstr "langues parlées"
+
+msgid "district"
+msgstr "quartier"
+
+msgid "position given by"
+msgstr "position donnée par"
+
+msgid "receives clients"
+msgstr "reçoit des clientes"
+
+msgid "Off: she only goes to her clients; her address and position stay private."
+msgstr "Non : elle se déplace seulement ; son adresse et sa position restent privées."
+
+msgid "itinerary video"
+msgstr "vidéo d'itinéraire"
+
+msgid "landmarks"
+msgstr "repères"
+
+msgid "landmarks (voice note)"
+msgstr "repères (note vocale)"
+
+msgid "goes to the client's home"
+msgstr "se déplace à domicile"
+
+msgid "travel radius (km)"
+msgstr "rayon de déplacement (km)"
+
+msgid "travel area"
+msgstr "zone de déplacement"
+
+msgid "travel fee"
+msgstr "supplément déplacement"
+
+msgid "In the smallest unit of the currency (FCFA, cents)."
+msgstr "Dans la plus petite unité de la devise (FCFA, centimes)."
+
+msgid "published at"
+msgstr "publiée le"
+
+msgid "suspended at"
+msgstr "suspendue le"
+
+msgid "reason of the suspension"
+msgstr "raison de la suspension"
+
+msgid "average rating"
+msgstr "note moyenne"
+
+msgid "number of reviews"
+msgstr "nombre d'avis"
+
+msgid "search words"
+msgstr "mots de recherche"
+
 msgid "pro profile"
 msgstr "profil pro"
 
 msgid "pro profiles"
 msgstr "profils pros"
+
+msgid "pro"
+msgstr "pro"
+
+msgid "service category"
+msgstr "catégorie de prestations"
+
+msgid "service categories"
+msgstr "catégories de prestations"
+
+msgid "Fixed price"
+msgstr "Prix fixe"
+
+msgid "From"
+msgstr "À partir de"
+
+msgid "On quote"
+msgstr "Sur devis"
+
+msgid "category"
+msgstr "catégorie"
+
+msgid "price"
+msgstr "prix"
+
+msgid "amount"
+msgstr "montant"
+
+msgid "In the smallest unit of the currency. Empty for a quote."
+msgstr "Dans la plus petite unité de la devise. Vide pour un devis."
+
+msgid "total duration (min)"
+msgstr "durée totale (min)"
+
+msgid "Sum of the steps."
+msgstr "Somme des étapes."
+
+msgid "also at the client's home"
+msgstr "aussi à domicile"
+
+msgid "shown"
+msgstr "affichée"
+
+msgid "archived at"
+msgstr "archivée le"
+
+msgid "service"
+msgstr "prestation"
+
+msgid "services"
+msgstr "prestations"
+
+msgid "Work"
+msgstr "Travail"
+
+msgid "Waiting time (product acting)"
+msgstr "Temps de pose (le produit agit)"
+
+msgid "label"
+msgstr "libellé"
+
+msgid "duration (min)"
+msgstr "durée (min)"
+
+msgid "needs someone"
+msgstr "demande une personne"
+
+msgid "step"
+msgstr "étape"
+
+msgid "steps"
+msgstr "étapes"
+
+msgid "extra price"
+msgstr "supplément"
+
+msgid "extra time (min)"
+msgstr "temps en plus (min)"
+
+msgid "option"
+msgstr "option"
+
+msgid "options"
+msgstr "options"
+
+msgid "picture"
+msgstr "photo"
+
+msgid "service picture"
+msgstr "photo de prestation"
+
+msgid "service pictures"
+msgstr "photos de prestation"
+
+msgid "Monday"
+msgstr "Lundi"
+
+msgid "Tuesday"
+msgstr "Mardi"
+
+msgid "Wednesday"
+msgstr "Mercredi"
+
+msgid "Thursday"
+msgstr "Jeudi"
+
+msgid "Friday"
+msgstr "Vendredi"
+
+msgid "Saturday"
+msgstr "Samedi"
+
+msgid "Sunday"
+msgstr "Dimanche"
+
+msgid "day"
+msgstr "jour"
+
+msgid "opens at"
+msgstr "ouvre à"
+
+msgid "closes at"
+msgstr "ferme à"
+
+msgid "opening hours"
+msgstr "horaires"
+
+msgid "from"
+msgstr "premier jour"
+
+msgid "to"
+msgstr "dernier jour"
+
+msgid "closure"
+msgstr "fermeture"
+
+msgid "closures"
+msgstr "fermetures"
+
+msgid "result"
+msgstr "résultat"
+
+msgid "caption"
+msgstr "légende"
+
+msgid "portfolio item"
+msgstr "réalisation"
+
+msgid "portfolio"
+msgstr "réalisations"
+
+msgid "Approved"
+msgstr "Validée"
+
+msgid "Identity card"
+msgstr "Carte d'identité"
+
+msgid "Passport"
+msgstr "Passeport"
+
+msgid "Residence permit"
+msgstr "Titre de séjour"
+
+msgid "Driving licence"
+msgstr "Permis de conduire"
+
+msgid "document"
+msgstr "pièce"
+
+msgid "identity document"
+msgstr "pièce d'identité"
+
+msgid "selfie"
+msgstr "selfie"
+
+msgid "reviewed by"
+msgstr "contrôlée par"
+
+msgid "reviewed at"
+msgstr "contrôlée le"
+
+msgid "reason of the refusal"
+msgstr "raison du refus"
+
+msgid "Sent to the pro."
+msgstr "Envoyée à la pro."
+
+msgid "identity check"
+msgstr "vérification d'identité"
+
+msgid "identity checks"
+msgstr "vérifications d'identité"
+
+msgid "Can see identity documents and verify pros"
+msgstr "Peut voir les pièces d'identité et vérifier les pros"
+
+msgid "Book an appointment with"
+msgstr "Prends rendez-vous avec"
+
+msgid "Scan with the camera of your phone"
+msgstr "Scanne avec l'appareil photo de ton téléphone"
+
+msgid "Scan me to book"
+msgstr "Scanne-moi pour réserver"
+
+#, python-format
+msgid "%(counter)s pro placed on the map."
+msgid_plural "%(counter)s pros placed on the map."
+msgstr[0] "%(counter)s pro placée sur la carte."
+msgstr[1] "%(counter)s pros placées sur la carte."
 
 msgid "France Selection"
 msgstr "Sélection France"
@@ -823,15 +1336,6 @@ msgstr "Boutiques"
 
 msgid "Social"
 msgstr "Réseau social"
-
-msgid "French"
-msgstr "Français"
-
-msgid "English"
-msgstr "Anglais"
-
-msgid "Slovak"
-msgstr "Slovaque"
 
 msgid "Back office"
 msgstr "Back-office"
@@ -848,11 +1352,17 @@ msgstr "Réglages"
 msgid "Feature flags"
 msgstr "Modules activables"
 
-msgid "Media"
-msgstr "Médias"
-
 msgid "Audit journal"
 msgstr "Journal d'audit"
+
+msgid "Showcases"
+msgstr "Vitrines"
+
+msgid "Identity checks"
+msgstr "Vérifications d'identité"
+
+msgid "Trades"
+msgstr "Métiers"
 
 msgid "Notification templates"
 msgstr "Modèles de notification"
@@ -871,9 +1381,6 @@ msgstr "Journal des connexions"
 
 msgid "Guests"
 msgstr "Invitées"
-
-msgid "Trades"
-msgstr "Métiers"
 
 msgid "Groups"
 msgstr "Groupes"
