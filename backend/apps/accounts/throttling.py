@@ -9,6 +9,10 @@ DEFAULT_RATES = {
     "profile": "60/minute",
     "media_upload": "30/hour",
     "notification_test": "10/hour",
+    "search": "120/minute",
+    "printable": "30/minute",
+    "arrival": "20/hour",
+    "verification": "5/hour",
 }
 
 

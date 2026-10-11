@@ -40,3 +40,13 @@ class CookieJWTAuthentication(JWTAuthentication):
                 _("You were signed out. Sign in again."), code="token_revoked"
             )
         return user, validated
+
+
+class OptionalCookieJWTAuthentication(CookieJWTAuthentication):
+    """For public pages: a signed-in visitor is recognised, an expired session is ignored."""
+
+    def authenticate(self, request):
+        try:
+            return super().authenticate(request)
+        except exceptions.AuthenticationFailed:
+            return None

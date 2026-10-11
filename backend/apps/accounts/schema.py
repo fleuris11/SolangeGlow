@@ -6,6 +6,8 @@ from drf_spectacular.extensions import OpenApiAuthenticationExtension
 
 class CookieJWTScheme(OpenApiAuthenticationExtension):
     target_class = "apps.accounts.authentication.CookieJWTAuthentication"
+    # Also the optional variant of public pages (AllowAny marks it optional in the schema).
+    match_subclasses = True
     name = ["jwtCookie", "jwtBearer"]
 
     def get_security_definition(self, auto_schema):
