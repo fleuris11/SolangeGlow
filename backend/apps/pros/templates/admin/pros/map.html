@@ -1,0 +1,70 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block extrahead %}
+  {{ block.super }}
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@6.13.0/dist/maplibre-gl.css">
+  <script src="https://unpkg.com/maplibre-gl@6.13.0/dist/maplibre-gl.js"></script>
+{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+  <div class="flex flex-col gap-4">
+    <p>{% blocktranslate count counter=count %}{{ counter }} pro placed on the map.{% plural %}{{ counter }} pros placed on the map.{% endblocktranslate %}</p>
+    <ul class="flex flex-wrap gap-4 text-sm">
+      <li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#1F7A5A"></span> {% translate "Published" %}</li>
+      <li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#7A4E6E"></span> {% translate "Draft" %}</li>
+      <li><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#C8102E"></span> {% translate "Suspended" %}</li>
+    </ul>
+    <div id="pros-map" style="height:70vh;border-radius:16px;overflow:hidden"></div>
+    <p class="text-sm">{{ attribution }}</p>
+  </div>
+  {{ points|json_script:"pros-points" }}
+  <script>
+    (function () {
+      var data = JSON.parse(document.getElementById("pros-points").textContent);
+      var map = new maplibregl.Map({
+        container: "pros-map",
+        style: "{{ style_url|escapejs }}",
+        center: [2.4183, 6.3654],
+        zoom: 4
+      });
+      map.addControl(new maplibregl.NavigationControl());
+      map.on("load", function () {
+        map.addSource("pros", { type: "geojson", data: data, cluster: true, clusterRadius: 40 });
+        map.addLayer({
+          id: "clusters", type: "circle", source: "pros", filter: ["has", "point_count"],
+          paint: { "circle-color": "#3B1233", "circle-radius": ["step", ["get", "point_count"], 16, 10, 22, 50, 28] }
+        });
+        map.addLayer({
+          id: "cluster-count", type: "symbol", source: "pros", filter: ["has", "point_count"],
+          layout: { "text-field": ["get", "point_count_abbreviated"], "text-size": 14 },
+          paint: { "text-color": "#FFFFFF" }
+        });
+        map.addLayer({
+          id: "pros", type: "circle", source: "pros", filter: ["!", ["has", "point_count"]],
+          paint: {
+            "circle-radius": 8, "circle-stroke-width": 2, "circle-stroke-color": "#FFFFFF",
+            "circle-color": ["match", ["get", "status"], "published", "#1F7A5A", "suspended", "#C8102E", "#7A4E6E"]
+          }
+        });
+        map.on("click", "clusters", function (event) {
+          map.easeTo({ center: event.features[0].geometry.coordinates, zoom: map.getZoom() + 2 });
+        });
+        map.on("click", "pros", function (event) {
+          var props = event.features[0].properties;
+          var link = document.createElement("a");
+          link.href = props.url;
+          link.textContent = props.name + " (" + props.city + ")";
+          new maplibregl.Popup().setLngLat(event.features[0].geometry.coordinates).setDOMContent(link).addTo(map);
+        });
+        if (data.features.length) {
+          var bounds = new maplibregl.LngLatBounds();
+          data.features.forEach(function (f) { bounds.extend(f.geometry.coordinates); });
+          map.fitBounds(bounds, { padding: 60, maxZoom: 13 });
+        }
+      });
+    })();
+  </script>
+{% endblock %}
