@@ -8,6 +8,7 @@ from rest_framework.views import APIView
 from apps.accounts.throttling import SettingRateThrottle
 
 from . import services
+from .models import MediaAsset
 from .purposes import PURPOSES
 
 
@@ -15,10 +16,8 @@ class MediaSerializer(serializers.Serializer):
     """What the web app needs to show a media (see services.asset_payload)."""
 
     id = serializers.UUIDField()
-    kind = serializers.ChoiceField(choices=["image", "video", "audio"])
-    status = serializers.ChoiceField(
-        choices=["pending", "processing", "ready", "rejected", "failed"]
-    )
+    kind = serializers.ChoiceField(choices=MediaAsset.Kind.choices)
+    status = serializers.ChoiceField(choices=MediaAsset.Status.choices)
     error = serializers.CharField(allow_null=True)
     blurhash = serializers.CharField(allow_null=True)
     width = serializers.IntegerField(allow_null=True)
@@ -33,7 +32,7 @@ MediaPayload = MediaSerializer
 class MediaUploadSerializer(serializers.Serializer):
     file = serializers.FileField()
     purpose = serializers.ChoiceField(choices=sorted(PURPOSES))
-    kind = serializers.ChoiceField(choices=["image", "video", "audio"], required=False)
+    kind = serializers.ChoiceField(choices=MediaAsset.Kind.choices, required=False)
 
 
 class MediaUploadView(APIView):

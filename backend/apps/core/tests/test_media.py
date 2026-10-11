@@ -182,7 +182,7 @@ def test_video_gets_two_qualities_and_a_poster(owner, tmp_path):
         ],
     )
     asset = services.create_asset(
-        owner=owner, uploaded=upload(data, "clip.mp4", "video/mp4"), purpose="itinerary_video"
+        owner=owner, uploaded=upload(data, "clip.mp4", "video/mp4"), purpose="post"
     )
 
     asset.refresh_from_db()
@@ -266,3 +266,14 @@ def test_upload_api_refuses_unknown_purpose(owner):
     )
 
     assert response.status_code == 400
+
+
+def test_itinerary_video_must_last_30_to_60_seconds(owner, tmp_path):
+    data = ffmpeg_file(
+        tmp_path, "short.mp4", ["-f", "lavfi", "-i", "testsrc=size=320x240:rate=10:duration=2"]
+    )
+    asset = services.create_asset(
+        owner=owner, uploaded=upload(data, "short.mp4", "video/mp4"), purpose="itinerary_video"
+    )
+    asset.refresh_from_db()
+    assert (asset.status, asset.error) == (MediaAsset.Status.REJECTED, "too_short")

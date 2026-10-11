@@ -12,6 +12,7 @@ from apps.core.selectors import get_setting
 
 from . import ffmpeg, images
 from .models import MediaAsset
+from .purposes import PURPOSES
 from .storage import private_storage, public_storage
 
 
@@ -62,11 +63,23 @@ def _probe(path: Path) -> dict:
 
 
 def _check_duration(asset: MediaAsset, seconds: float, setting: str, default: int) -> None:
+    """General limit of the kind, then the limits of the use (e.g. itinerary: 30 to 60 s)."""
     maximum = int(get_setting(setting, default=default))
+    minimum = 0
+    rule = PURPOSES.get(asset.purpose)
+    if rule and rule.duration:
+        limits = rule.duration
+        if limits.max_setting:
+            maximum = min(maximum, int(get_setting(limits.max_setting, default=limits.max_default)))
+        if limits.min_setting:
+            minimum = int(get_setting(limits.min_setting, default=limits.min_default))
     if seconds <= 0:
         raise Rejected("unreadable")
-    if seconds > maximum:
+    # Half a second of tolerance: phones round the length they show.
+    if seconds > maximum + 0.5:
         raise Rejected("too_long")
+    if seconds < minimum - 0.5:
+        raise Rejected("too_short")
 
 
 def _upload(save, name: str, path: Path, content_type: str) -> dict:
