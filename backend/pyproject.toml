@@ -29,6 +29,8 @@ ignore = ["RUF012"]
 "conftest.py" = ["S101"]
 # Fixed ffmpeg/ffprobe command lines, no shell, no user input in the arguments.
 "apps/core/media/ffmpeg.py" = ["S603", "S607"]
+# Demo content (one pro per entry), easier to read on long lines.
+"apps/pros/demo.py" = ["E501"]
 "config/settings/*.py" = ["F405"]
 "config/settings/dev.py" = ["F405", "S104"]
 

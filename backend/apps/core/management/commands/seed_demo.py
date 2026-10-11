@@ -16,18 +16,8 @@ from apps.accounts.models import GuestIdentity, SignupChannel, User
 from apps.core.choices import Role
 from apps.core.models import Country
 from apps.notifications.services import notify
-from apps.pros.models import ProProfile, Trade
-
-PROS = [
-    # first name, last name, phone, country, city, trades, birth date
-    ("Aïcha", "Hounkpè", "+2290197000101", "BJ", "Cotonou", ["braids"], "1994-03-12"),
-    ("Gloria", "Adjovi", "+2290196000102", "BJ", "Cotonou", ["makeup"], "1998-07-25"),
-    ("Sènami", "Dossou", "+2290166000103", "BJ", "Abomey-Calavi", ["hair", "braids"], "1990-11-02"),
-    ("Nafissatou", "Bio", "+2290197000104", "BJ", "Cotonou", ["headwrap"], "1987-05-18"),
-    ("Rachida", "Soulé", "+2290161000105", "BJ", "Cotonou", ["nails"], "2000-01-30"),
-    ("Mireille", "Kpadonou", "+2290197000106", "BJ", "Porto-Novo", ["sewing"], "1983-09-09"),
-    ("Clarisse", "Mensah", "+33612340107", "FR", "Paris", ["skincare", "makeup"], "1991-06-14"),
-]
+from apps.pros import demo
+from apps.pros.models import ProProfile
 
 CLIENTS = [
     ("Awa", "Zinsou", "+2290197000201", None, "BJ", "Cotonou", "2001-02-03"),
@@ -55,7 +45,11 @@ class Command(BaseCommand):
         call_command("seed_core", verbosity=0)
         with transaction.atomic():
             created = self.seed_accounts()
-        self.stdout.write(self.style.SUCCESS(f"seed_demo: {created} new demo accounts."))
+        self.stdout.write(
+            self.style.SUCCESS(
+                f"seed_demo: {created} new demo accounts, {self.showcases} showcases filled."
+            )
+        )
 
     def _person(self, first, last, phone, email, country_code, city, birth):
         country = Country.objects.filter(code=country_code).first()
@@ -84,15 +78,26 @@ class Command(BaseCommand):
 
     def seed_accounts(self) -> int:
         created_count = 0
-        for first, last, phone, country, city, trades, birth in PROS:
-            user, created = self._person(first, last, phone, None, country, city, birth)
-            if created:
+        showcases = 0
+        for pro_data in demo.PROS:
+            user, created = self._person(
+                pro_data.first,
+                pro_data.last,
+                pro_data.phone,
+                None,
+                pro_data.country,
+                pro_data.city,
+                pro_data.birth,
+            )
+            if Role.PRO not in user.roles:
                 user.roles = [Role.CLIENT, Role.PRO]
                 user.save(update_fields=["roles"])
-                profile, _ = ProProfile.objects.get_or_create(user=user)
-                profile.trades.set(Trade.objects.filter(key__in=trades))
+            profile, _ = ProProfile.objects.get_or_create(user=user)
+            showcases += demo.fill_showcase(profile, pro_data)
+            if created:
                 notify(user, "account.welcome")
                 created_count += 1
+        self.showcases = showcases
 
         for first, last, phone, email, country, city, birth in CLIENTS:
             user, created = self._person(first, last, phone, email, country, city, birth)
