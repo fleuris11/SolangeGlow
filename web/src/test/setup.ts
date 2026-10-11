@@ -1,7 +1,10 @@
 import "@testing-library/jest-dom/vitest";
 
-import { cleanup } from "@testing-library/react";
+import { cleanup, configure } from "@testing-library/react";
 import { afterEach, vi } from "vitest";
+
+// findBy… waits up to 5 s: Docker on Windows renders slowly when busy.
+configure({ asyncUtilTimeout: 5_000 });
 
 /** One shared router, so tests can check where the app navigated. */
 const routerMock = vi.hoisted(() => ({
