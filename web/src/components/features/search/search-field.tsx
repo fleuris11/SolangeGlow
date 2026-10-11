@@ -1,8 +1,7 @@
 "use client";
 
-import { MagnifyingGlass, Microphone } from "@phosphor-icons/react";
 import { useLocale, useTranslations } from "next-intl";
-import { useState, useSyncExternalStore, type FormEvent } from "react";
+import { useState, useSyncExternalStore, type FormEvent, type ReactNode } from "react";
 
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/cn";
@@ -32,8 +31,17 @@ function getRecognition(): RecognitionConstructor | null {
 
 const subscribe = () => () => {};
 
+export type SearchIcons = { search: ReactNode; mic: ReactNode; micOn: ReactNode };
+
 /** Search a pro or a look, by typing or by voice ("tresses à Calavi"). */
-export function SearchBar({ defaultValue = "" }: { defaultValue?: string }) {
+export function SearchField({
+  defaultValue = "",
+  icons,
+}: {
+  defaultValue?: string;
+  /** Drawn by the server (see search-bar.tsx): no icon code sent to the phone. */
+  icons: SearchIcons;
+}) {
   const t = useTranslations("search");
   const locale = useLocale();
   const router = useRouter();
@@ -82,7 +90,7 @@ export function SearchBar({ defaultValue = "" }: { defaultValue?: string }) {
         value={query}
         onChange={(event) => setQuery(event.target.value)}
         enterKeyHint="search"
-        leading={<MagnifyingGlass size={24} weight="bold" />}
+        leading={icons.search}
         trailing={
           voiceSupported ? (
             <button
@@ -94,7 +102,7 @@ export function SearchBar({ defaultValue = "" }: { defaultValue?: string }) {
                 listening ? "bg-hibiscus text-sur-hibiscus" : "bg-carte text-prune",
               )}
             >
-              <Microphone aria-hidden size={22} weight={listening ? "fill" : "duotone"} />
+              {listening ? icons.micOn : icons.mic}
               <span>{listening ? t("listening") : t("speak")}</span>
             </button>
           ) : null
