@@ -108,9 +108,9 @@ export function WelcomeFlow({ as }: { as?: Mode }) {
           size="lg"
           fullWidth
           icon={<ArrowRight size={22} weight="bold" />}
-          onClick={() => router.replace("/", { locale: language })}
+          onClick={() => router.replace(mode === "pro" ? "/pro/start" : "/", { locale: language })}
         >
-          {t("done.cta")}
+          {mode === "pro" ? t("done.proCta") : t("done.cta")}
         </Button>
       </section>
     );

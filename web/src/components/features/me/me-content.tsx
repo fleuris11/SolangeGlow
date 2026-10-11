@@ -16,6 +16,7 @@ const ProfileForm = dynamic(() => import("./profile-form").then((m) => m.Profile
   loading: () => <Skeleton className="h-64" />,
 });
 const AccountSettings = dynamic(() => import("./account-settings").then((m) => m.AccountSettings));
+const ProEntry = dynamic(() => import("./pro-entry").then((m) => m.ProEntry));
 const GuestCard = dynamic(() => import("./guest-card").then((m) => m.GuestCard));
 const DisplaySettings = dynamic(() =>
   import("@/components/features/settings/display-settings").then((m) => m.DisplaySettings),
@@ -39,7 +40,10 @@ export function MeContent() {
   return (
     <div className="flex flex-col gap-10">
       {me ? (
-        <ProfileForm me={me} />
+        <>
+          <ProEntry me={me} />
+          <ProfileForm me={me} />
+        </>
       ) : (
         <>
           <section
