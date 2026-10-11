@@ -59,7 +59,13 @@ jobs:
           ruff format --check .
 
       - name: Check migrations are up to date
-        run: python manage.py makemigrations --check --dry-run
+        run: |
+          if ! out=$(python manage.py makemigrations --check --dry-run 2>&1); then
+            echo "$out"
+            # Also as an annotation: readable on the run page without opening the logs.
+            echo "::error title=Missing migrations::$(echo "$out" | tr '\n' ' ' | cut -c1-900)"
+            exit 1
+          fi
 
       - name: Compile translations
         run: python manage.py compilemessages
