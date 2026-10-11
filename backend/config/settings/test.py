@@ -19,6 +19,7 @@ STORAGES = {
     "default": {"BACKEND": "django.core.files.storage.InMemoryStorage"},
     "media_public": {"BACKEND": "django.core.files.storage.InMemoryStorage"},
     "media_private": {"BACKEND": "django.core.files.storage.InMemoryStorage"},
+    "identity_vault": {"BACKEND": "django.core.files.storage.InMemoryStorage"},
     "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"},
 }
 AUTH_COOKIES = {**AUTH_COOKIES, "SECURE": False}

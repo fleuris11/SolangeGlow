@@ -387,6 +387,184 @@ SETTINGS += [
 ]
 
 
+def _c(key, country, value_type, value, fr, en):
+    return {**_s(key, value_type, value, fr, en), "country": country}
+
+
+# Pros (module 1): showcases, search, map, verification.
+SETTINGS += [
+    _s(
+        "pros.max_services",
+        INT,
+        "100",
+        "Nombre maximum de prestations par pro.",
+        "Maximum number of services per pro.",
+    ),
+    _s(
+        "pros.max_categories",
+        INT,
+        "20",
+        "Nombre maximum de catégories de prestations par pro.",
+        "Maximum number of service categories per pro.",
+    ),
+    _s(
+        "pros.max_options_per_service",
+        INT,
+        "10",
+        "Nombre maximum d'options par prestation.",
+        "Maximum number of options per service.",
+    ),
+    _s(
+        "pros.max_service_photos",
+        INT,
+        "6",
+        "Nombre maximum de photos par prestation.",
+        "Maximum number of pictures per service.",
+    ),
+    _s(
+        "pros.max_portfolio_items",
+        INT,
+        "60",
+        "Nombre maximum de réalisations dans le portfolio.",
+        "Maximum number of portfolio items.",
+    ),
+    _s(
+        "pros.service_area_max_radius_km",
+        INT,
+        "30",
+        "Rayon maximum de déplacement à domicile (km).",
+        "Maximum home-visit radius (km).",
+    ),
+    _s(
+        "pros.area_max_points",
+        INT,
+        "50",
+        "Nombre maximum de points d'une zone de déplacement dessinée.",
+        "Maximum number of points of a drawn travel area.",
+    ),
+    _s(
+        "pros.itinerary_video_min_seconds",
+        INT,
+        "30",
+        "Durée minimum de la vidéo d'itinéraire (secondes).",
+        "Minimum length of the itinerary video (seconds).",
+    ),
+    _s(
+        "pros.itinerary_video_max_seconds",
+        INT,
+        "60",
+        "Durée maximum de la vidéo d'itinéraire (secondes).",
+        "Maximum length of the itinerary video (seconds).",
+    ),
+    _s(
+        "pros.voice_note_max_seconds",
+        INT,
+        "120",
+        "Durée maximum des notes vocales de la vitrine (bio, repères), en secondes.",
+        "Maximum length of the showcase voice notes (bio, landmarks), in seconds.",
+    ),
+    _s(
+        "pros.arrival_cooldown_minutes",
+        INT,
+        "5",
+        "Délai entre deux « Je suis devant » d'une même cliente (minutes).",
+        "Delay between two « I am outside » of the same client (minutes).",
+    ),
+    _s(
+        "pros.verification_required_to_collect",
+        BOOL,
+        "true",
+        "Une pro doit être vérifiée (pièce d'identité + selfie) pour encaisser.",
+        "A pro must be verified (identity document + selfie) to cash in.",
+    ),
+    _s(
+        "search.page_size",
+        INT,
+        "20",
+        "Nombre de pros par page de résultats.",
+        "Number of pros per results page.",
+    ),
+    _s(
+        "search.default_radius_km",
+        INT,
+        "10",
+        "Rayon de recherche par défaut autour de la cliente (km).",
+        "Default search radius around the client (km).",
+    ),
+    _s(
+        "search.max_radius_km",
+        INT,
+        "50",
+        "Rayon de recherche maximum (km).",
+        "Maximum search radius (km).",
+    ),
+    _s(
+        "search.map_max_points",
+        INT,
+        "500",
+        "Nombre maximum de pros envoyés à la carte en une fois.",
+        "Maximum number of pros sent to the map at once.",
+    ),
+    _s(
+        "maps.style_url",
+        STR,
+        "https://tiles.openfreemap.org/styles/liberty",
+        "Adresse du style du fond de carte (MapLibre).",
+        "Address of the map style (MapLibre).",
+    ),
+    _s(
+        "maps.attribution",
+        STR,
+        "© OpenStreetMap, OpenFreeMap",
+        "Mention des sources de la carte, affichée sous chaque carte.",
+        "Credits of the map, shown under every map.",
+    ),
+    _s(
+        "maps.default_center",
+        JSON,
+        '{"latitude": 6.3654, "longitude": 2.4183, "zoom": 12}',
+        "Vue de départ de la carte (Cotonou).",
+        "Starting view of the map (Cotonou).",
+    ),
+    _c(
+        "maps.default_center",
+        "FR",
+        JSON,
+        '{"latitude": 48.8566, "longitude": 2.3522, "zoom": 12}',
+        "Vue de départ de la carte en France (Paris).",
+        "Starting view of the map in France (Paris).",
+    ),
+    _s(
+        "throttle.search",
+        STR,
+        "120/minute",
+        "Limite de recherches par adresse IP.",
+        "Search limit per IP address.",
+    ),
+    _s(
+        "throttle.printable",
+        STR,
+        "30/minute",
+        "Limite de téléchargements de QR codes et affiches par adresse IP.",
+        "QR code and poster download limit per IP address.",
+    ),
+    _s(
+        "throttle.arrival",
+        STR,
+        "20/hour",
+        "Limite de « Je suis devant » par adresse IP.",
+        "« I am outside » limit per IP address.",
+    ),
+    _s(
+        "throttle.verification",
+        STR,
+        "5/hour",
+        "Limite d'envois de pièces d'identité par adresse IP.",
+        "Identity document upload limit per IP address.",
+    ),
+]
+
+
 class Command(BaseCommand):
     help = "Create countries (BJ, FR), currencies (XOF, EUR) and the platform settings."
 

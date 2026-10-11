@@ -187,10 +187,14 @@ AWS_QUERYSTRING_EXPIRE = 600
 # Base used in media links instead of the storage endpoint (e.g. "/s3", proxied by the
 # web app to MinIO). Empty when the endpoint itself is public (production).
 MEDIA_PUBLIC_BASE_URL = env("MEDIA_PUBLIC_BASE_URL", default="")
+# Key of the identity documents vault (a Fernet key). Empty: derived from SECRET_KEY
+# (development only; production refuses to start without it).
+IDENTITY_VAULT_KEY = env("IDENTITY_VAULT_KEY", default="")
 
 if AWS_STORAGE_BUCKET_NAME:
     _public_media = {"BACKEND": "apps.core.media.storage.PublicMediaStorage"}
     _private_media = {"BACKEND": "apps.core.media.storage.PrivateMediaStorage"}
+    _identity_vault = {"BACKEND": "apps.core.media.storage.IdentityVaultStorage"}
 else:  # no bucket configured (e.g. a quick script): files on disk
     _public_media = {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
@@ -200,11 +204,17 @@ else:  # no bucket configured (e.g. a quick script): files on disk
         "BACKEND": "django.core.files.storage.FileSystemStorage",
         "OPTIONS": {"location": BASE_DIR / "media" / "private", "base_url": "/media/private/"},
     }
+    _identity_vault = {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "OPTIONS": {"location": BASE_DIR / "media" / "vault"},
+    }
 
 STORAGES = {
     "default": _public_media,
     "media_public": _public_media,
     "media_private": _private_media,
+    # Identity documents of the pros (ADR-005): own prefix, encrypted, never linked.
+    "identity_vault": _identity_vault,
     "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"},
 }
 
@@ -239,7 +249,14 @@ SPECTACULAR_SETTINGS = {
     "SCHEMA_PATH_PREFIX": r"/api/v[0-9]+",
     "COMPONENT_SPLIT_REQUEST": True,
     # One name for every language field (the CI fails on schema warnings).
-    "ENUM_NAME_OVERRIDES": {"LanguageEnum": LANGUAGES},
+    "ENUM_NAME_OVERRIDES": {
+        "LanguageEnum": LANGUAGES,
+        "MediaKindEnum": "apps.core.media.models.MediaAsset.Kind",
+        "MediaStatusEnum": "apps.core.media.models.MediaAsset.Status",
+        "ProKindEnum": "apps.pros.models.ProProfile.Kind",
+        "ProStatusEnum": "apps.pros.models.ProProfile.Status",
+        "StepKindEnum": "apps.pros.models.ServiceStep.Kind",
+    },
 }
 
 SIMPLE_JWT = {
@@ -286,6 +303,8 @@ VAPID_SUBJECT = env("VAPID_SUBJECT", default="mailto:contact@solangeglow.com")
 
 # Public address of the web app (links in e-mails).
 SITE_URL = env("SITE_URL", default="http://localhost:3000")
+# Base of the pros' short links and QR codes (solangeglow.com/aicha).
+SHORT_LINK_BASE_URL = env("SHORT_LINK_BASE_URL", default="") or SITE_URL
 
 WHATSAPP_ACCESS_TOKEN = env("WHATSAPP_ACCESS_TOKEN", default="")
 WHATSAPP_PHONE_NUMBER_ID = env("WHATSAPP_PHONE_NUMBER_ID", default="")
@@ -446,6 +465,33 @@ UNFOLD = {
                 ],
             },
             {
+                "title": _("Pros"),
+                "separator": True,
+                "items": [
+                    {
+                        "title": _("Showcases"),
+                        "icon": "storefront",
+                        "link": reverse_lazy("admin:pros_proprofile_changelist"),
+                    },
+                    {
+                        "title": _("Map of the pros"),
+                        "icon": "map",
+                        "link": reverse_lazy("admin:pros_proprofile_map"),
+                    },
+                    {
+                        "title": _("Identity checks"),
+                        "icon": "verified_user",
+                        "link": reverse_lazy("admin:pros_proverification_changelist"),
+                        "permission": "apps.pros.admin.can_review_identity",
+                    },
+                    {
+                        "title": _("Trades"),
+                        "icon": "content_cut",
+                        "link": reverse_lazy("admin:pros_trade_changelist"),
+                    },
+                ],
+            },
+            {
                 "title": _("Notifications"),
                 "separator": True,
                 "items": [
@@ -484,11 +530,6 @@ UNFOLD = {
                         "title": _("Guests"),
                         "icon": "person_outline",
                         "link": reverse_lazy("admin:accounts_guestidentity_changelist"),
-                    },
-                    {
-                        "title": _("Trades"),
-                        "icon": "content_cut",
-                        "link": reverse_lazy("admin:pros_trade_changelist"),
                     },
                     {
                         "title": _("Groups"),

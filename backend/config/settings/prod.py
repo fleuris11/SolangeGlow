@@ -1,5 +1,7 @@
 """Production settings. Every secret comes from the environment."""
 
+from django.core.exceptions import ImproperlyConfigured
+
 from .base import *  # noqa: F403
 from .base import env
 
@@ -33,3 +35,8 @@ STORAGES = {
     **STORAGES,
     "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
 }
+
+# Identity documents must not depend on SECRET_KEY (ADR-005): a key of their own.
+IDENTITY_VAULT_KEY = env("IDENTITY_VAULT_KEY", default="")
+if not IDENTITY_VAULT_KEY:
+    raise ImproperlyConfigured("IDENTITY_VAULT_KEY is required in production.")

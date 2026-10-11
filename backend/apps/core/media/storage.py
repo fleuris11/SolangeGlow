@@ -42,9 +42,22 @@ class PrivateMediaStorage(_RewrittenUrlMixin, S3Storage):
     file_overwrite = False
 
 
+class IdentityVaultStorage(S3Storage):
+    """Identity documents: their own prefix, files encrypted before upload, no public link."""
+
+    location = "vault"
+    querystring_auth = True
+    default_acl = None
+    file_overwrite = False
+
+
 def public_storage():
     return storages["media_public"]
 
 
 def private_storage():
     return storages["media_private"]
+
+
+def identity_vault_storage():
+    return storages["identity_vault"]
