@@ -13,13 +13,10 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from apps.accounts.authentication import (
-    CookieJWTAuthentication,
-    OptionalCookieJWTAuthentication,
-)
 from apps.accounts.cookies import GUEST_COOKIE
 from apps.accounts.models import GuestIdentity
 from apps.accounts.throttling import SettingRateThrottle
+from apps.accounts.views_base import OptionalAuthView
 from apps.core.models import Country
 from apps.core.selectors import get_setting
 
@@ -30,17 +27,8 @@ from .models import PortfolioItem, ProProfile, Service
 # --- Public --------------------------------------------------------------------------------
 
 
-class PublicProView(APIView):
+class PublicProView(OptionalAuthView):
     """Open to everyone; a signed-in visitor is recognised (her own draft, her name)."""
-
-    permission_classes = [AllowAny]
-    throttle_classes = [SettingRateThrottle]
-    throttle_scope = "search"
-
-    def get_authenticators(self):
-        if getattr(self, "swagger_fake_view", False):  # one sign-in scheme in the schema
-            return [CookieJWTAuthentication()]
-        return [OptionalCookieJWTAuthentication()]
 
 
 class TradeListView(APIView):
@@ -191,7 +179,7 @@ class ShowcaseView(PublicProView):
         if pro is None:
             raise exceptions.NotFound(errors.ProNotFound.message)
         private = request.user.is_authenticated and pro.user_id == request.user.pk
-        return Response(s.showcase_payload(pro, private=private))
+        return Response(s.showcase_payload(pro, private=private, viewer=request.user))
 
 
 PRINTABLES = {

@@ -256,6 +256,10 @@ SPECTACULAR_SETTINGS = {
         "ProKindEnum": "apps.pros.models.ProProfile.Kind",
         "ProStatusEnum": "apps.pros.models.ProProfile.Status",
         "StepKindEnum": "apps.pros.models.ServiceStep.Kind",
+        "PostKindEnum": "apps.social.models.Post.Kind",
+        "PostStatusEnum": "apps.social.models.Post.Status",
+        "StoryKindEnum": "apps.social.models.Story.Kind",
+        "TransactionKindEnum": "apps.social.models.TransactionKind",
     },
 }
 
@@ -295,6 +299,9 @@ ACCOUNTS_DEV_OTP_ENDPOINT = env.bool("ACCOUNTS_DEV_OTP_ENDPOINT", default=False)
 PROVIDERS_CONSOLE = env.bool("PROVIDERS_CONSOLE", default=False)
 # Seconds to wait for WhatsApp, SMS or push services before giving up (then retry).
 PROVIDERS_HTTP_TIMEOUT = env.float("PROVIDERS_HTTP_TIMEOUT", default=8.0)
+# Automatic moderation by an AI service (module 2). Empty = word lists and rules only.
+MODERATION_AI_URL = env("MODERATION_AI_URL", default="")
+MODERATION_AI_KEY = env("MODERATION_AI_KEY", default="")
 
 # Web Push (VAPID). Empty in development: keys are created in backend/.vapid.json.
 VAPID_PUBLIC_KEY = env("VAPID_PUBLIC_KEY", default="")
@@ -345,6 +352,14 @@ CELERY_BEAT_SCHEDULE = {
     "accounts.purge_deleted_accounts": {
         "task": "apps.accounts.tasks.purge_deleted_accounts",
         "schedule": crontab(hour=3, minute=30),
+    },
+    "social.publish_due_posts": {
+        "task": "apps.social.tasks.publish_due_posts",
+        "schedule": crontab(),  # every minute
+    },
+    "moderation.lift_expired_sanctions": {
+        "task": "apps.moderation.tasks.lift_expired_sanctions",
+        "schedule": crontab(minute=5),
     },
 }
 
@@ -488,6 +503,53 @@ UNFOLD = {
                         "title": _("Trades"),
                         "icon": "content_cut",
                         "link": reverse_lazy("admin:pros_trade_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("Moderation"),
+                "separator": True,
+                "items": [
+                    {
+                        "title": _("Moderation queue"),
+                        "icon": "shield",
+                        "link": reverse_lazy("admin:moderation_moderationcase_changelist"),
+                    },
+                    {
+                        "title": _("Sanctions"),
+                        "icon": "gavel",
+                        "link": reverse_lazy("admin:moderation_sanction_changelist"),
+                    },
+                    {
+                        "title": _("Reports"),
+                        "icon": "flag",
+                        "link": reverse_lazy("admin:moderation_report_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("Social"),
+                "separator": True,
+                "items": [
+                    {
+                        "title": _("Posts"),
+                        "icon": "photo_library",
+                        "link": reverse_lazy("admin:social_post_changelist"),
+                    },
+                    {
+                        "title": _("Comments"),
+                        "icon": "chat_bubble",
+                        "link": reverse_lazy("admin:social_comment_changelist"),
+                    },
+                    {
+                        "title": _("Stories"),
+                        "icon": "auto_stories",
+                        "link": reverse_lazy("admin:social_story_changelist"),
+                    },
+                    {
+                        "title": _("Reviews"),
+                        "icon": "star",
+                        "link": reverse_lazy("admin:social_review_changelist"),
                     },
                 ],
             },

@@ -10,6 +10,8 @@ from apps.core.media.api import MediaDetailView, MediaUploadView
 api_v1 = [
     path("health", HealthView.as_view(), name="health"),
     path("countries", CountryListView.as_view(), name="countries"),
+    path("", include("apps.social.urls")),
+    path("", include("apps.moderation.urls")),
     path("", include("apps.pros.urls")),
     path("", include("apps.accounts.urls")),
     path("", include("apps.notifications.urls")),

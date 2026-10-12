@@ -282,6 +282,9 @@ def travel_payload(pro: ProProfile) -> dict:
 class ShowcaseSerializer(serializers.Serializer):
     """Public page of a pro (also its preview for herself)."""
 
+    owner_id = serializers.UUIDField()
+    follower_count = serializers.IntegerField()
+    followed = serializers.BooleanField()
     slug = serializers.CharField()
     short_link = serializers.CharField()
     business_name = serializers.CharField()
@@ -310,7 +313,7 @@ class ShowcaseSerializer(serializers.Serializer):
     updated_at = serializers.DateTimeField()
 
 
-def showcase_payload(pro: ProProfile, *, private: bool = False) -> dict:
+def showcase_payload(pro: ProProfile, *, private: bool = False, viewer=None) -> dict:
     ready = (lambda a: a) if private else (lambda a: a if a is not None and a.is_ready else None)
     labels = dict(SpokenLanguage.choices)
     today = timezone.localdate()
@@ -319,6 +322,13 @@ def showcase_payload(pro: ProProfile, *, private: bool = False) -> dict:
         services = list(selectors.visible_services().filter(pro=pro))
     portfolio = [item for item in pro.portfolio.all() if private or item.media.is_ready]
     return {
+        "owner_id": pro.user_id,
+        "follower_count": pro.user.followers.count(),
+        "followed": bool(
+            viewer is not None
+            and viewer.is_authenticated
+            and pro.user.followers.filter(follower=viewer).exists()
+        ),
         "slug": pro.slug or "",
         "short_link": short_link(pro) if pro.slug else "",
         "business_name": pro.display_name,

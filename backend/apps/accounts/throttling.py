@@ -13,6 +13,8 @@ DEFAULT_RATES = {
     "printable": "30/minute",
     "arrival": "20/hour",
     "verification": "5/hour",
+    "social_write": "120/hour",
+    "report": "30/hour",
 }
 
 

@@ -22,7 +22,21 @@ class Purpose:
 
 PURPOSES: dict[str, Purpose] = {
     "avatar": Purpose(("image",), "public"),
-    "post": Purpose(("image", "video"), "public"),
+    # Social (module 2): posts, stories, reviews.
+    "post": Purpose(
+        ("image", "video"),
+        "public",
+        Duration(max_setting="social.video_max_seconds", max_default=90),
+    ),
+    "story": Purpose(
+        ("image", "video"),
+        "public",
+        Duration(max_setting="social.story_video_max_seconds", max_default=30),
+    ),
+    "review_photo": Purpose(("image",), "public"),
+    "review_voice": Purpose(
+        ("audio",), "public", Duration(max_setting="reviews.voice_max_seconds", max_default=120)
+    ),
     "voice_note": Purpose(("audio",), "private"),
     "identity_document": Purpose(("image",), "private"),
     # Pros (module 1): showcase pictures, voice notes heard by every visitor, portfolio.

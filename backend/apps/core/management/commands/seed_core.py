@@ -565,6 +565,151 @@ SETTINGS += [
 ]
 
 
+# Social network, reviews and moderation (modules 2 and 12).
+SETTINGS += [
+    _s(
+        "social.carousel_max",
+        INT,
+        "10",
+        "Nombre maximum de photos ou vidéos dans un carrousel.",
+        "Maximum number of pictures or videos in a carousel.",
+    ),
+    _s(
+        "social.video_max_seconds",
+        INT,
+        "90",
+        "Durée maximum d'une vidéo courte publiée (secondes).",
+        "Maximum length of a short video post (seconds).",
+    ),
+    _s(
+        "social.story_video_max_seconds",
+        INT,
+        "30",
+        "Durée maximum d'une vidéo en story (secondes).",
+        "Maximum length of a story video (seconds).",
+    ),
+    _s(
+        "social.story_hours",
+        INT,
+        "24",
+        "Durée de vie d'une story (heures).",
+        "Life of a story (hours).",
+    ),
+    _s(
+        "social.schedule_max_days",
+        INT,
+        "30",
+        "Délai maximum pour programmer une publication (jours).",
+        "Maximum delay to schedule a post (days).",
+    ),
+    _s(
+        "social.feed_page_size",
+        INT,
+        "12",
+        "Nombre de publications par page du fil.",
+        "Number of posts per feed page.",
+    ),
+    _s(
+        "social.feed_window_days",
+        INT,
+        "60",
+        "Âge maximum des publications du fil (jours).",
+        "Maximum age of the posts of the feed (days).",
+    ),
+    _s(
+        "social.feed_weights",
+        JSON,
+        '{"recency": 1.0, "interactions": 0.4, "distance": 0.3, "half_life_hours": 36}',
+        "Score du fil : poids de la récence, des interactions (j'aime, commentaires, enregistrements) et de la proximité ; demi-vie de la récence en heures.",
+        "Feed score: weights of recency, interactions (likes, comments, saves) and closeness; half-life of recency in hours.",
+    ),
+    _s(
+        "reviews.window_days",
+        INT,
+        "30",
+        "Délai pour laisser un avis après un rendez-vous ou une commande (jours).",
+        "Delay to leave a review after a booking or an order (days).",
+    ),
+    _s(
+        "reviews.voice_max_seconds",
+        INT,
+        "120",
+        "Durée maximum de la note vocale d'un avis (secondes).",
+        "Maximum length of the voice note of a review (seconds).",
+    ),
+    _s(
+        "moderation.blocked_words",
+        JSON,
+        '["salope", "pute", "connasse", "encule", "bitch", "whore"]',
+        "Mots interdits : le contenu est masqué jusqu'à la décision de l'équipe.",
+        "Forbidden words: the content is hidden until the team decides.",
+    ),
+    _s(
+        "moderation.review_words",
+        JSON,
+        '["arnaque", "escroc", "scam", "nude", "nudes", "sexe"]',
+        "Mots sensibles : le contenu reste visible mais arrive dans la file de modération.",
+        "Sensitive words: the content stays visible but goes to the moderation queue.",
+    ),
+    _s(
+        "moderation.banned_product_words",
+        JSON,
+        '["contrefacon", "replique", "fake"]',
+        "Produits interdits (boutiques, à venir) : mots qui envoient un produit en modération.",
+        "Forbidden products (shops, coming): words that send a product to moderation.",
+    ),
+    _s(
+        "moderation.flag_phone_numbers",
+        BOOL,
+        "true",
+        "Mettre en file les textes qui contiennent un numéro de téléphone.",
+        "Queue texts that contain a phone number.",
+    ),
+    _s(
+        "moderation.auto_hide_reports",
+        INT,
+        "3",
+        "Nombre de signalements qui masque un contenu en attendant la décision.",
+        "Number of reports that hides a content until the decision.",
+    ),
+    _s(
+        "moderation.sanction_ladder",
+        JSON,
+        '[{"level": "warning"}, {"level": "mute", "days": 3}, {"level": "suspension", "days": 7}, {"level": "ban"}]',
+        "Sanctions graduées, dans l'ordre : avertissement, interdiction de publier (jours), suspension (jours), bannissement.",
+        "Graduated sanctions, in order: warning, no posting (days), suspension (days), ban.",
+    ),
+    _s(
+        "moderation.sanction_window_days",
+        INT,
+        "180",
+        "Période prise en compte pour passer à la sanction suivante (jours).",
+        "Period counted to move to the next sanction (days).",
+    ),
+    _s(
+        "moderation.ai_block_categories",
+        JSON,
+        '["sexual/minors"]',
+        "Catégories de l'IA de modération qui masquent tout de suite un contenu.",
+        "Categories of the moderation AI that hide a content at once.",
+    ),
+    _s(
+        "throttle.social_write",
+        STR,
+        "120/hour",
+        "Limite de publications, commentaires et j'aime par adresse IP.",
+        "Limit of posts, comments and likes per IP address.",
+    ),
+    _s(
+        "throttle.report",
+        STR,
+        "30/hour",
+        "Limite de signalements par adresse IP.",
+        "Report limit per IP address.",
+    ),
+]
+
+
 class Command(BaseCommand):
     help = "Create countries (BJ, FR), currencies (XOF, EUR) and the platform settings."
 
