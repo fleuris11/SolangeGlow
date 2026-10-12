@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-11 22:30+0200\n"
+"POT-Creation-Date: 2026-10-12 15:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -671,7 +671,242 @@ msgstr ""
 msgid "Gamification"
 msgstr ""
 
+msgid "people"
+msgstr ""
+
+msgid "payment warning"
+msgstr ""
+
+msgid "why it can be read"
+msgstr ""
+
+msgid "Dispute room"
+msgstr ""
+
+#, python-format
+msgid "Report of %(date)s"
+msgstr ""
+
+msgid "messages"
+msgstr ""
+
+msgid "Solange Glow"
+msgstr ""
+
 msgid "Messaging"
+msgstr ""
+
+msgid "This conversation does not exist or is not yours."
+msgstr ""
+
+msgid "This message does not exist any more."
+msgstr ""
+
+msgid "You cannot write to yourself."
+msgstr ""
+
+msgid "This person cannot be found."
+msgstr ""
+
+msgid "Two clients can write to each other once they follow each other."
+msgstr ""
+
+msgid "This young account only gets messages from people it follows."
+msgstr ""
+
+msgid "You cannot write to this person."
+msgstr ""
+
+msgid "You cannot send messages for now, after a decision of the moderation team."
+msgstr ""
+
+msgid "Wait until she accepts your message request before writing again."
+msgstr ""
+
+msgid "This person does not wish to talk with you."
+msgstr ""
+
+msgid "This conversation is closed."
+msgstr ""
+
+msgid "Write a message, or add a picture, a voice note or a card."
+msgstr ""
+
+#, python-format
+msgid "This message is too long (%(max)s characters at most)."
+msgstr ""
+
+msgid "This file cannot be sent here."
+msgstr ""
+
+msgid "The picture or voice note is still being prepared, or was refused."
+msgstr ""
+
+msgid "What you want to share does not exist or is not visible."
+msgstr ""
+
+msgid "This kind of card cannot be shared yet."
+msgstr ""
+
+msgid "Only its sender can delete this message."
+msgstr ""
+
+#, python-format
+msgid "You can save %(max)s quick replies at most."
+msgstr ""
+
+msgid "Only a pro can use this."
+msgstr ""
+
+#, python-format
+msgid "A group can have %(max)s people at most."
+msgstr ""
+
+msgid "Between two people"
+msgstr ""
+
+msgid "Group"
+msgstr ""
+
+msgid "Discussion"
+msgstr ""
+
+msgid "Support"
+msgstr ""
+
+msgid "title"
+msgstr ""
+
+msgid "linked to"
+msgstr ""
+
+msgid "For example a dispute, an order or a booking."
+msgstr ""
+
+msgid "linked id"
+msgstr ""
+
+msgid "created by"
+msgstr ""
+
+msgid "last message"
+msgstr ""
+
+msgid "A phone number, a payment link or a risky word was written before any order."
+msgstr ""
+
+msgid "closed"
+msgstr ""
+
+msgid "conversation"
+msgstr ""
+
+msgid "conversations"
+msgstr ""
+
+msgid "Message request"
+msgstr ""
+
+msgid "Request declined"
+msgstr ""
+
+msgid "Left"
+msgstr ""
+
+msgid "Member"
+msgstr ""
+
+msgid "Platform team"
+msgstr ""
+
+msgid "person"
+msgstr ""
+
+msgid "read up to"
+msgstr ""
+
+msgid "received up to"
+msgstr ""
+
+msgid "archived"
+msgstr ""
+
+msgid "muted"
+msgstr ""
+
+msgid "member"
+msgstr ""
+
+msgid "members"
+msgstr ""
+
+msgid "Shared card"
+msgstr ""
+
+msgid "Information"
+msgstr ""
+
+msgid "Post"
+msgstr ""
+
+msgid "Product"
+msgstr ""
+
+msgid "Service"
+msgstr ""
+
+msgid "Free slot"
+msgstr ""
+
+msgid "Visible"
+msgstr ""
+
+msgid "Held for review"
+msgstr ""
+
+msgid "Removed"
+msgstr ""
+
+msgid "sender"
+msgstr ""
+
+msgid "text"
+msgstr ""
+
+msgid "file"
+msgstr ""
+
+msgid "shared"
+msgstr ""
+
+msgid "risk detected"
+msgstr ""
+
+msgid "automatic"
+msgstr ""
+
+msgid "message"
+msgstr ""
+
+msgid "position"
+msgstr ""
+
+msgid "quick reply"
+msgstr ""
+
+msgid "quick replies"
+msgstr ""
+
+msgid "away message"
+msgstr ""
+
+msgid "away messages"
+msgstr ""
+
+msgid "Conversation"
+msgstr ""
+
+msgid "Thank you for your message. I am not available right now: I will answer as soon as I am back."
 msgstr ""
 
 msgid "content"
@@ -782,9 +1017,6 @@ msgstr ""
 msgid "Kept"
 msgstr ""
 
-msgid "Removed"
-msgstr ""
-
 msgid "Reported"
 msgstr ""
 
@@ -830,9 +1062,6 @@ msgstr ""
 msgid "Banned"
 msgstr ""
 
-msgid "person"
-msgstr ""
-
 msgid "level"
 msgstr ""
 
@@ -864,12 +1093,6 @@ msgid "event"
 msgstr ""
 
 msgid "e.g. booking.confirmed"
-msgstr ""
-
-msgid "title"
-msgstr ""
-
-msgid "text"
 msgstr ""
 
 msgid "link"
@@ -1110,9 +1333,6 @@ msgid "Cream jar"
 msgstr ""
 
 msgid "pictogram"
-msgstr ""
-
-msgid "position"
 msgstr ""
 
 msgid "trade"
@@ -1580,12 +1800,6 @@ msgstr ""
 msgid "This review does not exist any more."
 msgstr ""
 
-msgid "Visible"
-msgstr ""
-
-msgid "Held for review"
-msgstr ""
-
 msgid "Carousel"
 msgstr ""
 
@@ -1629,9 +1843,6 @@ msgid "Before"
 msgstr ""
 
 msgid "After"
-msgstr ""
-
-msgid "file"
 msgstr ""
 
 msgid "post file"
@@ -1788,6 +1999,12 @@ msgid "Sanctions"
 msgstr ""
 
 msgid "Reports"
+msgstr ""
+
+msgid "Reported conversations"
+msgstr ""
+
+msgid "Reported messages"
 msgstr ""
 
 msgid "Posts"

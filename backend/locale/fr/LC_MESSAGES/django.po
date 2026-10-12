@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-11 22:30+0200\n"
+"POT-Creation-Date: 2026-10-12 15:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -671,8 +671,243 @@ msgstr "modules activables"
 msgid "Gamification"
 msgstr "Côté ludique"
 
+msgid "people"
+msgstr "personnes"
+
+msgid "payment warning"
+msgstr "avertissement de paiement"
+
+msgid "why it can be read"
+msgstr "pourquoi elle peut être lue"
+
+msgid "Dispute room"
+msgstr "Salle de litige"
+
+#, python-format
+msgid "Report of %(date)s"
+msgstr "Signalement du %(date)s"
+
+msgid "messages"
+msgstr "messages"
+
+msgid "Solange Glow"
+msgstr "Solange Glow"
+
 msgid "Messaging"
 msgstr "Messagerie"
+
+msgid "This conversation does not exist or is not yours."
+msgstr "Cette conversation n'existe pas ou n'est pas la tienne."
+
+msgid "This message does not exist any more."
+msgstr "Ce message n'existe plus."
+
+msgid "You cannot write to yourself."
+msgstr "Tu ne peux pas t'écrire à toi-même."
+
+msgid "This person cannot be found."
+msgstr "Cette personne est introuvable."
+
+msgid "Two clients can write to each other once they follow each other."
+msgstr "Deux clientes peuvent s'écrire une fois qu'elles se suivent l'une l'autre."
+
+msgid "This young account only gets messages from people it follows."
+msgstr "Ce compte jeune ne reçoit des messages que des personnes qu'il suit."
+
+msgid "You cannot write to this person."
+msgstr "Tu ne peux pas écrire à cette personne."
+
+msgid "You cannot send messages for now, after a decision of the moderation team."
+msgstr "Tu ne peux pas envoyer de messages pour l'instant, après une décision de l'équipe de modération."
+
+msgid "Wait until she accepts your message request before writing again."
+msgstr "Attends qu'elle accepte ta demande de message avant d'écrire à nouveau."
+
+msgid "This person does not wish to talk with you."
+msgstr "Cette personne ne souhaite pas discuter avec toi."
+
+msgid "This conversation is closed."
+msgstr "Cette conversation est fermée."
+
+msgid "Write a message, or add a picture, a voice note or a card."
+msgstr "Écris un message, ou ajoute une photo, un message vocal ou une carte."
+
+#, python-format
+msgid "This message is too long (%(max)s characters at most)."
+msgstr "Ce message est trop long (%(max)s caractères au maximum)."
+
+msgid "This file cannot be sent here."
+msgstr "Ce fichier ne peut pas être envoyé ici."
+
+msgid "The picture or voice note is still being prepared, or was refused."
+msgstr "La photo ou le message vocal est encore en préparation, ou a été refusé."
+
+msgid "What you want to share does not exist or is not visible."
+msgstr "Ce que tu veux partager n'existe pas ou n'est pas visible."
+
+msgid "This kind of card cannot be shared yet."
+msgstr "Ce type de carte ne peut pas encore être partagé."
+
+msgid "Only its sender can delete this message."
+msgstr "Seule la personne qui l'a envoyé peut supprimer ce message."
+
+#, python-format
+msgid "You can save %(max)s quick replies at most."
+msgstr "Tu peux enregistrer %(max)s réponses rapides au maximum."
+
+msgid "Only a pro can use this."
+msgstr "Seule une pro peut utiliser cela."
+
+#, python-format
+msgid "A group can have %(max)s people at most."
+msgstr "Un groupe peut compter %(max)s personnes au maximum."
+
+msgid "Between two people"
+msgstr "À deux"
+
+msgid "Group"
+msgstr "Groupe"
+
+msgid "Discussion"
+msgstr "Discussion"
+
+msgid "Support"
+msgstr "Assistance"
+
+msgid "title"
+msgstr "titre"
+
+msgid "linked to"
+msgstr "lié à"
+
+msgid "For example a dispute, an order or a booking."
+msgstr "Par exemple un litige, une commande ou un rendez-vous."
+
+msgid "linked id"
+msgstr "identifiant lié"
+
+msgid "created by"
+msgstr "créé par"
+
+msgid "last message"
+msgstr "dernier message"
+
+msgid "A phone number, a payment link or a risky word was written before any order."
+msgstr "Un numéro, un lien de paiement ou un mot à risque a été écrit avant toute commande."
+
+msgid "closed"
+msgstr "fermée"
+
+msgid "conversation"
+msgstr "conversation"
+
+msgid "conversations"
+msgstr "conversations"
+
+msgid "Message request"
+msgstr "Demande de message"
+
+msgid "Request declined"
+msgstr "Demande refusée"
+
+msgid "Left"
+msgstr "Partie"
+
+msgid "Member"
+msgstr "Membre"
+
+msgid "Platform team"
+msgstr "Équipe de la plateforme"
+
+msgid "person"
+msgstr "personne"
+
+msgid "read up to"
+msgstr "lu jusqu'au"
+
+msgid "received up to"
+msgstr "reçu jusqu'au"
+
+msgid "archived"
+msgstr "archivée"
+
+msgid "muted"
+msgstr "en sourdine"
+
+msgid "member"
+msgstr "membre"
+
+msgid "members"
+msgstr "membres"
+
+msgid "Shared card"
+msgstr "Carte partagée"
+
+msgid "Information"
+msgstr "Information"
+
+msgid "Post"
+msgstr "Publication"
+
+msgid "Product"
+msgstr "Produit"
+
+msgid "Service"
+msgstr "Prestation"
+
+msgid "Free slot"
+msgstr "Créneau libre"
+
+msgid "Visible"
+msgstr "Visible"
+
+msgid "Held for review"
+msgstr "Retenu pour examen"
+
+msgid "Removed"
+msgstr "Retiré"
+
+msgid "sender"
+msgstr "expéditrice"
+
+msgid "text"
+msgstr "texte"
+
+msgid "file"
+msgstr "fichier"
+
+msgid "shared"
+msgstr "partagé"
+
+msgid "risk detected"
+msgstr "risque détecté"
+
+msgid "automatic"
+msgstr "automatique"
+
+msgid "message"
+msgstr "message"
+
+msgid "position"
+msgstr "position"
+
+msgid "quick reply"
+msgstr "réponse rapide"
+
+msgid "quick replies"
+msgstr "réponses rapides"
+
+msgid "away message"
+msgstr "message d'absence"
+
+msgid "away messages"
+msgstr "messages d'absence"
+
+msgid "Conversation"
+msgstr "Conversation"
+
+msgid "Thank you for your message. I am not available right now: I will answer as soon as I am back."
+msgstr "Merci pour ton message. Je ne suis pas disponible pour le moment : je te réponds dès mon retour."
 
 msgid "content"
 msgstr "contenu"
@@ -782,9 +1017,6 @@ msgstr "À examiner"
 msgid "Kept"
 msgstr "Gardé"
 
-msgid "Removed"
-msgstr "Retiré"
-
 msgid "Reported"
 msgstr "Signalé"
 
@@ -830,9 +1062,6 @@ msgstr "Ne peut plus publier ni commenter"
 msgid "Banned"
 msgstr "Bannie"
 
-msgid "person"
-msgstr "personne"
-
 msgid "level"
 msgstr "niveau"
 
@@ -865,12 +1094,6 @@ msgstr "événement"
 
 msgid "e.g. booking.confirmed"
 msgstr "ex. booking.confirmed"
-
-msgid "title"
-msgstr "titre"
-
-msgid "text"
-msgstr "texte"
 
 msgid "link"
 msgstr "lien"
@@ -1111,9 +1334,6 @@ msgstr "Pot de crème"
 
 msgid "pictogram"
 msgstr "pictogramme"
-
-msgid "position"
-msgstr "position"
 
 msgid "trade"
 msgstr "métier"
@@ -1580,12 +1800,6 @@ msgstr "Tu as déjà répondu à cet avis."
 msgid "This review does not exist any more."
 msgstr "Cet avis n'existe plus."
 
-msgid "Visible"
-msgstr "Visible"
-
-msgid "Held for review"
-msgstr "Retenu pour examen"
-
 msgid "Carousel"
 msgstr "Carrousel"
 
@@ -1630,9 +1844,6 @@ msgstr "Avant"
 
 msgid "After"
 msgstr "Après"
-
-msgid "file"
-msgstr "fichier"
 
 msgid "post file"
 msgstr "fichier de publication"
@@ -1789,6 +2000,12 @@ msgstr "Sanctions"
 
 msgid "Reports"
 msgstr "Signalements"
+
+msgid "Reported conversations"
+msgstr "Conversations signalées"
+
+msgid "Reported messages"
+msgstr "Messages signalés"
 
 msgid "Posts"
 msgstr "Publications"
