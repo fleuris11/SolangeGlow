@@ -117,6 +117,29 @@ Après `seed_demo` :
   la carte (`maps.style_url`, `maps.attribution`, `maps.default_center`) et la recherche
   (`search.*`) se règlent dans Plateforme > Réglages, clés `pros.*`, `maps.*`, `search.*`.
 
+## Tester le réseau social et la modération en local
+
+Après `seed_demo` (publications, stories, commentaires, avis et abonnements de démo) :
+
+- Accueil : http://localhost:3000/fr — stories du jour (anneau autour de l'avatar, badge
+  « Libre » pour les créneaux libres) et fil. Connectée, le fil met d'abord les pros
+  suivies, puis les tendances de la ville, puis du pays.
+- Une publication : http://localhost:3000/fr/p/<id> — commentaires avec réponses,
+  partage (WhatsApp, Facebook, TikTok, lien avec aperçu), « Réserver ce look ».
+- « Publier » (http://localhost:3000/fr/create) : publication (photo, plusieurs photos,
+  vidéo courte, avant/après) ou story (photo/vidéo, texte sur fond, créneaux libres pour
+  les pros), en trois étapes avec aperçu ; brouillon ou publication programmée.
+- « Moi » > « Mon activité » : mes publications, enregistrés, profils suivis, avis à
+  laisser. Les avis ne sont possibles qu'après un rendez-vous ou une commande terminés :
+  ils arriveront avec la réservation et la boutique.
+- Back-office : Modération > File de modération (Garder / Retirer / Retirer et
+  sanctionner en un clic), Sanctions, Signalements ; Réseau social > Publications,
+  Commentaires, Stories, Avis.
+- Réglages (Plateforme > Réglages) : `social.*` (poids du fil, durée des stories, délai
+  de programmation…), `reviews.*`, `moderation.*` (listes de mots, seuil de masquage
+  automatique, échelle des sanctions). La vérification par IA reste éteinte tant que
+  `MODERATION_AI_URL` est vide.
+
 ## Client de l'API (web)
 
 Les types du client web sont générés depuis le schéma de l'API. Après toute
@@ -168,6 +191,9 @@ backend/                Django
   apps/notifications/   notifications (appli, e-mail, push, WhatsApp, SMS)
   apps/pros/            vitrines des pros, prestations, horaires, recherche, QR codes,
                         vérification d'identité (coffre chiffré)
+  apps/social/          publications, fil, commentaires, abonnements, stories, avis vérifiés
+  apps/moderation/      signalements, blocages, contenus masqués, file de modération,
+                        sanctions
   assets/fonts/         polices de la marque (OFL) pour les affiches et stickers
   apps/<module>/        un module par grande fonctionnalité
   locale/               traductions (fr, en, sk)
