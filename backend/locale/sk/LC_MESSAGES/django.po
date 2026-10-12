@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-11 10:33+0200\n"
+"POT-Creation-Date: 2026-10-11 22:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -678,8 +678,176 @@ msgstr "Gamifikácia"
 msgid "Messaging"
 msgstr "Správy"
 
+msgid "content"
+msgstr "obsah"
+
+msgid "detected"
+msgstr "zistené"
+
+msgid "This content does not exist any more."
+msgstr "Tento obsah už neexistuje."
+
+msgid "open the content"
+msgstr "otvoriť obsah"
+
+msgid "Open in the admin"
+msgstr "Otvoriť v administrácii"
+
+msgid "This case was already decided."
+msgstr "O tomto prípade už bolo rozhodnuté."
+
+msgid "Kept."
+msgstr "Ponechané."
+
+msgid "Removed. The author was told."
+msgstr "Odstránené. Autorka bola upozornená."
+
+msgid "Keep"
+msgstr "Ponechať"
+
+msgid "Remove"
+msgstr "Odstrániť"
+
+msgid "Remove and sanction the author"
+msgstr "Odstrániť a potrestať autorku"
+
+msgid "Keep the selected contents"
+msgstr "Ponechať vybrané obsahy"
+
+msgid "Remove the selected contents"
+msgstr "Odstrániť vybrané obsahy"
+
 msgid "Moderation"
 msgstr "Moderovanie"
+
+msgid "You cannot report your own content."
+msgstr "Nemôžeš nahlásiť vlastný obsah."
+
+msgid "You already reported this. Our team is looking at it."
+msgstr "Už si to nahlásila. Náš tím sa na to pozerá."
+
+msgid "You cannot block yourself."
+msgstr "Nemôžeš zablokovať samu seba."
+
+msgid "You cannot post or comment for now, after a decision of the moderation team."
+msgstr "Momentálne nemôžeš zverejňovať ani komentovať, na základe rozhodnutia moderátorského tímu."
+
+msgid "Spam or advertising"
+msgstr "Spam alebo reklama"
+
+msgid "Nudity or sexual content"
+msgstr "Nahota alebo sexuálny obsah"
+
+msgid "Harassment or insults"
+msgstr "Obťažovanie alebo urážky"
+
+msgid "Hate or discrimination"
+msgstr "Nenávisť alebo diskriminácia"
+
+msgid "Scam or fraud"
+msgstr "Podvod"
+
+msgid "Danger for a minor"
+msgstr "Ohrozenie maloletého"
+
+msgid "Violence"
+msgstr "Násilie"
+
+msgid "Something else"
+msgstr "Niečo iné"
+
+msgid "reported by"
+msgstr "nahlásil(a)"
+
+msgid "case"
+msgstr "prípad"
+
+msgid "report"
+msgstr "nahlásenie"
+
+msgid "reports"
+msgstr "nahlásenia"
+
+msgid "block"
+msgstr "blokovanie"
+
+msgid "blocks"
+msgstr "blokovania"
+
+msgid "hidden content"
+msgstr "skrytý obsah"
+
+msgid "hidden contents"
+msgstr "skryté obsahy"
+
+msgid "To review"
+msgstr "Na posúdenie"
+
+msgid "Kept"
+msgstr "Ponechané"
+
+msgid "Removed"
+msgstr "Odstránené"
+
+msgid "Reported"
+msgstr "Nahlásené"
+
+msgid "Automatic check"
+msgstr "Automatická kontrola"
+
+msgid "found by"
+msgstr "zistil(a)"
+
+msgid "author"
+msgstr "autorka"
+
+msgid "excerpt"
+msgstr "úryvok"
+
+msgid "checked by"
+msgstr "skontroloval(a)"
+
+msgid "hidden until review"
+msgstr "skryté do posúdenia"
+
+msgid "decided by"
+msgstr "rozhodol/rozhodla"
+
+msgid "decided at"
+msgstr "rozhodnuté"
+
+msgid "note"
+msgstr "poznámka"
+
+msgid "moderation case"
+msgstr "moderačný prípad"
+
+msgid "moderation queue"
+msgstr "moderačný rad"
+
+msgid "Warning"
+msgstr "Varovanie"
+
+msgid "Cannot post or comment"
+msgstr "Nemôže zverejňovať ani komentovať"
+
+msgid "Banned"
+msgstr "Zakázaná"
+
+msgid "person"
+msgstr "osoba"
+
+msgid "level"
+msgstr "úroveň"
+
+msgid "until"
+msgstr "do"
+
+msgid "sanction"
+msgstr "sankcia"
+
+msgid "sanctions"
+msgstr "sankcie"
 
 msgid "Send this event to me (test)"
 msgstr "Poslať mi túto udalosť (test)"
@@ -722,9 +890,6 @@ msgstr "šablóna upozornenia"
 
 msgid "notification templates"
 msgstr "šablóny upozornení"
-
-msgid "person"
-msgstr "osoba"
 
 msgid "shown in the app"
 msgstr "zobrazené v aplikácii"
@@ -1344,8 +1509,260 @@ msgstr "Výber z Francúzska"
 msgid "Shop"
 msgstr "Obchody"
 
+msgid "Remove the selected items"
+msgstr "Odstrániť vybrané položky"
+
+msgid "Removed."
+msgstr "Odstránené."
+
+msgid "Show the selected items again"
+msgstr "Znova zobraziť vybrané položky"
+
+msgid "Visible again."
+msgstr "Opäť viditeľné."
+
+msgid "moderation"
+msgstr "moderácia"
+
 msgid "Social"
 msgstr "Sociálna sieť"
+
+msgid "This post does not exist or is not visible any more."
+msgstr "Tento príspevok neexistuje alebo už nie je viditeľný."
+
+msgid "Only its author can change this."
+msgstr "Zmeniť to môže len jeho autorka."
+
+#, python-format
+msgid "Add the right pictures: %(rule)s"
+msgstr "Pridaj správne fotky: %(rule)s"
+
+msgid "A picture or video is still being prepared, or was refused. Wait or change it."
+msgstr "Fotka alebo video sa ešte pripravuje, alebo bolo odmietnuté. Počkaj alebo ho zmeň."
+
+#, python-format
+msgid "Choose a date and time in the future, within %(days)s days."
+msgstr "Vyber dátum a čas v budúcnosti, do %(days)s dní."
+
+msgid "This service is not one of yours."
+msgstr "Táto služba nie je tvoja."
+
+msgid "Add at least one picture or video."
+msgstr "Pridaj aspoň jednu fotku alebo video."
+
+msgid "This comment does not exist any more."
+msgstr "Tento komentár už neexistuje."
+
+msgid "You cannot do this with this person."
+msgstr "S touto osobou to nemôžeš urobiť."
+
+msgid "You cannot follow yourself."
+msgstr "Nemôžeš sledovať samu seba."
+
+msgid "A story needs a picture, a video, a text or free times."
+msgstr "Príbeh potrebuje fotku, video, text alebo voľné termíny."
+
+msgid "Give the free times of today, e.g. 14:00."
+msgstr "Zadaj dnešné voľné termíny, napr. 14:00."
+
+msgid "Only a pro can share her free slots."
+msgstr "Voľné termíny môže zdieľať len profesionálka."
+
+msgid "This booking or order does not exist."
+msgstr "Táto rezervácia alebo objednávka neexistuje."
+
+msgid "Only the person who booked or bought can leave a review."
+msgstr "Hodnotenie môže zanechať len osoba, ktorá rezervovala alebo nakúpila."
+
+msgid "You can leave a review once the booking or order is finished."
+msgstr "Hodnotenie môžeš zanechať po skončení rezervácie alebo objednávky."
+
+#, python-format
+msgid "The time to leave a review is over (%(days)s days)."
+msgstr "Čas na zanechanie hodnotenia uplynul (%(days)s dní)."
+
+msgid "You already left a review for this."
+msgstr "Hodnotenie si už zanechala."
+
+msgid "You already replied to this review."
+msgstr "Na toto hodnotenie si už odpovedala."
+
+msgid "This review does not exist any more."
+msgstr "Toto hodnotenie už neexistuje."
+
+msgid "Visible"
+msgstr "Viditeľné"
+
+msgid "Held for review"
+msgstr "Zadržané na posúdenie"
+
+msgid "Carousel"
+msgstr "Karusel"
+
+msgid "Short video"
+msgstr "Krátke video"
+
+msgid "Before / after"
+msgstr "Pred / po"
+
+msgid "Set when the author posts as a pro."
+msgstr "Vyplní sa, keď autorka zverejňuje ako profesionálka."
+
+msgid "product"
+msgstr "produkt"
+
+msgid "to publish at"
+msgstr "zverejniť"
+
+msgid "likes"
+msgstr "páči sa mi"
+
+msgid "comments"
+msgstr "komentáre"
+
+msgid "saves"
+msgstr "uloženia"
+
+msgid "shares"
+msgstr "zdieľania"
+
+msgid "post"
+msgstr "príspevok"
+
+msgid "posts"
+msgstr "príspevky"
+
+msgid "Picture or video"
+msgstr "Fotka alebo video"
+
+msgid "Before"
+msgstr "Pred"
+
+msgid "After"
+msgstr "Po"
+
+msgid "file"
+msgstr "súbor"
+
+msgid "post file"
+msgstr "súbor príspevku"
+
+msgid "post files"
+msgstr "súbory príspevku"
+
+msgid "like"
+msgstr "páči sa mi"
+
+msgid "saved post"
+msgstr "uložený príspevok"
+
+msgid "saved posts"
+msgstr "uložené príspevky"
+
+msgid "Copied link"
+msgstr "Skopírovaný odkaz"
+
+msgid "Other"
+msgstr "Iné"
+
+msgid "network"
+msgstr "sieť"
+
+msgid "share"
+msgstr "zdieľanie"
+
+msgid "reply to"
+msgstr "odpoveď na"
+
+msgid "comment"
+msgstr "komentár"
+
+msgid "follower"
+msgstr "sledovateľka"
+
+msgid "followed"
+msgstr "sledovaná"
+
+msgid "follow"
+msgstr "sledovanie"
+
+msgid "follows"
+msgstr "sledovania"
+
+msgid "Free slots today"
+msgstr "Voľné termíny dnes"
+
+msgid "Hibiscus"
+msgstr "Ibištek"
+
+msgid "Plum"
+msgstr "Slivka"
+
+msgid "Gold"
+msgstr "Zlatá"
+
+msgid "Leaf"
+msgstr "List"
+
+msgid "Powder"
+msgstr "Púder"
+
+msgid "background"
+msgstr "pozadie"
+
+msgid "free slots"
+msgstr "voľné termíny"
+
+msgid "Times of today, e.g. [\"14:00\"]."
+msgstr "Dnešné časy, napr. [\"14:00\"]."
+
+msgid "story"
+msgstr "príbeh"
+
+msgid "stories"
+msgstr "príbehy"
+
+msgid "Order"
+msgstr "Objednávka"
+
+msgid "for a"
+msgstr "pre"
+
+msgid "transaction"
+msgstr "transakcia"
+
+msgid "stars"
+msgstr "hviezdičky"
+
+msgid "reply of the pro"
+msgstr "odpoveď profesionálky"
+
+msgid "replied at"
+msgstr "odpovedané"
+
+msgid "review"
+msgstr "hodnotenie"
+
+msgid "reviews"
+msgstr "hodnotenia"
+
+msgid "client"
+msgstr "klientka"
+
+msgid "did not come"
+msgstr "neprišla"
+
+msgid "private note"
+msgstr "súkromná poznámka"
+
+msgid "client rating"
+msgstr "hodnotenie klientky"
+
+msgid "client ratings"
+msgstr "hodnotenia klientok"
+
+msgid "Solange Glow member"
+msgstr "Členka Solange Glow"
 
 msgid "Back office"
 msgstr "Administrácia"
@@ -1373,6 +1790,27 @@ msgstr "Overenia totožnosti"
 
 msgid "Trades"
 msgstr "Odbory"
+
+msgid "Moderation queue"
+msgstr "Moderačný rad"
+
+msgid "Sanctions"
+msgstr "Sankcie"
+
+msgid "Reports"
+msgstr "Nahlásenia"
+
+msgid "Posts"
+msgstr "Príspevky"
+
+msgid "Comments"
+msgstr "Komentáre"
+
+msgid "Stories"
+msgstr "Príbehy"
+
+msgid "Reviews"
+msgstr "Hodnotenia"
 
 msgid "Notification templates"
 msgstr "Šablóny upozornení"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-11 10:33+0200\n"
+"POT-Creation-Date: 2026-10-11 22:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -674,8 +674,176 @@ msgstr "Côté ludique"
 msgid "Messaging"
 msgstr "Messagerie"
 
+msgid "content"
+msgstr "contenu"
+
+msgid "detected"
+msgstr "détecté"
+
+msgid "This content does not exist any more."
+msgstr "Ce contenu n'existe plus."
+
+msgid "open the content"
+msgstr "ouvrir le contenu"
+
+msgid "Open in the admin"
+msgstr "Ouvrir dans l'admin"
+
+msgid "This case was already decided."
+msgstr "Ce cas a déjà été tranché."
+
+msgid "Kept."
+msgstr "Gardé."
+
+msgid "Removed. The author was told."
+msgstr "Retiré. L'autrice a été prévenue."
+
+msgid "Keep"
+msgstr "Garder"
+
+msgid "Remove"
+msgstr "Retirer"
+
+msgid "Remove and sanction the author"
+msgstr "Retirer et sanctionner l'autrice"
+
+msgid "Keep the selected contents"
+msgstr "Garder les contenus choisis"
+
+msgid "Remove the selected contents"
+msgstr "Retirer les contenus choisis"
+
 msgid "Moderation"
 msgstr "Modération"
+
+msgid "You cannot report your own content."
+msgstr "Tu ne peux pas signaler ton propre contenu."
+
+msgid "You already reported this. Our team is looking at it."
+msgstr "Tu l'as déjà signalé. Notre équipe regarde."
+
+msgid "You cannot block yourself."
+msgstr "Tu ne peux pas te bloquer toi-même."
+
+msgid "You cannot post or comment for now, after a decision of the moderation team."
+msgstr "Tu ne peux pas publier ni commenter pour l'instant, après une décision de l'équipe de modération."
+
+msgid "Spam or advertising"
+msgstr "Spam ou publicité"
+
+msgid "Nudity or sexual content"
+msgstr "Nudité ou contenu sexuel"
+
+msgid "Harassment or insults"
+msgstr "Harcèlement ou insultes"
+
+msgid "Hate or discrimination"
+msgstr "Haine ou discrimination"
+
+msgid "Scam or fraud"
+msgstr "Arnaque ou fraude"
+
+msgid "Danger for a minor"
+msgstr "Danger pour un mineur"
+
+msgid "Violence"
+msgstr "Violence"
+
+msgid "Something else"
+msgstr "Autre chose"
+
+msgid "reported by"
+msgstr "signalé par"
+
+msgid "case"
+msgstr "cas"
+
+msgid "report"
+msgstr "signalement"
+
+msgid "reports"
+msgstr "signalements"
+
+msgid "block"
+msgstr "blocage"
+
+msgid "blocks"
+msgstr "blocages"
+
+msgid "hidden content"
+msgstr "contenu masqué"
+
+msgid "hidden contents"
+msgstr "contenus masqués"
+
+msgid "To review"
+msgstr "À examiner"
+
+msgid "Kept"
+msgstr "Gardé"
+
+msgid "Removed"
+msgstr "Retiré"
+
+msgid "Reported"
+msgstr "Signalé"
+
+msgid "Automatic check"
+msgstr "Contrôle automatique"
+
+msgid "found by"
+msgstr "trouvé par"
+
+msgid "author"
+msgstr "autrice"
+
+msgid "excerpt"
+msgstr "extrait"
+
+msgid "checked by"
+msgstr "vérifié par"
+
+msgid "hidden until review"
+msgstr "masqué en attendant l'examen"
+
+msgid "decided by"
+msgstr "décidé par"
+
+msgid "decided at"
+msgstr "décidé le"
+
+msgid "note"
+msgstr "note"
+
+msgid "moderation case"
+msgstr "cas de modération"
+
+msgid "moderation queue"
+msgstr "file de modération"
+
+msgid "Warning"
+msgstr "Avertissement"
+
+msgid "Cannot post or comment"
+msgstr "Ne peut plus publier ni commenter"
+
+msgid "Banned"
+msgstr "Bannie"
+
+msgid "person"
+msgstr "personne"
+
+msgid "level"
+msgstr "niveau"
+
+msgid "until"
+msgstr "jusqu'au"
+
+msgid "sanction"
+msgstr "sanction"
+
+msgid "sanctions"
+msgstr "sanctions"
 
 msgid "Send this event to me (test)"
 msgstr "M'envoyer cet événement (test)"
@@ -718,9 +886,6 @@ msgstr "modèle de notification"
 
 msgid "notification templates"
 msgstr "modèles de notification"
-
-msgid "person"
-msgstr "personne"
 
 msgid "shown in the app"
 msgstr "visible dans l'appli"
@@ -1334,8 +1499,260 @@ msgstr "Sélection France"
 msgid "Shop"
 msgstr "Boutiques"
 
+msgid "Remove the selected items"
+msgstr "Retirer les éléments choisis"
+
+msgid "Removed."
+msgstr "Retiré."
+
+msgid "Show the selected items again"
+msgstr "Afficher de nouveau les éléments choisis"
+
+msgid "Visible again."
+msgstr "De nouveau visible."
+
+msgid "moderation"
+msgstr "modération"
+
 msgid "Social"
 msgstr "Réseau social"
+
+msgid "This post does not exist or is not visible any more."
+msgstr "Cette publication n'existe pas ou n'est plus visible."
+
+msgid "Only its author can change this."
+msgstr "Seule son autrice peut changer cela."
+
+#, python-format
+msgid "Add the right pictures: %(rule)s"
+msgstr "Ajoute les bonnes photos : %(rule)s"
+
+msgid "A picture or video is still being prepared, or was refused. Wait or change it."
+msgstr "Une photo ou une vidéo est encore en préparation, ou a été refusée. Attends ou change-la."
+
+#, python-format
+msgid "Choose a date and time in the future, within %(days)s days."
+msgstr "Choisis une date et une heure à venir, dans les %(days)s jours."
+
+msgid "This service is not one of yours."
+msgstr "Cette prestation n'est pas à toi."
+
+msgid "Add at least one picture or video."
+msgstr "Ajoute au moins une photo ou une vidéo."
+
+msgid "This comment does not exist any more."
+msgstr "Ce commentaire n'existe plus."
+
+msgid "You cannot do this with this person."
+msgstr "Tu ne peux pas faire cela avec cette personne."
+
+msgid "You cannot follow yourself."
+msgstr "Tu ne peux pas te suivre toi-même."
+
+msgid "A story needs a picture, a video, a text or free times."
+msgstr "Une story a besoin d'une photo, d'une vidéo, d'un texte ou de créneaux libres."
+
+msgid "Give the free times of today, e.g. 14:00."
+msgstr "Indique les créneaux libres d'aujourd'hui, par exemple 14:00."
+
+msgid "Only a pro can share her free slots."
+msgstr "Seule une pro peut partager ses créneaux libres."
+
+msgid "This booking or order does not exist."
+msgstr "Ce rendez-vous ou cette commande n'existe pas."
+
+msgid "Only the person who booked or bought can leave a review."
+msgstr "Seule la personne qui a réservé ou acheté peut laisser un avis."
+
+msgid "You can leave a review once the booking or order is finished."
+msgstr "Tu pourras laisser un avis une fois le rendez-vous ou la commande terminés."
+
+#, python-format
+msgid "The time to leave a review is over (%(days)s days)."
+msgstr "Le délai pour laisser un avis est passé (%(days)s jours)."
+
+msgid "You already left a review for this."
+msgstr "Tu as déjà laissé un avis pour cela."
+
+msgid "You already replied to this review."
+msgstr "Tu as déjà répondu à cet avis."
+
+msgid "This review does not exist any more."
+msgstr "Cet avis n'existe plus."
+
+msgid "Visible"
+msgstr "Visible"
+
+msgid "Held for review"
+msgstr "Retenu pour examen"
+
+msgid "Carousel"
+msgstr "Carrousel"
+
+msgid "Short video"
+msgstr "Vidéo courte"
+
+msgid "Before / after"
+msgstr "Avant / après"
+
+msgid "Set when the author posts as a pro."
+msgstr "Rempli quand l'autrice publie en tant que pro."
+
+msgid "product"
+msgstr "produit"
+
+msgid "to publish at"
+msgstr "à publier le"
+
+msgid "likes"
+msgstr "j'aime"
+
+msgid "comments"
+msgstr "commentaires"
+
+msgid "saves"
+msgstr "enregistrements"
+
+msgid "shares"
+msgstr "partages"
+
+msgid "post"
+msgstr "publication"
+
+msgid "posts"
+msgstr "publications"
+
+msgid "Picture or video"
+msgstr "Photo ou vidéo"
+
+msgid "Before"
+msgstr "Avant"
+
+msgid "After"
+msgstr "Après"
+
+msgid "file"
+msgstr "fichier"
+
+msgid "post file"
+msgstr "fichier de publication"
+
+msgid "post files"
+msgstr "fichiers de publication"
+
+msgid "like"
+msgstr "j'aime"
+
+msgid "saved post"
+msgstr "publication enregistrée"
+
+msgid "saved posts"
+msgstr "publications enregistrées"
+
+msgid "Copied link"
+msgstr "Lien copié"
+
+msgid "Other"
+msgstr "Autre"
+
+msgid "network"
+msgstr "réseau"
+
+msgid "share"
+msgstr "partage"
+
+msgid "reply to"
+msgstr "réponse à"
+
+msgid "comment"
+msgstr "commentaire"
+
+msgid "follower"
+msgstr "abonnée"
+
+msgid "followed"
+msgstr "suivie"
+
+msgid "follow"
+msgstr "abonnement"
+
+msgid "follows"
+msgstr "abonnements"
+
+msgid "Free slots today"
+msgstr "Créneaux libres aujourd'hui"
+
+msgid "Hibiscus"
+msgstr "Hibiscus"
+
+msgid "Plum"
+msgstr "Prune"
+
+msgid "Gold"
+msgstr "Or"
+
+msgid "Leaf"
+msgstr "Feuille"
+
+msgid "Powder"
+msgstr "Poudre"
+
+msgid "background"
+msgstr "fond"
+
+msgid "free slots"
+msgstr "créneaux libres"
+
+msgid "Times of today, e.g. [\"14:00\"]."
+msgstr "Heures d'aujourd'hui, par exemple [\"14:00\"]."
+
+msgid "story"
+msgstr "story"
+
+msgid "stories"
+msgstr "stories"
+
+msgid "Order"
+msgstr "Commande"
+
+msgid "for a"
+msgstr "pour un(e)"
+
+msgid "transaction"
+msgstr "transaction"
+
+msgid "stars"
+msgstr "étoiles"
+
+msgid "reply of the pro"
+msgstr "réponse de la pro"
+
+msgid "replied at"
+msgstr "répondu le"
+
+msgid "review"
+msgstr "avis"
+
+msgid "reviews"
+msgstr "avis"
+
+msgid "client"
+msgstr "cliente"
+
+msgid "did not come"
+msgstr "n'est pas venue"
+
+msgid "private note"
+msgstr "note privée"
+
+msgid "client rating"
+msgstr "note de cliente"
+
+msgid "client ratings"
+msgstr "notes de clientes"
+
+msgid "Solange Glow member"
+msgstr "Membre Solange Glow"
 
 msgid "Back office"
 msgstr "Back-office"
@@ -1363,6 +1780,27 @@ msgstr "Vérifications d'identité"
 
 msgid "Trades"
 msgstr "Métiers"
+
+msgid "Moderation queue"
+msgstr "File de modération"
+
+msgid "Sanctions"
+msgstr "Sanctions"
+
+msgid "Reports"
+msgstr "Signalements"
+
+msgid "Posts"
+msgstr "Publications"
+
+msgid "Comments"
+msgstr "Commentaires"
+
+msgid "Stories"
+msgstr "Stories"
+
+msgid "Reviews"
+msgstr "Avis"
 
 msgid "Notification templates"
 msgstr "Modèles de notification"

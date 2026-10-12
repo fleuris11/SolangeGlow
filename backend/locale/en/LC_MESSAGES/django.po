@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-11 10:33+0200\n"
+"POT-Creation-Date: 2026-10-11 22:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -674,7 +674,175 @@ msgstr ""
 msgid "Messaging"
 msgstr ""
 
+msgid "content"
+msgstr ""
+
+msgid "detected"
+msgstr ""
+
+msgid "This content does not exist any more."
+msgstr ""
+
+msgid "open the content"
+msgstr ""
+
+msgid "Open in the admin"
+msgstr ""
+
+msgid "This case was already decided."
+msgstr ""
+
+msgid "Kept."
+msgstr ""
+
+msgid "Removed. The author was told."
+msgstr ""
+
+msgid "Keep"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+msgid "Remove and sanction the author"
+msgstr ""
+
+msgid "Keep the selected contents"
+msgstr ""
+
+msgid "Remove the selected contents"
+msgstr ""
+
 msgid "Moderation"
+msgstr ""
+
+msgid "You cannot report your own content."
+msgstr ""
+
+msgid "You already reported this. Our team is looking at it."
+msgstr ""
+
+msgid "You cannot block yourself."
+msgstr ""
+
+msgid "You cannot post or comment for now, after a decision of the moderation team."
+msgstr ""
+
+msgid "Spam or advertising"
+msgstr ""
+
+msgid "Nudity or sexual content"
+msgstr ""
+
+msgid "Harassment or insults"
+msgstr ""
+
+msgid "Hate or discrimination"
+msgstr ""
+
+msgid "Scam or fraud"
+msgstr ""
+
+msgid "Danger for a minor"
+msgstr ""
+
+msgid "Violence"
+msgstr ""
+
+msgid "Something else"
+msgstr ""
+
+msgid "reported by"
+msgstr ""
+
+msgid "case"
+msgstr ""
+
+msgid "report"
+msgstr ""
+
+msgid "reports"
+msgstr ""
+
+msgid "block"
+msgstr ""
+
+msgid "blocks"
+msgstr ""
+
+msgid "hidden content"
+msgstr ""
+
+msgid "hidden contents"
+msgstr ""
+
+msgid "To review"
+msgstr ""
+
+msgid "Kept"
+msgstr ""
+
+msgid "Removed"
+msgstr ""
+
+msgid "Reported"
+msgstr ""
+
+msgid "Automatic check"
+msgstr ""
+
+msgid "found by"
+msgstr ""
+
+msgid "author"
+msgstr ""
+
+msgid "excerpt"
+msgstr ""
+
+msgid "checked by"
+msgstr ""
+
+msgid "hidden until review"
+msgstr ""
+
+msgid "decided by"
+msgstr ""
+
+msgid "decided at"
+msgstr ""
+
+msgid "note"
+msgstr ""
+
+msgid "moderation case"
+msgstr ""
+
+msgid "moderation queue"
+msgstr ""
+
+msgid "Warning"
+msgstr ""
+
+msgid "Cannot post or comment"
+msgstr ""
+
+msgid "Banned"
+msgstr ""
+
+msgid "person"
+msgstr ""
+
+msgid "level"
+msgstr ""
+
+msgid "until"
+msgstr ""
+
+msgid "sanction"
+msgstr ""
+
+msgid "sanctions"
 msgstr ""
 
 msgid "Send this event to me (test)"
@@ -717,9 +885,6 @@ msgid "notification template"
 msgstr ""
 
 msgid "notification templates"
-msgstr ""
-
-msgid "person"
 msgstr ""
 
 msgid "shown in the app"
@@ -1334,7 +1499,259 @@ msgstr ""
 msgid "Shop"
 msgstr ""
 
+msgid "Remove the selected items"
+msgstr ""
+
+msgid "Removed."
+msgstr ""
+
+msgid "Show the selected items again"
+msgstr ""
+
+msgid "Visible again."
+msgstr ""
+
+msgid "moderation"
+msgstr ""
+
 msgid "Social"
+msgstr ""
+
+msgid "This post does not exist or is not visible any more."
+msgstr ""
+
+msgid "Only its author can change this."
+msgstr ""
+
+#, python-format
+msgid "Add the right pictures: %(rule)s"
+msgstr ""
+
+msgid "A picture or video is still being prepared, or was refused. Wait or change it."
+msgstr ""
+
+#, python-format
+msgid "Choose a date and time in the future, within %(days)s days."
+msgstr ""
+
+msgid "This service is not one of yours."
+msgstr ""
+
+msgid "Add at least one picture or video."
+msgstr ""
+
+msgid "This comment does not exist any more."
+msgstr ""
+
+msgid "You cannot do this with this person."
+msgstr ""
+
+msgid "You cannot follow yourself."
+msgstr ""
+
+msgid "A story needs a picture, a video, a text or free times."
+msgstr ""
+
+msgid "Give the free times of today, e.g. 14:00."
+msgstr ""
+
+msgid "Only a pro can share her free slots."
+msgstr ""
+
+msgid "This booking or order does not exist."
+msgstr ""
+
+msgid "Only the person who booked or bought can leave a review."
+msgstr ""
+
+msgid "You can leave a review once the booking or order is finished."
+msgstr ""
+
+#, python-format
+msgid "The time to leave a review is over (%(days)s days)."
+msgstr ""
+
+msgid "You already left a review for this."
+msgstr ""
+
+msgid "You already replied to this review."
+msgstr ""
+
+msgid "This review does not exist any more."
+msgstr ""
+
+msgid "Visible"
+msgstr ""
+
+msgid "Held for review"
+msgstr ""
+
+msgid "Carousel"
+msgstr ""
+
+msgid "Short video"
+msgstr ""
+
+msgid "Before / after"
+msgstr ""
+
+msgid "Set when the author posts as a pro."
+msgstr ""
+
+msgid "product"
+msgstr ""
+
+msgid "to publish at"
+msgstr ""
+
+msgid "likes"
+msgstr ""
+
+msgid "comments"
+msgstr ""
+
+msgid "saves"
+msgstr ""
+
+msgid "shares"
+msgstr ""
+
+msgid "post"
+msgstr ""
+
+msgid "posts"
+msgstr ""
+
+msgid "Picture or video"
+msgstr ""
+
+msgid "Before"
+msgstr ""
+
+msgid "After"
+msgstr ""
+
+msgid "file"
+msgstr ""
+
+msgid "post file"
+msgstr ""
+
+msgid "post files"
+msgstr ""
+
+msgid "like"
+msgstr ""
+
+msgid "saved post"
+msgstr ""
+
+msgid "saved posts"
+msgstr ""
+
+msgid "Copied link"
+msgstr ""
+
+msgid "Other"
+msgstr ""
+
+msgid "network"
+msgstr ""
+
+msgid "share"
+msgstr ""
+
+msgid "reply to"
+msgstr ""
+
+msgid "comment"
+msgstr ""
+
+msgid "follower"
+msgstr ""
+
+msgid "followed"
+msgstr ""
+
+msgid "follow"
+msgstr ""
+
+msgid "follows"
+msgstr ""
+
+msgid "Free slots today"
+msgstr ""
+
+msgid "Hibiscus"
+msgstr ""
+
+msgid "Plum"
+msgstr ""
+
+msgid "Gold"
+msgstr ""
+
+msgid "Leaf"
+msgstr ""
+
+msgid "Powder"
+msgstr ""
+
+msgid "background"
+msgstr ""
+
+msgid "free slots"
+msgstr ""
+
+msgid "Times of today, e.g. [\"14:00\"]."
+msgstr ""
+
+msgid "story"
+msgstr ""
+
+msgid "stories"
+msgstr ""
+
+msgid "Order"
+msgstr ""
+
+msgid "for a"
+msgstr ""
+
+msgid "transaction"
+msgstr ""
+
+msgid "stars"
+msgstr ""
+
+msgid "reply of the pro"
+msgstr ""
+
+msgid "replied at"
+msgstr ""
+
+msgid "review"
+msgstr ""
+
+msgid "reviews"
+msgstr ""
+
+msgid "client"
+msgstr ""
+
+msgid "did not come"
+msgstr ""
+
+msgid "private note"
+msgstr ""
+
+msgid "client rating"
+msgstr ""
+
+msgid "client ratings"
+msgstr ""
+
+msgid "Solange Glow member"
 msgstr ""
 
 msgid "Back office"
@@ -1362,6 +1779,27 @@ msgid "Identity checks"
 msgstr ""
 
 msgid "Trades"
+msgstr ""
+
+msgid "Moderation queue"
+msgstr ""
+
+msgid "Sanctions"
+msgstr ""
+
+msgid "Reports"
+msgstr ""
+
+msgid "Posts"
+msgstr ""
+
+msgid "Comments"
+msgstr ""
+
+msgid "Stories"
+msgstr ""
+
+msgid "Reviews"
 msgstr ""
 
 msgid "Notification templates"
