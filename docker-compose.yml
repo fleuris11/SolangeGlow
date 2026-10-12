@@ -172,6 +172,17 @@ services:
       - web
     command: npx playwright test
 
+  # Audio and video calls (connected later, ADR-006): a LiveKit server in development mode
+  # (keys devkey / secret). Started only on demand: docker compose --profile calls up livekit
+  livekit:
+    image: livekit/livekit-server:v1.8.4
+    profiles: ["calls"]
+    command: --dev --bind 0.0.0.0
+    ports:
+      - "7880:7880"
+      - "7881:7881"
+      - "7882:7882/udp"
+
 volumes:
   minio_data:
   postgres_data:
