@@ -260,6 +260,11 @@ SPECTACULAR_SETTINGS = {
         "PostStatusEnum": "apps.social.models.Post.Status",
         "StoryKindEnum": "apps.social.models.Story.Kind",
         "TransactionKindEnum": "apps.social.models.TransactionKind",
+        "MessageKindEnum": "apps.messaging.models.Message.Kind",
+        "SharedCardKindEnum": "apps.messaging.models.Message.ShareKind",
+        "ConversationKindEnum": "apps.messaging.models.Conversation.Kind",
+        "ConversationPurposeEnum": "apps.messaging.models.Conversation.Purpose",
+        "MemberStatusEnum": "apps.messaging.models.ConversationMember.Status",
     },
 }
 
@@ -302,6 +307,12 @@ PROVIDERS_HTTP_TIMEOUT = env.float("PROVIDERS_HTTP_TIMEOUT", default=8.0)
 # Automatic moderation by an AI service (module 2). Empty = word lists and rules only.
 MODERATION_AI_URL = env("MODERATION_AI_URL", default="")
 MODERATION_AI_KEY = env("MODERATION_AI_KEY", default="")
+
+# Audio and video calls (connected later). Development: the "livekit" service of
+# docker compose (profile "calls"), keys devkey / secret.
+LIVEKIT_URL = env("LIVEKIT_URL", default="")
+LIVEKIT_API_KEY = env("LIVEKIT_API_KEY", default="")
+LIVEKIT_API_SECRET = env("LIVEKIT_API_SECRET", default="")
 
 # Web Push (VAPID). Empty in development: keys are created in backend/.vapid.json.
 VAPID_PUBLIC_KEY = env("VAPID_PUBLIC_KEY", default="")
@@ -524,6 +535,22 @@ UNFOLD = {
                         "title": _("Reports"),
                         "icon": "flag",
                         "link": reverse_lazy("admin:moderation_report_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("Messaging"),
+                "separator": True,
+                "items": [
+                    {
+                        "title": _("Reported conversations"),
+                        "icon": "forum",
+                        "link": reverse_lazy("admin:messaging_conversation_changelist"),
+                    },
+                    {
+                        "title": _("Reported messages"),
+                        "icon": "report",
+                        "link": reverse_lazy("admin:messaging_message_changelist"),
                     },
                 ],
             },

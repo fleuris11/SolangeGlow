@@ -15,6 +15,7 @@ DEFAULT_RATES = {
     "verification": "5/hour",
     "social_write": "120/hour",
     "report": "30/hour",
+    "message_send": "120/minute",
 }
 
 

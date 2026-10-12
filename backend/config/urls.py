@@ -12,6 +12,7 @@ api_v1 = [
     path("countries", CountryListView.as_view(), name="countries"),
     path("", include("apps.social.urls")),
     path("", include("apps.moderation.urls")),
+    path("", include("apps.messaging.urls")),
     path("", include("apps.pros.urls")),
     path("", include("apps.accounts.urls")),
     path("", include("apps.notifications.urls")),
