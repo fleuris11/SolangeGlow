@@ -140,6 +140,31 @@ Après `seed_demo` (publications, stories, commentaires, avis et abonnements de 
   automatique, échelle des sanctions). La vérification par IA reste éteinte tant que
   `MODERATION_AI_URL` est vide.
 
+## Tester la messagerie en local
+
+- Une cliente ouvre une vitrine (par exemple http://localhost:3000/fr/rachida-nails) et
+  touche « Écrire » : la conversation s'ouvre (http://localhost:3000/fr/messages/<id>).
+  Texte, photo, message vocal (maintenir le micro, ou un simple appui puis « Envoyer »),
+  carte d'une publication (bouton « Partager » > « Envoyer en message »), d'une prestation
+  ou d'un créneau (pour les pros, sous le champ de saisie).
+- La pro se connecte avec son numéro de démo (codes : `docker compose logs worker`) et
+  voit la conversation dans « Messages », avec le compteur de non-lus dans le menu.
+  « Ma vitrine » > « Messages » : réponses rapides et message d'absence (envoyé hors des
+  horaires, une fois par conversation).
+- Écrire « Mobile Money », un numéro ou un lien PayPal avant toute commande fait
+  apparaître « Paie dans l'appli pour être protégée ».
+- Une pro qui écrit à une cliente qui ne la suit pas envoie une demande (onglet
+  « Demandes ») ; deux clientes s'écrivent si elles se suivent l'une l'autre.
+- Temps réel : `ws://localhost:8000/ws/messaging/` (Channels). Sans connexion temps réel,
+  les écrans vérifient les nouveaux messages toutes les 10 secondes ; un message écrit
+  hors connexion attend et part dès le retour du réseau.
+- Back-office : Messagerie > Conversations signalées / Messages signalés (seulement après
+  un signalement ou dans un litige ; chaque ouverture est inscrite au journal d'audit).
+- Réglages : `messaging.*` (délai des alertes regroupées, demandes, absence, mots et sites
+  de paiement surveillés, longueur, réponses rapides), `throttle.message_send`.
+- Appels (préparés, non branchés) : `docker compose --profile calls up livekit`, puis
+  `LIVEKIT_URL=ws://localhost:7880`, `LIVEKIT_API_KEY=devkey`, `LIVEKIT_API_SECRET=secret`.
+
 ## Client de l'API (web)
 
 Les types du client web sont générés depuis le schéma de l'API. Après toute
@@ -194,6 +219,8 @@ backend/                Django
   apps/social/          publications, fil, commentaires, abonnements, stories, avis vérifiés
   apps/moderation/      signalements, blocages, contenus masqués, file de modération,
                         sanctions
+  apps/messaging/       conversations, messages, temps réel (WebSocket), demandes,
+                        réponses rapides, message d'absence, anti-fraude, appels (préparés)
   assets/fonts/         polices de la marque (OFL) pour les affiches et stickers
   apps/<module>/        un module par grande fonctionnalité
   locale/               traductions (fr, en, sk)
