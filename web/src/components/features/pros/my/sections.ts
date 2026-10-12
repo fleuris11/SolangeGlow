@@ -5,6 +5,7 @@ export const SECTIONS = [
   "hours",
   "portfolio",
   "reviews",
+  "messages",
   "place",
   "share",
   "verification",

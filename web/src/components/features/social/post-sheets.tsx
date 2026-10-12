@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  ChatCircleText,
   EyeSlash,
   FacebookLogo,
   Flag,
@@ -10,6 +11,7 @@ import {
   Trash,
   WhatsappLogo,
 } from "@phosphor-icons/react";
+import { useQuery } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
@@ -18,6 +20,7 @@ import { Chip } from "@/components/ui/chip";
 import { Sheet } from "@/components/ui/sheet";
 import { useToast } from "@/components/ui/toast";
 import { ApiError, hasSession } from "@/lib/api/client";
+import { getConversations } from "@/lib/api/messaging";
 import {
   block,
   deletePost,
@@ -52,6 +55,13 @@ export function ShareSheet({
 }) {
   const t = useTranslations("social.share");
   const toast = useToast();
+  const router = useRouter();
+  const [picking, setPicking] = useState(false);
+  const conversations = useQuery({
+    queryKey: ["conversations", "inbox"],
+    queryFn: () => getConversations("inbox"),
+    enabled: picking,
+  });
 
   const go = async (network: ShareNetwork) => {
     const links = await share(postId, network).catch(() => null);
@@ -89,6 +99,39 @@ export function ShareSheet({
           <LinkSimple aria-hidden size={24} weight="bold" />
           {t("copy")}
         </Button>
+        <Button
+          variant="quiet"
+          fullWidth
+          aria-expanded={picking}
+          onClick={() => (hasSession() ? setPicking(true) : router.push("/auth"))}
+        >
+          <ChatCircleText aria-hidden size={24} weight="bold" />
+          {t("toMessage")}
+        </Button>
+        {picking && (
+          <div className="flex flex-col gap-2">
+            <p className="font-bold">{t("toWhom")}</p>
+            {conversations.isPending ? (
+              <p role="status">{t("loading")}</p>
+            ) : (conversations.data?.results.length ?? 0) === 0 ? (
+              <p className="text-prune-doux">{t("noConversation")}</p>
+            ) : (
+              conversations.data?.results.slice(0, 8).map((conversation) => (
+                <Button
+                  key={conversation.id}
+                  variant="secondary"
+                  fullWidth
+                  onClick={() => {
+                    onClose();
+                    router.push(`/messages/${conversation.id}?share=post:${postId}`);
+                  }}
+                >
+                  {conversation.title}
+                </Button>
+              ))
+            )}
+          </div>
+        )}
       </div>
     </Sheet>
   );

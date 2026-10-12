@@ -1,5 +1,6 @@
 import {
   CalendarCheck,
+  ChatCircleText,
   Clock,
   DoorOpen,
   MapTrifold,
@@ -27,6 +28,7 @@ import { Badge } from "@/components/ui/badge";
 import { buttonClasses } from "@/components/ui/button";
 import { PriceTag } from "@/components/ui/price-tag";
 import { SpeakButton } from "@/components/ui/speak-button";
+import { WriteButton } from "@/components/features/messaging/write-button";
 import { FollowButton } from "@/components/features/social/follow-button";
 import { ReviewsSection } from "@/components/features/social/reviews-section";
 import type { Service, Showcase } from "@/lib/api/pros";
@@ -242,6 +244,10 @@ export function ShowcaseView({
               follow: <UserPlus aria-hidden size={22} weight="bold" />,
               following: <UserCheck aria-hidden size={22} weight="bold" />,
             }}
+          />
+          <WriteButton
+            personId={showcase.owner_id}
+            icon={<ChatCircleText aria-hidden size={22} weight="bold" />}
           />
         </div>
         <ShowcaseActions

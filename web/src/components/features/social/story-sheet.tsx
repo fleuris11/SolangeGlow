@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarCheck, CaretLeft, CaretRight } from "@phosphor-icons/react";
+import { CalendarCheck, CaretLeft, CaretRight, ChatCircleText } from "@phosphor-icons/react";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 
@@ -13,6 +13,16 @@ import { cn } from "@/lib/cn";
 import { Link } from "@/lib/i18n/navigation";
 import { mediaSrc, videoSrc } from "@/lib/media";
 import { formatClock } from "@/lib/pros/format";
+
+import { WriteButton } from "@/components/features/messaging/write-button";
+
+/** "14:00" today, on this phone's clock. */
+function todayAt(slot: string): Date {
+  const [hours = 0, minutes = 0] = slot.split(":").map(Number);
+  const date = new Date();
+  date.setHours(hours, minutes, 0, 0);
+  return date;
+}
 
 const COLOURS: Record<string, string> = {
   hibiscus: "bg-hibiscus text-sur-hibiscus",
@@ -80,6 +90,24 @@ export function StorySheet({ groups, startAt, onShown, onClose }: Props) {
                 </li>
               ))}
             </ul>
+            {group.author.pro_slug && !story.is_mine && (
+              <div className="flex flex-col gap-2">
+                <p className="text-small font-bold">{t("askSlot")}</p>
+                <div className="flex flex-wrap gap-2">
+                  {story.slots.map((slot) => (
+                    <WriteButton
+                      key={slot}
+                      personId={group.author.id}
+                      icon={<ChatCircleText aria-hidden size={20} weight="bold" />}
+                      label={t("writeFor", { time: formatClock(slot, locale) })}
+                      query={`slot=${encodeURIComponent(
+                        `${group.author.pro_slug}|${todayAt(slot).toISOString()}`,
+                      )}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
             {group.author.pro_slug && (
               <Link
                 href={`/${group.author.pro_slug}`}

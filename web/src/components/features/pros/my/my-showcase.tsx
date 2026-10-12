@@ -2,6 +2,7 @@
 
 import {
   CaretRight,
+  ChatCenteredText,
   Clock,
   Eye,
   IdentificationCard,
@@ -48,6 +49,7 @@ const ICONS: Record<Section, ReactNode> = {
   hours: <Clock size={28} weight="duotone" />,
   portfolio: <Images size={28} weight="duotone" />,
   reviews: <Star size={28} weight="duotone" />,
+  messages: <ChatCenteredText size={28} weight="duotone" />,
   place: <MapPin size={28} weight="duotone" />,
   share: <QrCode size={28} weight="duotone" />,
   verification: <IdentificationCard size={28} weight="duotone" />,
@@ -65,6 +67,8 @@ function summary(pro: MyPro, section: Section, t: Say) {
       return t("summary.portfolio", { count: pro.portfolio.length });
     case "reviews":
       return t("summary.reviews", { count: pro.rating_count });
+    case "messages":
+      return t("summary.messages");
     case "place":
       return [pro.place.district, pro.place.city].filter(Boolean).join(", ") || t("summary.empty");
     case "share":

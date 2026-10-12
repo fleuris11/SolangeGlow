@@ -24,6 +24,7 @@ const PARTS: Record<Section, ComponentType<{ pro: MyPro }>> = {
     loading,
   }),
   reviews: dynamic(() => import("./reviews-part").then((m) => m.ReviewsPart), { loading }),
+  messages: dynamic(() => import("./messages-part").then((m) => m.MessagesPart), { loading }),
   place: dynamic(() => import("./place-section").then((m) => m.PlaceSection), { loading }),
   share: dynamic(() => import("./share-section").then((m) => m.ShareSection), { loading }),
   verification: dynamic(() => import("./verification-section").then((m) => m.VerificationSection), {
