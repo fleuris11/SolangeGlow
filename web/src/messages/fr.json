@@ -60,24 +60,6 @@
   },
   "home": {
     "question": "Tu cherches quoi aujourd'hui ?",
-    "available": {
-      "title": "Libres aujourd'hui",
-      "subtitle": "Réserve un créneau près de toi.",
-      "seeAll": "Tout voir",
-      "freeAt": "Libre à",
-      "rating": "{rating} ({count} avis)",
-      "from": "dès"
-    },
-    "looks": {
-      "title": "Réalisations",
-      "subtitle": "Avant, après : le vrai travail des pros.",
-      "verified": "Pro vérifiée",
-      "before": "Avant",
-      "after": "Après",
-      "duration": "{hours, plural, =0 {{minutes} min} other {{minutes, plural, =0 {{hours} h} other {{hours} h {minutes}}}}}",
-      "likes": "{count} j'aime",
-      "book": "Réserver ce look"
-    },
     "france": {
       "title": "Sélection France",
       "subtitle": "Les produits tendance de France, livrés au Bénin.",
@@ -540,7 +522,8 @@
         "whatsapp": "WhatsApp"
       },
       "notFoundTitle": "Cette pro n'existe pas",
-      "notFoundText": "Le lien est peut-être mal écrit. Cherche-la dans Explorer."
+      "notFoundText": "Le lien est peut-être mal écrit. Cherche-la dans Explorer.",
+      "posts": "Publications"
     },
     "my": {
       "title": "Ma vitrine",
@@ -580,14 +563,16 @@
         "portfolio": "Mes réalisations",
         "place": "Lieu et itinéraire",
         "share": "Lien et QR code",
-        "verification": "Vérification"
+        "verification": "Vérification",
+        "reviews": "Avis"
       },
       "summary": {
         "services": "{count, plural, =0 {Aucune prestation} one {# prestation} other {# prestations}}",
         "hoursSet": "Horaires indiqués",
         "hoursMissing": "À indiquer",
         "portfolio": "{count, plural, =0 {Aucune photo} one {# réalisation} other {# réalisations}}",
-        "empty": "À remplir"
+        "empty": "À remplir",
+        "reviews": "{count, plural, =0 {Aucun avis} one {# avis} other {# avis}}"
       },
       "media": {
         "sent": "Envoyé. On le prépare, ça prend quelques secondes.",
@@ -828,6 +813,18 @@
         "send": "Envoyer pour vérification",
         "sent": "Envoyé. Tu auras une réponse bientôt.",
         "error": "L'envoi n'a pas marché. Réessaie."
+      },
+      "reviews": {
+        "title": "Avis",
+        "help": "Réponds à tes clientes : une réponse par avis.",
+        "publishFirst": "Publie ta vitrine pour recevoir des avis.",
+        "empty": "Pas encore d'avis.",
+        "stars": "{count, plural, one {# étoile} other {# étoiles}}",
+        "yourReply": "Ta réponse",
+        "once": "Tu ne peux répondre qu'une fois.",
+        "reply": "Répondre",
+        "replied": "Réponse publiée",
+        "error": "La réponse n'est pas partie. Réessaie."
       }
     },
     "become": {
@@ -894,6 +891,236 @@
       "myShowcaseText": "Prestations, horaires, lien et QR code.",
       "becomePro": "Devenir pro",
       "becomeProText": "Ta vitrine gratuite, trouvée par les clientes près de toi."
+    }
+  },
+  "social": {
+    "post": {
+      "noCaption": "Publication de {name}",
+      "verified": "Pro vérifiée",
+      "before": "Avant",
+      "after": "Après",
+      "beforeAfterAlt": "{label} : {caption}",
+      "carousel": "{count, plural, one {# photo} other {# photos}}, fais glisser",
+      "carouselItem": "Photo {index} sur {count} : {caption}",
+      "by": "Publication de {name}",
+      "bookLook": "Réserver ce look",
+      "savedToast": "Enregistré",
+      "unsavedToast": "Retiré de tes enregistrements",
+      "hidden": "Tu ne verras plus cette publication.",
+      "like": "J'aime ({count, plural, one {# j'aime} other {# j'aime}})",
+      "unlike": "Je n'aime plus ({count, plural, one {# j'aime} other {# j'aime}})",
+      "comments": "{count, plural, =0 {Commenter} one {# commentaire} other {# commentaires}}",
+      "share": "Partager",
+      "save": "Enregistrer",
+      "unsave": "Ne plus enregistrer",
+      "more": "Plus d'options",
+      "metaTitle": "Publication de {name}",
+      "metaDescription": "Découvre la publication de {name} sur Solange Glow."
+    },
+    "share": {
+      "title": "Partager",
+      "copy": "Copier le lien",
+      "copied": "Lien copié",
+      "tiktokCopied": "Lien copié : colle-le dans TikTok."
+    },
+    "more": {
+      "title": "Options",
+      "why": "Pourquoi signales-tu cette publication ?",
+      "reasons": {
+        "spam": "Spam ou publicité",
+        "nudity": "Nudité ou contenu sexuel",
+        "harassment": "Harcèlement ou insultes",
+        "hate": "Haine ou discrimination",
+        "scam": "Arnaque",
+        "minor": "Danger pour un mineur",
+        "violence": "Violence",
+        "other": "Autre chose"
+      },
+      "reported": "Merci. Notre équipe va regarder.",
+      "report": "Signaler",
+      "hidePost": "Masquer cette publication",
+      "hiddenPost": "Publication masquée",
+      "hidePerson": "Masquer les publications de {name}",
+      "hiddenPerson": "Tu ne verras plus les publications de {name}",
+      "block": "Bloquer {name}",
+      "blockText": "{name} ne pourra plus te voir ni t'écrire, et tu ne la verras plus.",
+      "blockConfirm": "Oui, bloquer {name}",
+      "blocked": "{name} est bloquée",
+      "delete": "Supprimer ma publication",
+      "deleted": "Publication supprimée",
+      "error": "Ça n'a pas marché. Réessaie."
+    },
+    "feed": {
+      "title": "Les looks du moment",
+      "titleSignedIn": "Ton fil",
+      "more": "Voir plus de publications",
+      "emptyTitle": "Ton fil est encore vide",
+      "emptyText": "Suis des pros près de chez toi pour voir leurs réalisations ici.",
+      "emptyCta": "Découvrir des pros"
+    },
+    "comments": {
+      "title": "Commentaires",
+      "empty": "Aucun commentaire. Sois la première !",
+      "reply": "Répondre",
+      "delete": "Supprimer",
+      "report": "Signaler",
+      "reported": "Merci. Notre équipe va regarder.",
+      "more": "Voir plus de commentaires",
+      "replyingTo": "Tu réponds à {name}.",
+      "cancel": "Annuler",
+      "yourComment": "Ton commentaire",
+      "yourReply": "Ta réponse",
+      "send": "Envoyer",
+      "signIn": "Connecte-toi pour commenter",
+      "error": "Le commentaire n'est pas parti. Réessaie."
+    },
+    "stories": {
+      "title": "Aujourd'hui",
+      "freeSlots": "Libre",
+      "seen": "déjà vue",
+      "new": "nouvelle story",
+      "position": "Story {index} sur {count}",
+      "slotsTitle": "Créneaux libres aujourd'hui",
+      "book": "Voir sa vitrine pour réserver",
+      "previous": "Précédente",
+      "next": "Suivante",
+      "done": "Terminer"
+    },
+    "create": {
+      "steps": {
+        "what": "Que veux-tu publier ?",
+        "details": "Les détails",
+        "publish": "Aperçu et publication"
+      },
+      "help": {
+        "what": "Choisis le type, puis tes photos ou ta vidéo.",
+        "details": "Quelques mots, le métier, la prestation.",
+        "publish": "Vérifie, puis publie maintenant ou plus tard."
+      },
+      "post": "Une publication",
+      "story": "Une story (24 h)",
+      "kinds": {
+        "photo": "Photo",
+        "carousel": "Plusieurs photos",
+        "video": "Vidéo courte",
+        "before_after": "Avant / après",
+        "story_photo": "Photo ou vidéo",
+        "story_text": "Texte sur fond",
+        "free_slots": "Créneaux libres"
+      },
+      "choose": "Choisir dans ma galerie",
+      "addMore": "Ajouter une photo",
+      "before": "Avant",
+      "after": "Après",
+      "preparing": "Préparation…",
+      "refused": "Fichier refusé",
+      "uploadError": "L'envoi n'a pas marché",
+      "caption": "Légende",
+      "captionPlaceholder": "ex. Knotless mi-dos, 5 h, mèches fournies",
+      "trade": "Métier",
+      "service": "Lier à une prestation",
+      "noService": "Aucune",
+      "serviceHelp": "Le bouton « Réserver ce look » apparaîtra sous ta publication.",
+      "storyText": "Ton message",
+      "storyCaption": "Un mot (facultatif)",
+      "background": "Couleur du fond",
+      "colours": {
+        "hibiscus": "Hibiscus",
+        "prune": "Prune",
+        "or": "Or",
+        "feuille": "Feuille",
+        "poudre": "Poudre"
+      },
+      "slots": "Tes créneaux libres aujourd'hui",
+      "preview": "Aperçu",
+      "slotsPreview": "Libre aujourd'hui à {slots}",
+      "when": "Quand ?",
+      "whenOptions": {
+        "now": "Maintenant",
+        "later": "Plus tard",
+        "draft": "Brouillon"
+      },
+      "publishAt": "Date et heure de publication",
+      "next": "Continuer",
+      "publishNow": "Publier",
+      "schedule": "Programmer",
+      "saveDraft": "Garder en brouillon",
+      "publishStory": "Publier la story",
+      "published": "Publié !",
+      "scheduled": "Programmé",
+      "drafted": "Brouillon enregistré",
+      "storyDone": "Ta story est en ligne pour 24 h",
+      "error": "La publication n'a pas marché. Réessaie."
+    },
+    "following": {
+      "title": "Profils suivis",
+      "help": "Leurs publications arrivent en premier dans ton fil.",
+      "emptyTitle": "Tu ne suis personne pour l'instant",
+      "emptyText": "Découvre les pros près de toi et suis tes préférées.",
+      "emptyCta": "Découvrir des pros",
+      "posts": "{count, plural, =0 {Aucune publication} one {# publication} other {# publications}}",
+      "unfollow": "Ne plus suivre"
+    },
+    "saved": {
+      "title": "Enregistrés",
+      "help": "Les looks que tu as gardés pour plus tard.",
+      "emptyTitle": "Rien d'enregistré",
+      "emptyText": "Touche le marque-page sous un look pour le retrouver ici.",
+      "emptyCta": "Voir le fil"
+    },
+    "myPosts": {
+      "title": "Mes publications",
+      "help": "Brouillons, publications programmées et en ligne.",
+      "tabs": "Mes publications",
+      "tab": {
+        "draft": "Brouillons",
+        "scheduled": "Programmées",
+        "published": "En ligne"
+      },
+      "noCaption": "Sans légende",
+      "on": "Le {date}",
+      "inReview": "En vérification par la modération",
+      "see": "Voir",
+      "publish": "Publier",
+      "delete": "Supprimer",
+      "empty": {
+        "draft": "Aucun brouillon.",
+        "scheduled": "Aucune publication programmée.",
+        "published": "Aucune publication en ligne."
+      }
+    },
+    "reviews": {
+      "title": "Avis vérifiés",
+      "help": "Après un rendez-vous ou une commande, dis ce que tu en as pensé.",
+      "verifiedOnly": "Seules les clientes qui ont vraiment réservé ou acheté peuvent noter.",
+      "none": "{name} n'a pas encore d'avis.",
+      "starsShort": "{count} ★",
+      "starsValue": "{count, plural, one {# étoile} other {# étoiles}}",
+      "count": "{count, plural, one {# avis vérifié} other {# avis vérifiés}}",
+      "photoOf": "Photo de {name}",
+      "replyOf": "Réponse de {name} :",
+      "stars": "Ta note",
+      "text": "Ton avis (facultatif)",
+      "addPhoto": "Ajouter une photo",
+      "photoAdded": "Photo ajoutée",
+      "voiceAdded": "Note vocale ajoutée",
+      "send": "Envoyer mon avis",
+      "thanks": "Merci pour ton avis !",
+      "error": "L'avis n'est pas parti. Réessaie.",
+      "emptyTitle": "Aucun avis à laisser",
+      "emptyText": "Après ton prochain rendez-vous ou ta prochaine commande, tu pourras noter ici."
+    },
+    "follow": {
+      "follow": "Suivre",
+      "following": "Suivie",
+      "followers": "{count, plural, =0 {Aucun abonné} one {# abonné} other {# abonnés}}"
+    },
+    "activity": {
+      "title": "Mon activité",
+      "posts": "Mes publications",
+      "saved": "Enregistrés",
+      "following": "Profils suivis",
+      "reviews": "Avis à laisser"
     }
   }
 }

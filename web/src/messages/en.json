@@ -60,24 +60,6 @@
   },
   "home": {
     "question": "What are you looking for today?",
-    "available": {
-      "title": "Free today",
-      "subtitle": "Book a slot near you.",
-      "seeAll": "See all",
-      "freeAt": "Free at",
-      "rating": "{rating} ({count, plural, one {# review} other {# reviews}})",
-      "from": "from"
-    },
-    "looks": {
-      "title": "Latest looks",
-      "subtitle": "Before and after: real work by pros.",
-      "verified": "Verified pro",
-      "before": "Before",
-      "after": "After",
-      "duration": "{hours, plural, =0 {{minutes} min} other {{minutes, plural, =0 {{hours} h} other {{hours} h {minutes}}}}}",
-      "likes": "{count, plural, one {# like} other {# likes}}",
-      "book": "Book this look"
-    },
     "france": {
       "title": "France Selection",
       "subtitle": "Trendy products from France, delivered to Benin.",
@@ -540,7 +522,8 @@
         "whatsapp": "WhatsApp"
       },
       "notFoundTitle": "This pro does not exist",
-      "notFoundText": "The link may be misspelled. Look for her in Explore."
+      "notFoundText": "The link may be misspelled. Look for her in Explore.",
+      "posts": "Posts"
     },
     "my": {
       "title": "My showcase",
@@ -580,14 +563,16 @@
         "portfolio": "My work",
         "place": "Place and directions",
         "share": "Link and QR code",
-        "verification": "Verification"
+        "verification": "Verification",
+        "reviews": "Reviews"
       },
       "summary": {
         "services": "{count, plural, =0 {No service} one {# service} other {# services}}",
         "hoursSet": "Hours given",
         "hoursMissing": "To fill in",
         "portfolio": "{count, plural, =0 {No picture} one {# piece of work} other {# pieces of work}}",
-        "empty": "To fill in"
+        "empty": "To fill in",
+        "reviews": "{count, plural, =0 {No review} one {# review} other {# reviews}}"
       },
       "media": {
         "sent": "Sent. We are preparing it, it takes a few seconds.",
@@ -828,6 +813,18 @@
         "send": "Send for verification",
         "sent": "Sent. You will get an answer soon.",
         "error": "Sending did not work. Try again."
+      },
+      "reviews": {
+        "title": "Reviews",
+        "help": "Reply to your clients: one reply per review.",
+        "publishFirst": "Publish your showcase to get reviews.",
+        "empty": "No review yet.",
+        "stars": "{count, plural, one {# star} other {# stars}}",
+        "yourReply": "Your reply",
+        "once": "You can reply only once.",
+        "reply": "Reply",
+        "replied": "Reply posted",
+        "error": "The reply was not sent. Try again."
       }
     },
     "become": {
@@ -894,6 +891,236 @@
       "myShowcaseText": "Services, hours, link and QR code.",
       "becomePro": "Become a pro",
       "becomeProText": "Your free showcase, found by clients near you."
+    }
+  },
+  "social": {
+    "post": {
+      "noCaption": "Post by {name}",
+      "verified": "Verified pro",
+      "before": "Before",
+      "after": "After",
+      "beforeAfterAlt": "{label}: {caption}",
+      "carousel": "{count, plural, one {# picture} other {# pictures}}, swipe",
+      "carouselItem": "Picture {index} of {count}: {caption}",
+      "by": "Post by {name}",
+      "bookLook": "Book this look",
+      "savedToast": "Saved",
+      "unsavedToast": "Removed from your saved posts",
+      "hidden": "You will not see this post any more.",
+      "like": "Like ({count, plural, one {# like} other {# likes}})",
+      "unlike": "Unlike ({count, plural, one {# like} other {# likes}})",
+      "comments": "{count, plural, =0 {Comment} one {# comment} other {# comments}}",
+      "share": "Share",
+      "save": "Save",
+      "unsave": "Unsave",
+      "more": "More options",
+      "metaTitle": "Post by {name}",
+      "metaDescription": "Discover the post of {name} on Solange Glow."
+    },
+    "share": {
+      "title": "Share",
+      "copy": "Copy the link",
+      "copied": "Link copied",
+      "tiktokCopied": "Link copied: paste it in TikTok."
+    },
+    "more": {
+      "title": "Options",
+      "why": "Why do you report this post?",
+      "reasons": {
+        "spam": "Spam or advertising",
+        "nudity": "Nudity or sexual content",
+        "harassment": "Harassment or insults",
+        "hate": "Hate or discrimination",
+        "scam": "Scam",
+        "minor": "Danger for a minor",
+        "violence": "Violence",
+        "other": "Something else"
+      },
+      "reported": "Thank you. Our team will look at it.",
+      "report": "Report",
+      "hidePost": "Hide this post",
+      "hiddenPost": "Post hidden",
+      "hidePerson": "Hide the posts of {name}",
+      "hiddenPerson": "You will not see the posts of {name}",
+      "block": "Block {name}",
+      "blockText": "{name} will not see you nor write to you, and you will not see her.",
+      "blockConfirm": "Yes, block {name}",
+      "blocked": "{name} is blocked",
+      "delete": "Delete my post",
+      "deleted": "Post deleted",
+      "error": "That did not work. Try again."
+    },
+    "feed": {
+      "title": "Looks of the moment",
+      "titleSignedIn": "Your feed",
+      "more": "See more posts",
+      "emptyTitle": "Your feed is still empty",
+      "emptyText": "Follow pros near you to see their work here.",
+      "emptyCta": "Discover pros"
+    },
+    "comments": {
+      "title": "Comments",
+      "empty": "No comment yet. Be the first!",
+      "reply": "Reply",
+      "delete": "Delete",
+      "report": "Report",
+      "reported": "Thank you. Our team will look at it.",
+      "more": "See more comments",
+      "replyingTo": "You reply to {name}.",
+      "cancel": "Cancel",
+      "yourComment": "Your comment",
+      "yourReply": "Your reply",
+      "send": "Send",
+      "signIn": "Sign in to comment",
+      "error": "The comment was not sent. Try again."
+    },
+    "stories": {
+      "title": "Today",
+      "freeSlots": "Free",
+      "seen": "already seen",
+      "new": "new story",
+      "position": "Story {index} of {count}",
+      "slotsTitle": "Free slots today",
+      "book": "See her showcase to book",
+      "previous": "Previous",
+      "next": "Next",
+      "done": "Done"
+    },
+    "create": {
+      "steps": {
+        "what": "What do you want to post?",
+        "details": "The details",
+        "publish": "Preview and publish"
+      },
+      "help": {
+        "what": "Choose the type, then your pictures or video.",
+        "details": "A few words, the trade, the service.",
+        "publish": "Check, then post now or later."
+      },
+      "post": "A post",
+      "story": "A story (24 h)",
+      "kinds": {
+        "photo": "Picture",
+        "carousel": "Several pictures",
+        "video": "Short video",
+        "before_after": "Before / after",
+        "story_photo": "Picture or video",
+        "story_text": "Text on colour",
+        "free_slots": "Free slots"
+      },
+      "choose": "Choose from my gallery",
+      "addMore": "Add a picture",
+      "before": "Before",
+      "after": "After",
+      "preparing": "Preparing…",
+      "refused": "File refused",
+      "uploadError": "Sending did not work",
+      "caption": "Caption",
+      "captionPlaceholder": "e.g. Knotless braids, 5 h, hair provided",
+      "trade": "Trade",
+      "service": "Link to a service",
+      "noService": "None",
+      "serviceHelp": "The « Book this look » button will show under your post.",
+      "storyText": "Your message",
+      "storyCaption": "A word (optional)",
+      "background": "Background colour",
+      "colours": {
+        "hibiscus": "Hibiscus",
+        "prune": "Plum",
+        "or": "Gold",
+        "feuille": "Leaf",
+        "poudre": "Powder"
+      },
+      "slots": "Your free slots today",
+      "preview": "Preview",
+      "slotsPreview": "Free today at {slots}",
+      "when": "When?",
+      "whenOptions": {
+        "now": "Now",
+        "later": "Later",
+        "draft": "Draft"
+      },
+      "publishAt": "Date and time of publication",
+      "next": "Continue",
+      "publishNow": "Post",
+      "schedule": "Schedule",
+      "saveDraft": "Keep as a draft",
+      "publishStory": "Post the story",
+      "published": "Posted!",
+      "scheduled": "Scheduled",
+      "drafted": "Draft saved",
+      "storyDone": "Your story is online for 24 h",
+      "error": "Posting did not work. Try again."
+    },
+    "following": {
+      "title": "People I follow",
+      "help": "Their posts come first in your feed.",
+      "emptyTitle": "You follow nobody yet",
+      "emptyText": "Discover pros near you and follow your favourites.",
+      "emptyCta": "Discover pros",
+      "posts": "{count, plural, =0 {No post} one {# post} other {# posts}}",
+      "unfollow": "Unfollow"
+    },
+    "saved": {
+      "title": "Saved",
+      "help": "The looks you kept for later.",
+      "emptyTitle": "Nothing saved",
+      "emptyText": "Tap the bookmark under a look to find it here.",
+      "emptyCta": "See the feed"
+    },
+    "myPosts": {
+      "title": "My posts",
+      "help": "Drafts, scheduled and online posts.",
+      "tabs": "My posts",
+      "tab": {
+        "draft": "Drafts",
+        "scheduled": "Scheduled",
+        "published": "Online"
+      },
+      "noCaption": "No caption",
+      "on": "On {date}",
+      "inReview": "Being checked by moderation",
+      "see": "See",
+      "publish": "Post",
+      "delete": "Delete",
+      "empty": {
+        "draft": "No draft.",
+        "scheduled": "No scheduled post.",
+        "published": "No post online."
+      }
+    },
+    "reviews": {
+      "title": "Verified reviews",
+      "help": "After a booking or an order, say what you thought.",
+      "verifiedOnly": "Only clients who really booked or bought can rate.",
+      "none": "{name} has no review yet.",
+      "starsShort": "{count} ★",
+      "starsValue": "{count, plural, one {# star} other {# stars}}",
+      "count": "{count, plural, one {# verified review} other {# verified reviews}}",
+      "photoOf": "Picture of {name}",
+      "replyOf": "Reply of {name}:",
+      "stars": "Your rating",
+      "text": "Your review (optional)",
+      "addPhoto": "Add a picture",
+      "photoAdded": "Picture added",
+      "voiceAdded": "Voice note added",
+      "send": "Send my review",
+      "thanks": "Thank you for your review!",
+      "error": "The review was not sent. Try again.",
+      "emptyTitle": "No review to leave",
+      "emptyText": "After your next booking or order, you can rate here."
+    },
+    "follow": {
+      "follow": "Follow",
+      "following": "Following",
+      "followers": "{count, plural, =0 {No follower} one {# follower} other {# followers}}"
+    },
+    "activity": {
+      "title": "My activity",
+      "posts": "My posts",
+      "saved": "Saved",
+      "following": "People I follow",
+      "reviews": "Reviews to leave"
     }
   }
 }

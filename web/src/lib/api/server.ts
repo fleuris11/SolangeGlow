@@ -52,5 +52,46 @@ export async function placesOnServer(locale: string) {
   return data ?? [];
 }
 
+// --- Social (feed, stories, a post, reviews) ---------------------------------------------
+
+type Schemas = components["schemas"];
+
+export async function feedOnServer(locale: string, city?: string): Promise<Schemas["PostPage"]> {
+  const api = await serverApi(locale);
+  const { data } = await api.GET("/api/v1/feed", { params: { query: city ? { city } : {} } });
+  return data ?? { results: [], next: null };
+}
+
+export async function storiesOnServer(locale: string, city?: string) {
+  const api = await serverApi(locale);
+  const { data } = await api.GET("/api/v1/stories", { params: { query: city ? { city } : {} } });
+  return data ?? [];
+}
+
+/** A post, or null when it does not exist or is not visible to this visitor. */
+export async function postOnServer(id: string, locale: string): Promise<Schemas["Post"] | null> {
+  const api = await serverApi(locale);
+  const { data, response } = await api.GET("/api/v1/posts/{post_id}", {
+    params: { path: { post_id: id } },
+  });
+  if (response.status === 404 || response.status === 400) return null;
+  if (!response.ok || !data) throw new Error(`Post ${id}: ${response.status}`);
+  return data;
+}
+
+export async function reviewsOnServer(slug: string, locale: string) {
+  const api = await serverApi(locale);
+  const { data } = await api.GET("/api/v1/pros/{slug}/reviews", { params: { path: { slug } } });
+  return data ?? null;
+}
+
+export async function personPostsOnServer(userId: string, locale: string) {
+  const api = await serverApi(locale);
+  const { data } = await api.GET("/api/v1/people/{user_id}/posts", {
+    params: { path: { user_id: userId } },
+  });
+  return data ?? { results: [], next: null };
+}
+
 /** Public address of the site, for links shared on social networks (images, canonical). */
 export const SITE_URL = (process.env.SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");

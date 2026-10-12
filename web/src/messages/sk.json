@@ -60,24 +60,6 @@
   },
   "home": {
     "question": "Čo dnes hľadáš?",
-    "available": {
-      "title": "Voľné dnes",
-      "subtitle": "Rezervuj si termín nablízku.",
-      "seeAll": "Všetko",
-      "freeAt": "Voľné o",
-      "rating": "{rating} ({count} hodnotení)",
-      "from": "od"
-    },
-    "looks": {
-      "title": "Výtvory",
-      "subtitle": "Pred a po: skutočná práca profesionálok.",
-      "verified": "Overená profesionálka",
-      "before": "Pred",
-      "after": "Po",
-      "duration": "{hours, plural, =0 {{minutes} min} other {{minutes, plural, =0 {{hours} h} other {{hours} h {minutes}}}}}",
-      "likes": "{count} páči sa mi",
-      "book": "Rezervovať tento účes"
-    },
     "france": {
       "title": "Výber z Francúzska",
       "subtitle": "Trendové produkty z Francúzska, doručené do Beninu.",
@@ -540,7 +522,8 @@
         "whatsapp": "WhatsApp"
       },
       "notFoundTitle": "Táto profesionálka neexistuje",
-      "notFoundText": "Odkaz môže byť chybný. Hľadaj ju v sekcii Objavovať."
+      "notFoundText": "Odkaz môže byť chybný. Hľadaj ju v sekcii Objavovať.",
+      "posts": "Príspevky"
     },
     "my": {
       "title": "Moja vitrína",
@@ -580,14 +563,16 @@
         "portfolio": "Moje práce",
         "place": "Miesto a cesta",
         "share": "Odkaz a QR kód",
-        "verification": "Overenie"
+        "verification": "Overenie",
+        "reviews": "Hodnotenia"
       },
       "summary": {
         "services": "{count, plural, =0 {Žiadna služba} one {# služba} few {# služby} other {# služieb}}",
         "hoursSet": "Hodiny zadané",
         "hoursMissing": "Treba vyplniť",
         "portfolio": "{count, plural, =0 {Žiadna fotka} one {# práca} few {# práce} other {# prác}}",
-        "empty": "Treba vyplniť"
+        "empty": "Treba vyplniť",
+        "reviews": "{count, plural, =0 {Žiadne hodnotenie} one {# hodnotenie} few {# hodnotenia} other {# hodnotení}}"
       },
       "media": {
         "sent": "Odoslané. Pripravujeme to, potrvá to pár sekúnd.",
@@ -828,6 +813,18 @@
         "send": "Odoslať na overenie",
         "sent": "Odoslané. Čoskoro dostaneš odpoveď.",
         "error": "Odoslanie zlyhalo. Skús znova."
+      },
+      "reviews": {
+        "title": "Hodnotenia",
+        "help": "Odpovedz klientkam: jedna odpoveď na hodnotenie.",
+        "publishFirst": "Zverejni vitrínu a získaj hodnotenia.",
+        "empty": "Zatiaľ žiadne hodnotenie.",
+        "stars": "{count, plural, one {# hviezdička} few {# hviezdičky} other {# hviezdičiek}}",
+        "yourReply": "Tvoja odpoveď",
+        "once": "Odpovedať môžeš len raz.",
+        "reply": "Odpovedať",
+        "replied": "Odpoveď zverejnená",
+        "error": "Odpoveď sa neodoslala. Skús znova."
       }
     },
     "become": {
@@ -894,6 +891,236 @@
       "myShowcaseText": "Služby, hodiny, odkaz a QR kód.",
       "becomePro": "Staň sa profesionálkou",
       "becomeProText": "Tvoja bezplatná vitrína pre klientky nablízku."
+    }
+  },
+  "social": {
+    "post": {
+      "noCaption": "Príspevok od {name}",
+      "verified": "Overená profesionálka",
+      "before": "Pred",
+      "after": "Po",
+      "beforeAfterAlt": "{label}: {caption}",
+      "carousel": "{count, plural, one {# fotka} few {# fotky} other {# fotiek}}, posuň",
+      "carouselItem": "Fotka {index} z {count}: {caption}",
+      "by": "Príspevok od {name}",
+      "bookLook": "Rezervovať tento look",
+      "savedToast": "Uložené",
+      "unsavedToast": "Odstránené z uložených",
+      "hidden": "Tento príspevok už neuvidíš.",
+      "like": "Páči sa mi ({count})",
+      "unlike": "Už sa mi nepáči ({count})",
+      "comments": "{count, plural, =0 {Komentovať} one {# komentár} few {# komentáre} other {# komentárov}}",
+      "share": "Zdieľať",
+      "save": "Uložiť",
+      "unsave": "Zrušiť uloženie",
+      "more": "Ďalšie možnosti",
+      "metaTitle": "Príspevok od {name}",
+      "metaDescription": "Pozri si príspevok od {name} na Solange Glow."
+    },
+    "share": {
+      "title": "Zdieľať",
+      "copy": "Kopírovať odkaz",
+      "copied": "Odkaz skopírovaný",
+      "tiktokCopied": "Odkaz skopírovaný: vlož ho do TikToku."
+    },
+    "more": {
+      "title": "Možnosti",
+      "why": "Prečo nahlasuješ tento príspevok?",
+      "reasons": {
+        "spam": "Spam alebo reklama",
+        "nudity": "Nahota alebo sexuálny obsah",
+        "harassment": "Obťažovanie alebo urážky",
+        "hate": "Nenávisť alebo diskriminácia",
+        "scam": "Podvod",
+        "minor": "Ohrozenie maloletého",
+        "violence": "Násilie",
+        "other": "Niečo iné"
+      },
+      "reported": "Ďakujeme. Náš tím sa na to pozrie.",
+      "report": "Nahlásiť",
+      "hidePost": "Skryť tento príspevok",
+      "hiddenPost": "Príspevok skrytý",
+      "hidePerson": "Skryť príspevky od {name}",
+      "hiddenPerson": "Príspevky od {name} už neuvidíš",
+      "block": "Zablokovať {name}",
+      "blockText": "{name} ťa neuvidí ani ti nenapíše a ty ju neuvidíš.",
+      "blockConfirm": "Áno, zablokovať {name}",
+      "blocked": "{name} je zablokovaná",
+      "delete": "Odstrániť môj príspevok",
+      "deleted": "Príspevok odstránený",
+      "error": "Nepodarilo sa. Skús znova."
+    },
+    "feed": {
+      "title": "Aktuálne looky",
+      "titleSignedIn": "Tvoj kanál",
+      "more": "Zobraziť ďalšie príspevky",
+      "emptyTitle": "Tvoj kanál je zatiaľ prázdny",
+      "emptyText": "Sleduj profesionálky vo svojom okolí a uvidíš tu ich práce.",
+      "emptyCta": "Objaviť profesionálky"
+    },
+    "comments": {
+      "title": "Komentáre",
+      "empty": "Zatiaľ žiadny komentár. Buď prvá!",
+      "reply": "Odpovedať",
+      "delete": "Odstrániť",
+      "report": "Nahlásiť",
+      "reported": "Ďakujeme. Náš tím sa na to pozrie.",
+      "more": "Zobraziť ďalšie komentáre",
+      "replyingTo": "Odpovedáš {name}.",
+      "cancel": "Zrušiť",
+      "yourComment": "Tvoj komentár",
+      "yourReply": "Tvoja odpoveď",
+      "send": "Odoslať",
+      "signIn": "Prihlás sa a komentuj",
+      "error": "Komentár sa neodoslal. Skús znova."
+    },
+    "stories": {
+      "title": "Dnes",
+      "freeSlots": "Voľno",
+      "seen": "už videné",
+      "new": "nový príbeh",
+      "position": "Príbeh {index} z {count}",
+      "slotsTitle": "Voľné termíny dnes",
+      "book": "Pozrieť vitrínu a rezervovať",
+      "previous": "Predchádzajúci",
+      "next": "Ďalší",
+      "done": "Hotovo"
+    },
+    "create": {
+      "steps": {
+        "what": "Čo chceš zverejniť?",
+        "details": "Podrobnosti",
+        "publish": "Náhľad a zverejnenie"
+      },
+      "help": {
+        "what": "Vyber typ, potom fotky alebo video.",
+        "details": "Pár slov, remeslo, služba.",
+        "publish": "Skontroluj a zverejni teraz alebo neskôr."
+      },
+      "post": "Príspevok",
+      "story": "Príbeh (24 h)",
+      "kinds": {
+        "photo": "Fotka",
+        "carousel": "Viac fotiek",
+        "video": "Krátke video",
+        "before_after": "Pred / po",
+        "story_photo": "Fotka alebo video",
+        "story_text": "Text na farbe",
+        "free_slots": "Voľné termíny"
+      },
+      "choose": "Vybrať z galérie",
+      "addMore": "Pridať fotku",
+      "before": "Pred",
+      "after": "Po",
+      "preparing": "Pripravuje sa…",
+      "refused": "Súbor odmietnutý",
+      "uploadError": "Odoslanie zlyhalo",
+      "caption": "Popis",
+      "captionPlaceholder": "napr. Knotless vrkôčiky, 5 h",
+      "trade": "Remeslo",
+      "service": "Prepojiť so službou",
+      "noService": "Žiadna",
+      "serviceHelp": "Pod príspevkom sa zobrazí tlačidlo « Rezervovať tento look ».",
+      "storyText": "Tvoja správa",
+      "storyCaption": "Slovo (nepovinné)",
+      "background": "Farba pozadia",
+      "colours": {
+        "hibiscus": "Ibištek",
+        "prune": "Slivka",
+        "or": "Zlatá",
+        "feuille": "List",
+        "poudre": "Púder"
+      },
+      "slots": "Tvoje voľné termíny dnes",
+      "preview": "Náhľad",
+      "slotsPreview": "Voľno dnes o {slots}",
+      "when": "Kedy?",
+      "whenOptions": {
+        "now": "Teraz",
+        "later": "Neskôr",
+        "draft": "Koncept"
+      },
+      "publishAt": "Dátum a čas zverejnenia",
+      "next": "Pokračovať",
+      "publishNow": "Zverejniť",
+      "schedule": "Naplánovať",
+      "saveDraft": "Uložiť ako koncept",
+      "publishStory": "Zverejniť príbeh",
+      "published": "Zverejnené!",
+      "scheduled": "Naplánované",
+      "drafted": "Koncept uložený",
+      "storyDone": "Tvoj príbeh je online 24 h",
+      "error": "Zverejnenie zlyhalo. Skús znova."
+    },
+    "following": {
+      "title": "Sledované profily",
+      "help": "Ich príspevky sú v kanáli ako prvé.",
+      "emptyTitle": "Zatiaľ nikoho nesleduješ",
+      "emptyText": "Objav profesionálky vo svojom okolí.",
+      "emptyCta": "Objaviť profesionálky",
+      "posts": "{count, plural, =0 {Žiadny príspevok} one {# príspevok} few {# príspevky} other {# príspevkov}}",
+      "unfollow": "Nesledovať"
+    },
+    "saved": {
+      "title": "Uložené",
+      "help": "Looky, ktoré si si odložila.",
+      "emptyTitle": "Nič uložené",
+      "emptyText": "Ťukni na záložku pod lookom.",
+      "emptyCta": "Pozrieť kanál"
+    },
+    "myPosts": {
+      "title": "Moje príspevky",
+      "help": "Koncepty, naplánované a zverejnené príspevky.",
+      "tabs": "Moje príspevky",
+      "tab": {
+        "draft": "Koncepty",
+        "scheduled": "Naplánované",
+        "published": "Online"
+      },
+      "noCaption": "Bez popisu",
+      "on": "{date}",
+      "inReview": "Kontroluje moderácia",
+      "see": "Pozrieť",
+      "publish": "Zverejniť",
+      "delete": "Odstrániť",
+      "empty": {
+        "draft": "Žiadny koncept.",
+        "scheduled": "Žiadny naplánovaný príspevok.",
+        "published": "Žiadny zverejnený príspevok."
+      }
+    },
+    "reviews": {
+      "title": "Overené hodnotenia",
+      "help": "Po rezervácii alebo objednávke povedz, čo si myslíš.",
+      "verifiedOnly": "Hodnotiť môžu len klientky, ktoré naozaj rezervovali alebo nakúpili.",
+      "none": "{name} zatiaľ nemá hodnotenie.",
+      "starsShort": "{count} ★",
+      "starsValue": "{count, plural, one {# hviezdička} few {# hviezdičky} other {# hviezdičiek}}",
+      "count": "{count, plural, one {# overené hodnotenie} few {# overené hodnotenia} other {# overených hodnotení}}",
+      "photoOf": "Fotka od {name}",
+      "replyOf": "Odpoveď {name}:",
+      "stars": "Tvoje hodnotenie",
+      "text": "Tvoje hodnotenie (nepovinné)",
+      "addPhoto": "Pridať fotku",
+      "photoAdded": "Fotka pridaná",
+      "voiceAdded": "Hlasová správa pridaná",
+      "send": "Odoslať hodnotenie",
+      "thanks": "Ďakujeme za hodnotenie!",
+      "error": "Hodnotenie sa neodoslalo. Skús znova.",
+      "emptyTitle": "Žiadne hodnotenie na zanechanie",
+      "emptyText": "Po ďalšej rezervácii alebo objednávke môžeš hodnotiť tu."
+    },
+    "follow": {
+      "follow": "Sledovať",
+      "following": "Sledované",
+      "followers": "{count, plural, =0 {Žiadny sledovateľ} one {# sledovateľ} few {# sledovatelia} other {# sledovateľov}}"
+    },
+    "activity": {
+      "title": "Moja aktivita",
+      "posts": "Moje príspevky",
+      "saved": "Uložené",
+      "following": "Sledované profily",
+      "reviews": "Hodnotenia na zanechanie"
     }
   }
 }

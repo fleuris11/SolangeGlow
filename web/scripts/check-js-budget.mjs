@@ -13,8 +13,11 @@ import { gzipSync } from "node:zlib";
 
 const BUDGET_KB = 230;
 const LOCALES = ["fr", "en", "sk"];
-const STATIC_PAGES = ["", "/messages", "/create", "/me"];
+const STATIC_PAGES = ["/messages", "/me"];
 const DYNAMIC_PAGES = {
+  "/[locale]": "[locale]/(app)",
+  "/[locale]/create": "[locale]/(app)/create",
+  "/[locale]/p/<post>": "[locale]/(app)/p/[id]",
   "/[locale]/<pro>": "[locale]/(app)/[slug]",
   "/[locale]/explore": "[locale]/(app)/explore",
 };
