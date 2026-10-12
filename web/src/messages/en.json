@@ -18,7 +18,8 @@
     "explore": "Explore",
     "create": "Post",
     "messages": "Messages",
-    "me": "Me"
+    "me": "Me",
+    "unreadMessages": "{count, plural, one {# unread conversation} other {# unread conversations}}"
   },
   "header": {
     "search": "Search"
@@ -153,9 +154,115 @@
   },
   "messages": {
     "title": "Messages",
-    "emptyTitle": "No messages yet",
-    "emptyText": "Write to a pro from her profile. Your chats stay here.",
-    "cta": "Find a pro"
+    "help": "Your conversations with pros and friends. Always pay in the app.",
+    "visitorTitle": "Write to pros",
+    "visitorText": "Sign in to ask your questions, send a picture of the look or a voice message.",
+    "visitorCta": "Sign in",
+    "write": "Write",
+    "startError": "The conversation could not open. Try again.",
+    "list": {
+      "boxes": "My conversations",
+      "inbox": "Chats",
+      "requests": "{count, plural, =0 {Requests} other {Requests (#)}}",
+      "requestsHelp": "People you do not follow want to write to you. Accept or decline: they do not know if you read it.",
+      "noRequests": "No request",
+      "emptyTitle": "No message yet",
+      "emptyText": "Write to a pro from her showcase: your conversations stay here.",
+      "error": "Your messages could not load. Check your connection.",
+      "more": "See more conversations",
+      "noMessage": "New conversation",
+      "deleted": "Message deleted",
+      "photo": "Picture",
+      "voice": "Voice message",
+      "card": "Shared card",
+      "warning": "Careful: payment outside the app suggested",
+      "unread": "{count, plural, one {# unread message} other {# unread messages}}"
+    },
+    "thread": {
+      "back": "Back to messages",
+      "showcase": "Showcase",
+      "typing": "{name} is writing…",
+      "online": "Online",
+      "lastSeen": "Seen on {time}",
+      "payInApp": "Pay in the app to be protected",
+      "payInAppText": "A phone number, a payment link or a Mobile Money payment was suggested. Only paying in the app holds your money until you receive your order.",
+      "older": "See earlier messages",
+      "empty": "Say hello to {name}!",
+      "list": "Messages of the conversation",
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "deleted": "Message deleted",
+      "removed": "Message removed by moderation",
+      "photo": "Picture sent",
+      "automatic": "Automatic answer",
+      "risky": "Careful: never pay outside the app. You would not be protected.",
+      "held": "Being checked by moderation",
+      "delete": "Delete",
+      "report": "Report",
+      "deleteConfirm": "Delete this message for everyone?",
+      "reportConfirm": "Report this message to the team? It will be able to read this conversation.",
+      "deleteYes": "Yes, delete",
+      "reportYes": "Yes, report",
+      "retry": "Try again",
+      "reported": "Thank you. Our team will look at it.",
+      "error": "That did not work. Try again.",
+      "requestFrom": "{name} wants to write to you",
+      "requestHelp": "Accept to answer. If you decline, this person cannot write to you again.",
+      "decline": "Decline",
+      "accept": "Accept",
+      "closed": "This conversation is closed.",
+      "waitingAnswer": "Your request waits for her answer: you can write again once she accepts it."
+    },
+    "delivery": {
+      "waiting": "Waiting for connection",
+      "failed": "Not sent",
+      "sent": "Sent",
+      "received": "Received",
+      "read": "Read"
+    },
+    "card": {
+      "kinds": {
+        "post": "Post",
+        "service": "Service",
+        "slot": "Free slot",
+        "product": "Product"
+      },
+      "quote": "On quote",
+      "price": "{price}",
+      "priceFrom": "From {price}"
+    },
+    "composer": {
+      "quickReplies": "Quick replies",
+      "removeCard": "Remove",
+      "preparingPhoto": "Preparing the picture…",
+      "preparingVoice": "Preparing the voice message…",
+      "photo": "Send a picture",
+      "label": "Your message",
+      "placeholder": "Write your message",
+      "send": "Send",
+      "shareService": "Send a service",
+      "shareSlot": "Offer a time",
+      "chooseService": "Which service?",
+      "loading": "Loading…",
+      "noService": "First add services in « My showcase ».",
+      "serviceCard": "Service: {name}",
+      "chooseSlot": "Offer a time",
+      "slotWhen": "Date and time",
+      "attachSlot": "Attach this time",
+      "slotCard": "Time: {when}",
+      "postCard": "Post to share",
+      "fileRefused": "This file was refused.",
+      "offlineFile": "Sending did not work: check your connection and try again."
+    },
+    "voice": {
+      "recording": "Recording",
+      "recordingFor": "Recording: {time}",
+      "cancel": "Cancel",
+      "send": "Send",
+      "holding": "{time} — release to send, slide away to cancel",
+      "hold": "Voice message: hold to talk, or press once",
+      "denied": "The microphone is blocked. Allow it in the browser settings."
+    }
   },
   "me": {
     "title": "Me",
@@ -564,7 +671,8 @@
         "place": "Place and directions",
         "share": "Link and QR code",
         "verification": "Verification",
-        "reviews": "Reviews"
+        "reviews": "Reviews",
+        "messages": "Messages"
       },
       "summary": {
         "services": "{count, plural, =0 {No service} one {# service} other {# services}}",
@@ -572,7 +680,8 @@
         "hoursMissing": "To fill in",
         "portfolio": "{count, plural, =0 {No picture} one {# piece of work} other {# pieces of work}}",
         "empty": "To fill in",
-        "reviews": "{count, plural, =0 {No review} one {# review} other {# reviews}}"
+        "reviews": "{count, plural, =0 {No review} one {# review} other {# reviews}}",
+        "messages": "Quick replies and away message"
       },
       "media": {
         "sent": "Sent. We are preparing it, it takes a few seconds.",
@@ -825,6 +934,27 @@
         "reply": "Reply",
         "replied": "Reply posted",
         "error": "The reply was not sent. Try again."
+      },
+      "messages": {
+        "title": "Messages",
+        "help": "Save time: your ready answers, and an automatic answer when you are closed.",
+        "saved": "Saved",
+        "error": "That did not work. Try again.",
+        "quickTitle": "Quick replies",
+        "quickHelp": "They show above the keyboard: one tap to use them.",
+        "up": "Move up « {text} »",
+        "down": "Move down « {text} »",
+        "remove": "Delete « {text} »",
+        "newReply": "New reply",
+        "placeholder": "e.g. Yes it is available, what time would you like to come?",
+        "add": "Add",
+        "saveReplies": "Save my replies",
+        "awayTitle": "Away message",
+        "awayLabel": "Answer automatically",
+        "awayHelp": "Outside your opening hours, once per conversation.",
+        "awayText": "Your message",
+        "awayPlaceholder": "e.g. Thank you! I am at the salon tomorrow from 9 am, I will answer then.",
+        "saveAway": "Save"
       }
     },
     "become": {
@@ -921,7 +1051,11 @@
       "title": "Share",
       "copy": "Copy the link",
       "copied": "Link copied",
-      "tiktokCopied": "Link copied: paste it in TikTok."
+      "tiktokCopied": "Link copied: paste it in TikTok.",
+      "toMessage": "Send in a message",
+      "toWhom": "To whom?",
+      "loading": "Loading…",
+      "noConversation": "No conversation yet. First write to someone."
     },
     "more": {
       "title": "Options",
@@ -984,7 +1118,9 @@
       "book": "See her showcase to book",
       "previous": "Previous",
       "next": "Next",
-      "done": "Done"
+      "done": "Done",
+      "askSlot": "Interested in a time?",
+      "writeFor": "Write for {time}"
     },
     "create": {
       "steps": {

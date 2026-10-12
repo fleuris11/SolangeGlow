@@ -135,6 +135,104 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/conversations": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Her conversations (newest first), or her message requests; « Write » to someone. */
+    get: operations["conversations_list"];
+    put?: never;
+    /** @description Her conversations (newest first), or her message requests; « Write » to someone. */
+    post: operations["conversations_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/conversations/{conversation_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["conversations_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch: operations["conversations_partial_update"];
+    trace?: never;
+  };
+  "/api/v1/conversations/{conversation_id}/accept": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["conversations_accept_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/conversations/{conversation_id}/decline": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["conversations_decline_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/conversations/{conversation_id}/messages": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["conversations_messages_retrieve"];
+    put?: never;
+    post: operations["conversations_messages_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/conversations/{conversation_id}/read": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["conversations_read_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/countries": {
     parameters: {
       query?: never;
@@ -302,6 +400,22 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/me/messaging/unread": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["me_messaging_unread_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/me/onboarding": {
     parameters: {
       query?: never;
@@ -382,6 +496,24 @@ export interface paths {
     options?: never;
     head?: never;
     patch: operations["me_pro_partial_update"];
+    trace?: never;
+  };
+  "/api/v1/me/pro/away-message": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Automatic answer outside her opening hours. */
+    get: operations["me_pro_away_message_retrieve"];
+    /** @description Automatic answer outside her opening hours. */
+    put: operations["me_pro_away_message_update"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
     trace?: never;
   };
   "/api/v1/me/pro/categories": {
@@ -566,6 +698,24 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/me/pro/quick-replies": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description The pro's saved answers, shown above the keyboard. */
+    get: operations["me_pro_quick_replies_retrieve"];
+    /** @description The pro's saved answers, shown above the keyboard. */
+    put: operations["me_pro_quick_replies_update"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/me/pro/services": {
     parameters: {
       query?: never;
@@ -737,6 +887,38 @@ export interface paths {
     get: operations["media_retrieve"];
     put?: never;
     post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/messages/{message_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete: operations["messages_destroy"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/messages/{message_id}/report": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["messages_report_create"];
     delete?: never;
     options?: never;
     head?: never;
@@ -1260,6 +1442,14 @@ export interface components {
       has_story: boolean;
       followed: boolean;
     };
+    AwayMessage: {
+      enabled: boolean;
+      text: string;
+    };
+    AwayMessageRequest: {
+      enabled: boolean;
+      text: string;
+    };
     /**
      * @description * `hibiscus` - Hibiscus
      *     * `prune` - Plum
@@ -1413,6 +1603,41 @@ export interface components {
       email?: string;
       locale?: components["schemas"]["LanguageEnum"];
     };
+    Conversation: {
+      /** Format: uuid */
+      id: string;
+      kind: components["schemas"]["ConversationKindEnum"];
+      purpose: components["schemas"]["ConversationPurposeEnum"];
+      title: string;
+      people: components["schemas"]["Person"][];
+      status: components["schemas"]["MemberStatusEnum"];
+      unread: number;
+      muted: boolean;
+      is_closed: boolean;
+      payment_warning: boolean;
+      last_message: components["schemas"]["Message"] | null;
+      /** Format: date-time */
+      last_message_at: string | null;
+      receipts: components["schemas"]["Receipts"];
+      waiting_for_answer: boolean;
+    };
+    /**
+     * @description * `direct` - Between two people
+     *     * `group` - Group
+     * @enum {string}
+     */
+    ConversationKindEnum: "direct" | "group";
+    ConversationPage: {
+      results: components["schemas"]["Conversation"][];
+      next: string | null;
+    };
+    /**
+     * @description * `chat` - Discussion
+     *     * `dispute` - Dispute room
+     *     * `support` - Support
+     * @enum {string}
+     */
+    ConversationPurposeEnum: "chat" | "dispute" | "support";
     Country: {
       /** @description ISO 3166-1 alpha-2 code, e.g. BJ or FR. */
       code: string;
@@ -1659,11 +1884,99 @@ export interface components {
      * @enum {string}
      */
     MediaStatusEnum: "pending" | "processing" | "ready" | "rejected" | "failed";
+    /**
+     * @description * `avatar` - avatar
+     *     * `identity_document` - identity_document
+     *     * `itinerary_video` - itinerary_video
+     *     * `message_photo` - message_photo
+     *     * `portfolio` - portfolio
+     *     * `post` - post
+     *     * `pro_cover` - pro_cover
+     *     * `pro_photo` - pro_photo
+     *     * `pro_voice` - pro_voice
+     *     * `review_photo` - review_photo
+     *     * `review_voice` - review_voice
+     *     * `service_photo` - service_photo
+     *     * `story` - story
+     *     * `voice_note` - voice_note
+     * @enum {string}
+     */
+    MediaUploadPurposeEnum:
+      | "avatar"
+      | "identity_document"
+      | "itinerary_video"
+      | "message_photo"
+      | "portfolio"
+      | "post"
+      | "pro_cover"
+      | "pro_photo"
+      | "pro_voice"
+      | "review_photo"
+      | "review_voice"
+      | "service_photo"
+      | "story"
+      | "voice_note";
     MediaUploadRequest: {
       /** Format: binary */
       file: string;
-      purpose: components["schemas"]["PurposeEnum"];
+      purpose: components["schemas"]["MediaUploadPurposeEnum"];
       kind?: components["schemas"]["MediaKindEnum"];
+    };
+    /**
+     * @description * `active` - Active
+     *     * `requested` - Message request
+     *     * `declined` - Request declined
+     *     * `left` - Left
+     * @enum {string}
+     */
+    MemberStatusEnum: "active" | "requested" | "declined" | "left";
+    Message: {
+      /** Format: uuid */
+      id: string;
+      /** Format: uuid */
+      conversation_id: string;
+      /** Format: uuid */
+      sender_id: string | null;
+      kind: components["schemas"]["MessageKindEnum"];
+      text: string;
+      media: components["schemas"]["Media"] | null;
+      share: components["schemas"]["ShareCard"] | null;
+      /** Format: uuid */
+      client_id: string | null;
+      fraud_labels: string[];
+      is_automatic: boolean;
+      state: components["schemas"]["StateEnum"];
+      /** Format: date-time */
+      created_at: string;
+    };
+    MessageCreateRequest: {
+      text?: string;
+      /** Format: uuid */
+      media_id?: string | null;
+      share?: components["schemas"]["ShareInputRequest"] | null;
+      /**
+       * Format: uuid
+       * @description Chosen by the device: resending is safe.
+       */
+      client_id?: string | null;
+    };
+    /**
+     * @description * `text` - Text
+     *     * `photo` - Picture
+     *     * `voice` - Voice note
+     *     * `share` - Shared card
+     *     * `system` - Information
+     * @enum {string}
+     */
+    MessageKindEnum: "text" | "photo" | "voice" | "share" | "system";
+    MessagePage: {
+      results: components["schemas"]["Message"][];
+      /** @description Older messages: pass as `before`. */
+      next: string | null;
+    };
+    MessageReportRequest: {
+      reason: components["schemas"]["ReasonEnum"];
+      comment?: string;
     };
     /**
      * @description * `client` - client
@@ -1799,6 +2112,10 @@ export interface components {
       name?: string;
       position?: number;
     };
+    PatchedConversationUpdateRequest: {
+      muted?: boolean;
+      archived?: boolean;
+    };
     PatchedMeRequest: {
       first_name?: string;
       last_name?: string;
@@ -1894,6 +2211,18 @@ export interface components {
       opens_at: string;
       /** Format: time */
       closes_at: string;
+    };
+    Person: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      photo: components["schemas"]["Media"] | null;
+      is_pro: boolean;
+      pro_slug: string | null;
+      verified: boolean;
+      online?: boolean;
+      /** Format: date-time */
+      last_seen?: string | null;
     };
     PhotoRequest: {
       /** Format: binary */
@@ -2027,36 +2356,6 @@ export interface components {
      * @enum {string}
      */
     ProStatusEnum: "draft" | "published" | "suspended";
-    /**
-     * @description * `avatar` - avatar
-     *     * `identity_document` - identity_document
-     *     * `itinerary_video` - itinerary_video
-     *     * `portfolio` - portfolio
-     *     * `post` - post
-     *     * `pro_cover` - pro_cover
-     *     * `pro_photo` - pro_photo
-     *     * `pro_voice` - pro_voice
-     *     * `review_photo` - review_photo
-     *     * `review_voice` - review_voice
-     *     * `service_photo` - service_photo
-     *     * `story` - story
-     *     * `voice_note` - voice_note
-     * @enum {string}
-     */
-    PurposeEnum:
-      | "avatar"
-      | "identity_document"
-      | "itinerary_video"
-      | "portfolio"
-      | "post"
-      | "pro_cover"
-      | "pro_photo"
-      | "pro_voice"
-      | "review_photo"
-      | "review_voice"
-      | "service_photo"
-      | "story"
-      | "voice_note";
     PushKey: {
       public_key: string | null;
     };
@@ -2073,6 +2372,12 @@ export interface components {
       /** Format: uri */
       endpoint: string;
     };
+    QuickReplies: {
+      texts: string[];
+    };
+    QuickRepliesRequest: {
+      texts: string[];
+    };
     /**
      * @description * `spam` - Spam or advertising
      *     * `nudity` - Nudity or sexual content
@@ -2085,6 +2390,12 @@ export interface components {
      * @enum {string}
      */
     ReasonEnum: "spam" | "nudity" | "harassment" | "hate" | "scam" | "minor" | "violence" | "other";
+    Receipts: {
+      /** Format: date-time */
+      delivered_up_to: string | null;
+      /** Format: date-time */
+      read_up_to: string | null;
+    };
     Reply: {
       /** Format: uuid */
       id: string;
@@ -2211,6 +2522,33 @@ export interface components {
       steps?: components["schemas"]["StepRequest"][];
       options?: components["schemas"]["OptionRequest"][];
     };
+    ShareCard: {
+      kind: components["schemas"]["SharedCardKindEnum"];
+      /** Format: uuid */
+      id: string;
+      title: string;
+      text?: string;
+      picture?: components["schemas"]["Media"] | null;
+      link: string;
+      price_kind?: string;
+      amount_minor?: number | null;
+      currency?: string;
+      duration_minutes?: number | null;
+      /** Format: date-time */
+      starts_at?: string;
+    };
+    ShareInputRequest: {
+      kind: components["schemas"]["SharedCardKindEnum"];
+      /** Format: uuid */
+      id?: string;
+      /** @description Free slot: the pro's short name. */
+      pro?: string;
+      /**
+       * Format: date-time
+       * @description Free slot: when.
+       */
+      starts_at?: string;
+    };
     ShareLinks: {
       url: string;
       whatsapp: string;
@@ -2219,6 +2557,14 @@ export interface components {
     ShareRequestRequest: {
       network: components["schemas"]["NetworkEnum"];
     };
+    /**
+     * @description * `post` - Post
+     *     * `product` - Product
+     *     * `service` - Service
+     *     * `slot` - Free slot
+     * @enum {string}
+     */
+    SharedCardKindEnum: "post" | "product" | "service" | "slot";
     /** @description Public page of a pro (also its preview for herself). */
     Showcase: {
       /** Format: uuid */
@@ -2275,6 +2621,18 @@ export interface components {
      * @enum {string}
      */
     SourceEnum: "map" | "gps" | "admin";
+    StartRequest: {
+      /** Format: uuid */
+      person_id: string;
+    };
+    /**
+     * @description * `visible` - visible
+     *     * `held` - held
+     *     * `removed` - removed
+     *     * `deleted` - deleted
+     * @enum {string}
+     */
+    StateEnum: "visible" | "held" | "removed" | "deleted";
     Step: {
       /** Type */
       kind?: components["schemas"]["StepKindEnum"];
@@ -2383,6 +2741,10 @@ export interface components {
       radius_km?: number | null;
       area?: number[][] | null;
       fee_minor?: number | null;
+    };
+    Unread: {
+      count: number;
+      requests: number;
     };
     UnreadCount: {
       unread: number;
@@ -2607,6 +2969,212 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["MapConfig"];
         };
+      };
+    };
+  };
+  conversations_list: {
+    parameters: {
+      query?: {
+        before?: string;
+        box?: "inbox" | "requests";
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ConversationPage"];
+        };
+      };
+    };
+  };
+  conversations_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["StartRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["StartRequest"];
+        "multipart/form-data": components["schemas"]["StartRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Conversation"];
+        };
+      };
+    };
+  };
+  conversations_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        conversation_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Conversation"];
+        };
+      };
+    };
+  };
+  conversations_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        conversation_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PatchedConversationUpdateRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PatchedConversationUpdateRequest"];
+        "multipart/form-data": components["schemas"]["PatchedConversationUpdateRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Conversation"];
+        };
+      };
+    };
+  };
+  conversations_accept_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        conversation_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Conversation"];
+        };
+      };
+    };
+  };
+  conversations_decline_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        conversation_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  conversations_messages_retrieve: {
+    parameters: {
+      query?: {
+        before?: string;
+      };
+      header?: never;
+      path: {
+        conversation_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MessagePage"];
+        };
+      };
+    };
+  };
+  conversations_messages_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        conversation_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["MessageCreateRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["MessageCreateRequest"];
+        "multipart/form-data": components["schemas"]["MessageCreateRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Message"];
+        };
+      };
+    };
+  };
+  conversations_read_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        conversation_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
@@ -2910,6 +3478,25 @@ export interface operations {
       };
     };
   };
+  me_messaging_unread_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Unread"];
+        };
+      };
+    };
+  };
   me_onboarding_create: {
     parameters: {
       query?: never;
@@ -3089,6 +3676,50 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["MyPro"];
+        };
+      };
+    };
+  };
+  me_pro_away_message_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AwayMessage"];
+        };
+      };
+    };
+  };
+  me_pro_away_message_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["AwayMessageRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["AwayMessageRequest"];
+        "multipart/form-data": components["schemas"]["AwayMessageRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AwayMessage"];
         };
       };
     };
@@ -3483,6 +4114,50 @@ export interface operations {
       };
     };
   };
+  me_pro_quick_replies_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["QuickReplies"];
+        };
+      };
+    };
+  };
+  me_pro_quick_replies_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["QuickRepliesRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["QuickRepliesRequest"];
+        "multipart/form-data": components["schemas"]["QuickRepliesRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["QuickReplies"];
+        };
+      };
+    };
+  };
   me_pro_services_list: {
     parameters: {
       query?: never;
@@ -3784,6 +4459,52 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["Media"];
         };
+      };
+    };
+  };
+  messages_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        message_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  messages_report_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        message_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["MessageReportRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["MessageReportRequest"];
+        "multipart/form-data": components["schemas"]["MessageReportRequest"];
+      };
+    };
+    responses: {
+      /** @description No response body */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };

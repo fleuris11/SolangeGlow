@@ -18,7 +18,8 @@
     "explore": "Explorer",
     "create": "Publier",
     "messages": "Messages",
-    "me": "Moi"
+    "me": "Moi",
+    "unreadMessages": "{count, plural, one {# conversation non lue} other {# conversations non lues}}"
   },
   "header": {
     "search": "Chercher"
@@ -153,9 +154,115 @@
   },
   "messages": {
     "title": "Messages",
-    "emptyTitle": "Aucun message pour l'instant",
-    "emptyText": "Écris à une pro depuis son profil. Tes échanges restent ici.",
-    "cta": "Trouver une pro"
+    "help": "Tes discussions avec les pros et tes amies. Paie toujours dans l'appli.",
+    "visitorTitle": "Écris aux pros",
+    "visitorText": "Connecte-toi pour poser tes questions, envoyer une photo du modèle ou un message vocal.",
+    "visitorCta": "Me connecter",
+    "write": "Écrire",
+    "startError": "La conversation n'a pas pu s'ouvrir. Réessaie.",
+    "list": {
+      "boxes": "Mes conversations",
+      "inbox": "Discussions",
+      "requests": "{count, plural, =0 {Demandes} other {Demandes (#)}}",
+      "requestsHelp": "Des personnes que tu ne suis pas veulent t'écrire. Accepte ou refuse : elles ne savent pas si tu as lu.",
+      "noRequests": "Aucune demande",
+      "emptyTitle": "Aucun message pour l'instant",
+      "emptyText": "Écris à une pro depuis sa vitrine : tes échanges restent ici.",
+      "error": "Impossible de charger tes messages. Vérifie ta connexion.",
+      "more": "Voir plus de conversations",
+      "noMessage": "Nouvelle conversation",
+      "deleted": "Message supprimé",
+      "photo": "Photo",
+      "voice": "Message vocal",
+      "card": "Carte partagée",
+      "warning": "Attention : paiement hors de l'appli proposé",
+      "unread": "{count, plural, one {# message non lu} other {# messages non lus}}"
+    },
+    "thread": {
+      "back": "Retour aux messages",
+      "showcase": "Vitrine",
+      "typing": "{name} écrit…",
+      "online": "En ligne",
+      "lastSeen": "Vue le {time}",
+      "payInApp": "Paie dans l'appli pour être protégée",
+      "payInAppText": "Un numéro, un lien de paiement ou un paiement par Mobile Money a été proposé. Seul le paiement dans l'appli bloque ton argent jusqu'à la réception.",
+      "older": "Voir les messages précédents",
+      "empty": "Dis bonjour à {name} !",
+      "list": "Messages de la conversation",
+      "today": "Aujourd'hui",
+      "yesterday": "Hier",
+      "deleted": "Message supprimé",
+      "removed": "Message retiré par la modération",
+      "photo": "Photo envoyée",
+      "automatic": "Réponse automatique",
+      "risky": "Attention : ne paie jamais en dehors de l'appli. Tu ne serais pas protégée.",
+      "held": "En vérification par la modération",
+      "delete": "Supprimer",
+      "report": "Signaler",
+      "deleteConfirm": "Supprimer ce message pour tout le monde ?",
+      "reportConfirm": "Signaler ce message à l'équipe ? Elle pourra lire cette conversation.",
+      "deleteYes": "Oui, supprimer",
+      "reportYes": "Oui, signaler",
+      "retry": "Réessayer",
+      "reported": "Merci. Notre équipe va regarder.",
+      "error": "Ça n'a pas marché. Réessaie.",
+      "requestFrom": "{name} souhaite t'écrire",
+      "requestHelp": "Accepte pour répondre. Si tu refuses, cette personne ne pourra plus t'écrire.",
+      "decline": "Refuser",
+      "accept": "Accepter",
+      "closed": "Cette conversation est fermée.",
+      "waitingAnswer": "Ta demande attend sa réponse : tu pourras écrire à nouveau quand elle l'aura acceptée."
+    },
+    "delivery": {
+      "waiting": "En attente de connexion",
+      "failed": "Pas envoyé",
+      "sent": "Envoyé",
+      "received": "Reçu",
+      "read": "Lu"
+    },
+    "card": {
+      "kinds": {
+        "post": "Publication",
+        "service": "Prestation",
+        "slot": "Créneau libre",
+        "product": "Produit"
+      },
+      "quote": "Sur devis",
+      "price": "{price}",
+      "priceFrom": "À partir de {price}"
+    },
+    "composer": {
+      "quickReplies": "Réponses rapides",
+      "removeCard": "Retirer",
+      "preparingPhoto": "Préparation de la photo…",
+      "preparingVoice": "Préparation du message vocal…",
+      "photo": "Envoyer une photo",
+      "label": "Ton message",
+      "placeholder": "Écris ton message",
+      "send": "Envoyer",
+      "shareService": "Envoyer une prestation",
+      "shareSlot": "Proposer un créneau",
+      "chooseService": "Quelle prestation ?",
+      "loading": "Chargement…",
+      "noService": "Ajoute d'abord des prestations dans « Ma vitrine ».",
+      "serviceCard": "Prestation : {name}",
+      "chooseSlot": "Proposer un créneau",
+      "slotWhen": "Date et heure",
+      "attachSlot": "Joindre ce créneau",
+      "slotCard": "Créneau : {when}",
+      "postCard": "Publication à partager",
+      "fileRefused": "Ce fichier a été refusé.",
+      "offlineFile": "L'envoi n'a pas marché : vérifie ta connexion et réessaie."
+    },
+    "voice": {
+      "recording": "Enregistrement",
+      "recordingFor": "Enregistrement : {time}",
+      "cancel": "Annuler",
+      "send": "Envoyer",
+      "holding": "{time} — relâche pour envoyer, glisse pour annuler",
+      "hold": "Message vocal : maintiens pour parler, ou appuie une fois",
+      "denied": "Le micro est bloqué. Autorise-le dans les réglages du navigateur."
+    }
   },
   "me": {
     "title": "Moi",
@@ -564,7 +671,8 @@
         "place": "Lieu et itinéraire",
         "share": "Lien et QR code",
         "verification": "Vérification",
-        "reviews": "Avis"
+        "reviews": "Avis",
+        "messages": "Messages"
       },
       "summary": {
         "services": "{count, plural, =0 {Aucune prestation} one {# prestation} other {# prestations}}",
@@ -572,7 +680,8 @@
         "hoursMissing": "À indiquer",
         "portfolio": "{count, plural, =0 {Aucune photo} one {# réalisation} other {# réalisations}}",
         "empty": "À remplir",
-        "reviews": "{count, plural, =0 {Aucun avis} one {# avis} other {# avis}}"
+        "reviews": "{count, plural, =0 {Aucun avis} one {# avis} other {# avis}}",
+        "messages": "Réponses rapides et message d'absence"
       },
       "media": {
         "sent": "Envoyé. On le prépare, ça prend quelques secondes.",
@@ -825,6 +934,27 @@
         "reply": "Répondre",
         "replied": "Réponse publiée",
         "error": "La réponse n'est pas partie. Réessaie."
+      },
+      "messages": {
+        "title": "Messages",
+        "help": "Gagne du temps : tes réponses toutes prêtes, et une réponse automatique quand tu es fermée.",
+        "saved": "Enregistré",
+        "error": "Ça n'a pas marché. Réessaie.",
+        "quickTitle": "Réponses rapides",
+        "quickHelp": "Elles s'affichent au-dessus du clavier : un appui pour les utiliser.",
+        "up": "Monter « {text} »",
+        "down": "Descendre « {text} »",
+        "remove": "Supprimer « {text} »",
+        "newReply": "Nouvelle réponse",
+        "placeholder": "ex. Oui c'est disponible, à quelle heure veux-tu venir ?",
+        "add": "Ajouter",
+        "saveReplies": "Enregistrer mes réponses",
+        "awayTitle": "Message d'absence",
+        "awayLabel": "Répondre automatiquement",
+        "awayHelp": "En dehors de tes horaires, une fois par conversation.",
+        "awayText": "Ton message",
+        "awayPlaceholder": "ex. Merci ! Je suis au salon demain dès 9 h, je te réponds à ce moment-là.",
+        "saveAway": "Enregistrer"
       }
     },
     "become": {
@@ -921,7 +1051,11 @@
       "title": "Partager",
       "copy": "Copier le lien",
       "copied": "Lien copié",
-      "tiktokCopied": "Lien copié : colle-le dans TikTok."
+      "tiktokCopied": "Lien copié : colle-le dans TikTok.",
+      "toMessage": "Envoyer en message",
+      "toWhom": "À qui ?",
+      "loading": "Chargement…",
+      "noConversation": "Aucune conversation pour l'instant. Écris d'abord à quelqu'un."
     },
     "more": {
       "title": "Options",
@@ -984,7 +1118,9 @@
       "book": "Voir sa vitrine pour réserver",
       "previous": "Précédente",
       "next": "Suivante",
-      "done": "Terminer"
+      "done": "Terminer",
+      "askSlot": "Ce créneau t'intéresse ?",
+      "writeFor": "Écrire pour {time}"
     },
     "create": {
       "steps": {

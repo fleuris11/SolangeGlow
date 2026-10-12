@@ -5,6 +5,7 @@ import { use } from "react";
 
 import { Catalogue } from "@/components/features/design/catalogue";
 import { HealthStatus } from "@/components/features/system/health-status";
+import { navIcons } from "@/components/shell/nav-icons";
 import { BottomNav } from "@/components/ui/bottom-nav";
 import type { Locale } from "@/lib/i18n/routing";
 
@@ -44,7 +45,7 @@ export default function DesignPage({ params }: Props) {
           </section>
         ))}
       </div>
-      <BottomNav />
+      <BottomNav icons={navIcons()} />
     </main>
   );
 }

@@ -2,6 +2,7 @@ import { act, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it, vi } from "vitest";
 
+import { navIcons } from "@/components/shell/nav-icons";
 import { renderWithProviders } from "@/test/render";
 
 import { BottomNav } from "./bottom-nav";
@@ -63,7 +64,7 @@ describe("Toast", () => {
 
 describe("BottomNav", () => {
   it("has five entries with words and marks the current page", () => {
-    renderWithProviders(<BottomNav />);
+    renderWithProviders(<BottomNav icons={navIcons()} />);
 
     const nav = screen.getByRole("navigation", { name: "Menu principal" });
     const links = nav.querySelectorAll("a");

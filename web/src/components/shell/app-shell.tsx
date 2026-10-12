@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { BottomNav } from "@/components/ui/bottom-nav";
 
 import { DesktopSidebar } from "./desktop-sidebar";
+import { navIcons } from "./nav-icons";
 import { MobileHeader } from "./mobile-header";
 import { RightColumn } from "./right-column";
 
@@ -13,6 +14,7 @@ import { RightColumn } from "./right-column";
  */
 export function AppShell({ children }: { children: ReactNode }) {
   const t = useTranslations("common");
+  const icons = navIcons();
   return (
     <>
       <a
@@ -22,7 +24,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         {t("skipToContent")}
       </a>
       <div className="lg:grid lg:grid-cols-[220px_minmax(0,640px)] lg:justify-center lg:gap-8 xl:grid-cols-[220px_minmax(0,640px)_300px]">
-        <DesktopSidebar />
+        <DesktopSidebar icons={icons} />
         <div className="min-w-0">
           <MobileHeader />
           <main id="main" className="mx-auto w-full max-w-[640px] px-4 pt-6 pb-32 lg:pb-16">
@@ -31,7 +33,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         </div>
         <RightColumn />
       </div>
-      <BottomNav />
+      <BottomNav icons={icons} />
     </>
   );
 }

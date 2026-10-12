@@ -18,7 +18,8 @@
     "explore": "Objavovať",
     "create": "Pridať",
     "messages": "Správy",
-    "me": "Ja"
+    "me": "Ja",
+    "unreadMessages": "{count, plural, one {# neprečítaný rozhovor} few {# neprečítané rozhovory} other {# neprečítaných rozhovorov}}"
   },
   "header": {
     "search": "Hľadať"
@@ -153,9 +154,115 @@
   },
   "messages": {
     "title": "Správy",
-    "emptyTitle": "Zatiaľ žiadne správy",
-    "emptyText": "Napíš profesionálke z jej profilu. Konverzácie zostanú tu.",
-    "cta": "Nájsť profesionálku"
+    "help": "Tvoje rozhovory s profesionálkami a priateľkami. Plať vždy v aplikácii.",
+    "visitorTitle": "Píš profesionálkam",
+    "visitorText": "Prihlás sa a pýtaj sa, pošli fotku účesu alebo hlasovú správu.",
+    "visitorCta": "Prihlásiť sa",
+    "write": "Napísať",
+    "startError": "Rozhovor sa nepodarilo otvoriť. Skús znova.",
+    "list": {
+      "boxes": "Moje rozhovory",
+      "inbox": "Rozhovory",
+      "requests": "{count, plural, =0 {Žiadosti} other {Žiadosti (#)}}",
+      "requestsHelp": "Ľudia, ktorých nesleduješ, ti chcú písať. Prijmi alebo odmietni: nevedia, či si to čítala.",
+      "noRequests": "Žiadna žiadosť",
+      "emptyTitle": "Zatiaľ žiadne správy",
+      "emptyText": "Napíš profesionálke z jej vitríny: rozhovory zostanú tu.",
+      "error": "Správy sa nepodarilo načítať. Skontroluj pripojenie.",
+      "more": "Zobraziť ďalšie rozhovory",
+      "noMessage": "Nový rozhovor",
+      "deleted": "Správa odstránená",
+      "photo": "Fotka",
+      "voice": "Hlasová správa",
+      "card": "Zdieľaná karta",
+      "warning": "Pozor: navrhnutá platba mimo aplikácie",
+      "unread": "{count, plural, one {# neprečítaná správa} few {# neprečítané správy} other {# neprečítaných správ}}"
+    },
+    "thread": {
+      "back": "Späť na správy",
+      "showcase": "Vitrína",
+      "typing": "{name} píše…",
+      "online": "Online",
+      "lastSeen": "Naposledy {time}",
+      "payInApp": "Plať v aplikácii a budeš chránená",
+      "payInAppText": "Bolo navrhnuté číslo, platobný odkaz alebo platba Mobile Money. Len platba v aplikácii drží tvoje peniaze až do prevzatia.",
+      "older": "Zobraziť staršie správy",
+      "empty": "Pozdrav {name}!",
+      "list": "Správy rozhovoru",
+      "today": "Dnes",
+      "yesterday": "Včera",
+      "deleted": "Správa odstránená",
+      "removed": "Správu odstránila moderácia",
+      "photo": "Odoslaná fotka",
+      "automatic": "Automatická odpoveď",
+      "risky": "Pozor: nikdy neplať mimo aplikácie. Nebola by si chránená.",
+      "held": "Kontroluje moderácia",
+      "delete": "Odstrániť",
+      "report": "Nahlásiť",
+      "deleteConfirm": "Odstrániť túto správu pre všetkých?",
+      "reportConfirm": "Nahlásiť túto správu tímu? Bude môcť čítať tento rozhovor.",
+      "deleteYes": "Áno, odstrániť",
+      "reportYes": "Áno, nahlásiť",
+      "retry": "Skúsiť znova",
+      "reported": "Ďakujeme. Náš tím sa na to pozrie.",
+      "error": "Nepodarilo sa. Skús znova.",
+      "requestFrom": "{name} ti chce písať",
+      "requestHelp": "Prijmi a odpovedz. Ak odmietneš, táto osoba ti už nebude môcť písať.",
+      "decline": "Odmietnuť",
+      "accept": "Prijať",
+      "closed": "Tento rozhovor je uzavretý.",
+      "waitingAnswer": "Tvoja žiadosť čaká na odpoveď: znova napíšeš, keď ju prijme."
+    },
+    "delivery": {
+      "waiting": "Čaká na pripojenie",
+      "failed": "Neodoslané",
+      "sent": "Odoslané",
+      "received": "Doručené",
+      "read": "Prečítané"
+    },
+    "card": {
+      "kinds": {
+        "post": "Príspevok",
+        "service": "Služba",
+        "slot": "Voľný termín",
+        "product": "Produkt"
+      },
+      "quote": "Podľa ponuky",
+      "price": "{price}",
+      "priceFrom": "Od {price}"
+    },
+    "composer": {
+      "quickReplies": "Rýchle odpovede",
+      "removeCard": "Odstrániť",
+      "preparingPhoto": "Pripravuje sa fotka…",
+      "preparingVoice": "Pripravuje sa hlasová správa…",
+      "photo": "Poslať fotku",
+      "label": "Tvoja správa",
+      "placeholder": "Napíš správu",
+      "send": "Odoslať",
+      "shareService": "Poslať službu",
+      "shareSlot": "Ponúknuť termín",
+      "chooseService": "Ktorá služba?",
+      "loading": "Načítava sa…",
+      "noService": "Najprv pridaj služby v « Moja vitrína ».",
+      "serviceCard": "Služba: {name}",
+      "chooseSlot": "Ponúknuť termín",
+      "slotWhen": "Dátum a čas",
+      "attachSlot": "Pripojiť tento termín",
+      "slotCard": "Termín: {when}",
+      "postCard": "Príspevok na zdieľanie",
+      "fileRefused": "Tento súbor bol odmietnutý.",
+      "offlineFile": "Odoslanie zlyhalo: skontroluj pripojenie a skús znova."
+    },
+    "voice": {
+      "recording": "Nahrávanie",
+      "recordingFor": "Nahrávanie: {time}",
+      "cancel": "Zrušiť",
+      "send": "Odoslať",
+      "holding": "{time} — pusti a odošli, posuň a zruš",
+      "hold": "Hlasová správa: podrž a hovor, alebo stlač raz",
+      "denied": "Mikrofón je zablokovaný. Povoľ ho v nastaveniach prehliadača."
+    }
   },
   "me": {
     "title": "Ja",
@@ -564,7 +671,8 @@
         "place": "Miesto a cesta",
         "share": "Odkaz a QR kód",
         "verification": "Overenie",
-        "reviews": "Hodnotenia"
+        "reviews": "Hodnotenia",
+        "messages": "Správy"
       },
       "summary": {
         "services": "{count, plural, =0 {Žiadna služba} one {# služba} few {# služby} other {# služieb}}",
@@ -572,7 +680,8 @@
         "hoursMissing": "Treba vyplniť",
         "portfolio": "{count, plural, =0 {Žiadna fotka} one {# práca} few {# práce} other {# prác}}",
         "empty": "Treba vyplniť",
-        "reviews": "{count, plural, =0 {Žiadne hodnotenie} one {# hodnotenie} few {# hodnotenia} other {# hodnotení}}"
+        "reviews": "{count, plural, =0 {Žiadne hodnotenie} one {# hodnotenie} few {# hodnotenia} other {# hodnotení}}",
+        "messages": "Rýchle odpovede a správa o neprítomnosti"
       },
       "media": {
         "sent": "Odoslané. Pripravujeme to, potrvá to pár sekúnd.",
@@ -825,6 +934,27 @@
         "reply": "Odpovedať",
         "replied": "Odpoveď zverejnená",
         "error": "Odpoveď sa neodoslala. Skús znova."
+      },
+      "messages": {
+        "title": "Správy",
+        "help": "Ušetri čas: pripravené odpovede a automatická odpoveď, keď máš zatvorené.",
+        "saved": "Uložené",
+        "error": "Nepodarilo sa. Skús znova.",
+        "quickTitle": "Rýchle odpovede",
+        "quickHelp": "Zobrazia sa nad klávesnicou: jedno ťuknutie a použiješ ich.",
+        "up": "Posunúť hore « {text} »",
+        "down": "Posunúť dole « {text} »",
+        "remove": "Odstrániť « {text} »",
+        "newReply": "Nová odpoveď",
+        "placeholder": "napr. Áno, je to voľné, kedy chceš prísť?",
+        "add": "Pridať",
+        "saveReplies": "Uložiť odpovede",
+        "awayTitle": "Správa o neprítomnosti",
+        "awayLabel": "Odpovedať automaticky",
+        "awayHelp": "Mimo otváracích hodín, raz za rozhovor.",
+        "awayText": "Tvoja správa",
+        "awayPlaceholder": "napr. Ďakujem! Zajtra som v salóne od 9:00, vtedy ti odpoviem.",
+        "saveAway": "Uložiť"
       }
     },
     "become": {
@@ -921,7 +1051,11 @@
       "title": "Zdieľať",
       "copy": "Kopírovať odkaz",
       "copied": "Odkaz skopírovaný",
-      "tiktokCopied": "Odkaz skopírovaný: vlož ho do TikToku."
+      "tiktokCopied": "Odkaz skopírovaný: vlož ho do TikToku.",
+      "toMessage": "Poslať v správe",
+      "toWhom": "Komu?",
+      "loading": "Načítava sa…",
+      "noConversation": "Zatiaľ žiadny rozhovor. Najprv niekomu napíš."
     },
     "more": {
       "title": "Možnosti",
@@ -984,7 +1118,9 @@
       "book": "Pozrieť vitrínu a rezervovať",
       "previous": "Predchádzajúci",
       "next": "Ďalší",
-      "done": "Hotovo"
+      "done": "Hotovo",
+      "askSlot": "Zaujíma ťa termín?",
+      "writeFor": "Napísať na {time}"
     },
     "create": {
       "steps": {
