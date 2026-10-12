@@ -18,6 +18,7 @@ from apps.core.models import Country
 from apps.notifications.services import notify
 from apps.pros import demo
 from apps.pros.models import ProProfile
+from apps.social.demo import seed_social
 
 CLIENTS = [
     ("Awa", "Zinsou", "+2290197000201", None, "BJ", "Cotonou", "2001-02-03"),
@@ -45,9 +46,13 @@ class Command(BaseCommand):
         call_command("seed_core", verbosity=0)
         with transaction.atomic():
             created = self.seed_accounts()
+        with transaction.atomic():
+            social = seed_social()
         self.stdout.write(
             self.style.SUCCESS(
-                f"seed_demo: {created} new demo accounts, {self.showcases} showcases filled."
+                f"seed_demo: {created} new demo accounts, {self.showcases} showcases filled, "
+                f"{social['posts']} posts, {social['stories']} stories, "
+                f"{social['reviews']} reviews."
             )
         )
 
