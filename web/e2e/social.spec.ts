@@ -1,6 +1,12 @@
 import { expect, test, type Page } from "@playwright/test";
 
-import { expectNoSeriousA11yIssue, openWith, VIEWPORTS, type Theme } from "./helpers";
+import {
+  expectNoSeriousA11yIssue,
+  openWith,
+  signInAsNewClient,
+  VIEWPORTS,
+  type Theme,
+} from "./helpers";
 
 /*
  * Social network (module 2) and moderation (module 12): feed, stories, post page,
@@ -10,38 +16,6 @@ import { expectNoSeriousA11yIssue, openWith, VIEWPORTS, type Theme } from "./hel
 
 const SIZES = ["mobile", "desktop"] as const;
 const THEMES: Theme[] = ["light", "dark"];
-
-/** A new client, signed in through the API (same cookies as the browser). */
-async function signInAsNewClient(page: Page) {
-  const phone = `+2290197${String(Math.floor(Math.random() * 1_000_000)).padStart(6, "0")}`;
-  const headers = { "X-SG-Client": "web" };
-  const asked = await page.request.post("/api/v1/auth/otp/request", { data: { phone }, headers });
-  expect(asked.ok()).toBe(true);
-  const { challenge_id } = await asked.json();
-  let code = "";
-  await expect
-    .poll(
-      async () => {
-        const response = await page.request.get(
-          `/api/v1/dev/last-code?destination=${encodeURIComponent(phone)}`,
-        );
-        code = response.ok() ? (await response.json()).code : "";
-        return code;
-      },
-      { timeout: 30_000, message: "code sent by the worker (dev endpoint)" },
-    )
-    .toMatch(/^\d{6}$/);
-  const verified = await page.request.post("/api/v1/auth/otp/verify", {
-    data: { challenge_id, code },
-    headers,
-  });
-  expect(verified.ok()).toBe(true);
-  const onboarded = await page.request.post("/api/v1/me/onboarding", {
-    data: { mode: "client", birth_date: "1995-04-12", city: "Cotonou" },
-    headers,
-  });
-  expect(onboarded.ok()).toBe(true);
-}
 
 function noHorizontalScroll(page: Page) {
   return page.evaluate(
@@ -154,11 +128,13 @@ test.describe("signed in", () => {
 
     // Report the post with a reason (last: enough reports hide it automatically).
     await page.goto(postUrl, { waitUntil: "networkidle" });
-    await page.getByRole("button", { name: "Plus d'options" }).click();
-    await page
-      .getByRole("dialog", { name: "Options" })
-      .getByRole("button", { name: /Signaler/ })
-      .click();
+    // In development the page may still be starting up: tap again until the sheet opens.
+    const options = page.getByRole("dialog", { name: "Options" });
+    await expect(async () => {
+      await page.getByRole("button", { name: "Plus d'options" }).click();
+      await expect(options).toBeVisible({ timeout: 3_000 });
+    }).toPass({ timeout: 60_000 });
+    await options.getByRole("button", { name: /Signaler/ }).click();
     await page.screenshot({ path: "e2e/screenshots/post-report.png" });
     await page.getByRole("button", { name: "Spam ou publicité" }).click();
     await expect(page.getByText("Merci. Notre équipe va regarder.")).toBeVisible();

@@ -46,3 +46,56 @@ export async function expectNoSeriousA11yIssue(page: Page) {
     ),
   ).toEqual([]);
 }
+
+const API_HEADERS = { "X-SG-Client": "web" };
+
+async function lastCode(page: Page, phone: string): Promise<string> {
+  const response = await page.request.get(
+    `/api/v1/dev/last-code?destination=${encodeURIComponent(phone)}`,
+  );
+  return response.ok() ? ((await response.json()).code as string) : "";
+}
+
+/** Signs in through the API with the code read on the dev endpoint (cookies of the page). */
+export async function signInWithPhone(page: Page, phone: string) {
+  const before = await lastCode(page, phone);
+  const asked = await page.request.post("/api/v1/auth/otp/request", {
+    data: { phone },
+    headers: API_HEADERS,
+  });
+  expect(asked.ok(), await asked.text()).toBe(true);
+  const { challenge_id } = await asked.json();
+  let code = "";
+  await expect
+    .poll(
+      async () => {
+        code = await lastCode(page, phone);
+        return /^\d{6}$/.test(code) && code !== before;
+      },
+      { timeout: 30_000, message: "new code sent by the worker (dev endpoint)" },
+    )
+    .toBe(true);
+  const verified = await page.request.post("/api/v1/auth/otp/verify", {
+    data: { challenge_id, code },
+    headers: API_HEADERS,
+  });
+  expect(verified.ok()).toBe(true);
+}
+
+/** A new client, signed in and welcomed (adult, in Cotonou). */
+export async function signInAsNewClient(page: Page, firstName?: string) {
+  const phone = `+2290197${String(Math.floor(Math.random() * 1_000_000)).padStart(6, "0")}`;
+  await signInWithPhone(page, phone);
+  const onboarded = await page.request.post("/api/v1/me/onboarding", {
+    data: { mode: "client", birth_date: "1995-04-12", city: "Cotonou" },
+    headers: API_HEADERS,
+  });
+  expect(onboarded.ok()).toBe(true);
+  if (firstName) {
+    const named = await page.request.patch("/api/v1/me", {
+      data: { first_name: firstName },
+      headers: API_HEADERS,
+    });
+    expect(named.ok()).toBe(true);
+  }
+}

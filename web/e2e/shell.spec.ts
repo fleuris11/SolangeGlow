@@ -28,7 +28,7 @@ test.describe("app shell on mobile", () => {
     const nav = page.getByRole("navigation", { name: "Menu principal" }).last();
     await nav.getByRole("link", { name: "Messages" }).click();
     await expect(page).toHaveURL(/\/fr\/messages$/);
-    await expect(page.getByRole("heading", { name: "Aucun message pour l'instant" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Écris aux pros" })).toBeVisible();
     await expect(nav.getByRole("link", { name: "Messages" })).toHaveAttribute(
       "aria-current",
       "page",

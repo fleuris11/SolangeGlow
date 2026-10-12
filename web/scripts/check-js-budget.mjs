@@ -18,6 +18,7 @@ const DYNAMIC_PAGES = {
   "/[locale]": "[locale]/(app)",
   "/[locale]/create": "[locale]/(app)/create",
   "/[locale]/p/<post>": "[locale]/(app)/p/[id]",
+  "/[locale]/messages/<conversation>": "[locale]/(chat)/messages/[id]",
   "/[locale]/<pro>": "[locale]/(app)/[slug]",
   "/[locale]/explore": "[locale]/(app)/explore",
 };
