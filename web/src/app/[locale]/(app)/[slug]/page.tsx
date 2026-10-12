@@ -4,7 +4,12 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { cache } from "react";
 
 import { ShowcaseView } from "@/components/features/pros/showcase/showcase-view";
-import { getShowcaseOnServer, SITE_URL } from "@/lib/api/server";
+import {
+  getShowcaseOnServer,
+  personPostsOnServer,
+  reviewsOnServer,
+  SITE_URL,
+} from "@/lib/api/server";
 import { routing, type Locale } from "@/lib/i18n/routing";
 import { mediaSrc } from "@/lib/media";
 import { jsonLdScript, localBusinessJsonLd } from "@/lib/pros/json-ld";
@@ -63,6 +68,10 @@ export default async function ShowcasePage({ params }: Props) {
   const showcase = await loadShowcase(slug, locale);
   if (!showcase) notFound();
 
+  const [reviews, posts] = await Promise.all([
+    reviewsOnServer(showcase.slug, locale),
+    personPostsOnServer(showcase.owner_id, locale),
+  ]);
   const url = `${SITE_URL}/${locale}/${showcase.slug}`;
   const jsonLd = localBusinessJsonLd(
     showcase,
@@ -77,7 +86,7 @@ export default async function ShowcasePage({ params }: Props) {
         // Escaped by jsonLdScript: no "<" can close the script tag.
         dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }}
       />
-      <ShowcaseView showcase={showcase} />
+      <ShowcaseView showcase={showcase} reviews={reviews} posts={posts.results} />
     </>
   );
 }

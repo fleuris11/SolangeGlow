@@ -4,6 +4,7 @@ export const SECTIONS = [
   "services",
   "hours",
   "portfolio",
+  "reviews",
   "place",
   "share",
   "verification",

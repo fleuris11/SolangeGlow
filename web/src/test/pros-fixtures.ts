@@ -21,6 +21,9 @@ export const SERVICE: Service = {
 };
 
 export const SHOWCASE: Showcase = {
+  owner_id: "00000000-0000-4000-8000-000000000001",
+  follower_count: 12,
+  followed: false,
   slug: "aicha",
   short_link: "http://localhost:3000/aicha",
   business_name: "Aïcha Tresses",

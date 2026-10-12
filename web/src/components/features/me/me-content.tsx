@@ -16,6 +16,7 @@ const ProfileForm = dynamic(() => import("./profile-form").then((m) => m.Profile
   loading: () => <Skeleton className="h-64" />,
 });
 const AccountSettings = dynamic(() => import("./account-settings").then((m) => m.AccountSettings));
+const ActivityLinks = dynamic(() => import("./activity-links").then((m) => m.ActivityLinks));
 const ProEntry = dynamic(() => import("./pro-entry").then((m) => m.ProEntry));
 const GuestCard = dynamic(() => import("./guest-card").then((m) => m.GuestCard));
 const DisplaySettings = dynamic(() =>
@@ -42,6 +43,7 @@ export function MeContent() {
       {me ? (
         <>
           <ProEntry me={me} />
+          <ActivityLinks />
           <ProfileForm me={me} />
         </>
       ) : (

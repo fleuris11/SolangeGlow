@@ -13,6 +13,8 @@ import {
   Star,
   Translate,
   Van,
+  UserCheck,
+  UserPlus,
   Waveform,
 } from "@phosphor-icons/react/dist/ssr";
 import { useLocale, useTranslations } from "next-intl";
@@ -25,7 +27,10 @@ import { Badge } from "@/components/ui/badge";
 import { buttonClasses } from "@/components/ui/button";
 import { PriceTag } from "@/components/ui/price-tag";
 import { SpeakButton } from "@/components/ui/speak-button";
+import { FollowButton } from "@/components/features/social/follow-button";
+import { ReviewsSection } from "@/components/features/social/reviews-section";
 import type { Service, Showcase } from "@/lib/api/pros";
+import type { Post, ReviewPage } from "@/lib/api/social";
 import { Link } from "@/lib/i18n/navigation";
 import { mediaSrc, voiceSrc } from "@/lib/media";
 import {
@@ -144,7 +149,15 @@ function ServiceRow({ service }: { service: Service }) {
 }
 
 /** The public page of a pro: her site, the one she shares on her networks. */
-export function ShowcaseView({ showcase }: { showcase: Showcase }) {
+export function ShowcaseView({
+  showcase,
+  reviews = null,
+  posts = [],
+}: {
+  showcase: Showcase;
+  reviews?: ReviewPage | null;
+  posts?: Post[];
+}) {
   const t = useTranslations("pros.showcase");
   const locale = useLocale();
   const name = showcase.business_name;
@@ -221,6 +234,15 @@ export function ShowcaseView({ showcase }: { showcase: Showcase }) {
             {[place.district, place.city].filter(Boolean).join(", ")}
           </p>
           <OpeningLine showcase={showcase} />
+          <FollowButton
+            userId={showcase.owner_id}
+            followed={showcase.followed}
+            count={showcase.follower_count}
+            icons={{
+              follow: <UserPlus aria-hidden size={22} weight="bold" />,
+              following: <UserCheck aria-hidden size={22} weight="bold" />,
+            }}
+          />
         </div>
         <ShowcaseActions
           name={name}
@@ -328,6 +350,31 @@ export function ShowcaseView({ showcase }: { showcase: Showcase }) {
           </ul>
         </Section>
       )}
+
+      {posts.length > 0 && (
+        <Section id="posts" title={t("posts")} icon={<Star size={26} weight="duotone" />}>
+          <ul className="grid grid-cols-3 gap-1">
+            {posts.slice(0, 9).map((post) => {
+              const cover = post.media.find((item) => item.role !== "before") ?? post.media[0];
+              return (
+                <li key={post.id}>
+                  <Link href={`/p/${post.id}`} className="block">
+                    {/* eslint-disable-next-line @next/next/no-img-element -- resized by the backend */}
+                    <img
+                      src={mediaSrc(cover?.media, "thumb", "medium")}
+                      alt={post.caption || name}
+                      loading="lazy"
+                      className="bg-poudre aspect-square w-full rounded-xl object-cover"
+                    />
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </Section>
+      )}
+
+      {reviews && <ReviewsSection page={reviews} name={name} />}
 
       <Section id="hours" title={t("hours")} icon={<Clock size={26} weight="duotone" />}>
         {showcase.hours.length === 0 ? (
