@@ -165,6 +165,34 @@ Après `seed_demo` (publications, stories, commentaires, avis et abonnements de 
 - Appels (préparés, non branchés) : `docker compose --profile calls up livekit`, puis
   `LIVEKIT_URL=ws://localhost:7880`, `LIVEKIT_API_KEY=devkey`, `LIVEKIT_API_SECRET=secret`.
 
+## Tester le paiement sécurisé en local
+
+Avec le prestataire de test (aucun argent réel) :
+
+1. Connecte-toi comme cliente, puis ouvre http://localhost:3000/fr/pay/demo : choisis une
+   vitrine (par exemple `gloria`) et un prix, puis « Créer et payer ».
+2. Page de paiement de test : « Paiement réussi », « Paiement refusé » ou « J'abandonne ».
+   La réponse arrive comme un vrai webhook signé (traité par le worker).
+3. La cliente voit son code de réception (6 chiffres) dans « Moi » > « Mes achats et
+   ventes ». La vendeuse (numéro de démo, code dans `docker compose logs worker`) voit la
+   vente, l'expédie, saisit le code : l'argent passe dans son portefeuille
+   (http://localhost:3000/fr/pro/wallet), d'où elle le retire (compte de test).
+4. « Un problème avec ma commande » ouvre un litige : argent gelé, salle à trois dans
+   « Messages ». La décision se prend dans l'admin.
+
+Back-office, section Finance : tableau de bord par devise (trésorerie, séquestre, dû aux
+vendeuses, versements et remboursements en cours, revenus), paiements avec leurs écritures,
+litiges (« Verser à la vendeuse », « Rembourser tout », « Rembourser en partie »),
+remboursements à faire à la main (FedaPay), versements, grand livre (lecture seule),
+rapprochements, règles de commission et de frais, données fiscales DAC7 et exports CSV.
+Groupes « Finance » et « Disputes » créés automatiquement.
+
+Réglages : `escrow.*` (délais d'envoi, de versement automatique, de litige, essais du code,
+relances), `payments.*` (prestataire par pays, versement minimum, seuil de suspension).
+Les délais s'appliquent toutes les 15 minutes (Celery Beat). Les vrais prestataires
+s'activent avec leurs clés (`.env.example`) ; le prestataire de test est coupé en
+production.
+
 ## Client de l'API (web)
 
 Les types du client web sont générés depuis le schéma de l'API. Après toute
@@ -219,6 +247,8 @@ backend/                Django
   apps/social/          publications, fil, commentaires, abonnements, stories, avis vérifiés
   apps/moderation/      signalements, blocages, contenus masqués, file de modération,
                         sanctions
+  apps/payments/        paiement sécurisé : grand livre en partie double, séquestre, code de
+                        réception, litiges, commissions et frais, portefeuille, prestataires
   apps/messaging/       conversations, messages, temps réel (WebSocket), demandes,
                         réponses rapides, message d'absence, anti-fraude, appels (préparés)
   assets/fonts/         polices de la marque (OFL) pour les affiches et stickers
