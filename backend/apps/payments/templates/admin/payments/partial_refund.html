@@ -1,0 +1,16 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+  <form method="post" class="flex flex-col gap-4" style="max-width:520px">
+    {% csrf_token %}
+    <p>{% blocktranslate %}Part of the seller's amount ({{ seller_amount }}) goes back to the client, in the smallest unit of {{ currency }}. The buyer protection fee is kept.{% endblocktranslate %}</p>
+    {{ form.as_div }}
+    <div class="flex gap-3">
+      <button type="submit" class="bg-primary-600 text-white rounded px-4 py-2 font-semibold">{% translate "Refund this amount" %}</button>
+      <a class="underline" href="{% url 'admin:payments_dispute_change' dispute.pk %}">{% translate "Back" %}</a>
+    </div>
+  </form>
+{% endblock %}

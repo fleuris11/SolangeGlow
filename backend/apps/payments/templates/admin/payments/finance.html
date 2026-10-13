@@ -1,0 +1,60 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+  <div class="flex flex-col gap-6">
+    {% if not balanced %}
+      <p class="font-semibold" style="color:#b54708">{% translate "The ledger is not balanced: check the last entries." %}</p>
+    {% endif %}
+    {% for row in rows %}
+      <section class="flex flex-col gap-3">
+        <h2 class="text-lg font-semibold">{{ row.currency }}</h2>
+        <div class="grid gap-3" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr))">
+          {% for label, value in row.cells %}
+            <div class="border rounded p-4">
+              <div class="text-sm">{{ label }}</div>
+              <div class="text-xl font-semibold">{{ value }}</div>
+            </div>
+          {% endfor %}
+        </div>
+        <p>
+          <a class="underline" href="{% url 'admin:payments_dispute_changelist' %}?status__exact=open">
+            {% blocktranslate count counter=row.open_disputes %}{{ counter }} open dispute{% plural %}{{ counter }} open disputes{% endblocktranslate %}
+          </a>
+          ·
+          <a class="underline" href="{% url 'admin:payments_refund_changelist' %}">
+            {% blocktranslate count counter=row.refunds_to_do %}{{ counter }} refund to do by hand{% plural %}{{ counter }} refunds to do by hand{% endblocktranslate %}
+          </a>
+        </p>
+      </section>
+    {% empty %}
+      <p>{% translate "No money has moved yet." %}</p>
+    {% endfor %}
+
+    <section class="flex flex-col gap-2">
+      <h2 class="text-lg font-semibold">{% translate "Exports (CSV)" %}</h2>
+      <ul class="flex flex-wrap gap-4">
+        <li><a class="underline" href="{% url 'admin:payments_export' 'payments' %}">{% translate "Payments" %}</a></li>
+        <li><a class="underline" href="{% url 'admin:payments_export' 'ledger' %}">{% translate "Ledger" %}</a></li>
+        <li><a class="underline" href="{% url 'admin:payments_export' 'payouts' %}">{% translate "Payouts" %}</a></li>
+        <li><a class="underline" href="{% url 'admin:payments_export' 'dac7' %}?year={{ year }}">{% blocktranslate %}Sellers' income {{ year }} (DAC7){% endblocktranslate %}</a></li>
+      </ul>
+    </section>
+
+    <section class="flex flex-col gap-2">
+      <h2 class="text-lg font-semibold">{% translate "Last reconciliations" %}</h2>
+      <ul>
+        {% for run in last_runs %}
+          <li>
+            <a class="underline" href="{% url 'admin:payments_reconciliationrun_change' run.pk %}">{{ run.provider }} — {{ run.period_end|date:"Y-m-d" }}</a>
+            : {% blocktranslate count counter=run.discrepancies %}{{ counter }} difference{% plural %}{{ counter }} differences{% endblocktranslate %}
+          </li>
+        {% empty %}
+          <li>{% translate "None yet." %}</li>
+        {% endfor %}
+      </ul>
+    </section>
+  </div>
+{% endblock %}
