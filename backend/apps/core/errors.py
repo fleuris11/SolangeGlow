@@ -17,3 +17,13 @@ class DomainError(Exception):
             self.message = message
         self.details = details or {}
         super().__init__(str(self.message))
+
+    def text(self) -> str:
+        """The translated message with its details filled in (« 4 attempts left »)."""
+        message = str(self.message)
+        if not self.details:
+            return message
+        try:
+            return message % self.details
+        except (KeyError, TypeError, ValueError):
+            return message

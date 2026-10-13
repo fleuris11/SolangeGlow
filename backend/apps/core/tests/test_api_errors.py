@@ -21,3 +21,14 @@ def test_not_found_format():
     assert response.status_code == 404
     assert response.data["code"] == "not_found"
     assert response.data["fields"] == {}
+
+
+def test_domain_error_messages_are_filled_with_their_details():
+    from apps.core.errors import DomainError
+
+    class Late(DomainError):
+        message = "Too late (%(days)s days)."
+
+    assert Late(details={"days": 3}).text() == "Too late (3 days)."
+    assert Late().text() == "Too late (%(days)s days)."
+    assert Late(details={"other": 1}).text() == "Too late (%(days)s days)."

@@ -13,7 +13,7 @@ from apps.core.errors import DomainError
 def exception_handler(exc, context):
     if isinstance(exc, DomainError):
         response = Response(
-            {"code": exc.code, "message": str(exc.message), "fields": {}, **exc.details},
+            {"code": exc.code, "message": exc.text(), "fields": {}, **exc.details},
             status=exc.status_code,
         )
         retry_after = exc.details.get("retry_after")
