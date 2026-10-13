@@ -95,6 +95,8 @@ class NotificationDelivery(BaseModel):
     attempts = models.PositiveSmallIntegerField(_("attempts"), default=0)
     sent_at = models.DateTimeField(_("sent at"), null=True, blank=True)
     error = models.CharField(_("error"), max_length=255, blank=True)
+    # Holds a secret (e.g. a receipt code): the text is hidden once the sending is over.
+    sensitive = models.BooleanField(_("sensitive"), default=False)
 
     class Meta:
         verbose_name = _("sending")

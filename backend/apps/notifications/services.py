@@ -10,6 +10,7 @@ import logging
 from django.db import transaction
 from django.template import engines
 from django.utils import timezone, translation
+from django.utils.translation import gettext
 
 from apps.core.audit.services import json_safe
 from apps.core.providers import ProviderError, ProviderNotConfigured
@@ -61,10 +62,19 @@ def unread_count(user) -> int:
     return Notification.objects.filter(user=user, in_app=True, read_at__isnull=True).count()
 
 
-def notify(user, event_key: str, context: dict | None = None, *, link: str | None = None):
+def notify(
+    user,
+    event_key: str,
+    context: dict | None = None,
+    *,
+    link: str | None = None,
+    secret: dict | None = None,
+):
     """Creates the notification and schedules every channel the person accepts.
 
     Texts come from the active templates of the event, in the language of the person.
+    `secret` values (a receipt code…) only go into the outside messages (SMS, WhatsApp,
+    e-mail, push): never into the stored notification, and their text is hidden once sent.
     Returns the Notification, or None when the event has no active template.
     """
     if not user.is_active or user.deleted_at:
@@ -79,11 +89,12 @@ def notify(user, event_key: str, context: dict | None = None, *, link: str | Non
 
     context = {"first_name": user.first_name, **(context or {})}
     now = timezone.now()
+    outside = {**context, **(secret or {})}
     with translation.override(user.preferred_language):
         rendered = {
             channel: (
-                _render(t.title, context),
-                _render(t.body, context),
+                _render(t.title, context if channel == Channel.IN_APP else outside),
+                _render(t.body, context if channel == Channel.IN_APP else outside),
                 t.link,
             )
             for channel, t in templates.items()
@@ -113,6 +124,7 @@ def notify(user, event_key: str, context: dict | None = None, *, link: str | Non
                     title=title,
                     body=body,
                     scheduled_for=when,
+                    sensitive=bool(secret),
                 )
             )
 
@@ -149,7 +161,8 @@ def deliver(delivery_id: str) -> str:
     if not wants(user, delivery.channel):
         delivery.status = NotificationDelivery.Status.SKIPPED
         delivery.error = "preference"
-        delivery.save(update_fields=["status", "error", "updated_at"])
+        _hide_secret(delivery)
+        delivery.save(update_fields=["status", "error", "body", "updated_at"])
         return delivery.status
 
     delivery.attempts += 1
@@ -166,11 +179,20 @@ def deliver(delivery_id: str) -> str:
         delivery.status = NotificationDelivery.Status.SENT
         delivery.sent_at = timezone.now()
         delivery.error = ""
+    _hide_secret(delivery)
     delivery.save()
     return delivery.status
 
 
+def _hide_secret(delivery: NotificationDelivery) -> None:
+    if delivery.sensitive:
+        delivery.body = gettext("(hidden once sent)")
+
+
 def mark_failed(delivery_id: str) -> None:
+    NotificationDelivery.objects.filter(pk=delivery_id, sensitive=True).update(
+        body=gettext("(hidden once sent)")
+    )
     NotificationDelivery.objects.filter(pk=delivery_id).update(
         status=NotificationDelivery.Status.FAILED, updated_at=timezone.now()
     )
