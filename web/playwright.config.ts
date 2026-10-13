@@ -11,7 +11,8 @@ export default defineConfig({
   fullyParallel: false,
   workers: 1,
   retries: process.env.CI ? 1 : 0,
-  reporter: [["list"]],
+  // In CI, each failure also becomes an annotation of the run (readable without the logs).
+  reporter: process.env.CI ? [["list"], ["github"]] : [["list"]],
   use: {
     baseURL: process.env.BASE_URL ?? "http://localhost:3000",
     ...devices["Desktop Chrome"],
