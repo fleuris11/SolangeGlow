@@ -31,5 +31,5 @@ def test_seed_core_is_idempotent_and_keeps_admin_edits():
 
     assert Currency.objects.count() == 2
     assert Country.objects.count() == 2
-    assert PlatformSetting.objects.filter(key__startswith="escrow.").count() == 6
+    assert PlatformSetting.objects.filter(key__startswith="escrow.").count() == 11
     assert get_setting("escrow.auto_release_days") == 10

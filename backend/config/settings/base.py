@@ -265,6 +265,12 @@ SPECTACULAR_SETTINGS = {
         "ConversationKindEnum": "apps.messaging.models.Conversation.Kind",
         "ConversationPurposeEnum": "apps.messaging.models.Conversation.Purpose",
         "MemberStatusEnum": "apps.messaging.models.ConversationMember.Status",
+        "PayoutMethodKindEnum": "apps.payments.models.PayoutMethod.Kind",
+        "DisputeReasonEnum": "apps.payments.models.Dispute.Reason",
+        "OpenDisputeReasonEnum": ["not_received", "not_as_described", "damaged", "other"],
+        "PaymentRoleEnum": ["buyer", "seller"],
+        "ReportReasonEnum": "apps.moderation.models.Reason",
+        "PostMediaRoleEnum": "apps.social.models.PostMedia.Role",
     },
 }
 
@@ -302,6 +308,15 @@ ACCOUNTS_DEV_OTP_ENDPOINT = env.bool("ACCOUNTS_DEV_OTP_ENDPOINT", default=False)
 # --- External providers (ADR-003) -----------------------------------------------
 # Console/Fake clients instead of real providers without keys. Never in production.
 PROVIDERS_CONSOLE = env.bool("PROVIDERS_CONSOLE", default=False)
+
+# Payments (ADR-007). Each provider is off without its keys. The test provider (a fake
+# payment page with « success / failure / give up ») only where PAYMENTS_FAKE_ENABLED is on.
+PAYMENTS_FAKE_ENABLED = env.bool("PAYMENTS_FAKE_ENABLED", default=False)
+FEDAPAY_SECRET_KEY = env("FEDAPAY_SECRET_KEY", default="")
+FEDAPAY_WEBHOOK_SECRET = env("FEDAPAY_WEBHOOK_SECRET", default="")
+FEDAPAY_ENVIRONMENT = env("FEDAPAY_ENVIRONMENT", default="sandbox")
+STRIPE_SECRET_KEY = env("STRIPE_SECRET_KEY", default="")
+STRIPE_WEBHOOK_SECRET = env("STRIPE_WEBHOOK_SECRET", default="")
 # Seconds to wait for WhatsApp, SMS or push services before giving up (then retry).
 PROVIDERS_HTTP_TIMEOUT = env.float("PROVIDERS_HTTP_TIMEOUT", default=8.0)
 # Automatic moderation by an AI service (module 2). Empty = word lists and rules only.
@@ -371,6 +386,14 @@ CELERY_BEAT_SCHEDULE = {
     "moderation.lift_expired_sanctions": {
         "task": "apps.moderation.tasks.lift_expired_sanctions",
         "schedule": crontab(minute=5),
+    },
+    "payments.run_deadlines": {
+        "task": "apps.payments.tasks.run_deadlines",
+        "schedule": crontab(minute="*/15"),
+    },
+    "payments.reconcile_providers": {
+        "task": "apps.payments.tasks.reconcile_providers",
+        "schedule": crontab(hour=4, minute=15),
     },
 }
 
@@ -535,6 +558,67 @@ UNFOLD = {
                         "title": _("Reports"),
                         "icon": "flag",
                         "link": reverse_lazy("admin:moderation_report_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("Finance"),
+                "separator": True,
+                "items": [
+                    {
+                        "title": _("Finance dashboard"),
+                        "icon": "account_balance",
+                        "link": reverse_lazy("admin:payments_finance"),
+                    },
+                    {
+                        "title": _("Payments"),
+                        "icon": "payments",
+                        "link": reverse_lazy("admin:payments_payment_changelist"),
+                    },
+                    {
+                        "title": _("Disputes"),
+                        "icon": "gavel",
+                        "link": reverse_lazy("admin:payments_dispute_changelist"),
+                    },
+                    {
+                        "title": _("Refunds"),
+                        "icon": "undo",
+                        "link": reverse_lazy("admin:payments_refund_changelist"),
+                    },
+                    {
+                        "title": _("Payouts"),
+                        "icon": "savings",
+                        "link": reverse_lazy("admin:payments_payout_changelist"),
+                    },
+                    {
+                        "title": _("Ledger"),
+                        "icon": "menu_book",
+                        "link": reverse_lazy("admin:payments_journalentry_changelist"),
+                    },
+                    {
+                        "title": _("Accounts and balances"),
+                        "icon": "account_tree",
+                        "link": reverse_lazy("admin:payments_ledgeraccount_changelist"),
+                    },
+                    {
+                        "title": _("Commissions and fees"),
+                        "icon": "percent",
+                        "link": reverse_lazy("admin:payments_pricingrule_changelist"),
+                    },
+                    {
+                        "title": _("Tax data (DAC7)"),
+                        "icon": "receipt_long",
+                        "link": reverse_lazy("admin:payments_sellertaxprofile_changelist"),
+                    },
+                    {
+                        "title": _("Reconciliations"),
+                        "icon": "fact_check",
+                        "link": reverse_lazy("admin:payments_reconciliationrun_changelist"),
+                    },
+                    {
+                        "title": _("Provider events"),
+                        "icon": "webhook",
+                        "link": reverse_lazy("admin:payments_webhookevent_changelist"),
                     },
                 ],
             },

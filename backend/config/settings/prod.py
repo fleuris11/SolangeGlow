@@ -40,3 +40,4 @@ STORAGES = {
 IDENTITY_VAULT_KEY = env("IDENTITY_VAULT_KEY", default="")
 if not IDENTITY_VAULT_KEY:
     raise ImproperlyConfigured("IDENTITY_VAULT_KEY is required in production.")
+PAYMENTS_FAKE_ENABLED = False

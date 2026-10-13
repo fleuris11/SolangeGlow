@@ -16,6 +16,8 @@ DEFAULT_RATES = {
     "social_write": "120/hour",
     "report": "30/hour",
     "message_send": "120/minute",
+    "payments": "60/minute",
+    "receipt_code": "20/hour",
 }
 
 

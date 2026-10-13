@@ -70,8 +70,11 @@ jobs:
       - name: Compile translations
         run: python manage.py compilemessages
 
-      - name: Tests
-        run: pytest
+      - name: Tests (money code fully covered, ADR-007)
+        run: >-
+          pytest
+          --cov=apps.payments.services --cov=apps.payments.ledger --cov=apps.payments.pricing
+          --cov-branch --cov-report=term-missing:skip-covered --cov-fail-under=100
 
       - name: API schema (no warning allowed)
         run: >-

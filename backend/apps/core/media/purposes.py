@@ -41,6 +41,8 @@ PURPOSES: dict[str, Purpose] = {
         ("audio",), "private", Duration(max_setting="messaging.voice_max_seconds", max_default=180)
     ),
     "message_photo": Purpose(("image",), "private"),
+    "delivery_proof": Purpose(("image",), "private"),
+    "dispute_evidence": Purpose(("image",), "private"),
     "identity_document": Purpose(("image",), "private"),
     # Pros (module 1): showcase pictures, voice notes heard by every visitor, portfolio.
     "pro_photo": Purpose(("image",), "public"),
