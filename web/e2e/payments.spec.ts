@@ -99,7 +99,7 @@ test("pay, ship, receipt code, wallet and payout", async ({ browser }) => {
   await expectNoSeriousA11yIssue(sellerPage);
   await sellerPage.screenshot({ path: "e2e/screenshots/wallet.png", fullPage: true });
   await sellerPage.getByRole("button", { name: /^Retirer/ }).click();
-  await expect(sellerPage.getByText("Versement demandé")).toBeVisible();
+  await expect(sellerPage.getByText("Versement demandé").first()).toBeVisible();
 
   // --- The client: completed ----------------------------------------------------------------------
   await page.reload();

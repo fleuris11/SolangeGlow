@@ -59,10 +59,15 @@ async function lastCode(page: Page, phone: string): Promise<string> {
 /** Signs in through the API with the code read on the dev endpoint (cookies of the page). */
 export async function signInWithPhone(page: Page, phone: string) {
   const before = await lastCode(page, phone);
-  const asked = await page.request.post("/api/v1/auth/otp/request", {
-    data: { phone },
-    headers: API_HEADERS,
-  });
+  const ask = () =>
+    page.request.post("/api/v1/auth/otp/request", { data: { phone }, headers: API_HEADERS });
+  let asked = await ask();
+  if (asked.status() === 429 || (await asked.text()).includes("resend_too_soon")) {
+    // The same person signed in a moment ago (another test): wait as the app asks.
+    const wait = Number((await asked.json()).retry_after ?? 60);
+    await page.waitForTimeout((wait + 1) * 1000);
+    asked = await ask();
+  }
   expect(asked.ok(), await asked.text()).toBe(true);
   const { challenge_id } = await asked.json();
   let code = "";
