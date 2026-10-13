@@ -1,6 +1,14 @@
 "use client";
 
-import { BookmarkSimple, CaretRight, Images, Star, UsersThree } from "@phosphor-icons/react";
+import {
+  BookmarkSimple,
+  CaretRight,
+  Images,
+  Receipt,
+  Star,
+  UsersThree,
+  Wallet,
+} from "@phosphor-icons/react";
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
@@ -11,6 +19,8 @@ const LINKS: { href: string; key: string; icon: ReactNode }[] = [
   { href: "/saved", key: "saved", icon: <BookmarkSimple size={28} weight="duotone" /> },
   { href: "/following", key: "following", icon: <UsersThree size={28} weight="duotone" /> },
   { href: "/me/reviews", key: "reviews", icon: <Star size={28} weight="duotone" /> },
+  { href: "/payments", key: "payments", icon: <Receipt size={28} weight="duotone" /> },
+  { href: "/pro/wallet", key: "wallet", icon: <Wallet size={28} weight="duotone" /> },
 ];
 
 /** Her activity on Solange Glow: posts, saved posts, people followed, reviews to leave. */

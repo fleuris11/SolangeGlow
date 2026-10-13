@@ -448,6 +448,38 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/me/payout-methods": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["me_payout_methods_list"];
+    put: operations["me_payout_methods_update"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/payouts": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["me_payouts_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/me/photo": {
     parameters: {
       query?: never;
@@ -861,6 +893,57 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/me/tax-profile": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description What a platform declares about its sellers (DAC7). The tax number never comes back. */
+    get: operations["me_tax_profile_retrieve"];
+    /** @description What a platform declares about its sellers (DAC7). The tax number never comes back. */
+    put: operations["me_tax_profile_update"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/wallet": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Pending, available, being paid out, paid out; per currency. */
+    get: operations["me_wallet_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/wallet/history": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["me_wallet_history_list"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/media": {
     parameters: {
       query?: never;
@@ -1032,6 +1115,220 @@ export interface paths {
     get: operations["notifications_unread_count_retrieve"];
     put?: never;
     post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/payments": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Her purchases, or (role=seller) her sales: newest first. */
+    get: operations["payments_list"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/payments/{payment_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["payments_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/payments/{payment_id}/cancel": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["payments_cancel_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/payments/{payment_id}/checkout": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description The provider's payment page (the test page in development). */
+    post: operations["payments_checkout_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/payments/{payment_id}/confirm": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description The seller types the code the client gives her at the handover. */
+    post: operations["payments_confirm_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/payments/{payment_id}/courier-link": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["payments_courier_link_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/payments/{payment_id}/delivered": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["payments_delivered_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/payments/{payment_id}/dispute": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["payments_dispute_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/payments/{payment_id}/dispute/evidence": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["payments_dispute_evidence_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/payments/{payment_id}/new-code": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["payments_new_code_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/payments/{payment_id}/ship": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["payments_ship_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/payments/{payment_id}/test-outcome": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Test provider only: success, failure or giving up, answered by a signed webhook. */
+    post: operations["payments_test_outcome_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/payments/courier/{token}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description For the courier, without account: see the order and type the code. */
+    get: operations["payments_courier_retrieve"];
+    put?: never;
+    /** @description For the courier, without account: see the order and type the code. */
+    post: operations["payments_courier_create"];
     delete?: never;
     options?: never;
     head?: never;
@@ -1428,6 +1725,21 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
   schemas: {
+    Abilities: {
+      pay: boolean;
+      ship: boolean;
+      deliver: boolean;
+      confirm: boolean;
+      cancel: boolean;
+      dispute: boolean;
+      new_code: boolean;
+    };
+    /**
+     * @description * `pending` - pending
+     *     * `available` - available
+     * @enum {string}
+     */
+    AccountEnum: "pending" | "available";
     Arrival: {
       sent: boolean;
     };
@@ -1554,6 +1866,9 @@ export interface components {
       ends_on: string;
       reason?: string;
     };
+    CodeRequest: {
+      code: string;
+    };
     CodeRequestRequest: {
       phone?: string;
       email?: string;
@@ -1652,6 +1967,21 @@ export interface components {
       liked: boolean;
       saved: boolean;
     };
+    CourierLink: {
+      url: string;
+    };
+    CourierPayment: {
+      reference: string;
+      description: string;
+      seller: string;
+    };
+    /**
+     * @description * `release` - Pay the seller
+     *     * `refund` - Refund everything
+     *     * `partial` - Refund part
+     * @enum {string}
+     */
+    DecisionEnum: "release" | "refund" | "partial";
     DeletionScheduled: {
       /**
        * Format: date-time
@@ -1659,6 +1989,48 @@ export interface components {
        */
       erase_after: string;
     };
+    DeliveredRequest: {
+      /** Format: uuid */
+      proof_media_id: string;
+    };
+    /**
+     * @description * `pickup` - Picked up at the seller
+     *     * `seller` - Delivered by the seller
+     *     * `partner` - Delivered by a partner
+     *     * `service` - Service (no delivery)
+     * @enum {string}
+     */
+    DeliveryModeEnum: "pickup" | "seller" | "partner" | "service";
+    Dispute: {
+      /** Format: uuid */
+      id: string;
+      reason: components["schemas"]["DisputeReasonEnum"];
+      status: components["schemas"]["DisputeStatusEnum"];
+      description: string;
+      /** Format: date-time */
+      response_due_at: string;
+      decision: (components["schemas"]["DecisionEnum"] | components["schemas"]["NullEnum"]) | null;
+      refund_minor: number;
+      note: string;
+      /** Format: uuid */
+      conversation_id: string | null;
+      evidence: components["schemas"]["Evidence"][];
+    };
+    /**
+     * @description * `not_received` - Not received
+     *     * `not_as_described` - Not as described
+     *     * `damaged` - Damaged
+     *     * `other` - Other
+     *     * `no_proof` - No code and no proof of delivery
+     * @enum {string}
+     */
+    DisputeReasonEnum: "not_received" | "not_as_described" | "damaged" | "other" | "no_proof";
+    /**
+     * @description * `open` - Open
+     *     * `decided` - Decided
+     * @enum {string}
+     */
+    DisputeStatusEnum: "open" | "decided";
     /**
      * @description * `id_card` - Identity card
      *     * `passport` - Passport
@@ -1667,6 +2039,21 @@ export interface components {
      * @enum {string}
      */
     DocumentTypeEnum: "id_card" | "passport" | "residence_permit" | "driving_licence";
+    Evidence: {
+      /** Format: uuid */
+      id: string;
+      /** Format: uuid */
+      author_id: string | null;
+      text: string;
+      media: components["schemas"]["Media"] | null;
+      /** Format: date-time */
+      created_at: string;
+    };
+    EvidenceCreateRequest: {
+      text?: string;
+      /** Format: uuid */
+      media_id?: string | null;
+    };
     FileUploadRequest: {
       /** Format: binary */
       file: string;
@@ -1886,6 +2273,8 @@ export interface components {
     MediaStatusEnum: "pending" | "processing" | "ready" | "rejected" | "failed";
     /**
      * @description * `avatar` - avatar
+     *     * `delivery_proof` - delivery_proof
+     *     * `dispute_evidence` - dispute_evidence
      *     * `identity_document` - identity_document
      *     * `itinerary_video` - itinerary_video
      *     * `message_photo` - message_photo
@@ -1903,6 +2292,8 @@ export interface components {
      */
     MediaUploadPurposeEnum:
       | "avatar"
+      | "delivery_proof"
+      | "dispute_evidence"
       | "identity_document"
       | "itinerary_video"
       | "message_photo"
@@ -1975,7 +2366,7 @@ export interface components {
       next: string | null;
     };
     MessageReportRequest: {
-      reason: components["schemas"]["ReasonEnum"];
+      reason: components["schemas"]["ReportReasonEnum"];
       comment?: string;
     };
     /**
@@ -2047,6 +2438,8 @@ export interface components {
       /** Format: date-time */
       readonly created_at: string;
     };
+    /** @enum {unknown} */
+    NullEnum: null;
     Ok: {
       status: string;
     };
@@ -2057,6 +2450,19 @@ export interface components {
       trades?: string[];
       language?: components["schemas"]["LanguageEnum"];
       city?: string;
+    };
+    /**
+     * @description * `not_received` - Not received
+     *     * `not_as_described` - Not as described
+     *     * `damaged` - Damaged
+     *     * `other` - Other
+     * @enum {string}
+     */
+    OpenDisputeReasonEnum: "not_received" | "not_as_described" | "damaged" | "other";
+    OpenDisputeRequest: {
+      reason: components["schemas"]["OpenDisputeReasonEnum"];
+      description?: string;
+      media_ids?: string[];
     };
     OpeningStatus: {
       is_open: boolean;
@@ -2088,6 +2494,13 @@ export interface components {
       /** Extra time (min) */
       extra_minutes?: number;
     };
+    /**
+     * @description * `succeeded` - succeeded
+     *     * `failed` - failed
+     *     * `abandoned` - abandoned
+     * @enum {string}
+     */
+    OutcomeEnum: "succeeded" | "failed" | "abandoned";
     PaginatedNotificationList: {
       /**
        * Format: uri
@@ -2186,6 +2599,130 @@ export interface components {
       steps?: components["schemas"]["StepRequest"][];
       options?: components["schemas"]["OptionRequest"][];
     };
+    Payment: {
+      /** Format: uuid */
+      id: string;
+      reference: string;
+      description: string;
+      purpose: string;
+      status: components["schemas"]["PaymentStatusEnum"];
+      role: components["schemas"]["PaymentRoleEnum"];
+      currency: string;
+      items_minor: number;
+      delivery_minor: number;
+      buyer_fee_minor: number;
+      total_minor: number;
+      commission_minor: number | null;
+      seller_net_minor: number | null;
+      refunded_minor: number;
+      delivery_mode: components["schemas"]["DeliveryModeEnum"];
+      carrier: string;
+      tracking_number: string;
+      /** Format: date-time */
+      expected_delivery_at: string | null;
+      /** Format: date-time */
+      delivered_at: string | null;
+      delivery_proof: components["schemas"]["Media"] | null;
+      /** Format: date-time */
+      service_at: string | null;
+      /** Format: date-time */
+      created_at: string;
+      /** Format: date-time */
+      expires_at: string | null;
+      /** Format: date-time */
+      paid_at: string | null;
+      /** Format: date-time */
+      shipped_at: string | null;
+      /** Format: date-time */
+      released_at: string | null;
+      /** Format: date-time */
+      refunded_at: string | null;
+      /** Format: date-time */
+      cancelled_at: string | null;
+      end_reason: string;
+      provider: string;
+      checkout_url: string;
+      buyer: components["schemas"]["Person"];
+      seller: components["schemas"]["Person"];
+      receipt_code: string | null;
+      code_attempts_left: number | null;
+      dispute: components["schemas"]["Dispute"] | null;
+      can: components["schemas"]["Abilities"];
+    };
+    PaymentList: {
+      results: components["schemas"]["Payment"][];
+    };
+    /**
+     * @description * `buyer` - buyer
+     *     * `seller` - seller
+     * @enum {string}
+     */
+    PaymentRoleEnum: "buyer" | "seller";
+    /**
+     * @description * `pending_payment` - Waiting for payment
+     *     * `held` - Paid, money held
+     *     * `shipped` - Shipped
+     *     * `released` - Paid to the seller
+     *     * `refunded` - Refunded
+     *     * `partially_refunded` - Partly refunded
+     *     * `disputed` - In dispute
+     *     * `cancelled` - Cancelled
+     * @enum {string}
+     */
+    PaymentStatusEnum:
+      | "pending_payment"
+      | "held"
+      | "shipped"
+      | "released"
+      | "refunded"
+      | "partially_refunded"
+      | "disputed"
+      | "cancelled";
+    Payout: {
+      /** Format: uuid */
+      id: string;
+      amount_minor: number;
+      currency: string;
+      status: components["schemas"]["PayoutStatusEnum"];
+      destination: string;
+      /** Format: date-time */
+      created_at: string;
+      /** Format: date-time */
+      paid_at: string | null;
+    };
+    /**
+     * @description * `mobile_money` - Mobile Money
+     *     * `stripe` - Stripe account
+     *     * `fake` - Test account
+     * @enum {string}
+     */
+    PayoutMethodKindEnum: "mobile_money" | "stripe" | "fake";
+    PayoutMethodRequest: {
+      currency: string;
+      kind: components["schemas"]["PayoutMethodKindEnum"];
+      operator?: string;
+      number?: string;
+      firstname?: string;
+      lastname?: string;
+      account?: string;
+    };
+    PayoutMethodShown: {
+      currency: string;
+      kind: components["schemas"]["PayoutMethodKindEnum"];
+      display: string;
+    };
+    PayoutRequestRequest: {
+      amount_minor: number;
+      currency: string;
+    };
+    /**
+     * @description * `requested` - Requested
+     *     * `processing` - In progress
+     *     * `paid` - Paid
+     *     * `failed` - Failed
+     * @enum {string}
+     */
+    PayoutStatusEnum: "requested" | "processing" | "paid" | "failed";
     PendingReview: {
       kind: components["schemas"]["TransactionKindEnum"];
       /** Format: uuid */
@@ -2317,14 +2854,21 @@ export interface components {
      */
     PostKindEnum: "photo" | "carousel" | "video" | "before_after";
     PostMedia: {
-      role: components["schemas"]["RoleEnum"];
+      role: components["schemas"]["PostMediaRoleEnum"];
       media: components["schemas"]["Media"];
     };
     PostMediaInputRequest: {
       /** Format: uuid */
       id: string;
-      role?: components["schemas"]["RoleEnum"];
+      role?: components["schemas"]["PostMediaRoleEnum"];
     };
+    /**
+     * @description * `item` - Picture or video
+     *     * `before` - Before
+     *     * `after` - After
+     * @enum {string}
+     */
+    PostMediaRoleEnum: "item" | "before" | "after";
     PostPage: {
       results: components["schemas"]["Post"][];
       next: string | null;
@@ -2378,18 +2922,6 @@ export interface components {
     QuickRepliesRequest: {
       texts: string[];
     };
-    /**
-     * @description * `spam` - Spam or advertising
-     *     * `nudity` - Nudity or sexual content
-     *     * `harassment` - Harassment or insults
-     *     * `hate` - Hate or discrimination
-     *     * `scam` - Scam or fraud
-     *     * `minor` - Danger for a minor
-     *     * `violence` - Violence
-     *     * `other` - Something else
-     * @enum {string}
-     */
-    ReasonEnum: "spam" | "nudity" | "harassment" | "hate" | "scam" | "minor" | "violence" | "other";
     Receipts: {
       /** Format: date-time */
       delivered_up_to: string | null;
@@ -2405,11 +2937,24 @@ export interface components {
       created_at: string;
       is_mine: boolean;
     };
+    /**
+     * @description * `spam` - Spam or advertising
+     *     * `nudity` - Nudity or sexual content
+     *     * `harassment` - Harassment or insults
+     *     * `hate` - Hate or discrimination
+     *     * `scam` - Scam or fraud
+     *     * `minor` - Danger for a minor
+     *     * `violence` - Violence
+     *     * `other` - Something else
+     * @enum {string}
+     */
+    ReportReasonEnum:
+      "spam" | "nudity" | "harassment" | "hate" | "scam" | "minor" | "violence" | "other";
     ReportRequest: {
       target: components["schemas"]["TargetEnum"];
       /** Format: uuid */
       id: string;
-      reason: components["schemas"]["ReasonEnum"];
+      reason: components["schemas"]["ReportReasonEnum"];
       comment?: string;
     };
     Review: {
@@ -2451,13 +2996,6 @@ export interface components {
     ReviewReplyRequest: {
       text: string;
     };
-    /**
-     * @description * `item` - Picture or video
-     *     * `before` - Before
-     *     * `after` - After
-     * @enum {string}
-     */
-    RoleEnum: "item" | "before" | "after";
     /**
      * @description * `client` - Client
      *     * `pro` - Professional
@@ -2565,6 +3103,12 @@ export interface components {
      * @enum {string}
      */
     SharedCardKindEnum: "post" | "product" | "service" | "slot";
+    ShipRequest: {
+      carrier?: string;
+      tracking_number?: string;
+      /** Format: date-time */
+      expected_delivery_at?: string | null;
+    };
     /** @description Public page of a pro (also its preview for herself). */
     Showcase: {
       /** Format: uuid */
@@ -2703,6 +3247,35 @@ export interface components {
       /** Format: uuid */
       id: string;
     };
+    TaxProfile: {
+      legal_name: string;
+      is_business?: boolean;
+      business_name?: string;
+      /** Format: date */
+      birth_date?: string | null;
+      address: string;
+      postal_code?: string;
+      city: string;
+      country: string;
+      readonly tax_id_hint: string;
+      vat_number?: string;
+    };
+    TaxProfileRequest: {
+      legal_name: string;
+      is_business?: boolean;
+      business_name?: string;
+      /** Format: date */
+      birth_date?: string | null;
+      address: string;
+      postal_code?: string;
+      city: string;
+      country: string;
+      tax_id?: string;
+      vat_number?: string;
+    };
+    TestOutcomeRequest: {
+      outcome: components["schemas"]["OutcomeEnum"];
+    };
     /**
      * @description * `normal` - Normal
      *     * `large` - Large
@@ -2770,6 +3343,31 @@ export interface components {
       document: string;
       /** Format: binary */
       selfie: string;
+    };
+    Wallet: {
+      currency: string;
+      pending_minor: number;
+      available_minor: number;
+      in_progress_minor: number;
+      paid_out_minor: number;
+      minimum_minor: number;
+      payout_method: string | null;
+    };
+    WalletLine: {
+      id: number;
+      /** Format: date-time */
+      created_at: string;
+      kind: string;
+      account: components["schemas"]["AccountEnum"];
+      /** @description Positive: in; negative: out. */
+      amount_minor: number;
+      reference: string | null;
+      /** Format: uuid */
+      payment_id: string | null;
+    };
+    WalletOverview: {
+      wallets: components["schemas"]["Wallet"][];
+      payouts: components["schemas"]["Payout"][];
     };
     /**
      * @description * `0` - Monday
@@ -3543,6 +4141,75 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["Ok"];
+        };
+      };
+    };
+  };
+  me_payout_methods_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PayoutMethodShown"][];
+        };
+      };
+    };
+  };
+  me_payout_methods_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PayoutMethodRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PayoutMethodRequest"];
+        "multipart/form-data": components["schemas"]["PayoutMethodRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PayoutMethodShown"];
+        };
+      };
+    };
+  };
+  me_payouts_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PayoutRequestRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PayoutRequestRequest"];
+        "multipart/form-data": components["schemas"]["PayoutRequestRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Payout"];
         };
       };
     };
@@ -4417,6 +5084,90 @@ export interface operations {
       };
     };
   };
+  me_tax_profile_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["TaxProfile"];
+        };
+      };
+    };
+  };
+  me_tax_profile_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["TaxProfileRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["TaxProfileRequest"];
+        "multipart/form-data": components["schemas"]["TaxProfileRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["TaxProfile"];
+        };
+      };
+    };
+  };
+  me_wallet_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["WalletOverview"];
+        };
+      };
+    };
+  };
+  me_wallet_history_list: {
+    parameters: {
+      query: {
+        currency: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["WalletLine"][];
+        };
+      };
+    };
+  };
   media_create: {
     parameters: {
       query?: never;
@@ -4658,6 +5409,341 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["UnreadCount"];
         };
+      };
+    };
+  };
+  payments_list: {
+    parameters: {
+      query?: {
+        role?: "buyer" | "seller";
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PaymentList"];
+        };
+      };
+    };
+  };
+  payments_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        payment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Payment"];
+        };
+      };
+    };
+  };
+  payments_cancel_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        payment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Payment"];
+        };
+      };
+    };
+  };
+  payments_checkout_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        payment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Payment"];
+        };
+      };
+    };
+  };
+  payments_confirm_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        payment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CodeRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["CodeRequest"];
+        "multipart/form-data": components["schemas"]["CodeRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Payment"];
+        };
+      };
+    };
+  };
+  payments_courier_link_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        payment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["CourierLink"];
+        };
+      };
+    };
+  };
+  payments_delivered_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        payment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["DeliveredRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["DeliveredRequest"];
+        "multipart/form-data": components["schemas"]["DeliveredRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Payment"];
+        };
+      };
+    };
+  };
+  payments_dispute_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        payment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["OpenDisputeRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["OpenDisputeRequest"];
+        "multipart/form-data": components["schemas"]["OpenDisputeRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Payment"];
+        };
+      };
+    };
+  };
+  payments_dispute_evidence_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        payment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["EvidenceCreateRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["EvidenceCreateRequest"];
+        "multipart/form-data": components["schemas"]["EvidenceCreateRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Payment"];
+        };
+      };
+    };
+  };
+  payments_new_code_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        payment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Payment"];
+        };
+      };
+    };
+  };
+  payments_ship_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        payment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["ShipRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["ShipRequest"];
+        "multipart/form-data": components["schemas"]["ShipRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Payment"];
+        };
+      };
+    };
+  };
+  payments_test_outcome_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        payment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["TestOutcomeRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["TestOutcomeRequest"];
+        "multipart/form-data": components["schemas"]["TestOutcomeRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Payment"];
+        };
+      };
+    };
+  };
+  payments_courier_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["CourierPayment"];
+        };
+      };
+    };
+  };
+  payments_courier_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CodeRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["CodeRequest"];
+        "multipart/form-data": components["schemas"]["CodeRequest"];
+      };
+    };
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
