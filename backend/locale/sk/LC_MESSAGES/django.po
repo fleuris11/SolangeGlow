@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-12 15:48+0200\n"
+"POT-Creation-Date: 2026-10-13 12:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1138,6 +1138,9 @@ msgstr "Neodoslané (kanál vypnutý)"
 msgid "planned for"
 msgstr "naplánované na"
 
+msgid "sensitive"
+msgstr "citlivé"
+
 msgid "sending"
 msgstr "odoslanie"
 
@@ -1156,8 +1159,629 @@ msgstr "odber upozornení"
 msgid "push subscriptions"
 msgstr "odbery upozornení"
 
+msgid "(hidden once sent)"
+msgstr "(skryté po odoslaní)"
+
+msgid "balance"
+msgstr "zostatok"
+
+msgid "total paid"
+msgstr "zaplatené spolu"
+
+msgid "amounts"
+msgstr "sumy"
+
+msgid "Items"
+msgstr "Položky"
+
+msgid "Delivery"
+msgstr "Doručenie"
+
+msgid "Buyer protection"
+msgstr "Ochrana kupujúcej"
+
+msgid "Total paid"
+msgstr "Zaplatené spolu"
+
+msgid "Commission"
+msgstr "Provízia"
+
+msgid "Refunded"
+msgstr "Vrátené"
+
+msgid "dates"
+msgstr "dátumy"
+
+msgid "Created"
+msgstr "Vytvorené"
+
+msgid "Paid"
+msgstr "Zaplatené"
+
+msgid "Shipped"
+msgstr "Odoslané"
+
+msgid "Disputed"
+msgstr "V spore"
+
+msgid "Paid to the seller"
+msgstr "Vyplatené predávajúcej"
+
+msgid "Cancelled"
+msgstr "Zrušené"
+
+msgid "ledger entries"
+msgstr "účtovné zápisy"
+
+msgid "Cash at the providers"
+msgstr "Hotovosť u poskytovateľov"
+
+msgid "Held (escrow)"
+msgstr "Blokované (úschova)"
+
+msgid "Owed to the sellers"
+msgstr "Dlžné predávajúcim"
+
+msgid "Payouts in progress"
+msgstr "Prebiehajúce výplaty"
+
+msgid "Refunds in progress"
+msgstr "Prebiehajúce vrátenia"
+
+msgid "Commissions"
+msgstr "Provízie"
+
+msgid "Payment fees"
+msgstr "Poplatky za platby"
+
+msgid "Finance"
+msgstr "Financie"
+
+msgid "picture"
+msgstr "fotka"
+
+msgid "Amount to refund"
+msgstr "Suma na vrátenie"
+
+msgid "Note for both parties"
+msgstr "Poznámka pre obe strany"
+
+msgid "payment"
+msgstr "platba"
+
+msgid "dispute room"
+msgstr "miestnosť sporu"
+
+msgid "Read the dispute room"
+msgstr "Čítať miestnosť sporu"
+
+msgid "Decision recorded; both parties are told."
+msgstr "Rozhodnutie uložené; obe strany sú upovedomené."
+
+msgid "Pay the seller"
+msgstr "Vyplatiť predávajúcej"
+
+msgid "Refund everything"
+msgstr "Vrátiť všetko"
+
+msgid "Refund part"
+msgstr "Vrátiť časť"
+
+#, python-format
+msgid "Refund part of %(reference)s"
+msgstr "Vrátiť časť %(reference)s"
+
+msgid "amount"
+msgstr "suma"
+
+msgid "Mark as done at the provider (by hand)"
+msgstr "Označiť ako vykonané u poskytovateľa (ručne)"
+
+#, python-format
+msgid "Refunds closed: %(count)s"
+msgstr "Uzavreté vrátenia: %(count)s"
+
 msgid "Payments"
 msgstr "Platby"
+
+msgid "This payment does not exist or is not yours."
+msgstr "Táto platba neexistuje alebo nie je tvoja."
+
+msgid "This is not possible at this stage of the payment."
+msgstr "V tejto fáze platby to nie je možné."
+
+msgid "The amounts of this payment are not valid."
+msgstr "Sumy tejto platby nie sú platné."
+
+msgid "Payments are not available in this country yet."
+msgstr "Platby v tejto krajine zatiaľ nie sú k dispozícii."
+
+#, python-format
+msgid "This code is not right. Attempts left: %(left)s."
+msgstr "Tento kód nie je správny. Zostávajúce pokusy: %(left)s."
+
+msgid "Too many wrong codes. The client can ask for a new code in her app."
+msgstr "Priveľa chybných kódov. Klientka si môže v aplikácii vyžiadať nový kód."
+
+msgid "No more new code possible: contact the support."
+msgstr "Ďalší nový kód už nie je možný: kontaktuj podporu."
+
+msgid "This delivery link is not valid any more. Ask the seller for a new one."
+msgstr "Tento doručovací odkaz už neplatí. Požiadaj predávajúcu o nový."
+
+msgid "Add a picture as proof of delivery."
+msgstr "Pridaj fotku ako dôkaz doručenia."
+
+msgid "A dispute can be opened once the order is paid and before it is closed."
+msgstr "Spor sa dá otvoriť po zaplatení objednávky a pred jej uzavretím."
+
+msgid "This dispute was already decided."
+msgstr "O tomto spore už bolo rozhodnuté."
+
+#, python-format
+msgid "Choose an amount above 0 and below the total paid (%(total)s)."
+msgstr "Vyber sumu vyššiu ako 0 a nižšiu ako celková suma (%(total)s)."
+
+#, python-format
+msgid "The minimum payout is %(minimum)s."
+msgstr "Minimálna výplata je %(minimum)s."
+
+#, python-format
+msgid "This is more than your available balance (%(available)s)."
+msgstr "To je viac ako tvoj dostupný zostatok (%(available)s)."
+
+msgid "Add where you want to receive your money first."
+msgstr "Najprv zadaj, kam chceš dostať peniaze."
+
+msgid "Your identity must be checked before you can receive money."
+msgstr "Pred prijatím peňazí musí byť tvoja totožnosť overená."
+
+msgid "Cash at the payment provider"
+msgstr "Hotovosť u poskytovateľa platieb"
+
+msgid "Seller — pending"
+msgstr "Predávajúca — čaká"
+
+msgid "Buyer protection — pending"
+msgstr "Ochrana kupujúcej — čaká"
+
+msgid "Seller — available"
+msgstr "Predávajúca — k dispozícii"
+
+msgid "Revenue — commissions"
+msgstr "Výnosy — provízie"
+
+msgid "Revenue — buyer protection"
+msgstr "Výnosy — ochrana kupujúcej"
+
+msgid "Expense — payment fees"
+msgstr "Náklady — poplatky za platby"
+
+msgid "provider"
+msgstr "poskytovateľ"
+
+msgid "ledger account"
+msgstr "účet hlavnej knihy"
+
+msgid "ledger accounts"
+msgstr "účty hlavnej knihy"
+
+msgid "unique key"
+msgstr "jedinečný kľúč"
+
+msgid "ledger entry"
+msgstr "účtovný zápis"
+
+msgid "entry"
+msgstr "zápis"
+
+msgid "debit"
+msgstr "debet"
+
+msgid "credit"
+msgstr "kredit"
+
+msgid "ledger line"
+msgstr "riadok zápisu"
+
+msgid "ledger lines"
+msgstr "riadky zápisov"
+
+msgid "Order"
+msgstr "Objednávka"
+
+msgid "Booking deposit"
+msgstr "Záloha na rezerváciu"
+
+msgid "Training"
+msgstr "Školenie"
+
+msgid "Other"
+msgstr "Iné"
+
+msgid "category"
+msgstr "kategória"
+
+msgid "seller"
+msgstr "predávajúca"
+
+msgid "for"
+msgstr "pre"
+
+msgid "Needed for a fixed amount, a minimum or a maximum."
+msgstr "Potrebné pre pevnú sumu, minimum alebo maximum."
+
+msgid "rate (hundredths of a percent)"
+msgstr "sadzba (stotiny percenta)"
+
+msgid "300 = 3 %."
+msgstr "300 = 3 %."
+
+msgid "fixed amount"
+msgstr "pevná suma"
+
+msgid "minimum"
+msgstr "minimum"
+
+msgid "maximum"
+msgstr "maximum"
+
+msgid "from"
+msgstr "prvý deň"
+
+msgid "priority"
+msgstr "priorita"
+
+msgid "pricing rule"
+msgstr "pravidlo poplatkov"
+
+msgid "pricing rules"
+msgstr "pravidlá poplatkov"
+
+msgid "Waiting for payment"
+msgstr "Čaká na platbu"
+
+msgid "Paid, money held"
+msgstr "Zaplatené, peniaze blokované"
+
+msgid "Partly refunded"
+msgstr "Čiastočne vrátené"
+
+msgid "In dispute"
+msgstr "V spore"
+
+msgid "Picked up at the seller"
+msgstr "Vyzdvihnutie u predávajúcej"
+
+msgid "Delivered by the seller"
+msgstr "Doručí predávajúca"
+
+msgid "Delivered by a partner"
+msgstr "Doručí partner"
+
+msgid "Service (no delivery)"
+msgstr "Služba (bez doručenia)"
+
+msgid "reference"
+msgstr "referencia"
+
+msgid "client"
+msgstr "klientka"
+
+msgid "items"
+msgstr "položky"
+
+msgid "delivery"
+msgstr "doručenie"
+
+msgid "buyer protection"
+msgstr "ochrana kupujúcej"
+
+msgid "commission"
+msgstr "provízia"
+
+msgid "refunded"
+msgstr "vrátené"
+
+msgid "provider reference"
+msgstr "referencia poskytovateľa"
+
+msgid "payment page"
+msgstr "platobná stránka"
+
+msgid "to pay before"
+msgstr "zaplatiť do"
+
+msgid "carrier"
+msgstr "prepravca"
+
+msgid "tracking number"
+msgstr "číslo zásielky"
+
+msgid "expected delivery"
+msgstr "očakávané doručenie"
+
+msgid "delivered at"
+msgstr "doručené"
+
+msgid "appointment"
+msgstr "termín"
+
+msgid "paid at"
+msgstr "zaplatené"
+
+msgid "shipped at"
+msgstr "odoslané"
+
+msgid "disputed at"
+msgstr "napadnuté"
+
+msgid "released at"
+msgstr "vyplatené"
+
+msgid "refunded at"
+msgstr "vrátené"
+
+msgid "cancelled at"
+msgstr "zrušené"
+
+msgid "code attempts"
+msgstr "pokusy o kód"
+
+msgid "new codes"
+msgstr "nové kódy"
+
+msgid "payments"
+msgstr "platby"
+
+msgid "Can decide disputes"
+msgstr "Môže rozhodovať spory"
+
+msgid "In progress"
+msgstr "Prebieha"
+
+msgid "To do by hand at the provider"
+msgstr "Vykonať ručne u poskytovateľa"
+
+msgid "Done"
+msgstr "Hotovo"
+
+msgid "completed at"
+msgstr "dokončené"
+
+msgid "refund"
+msgstr "vrátenie"
+
+msgid "refunds"
+msgstr "vrátenia"
+
+msgid "Mobile Money"
+msgstr "Mobile Money"
+
+msgid "Stripe account"
+msgstr "Účet Stripe"
+
+msgid "Test account"
+msgstr "Testovací účet"
+
+msgid "shown as"
+msgstr "zobrazené ako"
+
+msgid "payout method"
+msgstr "spôsob výplaty"
+
+msgid "payout methods"
+msgstr "spôsoby výplaty"
+
+msgid "Requested"
+msgstr "Vyžiadané"
+
+msgid "payout"
+msgstr "výplata"
+
+msgid "payouts"
+msgstr "výplaty"
+
+msgid "Processed"
+msgstr "Spracované"
+
+msgid "Ignored"
+msgstr "Ignorované"
+
+msgid "event id"
+msgstr "identifikátor udalosti"
+
+msgid "provider event"
+msgstr "udalosť poskytovateľa"
+
+msgid "provider events"
+msgstr "udalosti poskytovateľov"
+
+msgid "Not received"
+msgstr "Neprijaté"
+
+msgid "Not as described"
+msgstr "Nezodpovedá popisu"
+
+msgid "Damaged"
+msgstr "Poškodené"
+
+msgid "No code and no proof of delivery"
+msgstr "Bez kódu a bez dôkazu doručenia"
+
+msgid "Open"
+msgstr "Otvorený"
+
+msgid "Decided"
+msgstr "Rozhodnutý"
+
+msgid "opened by"
+msgstr "otvoril(a)"
+
+msgid "answer before"
+msgstr "odpovedať do"
+
+msgid "answer time over"
+msgstr "čas na odpoveď uplynul"
+
+msgid "Shown first in the queue."
+msgstr "Zobrazí sa v rade ako prvý."
+
+msgid "decision"
+msgstr "rozhodnutie"
+
+msgid "note for both parties"
+msgstr "poznámka pre obe strany"
+
+msgid "dispute"
+msgstr "spor"
+
+msgid "disputes"
+msgstr "spory"
+
+msgid "evidence"
+msgstr "dôkaz"
+
+msgid "legal name"
+msgstr "úradné meno"
+
+msgid "registered business"
+msgstr "registrovaná firma"
+
+msgid "business name"
+msgstr "obchodný názov"
+
+msgid "birth date"
+msgstr "dátum narodenia"
+
+msgid "postal code"
+msgstr "PSČ"
+
+msgid "country of residence"
+msgstr "krajina pobytu"
+
+msgid "tax number"
+msgstr "daňové číslo"
+
+msgid "VAT number"
+msgstr "IČ DPH"
+
+msgid "tax data of a seller"
+msgstr "daňové údaje predávajúcej"
+
+msgid "tax data of the sellers"
+msgstr "daňové údaje predávajúcich"
+
+msgid "to"
+msgstr "posledný deň"
+
+msgid "checked"
+msgstr "skontrolované"
+
+msgid "differences"
+msgstr "rozdiely"
+
+msgid "reconciliation"
+msgstr "zosúladenie"
+
+msgid "reconciliations"
+msgstr "zosúladenia"
+
+msgid "At the provider, not in the ledger"
+msgstr "U poskytovateľa, nie v hlavnej knihe"
+
+msgid "In the ledger, not at the provider"
+msgstr "V hlavnej knihe, nie u poskytovateľa"
+
+msgid "Different amounts"
+msgstr "Rozdielne sumy"
+
+msgid "run"
+msgstr "kontrola"
+
+msgid "in the ledger"
+msgstr "v hlavnej knihe"
+
+msgid "at the provider"
+msgstr "u poskytovateľa"
+
+msgid "difference"
+msgstr "rozdiel"
+
+#, python-format
+msgid "Dispute %(reference)s"
+msgstr "Spor %(reference)s"
+
+#, python-format
+msgid "Dispute opened: %(reason)s. The money is frozen. Each side adds its evidence; the Solange Glow team decides."
+msgstr "Spor otvorený: %(reason)s. Peniaze sú zmrazené. Každá strana pridá dôkazy; rozhodne tím Solange Glow."
+
+#, python-format
+msgid "Decision: %(decision)s."
+msgstr "Rozhodnutie: %(decision)s."
+
+#, python-format
+msgid "Too many disputes lost (%(count)s in %(days)s days)."
+msgstr "Priveľa prehratých sporov (%(count)s za %(days)s dní)."
+
+msgid "The ledger is not balanced: check the last entries."
+msgstr "Hlavná kniha nie je vyrovnaná: skontroluj posledné zápisy."
+
+#, python-format
+msgid "%(counter)s open dispute"
+msgid_plural "%(counter)s open disputes"
+msgstr[0] "%(counter)s otvorený spor"
+msgstr[1] "%(counter)s otvorené spory"
+msgstr[2] "%(counter)s otvoreného sporu"
+msgstr[3] "%(counter)s otvorených sporov"
+
+#, python-format
+msgid "%(counter)s refund to do by hand"
+msgid_plural "%(counter)s refunds to do by hand"
+msgstr[0] "%(counter)s vrátenie na ručné vykonanie"
+msgstr[1] "%(counter)s vrátenia na ručné vykonanie"
+msgstr[2] "%(counter)s vrátenia na ručné vykonanie"
+msgstr[3] "%(counter)s vrátení na ručné vykonanie"
+
+msgid "No money has moved yet."
+msgstr "Zatiaľ sa nepohli žiadne peniaze."
+
+msgid "Exports (CSV)"
+msgstr "Exporty (CSV)"
+
+msgid "Ledger"
+msgstr "Hlavná kniha"
+
+msgid "Payouts"
+msgstr "Výplaty"
+
+#, python-format
+msgid "Sellers' income %(year)s (DAC7)"
+msgstr "Príjmy predávajúcich %(year)s (DAC7)"
+
+msgid "Last reconciliations"
+msgstr "Posledné zosúladenia"
+
+#, python-format
+msgid "%(counter)s difference"
+msgid_plural "%(counter)s differences"
+msgstr[0] "%(counter)s rozdiel"
+msgstr[1] "%(counter)s rozdiely"
+msgstr[2] "%(counter)s rozdielu"
+msgstr[3] "%(counter)s rozdielov"
+
+msgid "None yet."
+msgstr "Zatiaľ žiadne."
+
+#, python-format
+msgid "Part of the seller's amount (%(seller_amount)s) goes back to the client, in the smallest unit of %(currency)s. The buyer protection fee is kept."
+msgstr "Časť sumy predávajúcej (%(seller_amount)s) sa vráti klientke, v najmenšej jednotke %(currency)s. Poplatok za ochranu kupujúcej zostáva."
+
+msgid "Refund this amount"
+msgstr "Vrátiť túto sumu"
+
+msgid "Back"
+msgstr "Späť"
 
 msgid "latitude"
 msgstr "zemepisná šírka"
@@ -1176,9 +1800,6 @@ msgstr "Stav"
 
 msgid "Media"
 msgstr "Médiá"
-
-msgid "business name"
-msgstr "obchodný názov"
 
 msgid "short link"
 msgstr "krátky odkaz"
@@ -1529,14 +2150,8 @@ msgstr "Od"
 msgid "On quote"
 msgstr "Na dopyt"
 
-msgid "category"
-msgstr "kategória"
-
 msgid "price"
 msgstr "cena"
-
-msgid "amount"
-msgstr "suma"
 
 msgid "In the smallest unit of the currency. Empty for a quote."
 msgstr "V najmenšej jednotke meny. Prázdne pri cene na dopyt."
@@ -1595,9 +2210,6 @@ msgstr "možnosť"
 msgid "options"
 msgstr "možnosti"
 
-msgid "picture"
-msgstr "fotka"
-
 msgid "service picture"
 msgstr "fotka služby"
 
@@ -1636,12 +2248,6 @@ msgstr "zatvára o"
 
 msgid "opening hours"
 msgstr "otváracie hodiny"
-
-msgid "from"
-msgstr "prvý deň"
-
-msgid "to"
-msgstr "posledný deň"
 
 msgid "closure"
 msgstr "zatvorenie"
@@ -1873,9 +2479,6 @@ msgstr "uložené príspevky"
 msgid "Copied link"
 msgstr "Skopírovaný odkaz"
 
-msgid "Other"
-msgstr "Iné"
-
 msgid "network"
 msgstr "sieť"
 
@@ -1933,9 +2536,6 @@ msgstr "príbeh"
 msgid "stories"
 msgstr "príbehy"
 
-msgid "Order"
-msgstr "Objednávka"
-
 msgid "for a"
 msgstr "pre"
 
@@ -1956,9 +2556,6 @@ msgstr "hodnotenie"
 
 msgid "reviews"
 msgstr "hodnotenia"
-
-msgid "client"
-msgstr "klientka"
 
 msgid "did not come"
 msgstr "neprišla"
@@ -2010,6 +2607,30 @@ msgstr "Sankcie"
 
 msgid "Reports"
 msgstr "Nahlásenia"
+
+msgid "Finance dashboard"
+msgstr "Finančný prehľad"
+
+msgid "Disputes"
+msgstr "Spory"
+
+msgid "Refunds"
+msgstr "Vrátenia"
+
+msgid "Accounts and balances"
+msgstr "Účty a zostatky"
+
+msgid "Commissions and fees"
+msgstr "Provízie a poplatky"
+
+msgid "Tax data (DAC7)"
+msgstr "Daňové údaje (DAC7)"
+
+msgid "Reconciliations"
+msgstr "Zosúladenia"
+
+msgid "Provider events"
+msgstr "Udalosti poskytovateľov"
 
 msgid "Reported conversations"
 msgstr "Nahlásené rozhovory"

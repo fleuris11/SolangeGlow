@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-12 15:48+0200\n"
+"POT-Creation-Date: 2026-10-13 12:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1134,6 +1134,9 @@ msgstr ""
 msgid "planned for"
 msgstr ""
 
+msgid "sensitive"
+msgstr ""
+
 msgid "sending"
 msgstr ""
 
@@ -1152,7 +1155,622 @@ msgstr ""
 msgid "push subscriptions"
 msgstr ""
 
+msgid "(hidden once sent)"
+msgstr ""
+
+msgid "balance"
+msgstr ""
+
+msgid "total paid"
+msgstr ""
+
+msgid "amounts"
+msgstr ""
+
+msgid "Items"
+msgstr ""
+
+msgid "Delivery"
+msgstr ""
+
+msgid "Buyer protection"
+msgstr ""
+
+msgid "Total paid"
+msgstr ""
+
+msgid "Commission"
+msgstr ""
+
+msgid "Refunded"
+msgstr ""
+
+msgid "dates"
+msgstr ""
+
+msgid "Created"
+msgstr ""
+
+msgid "Paid"
+msgstr ""
+
+msgid "Shipped"
+msgstr ""
+
+msgid "Disputed"
+msgstr ""
+
+msgid "Paid to the seller"
+msgstr ""
+
+msgid "Cancelled"
+msgstr ""
+
+msgid "ledger entries"
+msgstr ""
+
+msgid "Cash at the providers"
+msgstr ""
+
+msgid "Held (escrow)"
+msgstr ""
+
+msgid "Owed to the sellers"
+msgstr ""
+
+msgid "Payouts in progress"
+msgstr ""
+
+msgid "Refunds in progress"
+msgstr ""
+
+msgid "Commissions"
+msgstr ""
+
+msgid "Payment fees"
+msgstr ""
+
+msgid "Finance"
+msgstr ""
+
+msgid "picture"
+msgstr ""
+
+msgid "Amount to refund"
+msgstr ""
+
+msgid "Note for both parties"
+msgstr ""
+
+msgid "payment"
+msgstr ""
+
+msgid "dispute room"
+msgstr ""
+
+msgid "Read the dispute room"
+msgstr ""
+
+msgid "Decision recorded; both parties are told."
+msgstr ""
+
+msgid "Pay the seller"
+msgstr ""
+
+msgid "Refund everything"
+msgstr ""
+
+msgid "Refund part"
+msgstr ""
+
+#, python-format
+msgid "Refund part of %(reference)s"
+msgstr ""
+
+msgid "amount"
+msgstr ""
+
+msgid "Mark as done at the provider (by hand)"
+msgstr ""
+
+#, python-format
+msgid "Refunds closed: %(count)s"
+msgstr ""
+
 msgid "Payments"
+msgstr ""
+
+msgid "This payment does not exist or is not yours."
+msgstr ""
+
+msgid "This is not possible at this stage of the payment."
+msgstr ""
+
+msgid "The amounts of this payment are not valid."
+msgstr ""
+
+msgid "Payments are not available in this country yet."
+msgstr ""
+
+#, python-format
+msgid "This code is not right. Attempts left: %(left)s."
+msgstr ""
+
+msgid "Too many wrong codes. The client can ask for a new code in her app."
+msgstr ""
+
+msgid "No more new code possible: contact the support."
+msgstr ""
+
+msgid "This delivery link is not valid any more. Ask the seller for a new one."
+msgstr ""
+
+msgid "Add a picture as proof of delivery."
+msgstr ""
+
+msgid "A dispute can be opened once the order is paid and before it is closed."
+msgstr ""
+
+msgid "This dispute was already decided."
+msgstr ""
+
+#, python-format
+msgid "Choose an amount above 0 and below the total paid (%(total)s)."
+msgstr ""
+
+#, python-format
+msgid "The minimum payout is %(minimum)s."
+msgstr ""
+
+#, python-format
+msgid "This is more than your available balance (%(available)s)."
+msgstr ""
+
+msgid "Add where you want to receive your money first."
+msgstr ""
+
+msgid "Your identity must be checked before you can receive money."
+msgstr ""
+
+msgid "Cash at the payment provider"
+msgstr ""
+
+msgid "Seller — pending"
+msgstr ""
+
+msgid "Buyer protection — pending"
+msgstr ""
+
+msgid "Seller — available"
+msgstr ""
+
+msgid "Revenue — commissions"
+msgstr ""
+
+msgid "Revenue — buyer protection"
+msgstr ""
+
+msgid "Expense — payment fees"
+msgstr ""
+
+msgid "provider"
+msgstr ""
+
+msgid "ledger account"
+msgstr ""
+
+msgid "ledger accounts"
+msgstr ""
+
+msgid "unique key"
+msgstr ""
+
+msgid "ledger entry"
+msgstr ""
+
+msgid "entry"
+msgstr ""
+
+msgid "debit"
+msgstr ""
+
+msgid "credit"
+msgstr ""
+
+msgid "ledger line"
+msgstr ""
+
+msgid "ledger lines"
+msgstr ""
+
+msgid "Order"
+msgstr ""
+
+msgid "Booking deposit"
+msgstr ""
+
+msgid "Training"
+msgstr ""
+
+msgid "Other"
+msgstr ""
+
+msgid "category"
+msgstr ""
+
+msgid "seller"
+msgstr ""
+
+msgid "for"
+msgstr ""
+
+msgid "Needed for a fixed amount, a minimum or a maximum."
+msgstr ""
+
+msgid "rate (hundredths of a percent)"
+msgstr ""
+
+msgid "300 = 3 %."
+msgstr ""
+
+msgid "fixed amount"
+msgstr ""
+
+msgid "minimum"
+msgstr ""
+
+msgid "maximum"
+msgstr ""
+
+msgid "from"
+msgstr ""
+
+msgid "priority"
+msgstr ""
+
+msgid "pricing rule"
+msgstr ""
+
+msgid "pricing rules"
+msgstr ""
+
+msgid "Waiting for payment"
+msgstr ""
+
+msgid "Paid, money held"
+msgstr ""
+
+msgid "Partly refunded"
+msgstr ""
+
+msgid "In dispute"
+msgstr ""
+
+msgid "Picked up at the seller"
+msgstr ""
+
+msgid "Delivered by the seller"
+msgstr ""
+
+msgid "Delivered by a partner"
+msgstr ""
+
+msgid "Service (no delivery)"
+msgstr ""
+
+msgid "reference"
+msgstr ""
+
+msgid "client"
+msgstr ""
+
+msgid "items"
+msgstr ""
+
+msgid "delivery"
+msgstr ""
+
+msgid "buyer protection"
+msgstr ""
+
+msgid "commission"
+msgstr ""
+
+msgid "refunded"
+msgstr ""
+
+msgid "provider reference"
+msgstr ""
+
+msgid "payment page"
+msgstr ""
+
+msgid "to pay before"
+msgstr ""
+
+msgid "carrier"
+msgstr ""
+
+msgid "tracking number"
+msgstr ""
+
+msgid "expected delivery"
+msgstr ""
+
+msgid "delivered at"
+msgstr ""
+
+msgid "appointment"
+msgstr ""
+
+msgid "paid at"
+msgstr ""
+
+msgid "shipped at"
+msgstr ""
+
+msgid "disputed at"
+msgstr ""
+
+msgid "released at"
+msgstr ""
+
+msgid "refunded at"
+msgstr ""
+
+msgid "cancelled at"
+msgstr ""
+
+msgid "code attempts"
+msgstr ""
+
+msgid "new codes"
+msgstr ""
+
+msgid "payments"
+msgstr ""
+
+msgid "Can decide disputes"
+msgstr ""
+
+msgid "In progress"
+msgstr ""
+
+msgid "To do by hand at the provider"
+msgstr ""
+
+msgid "Done"
+msgstr ""
+
+msgid "completed at"
+msgstr ""
+
+msgid "refund"
+msgstr ""
+
+msgid "refunds"
+msgstr ""
+
+msgid "Mobile Money"
+msgstr ""
+
+msgid "Stripe account"
+msgstr ""
+
+msgid "Test account"
+msgstr ""
+
+msgid "shown as"
+msgstr ""
+
+msgid "payout method"
+msgstr ""
+
+msgid "payout methods"
+msgstr ""
+
+msgid "Requested"
+msgstr ""
+
+msgid "payout"
+msgstr ""
+
+msgid "payouts"
+msgstr ""
+
+msgid "Processed"
+msgstr ""
+
+msgid "Ignored"
+msgstr ""
+
+msgid "event id"
+msgstr ""
+
+msgid "provider event"
+msgstr ""
+
+msgid "provider events"
+msgstr ""
+
+msgid "Not received"
+msgstr ""
+
+msgid "Not as described"
+msgstr ""
+
+msgid "Damaged"
+msgstr ""
+
+msgid "No code and no proof of delivery"
+msgstr ""
+
+msgid "Open"
+msgstr ""
+
+msgid "Decided"
+msgstr ""
+
+msgid "opened by"
+msgstr ""
+
+msgid "answer before"
+msgstr ""
+
+msgid "answer time over"
+msgstr ""
+
+msgid "Shown first in the queue."
+msgstr ""
+
+msgid "decision"
+msgstr ""
+
+msgid "note for both parties"
+msgstr ""
+
+msgid "dispute"
+msgstr ""
+
+msgid "disputes"
+msgstr ""
+
+msgid "evidence"
+msgstr ""
+
+msgid "legal name"
+msgstr ""
+
+msgid "registered business"
+msgstr ""
+
+msgid "business name"
+msgstr ""
+
+msgid "birth date"
+msgstr ""
+
+msgid "postal code"
+msgstr ""
+
+msgid "country of residence"
+msgstr ""
+
+msgid "tax number"
+msgstr ""
+
+msgid "VAT number"
+msgstr ""
+
+msgid "tax data of a seller"
+msgstr ""
+
+msgid "tax data of the sellers"
+msgstr ""
+
+msgid "to"
+msgstr ""
+
+msgid "checked"
+msgstr ""
+
+msgid "differences"
+msgstr ""
+
+msgid "reconciliation"
+msgstr ""
+
+msgid "reconciliations"
+msgstr ""
+
+msgid "At the provider, not in the ledger"
+msgstr ""
+
+msgid "In the ledger, not at the provider"
+msgstr ""
+
+msgid "Different amounts"
+msgstr ""
+
+msgid "run"
+msgstr ""
+
+msgid "in the ledger"
+msgstr ""
+
+msgid "at the provider"
+msgstr ""
+
+msgid "difference"
+msgstr ""
+
+#, python-format
+msgid "Dispute %(reference)s"
+msgstr ""
+
+#, python-format
+msgid "Dispute opened: %(reason)s. The money is frozen. Each side adds its evidence; the Solange Glow team decides."
+msgstr ""
+
+#, python-format
+msgid "Decision: %(decision)s."
+msgstr ""
+
+#, python-format
+msgid "Too many disputes lost (%(count)s in %(days)s days)."
+msgstr ""
+
+msgid "The ledger is not balanced: check the last entries."
+msgstr ""
+
+#, python-format
+msgid "%(counter)s open dispute"
+msgid_plural "%(counter)s open disputes"
+msgstr[0] ""
+msgstr[1] ""
+
+#, python-format
+msgid "%(counter)s refund to do by hand"
+msgid_plural "%(counter)s refunds to do by hand"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "No money has moved yet."
+msgstr ""
+
+msgid "Exports (CSV)"
+msgstr ""
+
+msgid "Ledger"
+msgstr ""
+
+msgid "Payouts"
+msgstr ""
+
+#, python-format
+msgid "Sellers' income %(year)s (DAC7)"
+msgstr ""
+
+msgid "Last reconciliations"
+msgstr ""
+
+#, python-format
+msgid "%(counter)s difference"
+msgid_plural "%(counter)s differences"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "None yet."
+msgstr ""
+
+#, python-format
+msgid "Part of the seller's amount (%(seller_amount)s) goes back to the client, in the smallest unit of %(currency)s. The buyer protection fee is kept."
+msgstr ""
+
+msgid "Refund this amount"
+msgstr ""
+
+msgid "Back"
 msgstr ""
 
 msgid "latitude"
@@ -1171,9 +1789,6 @@ msgid "Status"
 msgstr ""
 
 msgid "Media"
-msgstr ""
-
-msgid "business name"
 msgstr ""
 
 msgid "short link"
@@ -1521,13 +2136,7 @@ msgstr ""
 msgid "On quote"
 msgstr ""
 
-msgid "category"
-msgstr ""
-
 msgid "price"
-msgstr ""
-
-msgid "amount"
 msgstr ""
 
 msgid "In the smallest unit of the currency. Empty for a quote."
@@ -1587,9 +2196,6 @@ msgstr ""
 msgid "options"
 msgstr ""
 
-msgid "picture"
-msgstr ""
-
 msgid "service picture"
 msgstr ""
 
@@ -1627,12 +2233,6 @@ msgid "closes at"
 msgstr ""
 
 msgid "opening hours"
-msgstr ""
-
-msgid "from"
-msgstr ""
-
-msgid "to"
 msgstr ""
 
 msgid "closure"
@@ -1863,9 +2463,6 @@ msgstr ""
 msgid "Copied link"
 msgstr ""
 
-msgid "Other"
-msgstr ""
-
 msgid "network"
 msgstr ""
 
@@ -1923,9 +2520,6 @@ msgstr ""
 msgid "stories"
 msgstr ""
 
-msgid "Order"
-msgstr ""
-
 msgid "for a"
 msgstr ""
 
@@ -1945,9 +2539,6 @@ msgid "review"
 msgstr ""
 
 msgid "reviews"
-msgstr ""
-
-msgid "client"
 msgstr ""
 
 msgid "did not come"
@@ -1999,6 +2590,30 @@ msgid "Sanctions"
 msgstr ""
 
 msgid "Reports"
+msgstr ""
+
+msgid "Finance dashboard"
+msgstr ""
+
+msgid "Disputes"
+msgstr ""
+
+msgid "Refunds"
+msgstr ""
+
+msgid "Accounts and balances"
+msgstr ""
+
+msgid "Commissions and fees"
+msgstr ""
+
+msgid "Tax data (DAC7)"
+msgstr ""
+
+msgid "Reconciliations"
+msgstr ""
+
+msgid "Provider events"
 msgstr ""
 
 msgid "Reported conversations"

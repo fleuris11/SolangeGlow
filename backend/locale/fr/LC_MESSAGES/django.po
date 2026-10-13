@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-12 15:48+0200\n"
+"POT-Creation-Date: 2026-10-13 12:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1134,6 +1134,9 @@ msgstr "Non envoyé (canal coupé)"
 msgid "planned for"
 msgstr "prévu pour"
 
+msgid "sensitive"
+msgstr "sensible"
+
 msgid "sending"
 msgstr "envoi"
 
@@ -1152,8 +1155,623 @@ msgstr "abonnement aux alertes"
 msgid "push subscriptions"
 msgstr "abonnements aux alertes"
 
+msgid "(hidden once sent)"
+msgstr "(masqué après l'envoi)"
+
+msgid "balance"
+msgstr "solde"
+
+msgid "total paid"
+msgstr "total payé"
+
+msgid "amounts"
+msgstr "montants"
+
+msgid "Items"
+msgstr "Articles"
+
+msgid "Delivery"
+msgstr "Livraison"
+
+msgid "Buyer protection"
+msgstr "Protection acheteur"
+
+msgid "Total paid"
+msgstr "Total payé"
+
+msgid "Commission"
+msgstr "Commission"
+
+msgid "Refunded"
+msgstr "Remboursé"
+
+msgid "dates"
+msgstr "dates"
+
+msgid "Created"
+msgstr "Créé"
+
+msgid "Paid"
+msgstr "Payé"
+
+msgid "Shipped"
+msgstr "Expédié"
+
+msgid "Disputed"
+msgstr "En litige"
+
+msgid "Paid to the seller"
+msgstr "Versé à la vendeuse"
+
+msgid "Cancelled"
+msgstr "Annulé"
+
+msgid "ledger entries"
+msgstr "écritures du grand livre"
+
+msgid "Cash at the providers"
+msgstr "Trésorerie chez les prestataires"
+
+msgid "Held (escrow)"
+msgstr "Bloqué (séquestre)"
+
+msgid "Owed to the sellers"
+msgstr "Dû aux vendeuses"
+
+msgid "Payouts in progress"
+msgstr "Versements en cours"
+
+msgid "Refunds in progress"
+msgstr "Remboursements en cours"
+
+msgid "Commissions"
+msgstr "Commissions"
+
+msgid "Payment fees"
+msgstr "Frais de paiement"
+
+msgid "Finance"
+msgstr "Finance"
+
+msgid "picture"
+msgstr "photo"
+
+msgid "Amount to refund"
+msgstr "Montant à rembourser"
+
+msgid "Note for both parties"
+msgstr "Note pour les deux parties"
+
+msgid "payment"
+msgstr "paiement"
+
+msgid "dispute room"
+msgstr "salle de litige"
+
+msgid "Read the dispute room"
+msgstr "Lire la salle de litige"
+
+msgid "Decision recorded; both parties are told."
+msgstr "Décision enregistrée ; les deux parties sont prévenues."
+
+msgid "Pay the seller"
+msgstr "Verser à la vendeuse"
+
+msgid "Refund everything"
+msgstr "Rembourser tout"
+
+msgid "Refund part"
+msgstr "Rembourser en partie"
+
+#, python-format
+msgid "Refund part of %(reference)s"
+msgstr "Rembourser en partie %(reference)s"
+
+msgid "amount"
+msgstr "montant"
+
+msgid "Mark as done at the provider (by hand)"
+msgstr "Marquer comme fait chez le prestataire (à la main)"
+
+#, python-format
+msgid "Refunds closed: %(count)s"
+msgstr "Remboursements clos : %(count)s"
+
 msgid "Payments"
 msgstr "Paiements"
+
+msgid "This payment does not exist or is not yours."
+msgstr "Ce paiement n'existe pas ou n'est pas le tien."
+
+msgid "This is not possible at this stage of the payment."
+msgstr "Ce n'est pas possible à cette étape du paiement."
+
+msgid "The amounts of this payment are not valid."
+msgstr "Les montants de ce paiement ne sont pas valides."
+
+msgid "Payments are not available in this country yet."
+msgstr "Le paiement n'est pas encore disponible dans ce pays."
+
+#, python-format
+msgid "This code is not right. Attempts left: %(left)s."
+msgstr "Ce code n'est pas le bon. Essais restants : %(left)s."
+
+msgid "Too many wrong codes. The client can ask for a new code in her app."
+msgstr "Trop de codes faux. La cliente peut demander un nouveau code dans son appli."
+
+msgid "No more new code possible: contact the support."
+msgstr "Plus de nouveau code possible : contacte l'assistance."
+
+msgid "This delivery link is not valid any more. Ask the seller for a new one."
+msgstr "Ce lien de livraison n'est plus valable. Demande-en un nouveau à la vendeuse."
+
+msgid "Add a picture as proof of delivery."
+msgstr "Ajoute une photo comme preuve de livraison."
+
+msgid "A dispute can be opened once the order is paid and before it is closed."
+msgstr "Un litige s'ouvre une fois la commande payée et avant sa clôture."
+
+msgid "This dispute was already decided."
+msgstr "Ce litige a déjà été tranché."
+
+#, python-format
+msgid "Choose an amount above 0 and below the total paid (%(total)s)."
+msgstr "Choisis un montant supérieur à 0 et inférieur au total (%(total)s)."
+
+#, python-format
+msgid "The minimum payout is %(minimum)s."
+msgstr "Le versement minimum est de %(minimum)s."
+
+#, python-format
+msgid "This is more than your available balance (%(available)s)."
+msgstr "C'est plus que ton solde disponible (%(available)s)."
+
+msgid "Add where you want to receive your money first."
+msgstr "Indique d'abord où tu veux recevoir ton argent."
+
+msgid "Your identity must be checked before you can receive money."
+msgstr "Ton identité doit être vérifiée avant de recevoir de l'argent."
+
+msgid "Cash at the payment provider"
+msgstr "Trésorerie chez le prestataire"
+
+msgid "Seller — pending"
+msgstr "Vendeuse — en attente"
+
+msgid "Buyer protection — pending"
+msgstr "Protection acheteur — en attente"
+
+msgid "Seller — available"
+msgstr "Vendeuse — disponible"
+
+msgid "Revenue — commissions"
+msgstr "Revenus — commissions"
+
+msgid "Revenue — buyer protection"
+msgstr "Revenus — protection acheteur"
+
+msgid "Expense — payment fees"
+msgstr "Charges — frais de paiement"
+
+msgid "provider"
+msgstr "prestataire"
+
+msgid "ledger account"
+msgstr "compte du grand livre"
+
+msgid "ledger accounts"
+msgstr "comptes du grand livre"
+
+msgid "unique key"
+msgstr "clé unique"
+
+msgid "ledger entry"
+msgstr "écriture"
+
+msgid "entry"
+msgstr "écriture"
+
+msgid "debit"
+msgstr "débit"
+
+msgid "credit"
+msgstr "crédit"
+
+msgid "ledger line"
+msgstr "ligne d'écriture"
+
+msgid "ledger lines"
+msgstr "lignes d'écriture"
+
+msgid "Order"
+msgstr "Commande"
+
+msgid "Booking deposit"
+msgstr "Acompte de rendez-vous"
+
+msgid "Training"
+msgstr "Formation"
+
+msgid "Other"
+msgstr "Autre"
+
+msgid "category"
+msgstr "catégorie"
+
+msgid "seller"
+msgstr "vendeuse"
+
+msgid "for"
+msgstr "pour"
+
+msgid "Needed for a fixed amount, a minimum or a maximum."
+msgstr "Nécessaire pour un montant fixe, un minimum ou un maximum."
+
+msgid "rate (hundredths of a percent)"
+msgstr "taux (centièmes de pour cent)"
+
+msgid "300 = 3 %."
+msgstr "300 = 3 %."
+
+msgid "fixed amount"
+msgstr "montant fixe"
+
+msgid "minimum"
+msgstr "minimum"
+
+msgid "maximum"
+msgstr "maximum"
+
+msgid "from"
+msgstr "premier jour"
+
+msgid "priority"
+msgstr "priorité"
+
+msgid "pricing rule"
+msgstr "règle de frais"
+
+msgid "pricing rules"
+msgstr "règles de frais"
+
+msgid "Waiting for payment"
+msgstr "En attente de paiement"
+
+msgid "Paid, money held"
+msgstr "Payé, argent bloqué"
+
+msgid "Partly refunded"
+msgstr "Remboursé en partie"
+
+msgid "In dispute"
+msgstr "En litige"
+
+msgid "Picked up at the seller"
+msgstr "Retrait chez la vendeuse"
+
+msgid "Delivered by the seller"
+msgstr "Livré par la vendeuse"
+
+msgid "Delivered by a partner"
+msgstr "Livré par un partenaire"
+
+msgid "Service (no delivery)"
+msgstr "Prestation (sans livraison)"
+
+msgid "reference"
+msgstr "référence"
+
+msgid "client"
+msgstr "cliente"
+
+msgid "items"
+msgstr "articles"
+
+msgid "delivery"
+msgstr "livraison"
+
+msgid "buyer protection"
+msgstr "protection acheteur"
+
+msgid "commission"
+msgstr "commission"
+
+msgid "refunded"
+msgstr "remboursé"
+
+msgid "provider reference"
+msgstr "référence prestataire"
+
+msgid "payment page"
+msgstr "page de paiement"
+
+msgid "to pay before"
+msgstr "à payer avant"
+
+msgid "carrier"
+msgstr "transporteur"
+
+msgid "tracking number"
+msgstr "numéro de suivi"
+
+msgid "expected delivery"
+msgstr "livraison prévue"
+
+msgid "delivered at"
+msgstr "livré le"
+
+msgid "appointment"
+msgstr "rendez-vous"
+
+msgid "paid at"
+msgstr "payé le"
+
+msgid "shipped at"
+msgstr "expédié le"
+
+msgid "disputed at"
+msgstr "contesté le"
+
+msgid "released at"
+msgstr "versé le"
+
+msgid "refunded at"
+msgstr "remboursé le"
+
+msgid "cancelled at"
+msgstr "annulé le"
+
+msgid "code attempts"
+msgstr "essais de code"
+
+msgid "new codes"
+msgstr "nouveaux codes"
+
+msgid "payments"
+msgstr "paiements"
+
+msgid "Can decide disputes"
+msgstr "Peut trancher les litiges"
+
+msgid "In progress"
+msgstr "En cours"
+
+msgid "To do by hand at the provider"
+msgstr "À faire à la main chez le prestataire"
+
+msgid "Done"
+msgstr "Fait"
+
+msgid "completed at"
+msgstr "terminé le"
+
+msgid "refund"
+msgstr "remboursement"
+
+msgid "refunds"
+msgstr "remboursements"
+
+msgid "Mobile Money"
+msgstr "Mobile Money"
+
+msgid "Stripe account"
+msgstr "Compte Stripe"
+
+msgid "Test account"
+msgstr "Compte de test"
+
+msgid "shown as"
+msgstr "affiché comme"
+
+msgid "payout method"
+msgstr "moyen de versement"
+
+msgid "payout methods"
+msgstr "moyens de versement"
+
+msgid "Requested"
+msgstr "Demandé"
+
+msgid "payout"
+msgstr "versement"
+
+msgid "payouts"
+msgstr "versements"
+
+msgid "Processed"
+msgstr "Traité"
+
+msgid "Ignored"
+msgstr "Ignoré"
+
+msgid "event id"
+msgstr "identifiant de l'événement"
+
+msgid "provider event"
+msgstr "événement du prestataire"
+
+msgid "provider events"
+msgstr "événements des prestataires"
+
+msgid "Not received"
+msgstr "Non reçu"
+
+msgid "Not as described"
+msgstr "Non conforme"
+
+msgid "Damaged"
+msgstr "Abîmé"
+
+msgid "No code and no proof of delivery"
+msgstr "Ni code ni preuve de livraison"
+
+msgid "Open"
+msgstr "Ouvert"
+
+msgid "Decided"
+msgstr "Tranché"
+
+msgid "opened by"
+msgstr "ouvert par"
+
+msgid "answer before"
+msgstr "répondre avant"
+
+msgid "answer time over"
+msgstr "délai de réponse dépassé"
+
+msgid "Shown first in the queue."
+msgstr "Affiché en premier dans la file."
+
+msgid "decision"
+msgstr "décision"
+
+msgid "note for both parties"
+msgstr "note pour les deux parties"
+
+msgid "dispute"
+msgstr "litige"
+
+msgid "disputes"
+msgstr "litiges"
+
+msgid "evidence"
+msgstr "preuve"
+
+msgid "legal name"
+msgstr "nom légal"
+
+msgid "registered business"
+msgstr "entreprise immatriculée"
+
+msgid "business name"
+msgstr "nom commercial"
+
+msgid "birth date"
+msgstr "date de naissance"
+
+msgid "postal code"
+msgstr "code postal"
+
+msgid "country of residence"
+msgstr "pays de résidence"
+
+msgid "tax number"
+msgstr "numéro fiscal"
+
+msgid "VAT number"
+msgstr "numéro de TVA"
+
+msgid "tax data of a seller"
+msgstr "données fiscales d'une vendeuse"
+
+msgid "tax data of the sellers"
+msgstr "données fiscales des vendeuses"
+
+msgid "to"
+msgstr "dernier jour"
+
+msgid "checked"
+msgstr "vérifiés"
+
+msgid "differences"
+msgstr "écarts"
+
+msgid "reconciliation"
+msgstr "rapprochement"
+
+msgid "reconciliations"
+msgstr "rapprochements"
+
+msgid "At the provider, not in the ledger"
+msgstr "Chez le prestataire, pas dans le grand livre"
+
+msgid "In the ledger, not at the provider"
+msgstr "Dans le grand livre, pas chez le prestataire"
+
+msgid "Different amounts"
+msgstr "Montants différents"
+
+msgid "run"
+msgstr "contrôle"
+
+msgid "in the ledger"
+msgstr "dans le grand livre"
+
+msgid "at the provider"
+msgstr "chez le prestataire"
+
+msgid "difference"
+msgstr "écart"
+
+#, python-format
+msgid "Dispute %(reference)s"
+msgstr "Litige %(reference)s"
+
+#, python-format
+msgid "Dispute opened: %(reason)s. The money is frozen. Each side adds its evidence; the Solange Glow team decides."
+msgstr "Litige ouvert : %(reason)s. L'argent est gelé. Chaque partie dépose ses preuves ; l'équipe Solange Glow tranche."
+
+#, python-format
+msgid "Decision: %(decision)s."
+msgstr "Décision : %(decision)s."
+
+#, python-format
+msgid "Too many disputes lost (%(count)s in %(days)s days)."
+msgstr "Trop de litiges perdus (%(count)s en %(days)s jours)."
+
+msgid "The ledger is not balanced: check the last entries."
+msgstr "Le grand livre n'est pas équilibré : vérifie les dernières écritures."
+
+#, python-format
+msgid "%(counter)s open dispute"
+msgid_plural "%(counter)s open disputes"
+msgstr[0] "%(counter)s litige ouvert"
+msgstr[1] "%(counter)s litiges ouverts"
+
+#, python-format
+msgid "%(counter)s refund to do by hand"
+msgid_plural "%(counter)s refunds to do by hand"
+msgstr[0] "%(counter)s remboursement à faire à la main"
+msgstr[1] "%(counter)s remboursements à faire à la main"
+
+msgid "No money has moved yet."
+msgstr "Aucun argent n'a encore circulé."
+
+msgid "Exports (CSV)"
+msgstr "Exports (CSV)"
+
+msgid "Ledger"
+msgstr "Grand livre"
+
+msgid "Payouts"
+msgstr "Versements"
+
+#, python-format
+msgid "Sellers' income %(year)s (DAC7)"
+msgstr "Revenus des vendeuses %(year)s (DAC7)"
+
+msgid "Last reconciliations"
+msgstr "Derniers rapprochements"
+
+#, python-format
+msgid "%(counter)s difference"
+msgid_plural "%(counter)s differences"
+msgstr[0] "%(counter)s écart"
+msgstr[1] "%(counter)s écarts"
+
+msgid "None yet."
+msgstr "Aucun pour l'instant."
+
+#, python-format
+msgid "Part of the seller's amount (%(seller_amount)s) goes back to the client, in the smallest unit of %(currency)s. The buyer protection fee is kept."
+msgstr "Une partie du montant de la vendeuse (%(seller_amount)s) revient à la cliente, dans la plus petite unité de %(currency)s. Le frais de protection acheteur est conservé."
+
+msgid "Refund this amount"
+msgstr "Rembourser ce montant"
+
+msgid "Back"
+msgstr "Retour"
 
 msgid "latitude"
 msgstr "latitude"
@@ -1172,9 +1790,6 @@ msgstr "Statut"
 
 msgid "Media"
 msgstr "Médias"
-
-msgid "business name"
-msgstr "nom commercial"
 
 msgid "short link"
 msgstr "lien court"
@@ -1521,14 +2136,8 @@ msgstr "À partir de"
 msgid "On quote"
 msgstr "Sur devis"
 
-msgid "category"
-msgstr "catégorie"
-
 msgid "price"
 msgstr "prix"
-
-msgid "amount"
-msgstr "montant"
 
 msgid "In the smallest unit of the currency. Empty for a quote."
 msgstr "Dans la plus petite unité de la devise. Vide pour un devis."
@@ -1587,9 +2196,6 @@ msgstr "option"
 msgid "options"
 msgstr "options"
 
-msgid "picture"
-msgstr "photo"
-
 msgid "service picture"
 msgstr "photo de prestation"
 
@@ -1628,12 +2234,6 @@ msgstr "ferme à"
 
 msgid "opening hours"
 msgstr "horaires"
-
-msgid "from"
-msgstr "premier jour"
-
-msgid "to"
-msgstr "dernier jour"
 
 msgid "closure"
 msgstr "fermeture"
@@ -1863,9 +2463,6 @@ msgstr "publications enregistrées"
 msgid "Copied link"
 msgstr "Lien copié"
 
-msgid "Other"
-msgstr "Autre"
-
 msgid "network"
 msgstr "réseau"
 
@@ -1923,9 +2520,6 @@ msgstr "story"
 msgid "stories"
 msgstr "stories"
 
-msgid "Order"
-msgstr "Commande"
-
 msgid "for a"
 msgstr "pour un(e)"
 
@@ -1946,9 +2540,6 @@ msgstr "avis"
 
 msgid "reviews"
 msgstr "avis"
-
-msgid "client"
-msgstr "cliente"
 
 msgid "did not come"
 msgstr "n'est pas venue"
@@ -2000,6 +2591,30 @@ msgstr "Sanctions"
 
 msgid "Reports"
 msgstr "Signalements"
+
+msgid "Finance dashboard"
+msgstr "Tableau de bord finance"
+
+msgid "Disputes"
+msgstr "Litiges"
+
+msgid "Refunds"
+msgstr "Remboursements"
+
+msgid "Accounts and balances"
+msgstr "Comptes et soldes"
+
+msgid "Commissions and fees"
+msgstr "Commissions et frais"
+
+msgid "Tax data (DAC7)"
+msgstr "Données fiscales (DAC7)"
+
+msgid "Reconciliations"
+msgstr "Rapprochements"
+
+msgid "Provider events"
+msgstr "Événements des prestataires"
 
 msgid "Reported conversations"
 msgstr "Conversations signalées"
