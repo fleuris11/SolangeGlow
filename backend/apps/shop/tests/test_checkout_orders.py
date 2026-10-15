@@ -59,7 +59,8 @@ def test_cart_limits():
     variant = item.variants.get()
     with pytest.raises(errors.OutOfStock) as caught:
         cart.add(client, variant_id=variant.pk, quantity=4)
-    assert caught.value.text() == "« Fond de teint Velours »: only 3 left."
+    assert caught.value.details == {"title": "Fond de teint Velours", "left": 3}
+    assert "3" in caught.value.text()
     with pytest.raises(errors.InvalidQuantity):
         cart.add(client, variant_id=variant.pk, quantity=0)
     PlatformSettingFactory(key="shop.max_quantity_per_line", value="2")

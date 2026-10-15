@@ -93,7 +93,7 @@ def test_promo_ceiling_and_names():
     owner = shop_owner()
     with pytest.raises(errors.PromoTooHigh) as caught:
         promotions.save_promo(owner, code="FOU", percent_off=80)
-    assert caught.value.text() == "A discount of 70 percent at most."
+    assert caught.value.details == {"max": 70} and "70" in caught.value.text()
     promo = promotions.save_promo(owner, code="ETE", percent_off=10)
     with pytest.raises(errors.CodeTaken):
         promotions.save_promo(owner, code="ete", percent_off=20)
