@@ -866,6 +866,88 @@ SETTINGS += [
 ]
 
 
+# Shops of the pros (module 4).
+SETTINGS += [
+    _s(
+        "shop.max_photos",
+        INT,
+        "8",
+        "Nombre maximum de photos d'un produit.",
+        "Maximum number of pictures of a product.",
+    ),
+    _s(
+        "shop.video_max_seconds",
+        INT,
+        "60",
+        "Durée maximum de la vidéo d'un produit (secondes).",
+        "Maximum length of a product video (seconds).",
+    ),
+    _s(
+        "shop.prep_days_max",
+        INT,
+        "60",
+        "Délai de préparation maximum qu'une pro peut annoncer (jours).",
+        "Longest preparation time a pro can announce (days).",
+    ),
+    _s(
+        "shop.cart_max_lines",
+        INT,
+        "30",
+        "Nombre maximum de lignes dans un panier.",
+        "Maximum number of lines in a cart.",
+    ),
+    _s(
+        "shop.max_quantity_per_line",
+        INT,
+        "20",
+        "Quantité maximum d'un même produit dans une commande.",
+        "Maximum quantity of one product in an order.",
+    ),
+    _s(
+        "shop.promo_max_percent",
+        INT,
+        "70",
+        "Remise maximum d'un code promo (pourcentage).",
+        "Highest discount of a promo code (percent).",
+    ),
+    _s(
+        "shop.flash_sale_max_days",
+        INT,
+        "7",
+        "Durée maximum d'une vente flash (jours).",
+        "Longest flash sale (days).",
+    ),
+    _s(
+        "shop.price_drop_min_percent",
+        INT,
+        "10",
+        "Baisse de prix (pourcentage) qui déclenche une alerte pour la liste d'envies.",
+        "Price drop (percent) that alerts the wishlists.",
+    ),
+    _s(
+        "shop.price_alert_cooldown_days",
+        INT,
+        "7",
+        "Jours minimum entre deux alertes de baisse de prix pour un même produit.",
+        "Minimum days between two price drop alerts for the same product.",
+    ),
+    _s(
+        "shop.low_stock_threshold",
+        INT,
+        "3",
+        "Stock à partir duquel « Ma boutique » signale une rupture proche.",
+        "Stock under which « My shop » warns that a product runs out.",
+    ),
+    _s(
+        "throttle.shop",
+        STR,
+        "120/minute",
+        "Limite des actions de boutique (panier, commandes) par adresse IP.",
+        "Shop actions limit (cart, orders) per IP address.",
+    ),
+]
+
+
 class Command(BaseCommand):
     help = "Create countries (BJ, FR), currencies (XOF, EUR) and the platform settings."
 

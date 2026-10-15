@@ -52,6 +52,14 @@ PURPOSES: dict[str, Purpose] = {
     ),
     "service_photo": Purpose(("image",), "public"),
     "portfolio": Purpose(("image", "video"), "public"),
+    # Shops (module 4): product pictures (bundles too), a short video, a voice description.
+    "product_photo": Purpose(("image",), "public"),
+    "product_video": Purpose(
+        ("video",), "public", Duration(max_setting="shop.video_max_seconds", max_default=60)
+    ),
+    "product_voice": Purpose(
+        ("audio",), "public", Duration(max_setting="pros.voice_note_max_seconds", max_default=120)
+    ),
     "itinerary_video": Purpose(
         ("video",),
         "public",

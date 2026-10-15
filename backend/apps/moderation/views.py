@@ -17,6 +17,7 @@ TARGETS = {
     "comment": ("social", "comment"),
     "story": ("social", "story"),
     "review": ("social", "review"),
+    "product": ("shop", "product"),
     "person": ("accounts", "user"),
 }
 
@@ -46,7 +47,7 @@ class BlockedPersonSerializer(serializers.Serializer):
 
 
 class ReportView(APIView):
-    """Report a post, a comment, a story, a review or a person to the moderation team."""
+    """Report a post, a comment, a story, a review, a product or a person to the team."""
 
     permission_classes = [IsAuthenticated]
     throttle_classes = [SettingRateThrottle]

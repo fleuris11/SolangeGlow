@@ -18,6 +18,7 @@ DEFAULT_RATES = {
     "message_send": "120/minute",
     "payments": "60/minute",
     "receipt_code": "20/hour",
+    "shop": "120/minute",
 }
 
 

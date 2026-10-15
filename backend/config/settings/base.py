@@ -11,7 +11,7 @@ from pathlib import Path
 import environ
 from celery.schedules import crontab
 from django.templatetags.static import static
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -271,6 +271,9 @@ SPECTACULAR_SETTINGS = {
         "PaymentRoleEnum": ["buyer", "seller"],
         "ReportReasonEnum": "apps.moderation.models.Reason",
         "PostMediaRoleEnum": "apps.social.models.PostMedia.Role",
+        "PaymentDeliveryEnum": "apps.payments.models.Payment.Delivery",
+        "OrderDeliveryModeEnum": "apps.shop.models.DeliveryMode",
+        "DeliveryZoneModeEnum": "apps.shop.models.ZONE_MODES",
     },
 }
 
@@ -394,6 +397,10 @@ CELERY_BEAT_SCHEDULE = {
     "payments.reconcile_providers": {
         "task": "apps.payments.tasks.reconcile_providers",
         "schedule": crontab(hour=4, minute=15),
+    },
+    "shop.run_alerts": {
+        "task": "apps.shop.tasks.run_alerts",
+        "schedule": crontab(minute="*/15"),
     },
 }
 
@@ -558,6 +565,44 @@ UNFOLD = {
                         "title": _("Reports"),
                         "icon": "flag",
                         "link": reverse_lazy("admin:moderation_report_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("Shops"),
+                "separator": True,
+                "items": [
+                    {
+                        "title": _("Products to check"),
+                        "icon": "fact_check",
+                        "link": lambda request: (
+                            reverse("admin:shop_product_changelist") + "?status__exact=in_review"
+                        ),
+                    },
+                    {
+                        "title": _("Products"),
+                        "icon": "inventory_2",
+                        "link": reverse_lazy("admin:shop_product_changelist"),
+                    },
+                    {
+                        "title": _("Orders"),
+                        "icon": "local_shipping",
+                        "link": reverse_lazy("admin:shop_order_changelist"),
+                    },
+                    {
+                        "title": _("Forbidden words"),
+                        "icon": "block",
+                        "link": reverse_lazy("admin:shop_forbiddenterm_changelist"),
+                    },
+                    {
+                        "title": _("Product categories"),
+                        "icon": "category",
+                        "link": reverse_lazy("admin:shop_category_changelist"),
+                    },
+                    {
+                        "title": _("Promotions"),
+                        "icon": "sell",
+                        "link": reverse_lazy("admin:shop_promocode_changelist"),
                     },
                 ],
             },

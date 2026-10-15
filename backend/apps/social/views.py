@@ -110,6 +110,7 @@ class PostCreateView(SocialWriteView):
             caption=values.get("caption", ""),
             trade_key=values.get("trade") or None,
             service_id=values.get("service_id"),
+            product_id=values.get("product_id"),
             status=values["status"],
             publish_at=values.get("publish_at"),
         )

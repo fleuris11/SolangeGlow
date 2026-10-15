@@ -19,7 +19,7 @@ from apps.moderation.services import screen
 from apps.notifications.services import notify
 from apps.pros.models import ProProfile, Service, Trade
 
-from . import eligibility, errors
+from . import eligibility, errors, products
 from .models import (
     ClientRating,
     Comment,
@@ -145,6 +145,8 @@ def create_post(
         ).first()
         if service is None:
             raise errors.InvalidLink()
+    if product_id and not products.owns(author, product_id):
+        raise errors.InvalidLink()
     trade = Trade.objects.filter(key=trade_key, is_active=True).first() if trade_key else None
     if trade is None and service is not None:
         trade = service.trade
@@ -183,6 +185,11 @@ def update_post(post: Post, actor, **changes) -> Post:
         )
         if service_id and post.service is None:
             raise errors.InvalidLink()
+    if "product_id" in changes:
+        product_id = changes["product_id"]
+        if product_id and not products.owns(actor, product_id):
+            raise errors.InvalidLink()
+        post.product_id = product_id
     if "status" in changes and post.status != Post.Status.PUBLISHED:
         _ensure_can_post(actor)
         for field, value in _schedule(changes["status"], changes.get("publish_at")).items():

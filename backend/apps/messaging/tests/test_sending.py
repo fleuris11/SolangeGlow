@@ -83,10 +83,14 @@ def test_sharing_a_post_a_service_and_a_free_slot(pair):
     assert card.share_data["starts_at"] == when
 
 
-def test_products_cannot_be_shared_before_the_shop_exists(pair):
+def test_unknown_products_and_kinds_cannot_be_shared(pair):
     awa, _, conversation = pair
-    with pytest.raises(errors.ShareUnavailable):
+    with pytest.raises(errors.ShareNotFound):
         services.send(awa, conversation.pk, share={"kind": "product", "id": str(uuid.uuid4())})
+    with pytest.raises(errors.ShareNotFound):
+        services.send(awa, conversation.pk, share={"kind": "product", "id": "nope"})
+    with pytest.raises(errors.ShareUnavailable):
+        services.send(awa, conversation.pk, share={"kind": "course", "id": str(uuid.uuid4())})
 
 
 def test_hidden_or_unknown_items_cannot_be_shared(pair):

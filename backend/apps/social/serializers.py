@@ -9,6 +9,7 @@ from apps.core.media.api import MediaSerializer
 from apps.core.media.services import asset_payload
 from apps.pros.serializers import TradeSerializer
 
+from . import products
 from .models import Post, PostMedia, Share, Story, TransactionKind
 
 Media = MediaSerializer(allow_null=True)
@@ -75,6 +76,17 @@ class LinkedServiceSerializer(serializers.Serializer):
     duration_minutes = serializers.IntegerField()
 
 
+class LinkedProductSerializer(serializers.Serializer):
+    id = serializers.UUIDField()
+    title = serializers.CharField()
+    price_minor = serializers.IntegerField()
+    before_minor = serializers.IntegerField(allow_null=True)
+    currency = serializers.CharField()
+    picture = MediaSerializer(allow_null=True)
+    in_stock = serializers.BooleanField()
+    link = serializers.CharField()
+
+
 class PostSerializer(serializers.Serializer):
     id = serializers.UUIDField()
     kind = serializers.ChoiceField(choices=Post.Kind.choices)
@@ -82,6 +94,7 @@ class PostSerializer(serializers.Serializer):
     trade = TradeSerializer(allow_null=True)
     service = LinkedServiceSerializer(allow_null=True)
     product_id = serializers.UUIDField(allow_null=True)
+    product = LinkedProductSerializer(allow_null=True)
     status = serializers.ChoiceField(choices=Post.Status.choices)
     publish_at = serializers.DateTimeField(allow_null=True)
     published_at = serializers.DateTimeField(allow_null=True)
@@ -123,6 +136,7 @@ def post_payload(post: Post, viewer=None, *, story_authors=frozenset(), followed
         if service is not None and service.is_active and service.archived_at is None
         else None,
         "product_id": post.product_id,
+        "product": products.card(post.product_id),
         "status": post.status,
         "publish_at": post.publish_at,
         "published_at": post.published_at,
@@ -157,6 +171,7 @@ class PostCreateSerializer(serializers.Serializer):
     caption = serializers.CharField(required=False, allow_blank=True, max_length=2200)
     trade = serializers.CharField(required=False, allow_blank=True, allow_null=True)
     service_id = serializers.UUIDField(required=False, allow_null=True)
+    product_id = serializers.UUIDField(required=False, allow_null=True)
     status = serializers.ChoiceField(choices=Post.Status.choices, default=Post.Status.PUBLISHED)
     publish_at = serializers.DateTimeField(required=False, allow_null=True)
 
@@ -165,6 +180,7 @@ class PostUpdateSerializer(serializers.Serializer):
     caption = serializers.CharField(required=False, allow_blank=True, max_length=2200)
     trade = serializers.CharField(required=False, allow_blank=True, allow_null=True)
     service_id = serializers.UUIDField(required=False, allow_null=True)
+    product_id = serializers.UUIDField(required=False, allow_null=True)
     status = serializers.ChoiceField(choices=Post.Status.choices, required=False)
     publish_at = serializers.DateTimeField(required=False, allow_null=True)
 
