@@ -11,7 +11,9 @@ import {
   NotePencil,
   Scissors,
   SealCheck,
+  ShoppingBag,
   Star,
+  Storefront,
   Translate,
   Van,
   UserCheck,
@@ -29,9 +31,11 @@ import { buttonClasses } from "@/components/ui/button";
 import { PriceTag } from "@/components/ui/price-tag";
 import { SpeakButton } from "@/components/ui/speak-button";
 import { WriteButton } from "@/components/features/messaging/write-button";
+import { ProductCard } from "@/components/features/shop/product-card";
 import { FollowButton } from "@/components/features/social/follow-button";
 import { ReviewsSection } from "@/components/features/social/reviews-section";
 import type { Service, Showcase } from "@/lib/api/pros";
+import type { ShopPage } from "@/lib/api/shop";
 import type { Post, ReviewPage } from "@/lib/api/social";
 import { Link } from "@/lib/i18n/navigation";
 import { mediaSrc, voiceSrc } from "@/lib/media";
@@ -155,10 +159,12 @@ export function ShowcaseView({
   showcase,
   reviews = null,
   posts = [],
+  shop = null,
 }: {
   showcase: Showcase;
   reviews?: ReviewPage | null;
   posts?: Post[];
+  shop?: ShopPage | null;
 }) {
   const t = useTranslations("pros.showcase");
   const locale = useLocale();
@@ -354,6 +360,25 @@ export function ShowcaseView({
               );
             })}
           </ul>
+        </Section>
+      )}
+
+      {shop && shop.products.length > 0 && showcase.slug && (
+        <Section id="shop" title={t("shop")} icon={<Storefront size={26} weight="duotone" />}>
+          <ul className="grid grid-cols-2 gap-x-3 gap-y-6">
+            {shop.products.slice(0, 4).map((product) => (
+              <li key={product.id}>
+                <ProductCard product={product} shopSlug={showcase.slug as string} />
+              </li>
+            ))}
+          </ul>
+          <Link
+            href={`/${showcase.slug}/shop`}
+            className={buttonClasses({ variant: "secondary", fullWidth: true })}
+          >
+            <ShoppingBag aria-hidden size={22} weight="bold" />
+            {t("shopAll", { count: shop.products.length })}
+          </Link>
         </Section>
       )}
 

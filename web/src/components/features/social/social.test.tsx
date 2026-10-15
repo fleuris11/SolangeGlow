@@ -46,6 +46,7 @@ const POST: Post = {
   trade: null,
   service: { id: "s1", name: "Knotless" } as Post["service"],
   product_id: null,
+  product: null,
   status: "published",
   publish_at: null,
   published_at: new Date(Date.now() - 3_600_000).toISOString(),

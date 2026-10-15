@@ -6,6 +6,7 @@ import {
   Heart,
   SealCheck,
   ShareNetwork,
+  ShoppingBag,
 } from "@phosphor-icons/react/dist/ssr";
 import { useLocale, useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
@@ -17,6 +18,7 @@ import { buttonClasses } from "@/components/ui/button";
 import type { Post } from "@/lib/api/social";
 import { Link } from "@/lib/i18n/navigation";
 import { mediaSrc } from "@/lib/media";
+import { formatMoney } from "@/lib/money";
 
 import { PostActions } from "./post-actions";
 import { timeAgo } from "./time-ago";
@@ -167,6 +169,20 @@ export function PostCard({ post, eager = false }: { post: Post; eager?: boolean 
           <Link href={`/${author.pro_slug}`} className={buttonClasses({ fullWidth: true })}>
             <CalendarCheck aria-hidden size={22} weight="bold" />
             {t("bookLook")}
+          </Link>
+        )}
+        {post.product && (
+          <Link
+            href={post.product.link}
+            className={buttonClasses({
+              variant: post.service ? "secondary" : "primary",
+              fullWidth: true,
+            })}
+          >
+            <ShoppingBag aria-hidden size={22} weight="bold" />
+            {t("buyProduct", {
+              price: formatMoney(post.product.price_minor, post.product.currency, locale),
+            })}
           </Link>
         )}
       </div>

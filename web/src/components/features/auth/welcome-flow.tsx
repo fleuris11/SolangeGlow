@@ -21,6 +21,7 @@ import { CITIES } from "@/lib/demo/data";
 import { useRouter } from "@/lib/i18n/navigation";
 import { routing, type Locale } from "@/lib/i18n/routing";
 import { usePreferences } from "@/lib/preferences/preferences-provider";
+import { takeReturnPath } from "@/lib/auth/return-path";
 
 import { BirthDateField, EMPTY_BIRTH_DATE, toIsoDate, type BirthDate } from "./birth-date-field";
 import { ErrorMessage } from "./error-message";
@@ -108,7 +109,11 @@ export function WelcomeFlow({ as }: { as?: Mode }) {
           size="lg"
           fullWidth
           icon={<ArrowRight size={22} weight="bold" />}
-          onClick={() => router.replace(mode === "pro" ? "/pro/start" : "/", { locale: language })}
+          onClick={() =>
+            router.replace(mode === "pro" ? "/pro/start" : (takeReturnPath() ?? "/"), {
+              locale: language,
+            })
+          }
         >
           {mode === "pro" ? t("done.proCta") : t("done.cta")}
         </Button>

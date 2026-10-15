@@ -98,7 +98,8 @@ export function SellerActions({ payment, onChange }: Props) {
           </Button>
         </form>
       )}
-      {can.ship && (
+      {/* An order of the shop is shipped from its page (with a photo of the parcel). */}
+      {can.ship && payment.source_type !== "order" && (
         <form
           className="flex flex-col gap-3"
           onSubmit={(event) => {

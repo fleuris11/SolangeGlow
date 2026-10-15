@@ -8,6 +8,7 @@ import {
   getShowcaseOnServer,
   personPostsOnServer,
   reviewsOnServer,
+  shopOnServer,
   SITE_URL,
 } from "@/lib/api/server";
 import { routing, type Locale } from "@/lib/i18n/routing";
@@ -68,9 +69,10 @@ export default async function ShowcasePage({ params }: Props) {
   const showcase = await loadShowcase(slug, locale);
   if (!showcase) notFound();
 
-  const [reviews, posts] = await Promise.all([
+  const [reviews, posts, shop] = await Promise.all([
     reviewsOnServer(showcase.slug, locale),
     personPostsOnServer(showcase.owner_id, locale),
+    showcase.status === "published" ? shopOnServer(showcase.slug, locale).catch(() => null) : null,
   ]);
   const url = `${SITE_URL}/${locale}/${showcase.slug}`;
   const jsonLd = localBusinessJsonLd(
@@ -86,7 +88,7 @@ export default async function ShowcasePage({ params }: Props) {
         // Escaped by jsonLdScript: no "<" can close the script tag.
         dangerouslySetInnerHTML={{ __html: jsonLdScript(jsonLd) }}
       />
-      <ShowcaseView showcase={showcase} reviews={reviews} posts={posts.results} />
+      <ShowcaseView showcase={showcase} reviews={reviews} posts={posts.results} shop={shop} />
     </>
   );
 }

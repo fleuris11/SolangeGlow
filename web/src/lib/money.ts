@@ -28,3 +28,22 @@ export function formatMoney(amountMinor: number, currency: string, locale: strin
     maximumFractionDigits: exponent,
   }).format(major);
 }
+
+/** What a pro types (« 8000 », « 12,50 ») in the smallest unit, or null when it is not a price. */
+export function parseMoney(text: string, currency: string): number | null {
+  const clean = text.replace(/[\s\u202f\u00a0]/g, "").replace(",", ".");
+  if (!/^\d+(\.\d+)?$/.test(clean)) return null;
+  const exponent = currencyExponent(currency);
+  const value = Math.round(Number(clean) * 10 ** exponent);
+  return Number.isSafeInteger(value) ? value : null;
+}
+
+/** The other way: « 8000 », « 12,50 » (for a field the pro edits). */
+export function moneyInput(amountMinor: number, currency: string, locale: string): string {
+  const exponent = currencyExponent(currency);
+  return new Intl.NumberFormat(locale, {
+    minimumFractionDigits: exponent,
+    maximumFractionDigits: exponent,
+    useGrouping: false,
+  }).format(amountMinor / 10 ** exponent);
+}

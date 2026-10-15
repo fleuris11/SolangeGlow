@@ -14,6 +14,7 @@ import { Stepper } from "@/components/ui/stepper";
 import { useToast } from "@/components/ui/toast";
 import { ApiError } from "@/lib/api/client";
 import { getMyPro } from "@/lib/api/pros";
+import { getMyProducts } from "@/lib/api/shop";
 import {
   createPost,
   createStory,
@@ -69,6 +70,8 @@ export function CreateFlow() {
   const me = useMe();
   const isPro = me.data?.roles.includes("pro") ?? false;
   const pro = useQuery({ queryKey: ["me", "pro"], queryFn: getMyPro, enabled: isPro });
+  const products = useQuery({ queryKey: ["my-products"], queryFn: getMyProducts, enabled: isPro });
+  const online = (products.data ?? []).filter((product) => product.status === "published");
 
   const [step, setStep] = useState(1);
   const [kind, setKind] = useState<Kind | null>(null);
@@ -76,6 +79,7 @@ export function CreateFlow() {
   const [caption, setCaption] = useState("");
   const [trade, setTrade] = useState<string>("");
   const [serviceId, setServiceId] = useState("");
+  const [productId, setProductId] = useState("");
   const [text, setText] = useState("");
   const [background, setBackground] = useState<(typeof BACKGROUNDS)[number]>("hibiscus");
   const [slots, setSlots] = useState<string[]>([]);
@@ -169,6 +173,7 @@ export function CreateFlow() {
           caption,
           trade: trade || null,
           service_id: serviceId || null,
+          product_id: productId || null,
           status: when === "now" ? "published" : when === "later" ? "scheduled" : "draft",
           publish_at: when === "later" && publishAt ? new Date(publishAt).toISOString() : null,
         };
@@ -351,6 +356,27 @@ export function CreateFlow() {
                 ))}
               </select>
               <p className="text-small text-prune-doux">{t("serviceHelp")}</p>
+            </div>
+          )}
+          {online.length > 0 && (
+            <div className="flex flex-col gap-2">
+              <label htmlFor="product" className="font-bold">
+                {t("product")}
+              </label>
+              <select
+                id="product"
+                value={productId}
+                onChange={(event) => setProductId(event.target.value)}
+                className="rounded-field bg-poudre focus:border-hibiscus min-h-14 w-full border-2 border-transparent px-4 outline-none"
+              >
+                <option value="">{t("noProduct")}</option>
+                {online.map((product) => (
+                  <option key={product.id} value={product.id}>
+                    {product.title}
+                  </option>
+                ))}
+              </select>
+              <p className="text-small text-prune-doux">{t("productHelp")}</p>
             </div>
           )}
         </>

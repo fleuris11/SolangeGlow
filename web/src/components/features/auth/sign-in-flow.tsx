@@ -24,6 +24,7 @@ import { useSetMe } from "@/lib/auth/use-me";
 import { useRouter } from "@/lib/i18n/navigation";
 import { usePreferences } from "@/lib/preferences/preferences-provider";
 import { toProfile } from "@/lib/preferences/profile-sync";
+import { takeReturnPath } from "@/lib/auth/return-path";
 
 import { ErrorMessage } from "./error-message";
 import { PhoneField, toInternational } from "./phone-field";
@@ -90,7 +91,7 @@ export function SignInFlow({ as }: { as?: "client" | "pro" }) {
       router.replace(as ? { pathname: "/welcome", query: { as } } : "/welcome");
     } else {
       toast(deletionCancelled ? t("deletionCancelled") : t("welcomeBack"));
-      router.replace("/");
+      router.replace(takeReturnPath() ?? "/");
     }
   };
 

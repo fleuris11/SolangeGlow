@@ -95,3 +95,42 @@ export async function personPostsOnServer(userId: string, locale: string) {
 
 /** Public address of the site, for links shared on social networks (images, canonical). */
 export const SITE_URL = (process.env.SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
+
+// --- Shops (module 4) ----------------------------------------------------------------------------
+
+/** The shop of a pro, or null when she has none (or the shops are off in her country). */
+export async function shopOnServer(
+  slug: string,
+  locale: string,
+  category?: string,
+): Promise<Schemas["ShopPage"] | null> {
+  const api = await serverApi(locale);
+  const { data, response } = await api.GET("/api/v1/pros/{slug}/shop", {
+    params: { path: { slug }, query: category ? { category } : {} },
+  });
+  if (response.status === 404) return null;
+  if (!response.ok || !data) throw new Error(`Shop ${slug}: ${response.status}`);
+  return data;
+}
+
+export async function productOnServer(
+  slug: string,
+  productSlug: string,
+  locale: string,
+): Promise<Schemas["ProductDetail"] | null> {
+  const api = await serverApi(locale);
+  const { data, response } = await api.GET("/api/v1/pros/{slug}/shop/{product_slug}", {
+    params: { path: { slug, product_slug: productSlug } },
+  });
+  if (response.status === 404) return null;
+  if (!response.ok || !data) throw new Error(`Product ${productSlug}: ${response.status}`);
+  return data;
+}
+
+export async function productReviewsOnServer(id: string, locale: string) {
+  const api = await serverApi(locale);
+  const { data } = await api.GET("/api/v1/shop/products/{product_id}/reviews", {
+    params: { path: { product_id: id } },
+  });
+  return data ?? { average: null, count: 0, results: [] };
+}

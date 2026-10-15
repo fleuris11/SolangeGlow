@@ -18,7 +18,13 @@ import { formatMoney } from "@/lib/money";
 import { BuyerActions, SellerActions } from "./payment-actions";
 import { Breakdown, ReceiptCode, Steps } from "./payment-parts";
 
-function DisputePanel({ payment, onChange }: { payment: Payment; onChange: (p: Payment) => void }) {
+export function DisputePanel({
+  payment,
+  onChange,
+}: {
+  payment: Payment;
+  onChange: (p: Payment) => void;
+}) {
   const t = useTranslations("payments.dispute");
   const tReasons = useTranslations("payments.reasons");
   const tDecisions = useTranslations("payments.decisions");
@@ -159,6 +165,14 @@ export function PaymentDetail({ paymentId }: { paymentId: string }) {
         <p className="bg-poudre self-start rounded-full px-3 py-1 font-bold">
           {tStatus(payment.status)}
         </p>
+        {payment.source_type === "order" && payment.source_id && (
+          <Link
+            href={`/orders/${payment.source_id}`}
+            className={buttonClasses({ variant: "secondary", className: "self-start" })}
+          >
+            {t("seeOrder")}
+          </Link>
+        )}
         <p className="flex items-center gap-2">
           <Avatar name={other.name} src={mediaSrc(other.photo, "thumb")} size="sm" />
           {payment.role === "buyer"

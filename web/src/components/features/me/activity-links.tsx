@@ -3,9 +3,13 @@
 import {
   BookmarkSimple,
   CaretRight,
+  Heart,
   Images,
+  Package,
   Receipt,
+  ShoppingBag,
   Star,
+  Storefront,
   UsersThree,
   Wallet,
 } from "@phosphor-icons/react";
@@ -15,12 +19,16 @@ import type { ReactNode } from "react";
 import { Link } from "@/lib/i18n/navigation";
 
 const LINKS: { href: string; key: string; icon: ReactNode }[] = [
+  { href: "/cart", key: "cart", icon: <ShoppingBag size={28} weight="duotone" /> },
+  { href: "/orders", key: "orders", icon: <Package size={28} weight="duotone" /> },
+  { href: "/wishlist", key: "wishlist", icon: <Heart size={28} weight="duotone" /> },
   { href: "/me/posts", key: "posts", icon: <Images size={28} weight="duotone" /> },
   { href: "/saved", key: "saved", icon: <BookmarkSimple size={28} weight="duotone" /> },
   { href: "/following", key: "following", icon: <UsersThree size={28} weight="duotone" /> },
   { href: "/me/reviews", key: "reviews", icon: <Star size={28} weight="duotone" /> },
   { href: "/payments", key: "payments", icon: <Receipt size={28} weight="duotone" /> },
   { href: "/pro/wallet", key: "wallet", icon: <Wallet size={28} weight="duotone" /> },
+  { href: "/pro/shop", key: "myShop", icon: <Storefront size={28} weight="duotone" /> },
 ];
 
 /** Her activity on Solange Glow: posts, saved posts, people followed, reviews to leave. */

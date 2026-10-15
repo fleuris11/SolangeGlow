@@ -21,6 +21,8 @@ const DYNAMIC_PAGES = {
   "/[locale]/messages/<conversation>": "[locale]/(chat)/messages/[id]",
   "/[locale]/<pro>": "[locale]/(app)/[slug]",
   "/[locale]/explore": "[locale]/(app)/explore",
+  "/[locale]/<pro>/shop": "[locale]/(app)/[slug]/shop",
+  "/[locale]/<pro>/shop/<product>": "[locale]/(app)/[slug]/shop/[product]",
 };
 const NEXT_DIR = ".next";
 
