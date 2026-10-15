@@ -193,6 +193,32 @@ Les délais s'appliquent toutes les 15 minutes (Celery Beat). Les vrais prestata
 s'activent avec leurs clés (`.env.example`) ; le prestataire de test est coupé en
 production.
 
+## Tester la boutique en local
+
+Avec les données de démo (`seed_demo`) et le prestataire de test :
+
+1. Ouvre http://localhost:3000/fr/gloria/shop (ou l'onglet « Sa boutique » d'une vitrine) :
+   produits avec teintes, vente flash, lots. Sur une fiche produit, choisis une teinte puis
+   « Ajouter au panier » (une visiteuse se connecte d'abord, le produit est ajouté ensuite).
+2. « Moi » > « Mon panier » > « Commander » : 3 étapes (remise, récapitulatif, paiement).
+   Un seul paiement pour toutes les boutiques du panier ; code promo de démo `BIENVENUE`.
+3. Page de paiement de test : « Paiement réussi ». Chaque commande a son code de réception.
+4. La vendeuse (Gloria, +2290196000102, code dans `docker compose logs worker`) ouvre la
+   commande : « Je prépare la commande », puis photo du colis et « Expédier » (ou « C'est
+   prêt à retirer »), puis saisit le code : l'argent arrive dans son portefeuille.
+5. « Ma boutique » (http://localhost:3000/fr/pro/shop) : produits et stocks, commandes,
+   promotions (codes, ventes flash, lots), remise et zones, chiffres. Un produit contenant
+   un mot interdit (par exemple « hydroquinone ») est refusé ; un mot « à vérifier »
+   l'envoie dans la file de l'admin.
+
+Back-office, section Boutiques : produits à vérifier (accepter, refuser avec une raison,
+débloquer), produits, commandes (lecture seule), mots interdits (liste de départ des
+dépigmentants à comparer avec la liste officielle de l'ABMed), catégories, promotions.
+Groupe « Shop review » créé automatiquement.
+
+Réglages : `shop.*` (photos, panier, remise maximum, ventes flash, alertes de prix, stock
+bas) ; interrupteur « shop » par pays dans les feature flags.
+
 ## Client de l'API (web)
 
 Les types du client web sont générés depuis le schéma de l'API. Après toute
@@ -248,7 +274,10 @@ backend/                Django
   apps/moderation/      signalements, blocages, contenus masqués, file de modération,
                         sanctions
   apps/payments/        paiement sécurisé : grand livre en partie double, séquestre, code de
-                        réception, litiges, commissions et frais, portefeuille, prestataires
+                        réception, litiges, commissions et frais, portefeuille, prestataires,
+                        paiement groupé d'un panier
+  apps/shop/            boutiques : produits, variantes et stock, mots interdits, remise et
+                        zones, panier, commandes, promotions, liste d'envies et alertes
   apps/messaging/       conversations, messages, temps réel (WebSocket), demandes,
                         réponses rapides, message d'absence, anti-fraude, appels (préparés)
   assets/fonts/         polices de la marque (OFL) pour les affiches et stickers
