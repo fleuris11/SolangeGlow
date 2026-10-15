@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-13 12:50+0200\n"
+"POT-Creation-Date: 2026-10-15 21:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1290,6 +1290,9 @@ msgstr "Táto platba neexistuje alebo nie je tvoja."
 msgid "This is not possible at this stage of the payment."
 msgstr "V tejto fáze platby to nie je možné."
 
+msgid "The seller is already preparing this order: write to her to cancel it."
+msgstr "Predávajúca už objednávku pripravuje: napíš jej, ak ju chceš zrušiť."
+
 msgid "The amounts of this payment are not valid."
 msgstr "Sumy tejto platby nie sú platné."
 
@@ -1438,6 +1441,30 @@ msgstr "pravidlo poplatkov"
 msgid "pricing rules"
 msgstr "pravidlá poplatkov"
 
+msgid "reference"
+msgstr "referencia"
+
+msgid "client"
+msgstr "klientka"
+
+msgid "provider reference"
+msgstr "referencia poskytovateľa"
+
+msgid "payment page"
+msgstr "platobná stránka"
+
+msgid "to pay before"
+msgstr "zaplatiť do"
+
+msgid "paid at"
+msgstr "zaplatené"
+
+msgid "grouped payment"
+msgstr "zoskupená platba"
+
+msgid "grouped payments"
+msgstr "zoskupené platby"
+
 msgid "Waiting for payment"
 msgstr "Čaká na platbu"
 
@@ -1462,11 +1489,8 @@ msgstr "Doručí partner"
 msgid "Service (no delivery)"
 msgstr "Služba (bez doručenia)"
 
-msgid "reference"
-msgstr "referencia"
-
-msgid "client"
-msgstr "klientka"
+msgid "paid with"
+msgstr "zaplatené spolu s"
 
 msgid "items"
 msgstr "položky"
@@ -1483,15 +1507,6 @@ msgstr "provízia"
 msgid "refunded"
 msgstr "vrátené"
 
-msgid "provider reference"
-msgstr "referencia poskytovateľa"
-
-msgid "payment page"
-msgstr "platobná stránka"
-
-msgid "to pay before"
-msgstr "zaplatiť do"
-
 msgid "carrier"
 msgstr "prepravca"
 
@@ -1507,8 +1522,11 @@ msgstr "doručené"
 msgid "appointment"
 msgstr "termín"
 
-msgid "paid at"
-msgstr "zaplatené"
+msgid "preparation days"
+msgstr "dni prípravy"
+
+msgid "Added to the shipping deadline (made-to-order items)."
+msgstr "Pripočítajú sa k lehote na odoslanie (výrobky na objednávku)."
 
 msgid "shipped at"
 msgstr "odoslané"
@@ -2332,8 +2350,439 @@ msgstr[3] "%(counter)s profesionáliek na mape."
 msgid "France Selection"
 msgstr "Výber z Francúzska"
 
+msgid "Reason shown to the pro"
+msgstr "Dôvod zobrazený profesionálke"
+
+msgid "forbidden words found"
+msgstr "nájdené zakázané slová"
+
+msgid "Done; the pro is told."
+msgstr "Hotovo; profesionálka je upovedomená."
+
+msgid "Accept"
+msgstr "Prijať"
+
+msgid "Refuse and block"
+msgstr "Zamietnuť a zablokovať"
+
+#, python-format
+msgid "Refuse « %(title)s »"
+msgstr "Zamietnuť „%(title)s“"
+
+msgid "Unblock (back to draft)"
+msgstr "Odblokovať (späť na koncept)"
+
+msgid "total"
+msgstr "spolu"
+
 msgid "Shop"
 msgstr "Obchody"
+
+msgid "Shops are not open in this country yet."
+msgstr "Obchody v tejto krajine ešte nie sú otvorené."
+
+msgid "Create your showcase first: your shop lives in it."
+msgstr "Najprv si vytvor profil: obchod je jeho súčasťou."
+
+msgid "Only a verified pro can sell. Send your identity document in « My showcase »."
+msgstr "Predávať môže len overená profesionálka. Pošli doklad totožnosti v časti „Môj profil“."
+
+msgid "This product does not exist or is no longer on sale."
+msgstr "Tento produkt neexistuje alebo sa už nepredáva."
+
+msgid "Add at least one photo, a price and a category before publishing."
+msgstr "Pred zverejnením pridaj aspoň jednu fotku, cenu a kategóriu."
+
+#, python-format
+msgid "%(max)s photos at most."
+msgstr "Najviac %(max)s fotiek."
+
+msgid "Each choice needs a shade, a size or a colour, and two choices cannot be the same."
+msgstr "Každý variant potrebuje odtieň, veľkosť alebo farbu a dva varianty nemôžu byť rovnaké."
+
+#, python-format
+msgid "This product cannot be sold on Solange Glow (%(terms)s): %(reasons)s"
+msgstr "Tento produkt sa na Solange Glow nemôže predávať (%(terms)s): %(reasons)s"
+
+msgid "This is not possible at this stage."
+msgstr "V tomto kroku to nie je možné."
+
+msgid "Give the zone a name and a fee of 0 or more."
+msgstr "Zadaj názov zóny a poplatok 0 alebo viac."
+
+msgid "Choose a discount in percent or an amount, not both."
+msgstr "Vyber zľavu v percentách alebo sumu, nie oboje."
+
+#, python-format
+msgid "A discount of %(max)s percent at most."
+msgstr "Zľava najviac %(max)s percent."
+
+msgid "You already have a code with this name."
+msgstr "Kód s týmto názvom už máš."
+
+#, python-format
+msgid "The sale ends after it starts, and lasts %(max)s days at most."
+msgstr "Výpredaj končí po začiatku a trvá najviac %(max)s dní."
+
+msgid "A bundle needs at least two of your products, and a price."
+msgstr "Balíček potrebuje aspoň dva tvoje produkty a cenu."
+
+msgid "This code does not exist in this shop."
+msgstr "Tento kód v obchode neexistuje."
+
+msgid "This code is not valid at the moment."
+msgstr "Tento kód momentálne neplatí."
+
+#, python-format
+msgid "This code needs an order of %(minimum)s at least."
+msgstr "Tento kód vyžaduje objednávku aspoň %(minimum)s."
+
+msgid "This code was already used."
+msgstr "Tento kód už bol použitý."
+
+msgid "Purchases are not open to your account."
+msgstr "Nákupy nie sú pre tvoj účet otvorené."
+
+msgid "You cannot buy in your own shop."
+msgstr "Vo vlastnom obchode nemôžeš nakupovať."
+
+#, python-format
+msgid "« %(title)s » is no longer on sale."
+msgstr "„%(title)s“ sa už nepredáva."
+
+#, python-format
+msgid "« %(title)s »: only %(left)s left."
+msgstr "„%(title)s“: na sklade už len %(left)s."
+
+#, python-format
+msgid "%(shop)s is closed for now."
+msgstr "%(shop)s je momentálne zatvorený."
+
+#, python-format
+msgid "Choose a quantity between 1 and %(max)s."
+msgstr "Vyber množstvo od 1 do %(max)s."
+
+#, python-format
+msgid "Your cart is full (%(max)s lines)."
+msgstr "Košík je plný (%(max)s riadkov)."
+
+msgid "Your cart is empty."
+msgstr "Tvoj košík je prázdny."
+
+#, python-format
+msgid "%(shop)s does not offer this way of handing over."
+msgstr "%(shop)s tento spôsob odovzdania neponúka."
+
+msgid "Choose your delivery zone."
+msgstr "Vyber zónu doručenia."
+
+msgid "Give your address and a phone number for the delivery."
+msgstr "Zadaj adresu a telefónne číslo pre doručenie."
+
+#, python-format
+msgid "%(shop)s delivers only in her country. You can pick up your order at her place."
+msgstr "%(shop)s doručuje len vo svojej krajine. Objednávku si môžeš vyzdvihnúť u nej."
+
+msgid "Pay the shops of each country separately."
+msgstr "Obchody z každej krajiny zaplať zvlášť."
+
+msgid "This order does not exist or is not yours."
+msgstr "Táto objednávka neexistuje alebo nie je tvoja."
+
+msgid "Add a photo of the parcel."
+msgstr "Pridaj fotku balíka."
+
+msgid "Name of a Phosphor icon."
+msgstr "Názov ikony Phosphor."
+
+msgid "product category"
+msgstr "kategória produktov"
+
+msgid "product categories"
+msgstr "kategórie produktov"
+
+msgid "Block the product"
+msgstr "Zablokovať produkt"
+
+msgid "Send to the review queue"
+msgstr "Poslať na kontrolu"
+
+msgid "word or substance"
+msgstr "slovo alebo látka"
+
+msgid "what happens"
+msgstr "čo sa stane"
+
+msgid "reason shown to the pro"
+msgstr "dôvod zobrazený profesionálke"
+
+msgid "For example: banned by ABMed."
+msgstr "Napríklad: zakázané ABMed."
+
+msgid "forbidden word"
+msgstr "zakázané slovo"
+
+msgid "forbidden words"
+msgstr "zakázané slová"
+
+msgid "open"
+msgstr "otvorený"
+
+msgid "Off: products stay visible, nobody can order."
+msgstr "Vypnuté: produkty ostanú viditeľné, nikto nemôže objednať."
+
+msgid "pick-up at her place"
+msgstr "vyzdvihnutie u nej"
+
+msgid "pick-up hours and details"
+msgstr "hodiny a podrobnosti vyzdvihnutia"
+
+msgid "she delivers"
+msgstr "doručuje sama"
+
+msgid "a partner delivers"
+msgstr "doručuje partner"
+
+msgid "delivery partner"
+msgstr "doručovací partner"
+
+msgid "Gozem, a zem, a carrier…"
+msgstr "Gozem, zem, prepravca…"
+
+msgid "returns and exchanges"
+msgstr "vrátenie a výmena"
+
+msgid "shop"
+msgstr "obchod"
+
+msgid "shops"
+msgstr "obchody"
+
+msgid "Pick-up at the seller"
+msgstr "Vyzdvihnutie u predávajúcej"
+
+msgid "delivered by"
+msgstr "doručuje"
+
+msgid "zone"
+msgstr "zóna"
+
+msgid "delivery fee"
+msgstr "poplatok za doručenie"
+
+msgid "delivery zone"
+msgstr "zóna doručenia"
+
+msgid "delivery zones"
+msgstr "zóny doručenia"
+
+msgid "Being checked"
+msgstr "Kontroluje sa"
+
+msgid "Online"
+msgstr "Online"
+
+msgid "Paused"
+msgstr "Pozastavené"
+
+msgid "Blocked"
+msgstr "Zablokované"
+
+msgid "description (voice note)"
+msgstr "popis (hlasová poznámka)"
+
+msgid "video"
+msgstr "video"
+
+msgid "preparation (days)"
+msgstr "príprava (dni)"
+
+msgid "Days to prepare before shipping."
+msgstr "Dni prípravy pred odoslaním."
+
+msgid "moderation"
+msgstr "moderácia"
+
+msgid "why it is checked or blocked"
+msgstr "prečo sa kontroluje alebo je zablokovaný"
+
+msgid "sold"
+msgstr "predané"
+
+msgid "product"
+msgstr "produkt"
+
+msgid "products"
+msgstr "produkty"
+
+msgid "Can approve or refuse products"
+msgstr "Môže schvaľovať alebo zamietať produkty"
+
+msgid "product photo"
+msgstr "fotka produktu"
+
+msgid "product photos"
+msgstr "fotky produktu"
+
+msgid "shade"
+msgstr "odtieň"
+
+msgid "shade colour"
+msgstr "farba odtieňa"
+
+msgid "A colour like #A0522D."
+msgstr "Farba ako #A0522D."
+
+msgid "colour"
+msgstr "farba"
+
+msgid "own price"
+msgstr "vlastná cena"
+
+msgid "stock"
+msgstr "sklad"
+
+msgid "variant"
+msgstr "variant"
+
+msgid "discount (%)"
+msgstr "zľava (%)"
+
+msgid "starts at"
+msgstr "začína"
+
+msgid "ends at"
+msgstr "končí"
+
+msgid "quantity on sale"
+msgstr "množstvo vo výpredaji"
+
+msgid "flash sale"
+msgstr "bleskový výpredaj"
+
+msgid "flash sales"
+msgstr "bleskové výpredaje"
+
+msgid "on sale"
+msgstr "v predaji"
+
+msgid "bundle"
+msgstr "balíček"
+
+msgid "bundles"
+msgstr "balíčky"
+
+msgid "quantity"
+msgstr "množstvo"
+
+msgid "bundle item"
+msgstr "položka balíčka"
+
+msgid "bundle items"
+msgstr "položky balíčka"
+
+msgid "discount (amount)"
+msgstr "zľava (suma)"
+
+msgid "minimum order"
+msgstr "minimálna objednávka"
+
+msgid "uses in total"
+msgstr "použití spolu"
+
+msgid "uses per client"
+msgstr "použití na klientku"
+
+msgid "promo code"
+msgstr "promo kód"
+
+msgid "promo codes"
+msgstr "promo kódy"
+
+msgid "cart line"
+msgstr "riadok košíka"
+
+msgid "cart lines"
+msgstr "riadky košíka"
+
+msgid "price when added"
+msgstr "cena pri pridaní"
+
+msgid "last price alert"
+msgstr "posledné upozornenie na cenu"
+
+msgid "wishlist item"
+msgstr "želanie"
+
+msgid "wishlist"
+msgstr "zoznam želaní"
+
+msgid "back-in-stock alert"
+msgstr "upozornenie na naskladnenie"
+
+msgid "back-in-stock alerts"
+msgstr "upozornenia na naskladnenie"
+
+msgid "New"
+msgstr "Nová"
+
+msgid "Being prepared"
+msgstr "Pripravuje sa"
+
+msgid "Ready to pick up"
+msgstr "Pripravená na vyzdvihnutie"
+
+msgid "Handed over"
+msgstr "Odovzdaná"
+
+msgid "items before discount"
+msgstr "položky pred zľavou"
+
+msgid "discount"
+msgstr "zľava"
+
+msgid "code used"
+msgstr "použitý kód"
+
+msgid "hand-over"
+msgstr "odovzdanie"
+
+msgid "phone for the delivery"
+msgstr "telefón pre doručenie"
+
+msgid "note for the seller"
+msgstr "odkaz pre predávajúcu"
+
+msgid "parcel photo"
+msgstr "fotka balíka"
+
+msgid "prepared from"
+msgstr "pripravuje sa od"
+
+msgid "handed over at"
+msgstr "odovzdaná"
+
+msgid "order"
+msgstr "objednávka"
+
+msgid "orders"
+msgstr "objednávky"
+
+msgid "choice"
+msgstr "variant"
+
+msgid "unit price"
+msgstr "jednotková cena"
+
+msgid "order line"
+msgstr "riadok objednávky"
+
+msgid "order lines"
+msgstr "riadky objednávky"
+
+#, python-format
+msgid "The product leaves the shop of %(shop)s and every cart. The pro receives this reason."
+msgstr "Produkt zmizne z obchodu %(shop)s a zo všetkých košíkov. Profesionálka dostane tento dôvod."
 
 msgid "Remove the selected items"
 msgstr "Odstrániť vybrané položky"
@@ -2346,9 +2795,6 @@ msgstr "Znova zobraziť vybrané položky"
 
 msgid "Visible again."
 msgstr "Opäť viditeľné."
-
-msgid "moderation"
-msgstr "moderácia"
 
 msgid "Social"
 msgstr "Sociálna sieť"
@@ -2427,9 +2873,6 @@ msgstr "Pred / po"
 
 msgid "Set when the author posts as a pro."
 msgstr "Vyplní sa, keď autorka zverejňuje ako profesionálka."
-
-msgid "product"
-msgstr "produkt"
 
 msgid "to publish at"
 msgstr "zverejniť"
@@ -2607,6 +3050,27 @@ msgstr "Sankcie"
 
 msgid "Reports"
 msgstr "Nahlásenia"
+
+msgid "Shops"
+msgstr "Obchody"
+
+msgid "Products to check"
+msgstr "Produkty na kontrolu"
+
+msgid "Products"
+msgstr "Produkty"
+
+msgid "Orders"
+msgstr "Objednávky"
+
+msgid "Forbidden words"
+msgstr "Zakázané slová"
+
+msgid "Product categories"
+msgstr "Kategórie produktov"
+
+msgid "Promotions"
+msgstr "Akcie"
 
 msgid "Finance dashboard"
 msgstr "Finančný prehľad"

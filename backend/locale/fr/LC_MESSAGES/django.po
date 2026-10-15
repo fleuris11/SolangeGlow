@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-13 12:50+0200\n"
+"POT-Creation-Date: 2026-10-15 21:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1286,6 +1286,9 @@ msgstr "Ce paiement n'existe pas ou n'est pas le tien."
 msgid "This is not possible at this stage of the payment."
 msgstr "Ce n'est pas possible à cette étape du paiement."
 
+msgid "The seller is already preparing this order: write to her to cancel it."
+msgstr "La vendeuse prépare déjà cette commande : écris-lui pour l'annuler."
+
 msgid "The amounts of this payment are not valid."
 msgstr "Les montants de ce paiement ne sont pas valides."
 
@@ -1434,6 +1437,30 @@ msgstr "règle de frais"
 msgid "pricing rules"
 msgstr "règles de frais"
 
+msgid "reference"
+msgstr "référence"
+
+msgid "client"
+msgstr "cliente"
+
+msgid "provider reference"
+msgstr "référence prestataire"
+
+msgid "payment page"
+msgstr "page de paiement"
+
+msgid "to pay before"
+msgstr "à payer avant"
+
+msgid "paid at"
+msgstr "payé le"
+
+msgid "grouped payment"
+msgstr "paiement groupé"
+
+msgid "grouped payments"
+msgstr "paiements groupés"
+
 msgid "Waiting for payment"
 msgstr "En attente de paiement"
 
@@ -1458,11 +1485,8 @@ msgstr "Livré par un partenaire"
 msgid "Service (no delivery)"
 msgstr "Prestation (sans livraison)"
 
-msgid "reference"
-msgstr "référence"
-
-msgid "client"
-msgstr "cliente"
+msgid "paid with"
+msgstr "payé avec"
 
 msgid "items"
 msgstr "articles"
@@ -1479,15 +1503,6 @@ msgstr "commission"
 msgid "refunded"
 msgstr "remboursé"
 
-msgid "provider reference"
-msgstr "référence prestataire"
-
-msgid "payment page"
-msgstr "page de paiement"
-
-msgid "to pay before"
-msgstr "à payer avant"
-
 msgid "carrier"
 msgstr "transporteur"
 
@@ -1503,8 +1518,11 @@ msgstr "livré le"
 msgid "appointment"
 msgstr "rendez-vous"
 
-msgid "paid at"
-msgstr "payé le"
+msgid "preparation days"
+msgstr "jours de préparation"
+
+msgid "Added to the shipping deadline (made-to-order items)."
+msgstr "Ajoutés au délai d'expédition (articles faits sur commande)."
 
 msgid "shipped at"
 msgstr "expédié le"
@@ -2316,8 +2334,439 @@ msgstr[1] "%(counter)s pros placées sur la carte."
 msgid "France Selection"
 msgstr "Sélection France"
 
+msgid "Reason shown to the pro"
+msgstr "Raison montrée à la pro"
+
+msgid "forbidden words found"
+msgstr "mots interdits trouvés"
+
+msgid "Done; the pro is told."
+msgstr "C'est fait ; la pro est prévenue."
+
+msgid "Accept"
+msgstr "Accepter"
+
+msgid "Refuse and block"
+msgstr "Refuser et bloquer"
+
+#, python-format
+msgid "Refuse « %(title)s »"
+msgstr "Refuser « %(title)s »"
+
+msgid "Unblock (back to draft)"
+msgstr "Débloquer (retour en brouillon)"
+
+msgid "total"
+msgstr "total"
+
 msgid "Shop"
 msgstr "Boutiques"
+
+msgid "Shops are not open in this country yet."
+msgstr "Les boutiques ne sont pas encore ouvertes dans ce pays."
+
+msgid "Create your showcase first: your shop lives in it."
+msgstr "Crée d'abord ta vitrine : ta boutique est dedans."
+
+msgid "Only a verified pro can sell. Send your identity document in « My showcase »."
+msgstr "Seule une pro vérifiée peut vendre. Envoie ta pièce d'identité dans « Ma vitrine »."
+
+msgid "This product does not exist or is no longer on sale."
+msgstr "Ce produit n'existe pas ou n'est plus en vente."
+
+msgid "Add at least one photo, a price and a category before publishing."
+msgstr "Ajoute au moins une photo, un prix et une catégorie avant de publier."
+
+#, python-format
+msgid "%(max)s photos at most."
+msgstr "%(max)s photos au maximum."
+
+msgid "Each choice needs a shade, a size or a colour, and two choices cannot be the same."
+msgstr "Chaque choix a besoin d'une teinte, d'une taille ou d'une couleur, et deux choix ne peuvent pas être identiques."
+
+#, python-format
+msgid "This product cannot be sold on Solange Glow (%(terms)s): %(reasons)s"
+msgstr "Ce produit ne peut pas être vendu sur Solange Glow (%(terms)s) : %(reasons)s"
+
+msgid "This is not possible at this stage."
+msgstr "Ce n'est pas possible à cette étape."
+
+msgid "Give the zone a name and a fee of 0 or more."
+msgstr "Donne un nom à la zone et des frais de 0 ou plus."
+
+msgid "Choose a discount in percent or an amount, not both."
+msgstr "Choisis une remise en pourcentage ou en montant, pas les deux."
+
+#, python-format
+msgid "A discount of %(max)s percent at most."
+msgstr "Une remise de %(max)s pour cent au maximum."
+
+msgid "You already have a code with this name."
+msgstr "Tu as déjà un code avec ce nom."
+
+#, python-format
+msgid "The sale ends after it starts, and lasts %(max)s days at most."
+msgstr "La vente finit après son début et dure %(max)s jours au maximum."
+
+msgid "A bundle needs at least two of your products, and a price."
+msgstr "Un lot a besoin d'au moins deux de tes produits et d'un prix."
+
+msgid "This code does not exist in this shop."
+msgstr "Ce code n'existe pas dans cette boutique."
+
+msgid "This code is not valid at the moment."
+msgstr "Ce code n'est pas valable en ce moment."
+
+#, python-format
+msgid "This code needs an order of %(minimum)s at least."
+msgstr "Ce code demande une commande d'au moins %(minimum)s."
+
+msgid "This code was already used."
+msgstr "Ce code a déjà été utilisé."
+
+msgid "Purchases are not open to your account."
+msgstr "Les achats ne sont pas ouverts à ton compte."
+
+msgid "You cannot buy in your own shop."
+msgstr "Tu ne peux pas acheter dans ta propre boutique."
+
+#, python-format
+msgid "« %(title)s » is no longer on sale."
+msgstr "« %(title)s » n'est plus en vente."
+
+#, python-format
+msgid "« %(title)s »: only %(left)s left."
+msgstr "« %(title)s » : plus que %(left)s en stock."
+
+#, python-format
+msgid "%(shop)s is closed for now."
+msgstr "%(shop)s est fermée pour le moment."
+
+#, python-format
+msgid "Choose a quantity between 1 and %(max)s."
+msgstr "Choisis une quantité entre 1 et %(max)s."
+
+#, python-format
+msgid "Your cart is full (%(max)s lines)."
+msgstr "Ton panier est plein (%(max)s lignes)."
+
+msgid "Your cart is empty."
+msgstr "Ton panier est vide."
+
+#, python-format
+msgid "%(shop)s does not offer this way of handing over."
+msgstr "%(shop)s ne propose pas ce mode de remise."
+
+msgid "Choose your delivery zone."
+msgstr "Choisis ta zone de livraison."
+
+msgid "Give your address and a phone number for the delivery."
+msgstr "Donne ton adresse et un numéro de téléphone pour la livraison."
+
+#, python-format
+msgid "%(shop)s delivers only in her country. You can pick up your order at her place."
+msgstr "%(shop)s livre seulement dans son pays. Tu peux retirer ta commande chez elle."
+
+msgid "Pay the shops of each country separately."
+msgstr "Paie séparément les boutiques de chaque pays."
+
+msgid "This order does not exist or is not yours."
+msgstr "Cette commande n'existe pas ou n'est pas la tienne."
+
+msgid "Add a photo of the parcel."
+msgstr "Ajoute une photo du colis."
+
+msgid "Name of a Phosphor icon."
+msgstr "Nom d'une icône Phosphor."
+
+msgid "product category"
+msgstr "catégorie de produits"
+
+msgid "product categories"
+msgstr "catégories de produits"
+
+msgid "Block the product"
+msgstr "Bloquer le produit"
+
+msgid "Send to the review queue"
+msgstr "Envoyer en vérification"
+
+msgid "word or substance"
+msgstr "mot ou substance"
+
+msgid "what happens"
+msgstr "ce qui se passe"
+
+msgid "reason shown to the pro"
+msgstr "raison montrée à la pro"
+
+msgid "For example: banned by ABMed."
+msgstr "Par exemple : interdit par l'ABMed."
+
+msgid "forbidden word"
+msgstr "mot interdit"
+
+msgid "forbidden words"
+msgstr "mots interdits"
+
+msgid "open"
+msgstr "ouverte"
+
+msgid "Off: products stay visible, nobody can order."
+msgstr "Éteint : les produits restent visibles, personne ne peut commander."
+
+msgid "pick-up at her place"
+msgstr "retrait chez elle"
+
+msgid "pick-up hours and details"
+msgstr "horaires et détails du retrait"
+
+msgid "she delivers"
+msgstr "elle livre"
+
+msgid "a partner delivers"
+msgstr "un partenaire livre"
+
+msgid "delivery partner"
+msgstr "partenaire de livraison"
+
+msgid "Gozem, a zem, a carrier…"
+msgstr "Gozem, un zem, un transporteur…"
+
+msgid "returns and exchanges"
+msgstr "retours et échanges"
+
+msgid "shop"
+msgstr "boutique"
+
+msgid "shops"
+msgstr "boutiques"
+
+msgid "Pick-up at the seller"
+msgstr "Retrait chez la vendeuse"
+
+msgid "delivered by"
+msgstr "livrée par"
+
+msgid "zone"
+msgstr "zone"
+
+msgid "delivery fee"
+msgstr "frais de livraison"
+
+msgid "delivery zone"
+msgstr "zone de livraison"
+
+msgid "delivery zones"
+msgstr "zones de livraison"
+
+msgid "Being checked"
+msgstr "En vérification"
+
+msgid "Online"
+msgstr "En ligne"
+
+msgid "Paused"
+msgstr "En pause"
+
+msgid "Blocked"
+msgstr "Bloqué"
+
+msgid "description (voice note)"
+msgstr "description (note vocale)"
+
+msgid "video"
+msgstr "vidéo"
+
+msgid "preparation (days)"
+msgstr "préparation (jours)"
+
+msgid "Days to prepare before shipping."
+msgstr "Jours de préparation avant l'expédition."
+
+msgid "moderation"
+msgstr "modération"
+
+msgid "why it is checked or blocked"
+msgstr "pourquoi il est vérifié ou bloqué"
+
+msgid "sold"
+msgstr "vendus"
+
+msgid "product"
+msgstr "produit"
+
+msgid "products"
+msgstr "produits"
+
+msgid "Can approve or refuse products"
+msgstr "Peut accepter ou refuser des produits"
+
+msgid "product photo"
+msgstr "photo de produit"
+
+msgid "product photos"
+msgstr "photos de produit"
+
+msgid "shade"
+msgstr "teinte"
+
+msgid "shade colour"
+msgstr "couleur de la teinte"
+
+msgid "A colour like #A0522D."
+msgstr "Une couleur comme #A0522D."
+
+msgid "colour"
+msgstr "couleur"
+
+msgid "own price"
+msgstr "prix propre"
+
+msgid "stock"
+msgstr "stock"
+
+msgid "variant"
+msgstr "variante"
+
+msgid "discount (%)"
+msgstr "remise (%)"
+
+msgid "starts at"
+msgstr "commence le"
+
+msgid "ends at"
+msgstr "finit le"
+
+msgid "quantity on sale"
+msgstr "quantité en vente"
+
+msgid "flash sale"
+msgstr "vente flash"
+
+msgid "flash sales"
+msgstr "ventes flash"
+
+msgid "on sale"
+msgstr "en vente"
+
+msgid "bundle"
+msgstr "lot"
+
+msgid "bundles"
+msgstr "lots"
+
+msgid "quantity"
+msgstr "quantité"
+
+msgid "bundle item"
+msgstr "article du lot"
+
+msgid "bundle items"
+msgstr "articles du lot"
+
+msgid "discount (amount)"
+msgstr "remise (montant)"
+
+msgid "minimum order"
+msgstr "commande minimum"
+
+msgid "uses in total"
+msgstr "utilisations au total"
+
+msgid "uses per client"
+msgstr "utilisations par cliente"
+
+msgid "promo code"
+msgstr "code promo"
+
+msgid "promo codes"
+msgstr "codes promo"
+
+msgid "cart line"
+msgstr "ligne de panier"
+
+msgid "cart lines"
+msgstr "lignes de panier"
+
+msgid "price when added"
+msgstr "prix à l'ajout"
+
+msgid "last price alert"
+msgstr "dernière alerte de prix"
+
+msgid "wishlist item"
+msgstr "envie"
+
+msgid "wishlist"
+msgstr "liste d'envies"
+
+msgid "back-in-stock alert"
+msgstr "alerte de retour en stock"
+
+msgid "back-in-stock alerts"
+msgstr "alertes de retour en stock"
+
+msgid "New"
+msgstr "Nouvelle"
+
+msgid "Being prepared"
+msgstr "En préparation"
+
+msgid "Ready to pick up"
+msgstr "Prête à retirer"
+
+msgid "Handed over"
+msgstr "Remise"
+
+msgid "items before discount"
+msgstr "articles avant remise"
+
+msgid "discount"
+msgstr "remise"
+
+msgid "code used"
+msgstr "code utilisé"
+
+msgid "hand-over"
+msgstr "remise"
+
+msgid "phone for the delivery"
+msgstr "téléphone pour la livraison"
+
+msgid "note for the seller"
+msgstr "mot pour la vendeuse"
+
+msgid "parcel photo"
+msgstr "photo du colis"
+
+msgid "prepared from"
+msgstr "en préparation depuis"
+
+msgid "handed over at"
+msgstr "remise le"
+
+msgid "order"
+msgstr "commande"
+
+msgid "orders"
+msgstr "commandes"
+
+msgid "choice"
+msgstr "choix"
+
+msgid "unit price"
+msgstr "prix unitaire"
+
+msgid "order line"
+msgstr "ligne de commande"
+
+msgid "order lines"
+msgstr "lignes de commande"
+
+#, python-format
+msgid "The product leaves the shop of %(shop)s and every cart. The pro receives this reason."
+msgstr "Le produit quitte la boutique de %(shop)s et tous les paniers. La pro reçoit cette raison."
 
 msgid "Remove the selected items"
 msgstr "Retirer les éléments choisis"
@@ -2330,9 +2779,6 @@ msgstr "Afficher de nouveau les éléments choisis"
 
 msgid "Visible again."
 msgstr "De nouveau visible."
-
-msgid "moderation"
-msgstr "modération"
 
 msgid "Social"
 msgstr "Réseau social"
@@ -2411,9 +2857,6 @@ msgstr "Avant / après"
 
 msgid "Set when the author posts as a pro."
 msgstr "Rempli quand l'autrice publie en tant que pro."
-
-msgid "product"
-msgstr "produit"
 
 msgid "to publish at"
 msgstr "à publier le"
@@ -2591,6 +3034,27 @@ msgstr "Sanctions"
 
 msgid "Reports"
 msgstr "Signalements"
+
+msgid "Shops"
+msgstr "Boutiques"
+
+msgid "Products to check"
+msgstr "Produits à vérifier"
+
+msgid "Products"
+msgstr "Produits"
+
+msgid "Orders"
+msgstr "Commandes"
+
+msgid "Forbidden words"
+msgstr "Mots interdits"
+
+msgid "Product categories"
+msgstr "Catégories de produits"
+
+msgid "Promotions"
+msgstr "Promotions"
 
 msgid "Finance dashboard"
 msgstr "Tableau de bord finance"
