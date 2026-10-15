@@ -71,10 +71,18 @@ jobs:
         run: python manage.py compilemessages
 
       - name: Tests (money code fully covered, ADR-007)
-        run: >-
-          pytest
-          --cov=apps.payments.services --cov=apps.payments.ledger --cov=apps.payments.pricing
-          --cov-branch --cov-report=term-missing:skip-covered --cov-fail-under=100
+        run: |
+          set -o pipefail
+          if ! pytest               --cov=apps.payments.services --cov=apps.payments.ledger --cov=apps.payments.pricing               --cov-branch --cov-report=term-missing:skip-covered --cov-fail-under=100               2>&1 | tee pytest.log; then
+            # Failed tests and missing coverage as annotations: readable on the run page.
+            grep -E "^(FAILED|ERROR) " pytest.log | head -20 | while read -r line; do
+              echo "::error title=Backend test::$line"
+            done
+            grep -E "^apps/payments|^TOTAL|Required test coverage" pytest.log | while read -r line; do
+              echo "::error title=Coverage::$line"
+            done
+            exit 1
+          fi
 
       - name: API schema (no warning allowed)
         run: >-
