@@ -37,16 +37,36 @@ TIMESTAMPS = {
     S.CANCELLED: "cancelled_at",
 }
 
-# Modules that own the payments (shop, bookings…) hear about every change of status.
+# Modules that own the payments (shop, bookings…) hear about every change of status,
+# and may restrict who cancels (the shop: the client only before the preparation).
 _listeners: dict[str, Callable[[Payment], None]] = {}
+_cancel_rules: dict[str, Callable[[Payment, object], bool]] = {}
 
 
-def listen(source_type: str, callback: Callable[[Payment], None]) -> None:
+def listen(
+    source_type: str,
+    callback: Callable[[Payment], None],
+    *,
+    may_cancel: Callable[[Payment, object], bool] | None = None,
+) -> None:
     _listeners[source_type] = callback
+    if may_cancel is not None:
+        _cancel_rules[source_type] = may_cancel
 
 
 def forget(source_type: str) -> None:
     _listeners.pop(source_type, None)
+    _cancel_rules.pop(source_type, None)
+
+
+def may_cancel(payment: Payment, actor) -> bool:
+    """Paid, not shipped, one of the two parties, and the owner module agrees."""
+    if actor is None or actor.pk not in (payment.buyer_id, payment.seller_id):
+        return False
+    if payment.status != S.HELD:
+        return False
+    rule = _cancel_rules.get(payment.source_type)
+    return rule is None or rule(payment, actor)
 
 
 def can_move(current: str, target: str) -> bool:

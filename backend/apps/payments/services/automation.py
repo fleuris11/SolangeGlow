@@ -57,7 +57,7 @@ def remind_shipping(now=None) -> int:
             .exclude(delivery_mode=Payment.Delivery.SERVICE)
         )
         for payment in waiting:
-            days = int(_setting("escrow.ship_deadline_days", payment, 3))
+            days = payment_services.ship_days(payment)
             hours = int(_setting("escrow.ship_reminder_hours", payment, 24))
             deadline = payment.paid_at + days * day
             if now < deadline - datetime.timedelta(hours=hours):
@@ -83,7 +83,7 @@ def cancel_unshipped(now=None) -> int:
         for p in Payment.objects.filter(status=S.HELD).exclude(
             delivery_mode=Payment.Delivery.SERVICE
         )
-        if p.paid_at + int(_setting("escrow.ship_deadline_days", p, 3)) * day <= now
+        if p.paid_at + payment_services.ship_days(p) * day <= now
     ]
     return sum(
         _safely(lambda p: payment_services.refund_full(p, reason="not_shipped"), p) for p in due

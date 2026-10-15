@@ -7,7 +7,7 @@ from apps.messaging.payloads import person_payload
 from apps.messaging.serializers import PersonSerializer
 
 from .models import Dispute, Payment, Payout, PayoutMethod
-from .services import receipt_code_for
+from .services import may_cancel, receipt_code_for
 from .services.common import S
 
 
@@ -58,6 +58,9 @@ def payment_payload(payment: Payment, viewer) -> dict:
         "reference": payment.reference,
         "description": payment.description,
         "purpose": payment.purpose,
+        "source_type": payment.source_type,
+        "source_id": str(payment.source_id) if payment.source_id else None,
+        "group_id": str(payment.group_id) if payment.group_id else None,
         "status": status,
         "role": "seller" if is_seller else "buyer",
         "currency": payment.currency,
@@ -95,13 +98,13 @@ def payment_payload(payment: Payment, viewer) -> dict:
         else None,
         "dispute": dispute_payload(dispute),
         "can": {
-            "pay": is_buyer and status == S.PENDING_PAYMENT,
+            "pay": is_buyer and status == S.PENDING_PAYMENT and not payment.group_id,
             "ship": is_seller
             and status == S.HELD
             and payment.delivery_mode != Payment.Delivery.SERVICE,
             "deliver": is_seller and status == S.SHIPPED and payment.delivered_at is None,
             "confirm": is_seller and status in (S.HELD, S.SHIPPED),
-            "cancel": status == S.HELD,
+            "cancel": may_cancel(payment, viewer),
             "dispute": is_buyer and status in (S.HELD, S.SHIPPED),
             "new_code": is_buyer and status in (S.HELD, S.SHIPPED),
         },
@@ -144,6 +147,9 @@ class PaymentSerializer(serializers.Serializer):
     reference = serializers.CharField()
     description = serializers.CharField()
     purpose = serializers.CharField()
+    source_type = serializers.CharField(allow_blank=True)
+    source_id = serializers.UUIDField(allow_null=True)
+    group_id = serializers.UUIDField(allow_null=True)
     status = serializers.ChoiceField(choices=Payment.Status.choices)
     role = serializers.ChoiceField(choices=["buyer", "seller"])
     currency = serializers.CharField()
@@ -300,3 +306,34 @@ class DemoPaymentSerializer(serializers.Serializer):
     delivery_minor = serializers.IntegerField(min_value=0, required=False)
     description = serializers.CharField(max_length=200)
     delivery_mode = serializers.ChoiceField(choices=Payment.Delivery.choices, required=False)
+
+
+def group_payload(group, viewer) -> dict:
+    from .services import group_status
+
+    payments = list(group.payments.select_related("buyer", "seller").order_by("created_at"))
+    return {
+        "id": str(group.pk),
+        "reference": group.reference,
+        "status": group_status(group),
+        "currency": group.currency,
+        "total_minor": group.total_minor,
+        "provider": group.provider,
+        "checkout_url": group.checkout_url if not group.paid_at else "",
+        "expires_at": _iso(group.expires_at),
+        "paid_at": _iso(group.paid_at),
+        "payments": [payment_payload(p, viewer) for p in payments],
+    }
+
+
+class PaymentGroupSerializer(serializers.Serializer):
+    id = serializers.UUIDField()
+    reference = serializers.CharField()
+    status = serializers.ChoiceField(choices=["pending", "paid", "cancelled"])
+    currency = serializers.CharField()
+    total_minor = serializers.IntegerField()
+    provider = serializers.CharField()
+    checkout_url = serializers.CharField(allow_blank=True)
+    expires_at = serializers.DateTimeField(allow_null=True)
+    paid_at = serializers.DateTimeField(allow_null=True)
+    payments = PaymentSerializer(many=True)

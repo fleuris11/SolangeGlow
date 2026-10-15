@@ -54,8 +54,11 @@ class FakeProvider:
             raise ProviderNotConfigured("Fake payments are off")
 
     def create_checkout(self, payment, *, return_url: str) -> Checkout:
+        from ..models import PaymentGroup
+
         reference = f"fake_{payment.pk.hex}"
-        return Checkout(reference=reference, url=f"{settings.SITE_URL}/pay/test/{payment.pk}")
+        page = "pay/test/group" if isinstance(payment, PaymentGroup) else "pay/test"
+        return Checkout(reference=reference, url=f"{settings.SITE_URL}/{page}/{payment.pk}")
 
     def refund(self, payment, refund) -> RefundResult:
         return RefundResult(reference=f"fake_refund_{refund.pk.hex}", status="pending")
@@ -91,4 +94,9 @@ class FakeProvider:
         paid = Payment.objects.filter(
             provider=self.name, paid_at__gte=since, paid_at__lt=until
         ).exclude(provider_reference="")
-        return [Transaction(p.provider_reference, p.total_minor, p.currency) for p in paid]
+        charges: dict[str, Transaction] = {}
+        for p in paid:  # a grouped payment: one charge for several payments
+            before = charges.get(p.provider_reference)
+            amount = p.total_minor + (before.amount_minor if before else 0)
+            charges[p.provider_reference] = Transaction(p.provider_reference, amount, p.currency)
+        return list(charges.values())

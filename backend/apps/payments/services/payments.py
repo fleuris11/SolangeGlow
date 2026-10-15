@@ -62,7 +62,34 @@ def _new_reference() -> str:
     return "SG-" + "".join(secrets.choice(alphabet) for _ in range(8))
 
 
+def ship_days(payment: Payment) -> int:
+    """Days the seller has to ship: the setting, plus the preparation of made-to-order items."""
+    days = int(get_setting("escrow.ship_deadline_days", country=payment.country or None, default=3))
+    return days + payment.prep_days
+
+
 # --- Creation and checkout -----------------------------------------------------------------------
+
+
+def buyer_fee(
+    seller,
+    *,
+    purpose: str,
+    items_minor: int,
+    delivery_minor: int,
+    currency: str,
+    category: str = "",
+) -> int:
+    """The buyer protection a payment would carry (shown before ordering)."""
+    return pricing.charge(
+        PricingRule.Kind.BUYER_PROTECTION,
+        items_minor + delivery_minor,
+        currency=currency.upper(),
+        country=_country_of(seller),
+        category=category,
+        seller=seller,
+        purpose=purpose,
+    ).amount_minor
 
 
 def create_payment(
@@ -79,6 +106,7 @@ def create_payment(
     source_type: str = "",
     source_id=None,
     service_at=None,
+    prep_days: int = 0,
 ) -> Payment:
     """A payment waiting for the client to pay: amounts, fees and rules fixed now."""
     try:
@@ -131,6 +159,7 @@ def create_payment(
         "source_type": source_type,
         "source_id": source_id,
         "service_at": service_at,
+        "prep_days": max(int(prep_days), 0),
         "expires_at": timezone.now() + datetime.timedelta(minutes=minutes),
     }
     for _ in range(5):
@@ -150,8 +179,8 @@ def start_checkout(payment: Payment, *, buyer) -> Payment:
     """The payment page of the provider (created once, reused while it is valid)."""
     if payment.buyer_id != buyer.pk:
         raise errors.PaymentNotFound()
-    if payment.status != S.PENDING_PAYMENT:
-        raise errors.InvalidTransition()
+    if payment.status != S.PENDING_PAYMENT or payment.group_id:
+        raise errors.InvalidTransition()  # a grouped payment is paid with its group
     if payment.checkout_url:
         return payment
     provider = get_provider(payment.provider)
@@ -219,7 +248,7 @@ def mark_paid(payment: Payment, *, amount_minor, currency: str, fee_minor: int =
     move(payment, S.HELD, reason="paid")
     code = _new_receipt_code(payment)
     payment.save(update_fields=["receipt_code_hash", "receipt_code_secret", "updated_at"])
-    days = int(get_setting("escrow.ship_deadline_days", country=payment.country, default=3))
+    days = ship_days(payment)
     total = money(payment.total_minor, currency, payment.buyer)
     transaction.on_commit(
         lambda: (
@@ -284,10 +313,11 @@ def ship(
     )
     payment.save(update_fields=["carrier", "tracking_number", "expected_delivery_at", "updated_at"])
     move(payment, S.SHIPPED, actor=actor)
+    pickup = payment.delivery_mode == Payment.Delivery.PICKUP
     transaction.on_commit(
         lambda: notify(
             payment.buyer,
-            "payments.shipped",
+            "payments.ready_for_pickup" if pickup else "payments.shipped",
             {"reference": payment.reference, "carrier": payment.carrier},
             link=f"/payments/{payment.pk}",
         )
@@ -621,11 +651,14 @@ def cancel(payment: Payment, *, actor) -> Payment:
             raise errors.PaymentNotFound()
         if payment.status != S.HELD:
             raise errors.InvalidTransition()
+        if not common.may_cancel(payment, actor):
+            raise errors.CancelNotAllowed()
         reason = "buyer_cancelled" if actor.pk == payment.buyer_id else "seller_cancelled"
         return refund_full(payment, actor=actor, reason=reason, _locked=True)
 
 
 __all__ = [
+    "buyer_fee",
     "cancel",
     "common",
     "confirm_receipt",
@@ -641,5 +674,6 @@ __all__ = [
     "release",
     "renew_receipt_code",
     "ship",
+    "ship_days",
     "start_checkout",
 ]

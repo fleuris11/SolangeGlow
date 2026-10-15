@@ -5,7 +5,7 @@ from __future__ import annotations
 from django.db.models import Q, Sum
 
 from . import ledger
-from .models import Dispute, LedgerAccount, Payment, Payout, Refund
+from .models import Dispute, LedgerAccount, Payment, PaymentGroup, Payout, Refund
 
 Kind = LedgerAccount.Kind
 S = Payment.Status
@@ -108,3 +108,8 @@ def dashboard() -> list[dict]:
             }
         )
     return rows
+
+
+def group_for(user, group_id) -> PaymentGroup | None:
+    """A grouped payment of this client (nobody else sees it)."""
+    return PaymentGroup.objects.filter(pk=group_id, buyer=user).first()

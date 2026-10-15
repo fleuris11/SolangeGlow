@@ -17,6 +17,12 @@ urlpatterns = [
     path(f"{P}/new-code", views.NewCodeView.as_view(), name="payment-new-code"),
     path(f"{P}/dispute", views.DisputeView.as_view(), name="payment-dispute"),
     path(f"{P}/dispute/evidence", views.EvidenceView.as_view(), name="payment-evidence"),
+    path("payments/groups/<uuid:group_id>", views.GroupView.as_view(), name="payment-group"),
+    path(
+        "payments/groups/<uuid:group_id>/checkout",
+        views.GroupCheckoutView.as_view(),
+        name="payment-group-checkout",
+    ),
     path("payments/courier/<str:token>", views.CourierView.as_view(), name="payment-courier"),
     path("payments/webhooks/<slug:provider>", views.webhook_view, name="payment-webhook"),
     path("me/wallet", views.WalletView.as_view(), name="wallet"),
@@ -31,4 +37,9 @@ if settings.PAYMENTS_FAKE_ENABLED:
     urlpatterns += [
         path(f"{P}/test-outcome", views.TestOutcomeView.as_view(), name="payment-test-outcome"),
         path("dev/payments", views.DemoPaymentView.as_view(), name="dev-payments"),
+        path(
+            "payments/groups/<uuid:group_id>/test-outcome",
+            views.GroupTestOutcomeView.as_view(),
+            name="payment-group-test-outcome",
+        ),
     ]

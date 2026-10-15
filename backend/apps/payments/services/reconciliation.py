@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import datetime
+from dataclasses import dataclass
 
 from django.db import transaction
 from django.utils import timezone
@@ -13,18 +14,26 @@ from ..providers import get_provider
 I = ReconciliationItem.Kind  # noqa: E741
 
 
+@dataclass(frozen=True)
+class Counted:
+    total_minor: int
+    currency: str
+
+
 @transaction.atomic
 def reconcile(provider_name: str, *, since=None, until=None) -> ReconciliationRun:
     until = until or timezone.now()
     since = since or until - datetime.timedelta(days=1)
     provider = get_provider(provider_name)
     statement = {row.reference: row for row in provider.transactions(since, until)}
-    counted = {
-        p.provider_reference: p
-        for p in Payment.objects.filter(
-            provider=provider.name, paid_at__gte=since, paid_at__lt=until
-        ).exclude(provider_reference="")
-    }
+    # A grouped payment shares one charge: its payments are added up.
+    counted: dict[str, Counted] = {}
+    for p in Payment.objects.filter(
+        provider=provider.name, paid_at__gte=since, paid_at__lt=until
+    ).exclude(provider_reference=""):
+        before = counted.get(p.provider_reference)
+        total = p.total_minor + (before.total_minor if before else 0)
+        counted[p.provider_reference] = Counted(total, p.currency)
     run = ReconciliationRun.objects.create(
         provider=provider.name, period_start=since, period_end=until, checked=len(statement)
     )

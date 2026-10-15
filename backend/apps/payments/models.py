@@ -194,6 +194,36 @@ class PricingRule(BaseModel):
 # --- Payments ------------------------------------------------------------------------------------
 
 
+class PaymentGroup(BaseModel):
+    """Several payments (one per shop of a cart) paid in one go at the provider.
+
+    Each payment keeps its seller, its receipt code and its own ledger entries; only the
+    provider's page and its answer are shared.
+    """
+
+    reference = models.CharField(_("reference"), max_length=20, unique=True)
+    buyer = _user_fk("payment_groups", _("client"))
+    currency = models.CharField(_("currency"), max_length=3)
+    total_minor = models.BigIntegerField(_("total paid"))
+    provider = models.CharField(_("provider"), max_length=20)
+    provider_reference = models.CharField(_("provider reference"), max_length=120, blank=True)
+    checkout_url = models.TextField(_("payment page"), blank=True)
+    expires_at = models.DateTimeField(_("to pay before"), null=True, blank=True)
+    paid_at = models.DateTimeField(_("paid at"), null=True, blank=True)
+
+    class Meta:
+        verbose_name = _("grouped payment")
+        verbose_name_plural = _("grouped payments")
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return self.reference
+
+    @property
+    def description(self) -> str:
+        return f"Solange Glow {self.reference}"
+
+
 class Payment(BaseModel):
     """Money of a client, held until she confirms she received her order (receipt code)."""
 
@@ -219,6 +249,14 @@ class Payment(BaseModel):
     purpose = models.CharField(_("for"), max_length=10, choices=Purpose.choices)
     source_type = models.CharField(_("linked to"), max_length=40, blank=True)
     source_id = models.UUIDField(_("linked id"), null=True, blank=True)
+    group = models.ForeignKey(
+        PaymentGroup,
+        on_delete=models.PROTECT,
+        null=True,
+        blank=True,
+        related_name="payments",
+        verbose_name=_("paid with"),
+    )
     description = models.CharField(_("description"), max_length=200)
     country = models.CharField(_("country"), max_length=2, blank=True)
     category = models.CharField(_("category"), max_length=60, blank=True)
@@ -253,6 +291,11 @@ class Payment(BaseModel):
         "core.MediaAsset", on_delete=models.SET_NULL, null=True, blank=True, related_name="+"
     )
     service_at = models.DateTimeField(_("appointment"), null=True, blank=True)
+    prep_days = models.PositiveSmallIntegerField(
+        _("preparation days"),
+        default=0,
+        help_text=_("Added to the shipping deadline (made-to-order items)."),
+    )
     paid_at = models.DateTimeField(_("paid at"), null=True, blank=True)
     shipped_at = models.DateTimeField(_("shipped at"), null=True, blank=True)
     disputed_at = models.DateTimeField(_("disputed at"), null=True, blank=True)

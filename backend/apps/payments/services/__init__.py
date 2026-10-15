@@ -5,12 +5,16 @@
 - `release`, `refund_full`, `refund_partial`: the outcomes
 - `open_dispute`, `decide`: disputes
 - `request_payout`: the seller takes her money
-- `listen(source_type, callback)`: hear about every change of status
+- `create_group`, `start_group_checkout`: a cart of several shops paid in one go
+- `buyer_fee`: the buyer protection shown before ordering
+- `listen(source_type, callback, may_cancel=)`: hear about every change of status
 """
 
-from .common import can_move, forget, listen
+from .common import can_move, forget, listen, may_cancel
 from .disputes import add_evidence, decide, open_dispute
+from .groups import create_group, group_status, start_group_checkout
 from .payments import (
+    buyer_fee,
     cancel,
     confirm_receipt,
     courier_token,
@@ -33,18 +37,22 @@ from .tax import save_tax_profile
 
 __all__ = [
     "add_evidence",
+    "buyer_fee",
     "can_move",
     "cancel",
     "confirm_receipt",
     "courier_token",
+    "create_group",
     "create_payment",
     "decide",
     "forget",
+    "group_status",
     "listen",
     "mark_delivered",
     "mark_done_by_hand",
     "mark_not_paid",
     "mark_paid",
+    "may_cancel",
     "open_dispute",
     "payment_for_courier",
     "receipt_code_for",
@@ -57,4 +65,5 @@ __all__ = [
     "save_tax_profile",
     "ship",
     "start_checkout",
+    "start_group_checkout",
 ]

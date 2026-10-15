@@ -11,8 +11,9 @@ from django.db import IntegrityError, transaction
 
 from apps.core.errors import DomainError
 
-from ..models import Payment, Payout, Refund, WebhookEvent
+from ..models import Payment, PaymentGroup, Payout, Refund, WebhookEvent
 from ..providers import EventKind, get_provider
+from . import groups as group_services
 from . import payments as payment_services
 from . import payouts as payout_services
 from . import refunds as refund_services
@@ -23,6 +24,22 @@ W = WebhookEvent.Status
 def _dispatch(provider: str, event) -> str:
     kind = event.kind
     if kind in (EventKind.PAYMENT_SUCCEEDED, EventKind.PAYMENT_FAILED, EventKind.PAYMENT_CANCELLED):
+        group = PaymentGroup.objects.filter(
+            provider=provider, provider_reference=event.reference
+        ).first()
+        if group is not None:
+            if kind == EventKind.PAYMENT_SUCCEEDED:
+                group_services.mark_group_paid(
+                    group,
+                    amount_minor=event.amount_minor,
+                    currency=event.currency or group.currency,
+                    fee_minor=event.fee_minor,
+                    key=f"{provider}:{event.event_id}",
+                )
+            else:
+                reason = "failed" if kind == EventKind.PAYMENT_FAILED else "abandoned"
+                group_services.mark_group_not_paid(group, reason=reason)
+            return W.PROCESSED
         payment = Payment.objects.filter(
             provider=provider, provider_reference=event.reference
         ).first()

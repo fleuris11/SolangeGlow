@@ -99,6 +99,53 @@ class TestOutcomeView(PaymentsView):
         return _answer(request, payment_id)
 
 
+def _group(request, group_id):
+    group = selectors.group_for(request.user, group_id)
+    if group is None:
+        raise errors.PaymentNotFound()
+    return group
+
+
+class GroupView(PaymentsView):
+    """A cart paid in one go: its orders' payments and whether the provider answered."""
+
+    @extend_schema(tags=["payments"], responses=s.PaymentGroupSerializer)
+    def get(self, request, group_id):
+        return Response(s.group_payload(_group(request, group_id), request.user))
+
+
+class GroupCheckoutView(PaymentsView):
+    @extend_schema(tags=["payments"], request=None, responses=s.PaymentGroupSerializer)
+    def post(self, request, group_id):
+        group = services.start_group_checkout(_group(request, group_id), buyer=request.user)
+        return Response(s.group_payload(group, request.user))
+
+
+class GroupTestOutcomeView(PaymentsView):
+    """Test provider only: the answer for a whole cart."""
+
+    @extend_schema(
+        tags=["payments"], request=s.TestOutcomeSerializer, responses=s.PaymentGroupSerializer
+    )
+    def post(self, request, group_id):
+        group = _group(request, group_id)
+        if not settings.PAYMENTS_FAKE_ENABLED or group.provider != "fake":
+            raise exceptions.NotFound()
+        data = s.TestOutcomeSerializer(data=request.data)
+        data.is_valid(raise_exception=True)
+        group = services.start_group_checkout(group, buyer=request.user)
+        kind = {
+            "succeeded": EventKind.PAYMENT_SUCCEEDED,
+            "failed": EventKind.PAYMENT_FAILED,
+            "abandoned": EventKind.PAYMENT_CANCELLED,
+        }[data.validated_data["outcome"]]
+        from .tasks import send_fake_event
+
+        send_fake_event.delay(kind, group.provider_reference, group.total_minor, group.currency)
+        group.refresh_from_db()
+        return Response(s.group_payload(group, request.user))
+
+
 class ShipView(PaymentsView):
     @extend_schema(tags=["payments"], request=s.ShipSerializer, responses=s.PaymentSerializer)
     def post(self, request, payment_id):

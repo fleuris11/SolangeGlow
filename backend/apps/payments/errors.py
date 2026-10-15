@@ -15,6 +15,12 @@ class InvalidTransition(DomainError):
     message = _("This is not possible at this stage of the payment.")
 
 
+class CancelNotAllowed(DomainError):
+    code = "cancel_not_allowed"
+    status_code = 409
+    message = _("The seller is already preparing this order: write to her to cancel it.")
+
+
 class InvalidPayment(DomainError):
     code = "invalid_payment"
     message = _("The amounts of this payment are not valid.")
