@@ -18,6 +18,7 @@ from apps.core.models import Country
 from apps.notifications.services import notify
 from apps.pros import demo
 from apps.pros.models import ProProfile
+from apps.selection_france.demo import seed_selection
 from apps.shop.demo import seed_shop
 from apps.social.demo import seed_social
 
@@ -50,12 +51,14 @@ class Command(BaseCommand):
         with transaction.atomic():
             social = seed_social()
         shop = seed_shop()
+        selection = seed_selection()
         self.stdout.write(
             self.style.SUCCESS(
                 f"seed_demo: {created} new demo accounts, {self.showcases} showcases filled, "
                 f"{social['posts']} posts, {social['stories']} stories, "
                 f"{social['reviews']} reviews, {shop['shops']} shops, "
-                f"{shop['products']} new products, {shop['orders']} demo orders."
+                f"{shop['products']} new products, {shop['orders']} demo orders, "
+                f"{selection['products']} France Selection products."
             )
         )
 
