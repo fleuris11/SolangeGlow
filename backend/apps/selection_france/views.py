@@ -14,7 +14,6 @@ from . import errors, selectors, services
 from . import serializers as s
 from .models import Aisle, ShippingMode, SpecialRequest
 
-
 # Small prices first, then trending, then luxury (not the alphabetical order).
 AISLE_ORDER = Case(
     *(When(aisle=key, then=Value(rank)) for rank, key in enumerate(Aisle.values)),
