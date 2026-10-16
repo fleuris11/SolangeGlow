@@ -146,6 +146,7 @@ class Purpose(models.TextChoices):
     ORDER = "order", _("Order")
     DEPOSIT = "deposit", _("Booking deposit")
     TRAINING = "training", _("Training")
+    SELECTION = "selection", _("France Selection")
     OTHER = "other", _("Other")
 
 
