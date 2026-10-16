@@ -219,6 +219,27 @@ Groupe « Shop review » créé automatiquement.
 Réglages : `shop.*` (photos, panier, remise maximum, ventes flash, alertes de prix, stock
 bas) ; interrupteur « shop » par pays dans les feature flags.
 
+## Tester la Sélection France en local
+
+Avec les données de démo (`seed_demo`) et le prestataire de test :
+
+1. Ouvre http://localhost:3000/fr/selection : trois rayons (Petits prix, Tendance, Luxe),
+   prix finaux en FCFA, une précommande groupée en cours.
+2. Sur une fiche (par exemple « Fond de teint Fenty »), choisis la teinte, l'envoi groupé
+   ou l'express (prix et délai affichés), le point de retrait, puis « Payer » : page de
+   paiement de test, puis suivi de colis avec le code de réception.
+3. Admin, section Sélection France : « Commandes à passer » (lien direct du marchand,
+   « Commandé chez le marchand » avec son numéro), « Reçu en France », action « Mettre dans
+   un nouveau lot », puis dans le lot : transporteur et suivi, « Lot parti », « Lot
+   arrivé », et enfin « Saisir le code de réception » sur la commande.
+4. Demande spéciale : http://localhost:3000/fr/selection/requests (lien ou photo). Dans
+   l'admin, remplis le prix d'achat, le poids et la catégorie : le calcul s'affiche ;
+   « Envoyer le devis ». La cliente de démo Awa (+2290197000201) a déjà un devis.
+
+Le calcul détaillé du prix est sur chaque fiche produit de l'admin ; « Recalculer les
+prix » après un changement des paramètres d'une catégorie. Réglages : `selection.*` (taux,
+arrondi, paramètres par défaut, délais, pays, devis, blocage des parfums et aérosols).
+
 ## Client de l'API (web)
 
 Les types du client web sont générés depuis le schéma de l'API. Après toute
@@ -278,6 +299,8 @@ backend/                Django
                         paiement groupé d'un panier
   apps/shop/            boutiques : produits, variantes et stock, mots interdits, remise et
                         zones, panier, commandes, promotions, liste d'envies et alertes
+  apps/selection_france/ Sélection France : catalogue, moteur de prix, commandes vendues par
+                        la plateforme, lots d'envoi, demandes spéciales, précommandes groupées
   apps/messaging/       conversations, messages, temps réel (WebSocket), demandes,
                         réponses rapides, message d'absence, anti-fraude, appels (préparés)
   assets/fonts/         polices de la marque (OFL) pour les affiches et stickers
