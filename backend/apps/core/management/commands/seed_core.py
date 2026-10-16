@@ -948,6 +948,81 @@ SETTINGS += [
 ]
 
 
+# France Selection (module 6): the price formula, delays, quotes, air restrictions.
+SETTINGS += [
+    _s(
+        "selection.eur_xof_rate",
+        STR,
+        "655.957",
+        "Taux euro → FCFA de la formule de prix (parité fixe).",
+        "Euro to FCFA rate of the price formula (fixed parity).",
+    ),
+    _s(
+        "selection.rounding_xof",
+        INT,
+        "100",
+        "Arrondi du prix de vente (à la centaine de FCFA supérieure).",
+        "Rounding of the sale price (up to the next hundred FCFA).",
+    ),
+    _s(
+        "selection.pricing_defaults",
+        JSON,
+        '{"transport_per_kg_cents": 1200, "express_per_kg_cents": 2500, "packaging_cents": 150, "customs_bps": 2000, "margin_bps": 2500, "payment_fee_cents": 80}',
+        "Paramètres de prix par défaut (une catégorie peut les remplacer) : transport groupé et express par kg et emballage en centimes d'euro, douane et marge en centièmes de pourcent (2000 = 20 %), frais de paiement en centimes.",
+        "Default price parameters (a category can replace them): grouped and express transport per kg and packaging in euro cents, customs and margin in hundredths of a percent (2000 = 20 %), payment fees in cents.",
+    ),
+    _s(
+        "selection.delays",
+        JSON,
+        '{"purchase_days": [3, 6], "grouped_transit_days": [7, 12], "express_transit_days": [3, 5], "departure_weekday": 4}',
+        "Délais affichés : achat en France, transport groupé, transport express (jours, mini et maxi) ; jour du départ groupé (0 = lundi, 4 = vendredi).",
+        "Delays shown: purchase in France, grouped transport, express transport (days, min and max); day of the grouped departure (0 = Monday, 4 = Friday).",
+    ),
+    _s(
+        "selection.countries",
+        JSON,
+        '["BJ"]',
+        "Pays dont les clientes peuvent commander (retrait au Bénin, prix en FCFA).",
+        "Countries whose clients can order (pick-up in Benin, prices in FCFA).",
+    ),
+    _s(
+        "selection.max_quantity",
+        INT,
+        "5",
+        "Quantité maximum d'un produit dans une commande.",
+        "Maximum quantity of a product in an order.",
+    ),
+    _s(
+        "selection.quote_valid_days",
+        INT,
+        "7",
+        "Durée de validité d'un devis de demande spéciale (jours).",
+        "How long a special request quote stays valid (days).",
+    ),
+    _s(
+        "selection.block_air_restricted",
+        BOOL,
+        "true",
+        "Bloquer les catégories interdites en avion (parfums, aérosols).",
+        "Block the categories forbidden by air (perfumes, aerosols).",
+    ),
+    _s(
+        "selection.house_email",
+        STR,
+        "selection@solangeglow.com",
+        "Compte qui encaisse les ventes de la Sélection France (la plateforme).",
+        "Account that receives the France Selection sales (the platform).",
+    ),
+    _s(
+        "throttle.selection",
+        STR,
+        "60/minute",
+        "Limite des actions de la Sélection France par adresse IP.",
+        "France Selection actions limit per IP address.",
+    ),
+]
+
+
 class Command(BaseCommand):
     help = "Create countries (BJ, FR), currencies (XOF, EUR) and the platform settings."
 

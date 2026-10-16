@@ -274,6 +274,7 @@ SPECTACULAR_SETTINGS = {
         "PaymentDeliveryEnum": "apps.payments.models.Payment.Delivery",
         "OrderDeliveryModeEnum": "apps.shop.models.DeliveryMode",
         "DeliveryZoneModeEnum": "apps.shop.models.ZONE_MODES",
+        "SelectionShippingModeEnum": "apps.selection_france.models.ShippingMode",
     },
 }
 
@@ -400,6 +401,10 @@ CELERY_BEAT_SCHEDULE = {
     },
     "shop.run_alerts": {
         "task": "apps.shop.tasks.run_alerts",
+        "schedule": crontab(minute="*/15"),
+    },
+    "selection.run_deadlines": {
+        "task": "apps.selection_france.tasks.run_deadlines",
         "schedule": crontab(minute="*/15"),
     },
 }
@@ -603,6 +608,55 @@ UNFOLD = {
                         "title": _("Promotions"),
                         "icon": "sell",
                         "link": reverse_lazy("admin:shop_promocode_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("France Selection"),
+                "separator": True,
+                "items": [
+                    {
+                        "title": _("Orders to place"),
+                        "icon": "shopping_cart_checkout",
+                        "link": lambda request: (
+                            reverse("admin:selection_france_selectionorder_changelist")
+                            + "?status__exact=to_order"
+                        ),
+                    },
+                    {
+                        "title": _("Selection orders"),
+                        "icon": "local_shipping",
+                        "link": reverse_lazy("admin:selection_france_selectionorder_changelist"),
+                    },
+                    {
+                        "title": _("Shipments"),
+                        "icon": "flight",
+                        "link": reverse_lazy("admin:selection_france_shipment_changelist"),
+                    },
+                    {
+                        "title": _("Special requests"),
+                        "icon": "request_quote",
+                        "link": reverse_lazy("admin:selection_france_specialrequest_changelist"),
+                    },
+                    {
+                        "title": _("Selection products"),
+                        "icon": "inventory_2",
+                        "link": reverse_lazy("admin:selection_france_selectionproduct_changelist"),
+                    },
+                    {
+                        "title": _("Group pre-orders"),
+                        "icon": "groups",
+                        "link": reverse_lazy("admin:selection_france_groupbuy_changelist"),
+                    },
+                    {
+                        "title": _("Categories and prices"),
+                        "icon": "calculate",
+                        "link": reverse_lazy("admin:selection_france_selectioncategory_changelist"),
+                    },
+                    {
+                        "title": _("Pick-up points"),
+                        "icon": "place",
+                        "link": reverse_lazy("admin:selection_france_pickuppoint_changelist"),
                     },
                 ],
             },

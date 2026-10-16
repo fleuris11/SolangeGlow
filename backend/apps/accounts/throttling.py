@@ -19,6 +19,7 @@ DEFAULT_RATES = {
     "payments": "60/minute",
     "receipt_code": "20/hour",
     "shop": "120/minute",
+    "selection": "60/minute",
 }
 
 

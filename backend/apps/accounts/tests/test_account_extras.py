@@ -194,4 +194,6 @@ def test_seed_demo_creates_realistic_people_once():
     assert aicha.pro_profile.trades.filter(key="braids").exists()
     assert aicha.country.code == "BJ"
     assert User.objects.filter(country__code="FR").exists()
-    assert Notification.objects.filter(event_key="account.welcome").count() == count
+    # Every demo person is welcomed (not the France Selection's house account).
+    people = User.objects.exclude(email="selection@solangeglow.com").count()
+    assert Notification.objects.filter(event_key="account.welcome").count() == people
