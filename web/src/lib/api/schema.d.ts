@@ -1994,6 +1994,170 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/selection/orders": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["selection_orders_list"];
+    put?: never;
+    post: operations["selection_orders_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/selection/orders/{order_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["selection_orders_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/selection/orders/{order_id}/cancel": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["selection_orders_cancel_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/selection/orders/{order_id}/pay": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["selection_orders_pay_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/selection/pickup-points": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["selection_pickup_points_list"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/selection/products": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description The three aisles of the France Selection (final prices in FCFA). */
+    get: operations["selection_products_list"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/selection/products/{slug}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["selection_products_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/selection/requests": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["selection_requests_list"];
+    put?: never;
+    post: operations["selection_requests_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/selection/requests/{request_id}/decline": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["selection_requests_decline_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/selection/requests/{request_id}/order": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description She accepts the quote: an order to pay. */
+    post: operations["selection_requests_order_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/shop/alerts/{variant_id}": {
     parameters: {
       query?: never;
@@ -2374,6 +2538,13 @@ export interface components {
      * @enum {string}
      */
     AccountEnum: "pending" | "available";
+    /**
+     * @description * `small_prices` - Small prices
+     *     * `trending` - Trending
+     *     * `luxury` - Luxury
+     * @enum {string}
+     */
+    AisleEnum: "small_prices" | "trending" | "luxury";
     Arrival: {
       sent: boolean;
     };
@@ -3084,6 +3255,8 @@ export interface components {
      *     * `product_voice` - product_voice
      *     * `review_photo` - review_photo
      *     * `review_voice` - review_voice
+     *     * `selection_photo` - selection_photo
+     *     * `selection_request` - selection_request
      *     * `service_photo` - service_photo
      *     * `story` - story
      *     * `voice_note` - voice_note
@@ -3106,6 +3279,8 @@ export interface components {
       | "product_voice"
       | "review_photo"
       | "review_voice"
+      | "selection_photo"
+      | "selection_request"
       | "service_photo"
       | "story"
       | "voice_note";
@@ -4186,6 +4361,208 @@ export interface components {
       next: string | null;
       count: number;
     };
+    SelectionCategory: {
+      key: string;
+      name: string;
+      air_restricted: boolean;
+    };
+    SelectionEstimate: {
+      /** Format: date */
+      from: string;
+      /** Format: date */
+      to: string;
+    };
+    SelectionEstimates: {
+      grouped: components["schemas"]["SelectionEstimate"];
+      express: components["schemas"]["SelectionEstimate"];
+      group: components["schemas"]["SelectionEstimate"] | null;
+    };
+    SelectionGroup: {
+      /** Format: uuid */
+      id: string;
+      price_xof: number;
+      target: number;
+      count: number;
+      /** Format: date-time */
+      ends_at: string;
+    };
+    SelectionOrder: {
+      /** Format: uuid */
+      id: string;
+      reference: string;
+      status: components["schemas"]["SelectionOrderStatusEnum"];
+      title: string;
+      option: string;
+      quantity: number;
+      unit_price_xof: number;
+      total_xof: number;
+      shipping_mode: components["schemas"]["SelectionShippingModeEnum"];
+      photo: components["schemas"]["Media"] | null;
+      pickup_point: components["schemas"]["SelectionPickupPoint"];
+      /** Format: date */
+      estimate_from: string | null;
+      /** Format: date */
+      estimate_to: string | null;
+      carrier: string;
+      tracking_number: string;
+      /** Format: date-time */
+      created_at: string;
+      /** Format: date-time */
+      ordered_at: string | null;
+      /** Format: date-time */
+      received_at: string | null;
+      /** Format: date-time */
+      shipped_at: string | null;
+      /** Format: date-time */
+      arrived_at: string | null;
+      /** Format: date-time */
+      completed_at: string | null;
+      group: components["schemas"]["SelectionOrderGroup"] | null;
+      payment: components["schemas"]["Payment"] | null;
+      can: components["schemas"]["SelectionOrderAbilities"];
+    };
+    SelectionOrderAbilities: {
+      pay: boolean;
+      cancel: boolean;
+    };
+    SelectionOrderGroup: {
+      target: number;
+      count: number;
+      /** Format: date-time */
+      ends_at: string;
+      status: string;
+    };
+    SelectionOrderInputRequest: {
+      /** Format: uuid */
+      product_id: string;
+      shipping_mode: components["schemas"]["SelectionShippingModeEnum"];
+      /** Format: uuid */
+      pickup_point_id: string;
+      option?: string;
+      /** @default 1 */
+      quantity: number;
+      /** @default false */
+      group: boolean;
+    };
+    SelectionOrderList: {
+      results: components["schemas"]["SelectionOrder"][];
+    };
+    /**
+     * @description * `pending_payment` - Waiting for payment
+     *     * `waiting_group` - Waiting for the group
+     *     * `to_order` - To order at the merchant
+     *     * `ordered` - Ordered at the merchant
+     *     * `received` - Received in France
+     *     * `shipped` - On its way to Benin
+     *     * `arrived` - Ready at the pick-up point
+     *     * `completed` - Handed over
+     *     * `cancelled` - Cancelled
+     *     * `refunded` - Refunded
+     *     * `disputed` - In dispute
+     * @enum {string}
+     */
+    SelectionOrderStatusEnum:
+      | "pending_payment"
+      | "waiting_group"
+      | "to_order"
+      | "ordered"
+      | "received"
+      | "shipped"
+      | "arrived"
+      | "completed"
+      | "cancelled"
+      | "refunded"
+      | "disputed";
+    SelectionPickupPoint: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      city: string;
+      address: string;
+      landmarks: string;
+      hours: string;
+    };
+    SelectionProductDetail: {
+      /** Format: uuid */
+      id: string;
+      slug: string;
+      title: string;
+      merchant_name: string;
+      aisle: components["schemas"]["AisleEnum"];
+      price_xof: number;
+      available: boolean;
+      photo: components["schemas"]["Media"] | null;
+      group: components["schemas"]["SelectionGroup"] | null;
+      description: string;
+      category: components["schemas"]["SelectionCategory"];
+      express_price_xof: number | null;
+      options: string[];
+      photos: components["schemas"]["Media"][];
+      estimates: components["schemas"]["SelectionEstimates"];
+    };
+    SelectionProductList: {
+      results: components["schemas"]["SelectionProductSummary"][];
+      grouped: components["schemas"]["SelectionEstimate"];
+      express: components["schemas"]["SelectionEstimate"];
+    };
+    SelectionProductSummary: {
+      /** Format: uuid */
+      id: string;
+      slug: string;
+      title: string;
+      merchant_name: string;
+      aisle: components["schemas"]["AisleEnum"];
+      price_xof: number;
+      available: boolean;
+      photo: components["schemas"]["Media"] | null;
+      group: components["schemas"]["SelectionGroup"] | null;
+    };
+    SelectionQuoteOrderRequest: {
+      shipping_mode: components["schemas"]["SelectionShippingModeEnum"];
+      /** Format: uuid */
+      pickup_point_id: string;
+    };
+    SelectionRequest: {
+      /** Format: uuid */
+      id: string;
+      status: components["schemas"]["SelectionStatusEnum"];
+      link: string;
+      photo: components["schemas"]["Media"] | null;
+      note: string;
+      /** Format: date-time */
+      created_at: string;
+      title: string;
+      price_xof: number | null;
+      express_price_xof: number | null;
+      answer: string;
+      /** Format: date-time */
+      valid_until: string | null;
+      estimates: components["schemas"]["SelectionEstimates"];
+      /** Format: uuid */
+      order_id: string | null;
+    };
+    SelectionRequestInputRequest: {
+      link?: string;
+      /** Format: uuid */
+      photo?: string | null;
+      note?: string;
+    };
+    /**
+     * @description * `grouped` - Weekly grouped shipment
+     *     * `express` - Express
+     * @enum {string}
+     */
+    SelectionShippingModeEnum: "grouped" | "express";
+    /**
+     * @description * `new` - To quote
+     *     * `quoted` - Quote sent
+     *     * `ordered` - Ordered
+     *     * `declined` - Declined
+     *     * `expired` - Expired
+     *     * `refused` - Not possible
+     * @enum {string}
+     */
+    SelectionStatusEnum: "new" | "quoted" | "ordered" | "declined" | "expired" | "refused";
     Service: {
       /** Format: uuid */
       readonly id: string;
@@ -8276,6 +8653,266 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["Review"];
+        };
+      };
+    };
+  };
+  selection_orders_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SelectionOrderList"];
+        };
+      };
+    };
+  };
+  selection_orders_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["SelectionOrderInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["SelectionOrderInputRequest"];
+        "multipart/form-data": components["schemas"]["SelectionOrderInputRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SelectionOrder"];
+        };
+      };
+    };
+  };
+  selection_orders_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        order_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SelectionOrder"];
+        };
+      };
+    };
+  };
+  selection_orders_cancel_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        order_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SelectionOrder"];
+        };
+      };
+    };
+  };
+  selection_orders_pay_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        order_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SelectionOrder"];
+        };
+      };
+    };
+  };
+  selection_pickup_points_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SelectionPickupPoint"][];
+        };
+      };
+    };
+  };
+  selection_products_list: {
+    parameters: {
+      query?: {
+        aisle?: "luxury" | "small_prices" | "trending";
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SelectionProductList"];
+        };
+      };
+    };
+  };
+  selection_products_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        slug: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SelectionProductDetail"];
+        };
+      };
+    };
+  };
+  selection_requests_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SelectionRequest"][];
+        };
+      };
+    };
+  };
+  selection_requests_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["SelectionRequestInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["SelectionRequestInputRequest"];
+        "multipart/form-data": components["schemas"]["SelectionRequestInputRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SelectionRequest"];
+        };
+      };
+    };
+  };
+  selection_requests_decline_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        request_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SelectionRequest"];
+        };
+      };
+    };
+  };
+  selection_requests_order_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        request_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["SelectionQuoteOrderRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["SelectionQuoteOrderRequest"];
+        "multipart/form-data": components["schemas"]["SelectionQuoteOrderRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SelectionOrder"];
         };
       };
     };

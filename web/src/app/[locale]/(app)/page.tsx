@@ -7,7 +7,7 @@ import { FeedSection } from "@/components/features/social/feed-section";
 import { StoryStrip } from "@/components/features/social/story-strip";
 import { TradePetals } from "@/components/features/trades/trade-petals";
 import { SpeakButton } from "@/components/ui/speak-button";
-import { feedOnServer, storiesOnServer } from "@/lib/api/server";
+import { feedOnServer, selectionOnServer, storiesOnServer } from "@/lib/api/server";
 import type { Locale } from "@/lib/i18n/routing";
 
 type Props = { params: Promise<{ locale: Locale }> };
@@ -22,7 +22,15 @@ export default async function HomePage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: "home" });
   const tFeed = await getTranslations({ locale, namespace: "social.feed" });
   const signedIn = (await cookies()).get("sg_signed_in")?.value === "1";
-  const [stories, feed] = await Promise.all([storiesOnServer(locale), feedOnServer(locale)]);
+  const [stories, feed, selection] = await Promise.all([
+    storiesOnServer(locale),
+    feedOnServer(locale),
+    selectionOnServer(locale).catch(() => null),
+  ]);
+  // One product per aisle for the France Selection band.
+  const picks = ["small_prices", "trending", "luxury"]
+    .map((aisle) => selection?.results.find((product) => product.aisle === aisle))
+    .filter((product) => product !== undefined);
 
   return (
     <div className="flex flex-col gap-10">
@@ -48,9 +56,9 @@ export default async function HomePage({ params }: Props) {
         title={signedIn ? tFeed("titleSignedIn") : tFeed("title")}
       />
 
+      <FranceSelectionBand products={picks} />
       {!signedIn && (
         <>
-          <FranceSelectionBand />
           <GiftBand />
           <JoinBand />
         </>

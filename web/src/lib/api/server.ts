@@ -134,3 +134,33 @@ export async function productReviewsOnServer(id: string, locale: string) {
   });
   return data ?? { average: null, count: 0, results: [] };
 }
+
+// --- France Selection (module 6) ------------------------------------------------------------------
+
+export async function selectionOnServer(locale: string, aisle?: string) {
+  const api = await serverApi(locale);
+  const { data, response } = await api.GET("/api/v1/selection/products", {
+    params: { query: aisle ? { aisle: aisle as Schemas["AisleEnum"] } : {} },
+  });
+  if (!response.ok || !data) throw new Error(`Selection: ${response.status}`);
+  return data;
+}
+
+export async function selectionProductOnServer(
+  slug: string,
+  locale: string,
+): Promise<Schemas["SelectionProductDetail"] | null> {
+  const api = await serverApi(locale);
+  const { data, response } = await api.GET("/api/v1/selection/products/{slug}", {
+    params: { path: { slug } },
+  });
+  if (response.status === 404) return null;
+  if (!response.ok || !data) throw new Error(`Selection ${slug}: ${response.status}`);
+  return data;
+}
+
+export async function pickupPointsOnServer(locale: string) {
+  const api = await serverApi(locale);
+  const { data } = await api.GET("/api/v1/selection/pickup-points");
+  return data ?? [];
+}

@@ -1268,7 +1268,8 @@
       "cart": "Mon panier",
       "orders": "Mes commandes",
       "wishlist": "Mes envies",
-      "myShop": "Ma boutique"
+      "myShop": "Ma boutique",
+      "selection": "Mes commandes Sélection France"
     }
   },
   "payments": {
@@ -1886,6 +1887,142 @@
       "publish": "Mettre en ligne",
       "draft": "Garder en brouillon",
       "next": "Continuer"
+    }
+  },
+  "selection": {
+    "titles": {
+      "requests": "Demande spéciale",
+      "orders": "Mes commandes Sélection",
+      "order": "Suivi de colis"
+    },
+    "aisles": {
+      "small_prices": "Petits prix",
+      "trending": "Tendance",
+      "luxury": "Luxe"
+    },
+    "modes": {
+      "grouped": "Envoi groupé",
+      "express": "Express"
+    },
+    "card": {
+      "group": "Précommande",
+      "unavailable": "Bientôt de retour"
+    },
+    "home": {
+      "title": "Sélection France",
+      "intro": "Les produits tendance de France, achetés pour toi et envoyés au Bénin.",
+      "finalPrice": "Prix final : transport et douane compris, rien à payer en plus.",
+      "held": "Ton argent reste bloqué jusqu'à ce que tu récupères ton colis.",
+      "delay": "Envoi groupé chaque semaine : chez toi entre le {from} et le {to}",
+      "aisles": "Rayons",
+      "all": "Tout",
+      "empty": "Rien dans ce rayon pour l'instant",
+      "emptyHelp": "Fais une demande spéciale : on te trouve le produit.",
+      "specialTitle": "Tu ne trouves pas ton produit ?",
+      "specialText": "Colle un lien ou envoie une photo : on t'envoie un prix, tu décides.",
+      "specialCta": "Faire une demande spéciale",
+      "myOrders": "Suivre mes commandes"
+    },
+    "product": {
+      "photos": "Photos du produit",
+      "photoN": "Photo {n}",
+      "from": "{merchant}, {category}",
+      "protected": "Paiement sécurisé : ton argent est bloqué jusqu'à ce que tu récupères ton colis avec ton code. Remboursée si on ne peut pas l'envoyer.",
+      "description": "Description",
+      "metaTitle": "{title}, Sélection France",
+      "metaDescription": "Acheté en France, livré au Bénin, prix final sans surprise."
+    },
+    "buy": {
+      "between": "Chez toi entre le {from} et le {to}",
+      "error": "Ça n'a pas marché. Réessaie.",
+      "unavailable": "Épuisé chez le marchand pour l'instant. Reviens bientôt.",
+      "groupTitle": "Précommande groupée : {price} au lieu de {before}",
+      "groupProgress": "{count} sur {target} commandes",
+      "groupLeft": "Encore {days} j {hours} h.",
+      "groupHelp": "Le produit part quand l'objectif est atteint. Sinon, tu es remboursée automatiquement.",
+      "choose": "Ton choix",
+      "quantity": "Quantité",
+      "less": "Un de moins",
+      "more": "Un de plus",
+      "shipping": "Envoi",
+      "wayGroup": "Précommande groupée",
+      "wayGrouped": "Envoi groupé de la semaine",
+      "wayExpress": "Express",
+      "noExpress": "Pas d'express pour ce produit (transport spécial).",
+      "pickup": "Où récupérer ton colis",
+      "final": "Ce prix est final : transport, douane et frais compris.",
+      "pay": "Payer {amount}"
+    },
+    "requests": {
+      "title": "Demande spéciale",
+      "help": "Un produit qui n'est pas dans la sélection ? Colle son lien ou envoie une photo. On te répond avec un prix final.",
+      "link": "Lien du produit",
+      "photo": "Envoyer une photo",
+      "photoOk": "Photo ajoutée",
+      "photoAdded": "Photo ajoutée",
+      "photoError": "La photo n'est pas passée. Réessaie.",
+      "note": "Précise ce que tu veux (taille, couleur…)",
+      "send": "Envoyer ma demande",
+      "sent": "Demande envoyée : on te répond vite.",
+      "error": "Ça n'a pas marché. Réessaie.",
+      "mine": "Mes demandes",
+      "none": "Pas encore de demande.",
+      "validUntil": "Devis valable jusqu'au {date}",
+      "shipping": "Envoi",
+      "grouped": "Envoi groupé",
+      "express": "Express",
+      "pickup": "Point de retrait",
+      "between": "Chez toi entre le {from} et le {to}",
+      "pay": "Payer {amount}",
+      "decline": "Non merci",
+      "seeOrder": "Suivre la commande"
+    },
+    "requestStatus": {
+      "new": "En cours d'étude",
+      "quoted": "Devis reçu",
+      "ordered": "Commandée",
+      "declined": "Refusée par toi",
+      "expired": "Devis expiré",
+      "refused": "Pas possible"
+    },
+    "orders": {
+      "title": "Mes commandes Sélection",
+      "empty": "Pas encore de commande",
+      "discover": "Découvrir la sélection"
+    },
+    "status": {
+      "pending_payment": "En attente de paiement",
+      "waiting_group": "En attente du groupe",
+      "to_order": "Payée, bientôt commandée",
+      "ordered": "Commandée en France",
+      "received": "Reçue en France",
+      "shipped": "En route vers le Bénin",
+      "arrived": "Prête au point de retrait",
+      "completed": "Récupérée",
+      "cancelled": "Annulée",
+      "refunded": "Remboursée",
+      "disputed": "En litige"
+    },
+    "steps": {
+      "label": "Étapes du colis",
+      "paid": "Payée, argent bloqué",
+      "ordered": "Commandée chez le marchand",
+      "received": "Reçue en France",
+      "shipped": "En route vers le Bénin",
+      "arrived": "Au point de retrait",
+      "completed": "Récupérée avec ton code",
+      "yes": "fait",
+      "no": "pas encore"
+    },
+    "tracking": {
+      "error": "Ça n'a pas marché. Réessaie.",
+      "pay": "Payer {amount}",
+      "group": "Précommande : {count} sur {target}. Départ si l'objectif est atteint le {date}, sinon remboursement.",
+      "expected": "{mode} : prévu entre le {from} et le {to}",
+      "trackingLine": "Suivi {carrier} : {tracking}",
+      "pickup": "Point de retrait",
+      "cancel": "Annuler la commande",
+      "cancelled": "Commande annulée : tu es remboursée."
     }
   }
 }

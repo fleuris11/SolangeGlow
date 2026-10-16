@@ -165,14 +165,19 @@ export function PaymentDetail({ paymentId }: { paymentId: string }) {
         <p className="bg-poudre self-start rounded-full px-3 py-1 font-bold">
           {tStatus(payment.status)}
         </p>
-        {payment.source_type === "order" && payment.source_id && (
-          <Link
-            href={`/orders/${payment.source_id}`}
-            className={buttonClasses({ variant: "secondary", className: "self-start" })}
-          >
-            {t("seeOrder")}
-          </Link>
-        )}
+        {(payment.source_type === "order" || payment.source_type === "selection") &&
+          payment.source_id && (
+            <Link
+              href={
+                payment.source_type === "order"
+                  ? `/orders/${payment.source_id}`
+                  : `/selection/orders/${payment.source_id}`
+              }
+              className={buttonClasses({ variant: "secondary", className: "self-start" })}
+            >
+              {t("seeOrder")}
+            </Link>
+          )}
         <p className="flex items-center gap-2">
           <Avatar name={other.name} src={mediaSrc(other.photo, "thumb")} size="sm" />
           {payment.role === "buyer"

@@ -1268,7 +1268,8 @@
       "cart": "My cart",
       "orders": "My orders",
       "wishlist": "My wishlist",
-      "myShop": "My shop"
+      "myShop": "My shop",
+      "selection": "My France Selection orders"
     }
   },
   "payments": {
@@ -1886,6 +1887,142 @@
       "publish": "Put online",
       "draft": "Keep as a draft",
       "next": "Continue"
+    }
+  },
+  "selection": {
+    "titles": {
+      "requests": "Special request",
+      "orders": "My Selection orders",
+      "order": "Parcel tracking"
+    },
+    "aisles": {
+      "small_prices": "Small prices",
+      "trending": "Trending",
+      "luxury": "Luxury"
+    },
+    "modes": {
+      "grouped": "Grouped shipment",
+      "express": "Express"
+    },
+    "card": {
+      "group": "Pre-order",
+      "unavailable": "Back soon"
+    },
+    "home": {
+      "title": "France Selection",
+      "intro": "Trendy products from France, bought for you and sent to Benin.",
+      "finalPrice": "Final price: transport and customs included, nothing more to pay.",
+      "held": "Your money stays held until you pick up your parcel.",
+      "delay": "Grouped shipment every week: with you between {from} and {to}",
+      "aisles": "Aisles",
+      "all": "All",
+      "empty": "Nothing in this aisle yet",
+      "emptyHelp": "Send a special request: we find the product for you.",
+      "specialTitle": "Cannot find your product?",
+      "specialText": "Paste a link or send a photo: we send you a price, you decide.",
+      "specialCta": "Send a special request",
+      "myOrders": "Follow my orders"
+    },
+    "product": {
+      "photos": "Product pictures",
+      "photoN": "Picture {n}",
+      "from": "{merchant}, {category}",
+      "protected": "Secure payment: your money is held until you pick up your parcel with your code. Refunded if we cannot send it.",
+      "description": "Description",
+      "metaTitle": "{title}, France Selection",
+      "metaDescription": "Bought in France, delivered in Benin, final price without surprise."
+    },
+    "buy": {
+      "between": "With you between {from} and {to}",
+      "error": "That did not work. Try again.",
+      "unavailable": "Out of stock at the merchant for now. Come back soon.",
+      "groupTitle": "Group pre-order: {price} instead of {before}",
+      "groupProgress": "{count} of {target} orders",
+      "groupLeft": "{days} d {hours} h left.",
+      "groupHelp": "The product leaves when the goal is reached. Otherwise you are refunded automatically.",
+      "choose": "Your choice",
+      "quantity": "Quantity",
+      "less": "One less",
+      "more": "One more",
+      "shipping": "Shipping",
+      "wayGroup": "Group pre-order",
+      "wayGrouped": "This week's grouped shipment",
+      "wayExpress": "Express",
+      "noExpress": "No express for this product (special transport).",
+      "pickup": "Where to pick up your parcel",
+      "final": "This price is final: transport, customs and fees included.",
+      "pay": "Pay {amount}"
+    },
+    "requests": {
+      "title": "Special request",
+      "help": "A product that is not in the selection? Paste its link or send a photo. We answer with a final price.",
+      "link": "Link of the product",
+      "photo": "Send a photo",
+      "photoOk": "Photo added",
+      "photoAdded": "Photo added",
+      "photoError": "The photo did not go through. Try again.",
+      "note": "Say what you want (size, colour…)",
+      "send": "Send my request",
+      "sent": "Request sent: we answer soon.",
+      "error": "That did not work. Try again.",
+      "mine": "My requests",
+      "none": "No request yet.",
+      "validUntil": "Quote valid until {date}",
+      "shipping": "Shipping",
+      "grouped": "Grouped shipment",
+      "express": "Express",
+      "pickup": "Pick-up point",
+      "between": "With you between {from} and {to}",
+      "pay": "Pay {amount}",
+      "decline": "No, thank you",
+      "seeOrder": "Follow the order"
+    },
+    "requestStatus": {
+      "new": "Being studied",
+      "quoted": "Quote received",
+      "ordered": "Ordered",
+      "declined": "Declined by you",
+      "expired": "Quote expired",
+      "refused": "Not possible"
+    },
+    "orders": {
+      "title": "My Selection orders",
+      "empty": "No order yet",
+      "discover": "Discover the selection"
+    },
+    "status": {
+      "pending_payment": "Waiting for payment",
+      "waiting_group": "Waiting for the group",
+      "to_order": "Paid, ordered soon",
+      "ordered": "Ordered in France",
+      "received": "Received in France",
+      "shipped": "On its way to Benin",
+      "arrived": "Ready at the pick-up point",
+      "completed": "Picked up",
+      "cancelled": "Cancelled",
+      "refunded": "Refunded",
+      "disputed": "In dispute"
+    },
+    "steps": {
+      "label": "Steps of the parcel",
+      "paid": "Paid, money held",
+      "ordered": "Ordered at the merchant",
+      "received": "Received in France",
+      "shipped": "On its way to Benin",
+      "arrived": "At the pick-up point",
+      "completed": "Picked up with your code",
+      "yes": "done",
+      "no": "not yet"
+    },
+    "tracking": {
+      "error": "That did not work. Try again.",
+      "pay": "Pay {amount}",
+      "group": "Pre-order: {count} of {target}. It leaves if the goal is reached by {date}, otherwise refund.",
+      "expected": "{mode}: expected between {from} and {to}",
+      "trackingLine": "{carrier} tracking: {tracking}",
+      "pickup": "Pick-up point",
+      "cancel": "Cancel the order",
+      "cancelled": "Order cancelled: you are refunded."
     }
   }
 }

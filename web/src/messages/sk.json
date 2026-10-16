@@ -1268,7 +1268,8 @@
       "cart": "Môj košík",
       "orders": "Moje objednávky",
       "wishlist": "Moje želania",
-      "myShop": "Môj obchod"
+      "myShop": "Môj obchod",
+      "selection": "Moje objednávky z Francúzska"
     }
   },
   "payments": {
@@ -1886,6 +1887,142 @@
       "publish": "Zverejniť",
       "draft": "Ponechať ako koncept",
       "next": "Pokračovať"
+    }
+  },
+  "selection": {
+    "titles": {
+      "requests": "Špeciálna požiadavka",
+      "orders": "Moje objednávky výberu",
+      "order": "Sledovanie balíka"
+    },
+    "aisles": {
+      "small_prices": "Nízke ceny",
+      "trending": "Trendy",
+      "luxury": "Luxus"
+    },
+    "modes": {
+      "grouped": "Zoskupená zásielka",
+      "express": "Expres"
+    },
+    "card": {
+      "group": "Predobjednávka",
+      "unavailable": "Čoskoro späť"
+    },
+    "home": {
+      "title": "Výber z Francúzska",
+      "intro": "Trendy produkty z Francúzska, kúpené pre teba a poslané do Beninu.",
+      "finalPrice": "Konečná cena: doprava a clo v cene, nič navyše.",
+      "held": "Peniaze sú blokované, kým si nevyzdvihneš balík.",
+      "delay": "Zoskupená zásielka každý týždeň: u teba medzi {from} a {to}",
+      "aisles": "Oddelenia",
+      "all": "Všetko",
+      "empty": "V tomto oddelení zatiaľ nič",
+      "emptyHelp": "Pošli špeciálnu požiadavku: produkt ti nájdeme.",
+      "specialTitle": "Nenašla si svoj produkt?",
+      "specialText": "Vlož odkaz alebo pošli fotku: pošleme ti cenu a ty rozhodneš.",
+      "specialCta": "Poslať špeciálnu požiadavku",
+      "myOrders": "Sledovať moje objednávky"
+    },
+    "product": {
+      "photos": "Fotky produktu",
+      "photoN": "Fotka {n}",
+      "from": "{merchant}, {category}",
+      "protected": "Bezpečná platba: peniaze sú blokované, kým si balík nevyzdvihneš s kódom. Vrátime ich, ak ho nemôžeme poslať.",
+      "description": "Popis",
+      "metaTitle": "{title}, výber z Francúzska",
+      "metaDescription": "Kúpené vo Francúzsku, doručené do Beninu, konečná cena bez prekvapení."
+    },
+    "buy": {
+      "between": "U teba medzi {from} a {to}",
+      "error": "Nepodarilo sa. Skús znova.",
+      "unavailable": "U obchodníka momentálne vypredané. Vráť sa čoskoro.",
+      "groupTitle": "Skupinová predobjednávka: {price} namiesto {before}",
+      "groupProgress": "{count} z {target} objednávok",
+      "groupLeft": "Ešte {days} d {hours} h.",
+      "groupHelp": "Produkt odíde po dosiahnutí cieľa. Inak ti peniaze automaticky vrátime.",
+      "choose": "Tvoj výber",
+      "quantity": "Množstvo",
+      "less": "O jeden menej",
+      "more": "O jeden viac",
+      "shipping": "Odoslanie",
+      "wayGroup": "Skupinová predobjednávka",
+      "wayGrouped": "Zoskupená zásielka tohto týždňa",
+      "wayExpress": "Expres",
+      "noExpress": "Pre tento produkt nie je expres (špeciálna doprava).",
+      "pickup": "Kde si vyzdvihneš balík",
+      "final": "Táto cena je konečná: doprava, clo a poplatky v cene.",
+      "pay": "Zaplatiť {amount}"
+    },
+    "requests": {
+      "title": "Špeciálna požiadavka",
+      "help": "Produkt, ktorý nie je vo výbere? Vlož odkaz alebo pošli fotku. Odpovieme konečnou cenou.",
+      "link": "Odkaz na produkt",
+      "photo": "Poslať fotku",
+      "photoOk": "Fotka pridaná",
+      "photoAdded": "Fotka pridaná",
+      "photoError": "Fotka neprešla. Skús znova.",
+      "note": "Napíš, čo chceš (veľkosť, farba…)",
+      "send": "Poslať požiadavku",
+      "sent": "Požiadavka odoslaná: čoskoro odpovieme.",
+      "error": "Nepodarilo sa. Skús znova.",
+      "mine": "Moje požiadavky",
+      "none": "Zatiaľ žiadna požiadavka.",
+      "validUntil": "Ponuka platí do {date}",
+      "shipping": "Odoslanie",
+      "grouped": "Zoskupená zásielka",
+      "express": "Expres",
+      "pickup": "Výdajné miesto",
+      "between": "U teba medzi {from} a {to}",
+      "pay": "Zaplatiť {amount}",
+      "decline": "Nie, ďakujem",
+      "seeOrder": "Sledovať objednávku"
+    },
+    "requestStatus": {
+      "new": "Posudzuje sa",
+      "quoted": "Ponuka prijatá",
+      "ordered": "Objednané",
+      "declined": "Odmietnuté tebou",
+      "expired": "Ponuka vypršala",
+      "refused": "Nie je možné"
+    },
+    "orders": {
+      "title": "Moje objednávky výberu",
+      "empty": "Zatiaľ žiadna objednávka",
+      "discover": "Objaviť výber"
+    },
+    "status": {
+      "pending_payment": "Čaká na platbu",
+      "waiting_group": "Čaká na skupinu",
+      "to_order": "Zaplatené, čoskoro objednáme",
+      "ordered": "Objednané vo Francúzsku",
+      "received": "Prijaté vo Francúzsku",
+      "shipped": "Na ceste do Beninu",
+      "arrived": "Pripravené na výdajnom mieste",
+      "completed": "Vyzdvihnuté",
+      "cancelled": "Zrušené",
+      "refunded": "Vrátené",
+      "disputed": "V spore"
+    },
+    "steps": {
+      "label": "Kroky balíka",
+      "paid": "Zaplatené, peniaze blokované",
+      "ordered": "Objednané u obchodníka",
+      "received": "Prijaté vo Francúzsku",
+      "shipped": "Na ceste do Beninu",
+      "arrived": "Na výdajnom mieste",
+      "completed": "Vyzdvihnuté s tvojím kódom",
+      "yes": "hotovo",
+      "no": "ešte nie"
+    },
+    "tracking": {
+      "error": "Nepodarilo sa. Skús znova.",
+      "pay": "Zaplatiť {amount}",
+      "group": "Predobjednávka: {count} z {target}. Odíde, ak sa cieľ dosiahne do {date}, inak vrátenie peňazí.",
+      "expected": "{mode}: očakávané medzi {from} a {to}",
+      "trackingLine": "Sledovanie {carrier}: {tracking}",
+      "pickup": "Výdajné miesto",
+      "cancel": "Zrušiť objednávku",
+      "cancelled": "Objednávka zrušená: peniaze sa ti vrátia."
     }
   }
 }

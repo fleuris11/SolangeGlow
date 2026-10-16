@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  AirplaneTilt,
   BookmarkSimple,
   CaretRight,
   Heart,
@@ -22,6 +23,11 @@ const LINKS: { href: string; key: string; icon: ReactNode }[] = [
   { href: "/cart", key: "cart", icon: <ShoppingBag size={28} weight="duotone" /> },
   { href: "/orders", key: "orders", icon: <Package size={28} weight="duotone" /> },
   { href: "/wishlist", key: "wishlist", icon: <Heart size={28} weight="duotone" /> },
+  {
+    href: "/selection/orders",
+    key: "selection",
+    icon: <AirplaneTilt size={28} weight="duotone" />,
+  },
   { href: "/me/posts", key: "posts", icon: <Images size={28} weight="duotone" /> },
   { href: "/saved", key: "saved", icon: <BookmarkSimple size={28} weight="duotone" /> },
   { href: "/following", key: "following", icon: <UsersThree size={28} weight="duotone" /> },

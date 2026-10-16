@@ -111,43 +111,6 @@ export const DEMO_PROS: DemoPro[] = [
 
 export type ShelfKey = "smallPrices" | "trending" | "luxury";
 
-export type DemoProduct = {
-  id: string;
-  shelf: ShelfKey;
-  /** Written by the shop: content, shown as is. No brand names. */
-  name: string;
-  amountMinor: number;
-  currency: "XOF";
-  trade: Trade;
-};
-
-export const DEMO_PRODUCTS: DemoProduct[] = [
-  {
-    id: "mini-lip",
-    shelf: "smallPrices",
-    name: "Mini rouge à lèvres mat",
-    amountMinor: 6500,
-    currency: "XOF",
-    trade: "makeup",
-  },
-  {
-    id: "serum",
-    shelf: "trending",
-    name: "Sérum éclat vitamine C",
-    amountMinor: 12900,
-    currency: "XOF",
-    trade: "skincare",
-  },
-  {
-    id: "parfum",
-    shelf: "luxury",
-    name: "Eau de parfum 50 ml",
-    amountMinor: 98000,
-    currency: "XOF",
-    trade: "skincare",
-  },
-];
-
 export const DEMO_GIFT = {
   fromAmountMinor: 1500,
   currency: "EUR" as const,

@@ -1,15 +1,17 @@
 import { AirplaneTilt, Gift, Scissors, ShoppingBag, Sparkle } from "@phosphor-icons/react/dist/ssr";
 import { useTranslations } from "next-intl";
 
-import { TradeIcon } from "@/components/features/trades/trade-icon";
 import { Button } from "@/components/ui/button";
 import { PriceTag } from "@/components/ui/price-tag";
-import { DEMO_GIFT, DEMO_PRODUCTS } from "@/lib/demo/data";
+import type { SelectionSummary } from "@/lib/api/selection";
+import { DEMO_GIFT } from "@/lib/demo/data";
 import { Link } from "@/lib/i18n/navigation";
+import { mediaSrc } from "@/lib/media";
 
 /** "Sélection France": trendy products chosen in France, final price with delivery and customs. */
-export function FranceSelectionBand() {
+export function FranceSelectionBand({ products }: { products: SelectionSummary[] }) {
   const t = useTranslations("home.france");
+  const tAisles = useTranslations("selection.aisles");
   return (
     <section
       aria-labelledby="france-title"
@@ -24,28 +26,38 @@ export function FranceSelectionBand() {
           <p className="text-prune-doux">{t("subtitle")}</p>
         </div>
       </div>
-      <ul className="grid gap-3 sm:grid-cols-3">
-        {DEMO_PRODUCTS.map((product) => (
-          <li
-            key={product.id}
-            className="bg-carte rounded-card flex items-center gap-3 p-3 sm:flex-col sm:items-start"
-          >
-            <span className="petal bg-poudre text-hibiscus inline-flex size-16 shrink-0 items-center justify-center">
-              <TradeIcon trade={product.trade} size={32} />
-            </span>
-            <span className="flex min-w-0 flex-col">
-              <span className="text-mention text-prune-doux font-bold">
-                {t(`shelves.${product.shelf}`)}
-              </span>
-              <span className="font-bold">{product.name}</span>
-              <PriceTag amountMinor={product.amountMinor} currency={product.currency} />
-            </span>
-          </li>
-        ))}
-      </ul>
+      {products.length > 0 && (
+        <ul className="grid gap-3 sm:grid-cols-3">
+          {products.map((product) => (
+            <li key={product.id}>
+              <Link
+                href={`/selection/${product.slug}`}
+                className="bg-carte rounded-card flex items-center gap-3 p-3 sm:flex-col sm:items-start"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element -- resized by the backend */}
+                <img
+                  src={mediaSrc(product.photo, "thumb", "medium")}
+                  alt=""
+                  loading="lazy"
+                  width={64}
+                  height={64}
+                  className="petal bg-poudre size-16 shrink-0 object-cover"
+                />
+                <span className="flex min-w-0 flex-col">
+                  <span className="text-mention text-prune-doux font-bold">
+                    {tAisles(product.aisle)}
+                  </span>
+                  <span className="font-bold">{product.title}</span>
+                  <PriceTag amountMinor={product.price_xof} currency="XOF" />
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
       <p className="text-small text-prune-doux">{t("promise")}</p>
       <Button asChild variant="secondary" className="self-start">
-        <Link href="/explore">
+        <Link href="/selection">
           <ShoppingBag aria-hidden size={22} weight="bold" />
           {t("cta")}
         </Link>
