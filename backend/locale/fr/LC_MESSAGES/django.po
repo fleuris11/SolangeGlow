@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-15 21:08+0200\n"
+"POT-Creation-Date: 2026-10-16 09:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1395,6 +1395,9 @@ msgstr "Acompte de rendez-vous"
 msgid "Training"
 msgstr "Formation"
 
+msgid "France Selection"
+msgstr "Sélection France"
+
 msgid "Other"
 msgstr "Autre"
 
@@ -2331,8 +2334,468 @@ msgid_plural "%(counter)s pros placed on the map."
 msgstr[0] "%(counter)s pro placée sur la carte."
 msgstr[1] "%(counter)s pros placées sur la carte."
 
-msgid "France Selection"
-msgstr "Sélection France"
+msgid "Purchase price"
+msgstr "Prix d'achat"
+
+msgid "+ transport (weight x price per kg)"
+msgstr "+ transport (poids x prix au kg)"
+
+msgid "+ packaging"
+msgstr "+ emballage"
+
+msgid "= subtotal"
+msgstr "= sous-total"
+
+msgid "x (1 + customs)"
+msgstr "x (1 + douane)"
+
+msgid "x (1 + margin)"
+msgstr "x (1 + marge)"
+
+msgid "+ payment fees"
+msgstr "+ frais de paiement"
+
+msgid "= total in euros"
+msgstr "= total en euros"
+
+msgid "x rate"
+msgstr "x taux"
+
+msgid "= exact FCFA"
+msgstr "= FCFA exacts"
+
+msgid "Price (rounded up)"
+msgstr "Prix (arrondi au-dessus)"
+
+msgid "Recalculate the prices of their products"
+msgstr "Recalculer les prix de leurs produits"
+
+#, python-format
+msgid "%(count)s prices recalculated."
+msgstr "%(count)s prix recalculés."
+
+msgid "express"
+msgstr "express"
+
+msgid "price calculation"
+msgstr "calcul du prix"
+
+msgid "Saved first, then calculated."
+msgstr "Enregistre d'abord, le calcul suivra."
+
+msgid "Weekly grouped shipment"
+msgstr "Envoi groupé hebdomadaire"
+
+msgid "Express"
+msgstr "Express"
+
+msgid "No express: forbidden by air."
+msgstr "Pas d'express : interdit en avion."
+
+msgid "Recalculate the prices"
+msgstr "Recalculer les prix"
+
+msgid "Merchant order number"
+msgstr "Numéro de commande du marchand"
+
+msgid "Receipt code of the client"
+msgstr "Code de réception de la cliente"
+
+msgid "merchant"
+msgstr "marchand"
+
+msgid "Ordered at the merchant"
+msgstr "Commandé chez le marchand"
+
+msgid "Marked as ordered; the client is told."
+msgstr "Marqué comme commandé ; la cliente est prévenue."
+
+#, python-format
+msgid "Order placed: %(reference)s"
+msgstr "Commande passée : %(reference)s"
+
+msgid "Buy it at the merchant, then give the order number."
+msgstr "Achète-le chez le marchand, puis donne le numéro de commande."
+
+msgid "Received in France"
+msgstr "Reçu en France"
+
+msgid "Received; it can go in the next shipment."
+msgstr "Reçu ; il peut partir dans le prochain lot."
+
+msgid "Type the receipt code"
+msgstr "Saisir le code de réception"
+
+msgid "Handed over: the money is released."
+msgstr "Remis : l'argent est versé."
+
+#, python-format
+msgid "Hand over %(reference)s"
+msgstr "Remettre %(reference)s"
+
+msgid "The client gives her 6-digit code when she takes her parcel."
+msgstr "La cliente donne son code à 6 chiffres quand elle prend son colis."
+
+msgid "Put in a new shipment"
+msgstr "Mettre dans un nouveau lot"
+
+msgid "Shipment created: add the carrier and tracking."
+msgstr "Lot créé : ajoute le transporteur et le suivi."
+
+msgid "Shipment left"
+msgstr "Lot parti"
+
+msgid "On its way: the clients see the tracking."
+msgstr "En route : les clientes voient le suivi."
+
+msgid "Shipment arrived"
+msgstr "Lot arrivé"
+
+msgid "Arrived: the clients are told to come with their code."
+msgstr "Arrivé : les clientes sont prévenues de venir avec leur code."
+
+msgid "Why (shown to the client)"
+msgstr "Pourquoi (montré à la cliente)"
+
+msgid "Fill the purchase price, the weight and the category, then save."
+msgstr "Remplis le prix d'achat, le poids et la catégorie, puis enregistre."
+
+msgid "Send the quote"
+msgstr "Envoyer le devis"
+
+msgid "Quote sent to the client."
+msgstr "Devis envoyé à la cliente."
+
+msgid "Not possible"
+msgstr "Pas possible"
+
+msgid "The client is told."
+msgstr "La cliente est prévenue."
+
+msgid "Request not possible"
+msgstr "Demande pas possible"
+
+msgid "Say why in a few simple words."
+msgstr "Dis pourquoi en quelques mots simples."
+
+msgid "orders"
+msgstr "commandes"
+
+msgid "group price"
+msgstr "prix groupé"
+
+msgid "normal price"
+msgstr "prix normal"
+
+msgid "The France Selection is not open in your country yet."
+msgstr "La Sélection France n'est pas encore ouverte dans ton pays."
+
+msgid "This product does not exist or is no longer offered."
+msgstr "Ce produit n'existe pas ou n'est plus proposé."
+
+msgid "This product is out of stock at the merchant for now."
+msgstr "Ce produit est épuisé chez le marchand pour le moment."
+
+msgid "This kind of product cannot travel by plane: we cannot send it for now."
+msgstr "Ce type de produit ne peut pas voyager en avion : nous ne pouvons pas l'envoyer pour l'instant."
+
+msgid "Express shipping is not possible for this product."
+msgstr "L'envoi express n'est pas possible pour ce produit."
+
+msgid "Choose one of the offered choices."
+msgstr "Choisis l'un des choix proposés."
+
+#, python-format
+msgid "Choose a quantity between 1 and %(max)s."
+msgstr "Choisis une quantité entre 1 et %(max)s."
+
+msgid "Choose where you will pick up your parcel."
+msgstr "Choisis où tu récupéreras ton colis."
+
+msgid "Purchases are not open to your account."
+msgstr "Les achats ne sont pas ouverts à ton compte."
+
+msgid "This group pre-order is closed."
+msgstr "Cette précommande groupée est fermée."
+
+msgid "This order does not exist or is not yours."
+msgstr "Cette commande n'existe pas ou n'est pas la tienne."
+
+msgid "This is not possible at this stage of the order."
+msgstr "Ce n'est pas possible à cette étape de la commande."
+
+msgid "Paste a link or add a photo of the product."
+msgstr "Colle un lien ou ajoute une photo du produit."
+
+msgid "This request does not exist or is not yours."
+msgstr "Cette demande n'existe pas ou n'est pas la tienne."
+
+msgid "Fill the product, the purchase price, the weight and the category."
+msgstr "Remplis le produit, le prix d'achat, le poids et la catégorie."
+
+msgid "This quote is no longer valid: send a new request."
+msgstr "Ce devis n'est plus valable : envoie une nouvelle demande."
+
+msgid "Put grouped and express orders in separate shipments."
+msgstr "Mets les commandes groupées et express dans des lots séparés."
+
+msgid "Give the carrier and the tracking number before the departure."
+msgstr "Indique le transporteur et le numéro de suivi avant le départ."
+
+msgid "Small prices"
+msgstr "Petits prix"
+
+msgid "Trending"
+msgstr "Tendance"
+
+msgid "Luxury"
+msgstr "Luxe"
+
+msgid "Empty: the default value."
+msgstr "Vide : la valeur par défaut."
+
+msgid "forbidden by air"
+msgstr "interdit en avion"
+
+msgid "Perfumes, aerosols: blocked while the setting says so."
+msgstr "Parfums, aérosols : bloqués tant que le réglage le dit."
+
+msgid "transport per kg, grouped (euro cents)"
+msgstr "transport au kg, groupé (centimes d'euro)"
+
+msgid "transport per kg, express (euro cents)"
+msgstr "transport au kg, express (centimes d'euro)"
+
+msgid "packaging (euro cents)"
+msgstr "emballage (centimes d'euro)"
+
+msgid "estimated customs (hundredths of a percent)"
+msgstr "douane estimée (centièmes de pourcent)"
+
+msgid "2000 = 20 %. Empty: the default."
+msgstr "2000 = 20 %. Vide : la valeur par défaut."
+
+msgid "margin (hundredths of a percent)"
+msgstr "marge (centièmes de pourcent)"
+
+msgid "2500 = 25 %. Empty: the default."
+msgstr "2500 = 25 %. Vide : la valeur par défaut."
+
+msgid "payment fees (euro cents)"
+msgstr "frais de paiement (centimes d'euro)"
+
+msgid "Selection category"
+msgstr "catégorie Sélection"
+
+msgid "Selection categories"
+msgstr "catégories Sélection"
+
+msgid "Available"
+msgstr "Disponible"
+
+msgid "Out of stock at the merchant"
+msgstr "Épuisé chez le marchand"
+
+msgid "Hidden"
+msgstr "Masqué"
+
+msgid "link to the merchant"
+msgstr "lien vers le marchand"
+
+msgid "purchase price (euro cents)"
+msgstr "prix d'achat (centimes d'euro)"
+
+msgid "weight (grams)"
+msgstr "poids (grammes)"
+
+msgid "aisle"
+msgstr "rayon"
+
+msgid "availability"
+msgstr "disponibilité"
+
+msgid "choices"
+msgstr "choix"
+
+msgid "Shades or sizes the client chooses from, for example [\"230\", \"240\"]."
+msgstr "Teintes ou tailles parmi lesquelles la cliente choisit, par exemple [\"230\", \"240\"]."
+
+msgid "price (FCFA)"
+msgstr "prix (FCFA)"
+
+msgid "express price (FCFA)"
+msgstr "prix express (FCFA)"
+
+msgid "priced at"
+msgstr "prix calculé le"
+
+msgid "sold"
+msgstr "vendus"
+
+msgid "Selection product"
+msgstr "produit Sélection"
+
+msgid "Selection products"
+msgstr "produits Sélection"
+
+msgid "product"
+msgstr "produit"
+
+msgid "photos"
+msgstr "photos"
+
+msgid "pick-up point"
+msgstr "point de retrait"
+
+msgid "pick-up points"
+msgstr "points de retrait"
+
+msgid "Being prepared"
+msgstr "En préparation"
+
+msgid "On its way"
+msgstr "En route"
+
+msgid "Arrived in Benin"
+msgstr "Arrivé au Bénin"
+
+msgid "mode"
+msgstr "mode"
+
+msgid "left at"
+msgstr "parti le"
+
+msgid "arrived at"
+msgstr "arrivé le"
+
+msgid "shipment"
+msgstr "lot d'envoi"
+
+msgid "shipments"
+msgstr "lots d'envoi"
+
+msgid "Goal reached"
+msgstr "Objectif atteint"
+
+msgid "Goal not reached"
+msgstr "Objectif pas atteint"
+
+msgid "goal (items)"
+msgstr "objectif (articles)"
+
+msgid "group price (FCFA)"
+msgstr "prix groupé (FCFA)"
+
+msgid "ends at"
+msgstr "finit le"
+
+msgid "closed at"
+msgstr "fermée le"
+
+msgid "group pre-order"
+msgstr "précommande groupée"
+
+msgid "group pre-orders"
+msgstr "précommandes groupées"
+
+msgid "To quote"
+msgstr "À chiffrer"
+
+msgid "Quote sent"
+msgstr "Devis envoyé"
+
+msgid "Ordered"
+msgstr "Commandée"
+
+msgid "Declined"
+msgstr "Refusé par la cliente"
+
+msgid "Expired"
+msgstr "Expiré"
+
+msgid "her words"
+msgstr "ses mots"
+
+msgid "link to buy"
+msgstr "lien pour acheter"
+
+msgid "quoted price (FCFA)"
+msgstr "prix du devis (FCFA)"
+
+msgid "Empty: the price of the formula."
+msgstr "Vide : le prix de la formule."
+
+msgid "message to the client"
+msgstr "message à la cliente"
+
+msgid "quoted at"
+msgstr "devis envoyé le"
+
+msgid "valid until"
+msgstr "valable jusqu'au"
+
+msgid "special request"
+msgstr "demande spéciale"
+
+msgid "special requests"
+msgstr "demandes spéciales"
+
+msgid "Waiting for the group"
+msgstr "En attente du groupe"
+
+msgid "To order at the merchant"
+msgstr "À commander chez le marchand"
+
+msgid "On its way to Benin"
+msgstr "En route vers le Bénin"
+
+msgid "Ready at the pick-up point"
+msgstr "Prête au point de retrait"
+
+msgid "Handed over"
+msgstr "Remise"
+
+msgid "choice"
+msgstr "choix"
+
+msgid "quantity"
+msgstr "quantité"
+
+msgid "unit price (FCFA)"
+msgstr "prix unitaire (FCFA)"
+
+msgid "total (FCFA)"
+msgstr "total (FCFA)"
+
+msgid "shipping"
+msgstr "envoi"
+
+msgid "merchant order number"
+msgstr "numéro de commande du marchand"
+
+msgid "expected from"
+msgstr "prévue à partir du"
+
+msgid "expected until"
+msgstr "prévue jusqu'au"
+
+msgid "ordered at"
+msgstr "commandée le"
+
+msgid "received in France at"
+msgstr "reçue en France le"
+
+msgid "handed over at"
+msgstr "remise le"
+
+msgid "Selection order"
+msgstr "commande Sélection"
+
+msgid "Selection orders"
+msgstr "commandes Sélection"
+
+msgid "Save"
+msgstr "Enregistrer"
 
 msgid "Reason shown to the pro"
 msgstr "Raison montrée à la pro"
@@ -2424,9 +2887,6 @@ msgstr "Ce code demande une commande d'au moins %(minimum)s."
 msgid "This code was already used."
 msgstr "Ce code a déjà été utilisé."
 
-msgid "Purchases are not open to your account."
-msgstr "Les achats ne sont pas ouverts à ton compte."
-
 msgid "You cannot buy in your own shop."
 msgstr "Tu ne peux pas acheter dans ta propre boutique."
 
@@ -2441,10 +2901,6 @@ msgstr "« %(title)s » : plus que %(left)s en stock."
 #, python-format
 msgid "%(shop)s is closed for now."
 msgstr "%(shop)s est fermée pour le moment."
-
-#, python-format
-msgid "Choose a quantity between 1 and %(max)s."
-msgstr "Choisis une quantité entre 1 et %(max)s."
 
 #, python-format
 msgid "Your cart is full (%(max)s lines)."
@@ -2469,9 +2925,6 @@ msgstr "%(shop)s livre seulement dans son pays. Tu peux retirer ta commande chez
 
 msgid "Pay the shops of each country separately."
 msgstr "Paie séparément les boutiques de chaque pays."
-
-msgid "This order does not exist or is not yours."
-msgstr "Cette commande n'existe pas ou n'est pas la tienne."
 
 msgid "Add a photo of the parcel."
 msgstr "Ajoute une photo du colis."
@@ -2590,12 +3043,6 @@ msgstr "modération"
 msgid "why it is checked or blocked"
 msgstr "pourquoi il est vérifié ou bloqué"
 
-msgid "sold"
-msgstr "vendus"
-
-msgid "product"
-msgstr "produit"
-
 msgid "products"
 msgstr "produits"
 
@@ -2635,9 +3082,6 @@ msgstr "remise (%)"
 msgid "starts at"
 msgstr "commence le"
 
-msgid "ends at"
-msgstr "finit le"
-
 msgid "quantity on sale"
 msgstr "quantité en vente"
 
@@ -2655,9 +3099,6 @@ msgstr "lot"
 
 msgid "bundles"
 msgstr "lots"
-
-msgid "quantity"
-msgstr "quantité"
 
 msgid "bundle item"
 msgstr "article du lot"
@@ -2710,14 +3151,8 @@ msgstr "alertes de retour en stock"
 msgid "New"
 msgstr "Nouvelle"
 
-msgid "Being prepared"
-msgstr "En préparation"
-
 msgid "Ready to pick up"
 msgstr "Prête à retirer"
-
-msgid "Handed over"
-msgstr "Remise"
 
 msgid "items before discount"
 msgstr "articles avant remise"
@@ -2743,17 +3178,8 @@ msgstr "photo du colis"
 msgid "prepared from"
 msgstr "en préparation depuis"
 
-msgid "handed over at"
-msgstr "remise le"
-
 msgid "order"
 msgstr "commande"
-
-msgid "orders"
-msgstr "commandes"
-
-msgid "choice"
-msgstr "choix"
 
 msgid "unit price"
 msgstr "prix unitaire"
@@ -3055,6 +3481,24 @@ msgstr "Catégories de produits"
 
 msgid "Promotions"
 msgstr "Promotions"
+
+msgid "Orders to place"
+msgstr "Commandes à passer"
+
+msgid "Shipments"
+msgstr "Lots d'envoi"
+
+msgid "Special requests"
+msgstr "Demandes spéciales"
+
+msgid "Group pre-orders"
+msgstr "Précommandes groupées"
+
+msgid "Categories and prices"
+msgstr "Catégories et prix"
+
+msgid "Pick-up points"
+msgstr "Points de retrait"
 
 msgid "Finance dashboard"
 msgstr "Tableau de bord finance"

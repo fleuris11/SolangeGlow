@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-15 21:08+0200\n"
+"POT-Creation-Date: 2026-10-16 09:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1399,6 +1399,9 @@ msgstr "Záloha na rezerváciu"
 msgid "Training"
 msgstr "Školenie"
 
+msgid "France Selection"
+msgstr "Výber z Francúzska"
+
 msgid "Other"
 msgstr "Iné"
 
@@ -2347,8 +2350,468 @@ msgstr[1] "%(counter)s profesionálky na mape."
 msgstr[2] "%(counter)s profesionálky na mape."
 msgstr[3] "%(counter)s profesionáliek na mape."
 
-msgid "France Selection"
-msgstr "Výber z Francúzska"
+msgid "Purchase price"
+msgstr "Nákupná cena"
+
+msgid "+ transport (weight x price per kg)"
+msgstr "+ doprava (hmotnosť x cena za kg)"
+
+msgid "+ packaging"
+msgstr "+ balenie"
+
+msgid "= subtotal"
+msgstr "= medzisúčet"
+
+msgid "x (1 + customs)"
+msgstr "x (1 + clo)"
+
+msgid "x (1 + margin)"
+msgstr "x (1 + marža)"
+
+msgid "+ payment fees"
+msgstr "+ poplatky za platbu"
+
+msgid "= total in euros"
+msgstr "= spolu v eurách"
+
+msgid "x rate"
+msgstr "x kurz"
+
+msgid "= exact FCFA"
+msgstr "= presne FCFA"
+
+msgid "Price (rounded up)"
+msgstr "Cena (zaokrúhlená nahor)"
+
+msgid "Recalculate the prices of their products"
+msgstr "Prepočítať ceny ich produktov"
+
+#, python-format
+msgid "%(count)s prices recalculated."
+msgstr "Prepočítaných cien: %(count)s."
+
+msgid "express"
+msgstr "expres"
+
+msgid "price calculation"
+msgstr "výpočet ceny"
+
+msgid "Saved first, then calculated."
+msgstr "Najprv ulož, potom sa vypočíta."
+
+msgid "Weekly grouped shipment"
+msgstr "Týždenná zoskupená zásielka"
+
+msgid "Express"
+msgstr "Expres"
+
+msgid "No express: forbidden by air."
+msgstr "Bez expresu: zakázané v lietadle."
+
+msgid "Recalculate the prices"
+msgstr "Prepočítať ceny"
+
+msgid "Merchant order number"
+msgstr "Číslo objednávky u obchodníka"
+
+msgid "Receipt code of the client"
+msgstr "Kód prevzatia klientky"
+
+msgid "merchant"
+msgstr "obchodník"
+
+msgid "Ordered at the merchant"
+msgstr "Objednané u obchodníka"
+
+msgid "Marked as ordered; the client is told."
+msgstr "Označené ako objednané; klientka je upovedomená."
+
+#, python-format
+msgid "Order placed: %(reference)s"
+msgstr "Objednávka zadaná: %(reference)s"
+
+msgid "Buy it at the merchant, then give the order number."
+msgstr "Kúp to u obchodníka a zadaj číslo objednávky."
+
+msgid "Received in France"
+msgstr "Prijaté vo Francúzsku"
+
+msgid "Received; it can go in the next shipment."
+msgstr "Prijaté; môže ísť ďalšou zásielkou."
+
+msgid "Type the receipt code"
+msgstr "Zadať kód prevzatia"
+
+msgid "Handed over: the money is released."
+msgstr "Odovzdané: peniaze sú uvoľnené."
+
+#, python-format
+msgid "Hand over %(reference)s"
+msgstr "Odovzdať %(reference)s"
+
+msgid "The client gives her 6-digit code when she takes her parcel."
+msgstr "Klientka pri prevzatí balíka povie svoj 6-miestny kód."
+
+msgid "Put in a new shipment"
+msgstr "Dať do novej zásielky"
+
+msgid "Shipment created: add the carrier and tracking."
+msgstr "Zásielka vytvorená: pridaj prepravcu a sledovanie."
+
+msgid "Shipment left"
+msgstr "Zásielka odišla"
+
+msgid "On its way: the clients see the tracking."
+msgstr "Na ceste: klientky vidia sledovanie."
+
+msgid "Shipment arrived"
+msgstr "Zásielka dorazila"
+
+msgid "Arrived: the clients are told to come with their code."
+msgstr "Dorazilo: klientky sú vyzvané prísť s kódom."
+
+msgid "Why (shown to the client)"
+msgstr "Prečo (zobrazí sa klientke)"
+
+msgid "Fill the purchase price, the weight and the category, then save."
+msgstr "Vyplň nákupnú cenu, hmotnosť a kategóriu a ulož."
+
+msgid "Send the quote"
+msgstr "Poslať ponuku"
+
+msgid "Quote sent to the client."
+msgstr "Ponuka odoslaná klientke."
+
+msgid "Not possible"
+msgstr "Nie je možné"
+
+msgid "The client is told."
+msgstr "Klientka je upovedomená."
+
+msgid "Request not possible"
+msgstr "Požiadavka nie je možná"
+
+msgid "Say why in a few simple words."
+msgstr "Povedz prečo pár jednoduchými slovami."
+
+msgid "orders"
+msgstr "objednávky"
+
+msgid "group price"
+msgstr "skupinová cena"
+
+msgid "normal price"
+msgstr "bežná cena"
+
+msgid "The France Selection is not open in your country yet."
+msgstr "Výber z Francúzska vo tvojej krajine ešte nie je otvorený."
+
+msgid "This product does not exist or is no longer offered."
+msgstr "Tento produkt neexistuje alebo sa už neponúka."
+
+msgid "This product is out of stock at the merchant for now."
+msgstr "Tento produkt je u obchodníka momentálne vypredaný."
+
+msgid "This kind of product cannot travel by plane: we cannot send it for now."
+msgstr "Tento druh produktu nemôže letieť lietadlom: zatiaľ ho nemôžeme poslať."
+
+msgid "Express shipping is not possible for this product."
+msgstr "Expresné odoslanie nie je pre tento produkt možné."
+
+msgid "Choose one of the offered choices."
+msgstr "Vyber jednu z ponúkaných možností."
+
+#, python-format
+msgid "Choose a quantity between 1 and %(max)s."
+msgstr "Vyber množstvo od 1 do %(max)s."
+
+msgid "Choose where you will pick up your parcel."
+msgstr "Vyber, kde si vyzdvihneš balík."
+
+msgid "Purchases are not open to your account."
+msgstr "Nákupy nie sú pre tvoj účet otvorené."
+
+msgid "This group pre-order is closed."
+msgstr "Táto skupinová predobjednávka je uzavretá."
+
+msgid "This order does not exist or is not yours."
+msgstr "Táto objednávka neexistuje alebo nie je tvoja."
+
+msgid "This is not possible at this stage of the order."
+msgstr "V tomto kroku objednávky to nie je možné."
+
+msgid "Paste a link or add a photo of the product."
+msgstr "Vlož odkaz alebo pridaj fotku produktu."
+
+msgid "This request does not exist or is not yours."
+msgstr "Táto požiadavka neexistuje alebo nie je tvoja."
+
+msgid "Fill the product, the purchase price, the weight and the category."
+msgstr "Vyplň produkt, nákupnú cenu, hmotnosť a kategóriu."
+
+msgid "This quote is no longer valid: send a new request."
+msgstr "Táto ponuka už neplatí: pošli novú požiadavku."
+
+msgid "Put grouped and express orders in separate shipments."
+msgstr "Zoskupené a expresné objednávky daj do samostatných zásielok."
+
+msgid "Give the carrier and the tracking number before the departure."
+msgstr "Pred odoslaním zadaj prepravcu a sledovacie číslo."
+
+msgid "Small prices"
+msgstr "Nízke ceny"
+
+msgid "Trending"
+msgstr "Trendy"
+
+msgid "Luxury"
+msgstr "Luxus"
+
+msgid "Empty: the default value."
+msgstr "Prázdne: predvolená hodnota."
+
+msgid "forbidden by air"
+msgstr "zakázané v lietadle"
+
+msgid "Perfumes, aerosols: blocked while the setting says so."
+msgstr "Parfumy, aerosóly: blokované, kým to nastavenie hovorí."
+
+msgid "transport per kg, grouped (euro cents)"
+msgstr "doprava za kg, zoskupená (eurocenty)"
+
+msgid "transport per kg, express (euro cents)"
+msgstr "doprava za kg, expres (eurocenty)"
+
+msgid "packaging (euro cents)"
+msgstr "balenie (eurocenty)"
+
+msgid "estimated customs (hundredths of a percent)"
+msgstr "odhadované clo (stotiny percenta)"
+
+msgid "2000 = 20 %. Empty: the default."
+msgstr "2000 = 20 %. Prázdne: predvolená hodnota."
+
+msgid "margin (hundredths of a percent)"
+msgstr "marža (stotiny percenta)"
+
+msgid "2500 = 25 %. Empty: the default."
+msgstr "2500 = 25 %. Prázdne: predvolená hodnota."
+
+msgid "payment fees (euro cents)"
+msgstr "poplatky za platbu (eurocenty)"
+
+msgid "Selection category"
+msgstr "kategória výberu"
+
+msgid "Selection categories"
+msgstr "kategórie výberu"
+
+msgid "Available"
+msgstr "Dostupné"
+
+msgid "Out of stock at the merchant"
+msgstr "Vypredané u obchodníka"
+
+msgid "Hidden"
+msgstr "Skryté"
+
+msgid "link to the merchant"
+msgstr "odkaz na obchodníka"
+
+msgid "purchase price (euro cents)"
+msgstr "nákupná cena (eurocenty)"
+
+msgid "weight (grams)"
+msgstr "hmotnosť (gramy)"
+
+msgid "aisle"
+msgstr "oddelenie"
+
+msgid "availability"
+msgstr "dostupnosť"
+
+msgid "choices"
+msgstr "možnosti"
+
+msgid "Shades or sizes the client chooses from, for example [\"230\", \"240\"]."
+msgstr "Odtiene alebo veľkosti, z ktorých klientka vyberá, napríklad [\"230\", \"240\"]."
+
+msgid "price (FCFA)"
+msgstr "cena (FCFA)"
+
+msgid "express price (FCFA)"
+msgstr "expresná cena (FCFA)"
+
+msgid "priced at"
+msgstr "cena vypočítaná"
+
+msgid "sold"
+msgstr "predané"
+
+msgid "Selection product"
+msgstr "produkt výberu"
+
+msgid "Selection products"
+msgstr "produkty výberu"
+
+msgid "product"
+msgstr "produkt"
+
+msgid "photos"
+msgstr "fotky"
+
+msgid "pick-up point"
+msgstr "výdajné miesto"
+
+msgid "pick-up points"
+msgstr "výdajné miesta"
+
+msgid "Being prepared"
+msgstr "Pripravuje sa"
+
+msgid "On its way"
+msgstr "Na ceste"
+
+msgid "Arrived in Benin"
+msgstr "Dorazilo do Beninu"
+
+msgid "mode"
+msgstr "spôsob"
+
+msgid "left at"
+msgstr "odišlo"
+
+msgid "arrived at"
+msgstr "dorazilo"
+
+msgid "shipment"
+msgstr "zásielka"
+
+msgid "shipments"
+msgstr "zásielky"
+
+msgid "Goal reached"
+msgstr "Cieľ dosiahnutý"
+
+msgid "Goal not reached"
+msgstr "Cieľ nedosiahnutý"
+
+msgid "goal (items)"
+msgstr "cieľ (kusy)"
+
+msgid "group price (FCFA)"
+msgstr "skupinová cena (FCFA)"
+
+msgid "ends at"
+msgstr "končí"
+
+msgid "closed at"
+msgstr "uzavreté"
+
+msgid "group pre-order"
+msgstr "skupinová predobjednávka"
+
+msgid "group pre-orders"
+msgstr "skupinové predobjednávky"
+
+msgid "To quote"
+msgstr "Na ocenenie"
+
+msgid "Quote sent"
+msgstr "Ponuka odoslaná"
+
+msgid "Ordered"
+msgstr "Objednané"
+
+msgid "Declined"
+msgstr "Odmietnuté klientkou"
+
+msgid "Expired"
+msgstr "Vypršané"
+
+msgid "her words"
+msgstr "jej slová"
+
+msgid "link to buy"
+msgstr "odkaz na kúpu"
+
+msgid "quoted price (FCFA)"
+msgstr "cena ponuky (FCFA)"
+
+msgid "Empty: the price of the formula."
+msgstr "Prázdne: cena podľa vzorca."
+
+msgid "message to the client"
+msgstr "správa klientke"
+
+msgid "quoted at"
+msgstr "ponuka odoslaná"
+
+msgid "valid until"
+msgstr "platí do"
+
+msgid "special request"
+msgstr "špeciálna požiadavka"
+
+msgid "special requests"
+msgstr "špeciálne požiadavky"
+
+msgid "Waiting for the group"
+msgstr "Čaká na skupinu"
+
+msgid "To order at the merchant"
+msgstr "Na objednanie u obchodníka"
+
+msgid "On its way to Benin"
+msgstr "Na ceste do Beninu"
+
+msgid "Ready at the pick-up point"
+msgstr "Pripravené na výdajnom mieste"
+
+msgid "Handed over"
+msgstr "Odovzdaná"
+
+msgid "choice"
+msgstr "variant"
+
+msgid "quantity"
+msgstr "množstvo"
+
+msgid "unit price (FCFA)"
+msgstr "jednotková cena (FCFA)"
+
+msgid "total (FCFA)"
+msgstr "spolu (FCFA)"
+
+msgid "shipping"
+msgstr "odoslanie"
+
+msgid "merchant order number"
+msgstr "číslo objednávky u obchodníka"
+
+msgid "expected from"
+msgstr "očakávané od"
+
+msgid "expected until"
+msgstr "očakávané do"
+
+msgid "ordered at"
+msgstr "objednané"
+
+msgid "received in France at"
+msgstr "prijaté vo Francúzsku"
+
+msgid "handed over at"
+msgstr "odovzdaná"
+
+msgid "Selection order"
+msgstr "objednávka výberu"
+
+msgid "Selection orders"
+msgstr "objednávky výberu"
+
+msgid "Save"
+msgstr "Uložiť"
 
 msgid "Reason shown to the pro"
 msgstr "Dôvod zobrazený profesionálke"
@@ -2440,9 +2903,6 @@ msgstr "Tento kód vyžaduje objednávku aspoň %(minimum)s."
 msgid "This code was already used."
 msgstr "Tento kód už bol použitý."
 
-msgid "Purchases are not open to your account."
-msgstr "Nákupy nie sú pre tvoj účet otvorené."
-
 msgid "You cannot buy in your own shop."
 msgstr "Vo vlastnom obchode nemôžeš nakupovať."
 
@@ -2457,10 +2917,6 @@ msgstr "„%(title)s“: na sklade už len %(left)s."
 #, python-format
 msgid "%(shop)s is closed for now."
 msgstr "%(shop)s je momentálne zatvorený."
-
-#, python-format
-msgid "Choose a quantity between 1 and %(max)s."
-msgstr "Vyber množstvo od 1 do %(max)s."
 
 #, python-format
 msgid "Your cart is full (%(max)s lines)."
@@ -2485,9 +2941,6 @@ msgstr "%(shop)s doručuje len vo svojej krajine. Objednávku si môžeš vyzdvi
 
 msgid "Pay the shops of each country separately."
 msgstr "Obchody z každej krajiny zaplať zvlášť."
-
-msgid "This order does not exist or is not yours."
-msgstr "Táto objednávka neexistuje alebo nie je tvoja."
 
 msgid "Add a photo of the parcel."
 msgstr "Pridaj fotku balíka."
@@ -2606,12 +3059,6 @@ msgstr "moderácia"
 msgid "why it is checked or blocked"
 msgstr "prečo sa kontroluje alebo je zablokovaný"
 
-msgid "sold"
-msgstr "predané"
-
-msgid "product"
-msgstr "produkt"
-
 msgid "products"
 msgstr "produkty"
 
@@ -2651,9 +3098,6 @@ msgstr "zľava (%)"
 msgid "starts at"
 msgstr "začína"
 
-msgid "ends at"
-msgstr "končí"
-
 msgid "quantity on sale"
 msgstr "množstvo vo výpredaji"
 
@@ -2671,9 +3115,6 @@ msgstr "balíček"
 
 msgid "bundles"
 msgstr "balíčky"
-
-msgid "quantity"
-msgstr "množstvo"
 
 msgid "bundle item"
 msgstr "položka balíčka"
@@ -2726,14 +3167,8 @@ msgstr "upozornenia na naskladnenie"
 msgid "New"
 msgstr "Nová"
 
-msgid "Being prepared"
-msgstr "Pripravuje sa"
-
 msgid "Ready to pick up"
 msgstr "Pripravená na vyzdvihnutie"
-
-msgid "Handed over"
-msgstr "Odovzdaná"
 
 msgid "items before discount"
 msgstr "položky pred zľavou"
@@ -2759,17 +3194,8 @@ msgstr "fotka balíka"
 msgid "prepared from"
 msgstr "pripravuje sa od"
 
-msgid "handed over at"
-msgstr "odovzdaná"
-
 msgid "order"
 msgstr "objednávka"
-
-msgid "orders"
-msgstr "objednávky"
-
-msgid "choice"
-msgstr "variant"
 
 msgid "unit price"
 msgstr "jednotková cena"
@@ -3071,6 +3497,24 @@ msgstr "Kategórie produktov"
 
 msgid "Promotions"
 msgstr "Akcie"
+
+msgid "Orders to place"
+msgstr "Objednávky na zadanie"
+
+msgid "Shipments"
+msgstr "Zásielky"
+
+msgid "Special requests"
+msgstr "Špeciálne požiadavky"
+
+msgid "Group pre-orders"
+msgstr "Skupinové predobjednávky"
+
+msgid "Categories and prices"
+msgstr "Kategórie a ceny"
+
+msgid "Pick-up points"
+msgstr "Výdajné miesta"
 
 msgid "Finance dashboard"
 msgstr "Finančný prehľad"

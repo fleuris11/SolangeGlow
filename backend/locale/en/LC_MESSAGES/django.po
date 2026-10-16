@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-15 21:08+0200\n"
+"POT-Creation-Date: 2026-10-16 09:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1395,6 +1395,9 @@ msgstr ""
 msgid "Training"
 msgstr ""
 
+msgid "France Selection"
+msgstr ""
+
 msgid "Other"
 msgstr ""
 
@@ -2331,7 +2334,467 @@ msgid_plural "%(counter)s pros placed on the map."
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "France Selection"
+msgid "Purchase price"
+msgstr ""
+
+msgid "+ transport (weight x price per kg)"
+msgstr ""
+
+msgid "+ packaging"
+msgstr ""
+
+msgid "= subtotal"
+msgstr ""
+
+msgid "x (1 + customs)"
+msgstr ""
+
+msgid "x (1 + margin)"
+msgstr ""
+
+msgid "+ payment fees"
+msgstr ""
+
+msgid "= total in euros"
+msgstr ""
+
+msgid "x rate"
+msgstr ""
+
+msgid "= exact FCFA"
+msgstr ""
+
+msgid "Price (rounded up)"
+msgstr ""
+
+msgid "Recalculate the prices of their products"
+msgstr ""
+
+#, python-format
+msgid "%(count)s prices recalculated."
+msgstr ""
+
+msgid "express"
+msgstr ""
+
+msgid "price calculation"
+msgstr ""
+
+msgid "Saved first, then calculated."
+msgstr ""
+
+msgid "Weekly grouped shipment"
+msgstr ""
+
+msgid "Express"
+msgstr ""
+
+msgid "No express: forbidden by air."
+msgstr ""
+
+msgid "Recalculate the prices"
+msgstr ""
+
+msgid "Merchant order number"
+msgstr ""
+
+msgid "Receipt code of the client"
+msgstr ""
+
+msgid "merchant"
+msgstr ""
+
+msgid "Ordered at the merchant"
+msgstr ""
+
+msgid "Marked as ordered; the client is told."
+msgstr ""
+
+#, python-format
+msgid "Order placed: %(reference)s"
+msgstr ""
+
+msgid "Buy it at the merchant, then give the order number."
+msgstr ""
+
+msgid "Received in France"
+msgstr ""
+
+msgid "Received; it can go in the next shipment."
+msgstr ""
+
+msgid "Type the receipt code"
+msgstr ""
+
+msgid "Handed over: the money is released."
+msgstr ""
+
+#, python-format
+msgid "Hand over %(reference)s"
+msgstr ""
+
+msgid "The client gives her 6-digit code when she takes her parcel."
+msgstr ""
+
+msgid "Put in a new shipment"
+msgstr ""
+
+msgid "Shipment created: add the carrier and tracking."
+msgstr ""
+
+msgid "Shipment left"
+msgstr ""
+
+msgid "On its way: the clients see the tracking."
+msgstr ""
+
+msgid "Shipment arrived"
+msgstr ""
+
+msgid "Arrived: the clients are told to come with their code."
+msgstr ""
+
+msgid "Why (shown to the client)"
+msgstr ""
+
+msgid "Fill the purchase price, the weight and the category, then save."
+msgstr ""
+
+msgid "Send the quote"
+msgstr ""
+
+msgid "Quote sent to the client."
+msgstr ""
+
+msgid "Not possible"
+msgstr ""
+
+msgid "The client is told."
+msgstr ""
+
+msgid "Request not possible"
+msgstr ""
+
+msgid "Say why in a few simple words."
+msgstr ""
+
+msgid "orders"
+msgstr ""
+
+msgid "group price"
+msgstr ""
+
+msgid "normal price"
+msgstr ""
+
+msgid "The France Selection is not open in your country yet."
+msgstr ""
+
+msgid "This product does not exist or is no longer offered."
+msgstr ""
+
+msgid "This product is out of stock at the merchant for now."
+msgstr ""
+
+msgid "This kind of product cannot travel by plane: we cannot send it for now."
+msgstr ""
+
+msgid "Express shipping is not possible for this product."
+msgstr ""
+
+msgid "Choose one of the offered choices."
+msgstr ""
+
+#, python-format
+msgid "Choose a quantity between 1 and %(max)s."
+msgstr ""
+
+msgid "Choose where you will pick up your parcel."
+msgstr ""
+
+msgid "Purchases are not open to your account."
+msgstr ""
+
+msgid "This group pre-order is closed."
+msgstr ""
+
+msgid "This order does not exist or is not yours."
+msgstr ""
+
+msgid "This is not possible at this stage of the order."
+msgstr ""
+
+msgid "Paste a link or add a photo of the product."
+msgstr ""
+
+msgid "This request does not exist or is not yours."
+msgstr ""
+
+msgid "Fill the product, the purchase price, the weight and the category."
+msgstr ""
+
+msgid "This quote is no longer valid: send a new request."
+msgstr ""
+
+msgid "Put grouped and express orders in separate shipments."
+msgstr ""
+
+msgid "Give the carrier and the tracking number before the departure."
+msgstr ""
+
+msgid "Small prices"
+msgstr ""
+
+msgid "Trending"
+msgstr ""
+
+msgid "Luxury"
+msgstr ""
+
+msgid "Empty: the default value."
+msgstr ""
+
+msgid "forbidden by air"
+msgstr ""
+
+msgid "Perfumes, aerosols: blocked while the setting says so."
+msgstr ""
+
+msgid "transport per kg, grouped (euro cents)"
+msgstr ""
+
+msgid "transport per kg, express (euro cents)"
+msgstr ""
+
+msgid "packaging (euro cents)"
+msgstr ""
+
+msgid "estimated customs (hundredths of a percent)"
+msgstr ""
+
+msgid "2000 = 20 %. Empty: the default."
+msgstr ""
+
+msgid "margin (hundredths of a percent)"
+msgstr ""
+
+msgid "2500 = 25 %. Empty: the default."
+msgstr ""
+
+msgid "payment fees (euro cents)"
+msgstr ""
+
+msgid "Selection category"
+msgstr ""
+
+msgid "Selection categories"
+msgstr ""
+
+msgid "Available"
+msgstr ""
+
+msgid "Out of stock at the merchant"
+msgstr ""
+
+msgid "Hidden"
+msgstr ""
+
+msgid "link to the merchant"
+msgstr ""
+
+msgid "purchase price (euro cents)"
+msgstr ""
+
+msgid "weight (grams)"
+msgstr ""
+
+msgid "aisle"
+msgstr ""
+
+msgid "availability"
+msgstr ""
+
+msgid "choices"
+msgstr ""
+
+msgid "Shades or sizes the client chooses from, for example [\"230\", \"240\"]."
+msgstr ""
+
+msgid "price (FCFA)"
+msgstr ""
+
+msgid "express price (FCFA)"
+msgstr ""
+
+msgid "priced at"
+msgstr ""
+
+msgid "sold"
+msgstr ""
+
+msgid "Selection product"
+msgstr ""
+
+msgid "Selection products"
+msgstr ""
+
+msgid "product"
+msgstr ""
+
+msgid "photos"
+msgstr ""
+
+msgid "pick-up point"
+msgstr ""
+
+msgid "pick-up points"
+msgstr ""
+
+msgid "Being prepared"
+msgstr ""
+
+msgid "On its way"
+msgstr ""
+
+msgid "Arrived in Benin"
+msgstr ""
+
+msgid "mode"
+msgstr ""
+
+msgid "left at"
+msgstr ""
+
+msgid "arrived at"
+msgstr ""
+
+msgid "shipment"
+msgstr ""
+
+msgid "shipments"
+msgstr ""
+
+msgid "Goal reached"
+msgstr ""
+
+msgid "Goal not reached"
+msgstr ""
+
+msgid "goal (items)"
+msgstr ""
+
+msgid "group price (FCFA)"
+msgstr ""
+
+msgid "ends at"
+msgstr ""
+
+msgid "closed at"
+msgstr ""
+
+msgid "group pre-order"
+msgstr ""
+
+msgid "group pre-orders"
+msgstr ""
+
+msgid "To quote"
+msgstr ""
+
+msgid "Quote sent"
+msgstr ""
+
+msgid "Ordered"
+msgstr ""
+
+msgid "Declined"
+msgstr ""
+
+msgid "Expired"
+msgstr ""
+
+msgid "her words"
+msgstr ""
+
+msgid "link to buy"
+msgstr ""
+
+msgid "quoted price (FCFA)"
+msgstr ""
+
+msgid "Empty: the price of the formula."
+msgstr ""
+
+msgid "message to the client"
+msgstr ""
+
+msgid "quoted at"
+msgstr ""
+
+msgid "valid until"
+msgstr ""
+
+msgid "special request"
+msgstr ""
+
+msgid "special requests"
+msgstr ""
+
+msgid "Waiting for the group"
+msgstr ""
+
+msgid "To order at the merchant"
+msgstr ""
+
+msgid "On its way to Benin"
+msgstr ""
+
+msgid "Ready at the pick-up point"
+msgstr ""
+
+msgid "Handed over"
+msgstr ""
+
+msgid "choice"
+msgstr ""
+
+msgid "quantity"
+msgstr ""
+
+msgid "unit price (FCFA)"
+msgstr ""
+
+msgid "total (FCFA)"
+msgstr ""
+
+msgid "shipping"
+msgstr ""
+
+msgid "merchant order number"
+msgstr ""
+
+msgid "expected from"
+msgstr ""
+
+msgid "expected until"
+msgstr ""
+
+msgid "ordered at"
+msgstr ""
+
+msgid "received in France at"
+msgstr ""
+
+msgid "handed over at"
+msgstr ""
+
+msgid "Selection order"
+msgstr ""
+
+msgid "Selection orders"
+msgstr ""
+
+msgid "Save"
 msgstr ""
 
 msgid "Reason shown to the pro"
@@ -2424,9 +2887,6 @@ msgstr ""
 msgid "This code was already used."
 msgstr ""
 
-msgid "Purchases are not open to your account."
-msgstr ""
-
 msgid "You cannot buy in your own shop."
 msgstr ""
 
@@ -2440,10 +2900,6 @@ msgstr ""
 
 #, python-format
 msgid "%(shop)s is closed for now."
-msgstr ""
-
-#, python-format
-msgid "Choose a quantity between 1 and %(max)s."
 msgstr ""
 
 #, python-format
@@ -2468,9 +2924,6 @@ msgid "%(shop)s delivers only in her country. You can pick up your order at her 
 msgstr ""
 
 msgid "Pay the shops of each country separately."
-msgstr ""
-
-msgid "This order does not exist or is not yours."
 msgstr ""
 
 msgid "Add a photo of the parcel."
@@ -2590,12 +3043,6 @@ msgstr ""
 msgid "why it is checked or blocked"
 msgstr ""
 
-msgid "sold"
-msgstr ""
-
-msgid "product"
-msgstr ""
-
 msgid "products"
 msgstr ""
 
@@ -2635,9 +3082,6 @@ msgstr ""
 msgid "starts at"
 msgstr ""
 
-msgid "ends at"
-msgstr ""
-
 msgid "quantity on sale"
 msgstr ""
 
@@ -2654,9 +3098,6 @@ msgid "bundle"
 msgstr ""
 
 msgid "bundles"
-msgstr ""
-
-msgid "quantity"
 msgstr ""
 
 msgid "bundle item"
@@ -2710,13 +3151,7 @@ msgstr ""
 msgid "New"
 msgstr ""
 
-msgid "Being prepared"
-msgstr ""
-
 msgid "Ready to pick up"
-msgstr ""
-
-msgid "Handed over"
 msgstr ""
 
 msgid "items before discount"
@@ -2743,16 +3178,7 @@ msgstr ""
 msgid "prepared from"
 msgstr ""
 
-msgid "handed over at"
-msgstr ""
-
 msgid "order"
-msgstr ""
-
-msgid "orders"
-msgstr ""
-
-msgid "choice"
 msgstr ""
 
 msgid "unit price"
@@ -3054,6 +3480,24 @@ msgid "Product categories"
 msgstr ""
 
 msgid "Promotions"
+msgstr ""
+
+msgid "Orders to place"
+msgstr ""
+
+msgid "Shipments"
+msgstr ""
+
+msgid "Special requests"
+msgstr ""
+
+msgid "Group pre-orders"
+msgstr ""
+
+msgid "Categories and prices"
+msgstr ""
+
+msgid "Pick-up points"
 msgstr ""
 
 msgid "Finance dashboard"
