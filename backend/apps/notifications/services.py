@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import logging
 
+from django.conf import settings
 from django.db import transaction
 from django.template import engines
 from django.utils import timezone, translation
@@ -281,3 +282,34 @@ def deliver_contact(message_id: str) -> str:
         message.sent_at = timezone.now()
     message.save()
     return message.status
+
+
+def send_direct(
+    channel: str, destination: str, subject: str, body: str, *, unsubscribe_url: str = ""
+):
+    """A message to someone who may have no account (campaigns, gift cards): e-mail or
+    WhatsApp, sent now. Returns "" when sent, else the reason it was not."""
+    from django.core.mail import EmailMessage
+
+    from apps.core.providers import whatsapp_client
+
+    if not destination:
+        return "no_destination"
+    try:
+        if channel == Channel.EMAIL:
+            headers = {}
+            if unsubscribe_url:
+                headers["List-Unsubscribe"] = f"<{unsubscribe_url}>"
+                body = f"{body}\n\n{unsubscribe_url}"
+            EmailMessage(
+                subject, body, settings.DEFAULT_FROM_EMAIL, [destination], headers=headers
+            ).send()
+        else:
+            text = "\n".join(filter(None, (subject, body, unsubscribe_url)))
+            whatsapp_client(allow_console=settings.DEBUG).send_text(destination, text)
+    except (ProviderNotConfigured, ProviderError) as exc:
+        return str(exc)[:200] or exc.__class__.__name__
+    except Exception as exc:
+        logger.warning("Direct message not sent: %s", exc.__class__.__name__)
+        return exc.__class__.__name__
+    return ""
