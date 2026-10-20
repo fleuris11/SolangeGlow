@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-16 09:46+0200\n"
+"POT-Creation-Date: 2026-10-20 11:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -379,8 +379,465 @@ msgstr "Potvrď, že chceš zmazať svoj účet."
 msgid "Ads"
 msgstr "Reklama"
 
+msgid "deposit"
+msgstr "záloha"
+
+msgid "payment"
+msgstr "platba"
+
+msgid "Cancel and refund"
+msgstr "Zrušiť a vrátiť peniaze"
+
+msgid "Cancelled; the client is refunded and told."
+msgstr "Zrušené; klientke sa vrátia peniaze a dostane správu."
+
+msgid "client"
+msgstr "klientka"
+
 msgid "Booking"
 msgstr "Rezervácie"
+
+msgid "This pro does not take online bookings."
+msgstr "Táto profesionálka neprijíma rezervácie online."
+
+msgid "This service cannot be booked."
+msgstr "Túto službu nemožno rezervovať."
+
+msgid "This person does not do this service."
+msgstr "Táto osoba túto službu nerobí."
+
+msgid "This time was just taken. Choose another one."
+msgstr "Tento čas práve niekto obsadil. Vyber si iný."
+
+#, python-format
+msgid "This time is too close: book at least %(minutes)s minutes ahead."
+msgstr "Tento čas je príliš blízko: rezervuj aspoň %(minutes)s minút vopred."
+
+#, python-format
+msgid "You can book up to %(days)s days ahead."
+msgstr "Rezervovať môžeš najviac %(days)s dní vopred."
+
+msgid "Sign in to book with this pro."
+msgstr "Prihlás sa, aby si mohla rezervovať u tejto profesionálky."
+
+msgid "Give your first name and a phone number."
+msgstr "Zadaj svoje meno a telefónne číslo."
+
+msgid "You cannot book in your own agenda this way."
+msgstr "Takto si nemôžeš rezervovať vo vlastnom kalendári."
+
+msgid "This appointment does not exist or is not yours."
+msgstr "Tento termín neexistuje alebo nie je tvoj."
+
+msgid "This is not possible at this stage of the appointment."
+msgstr "V tejto fáze termínu to nie je možné."
+
+msgid "The appointment has not started yet."
+msgstr "Termín sa ešte nezačal."
+
+#, python-format
+msgid "Wait %(minutes)s minutes after the start before marking an absence."
+msgstr "Pred označením neprítomnosti počkaj %(minutes)s minút po začiatku."
+
+msgid "The end must come after the start."
+msgstr "Koniec musí byť po začiatku."
+
+msgid "Give a name and choose a colour like #C8102E."
+msgstr "Zadaj meno a vyber farbu, napríklad #C8102E."
+
+msgid "You are already on the waiting list for this day."
+msgstr "Na tento deň už si na čakacej listine."
+
+msgid "This place was offered to someone else after the waiting time."
+msgstr "Čas uplynul: miesto sme ponúkli niekomu inému."
+
+#, python-format
+msgid "A group is 2 to %(max)s people."
+msgstr "Skupina má 2 až %(max)s osôb."
+
+msgid "Not enough room at this time for the whole group."
+msgstr "V tomto čase nie je dosť miesta pre celú skupinu."
+
+msgid "This product is not on sale in your shop."
+msgstr "Tento produkt sa v tvojom obchode nepredáva."
+
+msgid "This service asks for a deposit: sign in to pay it."
+msgstr "Táto služba vyžaduje zálohu: prihlás sa a zaplať ju."
+
+msgid "You have no agenda yet."
+msgstr "Zatiaľ nemáš kalendár."
+
+msgid "Only the owner of the salon can change this."
+msgstr "Toto môže zmeniť len majiteľka salónu."
+
+msgid "This group booking does not exist any more."
+msgstr "Táto skupinová rezervácia už neexistuje."
+
+msgid "Sign in to pay the deposit."
+msgstr "Prihlás sa a zaplať zálohu."
+
+msgid "Monday"
+msgstr "Pondelok"
+
+msgid "Tuesday"
+msgstr "Utorok"
+
+msgid "Wednesday"
+msgstr "Streda"
+
+msgid "Thursday"
+msgstr "Štvrtok"
+
+msgid "Friday"
+msgstr "Piatok"
+
+msgid "Saturday"
+msgstr "Sobota"
+
+msgid "Sunday"
+msgstr "Nedeľa"
+
+msgid "pro"
+msgstr "profesionálka"
+
+msgid "confirm by itself"
+msgstr "potvrdzovať automaticky"
+
+msgid "Off: you accept each request."
+msgstr "Vypnuté: každú žiadosť prijímaš sama."
+
+msgid "slots every (min)"
+msgstr "časy každých (min)"
+
+msgid "minimum notice (min)"
+msgstr "minimálny predstih (min)"
+
+msgid "bookable up to (days)"
+msgstr "rezervovateľné do (dní)"
+
+msgid "free cancellation until (hours before)"
+msgstr "bezplatné zrušenie do (hodín pred)"
+
+msgid "lateness accepted (min)"
+msgstr "tolerované meškanie (min)"
+
+msgid "guests can book"
+msgstr "rezervácia bez účtu"
+
+msgid "booking settings"
+msgstr "nastavenia rezervácií"
+
+msgid "name"
+msgstr "názov"
+
+msgid "agenda colour"
+msgstr "farba v kalendári"
+
+msgid "the pro herself"
+msgstr "samotná profesionálka"
+
+msgid "phone (invitation)"
+msgstr "telefón (pozvánka)"
+
+msgid "invited at"
+msgstr "pozvaná"
+
+msgid "services allowed"
+msgstr "povolené služby"
+
+msgid "Empty: every service."
+msgstr "Prázdne: všetky služby."
+
+msgid "appointments per day at most"
+msgstr "najviac termínov za deň"
+
+msgid "own hours"
+msgstr "vlastný pracovný čas"
+
+msgid "Off: the opening hours of the salon."
+msgstr "Vypnuté: otváracie hodiny salónu."
+
+msgid "position"
+msgstr "poradie"
+
+msgid "staff member"
+msgstr "člen tímu"
+
+msgid "staff members"
+msgstr "tím"
+
+msgid "person"
+msgstr "osoba"
+
+msgid "day"
+msgstr "deň"
+
+msgid "from"
+msgstr "prvý deň"
+
+msgid "to"
+msgstr "posledný deň"
+
+msgid "working hours"
+msgstr "pracovný čas"
+
+msgid "break"
+msgstr "prestávka"
+
+msgid "breaks"
+msgstr "prestávky"
+
+msgid "Absence"
+msgstr "Neprítomnosť"
+
+msgid "Holidays"
+msgstr "Dovolenka"
+
+msgid "Blocked range"
+msgstr "Blokovaný čas"
+
+msgid "Empty: the whole salon."
+msgstr "Prázdne: celý salón."
+
+msgid "type"
+msgstr "typ"
+
+msgid "note"
+msgstr "poznámka"
+
+msgid "time off"
+msgstr "nedostupnosť"
+
+msgid "how many"
+msgstr "koľko"
+
+msgid "resource"
+msgstr "vybavenie"
+
+msgid "resources"
+msgstr "vybavenie"
+
+msgid "step"
+msgstr "krok"
+
+msgid "resource of a step"
+msgstr "vybavenie kroku"
+
+msgid "resources of the steps"
+msgstr "vybavenie krokov"
+
+msgid "Waiting for the shares"
+msgstr "Čaká sa na podiely"
+
+msgid "Confirmed"
+msgstr "Potvrdené"
+
+msgid "Cancelled"
+msgstr "Zrušené"
+
+msgid "organiser"
+msgstr "organizátorka"
+
+msgid "shares to pay before"
+msgstr "podiely zaplatiť do"
+
+msgid "group booking"
+msgstr "skupinová rezervácia"
+
+msgid "group bookings"
+msgstr "skupinové rezervácie"
+
+msgid "Waiting for the pro"
+msgstr "Čaká na profesionálku"
+
+msgid "Waiting for the deposit"
+msgstr "Čaká sa na zálohu"
+
+msgid "Other time proposed"
+msgstr "Navrhnutý iný čas"
+
+msgid "Kept for the waiting list"
+msgstr "Držané pre čakaciu listinu"
+
+msgid "Declined"
+msgstr "Odmietnuté klientkou"
+
+msgid "Done"
+msgstr "Hotovo"
+
+msgid "Client did not come"
+msgstr "Klientka neprišla"
+
+msgid "Expired"
+msgstr "Vypršané"
+
+msgid "Online"
+msgstr "Online"
+
+msgid "By phone"
+msgstr "Telefonicky"
+
+msgid "Waiting list"
+msgstr "Čakacia listina"
+
+msgid "Group"
+msgstr "Skupina"
+
+msgid "« Book this look »"
+msgstr "« Rezervovať tento look »"
+
+msgid "The client"
+msgstr "Klientka"
+
+msgid "The pro"
+msgstr "Profesionálka"
+
+msgid "Automatically"
+msgstr "Automaticky"
+
+msgid "reference"
+msgstr "referencia"
+
+msgid "service"
+msgstr "služba"
+
+msgid "options"
+msgstr "možnosti"
+
+msgid "client name"
+msgstr "meno klientky"
+
+msgid "client phone"
+msgstr "telefón klientky"
+
+msgid "starts at"
+msgstr "začína"
+
+msgid "ends at"
+msgstr "končí"
+
+msgid "made"
+msgstr "vytvorené"
+
+msgid "price"
+msgstr "cena"
+
+msgid "currency"
+msgstr "mena"
+
+msgid "last-minute discount (%)"
+msgstr "zľava na poslednú chvíľu (%)"
+
+msgid "deposit payment"
+msgstr "platba zálohy"
+
+msgid "note from the client"
+msgstr "poznámka klientky"
+
+msgid "message from the pro"
+msgstr "správa profesionálky"
+
+msgid "time asked first"
+msgstr "pôvodne žiadaný čas"
+
+msgid "answer before"
+msgstr "odpovedať do"
+
+msgid "group"
+msgstr "skupina"
+
+msgid "look"
+msgstr "look"
+
+msgid "confirmed at"
+msgstr "potvrdené"
+
+msgid "done at"
+msgstr "dokončené"
+
+msgid "cancelled at"
+msgstr "zrušené"
+
+msgid "cancelled by"
+msgstr "zrušil(a)"
+
+msgid "appointment"
+msgstr "termín"
+
+msgid "appointments"
+msgstr "termíny"
+
+msgid "label"
+msgstr "označenie"
+
+msgid "step of an appointment"
+msgstr "krok termínu"
+
+msgid "steps of an appointment"
+msgstr "kroky termínu"
+
+msgid "result photo"
+msgstr "fotka výsledku"
+
+msgid "result photos"
+msgstr "fotky výsledku"
+
+msgid "product"
+msgstr "produkt"
+
+msgid "why"
+msgstr "prečo"
+
+msgid "product advice"
+msgstr "odporúčanie produktu"
+
+msgid "Waiting"
+msgstr "Čaká"
+
+msgid "Place offered"
+msgstr "Ponúknuté miesto"
+
+msgid "Booked"
+msgstr "Rezervované"
+
+msgid "No answer"
+msgstr "Bez odpovede"
+
+msgid "place kept"
+msgstr "držané miesto"
+
+msgid "waiting list entry"
+msgstr "záznam na čakacej listine"
+
+msgid "waiting list"
+msgstr "čakacia listina"
+
+msgid "phone"
+msgstr "telefón"
+
+msgid "private notes"
+msgstr "súkromné poznámky"
+
+msgid "preferences"
+msgstr "preferencie"
+
+msgid "client file"
+msgstr "karta klientky"
+
+msgid "client files"
+msgstr "karty klientok"
+
+msgid "discount (%)"
+msgstr "zľava (%)"
+
+msgid "for the slots of the next (hours)"
+msgstr "pre časy v najbližších (hodinách)"
+
+msgid "last-minute offer"
+msgstr "ponuka na poslednú chvíľu"
+
+msgid "last-minute offers"
+msgstr "ponuky na poslednú chvíľu"
 
 msgid "scope"
 msgstr "rozsah"
@@ -439,6 +896,9 @@ msgstr "Klientka"
 msgid "Professional"
 msgstr "Profesionálka"
 
+msgid "Collaborator of a salon"
+msgstr "Spolupracovníčka salónu"
+
 msgid "Staff"
 msgstr "Tím"
 
@@ -479,9 +939,6 @@ msgstr "Verejné"
 msgid "Private (signed links)"
 msgstr "Súkromné (podpísané odkazy)"
 
-msgid "Waiting"
-msgstr "Čaká"
-
 msgid "Processing"
 msgstr "Spracúva sa"
 
@@ -496,9 +953,6 @@ msgstr "Zlyhalo"
 
 msgid "owner"
 msgstr "vlastník"
-
-msgid "type"
-msgstr "typ"
 
 msgid "use"
 msgstr "použitie"
@@ -557,9 +1011,6 @@ msgstr "Použi 3-písmenový kód ISO 4217."
 msgid "ISO 4217 code, e.g. XOF or EUR."
 msgstr "Kód ISO 4217, napríklad XOF alebo EUR."
 
-msgid "name"
-msgstr "názov"
-
 msgid "symbol"
 msgstr "symbol"
 
@@ -568,9 +1019,6 @@ msgstr "desatinné miesta"
 
 msgid "Number of decimals of the currency: 0 for XOF, 2 for EUR."
 msgstr "Počet desatinných miest meny: 0 pre XOF, 2 pre EUR."
-
-msgid "currency"
-msgstr "mena"
 
 msgid "currencies"
 msgstr "meny"
@@ -769,9 +1217,6 @@ msgstr "Skupina môže mať najviac %(max)s osôb."
 msgid "Between two people"
 msgstr "Medzi dvoma osobami"
 
-msgid "Group"
-msgstr "Skupina"
-
 msgid "Discussion"
 msgstr "Rozhovor"
 
@@ -822,9 +1267,6 @@ msgstr "Členka"
 
 msgid "Platform team"
 msgstr "Tím platformy"
-
-msgid "person"
-msgstr "osoba"
 
 msgid "read up to"
 msgstr "prečítané do"
@@ -891,9 +1333,6 @@ msgstr "automatická"
 
 msgid "message"
 msgstr "správa"
-
-msgid "position"
-msgstr "poradie"
 
 msgid "quick reply"
 msgstr "rýchla odpoveď"
@@ -1048,9 +1487,6 @@ msgstr "rozhodol/rozhodla"
 msgid "decided at"
 msgstr "rozhodnuté"
 
-msgid "note"
-msgstr "poznámka"
-
 msgid "moderation case"
 msgstr "moderačný prípad"
 
@@ -1159,6 +1595,12 @@ msgstr "odber upozornení"
 msgid "push subscriptions"
 msgstr "odbery upozornení"
 
+msgid "message to a guest"
+msgstr "správa hosťovi"
+
+msgid "messages to guests"
+msgstr "správy hosťom"
+
 msgid "(hidden once sent)"
 msgstr "(skryté po odoslaní)"
 
@@ -1207,9 +1649,6 @@ msgstr "V spore"
 msgid "Paid to the seller"
 msgstr "Vyplatené predávajúcej"
 
-msgid "Cancelled"
-msgstr "Zrušené"
-
 msgid "ledger entries"
 msgstr "účtovné zápisy"
 
@@ -1245,9 +1684,6 @@ msgstr "Suma na vrátenie"
 
 msgid "Note for both parties"
 msgstr "Poznámka pre obe strany"
-
-msgid "payment"
-msgstr "platba"
 
 msgid "dispute room"
 msgstr "miestnosť sporu"
@@ -1432,9 +1868,6 @@ msgstr "minimum"
 msgid "maximum"
 msgstr "maximum"
 
-msgid "from"
-msgstr "prvý deň"
-
 msgid "priority"
 msgstr "priorita"
 
@@ -1443,12 +1876,6 @@ msgstr "pravidlo poplatkov"
 
 msgid "pricing rules"
 msgstr "pravidlá poplatkov"
-
-msgid "reference"
-msgstr "referencia"
-
-msgid "client"
-msgstr "klientka"
 
 msgid "provider reference"
 msgstr "referencia poskytovateľa"
@@ -1522,9 +1949,6 @@ msgstr "očakávané doručenie"
 msgid "delivered at"
 msgstr "doručené"
 
-msgid "appointment"
-msgstr "termín"
-
 msgid "preparation days"
 msgstr "dni prípravy"
 
@@ -1543,9 +1967,6 @@ msgstr "vyplatené"
 msgid "refunded at"
 msgstr "vrátené"
 
-msgid "cancelled at"
-msgstr "zrušené"
-
 msgid "code attempts"
 msgstr "pokusy o kód"
 
@@ -1563,9 +1984,6 @@ msgstr "Prebieha"
 
 msgid "To do by hand at the provider"
 msgstr "Vykonať ručne u poskytovateľa"
-
-msgid "Done"
-msgstr "Hotovo"
 
 msgid "completed at"
 msgstr "dokončené"
@@ -1639,9 +2057,6 @@ msgstr "Rozhodnutý"
 msgid "opened by"
 msgstr "otvoril(a)"
 
-msgid "answer before"
-msgstr "odpovedať do"
-
 msgid "answer time over"
 msgstr "čas na odpoveď uplynul"
 
@@ -1692,9 +2107,6 @@ msgstr "daňové údaje predávajúcej"
 
 msgid "tax data of the sellers"
 msgstr "daňové údaje predávajúcich"
-
-msgid "to"
-msgstr "posledný deň"
 
 msgid "checked"
 msgstr "skontrolované"
@@ -1922,6 +2334,9 @@ msgstr "Zadaj cenu alebo vyber « Na dopyt »."
 
 msgid "Give a name to this service."
 msgstr "Pomenuj túto službu."
+
+msgid "Give the deposit: an amount, or a percentage from 1 to 100."
+msgstr "Zadaj zálohu: sumu alebo percento od 1 do 100."
 
 msgid "Give the time of the service, in minutes."
 msgstr "Zadaj trvanie služby v minútach."
@@ -2153,9 +2568,6 @@ msgstr "profil profesionálky"
 msgid "pro profiles"
 msgstr "profily profesionálok"
 
-msgid "pro"
-msgstr "profesionálka"
-
 msgid "service category"
 msgstr "kategória služieb"
 
@@ -2171,9 +2583,6 @@ msgstr "Od"
 msgid "On quote"
 msgstr "Na dopyt"
 
-msgid "price"
-msgstr "cena"
-
 msgid "In the smallest unit of the currency. Empty for a quote."
 msgstr "V najmenšej jednotke meny. Prázdne pri cene na dopyt."
 
@@ -2186,14 +2595,26 @@ msgstr "Súčet krokov."
 msgid "also at the client's home"
 msgstr "aj u klientky doma"
 
+msgid "None"
+msgstr "Žiadna"
+
+msgid "Amount"
+msgstr "Suma"
+
+msgid "Percentage"
+msgstr "Percento"
+
+msgid "deposit value"
+msgstr "výška zálohy"
+
+msgid "An amount in the smallest unit, or a percentage (100 = paid in full)."
+msgstr "Suma v najmenšej jednotke alebo percento (100 = zaplatené celé)."
+
 msgid "shown"
 msgstr "zobrazená"
 
 msgid "archived at"
 msgstr "archivované"
-
-msgid "service"
-msgstr "služba"
 
 msgid "services"
 msgstr "služby"
@@ -2204,17 +2625,17 @@ msgstr "Práca"
 msgid "Waiting time (product acting)"
 msgstr "Čas pôsobenia (produkt pôsobí)"
 
-msgid "label"
-msgstr "označenie"
-
 msgid "duration (min)"
 msgstr "trvanie (min)"
 
 msgid "needs someone"
 msgstr "vyžaduje osobu"
 
-msgid "step"
-msgstr "krok"
+msgid "another person may do it"
+msgstr "môže to urobiť iná osoba"
+
+msgid "The step can be done by someone else than the previous one."
+msgstr "Krok môže urobiť iná osoba ako v predchádzajúcom kroku."
 
 msgid "steps"
 msgstr "kroky"
@@ -2228,38 +2649,11 @@ msgstr "čas navyše (min)"
 msgid "option"
 msgstr "možnosť"
 
-msgid "options"
-msgstr "možnosti"
-
 msgid "service picture"
 msgstr "fotka služby"
 
 msgid "service pictures"
 msgstr "fotky služieb"
-
-msgid "Monday"
-msgstr "Pondelok"
-
-msgid "Tuesday"
-msgstr "Utorok"
-
-msgid "Wednesday"
-msgstr "Streda"
-
-msgid "Thursday"
-msgstr "Štvrtok"
-
-msgid "Friday"
-msgstr "Piatok"
-
-msgid "Saturday"
-msgstr "Sobota"
-
-msgid "Sunday"
-msgstr "Nedeľa"
-
-msgid "day"
-msgstr "deň"
 
 msgid "opens at"
 msgstr "otvára o"
@@ -2654,9 +3048,6 @@ msgstr "produkt výberu"
 msgid "Selection products"
 msgstr "produkty výberu"
 
-msgid "product"
-msgstr "produkt"
-
 msgid "photos"
 msgstr "fotky"
 
@@ -2702,9 +3093,6 @@ msgstr "cieľ (kusy)"
 msgid "group price (FCFA)"
 msgstr "skupinová cena (FCFA)"
 
-msgid "ends at"
-msgstr "končí"
-
 msgid "closed at"
 msgstr "uzavreté"
 
@@ -2722,12 +3110,6 @@ msgstr "Ponuka odoslaná"
 
 msgid "Ordered"
 msgstr "Objednané"
-
-msgid "Declined"
-msgstr "Odmietnuté klientkou"
-
-msgid "Expired"
-msgstr "Vypršané"
 
 msgid "her words"
 msgstr "jej slová"
@@ -3032,9 +3414,6 @@ msgstr "zóny doručenia"
 msgid "Being checked"
 msgstr "Kontroluje sa"
 
-msgid "Online"
-msgstr "Online"
-
 msgid "Paused"
 msgstr "Pozastavené"
 
@@ -3091,12 +3470,6 @@ msgstr "sklad"
 
 msgid "variant"
 msgstr "variant"
-
-msgid "discount (%)"
-msgstr "zľava (%)"
-
-msgid "starts at"
-msgstr "začína"
 
 msgid "quantity on sale"
 msgstr "množstvo vo výpredaji"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-16 09:46+0200\n"
+"POT-Creation-Date: 2026-10-20 11:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -375,7 +375,464 @@ msgstr ""
 msgid "Ads"
 msgstr ""
 
+msgid "deposit"
+msgstr ""
+
+msgid "payment"
+msgstr ""
+
+msgid "Cancel and refund"
+msgstr ""
+
+msgid "Cancelled; the client is refunded and told."
+msgstr ""
+
+msgid "client"
+msgstr ""
+
 msgid "Booking"
+msgstr ""
+
+msgid "This pro does not take online bookings."
+msgstr ""
+
+msgid "This service cannot be booked."
+msgstr ""
+
+msgid "This person does not do this service."
+msgstr ""
+
+msgid "This time was just taken. Choose another one."
+msgstr ""
+
+#, python-format
+msgid "This time is too close: book at least %(minutes)s minutes ahead."
+msgstr ""
+
+#, python-format
+msgid "You can book up to %(days)s days ahead."
+msgstr ""
+
+msgid "Sign in to book with this pro."
+msgstr ""
+
+msgid "Give your first name and a phone number."
+msgstr ""
+
+msgid "You cannot book in your own agenda this way."
+msgstr ""
+
+msgid "This appointment does not exist or is not yours."
+msgstr ""
+
+msgid "This is not possible at this stage of the appointment."
+msgstr ""
+
+msgid "The appointment has not started yet."
+msgstr ""
+
+#, python-format
+msgid "Wait %(minutes)s minutes after the start before marking an absence."
+msgstr ""
+
+msgid "The end must come after the start."
+msgstr ""
+
+msgid "Give a name and choose a colour like #C8102E."
+msgstr ""
+
+msgid "You are already on the waiting list for this day."
+msgstr ""
+
+msgid "This place was offered to someone else after the waiting time."
+msgstr ""
+
+#, python-format
+msgid "A group is 2 to %(max)s people."
+msgstr ""
+
+msgid "Not enough room at this time for the whole group."
+msgstr ""
+
+msgid "This product is not on sale in your shop."
+msgstr ""
+
+msgid "This service asks for a deposit: sign in to pay it."
+msgstr ""
+
+msgid "You have no agenda yet."
+msgstr ""
+
+msgid "Only the owner of the salon can change this."
+msgstr ""
+
+msgid "This group booking does not exist any more."
+msgstr ""
+
+msgid "Sign in to pay the deposit."
+msgstr ""
+
+msgid "Monday"
+msgstr ""
+
+msgid "Tuesday"
+msgstr ""
+
+msgid "Wednesday"
+msgstr ""
+
+msgid "Thursday"
+msgstr ""
+
+msgid "Friday"
+msgstr ""
+
+msgid "Saturday"
+msgstr ""
+
+msgid "Sunday"
+msgstr ""
+
+msgid "pro"
+msgstr ""
+
+msgid "confirm by itself"
+msgstr ""
+
+msgid "Off: you accept each request."
+msgstr ""
+
+msgid "slots every (min)"
+msgstr ""
+
+msgid "minimum notice (min)"
+msgstr ""
+
+msgid "bookable up to (days)"
+msgstr ""
+
+msgid "free cancellation until (hours before)"
+msgstr ""
+
+msgid "lateness accepted (min)"
+msgstr ""
+
+msgid "guests can book"
+msgstr ""
+
+msgid "booking settings"
+msgstr ""
+
+msgid "name"
+msgstr ""
+
+msgid "agenda colour"
+msgstr ""
+
+msgid "the pro herself"
+msgstr ""
+
+msgid "phone (invitation)"
+msgstr ""
+
+msgid "invited at"
+msgstr ""
+
+msgid "services allowed"
+msgstr ""
+
+msgid "Empty: every service."
+msgstr ""
+
+msgid "appointments per day at most"
+msgstr ""
+
+msgid "own hours"
+msgstr ""
+
+msgid "Off: the opening hours of the salon."
+msgstr ""
+
+msgid "position"
+msgstr ""
+
+msgid "staff member"
+msgstr ""
+
+msgid "staff members"
+msgstr ""
+
+msgid "person"
+msgstr ""
+
+msgid "day"
+msgstr ""
+
+msgid "from"
+msgstr ""
+
+msgid "to"
+msgstr ""
+
+msgid "working hours"
+msgstr ""
+
+msgid "break"
+msgstr ""
+
+msgid "breaks"
+msgstr ""
+
+msgid "Absence"
+msgstr ""
+
+msgid "Holidays"
+msgstr ""
+
+msgid "Blocked range"
+msgstr ""
+
+msgid "Empty: the whole salon."
+msgstr ""
+
+msgid "type"
+msgstr ""
+
+msgid "note"
+msgstr ""
+
+msgid "time off"
+msgstr ""
+
+msgid "how many"
+msgstr ""
+
+msgid "resource"
+msgstr ""
+
+msgid "resources"
+msgstr ""
+
+msgid "step"
+msgstr ""
+
+msgid "resource of a step"
+msgstr ""
+
+msgid "resources of the steps"
+msgstr ""
+
+msgid "Waiting for the shares"
+msgstr ""
+
+msgid "Confirmed"
+msgstr ""
+
+msgid "Cancelled"
+msgstr ""
+
+msgid "organiser"
+msgstr ""
+
+msgid "shares to pay before"
+msgstr ""
+
+msgid "group booking"
+msgstr ""
+
+msgid "group bookings"
+msgstr ""
+
+msgid "Waiting for the pro"
+msgstr ""
+
+msgid "Waiting for the deposit"
+msgstr ""
+
+msgid "Other time proposed"
+msgstr ""
+
+msgid "Kept for the waiting list"
+msgstr ""
+
+msgid "Declined"
+msgstr ""
+
+msgid "Done"
+msgstr ""
+
+msgid "Client did not come"
+msgstr ""
+
+msgid "Expired"
+msgstr ""
+
+msgid "Online"
+msgstr ""
+
+msgid "By phone"
+msgstr ""
+
+msgid "Waiting list"
+msgstr ""
+
+msgid "Group"
+msgstr ""
+
+msgid "« Book this look »"
+msgstr ""
+
+msgid "The client"
+msgstr ""
+
+msgid "The pro"
+msgstr ""
+
+msgid "Automatically"
+msgstr ""
+
+msgid "reference"
+msgstr ""
+
+msgid "service"
+msgstr ""
+
+msgid "options"
+msgstr ""
+
+msgid "client name"
+msgstr ""
+
+msgid "client phone"
+msgstr ""
+
+msgid "starts at"
+msgstr ""
+
+msgid "ends at"
+msgstr ""
+
+msgid "made"
+msgstr ""
+
+msgid "price"
+msgstr ""
+
+msgid "currency"
+msgstr ""
+
+msgid "last-minute discount (%)"
+msgstr ""
+
+msgid "deposit payment"
+msgstr ""
+
+msgid "note from the client"
+msgstr ""
+
+msgid "message from the pro"
+msgstr ""
+
+msgid "time asked first"
+msgstr ""
+
+msgid "answer before"
+msgstr ""
+
+msgid "group"
+msgstr ""
+
+msgid "look"
+msgstr ""
+
+msgid "confirmed at"
+msgstr ""
+
+msgid "done at"
+msgstr ""
+
+msgid "cancelled at"
+msgstr ""
+
+msgid "cancelled by"
+msgstr ""
+
+msgid "appointment"
+msgstr ""
+
+msgid "appointments"
+msgstr ""
+
+msgid "label"
+msgstr ""
+
+msgid "step of an appointment"
+msgstr ""
+
+msgid "steps of an appointment"
+msgstr ""
+
+msgid "result photo"
+msgstr ""
+
+msgid "result photos"
+msgstr ""
+
+msgid "product"
+msgstr ""
+
+msgid "why"
+msgstr ""
+
+msgid "product advice"
+msgstr ""
+
+msgid "Waiting"
+msgstr ""
+
+msgid "Place offered"
+msgstr ""
+
+msgid "Booked"
+msgstr ""
+
+msgid "No answer"
+msgstr ""
+
+msgid "place kept"
+msgstr ""
+
+msgid "waiting list entry"
+msgstr ""
+
+msgid "waiting list"
+msgstr ""
+
+msgid "phone"
+msgstr ""
+
+msgid "private notes"
+msgstr ""
+
+msgid "preferences"
+msgstr ""
+
+msgid "client file"
+msgstr ""
+
+msgid "client files"
+msgstr ""
+
+msgid "discount (%)"
+msgstr ""
+
+msgid "for the slots of the next (hours)"
+msgstr ""
+
+msgid "last-minute offer"
+msgstr ""
+
+msgid "last-minute offers"
 msgstr ""
 
 msgid "scope"
@@ -435,6 +892,9 @@ msgstr ""
 msgid "Professional"
 msgstr ""
 
+msgid "Collaborator of a salon"
+msgstr ""
+
 msgid "Staff"
 msgstr ""
 
@@ -475,9 +935,6 @@ msgstr ""
 msgid "Private (signed links)"
 msgstr ""
 
-msgid "Waiting"
-msgstr ""
-
 msgid "Processing"
 msgstr ""
 
@@ -491,9 +948,6 @@ msgid "Failed"
 msgstr ""
 
 msgid "owner"
-msgstr ""
-
-msgid "type"
 msgstr ""
 
 msgid "use"
@@ -553,9 +1007,6 @@ msgstr ""
 msgid "ISO 4217 code, e.g. XOF or EUR."
 msgstr ""
 
-msgid "name"
-msgstr ""
-
 msgid "symbol"
 msgstr ""
 
@@ -563,9 +1014,6 @@ msgid "decimal places"
 msgstr ""
 
 msgid "Number of decimals of the currency: 0 for XOF, 2 for EUR."
-msgstr ""
-
-msgid "currency"
 msgstr ""
 
 msgid "currencies"
@@ -765,9 +1213,6 @@ msgstr ""
 msgid "Between two people"
 msgstr ""
 
-msgid "Group"
-msgstr ""
-
 msgid "Discussion"
 msgstr ""
 
@@ -817,9 +1262,6 @@ msgid "Member"
 msgstr ""
 
 msgid "Platform team"
-msgstr ""
-
-msgid "person"
 msgstr ""
 
 msgid "read up to"
@@ -886,9 +1328,6 @@ msgid "automatic"
 msgstr ""
 
 msgid "message"
-msgstr ""
-
-msgid "position"
 msgstr ""
 
 msgid "quick reply"
@@ -1044,9 +1483,6 @@ msgstr ""
 msgid "decided at"
 msgstr ""
 
-msgid "note"
-msgstr ""
-
 msgid "moderation case"
 msgstr ""
 
@@ -1155,6 +1591,12 @@ msgstr ""
 msgid "push subscriptions"
 msgstr ""
 
+msgid "message to a guest"
+msgstr ""
+
+msgid "messages to guests"
+msgstr ""
+
 msgid "(hidden once sent)"
 msgstr ""
 
@@ -1203,9 +1645,6 @@ msgstr ""
 msgid "Paid to the seller"
 msgstr ""
 
-msgid "Cancelled"
-msgstr ""
-
 msgid "ledger entries"
 msgstr ""
 
@@ -1240,9 +1679,6 @@ msgid "Amount to refund"
 msgstr ""
 
 msgid "Note for both parties"
-msgstr ""
-
-msgid "payment"
 msgstr ""
 
 msgid "dispute room"
@@ -1428,9 +1864,6 @@ msgstr ""
 msgid "maximum"
 msgstr ""
 
-msgid "from"
-msgstr ""
-
 msgid "priority"
 msgstr ""
 
@@ -1438,12 +1871,6 @@ msgid "pricing rule"
 msgstr ""
 
 msgid "pricing rules"
-msgstr ""
-
-msgid "reference"
-msgstr ""
-
-msgid "client"
 msgstr ""
 
 msgid "provider reference"
@@ -1518,9 +1945,6 @@ msgstr ""
 msgid "delivered at"
 msgstr ""
 
-msgid "appointment"
-msgstr ""
-
 msgid "preparation days"
 msgstr ""
 
@@ -1539,9 +1963,6 @@ msgstr ""
 msgid "refunded at"
 msgstr ""
 
-msgid "cancelled at"
-msgstr ""
-
 msgid "code attempts"
 msgstr ""
 
@@ -1558,9 +1979,6 @@ msgid "In progress"
 msgstr ""
 
 msgid "To do by hand at the provider"
-msgstr ""
-
-msgid "Done"
 msgstr ""
 
 msgid "completed at"
@@ -1635,9 +2053,6 @@ msgstr ""
 msgid "opened by"
 msgstr ""
 
-msgid "answer before"
-msgstr ""
-
 msgid "answer time over"
 msgstr ""
 
@@ -1687,9 +2102,6 @@ msgid "tax data of a seller"
 msgstr ""
 
 msgid "tax data of the sellers"
-msgstr ""
-
-msgid "to"
 msgstr ""
 
 msgid "checked"
@@ -1907,6 +2319,9 @@ msgid "Give a price, or choose « On quote »."
 msgstr ""
 
 msgid "Give a name to this service."
+msgstr ""
+
+msgid "Give the deposit: an amount, or a percentage from 1 to 100."
 msgstr ""
 
 msgid "Give the time of the service, in minutes."
@@ -2139,9 +2554,6 @@ msgstr ""
 msgid "pro profiles"
 msgstr ""
 
-msgid "pro"
-msgstr ""
-
 msgid "service category"
 msgstr ""
 
@@ -2157,9 +2569,6 @@ msgstr ""
 msgid "On quote"
 msgstr ""
 
-msgid "price"
-msgstr ""
-
 msgid "In the smallest unit of the currency. Empty for a quote."
 msgstr ""
 
@@ -2172,13 +2581,25 @@ msgstr ""
 msgid "also at the client's home"
 msgstr ""
 
+msgid "None"
+msgstr ""
+
+msgid "Amount"
+msgstr ""
+
+msgid "Percentage"
+msgstr ""
+
+msgid "deposit value"
+msgstr ""
+
+msgid "An amount in the smallest unit, or a percentage (100 = paid in full)."
+msgstr ""
+
 msgid "shown"
 msgstr ""
 
 msgid "archived at"
-msgstr ""
-
-msgid "service"
 msgstr ""
 
 msgid "services"
@@ -2190,16 +2611,16 @@ msgstr ""
 msgid "Waiting time (product acting)"
 msgstr ""
 
-msgid "label"
-msgstr ""
-
 msgid "duration (min)"
 msgstr ""
 
 msgid "needs someone"
 msgstr ""
 
-msgid "step"
+msgid "another person may do it"
+msgstr ""
+
+msgid "The step can be done by someone else than the previous one."
 msgstr ""
 
 msgid "steps"
@@ -2214,37 +2635,10 @@ msgstr ""
 msgid "option"
 msgstr ""
 
-msgid "options"
-msgstr ""
-
 msgid "service picture"
 msgstr ""
 
 msgid "service pictures"
-msgstr ""
-
-msgid "Monday"
-msgstr ""
-
-msgid "Tuesday"
-msgstr ""
-
-msgid "Wednesday"
-msgstr ""
-
-msgid "Thursday"
-msgstr ""
-
-msgid "Friday"
-msgstr ""
-
-msgid "Saturday"
-msgstr ""
-
-msgid "Sunday"
-msgstr ""
-
-msgid "day"
 msgstr ""
 
 msgid "opens at"
@@ -2638,9 +3032,6 @@ msgstr ""
 msgid "Selection products"
 msgstr ""
 
-msgid "product"
-msgstr ""
-
 msgid "photos"
 msgstr ""
 
@@ -2686,9 +3077,6 @@ msgstr ""
 msgid "group price (FCFA)"
 msgstr ""
 
-msgid "ends at"
-msgstr ""
-
 msgid "closed at"
 msgstr ""
 
@@ -2705,12 +3093,6 @@ msgid "Quote sent"
 msgstr ""
 
 msgid "Ordered"
-msgstr ""
-
-msgid "Declined"
-msgstr ""
-
-msgid "Expired"
 msgstr ""
 
 msgid "her words"
@@ -3016,9 +3398,6 @@ msgstr ""
 msgid "Being checked"
 msgstr ""
 
-msgid "Online"
-msgstr ""
-
 msgid "Paused"
 msgstr ""
 
@@ -3074,12 +3453,6 @@ msgid "stock"
 msgstr ""
 
 msgid "variant"
-msgstr ""
-
-msgid "discount (%)"
-msgstr ""
-
-msgid "starts at"
 msgstr ""
 
 msgid "quantity on sale"
