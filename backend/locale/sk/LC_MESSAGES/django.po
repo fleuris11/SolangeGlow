@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-20 11:03+0200\n"
+"POT-Creation-Date: 2026-10-20 23:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -476,6 +476,9 @@ msgstr "Táto skupinová rezervácia už neexistuje."
 msgid "Sign in to pay the deposit."
 msgstr "Prihlás sa a zaplať zálohu."
 
+msgid "This gift card cannot pay the deposit: check the code and its balance."
+msgstr "Táto darčeková karta nemôže zaplatiť zálohu: skontroluj kód a zostatok."
+
 msgid "Monday"
 msgstr "Pondelok"
 
@@ -821,6 +824,15 @@ msgstr "súkromné poznámky"
 msgid "preferences"
 msgstr "preferencie"
 
+msgid "e-mail"
+msgstr "e-mail"
+
+msgid "birthday (day)"
+msgstr "narodeniny (deň)"
+
+msgid "birthday (month)"
+msgstr "narodeniny (mesiac)"
+
 msgid "client file"
 msgstr "karta klientky"
 
@@ -1122,6 +1134,309 @@ msgstr "prepínače funkcií"
 
 msgid "Gamification"
 msgstr "Gamifikácia"
+
+msgid "Back to the free plan now"
+msgstr "Vrátiť na bezplatný plán teraz"
+
+msgid "Done; the pro is told."
+msgstr "Hotovo; profesionálka je upovedomená."
+
+msgid "allowed websites"
+msgstr "povolené weby"
+
+msgid "price per month"
+msgstr "cena za mesiac"
+
+msgid "Glow Pro offers"
+msgstr "Ponuky Glow Pro"
+
+msgid "This is part of Glow Pro Premium. Try it for free in « My plan »."
+msgstr "Toto patrí do Glow Pro Premium. Vyskúšaj ho zadarmo v « Môj plán »."
+
+#, python-format
+msgid "The free plan has %(limit)s people besides you. Go Premium to add more."
+msgstr "Bezplatný plán má %(limit)s osoby okrem teba. Prejdi na Premium a pridaj ďalšie."
+
+msgid "You already had your free trial."
+msgstr "Skúšobnú verziu si už mala."
+
+msgid "You are already on this plan."
+msgstr "Tento plán už máš."
+
+msgid "This plan is not offered in your country."
+msgstr "Tento plán sa v tvojej krajine neponúka."
+
+msgid "There is nothing to pay right now."
+msgstr "Momentálne nie je čo platiť."
+
+msgid "Give a colour like #C8102E and website addresses like salon.fr."
+msgstr "Zadaj farbu ako #C8102E a adresy ako salon.fr."
+
+msgid "This booking module is not allowed on this website."
+msgstr "Tento rezervačný modul nie je na tomto webe povolený."
+
+msgid "Create your pro showcase first."
+msgstr "Najprv si vytvor profil profesionálky."
+
+msgid "More people in the agenda"
+msgstr "Viac osôb v kalendári"
+
+msgid "Complete client file"
+msgstr "Úplná karta klientky"
+
+msgid "Stock"
+msgstr "Sklad"
+
+msgid "Complete dashboard"
+msgstr "Úplný prehľad"
+
+msgid "Campaigns"
+msgstr "Kampane"
+
+msgid "Booking widget"
+msgstr "Rezervačný widget"
+
+msgid "Electronic invoices"
+msgstr "Elektronické faktúry"
+
+msgid "what she gets"
+msgstr "čo dostane"
+
+msgid "plan of every pro"
+msgstr "plán každej profesionálky"
+
+msgid "The free plan: one only."
+msgstr "Bezplatný plán: iba jeden."
+
+msgid "unlocked features"
+msgstr "odomknuté funkcie"
+
+msgid "limits"
+msgstr "limity"
+
+msgid "For example {\"staff\": 2, \"campaigns_per_month\": 4}. Empty: no limit."
+msgstr "Napríklad staff 2, campaigns_per_month 4 (formát JSON). Prázdne: bez limitu."
+
+msgid "free trial (days)"
+msgstr "skúšobná doba (dni)"
+
+msgid "offered"
+msgstr "ponúkaný"
+
+msgid "Glow Pro plan"
+msgstr "plán Glow Pro"
+
+msgid "Glow Pro plans"
+msgstr "plány Glow Pro"
+
+msgid "plan"
+msgstr "plán"
+
+msgid "prices"
+msgstr "ceny"
+
+msgid "Free trial"
+msgstr "Skúšobná doba"
+
+msgid "Waiting for the payment"
+msgstr "Čaká sa na platbu"
+
+msgid "Back to the free plan"
+msgstr "Späť na bezplatnom pláne"
+
+msgid "trial used"
+msgstr "skúšobná doba využitá"
+
+msgid "paid until"
+msgstr "zaplatené do"
+
+msgid "grace until"
+msgstr "odklad do"
+
+msgid "stops at the end of the month"
+msgstr "končí na konci mesiaca"
+
+msgid "payment to make"
+msgstr "platba na úhradu"
+
+msgid "subscription"
+msgstr "predplatné"
+
+msgid "subscriptions"
+msgstr "predplatné"
+
+msgid "trial"
+msgstr "skúšobná doba"
+
+msgid "paid period"
+msgstr "zaplatené obdobie"
+
+msgid "paid periods"
+msgstr "zaplatené obdobia"
+
+msgid "main colour"
+msgstr "hlavná farba"
+
+msgid "Domains only, for example [\"salon-estelle.fr\", \"www.salon-estelle.fr\"]."
+msgstr "Iba domény, napríklad salon-estelle.fr a www.salon-estelle.fr (formát JSON)."
+
+msgid "booking widget"
+msgstr "rezervačný widget"
+
+msgid "booking widgets"
+msgstr "rezervačné widgety"
+
+msgid "total"
+msgstr "spolu"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "Invoices and receipts"
+msgstr "Faktúry a doklady"
+
+msgid "the platform"
+msgstr "platforma"
+
+msgid "legal name"
+msgstr "úradné meno"
+
+msgid "address"
+msgstr "adresa"
+
+msgid "company number"
+msgstr "IČO"
+
+msgid "SIRET in France, IFU in Benin."
+msgstr "SIRET vo Francúzsku, IFU v Beníne."
+
+msgid "VAT number"
+msgstr "IČ DPH"
+
+msgid "VAT rate"
+msgstr "sadzba DPH"
+
+msgid "In hundredths of a percent: 2000 = 20 %. 0: no VAT."
+msgstr "V stotinách percenta: 2000 = 20 %. 0: bez DPH."
+
+msgid "VAT mention"
+msgstr "poznámka k DPH"
+
+msgid "For example « TVA non applicable, art. 293 B du CGI »."
+msgstr "Napríklad « TVA non applicable, art. 293 B du CGI »."
+
+msgid "footer"
+msgstr "päta"
+
+msgid "invoice issuer"
+msgstr "vystavovateľ faktúr"
+
+msgid "invoice issuers"
+msgstr "vystavovatelia faktúr"
+
+msgid "Invoice"
+msgstr "Faktúra"
+
+msgid "Receipt"
+msgstr "Doklad"
+
+msgid "Credit note"
+msgstr "Dobropis"
+
+msgid "Not sent"
+msgstr "Neodoslané"
+
+msgid "Sent to the platform"
+msgstr "Odoslané na platformu"
+
+msgid "Not accepted"
+msgstr "Neprijaté"
+
+msgid "issuer"
+msgstr "vystavovateľ"
+
+msgid "number"
+msgstr "číslo"
+
+msgid "issued at"
+msgstr "vystavené"
+
+msgid "client details"
+msgstr "údaje klientky"
+
+msgid "client account"
+msgstr "účet klientky"
+
+msgid "lines"
+msgstr "riadky"
+
+msgid "total, taxes included"
+msgstr "spolu s DPH"
+
+msgid "of which VAT"
+msgstr "z toho DPH"
+
+msgid "paid with"
+msgstr "zaplatené spolu s"
+
+msgid "corrects"
+msgstr "opravuje"
+
+msgid "electronic invoice"
+msgstr "elektronická faktúra"
+
+msgid "invoice or receipt"
+msgstr "faktúra alebo doklad"
+
+msgid "invoices and receipts"
+msgstr "faktúry a doklady"
+
+#, python-format
+msgid "Company number: %(number)s"
+msgstr "IČO: %(number)s"
+
+#, python-format
+msgid "VAT number: %(number)s"
+msgstr "IČ DPH: %(number)s"
+
+#, python-format
+msgid "Date: %(date)s"
+msgstr "Dátum: %(date)s"
+
+#, python-format
+msgid "Cancels %(number)s"
+msgstr "Ruší %(number)s"
+
+msgid "Description"
+msgstr "Popis"
+
+msgid "Qty"
+msgstr "Ks"
+
+msgid "Unit price"
+msgstr "Jednotková cena"
+
+msgid "Total"
+msgstr "Spolu"
+
+msgid "Total, taxes included"
+msgstr "Spolu s DPH"
+
+#, python-format
+msgid "Paid with: %(means)s"
+msgstr "Zaplatené: %(means)s"
+
+msgid "Issued with Solange Glow."
+msgstr "Vystavené cez Solange Glow."
+
+msgid "A document needs at least one line with an amount."
+msgstr "Doklad musí mať aspoň jeden riadok so sumou."
+
+msgid "This document does not exist or is not yours."
+msgstr "Tento doklad neexistuje alebo nie je tvoj."
+
+msgid "This document was already cancelled by a credit note."
+msgstr "Tento doklad už bol zrušený dobropisom."
 
 msgid "people"
 msgstr "osoby"
@@ -1583,9 +1898,6 @@ msgstr "odoslanie"
 msgid "sendings"
 msgstr "odoslania"
 
-msgid "address"
-msgstr "adresa"
-
 msgid "last used"
 msgstr "naposledy použité"
 
@@ -1838,6 +2150,15 @@ msgstr "Školenie"
 msgid "France Selection"
 msgstr "Výber z Francúzska"
 
+msgid "Glow Pro subscription"
+msgstr "Predplatné Glow Pro"
+
+msgid "Gift card"
+msgstr "Darčeková karta"
+
+msgid "Package of sessions"
+msgstr "Balík sedení"
+
 msgid "Other"
 msgstr "Iné"
 
@@ -1918,9 +2239,6 @@ msgstr "Doručí partner"
 
 msgid "Service (no delivery)"
 msgstr "Služba (bez doručenia)"
-
-msgid "paid with"
-msgstr "zaplatené spolu s"
 
 msgid "items"
 msgstr "položky"
@@ -2078,9 +2396,6 @@ msgstr "spory"
 msgid "evidence"
 msgstr "dôkaz"
 
-msgid "legal name"
-msgstr "úradné meno"
-
 msgid "registered business"
 msgstr "registrovaná firma"
 
@@ -2098,9 +2413,6 @@ msgstr "krajina pobytu"
 
 msgid "tax number"
 msgstr "daňové číslo"
-
-msgid "VAT number"
-msgstr "IČ DPH"
 
 msgid "tax data of a seller"
 msgstr "daňové údaje predávajúcej"
@@ -2469,9 +2781,6 @@ msgstr "Koncept"
 msgid "Published"
 msgstr "Zverejnená"
 
-msgid "Not sent"
-msgstr "Neodoslané"
-
 msgid "Waiting for review"
 msgstr "Čaká na kontrolu"
 
@@ -2743,6 +3052,343 @@ msgstr[0] "%(counter)s profesionálka na mape."
 msgstr[1] "%(counter)s profesionálky na mape."
 msgstr[2] "%(counter)s profesionálky na mape."
 msgstr[3] "%(counter)s profesionáliek na mape."
+
+msgid "sent / not sent"
+msgstr "odoslané / neodoslané"
+
+msgid "Salon management"
+msgstr "Správa salónu"
+
+msgid "This does not exist or is not in your salon."
+msgstr "Toto neexistuje alebo nie je v tvojom salóne."
+
+msgid "Give a name, 2 to 50 sessions, a price and a service of your list."
+msgstr "Zadaj názov, 2 až 50 sedení, cenu a službu zo zoznamu."
+
+msgid "No session left on this package."
+msgstr "Na tomto balíku už nie je žiadne sedenie."
+
+#, python-format
+msgid "Split in 2 to %(max)s payments, with dates after today."
+msgstr "Rozdeľ na 2 až %(max)s platby s dátumami po dnešku."
+
+msgid "This payment was already made."
+msgstr "Táto platba už bola uhradená."
+
+#, python-format
+msgid "Choose an amount between %(min)s and %(max)s."
+msgstr "Vyber sumu od %(min)s do %(max)s."
+
+msgid "No usable gift card with this code in this salon."
+msgstr "V tomto salóne nie je použiteľná karta s týmto kódom."
+
+#, python-format
+msgid "The gift card only has %(balance)s left."
+msgstr "Na karte ostáva len %(balance)s."
+
+msgid "Give a name and a barcode of 8 to 14 digits (or none)."
+msgstr "Zadaj názov a čiarový kód s 8 až 14 číslicami (alebo žiadny)."
+
+msgid "Another product of your stock has this barcode."
+msgstr "Iný produkt v sklade má tento čiarový kód."
+
+msgid "Give a quantity (not zero)."
+msgstr "Zadaj množstvo (nie nulu)."
+
+msgid "Give an amount and how it was paid."
+msgstr "Zadaj sumu a spôsob platby."
+
+msgid "This way of paying cannot be recorded in your country."
+msgstr "Tento spôsob platby sa vo tvojej krajine nedá zaznamenať."
+
+msgid "Card payment on the phone is not available yet."
+msgstr "Platba kartou na telefóne zatiaľ nie je dostupná."
+
+msgid "This was already cancelled."
+msgstr "Toto už bolo zrušené."
+
+msgid "Give a name and a message (and a subject for an e-mail)."
+msgstr "Zadaj názov a správu (a predmet pre e-mail)."
+
+#, python-format
+msgid "You can send %(limit)s campaigns a month."
+msgstr "Mesačne môžeš poslať %(limit)s kampane."
+
+msgid "This campaign was already sent."
+msgstr "Táto kampaň už bola odoslaná."
+
+msgid "This link does not work any more."
+msgstr "Tento odkaz už nefunguje."
+
+msgid "sessions"
+msgstr "sedenia"
+
+msgid "valid for (days)"
+msgstr "platnosť (dni)"
+
+msgid "payable in up to"
+msgstr "splatné najviac v"
+
+msgid "on sale"
+msgstr "v predaji"
+
+msgid "package"
+msgstr "balík"
+
+msgid "packages"
+msgstr "balíky"
+
+msgid "In use"
+msgstr "Používa sa"
+
+msgid "All sessions used"
+msgstr "Všetky sedenia využité"
+
+msgid "sessions used"
+msgstr "využité sedenia"
+
+msgid "valid until"
+msgstr "platí do"
+
+msgid "package of a client"
+msgstr "balík klientky"
+
+msgid "packages of clients"
+msgstr "balíky klientok"
+
+msgid "session used"
+msgstr "využité sedenie"
+
+msgid "Running"
+msgstr "Prebieha"
+
+msgid "payment in several times"
+msgstr "platba na splátky"
+
+msgid "payments in several times"
+msgstr "platby na splátky"
+
+msgid "To pay"
+msgstr "Na úhradu"
+
+msgid "due on"
+msgstr "splatné"
+
+msgid "installment"
+msgstr "splátka"
+
+msgid "installments"
+msgstr "splátky"
+
+msgid "Usable"
+msgstr "Použiteľná"
+
+msgid "Used up"
+msgstr "Vyčerpaná"
+
+msgid "bought by"
+msgstr "kúpila"
+
+msgid "sent to"
+msgstr "odoslané na"
+
+msgid "sold at the salon"
+msgstr "predané v salóne"
+
+msgid "gift card"
+msgstr "darčeková karta"
+
+msgid "gift cards"
+msgstr "darčekové karty"
+
+msgid "online"
+msgstr "online"
+
+msgid "use of a gift card"
+msgstr "použitie darčekovej karty"
+
+msgid "uses of gift cards"
+msgstr "použitia darčekových kariet"
+
+msgid "Sold to clients"
+msgstr "Predáva sa klientkam"
+
+msgid "Used in the salon"
+msgstr "Používa sa v salóne"
+
+msgid "pieces"
+msgstr "ks"
+
+msgid "ml"
+msgstr "ml"
+
+msgid "g"
+msgstr "g"
+
+msgid "barcode"
+msgstr "čiarový kód"
+
+msgid "unit"
+msgstr "jednotka"
+
+msgid "in stock"
+msgstr "na sklade"
+
+msgid "alert under"
+msgstr "upozornenie pod"
+
+msgid "product of the shop"
+msgstr "produkt obchodu"
+
+msgid "Linked: the stock is the one of the shop."
+msgstr "Prepojené: sklad je sklad obchodu."
+
+msgid "cost price"
+msgstr "nákupná cena"
+
+msgid "followed"
+msgstr "sledovaná"
+
+msgid "stock item"
+msgstr "skladová položka"
+
+msgid "stock items"
+msgstr "skladové položky"
+
+msgid "Taken out"
+msgstr "Výdaj"
+
+msgid "Sold"
+msgstr "Predané"
+
+msgid "Used for a service"
+msgstr "Použité na službu"
+
+msgid "Inventory"
+msgstr "Inventúra"
+
+msgid "Lost or broken"
+msgstr "Stratené alebo rozbité"
+
+msgid "change"
+msgstr "zmena"
+
+msgid "stock after"
+msgstr "stav po"
+
+msgid "stock movement"
+msgstr "pohyb skladu"
+
+msgid "stock movements"
+msgstr "pohyby skladu"
+
+msgid "quantity"
+msgstr "množstvo"
+
+msgid "product used by a service"
+msgstr "produkt používaný službou"
+
+msgid "products used by services"
+msgstr "produkty používané službami"
+
+msgid "Cash"
+msgstr "Hotovosť"
+
+msgid "Card (terminal)"
+msgstr "Karta (terminál)"
+
+msgid "transaction number"
+msgstr "číslo transakcie"
+
+msgid "payment at the salon"
+msgstr "platba v salóne"
+
+msgid "payments at the salon"
+msgstr "platby v salóne"
+
+msgid "Ticked when booking"
+msgstr "Zaškrtnuté pri rezervácii"
+
+msgid "Noted by the pro with her agreement"
+msgstr "Zaznamenané profesionálkou s jej súhlasom"
+
+msgid "Unsubscribe link"
+msgstr "Odkaz na odhlásenie"
+
+msgid "Changed by the client"
+msgstr "Zmenené klientkou"
+
+msgid "agrees"
+msgstr "súhlasí"
+
+msgid "how"
+msgstr "ako"
+
+msgid "when"
+msgstr "kedy"
+
+msgid "marketing consent"
+msgstr "súhlas s ponukami"
+
+msgid "marketing consents"
+msgstr "súhlasy s ponukami"
+
+msgid "Not come for a while"
+msgstr "Dlhšie neprišla"
+
+msgid "Birthday in the next 7 days"
+msgstr "Narodeniny do 7 dní"
+
+msgid "Package almost used"
+msgstr "Balík takmer vyčerpaný"
+
+msgid "All my clients"
+msgstr "Všetky moje klientky"
+
+msgid "who"
+msgstr "kto"
+
+msgid "not come for (days)"
+msgstr "neprišla (dní)"
+
+msgid "subject"
+msgstr "predmet"
+
+msgid "in the segment"
+msgstr "v segmente"
+
+msgid "left out (no consent)"
+msgstr "vynechané (bez súhlasu)"
+
+msgid "campaign"
+msgstr "kampaň"
+
+msgid "campaigns"
+msgstr "kampane"
+
+#, python-format
+msgid "Online deposit %(reference)s"
+msgstr "Online záloha %(reference)s"
+
+#, python-format
+msgid "%(name)s (%(count)s sessions)"
+msgstr "%(name)s (%(count)s sedení)"
+
+#, python-format
+msgid "Gift card %(code)s"
+msgstr "Darčeková karta %(code)s"
+
+#, python-format
+msgid "Gift card %(pro)s"
+msgstr "Darčeková karta %(pro)s"
+
+#, python-format
+msgid "A gift card from %(name)s"
+msgstr "Darčeková karta od %(name)s"
+
+#, python-format
+msgid "%(amount)s at %(pro)s. Code: %(code)s. Valid until %(until)s."
+msgstr "%(amount)s v %(pro)s. Kód: %(code)s. Platí do %(until)s."
 
 msgid "Purchase price"
 msgstr "Nákupná cena"
@@ -3129,9 +3775,6 @@ msgstr "správa klientke"
 msgid "quoted at"
 msgstr "ponuka odoslaná"
 
-msgid "valid until"
-msgstr "platí do"
-
 msgid "special request"
 msgstr "špeciálna požiadavka"
 
@@ -3155,9 +3798,6 @@ msgstr "Odovzdaná"
 
 msgid "choice"
 msgstr "variant"
-
-msgid "quantity"
-msgstr "množstvo"
 
 msgid "unit price (FCFA)"
 msgstr "jednotková cena (FCFA)"
@@ -3201,9 +3841,6 @@ msgstr "Dôvod zobrazený profesionálke"
 msgid "forbidden words found"
 msgstr "nájdené zakázané slová"
 
-msgid "Done; the pro is told."
-msgstr "Hotovo; profesionálka je upovedomená."
-
 msgid "Accept"
 msgstr "Prijať"
 
@@ -3216,9 +3853,6 @@ msgstr "Zamietnuť „%(title)s“"
 
 msgid "Unblock (back to draft)"
 msgstr "Odblokovať (späť na koncept)"
-
-msgid "total"
-msgstr "spolu"
 
 msgid "Shop"
 msgstr "Obchody"
@@ -3480,9 +4114,6 @@ msgstr "bleskový výpredaj"
 msgid "flash sales"
 msgstr "bleskové výpredaje"
 
-msgid "on sale"
-msgstr "v predaji"
-
 msgid "bundle"
 msgstr "balíček"
 
@@ -3736,9 +4367,6 @@ msgstr "komentár"
 msgid "follower"
 msgstr "sledovateľka"
 
-msgid "followed"
-msgstr "sledovaná"
-
 msgid "follow"
 msgstr "sledovanie"
 
@@ -3888,6 +4516,33 @@ msgstr "Kategórie a ceny"
 
 msgid "Pick-up points"
 msgstr "Výdajné miesta"
+
+msgid "Glow Pro"
+msgstr "Glow Pro"
+
+msgid "Appointments"
+msgstr "Termíny"
+
+msgid "Agenda people"
+msgstr "Tímy kalendárov"
+
+msgid "Subscriptions"
+msgstr "Predplatné"
+
+msgid "Gift cards"
+msgstr "Darčekové karty"
+
+msgid "Packages"
+msgstr "Balíky"
+
+msgid "Salon stock"
+msgstr "Sklady salónov"
+
+msgid "Payments at the salon"
+msgstr "Platby v salóne"
+
+msgid "Invoice issuers"
+msgstr "Vystavovatelia faktúr"
 
 msgid "Finance dashboard"
 msgstr "Finančný prehľad"

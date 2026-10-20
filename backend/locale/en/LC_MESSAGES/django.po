@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-20 11:03+0200\n"
+"POT-Creation-Date: 2026-10-20 23:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -472,6 +472,9 @@ msgstr ""
 msgid "Sign in to pay the deposit."
 msgstr ""
 
+msgid "This gift card cannot pay the deposit: check the code and its balance."
+msgstr ""
+
 msgid "Monday"
 msgstr ""
 
@@ -817,6 +820,15 @@ msgstr ""
 msgid "preferences"
 msgstr ""
 
+msgid "e-mail"
+msgstr ""
+
+msgid "birthday (day)"
+msgstr ""
+
+msgid "birthday (month)"
+msgstr ""
+
 msgid "client file"
 msgstr ""
 
@@ -1117,6 +1129,309 @@ msgid "feature flags"
 msgstr ""
 
 msgid "Gamification"
+msgstr ""
+
+msgid "Back to the free plan now"
+msgstr ""
+
+msgid "Done; the pro is told."
+msgstr ""
+
+msgid "allowed websites"
+msgstr ""
+
+msgid "price per month"
+msgstr ""
+
+msgid "Glow Pro offers"
+msgstr ""
+
+msgid "This is part of Glow Pro Premium. Try it for free in « My plan »."
+msgstr ""
+
+#, python-format
+msgid "The free plan has %(limit)s people besides you. Go Premium to add more."
+msgstr ""
+
+msgid "You already had your free trial."
+msgstr ""
+
+msgid "You are already on this plan."
+msgstr ""
+
+msgid "This plan is not offered in your country."
+msgstr ""
+
+msgid "There is nothing to pay right now."
+msgstr ""
+
+msgid "Give a colour like #C8102E and website addresses like salon.fr."
+msgstr ""
+
+msgid "This booking module is not allowed on this website."
+msgstr ""
+
+msgid "Create your pro showcase first."
+msgstr ""
+
+msgid "More people in the agenda"
+msgstr ""
+
+msgid "Complete client file"
+msgstr ""
+
+msgid "Stock"
+msgstr ""
+
+msgid "Complete dashboard"
+msgstr ""
+
+msgid "Campaigns"
+msgstr ""
+
+msgid "Booking widget"
+msgstr ""
+
+msgid "Electronic invoices"
+msgstr ""
+
+msgid "what she gets"
+msgstr ""
+
+msgid "plan of every pro"
+msgstr ""
+
+msgid "The free plan: one only."
+msgstr ""
+
+msgid "unlocked features"
+msgstr ""
+
+msgid "limits"
+msgstr ""
+
+msgid "For example {\"staff\": 2, \"campaigns_per_month\": 4}. Empty: no limit."
+msgstr ""
+
+msgid "free trial (days)"
+msgstr ""
+
+msgid "offered"
+msgstr ""
+
+msgid "Glow Pro plan"
+msgstr ""
+
+msgid "Glow Pro plans"
+msgstr ""
+
+msgid "plan"
+msgstr ""
+
+msgid "prices"
+msgstr ""
+
+msgid "Free trial"
+msgstr ""
+
+msgid "Waiting for the payment"
+msgstr ""
+
+msgid "Back to the free plan"
+msgstr ""
+
+msgid "trial used"
+msgstr ""
+
+msgid "paid until"
+msgstr ""
+
+msgid "grace until"
+msgstr ""
+
+msgid "stops at the end of the month"
+msgstr ""
+
+msgid "payment to make"
+msgstr ""
+
+msgid "subscription"
+msgstr ""
+
+msgid "subscriptions"
+msgstr ""
+
+msgid "trial"
+msgstr ""
+
+msgid "paid period"
+msgstr ""
+
+msgid "paid periods"
+msgstr ""
+
+msgid "main colour"
+msgstr ""
+
+msgid "Domains only, for example [\"salon-estelle.fr\", \"www.salon-estelle.fr\"]."
+msgstr ""
+
+msgid "booking widget"
+msgstr ""
+
+msgid "booking widgets"
+msgstr ""
+
+msgid "total"
+msgstr ""
+
+msgid "PDF"
+msgstr ""
+
+msgid "Invoices and receipts"
+msgstr ""
+
+msgid "the platform"
+msgstr ""
+
+msgid "legal name"
+msgstr ""
+
+msgid "address"
+msgstr ""
+
+msgid "company number"
+msgstr ""
+
+msgid "SIRET in France, IFU in Benin."
+msgstr ""
+
+msgid "VAT number"
+msgstr ""
+
+msgid "VAT rate"
+msgstr ""
+
+msgid "In hundredths of a percent: 2000 = 20 %. 0: no VAT."
+msgstr ""
+
+msgid "VAT mention"
+msgstr ""
+
+msgid "For example « TVA non applicable, art. 293 B du CGI »."
+msgstr ""
+
+msgid "footer"
+msgstr ""
+
+msgid "invoice issuer"
+msgstr ""
+
+msgid "invoice issuers"
+msgstr ""
+
+msgid "Invoice"
+msgstr ""
+
+msgid "Receipt"
+msgstr ""
+
+msgid "Credit note"
+msgstr ""
+
+msgid "Not sent"
+msgstr ""
+
+msgid "Sent to the platform"
+msgstr ""
+
+msgid "Not accepted"
+msgstr ""
+
+msgid "issuer"
+msgstr ""
+
+msgid "number"
+msgstr ""
+
+msgid "issued at"
+msgstr ""
+
+msgid "client details"
+msgstr ""
+
+msgid "client account"
+msgstr ""
+
+msgid "lines"
+msgstr ""
+
+msgid "total, taxes included"
+msgstr ""
+
+msgid "of which VAT"
+msgstr ""
+
+msgid "paid with"
+msgstr ""
+
+msgid "corrects"
+msgstr ""
+
+msgid "electronic invoice"
+msgstr ""
+
+msgid "invoice or receipt"
+msgstr ""
+
+msgid "invoices and receipts"
+msgstr ""
+
+#, python-format
+msgid "Company number: %(number)s"
+msgstr ""
+
+#, python-format
+msgid "VAT number: %(number)s"
+msgstr ""
+
+#, python-format
+msgid "Date: %(date)s"
+msgstr ""
+
+#, python-format
+msgid "Cancels %(number)s"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Qty"
+msgstr ""
+
+msgid "Unit price"
+msgstr ""
+
+msgid "Total"
+msgstr ""
+
+msgid "Total, taxes included"
+msgstr ""
+
+#, python-format
+msgid "Paid with: %(means)s"
+msgstr ""
+
+msgid "Issued with Solange Glow."
+msgstr ""
+
+msgid "A document needs at least one line with an amount."
+msgstr ""
+
+msgid "This document does not exist or is not yours."
+msgstr ""
+
+msgid "This document was already cancelled by a credit note."
 msgstr ""
 
 msgid "people"
@@ -1579,9 +1894,6 @@ msgstr ""
 msgid "sendings"
 msgstr ""
 
-msgid "address"
-msgstr ""
-
 msgid "last used"
 msgstr ""
 
@@ -1834,6 +2146,15 @@ msgstr ""
 msgid "France Selection"
 msgstr ""
 
+msgid "Glow Pro subscription"
+msgstr ""
+
+msgid "Gift card"
+msgstr ""
+
+msgid "Package of sessions"
+msgstr ""
+
 msgid "Other"
 msgstr ""
 
@@ -1913,9 +2234,6 @@ msgid "Delivered by a partner"
 msgstr ""
 
 msgid "Service (no delivery)"
-msgstr ""
-
-msgid "paid with"
 msgstr ""
 
 msgid "items"
@@ -2074,9 +2392,6 @@ msgstr ""
 msgid "evidence"
 msgstr ""
 
-msgid "legal name"
-msgstr ""
-
 msgid "registered business"
 msgstr ""
 
@@ -2093,9 +2408,6 @@ msgid "country of residence"
 msgstr ""
 
 msgid "tax number"
-msgstr ""
-
-msgid "VAT number"
 msgstr ""
 
 msgid "tax data of a seller"
@@ -2455,9 +2767,6 @@ msgstr ""
 msgid "Published"
 msgstr ""
 
-msgid "Not sent"
-msgstr ""
-
 msgid "Waiting for review"
 msgstr ""
 
@@ -2727,6 +3036,343 @@ msgid "%(counter)s pro placed on the map."
 msgid_plural "%(counter)s pros placed on the map."
 msgstr[0] ""
 msgstr[1] ""
+
+msgid "sent / not sent"
+msgstr ""
+
+msgid "Salon management"
+msgstr ""
+
+msgid "This does not exist or is not in your salon."
+msgstr ""
+
+msgid "Give a name, 2 to 50 sessions, a price and a service of your list."
+msgstr ""
+
+msgid "No session left on this package."
+msgstr ""
+
+#, python-format
+msgid "Split in 2 to %(max)s payments, with dates after today."
+msgstr ""
+
+msgid "This payment was already made."
+msgstr ""
+
+#, python-format
+msgid "Choose an amount between %(min)s and %(max)s."
+msgstr ""
+
+msgid "No usable gift card with this code in this salon."
+msgstr ""
+
+#, python-format
+msgid "The gift card only has %(balance)s left."
+msgstr ""
+
+msgid "Give a name and a barcode of 8 to 14 digits (or none)."
+msgstr ""
+
+msgid "Another product of your stock has this barcode."
+msgstr ""
+
+msgid "Give a quantity (not zero)."
+msgstr ""
+
+msgid "Give an amount and how it was paid."
+msgstr ""
+
+msgid "This way of paying cannot be recorded in your country."
+msgstr ""
+
+msgid "Card payment on the phone is not available yet."
+msgstr ""
+
+msgid "This was already cancelled."
+msgstr ""
+
+msgid "Give a name and a message (and a subject for an e-mail)."
+msgstr ""
+
+#, python-format
+msgid "You can send %(limit)s campaigns a month."
+msgstr ""
+
+msgid "This campaign was already sent."
+msgstr ""
+
+msgid "This link does not work any more."
+msgstr ""
+
+msgid "sessions"
+msgstr ""
+
+msgid "valid for (days)"
+msgstr ""
+
+msgid "payable in up to"
+msgstr ""
+
+msgid "on sale"
+msgstr ""
+
+msgid "package"
+msgstr ""
+
+msgid "packages"
+msgstr ""
+
+msgid "In use"
+msgstr ""
+
+msgid "All sessions used"
+msgstr ""
+
+msgid "sessions used"
+msgstr ""
+
+msgid "valid until"
+msgstr ""
+
+msgid "package of a client"
+msgstr ""
+
+msgid "packages of clients"
+msgstr ""
+
+msgid "session used"
+msgstr ""
+
+msgid "Running"
+msgstr ""
+
+msgid "payment in several times"
+msgstr ""
+
+msgid "payments in several times"
+msgstr ""
+
+msgid "To pay"
+msgstr ""
+
+msgid "due on"
+msgstr ""
+
+msgid "installment"
+msgstr ""
+
+msgid "installments"
+msgstr ""
+
+msgid "Usable"
+msgstr ""
+
+msgid "Used up"
+msgstr ""
+
+msgid "bought by"
+msgstr ""
+
+msgid "sent to"
+msgstr ""
+
+msgid "sold at the salon"
+msgstr ""
+
+msgid "gift card"
+msgstr ""
+
+msgid "gift cards"
+msgstr ""
+
+msgid "online"
+msgstr ""
+
+msgid "use of a gift card"
+msgstr ""
+
+msgid "uses of gift cards"
+msgstr ""
+
+msgid "Sold to clients"
+msgstr ""
+
+msgid "Used in the salon"
+msgstr ""
+
+msgid "pieces"
+msgstr ""
+
+msgid "ml"
+msgstr ""
+
+msgid "g"
+msgstr ""
+
+msgid "barcode"
+msgstr ""
+
+msgid "unit"
+msgstr ""
+
+msgid "in stock"
+msgstr ""
+
+msgid "alert under"
+msgstr ""
+
+msgid "product of the shop"
+msgstr ""
+
+msgid "Linked: the stock is the one of the shop."
+msgstr ""
+
+msgid "cost price"
+msgstr ""
+
+msgid "followed"
+msgstr ""
+
+msgid "stock item"
+msgstr ""
+
+msgid "stock items"
+msgstr ""
+
+msgid "Taken out"
+msgstr ""
+
+msgid "Sold"
+msgstr ""
+
+msgid "Used for a service"
+msgstr ""
+
+msgid "Inventory"
+msgstr ""
+
+msgid "Lost or broken"
+msgstr ""
+
+msgid "change"
+msgstr ""
+
+msgid "stock after"
+msgstr ""
+
+msgid "stock movement"
+msgstr ""
+
+msgid "stock movements"
+msgstr ""
+
+msgid "quantity"
+msgstr ""
+
+msgid "product used by a service"
+msgstr ""
+
+msgid "products used by services"
+msgstr ""
+
+msgid "Cash"
+msgstr ""
+
+msgid "Card (terminal)"
+msgstr ""
+
+msgid "transaction number"
+msgstr ""
+
+msgid "payment at the salon"
+msgstr ""
+
+msgid "payments at the salon"
+msgstr ""
+
+msgid "Ticked when booking"
+msgstr ""
+
+msgid "Noted by the pro with her agreement"
+msgstr ""
+
+msgid "Unsubscribe link"
+msgstr ""
+
+msgid "Changed by the client"
+msgstr ""
+
+msgid "agrees"
+msgstr ""
+
+msgid "how"
+msgstr ""
+
+msgid "when"
+msgstr ""
+
+msgid "marketing consent"
+msgstr ""
+
+msgid "marketing consents"
+msgstr ""
+
+msgid "Not come for a while"
+msgstr ""
+
+msgid "Birthday in the next 7 days"
+msgstr ""
+
+msgid "Package almost used"
+msgstr ""
+
+msgid "All my clients"
+msgstr ""
+
+msgid "who"
+msgstr ""
+
+msgid "not come for (days)"
+msgstr ""
+
+msgid "subject"
+msgstr ""
+
+msgid "in the segment"
+msgstr ""
+
+msgid "left out (no consent)"
+msgstr ""
+
+msgid "campaign"
+msgstr ""
+
+msgid "campaigns"
+msgstr ""
+
+#, python-format
+msgid "Online deposit %(reference)s"
+msgstr ""
+
+#, python-format
+msgid "%(name)s (%(count)s sessions)"
+msgstr ""
+
+#, python-format
+msgid "Gift card %(code)s"
+msgstr ""
+
+#, python-format
+msgid "Gift card %(pro)s"
+msgstr ""
+
+#, python-format
+msgid "A gift card from %(name)s"
+msgstr ""
+
+#, python-format
+msgid "%(amount)s at %(pro)s. Code: %(code)s. Valid until %(until)s."
+msgstr ""
 
 msgid "Purchase price"
 msgstr ""
@@ -3113,9 +3759,6 @@ msgstr ""
 msgid "quoted at"
 msgstr ""
 
-msgid "valid until"
-msgstr ""
-
 msgid "special request"
 msgstr ""
 
@@ -3138,9 +3781,6 @@ msgid "Handed over"
 msgstr ""
 
 msgid "choice"
-msgstr ""
-
-msgid "quantity"
 msgstr ""
 
 msgid "unit price (FCFA)"
@@ -3185,9 +3825,6 @@ msgstr ""
 msgid "forbidden words found"
 msgstr ""
 
-msgid "Done; the pro is told."
-msgstr ""
-
 msgid "Accept"
 msgstr ""
 
@@ -3199,9 +3836,6 @@ msgid "Refuse « %(title)s »"
 msgstr ""
 
 msgid "Unblock (back to draft)"
-msgstr ""
-
-msgid "total"
 msgstr ""
 
 msgid "Shop"
@@ -3464,9 +4098,6 @@ msgstr ""
 msgid "flash sales"
 msgstr ""
 
-msgid "on sale"
-msgstr ""
-
 msgid "bundle"
 msgstr ""
 
@@ -3720,9 +4351,6 @@ msgstr ""
 msgid "follower"
 msgstr ""
 
-msgid "followed"
-msgstr ""
-
 msgid "follow"
 msgstr ""
 
@@ -3871,6 +4499,33 @@ msgid "Categories and prices"
 msgstr ""
 
 msgid "Pick-up points"
+msgstr ""
+
+msgid "Glow Pro"
+msgstr ""
+
+msgid "Appointments"
+msgstr ""
+
+msgid "Agenda people"
+msgstr ""
+
+msgid "Subscriptions"
+msgstr ""
+
+msgid "Gift cards"
+msgstr ""
+
+msgid "Packages"
+msgstr ""
+
+msgid "Salon stock"
+msgstr ""
+
+msgid "Payments at the salon"
+msgstr ""
+
+msgid "Invoice issuers"
 msgstr ""
 
 msgid "Finance dashboard"

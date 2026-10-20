@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-20 11:03+0200\n"
+"POT-Creation-Date: 2026-10-20 23:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -472,6 +472,9 @@ msgstr "Cette réservation de groupe n'existe plus."
 msgid "Sign in to pay the deposit."
 msgstr "Connecte-toi pour payer l'acompte."
 
+msgid "This gift card cannot pay the deposit: check the code and its balance."
+msgstr "Cette carte cadeau ne peut pas payer l'acompte : vérifie le code et son solde."
+
 msgid "Monday"
 msgstr "Lundi"
 
@@ -817,6 +820,15 @@ msgstr "notes privées"
 msgid "preferences"
 msgstr "préférences"
 
+msgid "e-mail"
+msgstr "e-mail"
+
+msgid "birthday (day)"
+msgstr "anniversaire (jour)"
+
+msgid "birthday (month)"
+msgstr "anniversaire (mois)"
+
 msgid "client file"
 msgstr "fiche cliente"
 
@@ -1118,6 +1130,309 @@ msgstr "modules activables"
 
 msgid "Gamification"
 msgstr "Côté ludique"
+
+msgid "Back to the free plan now"
+msgstr "Repasser à l'offre gratuite maintenant"
+
+msgid "Done; the pro is told."
+msgstr "C'est fait ; la pro est prévenue."
+
+msgid "allowed websites"
+msgstr "sites autorisés"
+
+msgid "price per month"
+msgstr "prix par mois"
+
+msgid "Glow Pro offers"
+msgstr "Offres Glow Pro"
+
+msgid "This is part of Glow Pro Premium. Try it for free in « My plan »."
+msgstr "Ceci fait partie de Glow Pro Premium. Essaie-le gratuitement dans « Mon offre »."
+
+#, python-format
+msgid "The free plan has %(limit)s people besides you. Go Premium to add more."
+msgstr "L'offre gratuite compte %(limit)s personnes en plus de toi. Passe en Premium pour en ajouter."
+
+msgid "You already had your free trial."
+msgstr "Tu as déjà eu ton essai gratuit."
+
+msgid "You are already on this plan."
+msgstr "Tu as déjà cette offre."
+
+msgid "This plan is not offered in your country."
+msgstr "Cette offre n'est pas proposée dans ton pays."
+
+msgid "There is nothing to pay right now."
+msgstr "Il n'y a rien à payer pour l'instant."
+
+msgid "Give a colour like #C8102E and website addresses like salon.fr."
+msgstr "Donne une couleur comme #C8102E et des adresses comme salon.fr."
+
+msgid "This booking module is not allowed on this website."
+msgstr "Ce module de réservation n'est pas autorisé sur ce site."
+
+msgid "Create your pro showcase first."
+msgstr "Crée d'abord ta vitrine de pro."
+
+msgid "More people in the agenda"
+msgstr "Plus de personnes dans l'agenda"
+
+msgid "Complete client file"
+msgstr "Fichier client complet"
+
+msgid "Stock"
+msgstr "Stock"
+
+msgid "Complete dashboard"
+msgstr "Tableau de bord complet"
+
+msgid "Campaigns"
+msgstr "Campagnes"
+
+msgid "Booking widget"
+msgstr "Widget de réservation"
+
+msgid "Electronic invoices"
+msgstr "Factures électroniques"
+
+msgid "what she gets"
+msgstr "ce qu'elle a"
+
+msgid "plan of every pro"
+msgstr "offre de toutes les pros"
+
+msgid "The free plan: one only."
+msgstr "L'offre gratuite : une seule."
+
+msgid "unlocked features"
+msgstr "fonctions débloquées"
+
+msgid "limits"
+msgstr "limites"
+
+msgid "For example {\"staff\": 2, \"campaigns_per_month\": 4}. Empty: no limit."
+msgstr "Par exemple staff 2, campaigns_per_month 4 (format JSON). Vide : pas de limite."
+
+msgid "free trial (days)"
+msgstr "essai gratuit (jours)"
+
+msgid "offered"
+msgstr "proposée"
+
+msgid "Glow Pro plan"
+msgstr "offre Glow Pro"
+
+msgid "Glow Pro plans"
+msgstr "offres Glow Pro"
+
+msgid "plan"
+msgstr "offre"
+
+msgid "prices"
+msgstr "prix"
+
+msgid "Free trial"
+msgstr "Essai gratuit"
+
+msgid "Waiting for the payment"
+msgstr "En attente du paiement"
+
+msgid "Back to the free plan"
+msgstr "Revenue à l'offre gratuite"
+
+msgid "trial used"
+msgstr "essai utilisé"
+
+msgid "paid until"
+msgstr "payé jusqu'au"
+
+msgid "grace until"
+msgstr "grâce jusqu'au"
+
+msgid "stops at the end of the month"
+msgstr "s'arrête à la fin du mois"
+
+msgid "payment to make"
+msgstr "paiement à faire"
+
+msgid "subscription"
+msgstr "abonnement"
+
+msgid "subscriptions"
+msgstr "abonnements"
+
+msgid "trial"
+msgstr "essai"
+
+msgid "paid period"
+msgstr "période payée"
+
+msgid "paid periods"
+msgstr "périodes payées"
+
+msgid "main colour"
+msgstr "couleur principale"
+
+msgid "Domains only, for example [\"salon-estelle.fr\", \"www.salon-estelle.fr\"]."
+msgstr "Domaines seulement, par exemple salon-estelle.fr et www.salon-estelle.fr (format JSON)."
+
+msgid "booking widget"
+msgstr "widget de réservation"
+
+msgid "booking widgets"
+msgstr "widgets de réservation"
+
+msgid "total"
+msgstr "total"
+
+msgid "PDF"
+msgstr "PDF"
+
+msgid "Invoices and receipts"
+msgstr "Factures et reçus"
+
+msgid "the platform"
+msgstr "la plateforme"
+
+msgid "legal name"
+msgstr "nom légal"
+
+msgid "address"
+msgstr "adresse"
+
+msgid "company number"
+msgstr "numéro d'entreprise"
+
+msgid "SIRET in France, IFU in Benin."
+msgstr "SIRET en France, IFU au Bénin."
+
+msgid "VAT number"
+msgstr "numéro de TVA"
+
+msgid "VAT rate"
+msgstr "taux de TVA"
+
+msgid "In hundredths of a percent: 2000 = 20 %. 0: no VAT."
+msgstr "En centièmes de pourcent : 2000 = 20 %. 0 : pas de TVA."
+
+msgid "VAT mention"
+msgstr "mention TVA"
+
+msgid "For example « TVA non applicable, art. 293 B du CGI »."
+msgstr "Par exemple « TVA non applicable, art. 293 B du CGI »."
+
+msgid "footer"
+msgstr "pied de page"
+
+msgid "invoice issuer"
+msgstr "émetteur de factures"
+
+msgid "invoice issuers"
+msgstr "émetteurs de factures"
+
+msgid "Invoice"
+msgstr "Facture"
+
+msgid "Receipt"
+msgstr "Reçu"
+
+msgid "Credit note"
+msgstr "Avoir"
+
+msgid "Not sent"
+msgstr "Pas envoyée"
+
+msgid "Sent to the platform"
+msgstr "Envoyée à la plateforme"
+
+msgid "Not accepted"
+msgstr "Refusée"
+
+msgid "issuer"
+msgstr "émetteur"
+
+msgid "number"
+msgstr "numéro"
+
+msgid "issued at"
+msgstr "émise le"
+
+msgid "client details"
+msgstr "coordonnées de la cliente"
+
+msgid "client account"
+msgstr "compte de la cliente"
+
+msgid "lines"
+msgstr "lignes"
+
+msgid "total, taxes included"
+msgstr "total TTC"
+
+msgid "of which VAT"
+msgstr "dont TVA"
+
+msgid "paid with"
+msgstr "payé avec"
+
+msgid "corrects"
+msgstr "annule"
+
+msgid "electronic invoice"
+msgstr "facture électronique"
+
+msgid "invoice or receipt"
+msgstr "facture ou reçu"
+
+msgid "invoices and receipts"
+msgstr "factures et reçus"
+
+#, python-format
+msgid "Company number: %(number)s"
+msgstr "N° d'entreprise : %(number)s"
+
+#, python-format
+msgid "VAT number: %(number)s"
+msgstr "N° de TVA : %(number)s"
+
+#, python-format
+msgid "Date: %(date)s"
+msgstr "Date : %(date)s"
+
+#, python-format
+msgid "Cancels %(number)s"
+msgstr "Annule %(number)s"
+
+msgid "Description"
+msgstr "Désignation"
+
+msgid "Qty"
+msgstr "Qté"
+
+msgid "Unit price"
+msgstr "Prix unitaire"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Total, taxes included"
+msgstr "Total TTC"
+
+#, python-format
+msgid "Paid with: %(means)s"
+msgstr "Payé par : %(means)s"
+
+msgid "Issued with Solange Glow."
+msgstr "Émis avec Solange Glow."
+
+msgid "A document needs at least one line with an amount."
+msgstr "Un document doit avoir au moins une ligne avec un montant."
+
+msgid "This document does not exist or is not yours."
+msgstr "Ce document n'existe pas ou n'est pas le tien."
+
+msgid "This document was already cancelled by a credit note."
+msgstr "Ce document a déjà été annulé par un avoir."
 
 msgid "people"
 msgstr "personnes"
@@ -1579,9 +1894,6 @@ msgstr "envoi"
 msgid "sendings"
 msgstr "envois"
 
-msgid "address"
-msgstr "adresse"
-
 msgid "last used"
 msgstr "dernière utilisation"
 
@@ -1834,6 +2146,15 @@ msgstr "Formation"
 msgid "France Selection"
 msgstr "Sélection France"
 
+msgid "Glow Pro subscription"
+msgstr "Abonnement Glow Pro"
+
+msgid "Gift card"
+msgstr "Carte cadeau"
+
+msgid "Package of sessions"
+msgstr "Forfait de séances"
+
 msgid "Other"
 msgstr "Autre"
 
@@ -1914,9 +2235,6 @@ msgstr "Livré par un partenaire"
 
 msgid "Service (no delivery)"
 msgstr "Prestation (sans livraison)"
-
-msgid "paid with"
-msgstr "payé avec"
 
 msgid "items"
 msgstr "articles"
@@ -2074,9 +2392,6 @@ msgstr "litiges"
 msgid "evidence"
 msgstr "preuve"
 
-msgid "legal name"
-msgstr "nom légal"
-
 msgid "registered business"
 msgstr "entreprise immatriculée"
 
@@ -2094,9 +2409,6 @@ msgstr "pays de résidence"
 
 msgid "tax number"
 msgstr "numéro fiscal"
-
-msgid "VAT number"
-msgstr "numéro de TVA"
 
 msgid "tax data of a seller"
 msgstr "données fiscales d'une vendeuse"
@@ -2455,9 +2767,6 @@ msgstr "Brouillon"
 msgid "Published"
 msgstr "Publiée"
 
-msgid "Not sent"
-msgstr "Pas envoyée"
-
 msgid "Waiting for review"
 msgstr "En attente de contrôle"
 
@@ -2727,6 +3036,343 @@ msgid "%(counter)s pro placed on the map."
 msgid_plural "%(counter)s pros placed on the map."
 msgstr[0] "%(counter)s pro placée sur la carte."
 msgstr[1] "%(counter)s pros placées sur la carte."
+
+msgid "sent / not sent"
+msgstr "envoyés / pas envoyés"
+
+msgid "Salon management"
+msgstr "Gestion du salon"
+
+msgid "This does not exist or is not in your salon."
+msgstr "Ceci n'existe pas ou n'est pas dans ton salon."
+
+msgid "Give a name, 2 to 50 sessions, a price and a service of your list."
+msgstr "Donne un nom, 2 à 50 séances, un prix et une prestation de ta liste."
+
+msgid "No session left on this package."
+msgstr "Plus de séance sur ce forfait."
+
+#, python-format
+msgid "Split in 2 to %(max)s payments, with dates after today."
+msgstr "Partage en 2 à %(max)s paiements, avec des dates après aujourd'hui."
+
+msgid "This payment was already made."
+msgstr "Ce paiement est déjà fait."
+
+#, python-format
+msgid "Choose an amount between %(min)s and %(max)s."
+msgstr "Choisis un montant entre %(min)s et %(max)s."
+
+msgid "No usable gift card with this code in this salon."
+msgstr "Aucune carte cadeau utilisable avec ce code dans ce salon."
+
+#, python-format
+msgid "The gift card only has %(balance)s left."
+msgstr "Il ne reste que %(balance)s sur la carte."
+
+msgid "Give a name and a barcode of 8 to 14 digits (or none)."
+msgstr "Donne un nom et un code-barres de 8 à 14 chiffres (ou aucun)."
+
+msgid "Another product of your stock has this barcode."
+msgstr "Un autre produit de ton stock a ce code-barres."
+
+msgid "Give a quantity (not zero)."
+msgstr "Donne une quantité (pas zéro)."
+
+msgid "Give an amount and how it was paid."
+msgstr "Donne un montant et comment il a été payé."
+
+msgid "This way of paying cannot be recorded in your country."
+msgstr "Ce moyen de paiement ne peut pas être enregistré dans ton pays."
+
+msgid "Card payment on the phone is not available yet."
+msgstr "Le paiement par carte sur le téléphone n'est pas encore disponible."
+
+msgid "This was already cancelled."
+msgstr "C'est déjà annulé."
+
+msgid "Give a name and a message (and a subject for an e-mail)."
+msgstr "Donne un nom et un message (et un objet pour un e-mail)."
+
+#, python-format
+msgid "You can send %(limit)s campaigns a month."
+msgstr "Tu peux envoyer %(limit)s campagnes par mois."
+
+msgid "This campaign was already sent."
+msgstr "Cette campagne est déjà envoyée."
+
+msgid "This link does not work any more."
+msgstr "Ce lien ne marche plus."
+
+msgid "sessions"
+msgstr "séances"
+
+msgid "valid for (days)"
+msgstr "valable (jours)"
+
+msgid "payable in up to"
+msgstr "payable en jusqu'à"
+
+msgid "on sale"
+msgstr "en vente"
+
+msgid "package"
+msgstr "forfait"
+
+msgid "packages"
+msgstr "forfaits"
+
+msgid "In use"
+msgstr "En cours"
+
+msgid "All sessions used"
+msgstr "Toutes les séances utilisées"
+
+msgid "sessions used"
+msgstr "séances utilisées"
+
+msgid "valid until"
+msgstr "valable jusqu'au"
+
+msgid "package of a client"
+msgstr "forfait d'une cliente"
+
+msgid "packages of clients"
+msgstr "forfaits des clientes"
+
+msgid "session used"
+msgstr "séance utilisée"
+
+msgid "Running"
+msgstr "En cours"
+
+msgid "payment in several times"
+msgstr "paiement en plusieurs fois"
+
+msgid "payments in several times"
+msgstr "paiements en plusieurs fois"
+
+msgid "To pay"
+msgstr "À payer"
+
+msgid "due on"
+msgstr "prévu le"
+
+msgid "installment"
+msgstr "échéance"
+
+msgid "installments"
+msgstr "échéances"
+
+msgid "Usable"
+msgstr "Utilisable"
+
+msgid "Used up"
+msgstr "Utilisée"
+
+msgid "bought by"
+msgstr "achetée par"
+
+msgid "sent to"
+msgstr "envoyée à"
+
+msgid "sold at the salon"
+msgstr "vendue au salon"
+
+msgid "gift card"
+msgstr "carte cadeau"
+
+msgid "gift cards"
+msgstr "cartes cadeaux"
+
+msgid "online"
+msgstr "en ligne"
+
+msgid "use of a gift card"
+msgstr "utilisation d'une carte cadeau"
+
+msgid "uses of gift cards"
+msgstr "utilisations de cartes cadeaux"
+
+msgid "Sold to clients"
+msgstr "Vendu aux clientes"
+
+msgid "Used in the salon"
+msgstr "Utilisé au salon"
+
+msgid "pieces"
+msgstr "pièces"
+
+msgid "ml"
+msgstr "ml"
+
+msgid "g"
+msgstr "g"
+
+msgid "barcode"
+msgstr "code-barres"
+
+msgid "unit"
+msgstr "unité"
+
+msgid "in stock"
+msgstr "en stock"
+
+msgid "alert under"
+msgstr "alerte sous"
+
+msgid "product of the shop"
+msgstr "produit de la boutique"
+
+msgid "Linked: the stock is the one of the shop."
+msgstr "Relié : le stock est celui de la boutique."
+
+msgid "cost price"
+msgstr "prix d'achat"
+
+msgid "followed"
+msgstr "suivie"
+
+msgid "stock item"
+msgstr "article de stock"
+
+msgid "stock items"
+msgstr "articles de stock"
+
+msgid "Taken out"
+msgstr "Sortie"
+
+msgid "Sold"
+msgstr "Vendu"
+
+msgid "Used for a service"
+msgstr "Utilisé pour une prestation"
+
+msgid "Inventory"
+msgstr "Inventaire"
+
+msgid "Lost or broken"
+msgstr "Perdu ou cassé"
+
+msgid "change"
+msgstr "variation"
+
+msgid "stock after"
+msgstr "stock après"
+
+msgid "stock movement"
+msgstr "mouvement de stock"
+
+msgid "stock movements"
+msgstr "mouvements de stock"
+
+msgid "quantity"
+msgstr "quantité"
+
+msgid "product used by a service"
+msgstr "produit utilisé par une prestation"
+
+msgid "products used by services"
+msgstr "produits utilisés par les prestations"
+
+msgid "Cash"
+msgstr "Espèces"
+
+msgid "Card (terminal)"
+msgstr "Carte (terminal)"
+
+msgid "transaction number"
+msgstr "numéro de transaction"
+
+msgid "payment at the salon"
+msgstr "encaissement au salon"
+
+msgid "payments at the salon"
+msgstr "encaissements au salon"
+
+msgid "Ticked when booking"
+msgstr "Cochée à la réservation"
+
+msgid "Noted by the pro with her agreement"
+msgstr "Noté par la pro avec son accord"
+
+msgid "Unsubscribe link"
+msgstr "Lien de désinscription"
+
+msgid "Changed by the client"
+msgstr "Changé par la cliente"
+
+msgid "agrees"
+msgstr "d'accord"
+
+msgid "how"
+msgstr "comment"
+
+msgid "when"
+msgstr "quand"
+
+msgid "marketing consent"
+msgstr "accord pour les offres"
+
+msgid "marketing consents"
+msgstr "accords pour les offres"
+
+msgid "Not come for a while"
+msgstr "Pas venue depuis un moment"
+
+msgid "Birthday in the next 7 days"
+msgstr "Anniversaire dans les 7 jours"
+
+msgid "Package almost used"
+msgstr "Forfait presque fini"
+
+msgid "All my clients"
+msgstr "Toutes mes clientes"
+
+msgid "who"
+msgstr "qui"
+
+msgid "not come for (days)"
+msgstr "pas venue depuis (jours)"
+
+msgid "subject"
+msgstr "objet"
+
+msgid "in the segment"
+msgstr "dans le segment"
+
+msgid "left out (no consent)"
+msgstr "laissées de côté (sans accord)"
+
+msgid "campaign"
+msgstr "campagne"
+
+msgid "campaigns"
+msgstr "campagnes"
+
+#, python-format
+msgid "Online deposit %(reference)s"
+msgstr "Acompte en ligne %(reference)s"
+
+#, python-format
+msgid "%(name)s (%(count)s sessions)"
+msgstr "%(name)s (%(count)s séances)"
+
+#, python-format
+msgid "Gift card %(code)s"
+msgstr "Carte cadeau %(code)s"
+
+#, python-format
+msgid "Gift card %(pro)s"
+msgstr "Carte cadeau %(pro)s"
+
+#, python-format
+msgid "A gift card from %(name)s"
+msgstr "Une carte cadeau de %(name)s"
+
+#, python-format
+msgid "%(amount)s at %(pro)s. Code: %(code)s. Valid until %(until)s."
+msgstr "%(amount)s chez %(pro)s. Code : %(code)s. Valable jusqu'au %(until)s."
 
 msgid "Purchase price"
 msgstr "Prix d'achat"
@@ -3113,9 +3759,6 @@ msgstr "message à la cliente"
 msgid "quoted at"
 msgstr "devis envoyé le"
 
-msgid "valid until"
-msgstr "valable jusqu'au"
-
 msgid "special request"
 msgstr "demande spéciale"
 
@@ -3139,9 +3782,6 @@ msgstr "Remise"
 
 msgid "choice"
 msgstr "choix"
-
-msgid "quantity"
-msgstr "quantité"
 
 msgid "unit price (FCFA)"
 msgstr "prix unitaire (FCFA)"
@@ -3185,9 +3825,6 @@ msgstr "Raison montrée à la pro"
 msgid "forbidden words found"
 msgstr "mots interdits trouvés"
 
-msgid "Done; the pro is told."
-msgstr "C'est fait ; la pro est prévenue."
-
 msgid "Accept"
 msgstr "Accepter"
 
@@ -3200,9 +3837,6 @@ msgstr "Refuser « %(title)s »"
 
 msgid "Unblock (back to draft)"
 msgstr "Débloquer (retour en brouillon)"
-
-msgid "total"
-msgstr "total"
 
 msgid "Shop"
 msgstr "Boutiques"
@@ -3464,9 +4098,6 @@ msgstr "vente flash"
 msgid "flash sales"
 msgstr "ventes flash"
 
-msgid "on sale"
-msgstr "en vente"
-
 msgid "bundle"
 msgstr "lot"
 
@@ -3720,9 +4351,6 @@ msgstr "commentaire"
 msgid "follower"
 msgstr "abonnée"
 
-msgid "followed"
-msgstr "suivie"
-
 msgid "follow"
 msgstr "abonnement"
 
@@ -3872,6 +4500,33 @@ msgstr "Catégories et prix"
 
 msgid "Pick-up points"
 msgstr "Points de retrait"
+
+msgid "Glow Pro"
+msgstr "Glow Pro"
+
+msgid "Appointments"
+msgstr "Rendez-vous"
+
+msgid "Agenda people"
+msgstr "Équipes des agendas"
+
+msgid "Subscriptions"
+msgstr "Abonnements"
+
+msgid "Gift cards"
+msgstr "Cartes cadeaux"
+
+msgid "Packages"
+msgstr "Forfaits"
+
+msgid "Salon stock"
+msgstr "Stocks des salons"
+
+msgid "Payments at the salon"
+msgstr "Encaissements au salon"
+
+msgid "Invoice issuers"
+msgstr "Émetteurs de factures"
 
 msgid "Finance dashboard"
 msgstr "Tableau de bord finance"
