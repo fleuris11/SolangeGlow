@@ -53,8 +53,10 @@ def _book(pro, service, start, **kwargs) -> bool:
 
 def _fill(pro: ProProfile, team: dict) -> int:
     selectors.owner_staff(pro)
-    BookingSettings.objects.filter(pro=pro).update(auto_confirm=team["auto_confirm"])
-    pro._booking_settings = None
+    # Created here on a new database (the settings only exist once someone books).
+    pro._booking_settings = BookingSettings.objects.update_or_create(
+        pro=pro, defaults={"auto_confirm": team["auto_confirm"]}
+    )[0]
     if StaffMember.objects.filter(pro=pro, is_owner=False).exists() or pro.appointments.exists():
         return 0
     for name, color in team["people"]:
