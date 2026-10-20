@@ -142,3 +142,8 @@ class SignInToPay(DomainError):
     code = "sign_in_to_pay"
     status_code = 403
     message = _("Sign in to pay the deposit.")
+
+
+class GiftCardRefused(DomainError):
+    code = "gift_card_refused"
+    message = _("This gift card cannot pay the deposit: check the code and its balance.")

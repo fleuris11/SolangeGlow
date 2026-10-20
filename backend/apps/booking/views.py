@@ -145,7 +145,14 @@ class BookingPageView(OptionalAuthView):
             note=values.get("note", ""),
             source=Appointment.Source.LOOK if post else Appointment.Source.ONLINE,
             post=post,
+            gift_card_code=values.get("gift_card_code", ""),
         )
+        if values.get("marketing_consent"):
+            from apps.salon.services.campaigns import set_consent
+
+            client_record = agenda.record_for(pro, booked)
+            for channel in ("email", "whatsapp"):
+                set_consent(client_record, channel, True, source="booking")
         if booked.status == A.AWAITING_DEPOSIT:
             payment_services.start_checkout(booked.payment, buyer=user)
             booked.payment.refresh_from_db()

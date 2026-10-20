@@ -202,7 +202,10 @@ def _local(day: datetime.date, moment: datetime.time, zone) -> int:
     return _ts(datetime.datetime.combine(day, moment, tzinfo=zone))
 
 
-def day_context(pro: ProProfile, day: datetime.date, *, ignore_appointment=None) -> DayContext:
+def day_context(
+    pro: ProProfile, day: datetime.date, *, ignore_appointment=None, appointments: bool = True
+) -> DayContext:
+    """`appointments=False`: the open time only (for the occupancy of the dashboard)."""
     zone = zone_of(pro)
     day_start = datetime.datetime.combine(day, datetime.time.min, tzinfo=zone)
     day_end = day_start + datetime.timedelta(days=1)
@@ -261,7 +264,7 @@ def day_context(pro: ProProfile, day: datetime.date, *, ignore_appointment=None)
         for off in time_off:
             if off.staff_id in (None, member.pk):
                 windows = _subtract(windows, (_ts(off.starts_at), _ts(off.ends_at)))
-        for step in busy_steps:
+        for step in busy_steps if appointments else ():
             if step["staff_id"] == member.pk and step["kind"] == WORK:
                 windows = _subtract(windows, (_ts(step["starts_at"]), _ts(step["ends_at"])))
         free[member.pk] = windows
@@ -585,6 +588,12 @@ def group_plan(pro, service, start: datetime.datetime, size: int, option_ids=())
     return None
 
 
+def open_minutes(pro, day: datetime.date) -> dict:
+    """Minutes each person of the agenda can work on a day (hours - breaks - time off)."""
+    ctx = day_context(pro, day, appointments=False)
+    return {staff: sum(b - a for a, b in windows) // MINUTE for staff, windows in ctx.free.items()}
+
+
 __all__ = [
     "Slot",
     "bump",
@@ -593,6 +602,7 @@ __all__ = [
     "find",
     "group_plan",
     "needs_of",
+    "open_minutes",
     "plan_at",
     "week_slots",
 ]

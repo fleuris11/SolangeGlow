@@ -148,6 +148,7 @@ def book(
     by_pro=None,
     post=None,
     status: str | None = None,
+    gift_card_code: str = "",
 ) -> Appointment:
     """Books a service: checks again the exact time under a lock (no double booking).
 
@@ -191,13 +192,14 @@ def book(
     if by_pro is None:
         forced = forced_deposit_percent(pro, user=user, phone=phone)
         deposit = deposit_of(service, price, forced_percent=forced)
-        if deposit and (user is None or not can_purchase(user)):
+        if deposit and not gift_card_code and (user is None or not can_purchase(user)):
             raise errors.DepositNeedsAccount()
+    covered = bool(deposit and gift_card_code)
 
     if status is None:
         if by_pro is not None:
             status = A.CONFIRMED
-        elif deposit:
+        elif deposit and not covered:
             status = A.AWAITING_DEPOSIT
         elif booking_settings.auto_confirm:
             status = A.CONFIRMED
@@ -230,6 +232,8 @@ def book(
             common.write_steps(appointment, slot)
     except IntegrityError as exc:
         raise errors.SlotTaken() from exc
+    if covered and not common.cover_deposit(appointment, gift_card_code, user):
+        raise errors.GiftCardRefused()
     if status == A.AWAITING_DEPOSIT:
         _start_deposit(appointment, user)
     _record_client(appointment)
@@ -456,6 +460,7 @@ def complete(appointment: Appointment, *, actor) -> Appointment:
     appointment.save(update_fields=["completed_at", "updated_at"])
     _close(appointment, A.COMPLETED, actor=actor)
     _keep_deposit(appointment, "completed")
+    common.run_completed(appointment)
     common.tell_client(appointment, "booking.completed")
     return appointment
 

@@ -376,6 +376,8 @@ class BookInputSerializer(serializers.Serializer):
     guest_name = serializers.CharField(required=False, allow_blank=True, max_length=150)
     guest_phone = serializers.CharField(required=False, allow_blank=True, max_length=32)
     post_id = serializers.UUIDField(required=False, allow_null=True)
+    gift_card_code = serializers.CharField(required=False, allow_blank=True, max_length=20)
+    marketing_consent = serializers.BooleanField(required=False, default=False)
 
 
 class CancelInputSerializer(serializers.Serializer):

@@ -67,6 +67,11 @@ def save_staff(
     staff.name, staff.color = name, color
     staff.daily_limit = daily_limit if daily_limit else None
     staff.own_hours = bool(own_hours)
+    becomes_active = (
+        bool(is_active) and not staff.is_owner and (staff._state.adding or not staff.is_active)
+    )
+    if becomes_active:
+        _check_team_size(pro, staff)
     staff.is_active = bool(is_active) or staff.is_owner
     number = common.normalize_phone(phone) if phone else ""
     invite = bool(number) and str(staff.phone or "") != number and not staff.is_owner
@@ -80,6 +85,21 @@ def save_staff(
         _link_account(staff)
     common.changed(pro)
     return staff
+
+
+def _check_team_size(pro, staff: StaffMember) -> None:
+    """The free plan has a few people besides the pro (Glow Pro limit « staff »)."""
+    from apps.glowpro import errors as glowpro_errors
+    from apps.glowpro import selectors as glowpro
+
+    allowed = glowpro.limit(pro, "staff")
+    if allowed is None:
+        return
+    others = StaffMember.objects.filter(pro=pro, is_owner=False, is_active=True).exclude(
+        pk=staff.pk
+    )
+    if others.count() >= allowed:
+        raise glowpro_errors.StaffLimit(details={"limit": allowed})
 
 
 def _link_account(staff: StaffMember) -> None:

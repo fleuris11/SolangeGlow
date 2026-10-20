@@ -22,6 +22,42 @@ from ..models import Appointment, AppointmentStep, BookingSettings
 A = Appointment.Status
 
 
+# --- What other modules add (registered in their AppConfig.ready) -----------------------------
+
+_completed_hooks: list = []
+_deposit_covers: list = []
+
+
+def on_completed(callback) -> None:
+    """callback(appointment) after an appointment is done (packages, stock…)."""
+    if callback not in _completed_hooks:
+        _completed_hooks.append(callback)
+
+
+def run_completed(appointment) -> None:
+    """Each module after a done appointment; a refusal of one never blocks the others."""
+    import logging
+
+    from apps.core.errors import DomainError
+
+    for callback in list(_completed_hooks):
+        try:
+            with transaction.atomic():
+                callback(appointment)
+        except DomainError as exc:
+            logging.getLogger("solangeglow.booking").info("After completion: %s", exc.code)
+
+
+def deposit_cover(callback) -> None:
+    """callback(appointment, code, actor) -> bool: pays a deposit another way (gift card)."""
+    if callback not in _deposit_covers:
+        _deposit_covers.append(callback)
+
+
+def cover_deposit(appointment, code: str, actor) -> bool:
+    return any(callback(appointment, code, actor) for callback in list(_deposit_covers))
+
+
 def new_reference() -> str:
     alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
     return "RDV-" + "".join(secrets.choice(alphabet) for _ in range(7))

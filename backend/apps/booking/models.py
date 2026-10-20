@@ -609,6 +609,19 @@ class ClientRecord(BaseModel):
     name = models.CharField(_("name"), max_length=150)
     notes = models.TextField(_("private notes"), max_length=2000, blank=True)
     preferences = models.TextField(_("preferences"), max_length=1000, blank=True)
+    email = models.EmailField(_("e-mail"), blank=True)
+    birthday_day = models.PositiveSmallIntegerField(
+        _("birthday (day)"),
+        null=True,
+        blank=True,
+        validators=[MinValueValidator(1), MaxValueValidator(31)],
+    )
+    birthday_month = models.PositiveSmallIntegerField(
+        _("birthday (month)"),
+        null=True,
+        blank=True,
+        validators=[MinValueValidator(1), MaxValueValidator(12)],
+    )
 
     class Meta:
         verbose_name = _("client file")

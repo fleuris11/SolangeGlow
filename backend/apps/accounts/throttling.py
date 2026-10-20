@@ -21,6 +21,8 @@ DEFAULT_RATES = {
     "shop": "120/minute",
     "selection": "60/minute",
     "booking": "60/minute",
+    "salon": "120/minute",
+    "widget": "120/minute",
 }
 
 
