@@ -147,6 +147,9 @@ class Purpose(models.TextChoices):
     DEPOSIT = "deposit", _("Booking deposit")
     TRAINING = "training", _("Training")
     SELECTION = "selection", _("France Selection")
+    SUBSCRIPTION = "subscription", _("Glow Pro subscription")
+    GIFT_CARD = "gift_card", _("Gift card")
+    PACKAGE = "package", _("Package of sessions")
     OTHER = "other", _("Other")
 
 
@@ -166,7 +169,7 @@ class PricingRule(BaseModel):
     country = models.CharField(_("country"), max_length=2, blank=True)
     category = models.CharField(_("category"), max_length=60, blank=True)
     seller = _user_fk("pricing_rules", _("seller"), null=True, blank=True, on_delete=models.CASCADE)
-    purpose = models.CharField(_("for"), max_length=10, choices=Purpose.choices, blank=True)
+    purpose = models.CharField(_("for"), max_length=16, choices=Purpose.choices, blank=True)
     currency = models.CharField(
         _("currency"),
         max_length=3,
@@ -247,7 +250,7 @@ class Payment(BaseModel):
     reference = models.CharField(_("reference"), max_length=20, unique=True)
     buyer = _user_fk("purchases", _("client"))
     seller = _user_fk("sales", _("seller"))
-    purpose = models.CharField(_("for"), max_length=10, choices=Purpose.choices)
+    purpose = models.CharField(_("for"), max_length=16, choices=Purpose.choices)
     source_type = models.CharField(_("linked to"), max_length=40, blank=True)
     source_id = models.UUIDField(_("linked id"), null=True, blank=True)
     group = models.ForeignKey(
