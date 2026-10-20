@@ -263,6 +263,36 @@ Les rappels, les demandes sans réponse, la liste d'attente et les groupes avanc
 étapes. Réglages : `booking.*` (délais, annulation, retard, lapins, rappels, liste
 d'attente, groupes) et l'interrupteur « booking » par pays.
 
+## Tester Glow Pro en local
+
+Avec les données de démo (`seed_demo`) :
+
+1. Institut Prisca (+2290197000108) est en Premium : http://localhost:3000/fr/pro/salon
+   regroupe les outils (tableau de bord, cartes cadeaux, factures, forfaits, stock,
+   campagnes, mon offre). Béné Coiffure (+2290196000109) est en offre gratuite : « Mon
+   offre » propose l'essai de 30 jours ; une 3e personne dans l'équipe est refusée tant
+   qu'elle n'est pas en Premium.
+2. Stock : « Ajouter un produit » (code-barres facultatif), « Scanner » (caméra du
+   téléphone, ou code tapé à la main), « Ce que tes prestations utilisent » : le stock
+   baisse à chaque rendez-vous terminé.
+3. Dans l'agenda, un rendez-vous confirmé ou terminé a un bloc « Encaisser » (espèces ou
+   Mobile Money au Bénin, carte cadeau) : le reçu PDF s'ouvre ; « Facture PDF » une fois
+   terminé. Toutes les factures : http://localhost:3000/fr/pro/invoices.
+4. Cartes cadeaux : sur une vitrine, « Offrir une carte cadeau »
+   (http://localhost:3000/fr/institut-prisca/offres), paiement de test ; la pro déduit le
+   montant dans « Cartes cadeaux », ou la cliente l'utilise pour payer un acompte.
+5. Campagnes : la fiche cliente (« Clientes » dans l'agenda) note l'e-mail, l'anniversaire
+   et l'accord pour les offres ; une campagne ne part qu'aux clientes d'accord, avec un
+   lien de désinscription (e-mails visibles dans les journaux du backend en dev).
+6. Widget : « Réglages » de l'agenda, « Réservation sur ton site » : couleur, adresses
+   autorisées, code à copier (`widget.js`).
+
+Réglages : `glowpro.*` (rappel avant échéance, jours de grâce, compte vendeur par pays),
+`salon.*` (pays où les espèces sont enregistrables, validité et montants des cartes
+cadeaux) ; offres et prix dans l'admin, section Glow Pro. `TERMINAL_PROVIDER` et
+`EINVOICE_PROVIDER` restent vides tant que Stripe Terminal et une plateforme de facture
+électronique ne sont pas choisis.
+
 ## Client de l'API (web)
 
 Les types du client web sont générés depuis le schéma de l'API. Après toute
