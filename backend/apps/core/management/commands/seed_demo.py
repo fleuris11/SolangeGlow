@@ -13,6 +13,7 @@ from django.db import transaction
 from django.utils import timezone
 
 from apps.accounts.models import GuestIdentity, SignupChannel, User
+from apps.booking.demo import seed_booking
 from apps.core.choices import Role
 from apps.core.models import Country
 from apps.notifications.services import notify
@@ -52,13 +53,15 @@ class Command(BaseCommand):
             social = seed_social()
         shop = seed_shop()
         selection = seed_selection()
+        booking = seed_booking()
         self.stdout.write(
             self.style.SUCCESS(
                 f"seed_demo: {created} new demo accounts, {self.showcases} showcases filled, "
                 f"{social['posts']} posts, {social['stories']} stories, "
                 f"{social['reviews']} reviews, {shop['shops']} shops, "
                 f"{shop['products']} new products, {shop['orders']} demo orders, "
-                f"{selection['products']} France Selection products."
+                f"{selection['products']} France Selection products, "
+                f"{booking['agendas']} agendas with {booking['appointments']} new appointments."
             )
         )
 
@@ -116,7 +119,6 @@ class Command(BaseCommand):
                 notify(user, "account.welcome")
                 created_count += 1
 
-        GuestIdentity.objects.get_or_create(
-            phone="+2290197000301", defaults={"first_name": "Bernadette"}
-        )
+        if not GuestIdentity.objects.filter(phone="+2290197000301").exists():
+            GuestIdentity.objects.create(phone="+2290197000301", first_name="Bernadette")
         return created_count
