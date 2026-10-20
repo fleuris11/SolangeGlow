@@ -16,6 +16,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
+import { WidgetSection } from "@/components/features/glowpro/widget-section";
 import { Button, buttonClasses } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet } from "@/components/ui/sheet";
@@ -138,6 +139,7 @@ export function AgendaSettingsScreen() {
       <Team />
       <Resources settings={settings} />
       <LastMinute settings={settings} />
+      <WidgetSection />
     </div>
   );
 }

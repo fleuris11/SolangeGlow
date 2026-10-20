@@ -32,6 +32,11 @@ export function DetailsStep({
   icons,
   busy,
   onConfirm,
+  proName,
+  giftCode,
+  onGiftCode,
+  consent,
+  onConsent,
 }: {
   service: BookableService;
   optionNames: string[];
@@ -54,6 +59,11 @@ export function DetailsStep({
   icons: { group: ReactNode; calendar: ReactNode };
   busy: boolean;
   onConfirm: () => void;
+  proName: string;
+  giftCode: string;
+  onGiftCode: (value: string) => void;
+  consent: boolean;
+  onConsent: (value: boolean) => void;
 }) {
   const t = useTranslations("booking.flow");
   const locale = useLocale();
@@ -99,6 +109,16 @@ export function DetailsStep({
       </p>
       {!autoConfirm && <p className="text-small text-prune-doux">{t("manual")}</p>}
 
+      {deposit > 0 && (
+        <Input
+          label={t("giftCode", { name: proName })}
+          hint={t("giftCodeHint")}
+          value={giftCode}
+          autoCapitalize="characters"
+          maxLength={20}
+          onChange={(e) => onGiftCode(e.target.value.toUpperCase())}
+        />
+      )}
       {needsSignIn ? (
         <div className="bg-poudre rounded-card flex flex-col gap-3 p-4">
           <p className="font-bold">{deposit > 0 ? t("signInDeposit") : t("signInNeeded")}</p>
@@ -146,11 +166,20 @@ export function DetailsStep({
               {size > 1 && <p className="text-small text-prune-doux">{t("groupHelp")}</p>}
             </div>
           )}
+          <label className="flex min-h-12 items-start gap-3">
+            <input
+              type="checkbox"
+              className="accent-hibiscus mt-1 size-6 shrink-0"
+              checked={consent}
+              onChange={(e) => onConsent(e.target.checked)}
+            />
+            <span>{t("consent", { name: proName })}</span>
+          </label>
           <Button size="lg" fullWidth disabled={busy} onClick={onConfirm}>
             {icons.calendar}
             {size > 1
               ? t("bookGroup", { count: size })
-              : deposit > 0
+              : deposit > 0 && !giftCode
                 ? t("payDeposit", { amount: formatMoney(deposit, service.currency, locale) })
                 : t("book", { when })}
           </Button>

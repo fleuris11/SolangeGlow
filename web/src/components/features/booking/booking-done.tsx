@@ -9,7 +9,15 @@ import { dayName, localDay, timeAt } from "@/lib/booking/time";
 import { Link } from "@/lib/i18n/navigation";
 
 /** Booked: confirmed (petals), or sent to the pro; a guest gets her link. */
-export function BookedScreen({ booked, zone }: { booked: Booked; zone: string }) {
+export function BookedScreen({
+  booked,
+  zone,
+  embedded = false,
+}: {
+  booked: Booked;
+  zone: string;
+  embedded?: boolean;
+}) {
   const t = useTranslations("booking.flow");
   const locale = useLocale();
   const a = booked.appointment;
@@ -37,7 +45,11 @@ export function BookedScreen({ booked, zone }: { booked: Booked; zone: string })
       {booked.manage_url ? (
         <>
           <p className="text-small text-prune-doux">{t("guestLink")}</p>
-          <Link href={booked.manage_url} className={buttonClasses({ size: "lg", fullWidth: true })}>
+          <Link
+            href={booked.manage_url}
+            target={embedded ? "_blank" : undefined}
+            className={buttonClasses({ size: "lg", fullWidth: true })}
+          >
             {t("manage")}
           </Link>
         </>

@@ -5,6 +5,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
+import { ClientExtras } from "@/components/features/glowpro/client-extras";
 import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Input } from "@/components/ui/input";
@@ -146,6 +147,7 @@ function RecordSheet({ id, onClose }: { id: string; onClose: () => void }) {
           <Button size="lg" fullWidth disabled={busy} onClick={() => void save()}>
             {t("save")}
           </Button>
+          <ClientExtras recordId={record.id} />
           <h3 className="text-lead font-bold">{t("history")}</h3>
           <ul className="flex flex-col gap-2">
             {record.history.map((a) => (

@@ -15,6 +15,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 
+import { CheckoutPanel } from "@/components/features/glowpro/checkout-panel";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet } from "@/components/ui/sheet";
@@ -237,6 +238,10 @@ export function AppointmentSheet({
               <UserCircle aria-hidden size={24} />
               {t("openFile")}
             </Link>
+          )}
+
+          {mode === "view" && (a.status === "confirmed" || a.status === "completed") && (
+            <CheckoutPanel appointment={a} />
           )}
 
           {mode === "view" && (

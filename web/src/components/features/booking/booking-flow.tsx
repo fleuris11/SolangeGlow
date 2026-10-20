@@ -60,12 +60,15 @@ export function BookingFlow({
   initialServiceId,
   postId,
   icons,
+  embedded = false,
 }: {
   page: BookingPage;
   slug: string;
   initialServiceId?: string;
   postId?: string;
   icons: BookingIcons;
+  /** Inside a salon's website: signing in and paying open our site in a new tab. */
+  embedded?: boolean;
 }) {
   const t = useTranslations("booking.flow");
   const locale = useLocale();
@@ -85,6 +88,8 @@ export function BookingFlow({
   const [phone, setPhone] = useState("");
   const [note, setNote] = useState("");
   const [size, setSize] = useState(1);
+  const [giftCode, setGiftCode] = useState("");
+  const [consent, setConsent] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState<Booked | null>(null);
@@ -150,6 +155,11 @@ export function BookingFlow({
   const back = () => index > 0 && go(steps[index - 1] as Step);
 
   const signInFirst = () => {
+    if (embedded) {
+      const query = service ? `?service=${service.id}` : "";
+      window.open(`/${locale}/${slug}/rdv${query}`, "_blank", "noopener");
+      return;
+    }
     rememberReturnPath(`${pathname}${service ? `?service=${service.id}` : ""}`);
     router.push("/auth?as=client");
   };
@@ -177,11 +187,14 @@ export function BookingFlow({
         staff_id: staffId,
         option_ids: optionIds,
         note,
+        marketing_consent: consent,
+        ...(giftCode && deposit > 0 ? { gift_card_code: giftCode } : {}),
         ...(signedIn ? {} : { guest_name: name, guest_phone: phone }),
         ...(postId ? { post_id: postId } : {}),
       });
       if (answer.checkout_url) {
-        window.location.assign(answer.checkout_url);
+        if (embedded) window.open(answer.checkout_url, "_blank", "noopener");
+        else window.location.assign(answer.checkout_url);
         return;
       }
       setDone(answer);
@@ -212,7 +225,7 @@ export function BookingFlow({
     }
   };
 
-  if (done) return <BookedScreen booked={done} zone={zone} />;
+  if (done) return <BookedScreen booked={done} zone={zone} embedded={embedded} />;
   if (group) return <GroupCreated group={group} />;
 
   const title = {
@@ -507,7 +520,7 @@ export function BookingFlow({
           deposit={deposit}
           freeCancelHours={page.free_cancel_hours}
           autoConfirm={page.auto_confirm}
-          needsSignIn={!signedIn && (deposit > 0 || !page.accepts_guests)}
+          needsSignIn={!signedIn && ((deposit > 0 && !giftCode) || !page.accepts_guests)}
           onSignIn={signInFirst}
           guestFields={guestFields}
           note={note}
@@ -518,6 +531,11 @@ export function BookingFlow({
           icons={icons}
           busy={busy || (!signedIn && (!name.trim() || phone.trim().length < 8))}
           onConfirm={() => void confirm()}
+          proName={page.pro.name}
+          giftCode={giftCode}
+          onGiftCode={setGiftCode}
+          consent={consent}
+          onConsent={setConsent}
         />
       )}
     </div>

@@ -7,6 +7,7 @@ import {
   Gear,
   HourglassMedium,
   Plus,
+  Storefront,
   UserList,
 } from "@phosphor-icons/react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
@@ -242,6 +243,10 @@ export function AgendaScreen({ initialDay }: { initialDay?: string }) {
           <Link href="/pro/agenda/clients" className={buttonClasses({ variant: "secondary" })}>
             <UserList aria-hidden size={24} />
             {t("clients")}
+          </Link>
+          <Link href="/pro/salon" className={buttonClasses({ variant: "secondary" })}>
+            <Storefront aria-hidden size={24} />
+            {t("salon")}
           </Link>
           <Link href="/pro/agenda/settings" className={buttonClasses({ variant: "secondary" })}>
             <Gear aria-hidden size={24} />

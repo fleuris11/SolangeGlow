@@ -16,6 +16,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
 import { useState, type ReactNode } from "react";
 
+import { MySalonItems } from "@/components/features/glowpro/my-salon-items";
 import { Bloom } from "@/components/ui/bloom";
 import { Button, buttonClasses } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
@@ -368,6 +369,7 @@ export function AppointmentsScreen() {
   return (
     <div className="flex flex-col gap-6">
       <MyAppointments upcoming={upcoming} past={past} />
+      <MySalonItems />
       {lists.length > 0 && (
         <section aria-labelledby="waiting" className="flex flex-col gap-2">
           <h2 id="waiting" className="text-title font-bold">
