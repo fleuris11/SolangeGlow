@@ -3,6 +3,7 @@ import {
   ChatCircleText,
   Clock,
   DoorOpen,
+  Gift,
   MapTrifold,
   NavigationArrow,
   ShareNetwork,
@@ -368,6 +369,16 @@ export function ShowcaseView({
             })}
           </ul>
         </Section>
+      )}
+
+      {showcase.slug && showcase.status === "published" && (
+        <Link
+          href={`/${showcase.slug}/offres`}
+          className={buttonClasses({ variant: "secondary", fullWidth: true })}
+        >
+          <Gift aria-hidden size={22} weight="bold" />
+          {t("giftCard")}
+        </Link>
       )}
 
       {shop && shop.products.length > 0 && showcase.slug && (

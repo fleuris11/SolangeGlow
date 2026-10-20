@@ -23,6 +23,8 @@ const DYNAMIC_PAGES = {
   "/[locale]/explore": "[locale]/(app)/explore",
   "/[locale]/<pro>/shop": "[locale]/(app)/[slug]/shop",
   "/[locale]/<pro>/rdv": "[locale]/(app)/[slug]/rdv",
+  "/[locale]/<pro>/offres": "[locale]/(app)/[slug]/offres",
+  "/[locale]/embed/<pro>": "[locale]/(embed)/embed/[slug]",
   "/[locale]/<pro>/shop/<product>": "[locale]/(app)/[slug]/shop/[product]",
   "/[locale]/selection": "[locale]/(app)/selection",
   "/[locale]/selection/<product>": "[locale]/(app)/selection/[slug]",

@@ -41,6 +41,7 @@ const LINKS: { href: string; key: string; icon: ReactNode }[] = [
   { href: "/me/reviews", key: "reviews", icon: <Star size={28} weight="duotone" /> },
   { href: "/payments", key: "payments", icon: <Receipt size={28} weight="duotone" /> },
   { href: "/pro/agenda", key: "agenda", icon: <CalendarDots size={28} weight="duotone" /> },
+  { href: "/pro/salon", key: "salon", icon: <Storefront size={28} weight="duotone" /> },
   { href: "/pro/wallet", key: "wallet", icon: <Wallet size={28} weight="duotone" /> },
   { href: "/pro/shop", key: "myShop", icon: <Storefront size={28} weight="duotone" /> },
 ];

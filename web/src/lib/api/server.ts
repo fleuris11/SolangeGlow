@@ -180,3 +180,13 @@ export async function bookingOnServer(
   if (!response.ok || !data) throw new Error(`Booking ${slug}: ${response.status}`);
   return data;
 }
+
+// --- Glow Pro (module 8, Premium) ----------------------------------------------------------------
+
+/** The booking widget of a salon (colour, allowed websites), or null when not offered. */
+export async function widgetOnServer(slug: string, locale: string) {
+  const api = await serverApi(locale);
+  const { data, response } = await api.GET("/api/v1/widget/{slug}", { params: { path: { slug } } });
+  if (!response.ok || !data) return null;
+  return data;
+}

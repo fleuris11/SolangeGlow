@@ -502,6 +502,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/documents/{document_id}.pdf": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description The PDF: for the pro who issued it, the client it was issued to, or the team. */
+    get: operations["documents_.pdf_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/feed": {
     parameters: {
       query?: never;
@@ -977,6 +994,24 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/me/billing": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Her legal details printed on her invoices. */
+    get: operations["me_billing_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    /** @description Her legal details printed on her invoices. */
+    patch: operations["me_billing_partial_update"];
+    trace?: never;
+  };
   "/api/v1/me/blocks": {
     parameters: {
       query?: never;
@@ -1026,6 +1061,71 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/me/dashboard": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Pages of the pro herself (her plan, her dashboard, her widget). */
+    get: operations["me_dashboard_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/documents": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["me_documents_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/documents/{document_id}/credit": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["me_documents_credit_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/documents/{document_id}/send": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["me_documents_send_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/me/following": {
     parameters: {
       query?: never;
@@ -1036,6 +1136,91 @@ export interface paths {
     get: operations["me_following_list"];
     put?: never;
     post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/glowpro": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Pages of the pro herself (her plan, her dashboard, her widget). */
+    get: operations["me_glowpro_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/glowpro/cancel": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Pages of the pro herself (her plan, her dashboard, her widget). */
+    post: operations["me_glowpro_cancel_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/glowpro/resume": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Pages of the pro herself (her plan, her dashboard, her widget). */
+    post: operations["me_glowpro_resume_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/glowpro/subscribe": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Pages of the pro herself (her plan, her dashboard, her widget). */
+    post: operations["me_glowpro_subscribe_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/glowpro/trial": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Pages of the pro herself (her plan, her dashboard, her widget). */
+    post: operations["me_glowpro_trial_create"];
     delete?: never;
     options?: never;
     head?: never;
@@ -1519,6 +1704,407 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/me/salon/appointments/{appointment_id}/invoice": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    post: operations["me_salon_appointments_invoice_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/salon/campaigns": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    get: operations["me_salon_campaigns_list"];
+    put?: never;
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    post: operations["me_salon_campaigns_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/salon/campaigns/{campaign_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Who would receive it now (before sending). */
+    get: operations["me_salon_campaigns_retrieve"];
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    put: operations["me_salon_campaigns_update"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/salon/campaigns/{campaign_id}/send": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    post: operations["me_salon_campaigns_send_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/salon/clients/{record_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    get: operations["me_salon_clients_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    patch: operations["me_salon_clients_partial_update"];
+    trace?: never;
+  };
+  "/api/v1/me/salon/clients/{record_id}/packages": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    post: operations["me_salon_clients_packages_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/salon/gift-cards": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    get: operations["me_salon_gift_cards_list"];
+    put?: never;
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    post: operations["me_salon_gift_cards_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/salon/gift-cards/check": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    get: operations["me_salon_gift_cards_check_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/salon/gift-cards/redeem": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    post: operations["me_salon_gift_cards_redeem_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/salon/installments/{installment_id}/record": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    post: operations["me_salon_installments_record_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/salon/packages": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    get: operations["me_salon_packages_list"];
+    put?: never;
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    post: operations["me_salon_packages_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/salon/packages/{package_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    put: operations["me_salon_packages_update"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/salon/payments": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    get: operations["me_salon_payments_list"];
+    put?: never;
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    post: operations["me_salon_payments_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/salon/payments/{payment_id}/cancel": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    post: operations["me_salon_payments_cancel_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/salon/payments/{payment_id}/receipt": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    post: operations["me_salon_payments_receipt_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/salon/payments/methods": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    get: operations["me_salon_payments_methods_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/salon/services/{service_id}/consumption": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    get: operations["me_salon_services_consumption_list"];
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    put: operations["me_salon_services_consumption_update"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/salon/sold/{sold_id}/use": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    post: operations["me_salon_sold_use_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/salon/stock": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    get: operations["me_salon_stock_list"];
+    put?: never;
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    post: operations["me_salon_stock_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/salon/stock/{item_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    get: operations["salon_stock_movements"];
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    put: operations["me_salon_stock_update"];
+    post?: never;
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    delete: operations["me_salon_stock_destroy"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/salon/stock/{item_id}/count": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    post: operations["me_salon_stock_count_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/salon/stock/{item_id}/move": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    post: operations["me_salon_stock_move_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/salon/stock/ean/{ean}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Pages of the salon. `members`: collaborators too (payments, gift cards at the desk). */
+    get: operations["me_salon_stock_ean_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/me/saved": {
     parameters: {
       query?: never;
@@ -1835,6 +2421,24 @@ export interface paths {
     };
     get: operations["me_wallet_history_list"];
     put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/widget": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Pages of the pro herself (her plan, her dashboard, her widget). */
+    get: operations["me_widget_retrieve"];
+    /** @description Pages of the pro herself (her plan, her dashboard, her widget). */
+    put: operations["me_widget_update"];
     post?: never;
     delete?: never;
     options?: never;
@@ -2553,6 +3157,57 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/pros/{slug}/gift-cards": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description What a client does (buy a package or a gift card, pay an installment). */
+    post: operations["pros_gift_cards_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/pros/{slug}/offers": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Packages and gift cards a client can buy on a showcase. */
+    get: operations["pros_offers_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/pros/{slug}/packages/{package_id}/buy": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description What a client does (buy a package or a gift card, pay an installment). */
+    post: operations["pros_packages_buy_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/pros/{slug}/print/{name}": {
     parameters: {
       query?: never;
@@ -2698,6 +3353,40 @@ export interface paths {
     get?: never;
     put?: never;
     post: operations["reviews_reply_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/salon/installments/{installment_id}/pay": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description What a client does (buy a package or a gift card, pay an installment). */
+    post: operations["salon_installments_pay_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/salon/mine": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description What a client does (buy a package or a gift card, pay an installment). */
+    get: operations["salon_mine_retrieve"];
+    put?: never;
+    post?: never;
     delete?: never;
     options?: never;
     head?: never;
@@ -3229,6 +3918,41 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/unsubscribe/{token}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description The link at the bottom of each message: no account needed. */
+    get: operations["unsubscribe_retrieve"];
+    put?: never;
+    /** @description The link at the bottom of each message: no account needed. */
+    post: operations["unsubscribe_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/widget/{slug}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description What the embedded booking needs: colour and the websites allowed to show it. */
+    get: operations["widget_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -3406,6 +4130,12 @@ export interface components {
     Arrival: {
       sent: boolean;
     };
+    Audience: {
+      recipients: number;
+      without_consent: number;
+      limit: number | null;
+      sent_this_month: number;
+    };
     Author: {
       /** Format: uuid */
       id: string;
@@ -3434,12 +4164,38 @@ export interface components {
      * @enum {string}
      */
     BackgroundEnum: "hibiscus" | "prune" | "or" | "feuille" | "poudre";
+    BasicStats: {
+      /** Format: date */
+      start: string;
+      /** Format: date */
+      end: string;
+      turnover_minor: number;
+      appointments: number;
+    };
     BecomeProRequest: {
       business_name: string;
       kind?: components["schemas"]["ProKindEnum"];
       trades?: string[];
       city?: string;
       district?: string;
+    };
+    Billing: {
+      legal_name?: string;
+      address?: string;
+      /**
+       * Company number
+       * @description SIRET in France, IFU in Benin.
+       */
+      registration?: string;
+      vat_number?: string;
+      /**
+       * VAT rate
+       * @description In hundredths of a percent: 2000 = 20 %. 0: no VAT.
+       */
+      vat_rate_bps?: number;
+      /** @description For example « TVA non applicable, art. 293 B du CGI ». */
+      vat_mention?: string;
+      footer?: string;
     };
     BlockedPerson: {
       /** Format: uuid */
@@ -3459,6 +4215,9 @@ export interface components {
       guest_phone?: string;
       /** Format: uuid */
       post_id?: string | null;
+      gift_card_code?: string;
+      /** @default false */
+      marketing_consent: boolean;
     };
     BookableService: {
       /** Format: uuid */
@@ -3553,6 +4312,62 @@ export interface components {
       /** @default 1 */
       quantity: number;
     };
+    BuyGiftCardInputRequest: {
+      amount_minor: number;
+      recipient_name: string;
+      recipient_contact?: string;
+      message?: string;
+      from_name?: string;
+    };
+    BuyPackageInputRequest: {
+      /** @default 1 */
+      installments: number;
+    };
+    Campaign: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      segment: components["schemas"]["CampaignSegmentEnum"];
+      inactive_days: number;
+      channel: components["schemas"]["MarketingChannelEnum"];
+      subject: string;
+      body: string;
+      status: components["schemas"]["CampaignStatusEnum"];
+      /** Format: date-time */
+      sent_at: string | null;
+      stats: components["schemas"]["CampaignStats"] | null;
+    };
+    CampaignInputRequest: {
+      name: string;
+      segment: components["schemas"]["CampaignSegmentEnum"];
+      inactive_days?: number;
+      channel: components["schemas"]["MarketingChannelEnum"];
+      subject?: string;
+      body: string;
+    };
+    /**
+     * @description * `inactive` - Not come for a while
+     *     * `birthday` - Birthday in the next 7 days
+     *     * `package_low` - Package almost used
+     *     * `all` - All my clients
+     * @enum {string}
+     */
+    CampaignSegmentEnum: "inactive" | "birthday" | "package_low" | "all";
+    CampaignStats: {
+      targeted: number;
+      without_consent: number;
+      pending: number;
+      sent: number;
+      failed: number;
+      unsubscribed: number;
+      returned: number;
+    };
+    /**
+     * @description * `draft` - Draft
+     *     * `sent` - Sent
+     * @enum {string}
+     */
+    CampaignStatusEnum: "draft" | "sent";
     CancelInputRequest: {
       reason?: string;
     };
@@ -3639,14 +4454,6 @@ export interface components {
       name: string;
       position?: number;
     };
-    /**
-     * @description * `whatsapp` - whatsapp
-     *     * `sms` - sms
-     *     * `email` - email
-     *     * `console` - console
-     * @enum {string}
-     */
-    ChannelEnum: "whatsapp" | "sms" | "email" | "console";
     Checkout: {
       checkout_url: string;
     };
@@ -3662,11 +4469,29 @@ export interface components {
       checkout_url: string;
       orders: string[];
     };
+    CheckoutUrl: {
+      checkout_url: string;
+    };
     City: {
       country: string;
       city: string;
       pros: number;
       districts: string[];
+    };
+    ClientFile: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      email: string;
+      birthday_day: number | null;
+      birthday_month: number | null;
+      consents: components["schemas"]["Consent"][];
+      packages: components["schemas"]["SoldPackage"][];
+      premium: boolean;
+    };
+    ClientPackages: {
+      packages: components["schemas"]["SoldPackage"][];
+      gift_cards: components["schemas"]["GiftCard"][];
     };
     ClientRatingRequest: {
       kind: components["schemas"]["TransactionKindEnum"];
@@ -3739,12 +4564,20 @@ export interface components {
     CodeRequestResult: {
       /** Format: uuid */
       challenge_id: string;
-      channel: components["schemas"]["ChannelEnum"];
+      channel: components["schemas"]["CodeRequestResultChannelEnum"];
       /** @description Seconds before a new code can be asked. */
       resend_after: number;
       /** @description Seconds before the code expires. */
       expires_in: number;
     };
+    /**
+     * @description * `whatsapp` - whatsapp
+     *     * `sms` - sms
+     *     * `email` - email
+     *     * `console` - console
+     * @enum {string}
+     */
+    CodeRequestResultChannelEnum: "whatsapp" | "sms" | "email" | "console";
     CodeVerifyRequest: {
       /** Format: uuid */
       challenge_id: string;
@@ -3769,6 +4602,26 @@ export interface components {
     CommentPage: {
       results: components["schemas"]["Comment"][];
       next: string | null;
+    };
+    Consent: {
+      channel: components["schemas"]["MarketingChannelEnum"];
+      granted: boolean;
+      source: string;
+      /** Format: date-time */
+      changed_at: string | null;
+    };
+    ConsumptionInputRequest: {
+      rows: components["schemas"]["ConsumptionRowRequest"][];
+    };
+    ConsumptionRow: {
+      /** Format: uuid */
+      item_id: string;
+      quantity: number;
+    };
+    ConsumptionRowRequest: {
+      /** Format: uuid */
+      item_id: string;
+      quantity: number;
     };
     ContactChangeConfirmRequest: {
       /** Format: uuid */
@@ -3815,6 +4668,9 @@ export interface components {
      * @enum {string}
      */
     ConversationPurposeEnum: "chat" | "dispute" | "support";
+    CountInputRequest: {
+      counted: number;
+    };
     Country: {
       /** @description ISO 3166-1 alpha-2 code, e.g. BJ or FR. */
       code: string;
@@ -3836,6 +4692,16 @@ export interface components {
       reference: string;
       description: string;
       seller: string;
+    };
+    CreditInputRequest: {
+      reason: string;
+    };
+    Dashboard: {
+      level: components["schemas"]["LevelEnum"];
+      currency: string;
+      basic: components["schemas"]["BasicStats"];
+      current: components["schemas"]["PeriodStats"] | null;
+      previous: components["schemas"]["PeriodStats"] | null;
     };
     /**
      * @description * `release` - Pay the seller
@@ -3908,6 +4774,35 @@ export interface components {
      * @enum {string}
      */
     DisputeStatusEnum: "open" | "decided";
+    Document: {
+      /** Format: uuid */
+      id: string;
+      kind: components["schemas"]["DocumentKindEnum"];
+      number: string;
+      /** Format: date-time */
+      issued_at: string;
+      buyer_name: string;
+      total_minor: number;
+      tax_minor: number;
+      currency: string;
+      paid_with: string;
+      corrects: string | null;
+      cancelled: boolean;
+      einvoice_status: components["schemas"]["EInvoiceStatusEnum"];
+      pdf_url: string;
+    };
+    /**
+     * @description * `invoice` - Invoice
+     *     * `receipt` - Receipt
+     *     * `credit_note` - Credit note
+     * @enum {string}
+     */
+    DocumentKindEnum: "invoice" | "receipt" | "credit_note";
+    DocumentList: {
+      results: components["schemas"]["Document"][];
+      einvoice_connected: boolean;
+      can_send_electronic: boolean;
+    };
     /**
      * @description * `id_card` - Identity card
      *     * `passport` - Passport
@@ -3916,6 +4811,13 @@ export interface components {
      * @enum {string}
      */
     DocumentTypeEnum: "id_card" | "passport" | "residence_permit" | "driving_licence";
+    /**
+     * @description * `not_sent` - Not sent
+     *     * `sent` - Sent to the platform
+     *     * `failed` - Not accepted
+     * @enum {string}
+     */
+    EInvoiceStatusEnum: "not_sent" | "sent" | "failed";
     Evidence: {
       /** Format: uuid */
       id: string;
@@ -3979,6 +4881,77 @@ export interface components {
       has_story: boolean;
       followed: boolean;
       post_count: number;
+    };
+    GiftCard: {
+      /** Format: uuid */
+      id: string;
+      code: string;
+      amount_minor: number;
+      balance_minor: number;
+      currency: string;
+      recipient_name: string;
+      from_name: string;
+      /** Format: date */
+      expires_on: string;
+      status: components["schemas"]["GiftCardStatusEnum"];
+      sold_on_site: boolean;
+      pro_name: string;
+      pro_slug: string | null;
+      /** Format: date-time */
+      created_at: string;
+    };
+    GiftCardCheck: {
+      code: string;
+      balance_minor: number;
+      currency: string;
+      /** Format: date */
+      expires_on: string;
+    };
+    GiftCardOffer: {
+      pro_name: string;
+      currency: string;
+      min_minor: number;
+      max_minor: number;
+      suggestions: number[];
+      validity_days: number;
+    };
+    /**
+     * @description * `waiting` - Waiting for the payment
+     *     * `active` - Usable
+     *     * `used_up` - Used up
+     *     * `expired` - Expired
+     *     * `cancelled` - Cancelled
+     * @enum {string}
+     */
+    GiftCardStatusEnum: "waiting" | "active" | "used_up" | "expired" | "cancelled";
+    /**
+     * @description * `extra_staff` - More people in the agenda
+     *     * `client_file` - Complete client file
+     *     * `stock` - Stock
+     *     * `dashboard_full` - Complete dashboard
+     *     * `campaigns` - Campaigns
+     *     * `widget` - Booking widget
+     *     * `einvoice` - Electronic invoices
+     * @enum {string}
+     */
+    GlowFeatureEnum:
+      | "extra_staff"
+      | "client_file"
+      | "stock"
+      | "dashboard_full"
+      | "campaigns"
+      | "widget"
+      | "einvoice";
+    GlowPlan: {
+      key: string;
+      name: string;
+      description: string;
+      features: components["schemas"]["GlowFeatureEnum"][];
+      limits: components["schemas"]["PlanLimits"];
+      trial_days: number;
+      price_minor: number | null;
+      currency: string;
+      is_default: boolean;
     };
     Group: {
       /** Format: uuid */
@@ -4063,6 +5036,25 @@ export interface components {
      * @enum {string}
      */
     IconEnum: "makeup" | "hair" | "braids" | "nails" | "sewing" | "headwrap" | "skincare";
+    Installment: {
+      /** Format: uuid */
+      id: string;
+      position: number;
+      /** Format: date */
+      due_on: string;
+      amount_minor: number;
+      status: components["schemas"]["InstallmentStatusEnum"];
+      /** Format: date-time */
+      paid_at: string | null;
+      online: boolean;
+    };
+    /**
+     * @description * `due` - To pay
+     *     * `paid` - Paid
+     *     * `cancelled` - Cancelled
+     * @enum {string}
+     */
+    InstallmentStatusEnum: "due" | "paid" | "cancelled";
     Language: {
       code: string;
       label: string;
@@ -4120,6 +5112,12 @@ export interface components {
       window_hours: number;
       is_active: boolean;
     };
+    /**
+     * @description * `basic` - basic
+     *     * `complete` - complete
+     * @enum {string}
+     */
+    LevelEnum: "basic" | "complete";
     LinkedProduct: {
       /** Format: uuid */
       id: string;
@@ -4198,6 +5196,12 @@ export interface components {
       /** @description Leave out to mark everything as read. */
       ids?: string[];
     };
+    /**
+     * @description * `email` - E-mail
+     *     * `whatsapp` - WhatsApp
+     * @enum {string}
+     */
+    MarketingChannelEnum: "email" | "whatsapp";
     Me: {
       /** Format: uuid */
       readonly id: string;
@@ -4383,11 +5387,32 @@ export interface components {
       reason: components["schemas"]["ReportReasonEnum"];
       comment?: string;
     };
+    MethodInputRequest: {
+      method: components["schemas"]["OnSiteMethodEnum"];
+    };
     MoveInputRequest: {
       /** Format: date-time */
       start: string;
       /** Format: uuid */
       staff_id?: string | null;
+    };
+    Movement: {
+      /** Format: uuid */
+      id: string;
+      kind: components["schemas"]["StockMovementKindEnum"];
+      change: number;
+      after: number;
+      note: string;
+      /** Format: date-time */
+      created_at: string;
+    };
+    MyGlowPro: {
+      current: components["schemas"]["GlowPlan"];
+      subscription: components["schemas"]["SubscriptionState"];
+      plans: components["schemas"]["GlowPlan"][];
+      usage: components["schemas"]["Usage"];
+      invoices: components["schemas"]["PlatformInvoice"][];
+      is_paying: boolean;
     };
     /** @description The pro's own showcase, with what only she sees. */
     MyPro: {
@@ -4501,6 +5526,38 @@ export interface components {
     NullEnum: null;
     Ok: {
       status: string;
+    };
+    /**
+     * @description * `cash` - Cash
+     *     * `momo` - Mobile Money
+     *     * `card` - Card (terminal)
+     * @enum {string}
+     */
+    OnSiteMethodEnum: "cash" | "momo" | "card";
+    OnSitePayment: {
+      /** Format: uuid */
+      id: string;
+      label: string;
+      amount_minor: number;
+      currency: string;
+      method: components["schemas"]["OnSiteMethodEnum"];
+      reference: string;
+      /** Format: uuid */
+      appointment_id: string | null;
+      client_name: string;
+      /** Format: date-time */
+      created_at: string;
+      cancelled: boolean;
+    };
+    OnSitePaymentInputRequest: {
+      amount_minor: number;
+      method: components["schemas"]["OnSiteMethodEnum"];
+      label?: string;
+      reference?: string;
+      /** Format: uuid */
+      appointment_id?: string | null;
+      /** Format: uuid */
+      record_id?: string | null;
     };
     /**
      * @description * `client` - client
@@ -4661,6 +5718,30 @@ export interface components {
      * @enum {string}
      */
     OutcomeEnum: "succeeded" | "failed" | "abandoned";
+    Package: {
+      /** Format: uuid */
+      id: string;
+      /** Format: uuid */
+      service_id: string;
+      service_name: string;
+      name: string;
+      sessions: number;
+      price_minor: number;
+      currency: string;
+      validity_days: number;
+      max_installments: number;
+      is_active: boolean;
+    };
+    PackageInputRequest: {
+      /** Format: uuid */
+      service_id: string;
+      name: string;
+      sessions: number;
+      price_minor: number;
+      validity_days?: number;
+      max_installments?: number;
+      is_active?: boolean;
+    };
     PaginatedNotificationList: {
       /**
        * Format: uri
@@ -4690,6 +5771,24 @@ export interface components {
       late_tolerance_minutes?: number | null;
       accepts_guests?: boolean;
     };
+    PatchedBillingRequest: {
+      legal_name?: string;
+      address?: string;
+      /**
+       * Company number
+       * @description SIRET in France, IFU in Benin.
+       */
+      registration?: string;
+      vat_number?: string;
+      /**
+       * VAT rate
+       * @description In hundredths of a percent: 2000 = 20 %. 0: no VAT.
+       */
+      vat_rate_bps?: number;
+      /** @description For example « TVA non applicable, art. 293 B du CGI ». */
+      vat_mention?: string;
+      footer?: string;
+    };
     PatchedBundleInputRequest: {
       title?: string;
       description?: string;
@@ -4703,6 +5802,13 @@ export interface components {
     PatchedCategoryRequest: {
       name?: string;
       position?: number;
+    };
+    PatchedClientFileInputRequest: {
+      email?: string;
+      birthday_day?: number | null;
+      birthday_month?: number | null;
+      email_consent?: boolean;
+      whatsapp_consent?: boolean;
     };
     PatchedClientRecordInputRequest: {
       notes?: string;
@@ -4923,6 +6029,12 @@ export interface components {
     PaymentList: {
       results: components["schemas"]["Payment"][];
     };
+    PaymentMethods: {
+      methods: components["schemas"]["OnSiteMethodEnum"][];
+      terminal_configured: boolean;
+      certified_till: boolean;
+      currency: string;
+    };
     /**
      * @description * `buyer` - buyer
      *     * `seller` - seller
@@ -5020,6 +6132,25 @@ export interface components {
       /** Format: time */
       closes_at: string;
     };
+    PeriodStats: {
+      /** Format: date */
+      start: string;
+      /** Format: date */
+      end: string;
+      turnover_minor: number;
+      collected_minor: number;
+      collected_online_minor: number;
+      collected_on_site_minor: number;
+      appointments: number;
+      average_minor: number;
+      occupancy: number;
+      clients: number;
+      new_clients: number;
+      loyal_clients: number;
+      staff: components["schemas"]["StaffStats"][];
+      services: components["schemas"]["ServiceStats"][];
+      series: components["schemas"]["SeriesPoint"][];
+    };
     Person: {
       /** Format: uuid */
       id: string;
@@ -5067,6 +6198,24 @@ export interface components {
       landmarks: string;
       landmarks_voice: components["schemas"]["Media"] | null;
       itinerary_video: components["schemas"]["Media"] | null;
+    };
+    PlanChoiceRequest: {
+      /** @default premium */
+      plan: string;
+    };
+    PlanLimits: {
+      staff?: number;
+      campaigns_per_month?: number;
+    };
+    PlatformInvoice: {
+      /** Format: uuid */
+      id: string;
+      number: string;
+      /** Format: date-time */
+      issued_at: string;
+      total_minor: number;
+      currency: string;
+      pdf_url: string;
     };
     PortfolioItem: {
       /** Format: uuid */
@@ -5315,6 +6464,16 @@ export interface components {
       start: string;
       message?: string;
     };
+    PublicPackages: {
+      packages: components["schemas"]["Package"][];
+      gift_cards: components["schemas"]["GiftCardOffer"] | null;
+    };
+    PublicWidget: {
+      slug: string;
+      name: string;
+      color: string;
+      allowed_domains: string[];
+    };
     PushKey: {
       public_key: string | null;
     };
@@ -5372,11 +6531,20 @@ export interface components {
       total_minor: number;
       prep_days: number;
     };
+    ReasonInputRequest: {
+      reason: string;
+    };
     Receipts: {
       /** Format: date-time */
       delivered_up_to: string | null;
       /** Format: date-time */
       read_up_to: string | null;
+    };
+    RedeemInputRequest: {
+      code: string;
+      amount_minor: number;
+      /** Format: uuid */
+      appointment_id?: string | null;
     };
     Reply: {
       /** Format: uuid */
@@ -5671,6 +6839,24 @@ export interface components {
      * @enum {string}
      */
     SelectionStatusEnum: "new" | "quoted" | "ordered" | "declined" | "expired" | "refused";
+    SellGiftCardInputRequest: {
+      amount_minor: number;
+      method: components["schemas"]["OnSiteMethodEnum"];
+      recipient_name?: string;
+    };
+    SellPackageInputRequest: {
+      /** Format: uuid */
+      package_id: string;
+      /** @default 1 */
+      installments: number;
+      method: components["schemas"]["OnSiteMethodEnum"];
+    };
+    SeriesPoint: {
+      /** Format: date */
+      day: string;
+      turnover_minor: number;
+      appointments: number;
+    };
     Service: {
       /** Format: uuid */
       readonly id: string;
@@ -5712,6 +6898,13 @@ export interface components {
       /** Format: uuid */
       id: string;
       media: components["schemas"]["Media"];
+    };
+    ServiceStats: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      appointments: number;
+      turnover_minor: number;
     };
     ServiceWriteRequest: {
       name: string;
@@ -5884,6 +7077,31 @@ export interface components {
       available: boolean;
       short_link: string;
     };
+    SoldPackage: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      service_name: string;
+      pro_name: string;
+      pro_slug: string | null;
+      sessions_total: number;
+      sessions_used: number;
+      price_minor: number;
+      currency: string;
+      /** Format: date */
+      expires_on: string;
+      status: components["schemas"]["SoldPackageStatusEnum"];
+      installments: components["schemas"]["Installment"][];
+    };
+    /**
+     * @description * `waiting` - Waiting for the payment
+     *     * `active` - In use
+     *     * `used_up` - All sessions used
+     *     * `expired` - Expired
+     *     * `cancelled` - Cancelled
+     * @enum {string}
+     */
+    SoldPackageStatusEnum: "waiting" | "active" | "used_up" | "expired" | "cancelled";
     Staff: {
       /** Format: uuid */
       id: string;
@@ -5920,6 +7138,17 @@ export interface components {
       daily_limit?: number | null;
       own_hours?: boolean;
       is_active?: boolean;
+    };
+    StaffStats: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      color: string;
+      appointments: number;
+      turnover_minor: number;
+      open_minutes: number;
+      booked_minutes: number;
+      occupancy: number;
     };
     StartRequest: {
       /** Format: uuid */
@@ -5972,6 +7201,68 @@ export interface components {
       /** Format: uuid */
       resource_id?: string | null;
     };
+    StockItem: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      ean: string;
+      kind: components["schemas"]["StockItemKindEnum"];
+      unit: components["schemas"]["StockUnitEnum"];
+      quantity: number;
+      alert_threshold: number;
+      low: boolean;
+      /** Format: uuid */
+      variant_id: string | null;
+      cost_minor: number | null;
+      is_active: boolean;
+    };
+    StockItemInputRequest: {
+      name: string;
+      kind: components["schemas"]["StockItemKindEnum"];
+      unit?: components["schemas"]["StockUnitEnum"];
+      ean?: string;
+      alert_threshold?: number;
+      quantity?: number;
+      cost_minor?: number | null;
+      /** Format: uuid */
+      variant_id?: string | null;
+    };
+    /**
+     * @description * `retail` - Sold to clients
+     *     * `professional` - Used in the salon
+     * @enum {string}
+     */
+    StockItemKindEnum: "retail" | "professional";
+    /**
+     * @description * `in` - Delivery
+     *     * `out` - Taken out
+     *     * `sale` - Sold
+     *     * `loss` - Lost or broken
+     * @enum {string}
+     */
+    StockMoveInputKindEnum: "in" | "out" | "sale" | "loss";
+    StockMoveInputRequest: {
+      kind: components["schemas"]["StockMoveInputKindEnum"];
+      quantity: number;
+      note?: string;
+    };
+    /**
+     * @description * `in` - Delivery
+     *     * `out` - Taken out
+     *     * `sale` - Sold
+     *     * `use` - Used for a service
+     *     * `inventory` - Inventory
+     *     * `loss` - Lost or broken
+     * @enum {string}
+     */
+    StockMovementKindEnum: "in" | "out" | "sale" | "use" | "inventory" | "loss";
+    /**
+     * @description * `piece` - pieces
+     *     * `ml` - ml
+     *     * `g` - g
+     * @enum {string}
+     */
+    StockUnitEnum: "piece" | "ml" | "g";
     Story: {
       /** Format: uuid */
       id: string;
@@ -6008,6 +7299,25 @@ export interface components {
      * @enum {string}
      */
     StoryKindEnum: "photo" | "video" | "text" | "free_slots";
+    SubscriptionState: {
+      status: components["schemas"]["SubscriptionStatusEnum"];
+      plan: string;
+      trial_used: boolean;
+      /** Format: date-time */
+      current_period_end: string | null;
+      /** Format: date-time */
+      grace_until: string | null;
+      cancel_at_period_end: boolean;
+      payment_due: boolean;
+    };
+    /**
+     * @description * `trialing` - Free trial
+     *     * `active` - Active
+     *     * `past_due` - Waiting for the payment
+     *     * `ended` - Back to the free plan
+     * @enum {string}
+     */
+    SubscriptionStatusEnum: "trialing" | "active" | "past_due" | "ended";
     /**
      * @description * `comment` - comment
      *     * `person` - person
@@ -6134,6 +7444,15 @@ export interface components {
     UnreadCount: {
       unread: number;
     };
+    Unsubscribe: {
+      pro_name: string;
+      channel: components["schemas"]["MarketingChannelEnum"];
+      unsubscribed: boolean;
+    };
+    Usage: {
+      staff: number;
+      staff_limit: number | null;
+    };
     Variant: {
       /** Format: uuid */
       id: string;
@@ -6254,6 +7573,18 @@ export interface components {
      * @enum {integer}
      */
     WeekdayEnum: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+    Widget: {
+      color: string;
+      allowed_domains: string[];
+      is_active: boolean;
+      snippet: string;
+    };
+    WidgetInputRequest: {
+      color: string;
+      allowed_domains: string[];
+      /** @default true */
+      is_active: boolean;
+    };
     Wishlist: {
       results: components["schemas"]["ProductSummary"][];
     };
@@ -7020,6 +8351,27 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["Country"][];
+        };
+      };
+    };
+  };
+  "documents_.pdf_retrieve": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        document_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/pdf": string;
         };
       };
     };
@@ -7884,6 +9236,50 @@ export interface operations {
       };
     };
   };
+  me_billing_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Billing"];
+        };
+      };
+    };
+  };
+  me_billing_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PatchedBillingRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PatchedBillingRequest"];
+        "multipart/form-data": components["schemas"]["PatchedBillingRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Billing"];
+        };
+      };
+    };
+  };
   me_blocks_list: {
     parameters: {
       query?: never;
@@ -7953,6 +9349,97 @@ export interface operations {
       };
     };
   };
+  me_dashboard_retrieve: {
+    parameters: {
+      query?: {
+        end?: string;
+        start?: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Dashboard"];
+        };
+      };
+    };
+  };
+  me_documents_retrieve: {
+    parameters: {
+      query?: {
+        kind?: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DocumentList"];
+        };
+      };
+    };
+  };
+  me_documents_credit_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        document_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CreditInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["CreditInputRequest"];
+        "multipart/form-data": components["schemas"]["CreditInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Document"];
+        };
+      };
+    };
+  };
+  me_documents_send_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        document_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Document"];
+        };
+      };
+    };
+  };
   me_following_list: {
     parameters: {
       query?: never;
@@ -7968,6 +9455,113 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["Following"][];
+        };
+      };
+    };
+  };
+  me_glowpro_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MyGlowPro"];
+        };
+      };
+    };
+  };
+  me_glowpro_cancel_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MyGlowPro"];
+        };
+      };
+    };
+  };
+  me_glowpro_resume_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MyGlowPro"];
+        };
+      };
+    };
+  };
+  me_glowpro_subscribe_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PlanChoiceRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PlanChoiceRequest"];
+        "multipart/form-data": components["schemas"]["PlanChoiceRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["CheckoutUrl"];
+        };
+      };
+    };
+  };
+  me_glowpro_trial_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PlanChoiceRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PlanChoiceRequest"];
+        "multipart/form-data": components["schemas"]["PlanChoiceRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MyGlowPro"];
         };
       };
     };
@@ -8959,6 +10553,777 @@ export interface operations {
       };
     };
   };
+  me_salon_appointments_invoice_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        appointment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Document"];
+        };
+      };
+    };
+  };
+  me_salon_campaigns_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Campaign"][];
+        };
+      };
+    };
+  };
+  me_salon_campaigns_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CampaignInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["CampaignInputRequest"];
+        "multipart/form-data": components["schemas"]["CampaignInputRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Campaign"];
+        };
+      };
+    };
+  };
+  me_salon_campaigns_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        campaign_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Audience"];
+        };
+      };
+    };
+  };
+  me_salon_campaigns_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        campaign_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CampaignInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["CampaignInputRequest"];
+        "multipart/form-data": components["schemas"]["CampaignInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Campaign"];
+        };
+      };
+    };
+  };
+  me_salon_campaigns_send_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        campaign_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Campaign"];
+        };
+      };
+    };
+  };
+  me_salon_clients_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        record_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ClientFile"];
+        };
+      };
+    };
+  };
+  me_salon_clients_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        record_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PatchedClientFileInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PatchedClientFileInputRequest"];
+        "multipart/form-data": components["schemas"]["PatchedClientFileInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ClientFile"];
+        };
+      };
+    };
+  };
+  me_salon_clients_packages_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        record_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["SellPackageInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["SellPackageInputRequest"];
+        "multipart/form-data": components["schemas"]["SellPackageInputRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SoldPackage"];
+        };
+      };
+    };
+  };
+  me_salon_gift_cards_list: {
+    parameters: {
+      query?: {
+        q?: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GiftCard"][];
+        };
+      };
+    };
+  };
+  me_salon_gift_cards_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["SellGiftCardInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["SellGiftCardInputRequest"];
+        "multipart/form-data": components["schemas"]["SellGiftCardInputRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GiftCard"];
+        };
+      };
+    };
+  };
+  me_salon_gift_cards_check_retrieve: {
+    parameters: {
+      query: {
+        code: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GiftCardCheck"];
+        };
+      };
+    };
+  };
+  me_salon_gift_cards_redeem_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RedeemInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["RedeemInputRequest"];
+        "multipart/form-data": components["schemas"]["RedeemInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GiftCard"];
+        };
+      };
+    };
+  };
+  me_salon_installments_record_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        installment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["MethodInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["MethodInputRequest"];
+        "multipart/form-data": components["schemas"]["MethodInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Installment"];
+        };
+      };
+    };
+  };
+  me_salon_packages_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Package"][];
+        };
+      };
+    };
+  };
+  me_salon_packages_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PackageInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PackageInputRequest"];
+        "multipart/form-data": components["schemas"]["PackageInputRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Package"];
+        };
+      };
+    };
+  };
+  me_salon_packages_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        package_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PackageInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PackageInputRequest"];
+        "multipart/form-data": components["schemas"]["PackageInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Package"];
+        };
+      };
+    };
+  };
+  me_salon_payments_list: {
+    parameters: {
+      query?: {
+        appointment?: string;
+        day?: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["OnSitePayment"][];
+        };
+      };
+    };
+  };
+  me_salon_payments_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["OnSitePaymentInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["OnSitePaymentInputRequest"];
+        "multipart/form-data": components["schemas"]["OnSitePaymentInputRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["OnSitePayment"];
+        };
+      };
+    };
+  };
+  me_salon_payments_cancel_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        payment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ReasonInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["ReasonInputRequest"];
+        "multipart/form-data": components["schemas"]["ReasonInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["OnSitePayment"];
+        };
+      };
+    };
+  };
+  me_salon_payments_receipt_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        payment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Document"];
+        };
+      };
+    };
+  };
+  me_salon_payments_methods_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PaymentMethods"];
+        };
+      };
+    };
+  };
+  me_salon_services_consumption_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        service_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ConsumptionRow"][];
+        };
+      };
+    };
+  };
+  me_salon_services_consumption_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        service_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ConsumptionInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["ConsumptionInputRequest"];
+        "multipart/form-data": components["schemas"]["ConsumptionInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ConsumptionRow"][];
+        };
+      };
+    };
+  };
+  me_salon_sold_use_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        sold_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SoldPackage"];
+        };
+      };
+    };
+  };
+  me_salon_stock_list: {
+    parameters: {
+      query?: {
+        low?: boolean;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StockItem"][];
+        };
+      };
+    };
+  };
+  me_salon_stock_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["StockItemInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["StockItemInputRequest"];
+        "multipart/form-data": components["schemas"]["StockItemInputRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StockItem"];
+        };
+      };
+    };
+  };
+  salon_stock_movements: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        item_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Movement"][];
+        };
+      };
+    };
+  };
+  me_salon_stock_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        item_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["StockItemInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["StockItemInputRequest"];
+        "multipart/form-data": components["schemas"]["StockItemInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StockItem"];
+        };
+      };
+    };
+  };
+  me_salon_stock_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        item_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  me_salon_stock_count_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        item_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CountInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["CountInputRequest"];
+        "multipart/form-data": components["schemas"]["CountInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StockItem"];
+        };
+      };
+    };
+  };
+  me_salon_stock_move_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        item_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["StockMoveInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["StockMoveInputRequest"];
+        "multipart/form-data": components["schemas"]["StockMoveInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StockItem"];
+        };
+      };
+    };
+  };
+  me_salon_stock_ean_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        ean: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StockItem"];
+        };
+      };
+    };
+  };
   me_saved_retrieve: {
     parameters: {
       query?: {
@@ -9588,6 +11953,50 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["WalletLine"][];
+        };
+      };
+    };
+  };
+  me_widget_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Widget"];
+        };
+      };
+    };
+  };
+  me_widget_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["WidgetInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["WidgetInputRequest"];
+        "multipart/form-data": components["schemas"]["WidgetInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Widget"];
         };
       };
     };
@@ -10809,6 +13218,82 @@ export interface operations {
       };
     };
   };
+  pros_gift_cards_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        slug: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["BuyGiftCardInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["BuyGiftCardInputRequest"];
+        "multipart/form-data": components["schemas"]["BuyGiftCardInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["CheckoutUrl"];
+        };
+      };
+    };
+  };
+  pros_offers_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        slug: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PublicPackages"];
+        };
+      };
+    };
+  };
+  pros_packages_buy_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        package_id: string;
+        slug: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["BuyPackageInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["BuyPackageInputRequest"];
+        "multipart/form-data": components["schemas"]["BuyPackageInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["CheckoutUrl"];
+        };
+      };
+    };
+  };
   pros_print_retrieve: {
     parameters: {
       query?: never;
@@ -11033,6 +13518,46 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["Review"];
+        };
+      };
+    };
+  };
+  salon_installments_pay_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        installment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["CheckoutUrl"];
+        };
+      };
+    };
+  };
+  salon_mine_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ClientPackages"];
         };
       };
     };
@@ -11854,6 +14379,69 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["Trade"][];
+        };
+      };
+    };
+  };
+  unsubscribe_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Unsubscribe"];
+        };
+      };
+    };
+  };
+  unsubscribe_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Unsubscribe"];
+        };
+      };
+    };
+  };
+  widget_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        slug: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PublicWidget"];
         };
       };
     };

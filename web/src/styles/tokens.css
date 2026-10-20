@@ -33,6 +33,10 @@
   --peau-5: #4f2e1c;
   --cheveux: #241018;
 
+  /* Text on a salon's own colour (booking widget): the darker or lighter one is chosen. */
+  --sur-couleur-sombre: #ffffff;
+  --sur-couleur-claire: #3b1233;
+
   /* Colours a pro can give to the people of her agenda (stored with each person). */
   --agenda-1: #c8102e;
   --agenda-2: #7a3e9d;
