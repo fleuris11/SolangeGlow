@@ -46,7 +46,7 @@ RESERVED_SLUGS = {
     "support", "legal", "cgu", "cgv", "privacy", "login", "signup", "settings", "search",
     "solange", "solangeglow", "sw", "manifest", "robots", "sitemap", "favicon", "offline",
     "cart", "checkout", "orders", "wishlist", "payments", "pay", "courier", "following",
-    "saved",
+    "saved", "appointments", "agenda",
 }  # fmt: skip
 
 MEDIA_FIELDS = {
@@ -383,11 +383,34 @@ def _clean_steps(steps: list[dict]) -> list[dict]:
                 "label": str(step.get("label") or "").strip()[:60],
                 "duration_minutes": minutes,
                 "needs_staff": kind == ServiceStep.Kind.WORK,
+                "other_staff_ok": bool(step.get("other_staff_ok")),
+                "resource_id": step.get("resource_id") or None,
             }
         )
     if not any(s["kind"] == ServiceStep.Kind.WORK for s in cleaned):
         raise errors.InvalidDuration()
     return cleaned
+
+
+def _replace_steps(service: Service, steps: list[dict]) -> None:
+    """New steps; a step may hold a resource of the salon (module 8: chair, basin…)."""
+    from apps.booking.models import Resource, StepResource
+
+    service.steps.all().delete()
+    resources = {
+        str(r.pk): r
+        for r in Resource.objects.filter(
+            pro=service.pro, pk__in=[s["resource_id"] for s in steps if s["resource_id"]]
+        )
+    }
+    for index, step in enumerate(steps):
+        resource_id = step.pop("resource_id")
+        created = ServiceStep.objects.create(service=service, position=index, **step)
+        if resource_id:
+            resource = resources.get(str(resource_id))
+            if resource is None:
+                raise errors.InvalidDuration()
+            StepResource.objects.create(step=created, resource=resource)
 
 
 @transaction.atomic
@@ -422,6 +445,14 @@ def save_service(pro: ProProfile, data: dict, *, service: Service | None = None)
     service.price_minor = None if price is None else int(price)
     service.category = category
     service.available_at_home = bool(data.get("available_at_home", service.available_at_home))
+    service.deposit_kind = data.get("deposit_kind", service.deposit_kind)
+    service.deposit_value = int(data.get("deposit_value", service.deposit_value) or 0)
+    if service.deposit_kind == "none":
+        service.deposit_value = 0
+    elif service.deposit_value < 1 or (
+        service.deposit_kind == "percent" and service.deposit_value > 100
+    ):
+        raise errors.InvalidDeposit()
     service.is_active = bool(data.get("is_active", service.is_active))
     if "position" in data:
         service.position = int(data["position"] or 0)
@@ -436,10 +467,7 @@ def save_service(pro: ProProfile, data: dict, *, service: Service | None = None)
     service.save()
 
     if steps is not None:
-        service.steps.all().delete()
-        ServiceStep.objects.bulk_create(
-            ServiceStep(service=service, position=index, **step) for index, step in enumerate(steps)
-        )
+        _replace_steps(service, steps)
     options = data.get("options")
     if options is not None:
         maximum = _limit("pros.max_options_per_service", 10, pro)

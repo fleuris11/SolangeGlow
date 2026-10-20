@@ -55,6 +55,11 @@ class NameRequired(DomainError):
     message = _("Give a name to this service.")
 
 
+class InvalidDeposit(DomainError):
+    code = "invalid_deposit"
+    message = _("Give the deposit: an amount, or a percentage from 1 to 100.")
+
+
 class InvalidDuration(DomainError):
     code = "invalid_duration"
     message = _("Give the time of the service, in minutes.")

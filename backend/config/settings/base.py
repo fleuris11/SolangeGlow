@@ -275,6 +275,10 @@ SPECTACULAR_SETTINGS = {
         "OrderDeliveryModeEnum": "apps.shop.models.DeliveryMode",
         "DeliveryZoneModeEnum": "apps.shop.models.ZONE_MODES",
         "SelectionShippingModeEnum": "apps.selection_france.models.ShippingMode",
+        "TimeOffKindEnum": "apps.booking.models.TimeOff.Kind",
+        "AppointmentStatusEnum": "apps.booking.models.Appointment.Status",
+        "AppointmentSourceEnum": "apps.booking.models.Appointment.Source",
+        "WaitlistStatusEnum": "apps.booking.models.WaitlistEntry.Status",
     },
 }
 
@@ -402,6 +406,10 @@ CELERY_BEAT_SCHEDULE = {
     "shop.run_alerts": {
         "task": "apps.shop.tasks.run_alerts",
         "schedule": crontab(minute="*/15"),
+    },
+    "booking.run_deadlines": {
+        "task": "apps.booking.tasks.run_deadlines",
+        "schedule": crontab(minute="*/5"),
     },
     "selection.run_deadlines": {
         "task": "apps.selection_france.tasks.run_deadlines",

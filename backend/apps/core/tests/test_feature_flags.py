@@ -9,17 +9,17 @@ pytestmark = pytest.mark.django_db
 
 
 def test_unknown_or_disabled_flag_is_off():
-    FeatureFlagFactory(key="booking", is_enabled=False)
+    FeatureFlagFactory(key="beta_feature", is_enabled=False)
 
     assert is_feature_enabled("unknown") is False
-    assert is_feature_enabled("booking") is False
+    assert is_feature_enabled("beta_feature") is False
 
 
 def test_flag_without_restrictions_is_on_for_everyone():
-    FeatureFlagFactory(key="booking")
+    FeatureFlagFactory(key="beta_feature")
 
-    assert is_feature_enabled("booking") is True
-    assert is_feature_enabled("booking", country="FR", roles=[Role.PRO]) is True
+    assert is_feature_enabled("beta_feature") is True
+    assert is_feature_enabled("beta_feature", country="FR", roles=[Role.PRO]) is True
 
 
 def test_flag_limited_by_country_and_role():

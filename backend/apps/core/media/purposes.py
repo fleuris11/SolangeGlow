@@ -63,6 +63,8 @@ PURPOSES: dict[str, Purpose] = {
     # France Selection (module 6): catalogue pictures (team), a client's picture of a wish.
     "selection_photo": Purpose(("image",), "public"),
     "selection_request": Purpose(("image",), "private"),
+    # Bookings (module 8): a picture of the result, in the pro's client file.
+    "booking_result": Purpose(("image",), "private"),
     "itinerary_video": Purpose(
         ("video",),
         "public",

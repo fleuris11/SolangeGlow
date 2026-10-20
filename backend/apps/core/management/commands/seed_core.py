@@ -1023,6 +1023,102 @@ SETTINGS += [
 ]
 
 
+# Appointments (module 8): engine, answers, cancellation, no-shows, waiting list, groups.
+SETTINGS += [
+    _s(
+        "booking.min_notice_minutes",
+        INT,
+        "120",
+        "Délai minimum avant un rendez-vous réservé en ligne (minutes ; une pro peut le changer).",
+        "Minimum notice before an appointment booked online (minutes; a pro can change it).",
+    ),
+    _s(
+        "booking.horizon_days",
+        INT,
+        "60",
+        "Jusqu'à combien de jours à l'avance on peut réserver (une pro peut le changer).",
+        "How many days ahead clients can book (a pro can change it).",
+    ),
+    _s(
+        "booking.pro_answer_hours",
+        INT,
+        "24",
+        "Temps laissé pour répondre à une demande ou à un autre créneau proposé (heures) ; sans réponse, le rendez-vous est annulé et l'acompte rendu.",
+        "Time to answer a request or a proposed time (hours); without answer the appointment is cancelled and the deposit refunded.",
+    ),
+    _s(
+        "booking.free_cancel_hours",
+        INT,
+        "24",
+        "Annulation gratuite par la cliente jusqu'à ce nombre d'heures avant ; ensuite la pro garde l'acompte.",
+        "Free cancellation by the client up to this many hours before; then the pro keeps the deposit.",
+    ),
+    _s(
+        "booking.late_tolerance_minutes",
+        INT,
+        "15",
+        "Retard toléré avant que la pro puisse marquer la cliente absente (minutes).",
+        "Lateness allowed before the pro can mark the client as a no-show (minutes).",
+    ),
+    _s(
+        "booking.no_show_threshold",
+        INT,
+        "2",
+        "Nombre de lapins (toutes pros confondues) qui rendent un acompte obligatoire. 0 = jamais.",
+        "Number of no-shows (all pros) that make a deposit compulsory. 0 = never.",
+    ),
+    _s(
+        "booking.no_show_window_months",
+        INT,
+        "12",
+        "Période pendant laquelle les lapins comptent (mois).",
+        "Period during which no-shows count (months).",
+    ),
+    _s(
+        "booking.no_show_deposit_percent",
+        INT,
+        "30",
+        "Acompte imposé après trop de lapins (pourcentage du prix).",
+        "Deposit imposed after too many no-shows (percent of the price).",
+    ),
+    _s(
+        "booking.reminder_hours",
+        JSON,
+        "[24, 2]",
+        "Rappels envoyés avant le rendez-vous (heures avant).",
+        "Reminders sent before the appointment (hours before).",
+    ),
+    _s(
+        "booking.waitlist_answer_minutes",
+        INT,
+        "30",
+        "Temps pendant lequel une place libérée est gardée pour la cliente de la liste d'attente (minutes).",
+        "How long a freed place is kept for the waiting-list client (minutes).",
+    ),
+    _s(
+        "booking.group_max",
+        INT,
+        "8",
+        "Nombre maximum de personnes dans une réservation de groupe.",
+        "Maximum number of people in a group booking.",
+    ),
+    _s(
+        "booking.group_pay_hours",
+        INT,
+        "24",
+        "Temps laissé aux participantes d'un groupe pour payer leur part (heures).",
+        "Time for the members of a group to pay their share (hours).",
+    ),
+    _s(
+        "throttle.booking",
+        STR,
+        "60/minute",
+        "Limite des réservations et actions de rendez-vous par adresse IP.",
+        "Booking actions limit per IP address.",
+    ),
+]
+
+
 class Command(BaseCommand):
     help = "Create countries (BJ, FR), currencies (XOF, EUR) and the platform settings."
 
