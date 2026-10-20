@@ -2,10 +2,10 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
+import dynamic from "next/dynamic";
 import { useMemo, useState, useSyncExternalStore, type ReactNode } from "react";
 
-import { Bloom } from "@/components/ui/bloom";
-import { Button, buttonClasses } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { SpeakButton } from "@/components/ui/speak-button";
 import { Stepper } from "@/components/ui/stepper";
@@ -24,8 +24,14 @@ import {
 import { rememberReturnPath } from "@/lib/auth/return-path";
 import { addDays, dayName, durationLabel, localDay, timeAt } from "@/lib/booking/time";
 import { cn } from "@/lib/cn";
-import { Link, usePathname, useRouter } from "@/lib/i18n/navigation";
+import { usePathname, useRouter } from "@/lib/i18n/navigation";
 import { formatMoney } from "@/lib/money";
+
+// Shown after the booking only: downloaded then (ADR-004).
+const BookedScreen = dynamic(() => import("./booking-done").then((m) => m.BookedScreen));
+const GroupCreated = dynamic(() => import("./booking-done").then((m) => m.GroupCreated));
+// The last step comes after choosing a time: downloaded then.
+const DetailsStep = dynamic(() => import("./booking-details").then((m) => m.DetailsStep));
 
 export type BookingIcons = {
   clock: ReactNode;
@@ -490,176 +496,30 @@ export function BookingFlow({
       )}
 
       {step === "details" && service && start && (
-        <div className="flex flex-col gap-5">
-          <dl className="border-trait rounded-card flex flex-col gap-3 border p-4">
-            <div>
-              <dt className="text-small text-prune-doux">{t("service")}</dt>
-              <dd className="font-bold">
-                {service.name}
-                {options.length > 0 && ` + ${options.map((o) => o.name).join(", ")}`}
-              </dd>
-            </div>
-            <div>
-              <dt className="text-small text-prune-doux">{t("time")}</dt>
-              <dd className="font-bold">
-                {when} ({durationLabel(minutes, locale)})
-              </dd>
-            </div>
-            {chosenStaff && staffFor.length > 1 && (
-              <div>
-                <dt className="text-small text-prune-doux">{t("with")}</dt>
-                <dd className="font-bold">{chosenStaff.name}</dd>
-              </div>
-            )}
-            <div>
-              <dt className="text-small text-prune-doux">{t("price")}</dt>
-              <dd className="font-bold">
-                {price === null ? t("quote") : formatMoney(price, service.currency, locale)}
-                {discount > 0 && ` (-${discount} %)`}
-              </dd>
-            </div>
-            {deposit > 0 && (
-              <div>
-                <dt className="text-small text-prune-doux">{t("depositLabel")}</dt>
-                <dd className="font-bold">{formatMoney(deposit, service.currency, locale)}</dd>
-                <dd className="text-small text-prune-doux">{t("depositHelp")}</dd>
-              </div>
-            )}
-          </dl>
-          <p className="text-small text-prune-doux">
-            {deposit > 0 ? t("cancelRule", { hours: page.free_cancel_hours }) : t("cancelFree")}
-          </p>
-          {!page.auto_confirm && <p className="text-small text-prune-doux">{t("manual")}</p>}
-
-          {!signedIn && (deposit > 0 || !page.accepts_guests) ? (
-            <div className="bg-poudre rounded-card flex flex-col gap-3 p-4">
-              <p className="font-bold">{deposit > 0 ? t("signInDeposit") : t("signInNeeded")}</p>
-              <Button size="lg" fullWidth onClick={signInFirst}>
-                {t("signIn")}
-              </Button>
-            </div>
-          ) : (
-            <>
-              {guestFields}
-              <Input
-                label={t("note")}
-                hint={t("noteHint")}
-                value={note}
-                maxLength={500}
-                onChange={(e) => setNote(e.target.value)}
-              />
-              {signedIn && (
-                <div className="border-trait rounded-card flex flex-col gap-2 border p-4">
-                  <p className="flex items-center gap-2 font-bold">
-                    {icons.group}
-                    {t("groupTitle")}
-                  </p>
-                  <div className="flex items-center gap-3">
-                    <Button
-                      variant="secondary"
-                      aria-label={t("less")}
-                      disabled={size <= 1}
-                      onClick={() => setSize(size - 1)}
-                    >
-                      −
-                    </Button>
-                    <span className="min-w-24 text-center font-bold" aria-live="polite">
-                      {t("people", { count: size })}
-                    </span>
-                    <Button
-                      variant="secondary"
-                      aria-label={t("more")}
-                      disabled={size >= 8}
-                      onClick={() => setSize(size + 1)}
-                    >
-                      +
-                    </Button>
-                  </div>
-                  {size > 1 && <p className="text-small text-prune-doux">{t("groupHelp")}</p>}
-                </div>
-              )}
-              <Button
-                size="lg"
-                fullWidth
-                disabled={busy || (!signedIn && (!name.trim() || phone.trim().length < 8))}
-                onClick={() => void confirm()}
-              >
-                {icons.calendar}
-                {size > 1
-                  ? t("bookGroup", { count: size })
-                  : deposit > 0
-                    ? t("payDeposit", { amount: formatMoney(deposit, service.currency, locale) })
-                    : t("book", { when })}
-              </Button>
-            </>
-          )}
-        </div>
+        <DetailsStep
+          service={service}
+          optionNames={options.map((o) => o.name)}
+          when={when}
+          minutes={minutes}
+          staffName={chosenStaff && staffFor.length > 1 ? chosenStaff.name : null}
+          price={price}
+          discount={discount}
+          deposit={deposit}
+          freeCancelHours={page.free_cancel_hours}
+          autoConfirm={page.auto_confirm}
+          needsSignIn={!signedIn && (deposit > 0 || !page.accepts_guests)}
+          onSignIn={signInFirst}
+          guestFields={guestFields}
+          note={note}
+          onNote={setNote}
+          signedIn={signedIn}
+          size={size}
+          onSize={setSize}
+          icons={icons}
+          busy={busy || (!signedIn && (!name.trim() || phone.trim().length < 8))}
+          onConfirm={() => void confirm()}
+        />
       )}
     </div>
-  );
-}
-
-/** Booked: confirmed (petals), or sent to the pro; a guest gets her link. */
-function BookedScreen({ booked, zone }: { booked: Booked; zone: string }) {
-  const t = useTranslations("booking.flow");
-  const locale = useLocale();
-  const a = booked.appointment;
-  const confirmed = a.status === "confirmed";
-  const title = confirmed ? t("doneConfirmed") : t("doneRequested");
-  const when = t("when", {
-    day: dayName(localDay(a.starts_at, zone), locale),
-    time: timeAt(a.starts_at, zone, locale),
-  });
-  return (
-    <section aria-labelledby="booked" className="flex flex-col items-center gap-5 text-center">
-      {confirmed && <Bloom label={t("doneConfirmed")} />}
-      <h2 id="booked" className="font-display text-display font-black">
-        {title}
-      </h2>
-      <p className="text-lead">
-        {a.service_name}, {when}
-      </p>
-      <p className="text-prune-doux">
-        {confirmed
-          ? t("doneConfirmedHelp", { name: a.pro.name })
-          : t("doneRequestedHelp", { name: a.pro.name })}
-      </p>
-      <p className="text-small text-prune-doux">{t("reference", { reference: a.reference })}</p>
-      {booked.manage_url ? (
-        <>
-          <p className="text-small text-prune-doux">{t("guestLink")}</p>
-          <Link href={booked.manage_url} className={buttonClasses({ size: "lg", fullWidth: true })}>
-            {t("manage")}
-          </Link>
-        </>
-      ) : (
-        <Link
-          href={`/appointments/${a.id}`}
-          className={buttonClasses({ size: "lg", fullWidth: true })}
-        >
-          {t("seeAppointment")}
-        </Link>
-      )}
-    </section>
-  );
-}
-
-/** A group: the organiser shares the link, each person pays her share. */
-function GroupCreated({ group }: { group: Group }) {
-  const t = useTranslations("booking.group");
-  return (
-    <section aria-labelledby="group" className="flex flex-col items-center gap-5 text-center">
-      <h2 id="group" className="font-display text-display font-black">
-        {t("created")}
-      </h2>
-      <p className="text-prune-doux">
-        {group.share_minor > 0
-          ? t("createdPayHelp")
-          : t("createdHelp", { count: group.places.length })}
-      </p>
-      <Link href={group.share_url} className={buttonClasses({ size: "lg", fullWidth: true })}>
-        {t("open")}
-      </Link>
-    </section>
   );
 }

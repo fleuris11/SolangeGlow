@@ -218,7 +218,7 @@ describe("BookingFlow", () => {
       <BookingFlow page={PAGE} slug="salon-estelle" initialServiceId="s1" icons={ICONS} />,
     );
     await userEvent.click(await screen.findByRole("button", { name: /^10\sh$/ }));
-    await userEvent.type(screen.getByLabelText("Ton prénom"), "Inès");
+    await userEvent.type(await screen.findByLabelText("Ton prénom"), "Inès");
     await userEvent.type(screen.getByLabelText(/Ton numéro WhatsApp/), "0197000001");
     await userEvent.click(
       screen.getByRole("button", { name: /^Réserver lundi 7 janvier à 10\sh$/ }),
