@@ -4,6 +4,23 @@
  */
 
 export interface paths {
+  "/api/v1/agenda/{token}.ics": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description The agenda for Google Calendar or the iPhone, by its secret address. */
+    get: operations["agenda_ical"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/auth/logout": {
     parameters: {
       query?: never;
@@ -97,6 +114,241 @@ export interface paths {
     /** @description Rotate the tokens from the refresh cookie (the old refresh token is blacklisted). */
     post: operations["auth_refresh_create"];
     delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/booking/appointments": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["booking_my_appointments"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/booking/appointments/{appointment_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description An appointment of the signed-in client (by id) or of a guest (by her secret link). */
+    get: operations["booking_appointments_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/booking/appointments/{appointment_id}/accept": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description The waiting-list client takes the place kept for her. */
+    post: operations["booking_appointments_accept_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/booking/appointments/{appointment_id}/answer": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Yes or no to another time proposed by the pro. */
+    post: operations["booking_appointments_answer_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/booking/appointments/{appointment_id}/cancel": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description An appointment of the signed-in client (by id) or of a guest (by her secret link). */
+    post: operations["booking_appointments_cancel_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/booking/appointments/{appointment_id}/pay": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description The deposit's payment page again (the client left it before paying). */
+    post: operations["booking_appointments_pay_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/booking/groups/{token}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["booking_groups_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/booking/groups/{token}/share": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description A member takes a place of the group and pays its share (the organiser: the rest). */
+    post: operations["booking_groups_share_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/booking/manage/{token}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description An appointment of the signed-in client (by id) or of a guest (by her secret link). */
+    get: operations["booking_manage_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/booking/manage/{token}/accept": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description The waiting-list client takes the place kept for her. */
+    post: operations["booking_manage_accept_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/booking/manage/{token}/answer": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Yes or no to another time proposed by the pro. */
+    post: operations["booking_manage_answer_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/booking/manage/{token}/cancel": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description An appointment of the signed-in client (by id) or of a guest (by her secret link). */
+    post: operations["booking_manage_cancel_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/booking/waitlist": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["booking_waitlist_list"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/booking/waitlist/{entry_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete: operations["booking_waitlist_destroy"];
     options?: never;
     head?: never;
     patch?: never;
@@ -333,6 +585,396 @@ export interface paths {
     options?: never;
     head?: never;
     patch: operations["me_partial_update"];
+    trace?: never;
+  };
+  "/api/v1/me/agenda": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["me_agenda_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/appointments": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Quick booking from the agenda (a client on the phone, at the counter). */
+    post: operations["me_agenda_appointments_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/appointments/{appointment_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["me_agenda_appointments_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/appointments/{appointment_id}/advice": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description A product of the pro's shop, advised after the appointment. */
+    post: operations["me_agenda_appointments_advice_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/appointments/{appointment_id}/cancel": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["me_agenda_appointments_cancel_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/appointments/{appointment_id}/complete": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["me_agenda_appointments_complete_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/appointments/{appointment_id}/confirm": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["me_agenda_appointments_confirm_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/appointments/{appointment_id}/decline": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["me_agenda_appointments_decline_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/appointments/{appointment_id}/move": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Drag and drop: another time, or another person. */
+    post: operations["me_agenda_appointments_move_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/appointments/{appointment_id}/no-show": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["me_agenda_appointments_no_show_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/appointments/{appointment_id}/photos": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description A picture of the result, kept in the client's file. */
+    post: operations["me_agenda_appointments_photos_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/appointments/{appointment_id}/propose": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["me_agenda_appointments_propose_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/clients": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["me_agenda_clients_list"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/clients/{record_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["me_agenda_clients_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch: operations["me_agenda_clients_partial_update"];
+    trace?: never;
+  };
+  "/api/v1/me/agenda/last-minute": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put: operations["me_agenda_last_minute_update"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/qr.png": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description The QR code of the booking link (to print, to put on the counter). */
+    get: operations["me_agenda_qr.png_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/resources": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["me_agenda_resources_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/resources/{resource_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete: operations["me_agenda_resources_destroy"];
+    options?: never;
+    head?: never;
+    patch: operations["me_agenda_resources_partial_update"];
+    trace?: never;
+  };
+  "/api/v1/me/agenda/settings": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["me_agenda_settings_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch: operations["me_agenda_settings_partial_update"];
+    trace?: never;
+  };
+  "/api/v1/me/agenda/staff": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["me_agenda_staff_list"];
+    put?: never;
+    post: operations["me_agenda_staff_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/staff/{staff_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch: operations["me_agenda_staff_partial_update"];
+    trace?: never;
+  };
+  "/api/v1/me/agenda/staff/{staff_id}/hours": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put: operations["me_agenda_staff_hours_update"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/time-off": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Absences, holidays, blocked ranges (a collaborator: only her own). */
+    post: operations["me_agenda_time_off_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/time-off/{time_off_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete: operations["me_agenda_time_off_destroy"];
+    options?: never;
+    head?: never;
+    patch?: never;
     trace?: never;
   };
   "/api/v1/me/blocks": {
@@ -1843,6 +2485,74 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/pros/{slug}/booking": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Services, people and rules of a pro (the page « Book » of her showcase). */
+    get: operations["pros_booking_retrieve"];
+    put?: never;
+    /** @description Services, people and rules of a pro (the page « Book » of her showcase). */
+    post: operations["pros_booking_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/pros/{slug}/booking/groups": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["pros_booking_groups_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/pros/{slug}/booking/slots": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Free times of a service, day by day (7 days from `day`). */
+    get: operations["pros_booking_slots_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/pros/{slug}/booking/waitlist": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    post: operations["pros_booking_waitlist_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/pros/{slug}/print/{name}": {
     parameters: {
       query?: never;
@@ -2538,6 +3248,44 @@ export interface components {
      * @enum {string}
      */
     AccountEnum: "pending" | "available";
+    Advice: {
+      /** Format: uuid */
+      product_id: string;
+      title: string;
+      slug: string;
+      note: string;
+    };
+    AdviceInputRequest: {
+      /** Format: uuid */
+      product_id: string;
+      note?: string;
+    };
+    Agenda: {
+      pro: components["schemas"]["BookingPro"];
+      can_manage: boolean;
+      staff: components["schemas"]["Staff"][];
+      opening: components["schemas"]["Opening"][];
+      appointments: components["schemas"]["Appointment"][];
+      time_off: components["schemas"]["TimeOff"][];
+      pending_count: number;
+      pending: components["schemas"]["Appointment"][];
+      services: components["schemas"]["BookableService"][];
+      slot_step_minutes: number;
+    };
+    AgendaSettings: {
+      auto_confirm: boolean;
+      slot_step_minutes: number;
+      min_notice_minutes: number | null;
+      horizon_days: number | null;
+      free_cancel_hours: number | null;
+      late_tolerance_minutes: number | null;
+      accepts_guests: boolean;
+      defaults: components["schemas"]["SettingsDefaults"];
+      booking_url: string;
+      ical_url: string;
+      last_minute: components["schemas"]["LastMinute"] | null;
+      resources: components["schemas"]["Resource"][];
+    };
     /**
      * @description * `small_prices` - Small prices
      *     * `trending` - Trending
@@ -2545,6 +3293,116 @@ export interface components {
      * @enum {string}
      */
     AisleEnum: "small_prices" | "trending" | "luxury";
+    AnswerInputRequest: {
+      accept: boolean;
+    };
+    Appointment: {
+      /** Format: uuid */
+      id: string;
+      reference: string;
+      status: components["schemas"]["AppointmentStatusEnum"];
+      source: components["schemas"]["AppointmentSourceEnum"];
+      pro: components["schemas"]["BookingPro"];
+      /** Format: uuid */
+      service_id: string;
+      service_name: string;
+      option_names: string[];
+      /** Format: date-time */
+      starts_at: string;
+      /** Format: date-time */
+      ends_at: string;
+      /** Format: uuid */
+      client_id: string | null;
+      client_name: string;
+      client_phone: string;
+      is_guest: boolean;
+      price_minor: number | null;
+      currency: string;
+      discount_percent: number;
+      deposit_minor: number;
+      payment: components["schemas"]["AppointmentPayment"] | null;
+      note: string;
+      pro_message: string;
+      /** Format: date-time */
+      proposed_from: string | null;
+      /** Format: date-time */
+      answer_due_at: string | null;
+      /** Format: uuid */
+      group_id: string | null;
+      steps: components["schemas"]["AppointmentStep"][];
+      /** Format: date-time */
+      free_cancel_until: string;
+      late_cancel: boolean;
+      can_cancel: boolean;
+      can_review: boolean;
+      advice: components["schemas"]["Advice"][];
+      photos: components["schemas"]["Media"][];
+      /** Format: date-time */
+      created_at: string;
+    };
+    AppointmentDetail: {
+      appointment: components["schemas"]["Appointment"];
+      record: components["schemas"]["ClientRecord"] | null;
+      no_shows: number;
+    };
+    AppointmentList: {
+      upcoming: components["schemas"]["Appointment"][];
+      past: components["schemas"]["Appointment"][];
+    };
+    AppointmentPayment: {
+      /** Format: uuid */
+      id: string;
+      status: string;
+      total_minor: number;
+      checkout_url: string;
+    };
+    /**
+     * @description * `online` - Online
+     *     * `phone` - By phone
+     *     * `waitlist` - Waiting list
+     *     * `group` - Group
+     *     * `look` - « Book this look »
+     * @enum {string}
+     */
+    AppointmentSourceEnum: "online" | "phone" | "waitlist" | "group" | "look";
+    /**
+     * @description * `pending` - Waiting for the pro
+     *     * `awaiting_deposit` - Waiting for the deposit
+     *     * `confirmed` - Confirmed
+     *     * `proposed` - Other time proposed
+     *     * `held` - Kept for the waiting list
+     *     * `declined` - Declined
+     *     * `cancelled` - Cancelled
+     *     * `completed` - Done
+     *     * `no_show` - Client did not come
+     *     * `expired` - Expired
+     * @enum {string}
+     */
+    AppointmentStatusEnum:
+      | "pending"
+      | "awaiting_deposit"
+      | "confirmed"
+      | "proposed"
+      | "held"
+      | "declined"
+      | "cancelled"
+      | "completed"
+      | "no_show"
+      | "expired";
+    AppointmentStep: {
+      position: number;
+      kind: string;
+      label: string;
+      /** Format: date-time */
+      starts_at: string;
+      /** Format: date-time */
+      ends_at: string;
+      /** Format: uuid */
+      staff_id: string | null;
+      staff_name: string;
+      /** Format: uuid */
+      resource_id: string | null;
+    };
     Arrival: {
       sent: boolean;
     };
@@ -2588,6 +3446,75 @@ export interface components {
       id: string;
       name: string;
     };
+    BookInputRequest: {
+      /** Format: uuid */
+      service_id: string;
+      /** Format: date-time */
+      start: string;
+      /** Format: uuid */
+      staff_id?: string | null;
+      option_ids?: string[];
+      note?: string;
+      guest_name?: string;
+      guest_phone?: string;
+      /** Format: uuid */
+      post_id?: string | null;
+    };
+    BookableService: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      description: string;
+      price_kind: string;
+      price_minor: number | null;
+      currency: string;
+      duration_minutes: number;
+      work_minutes: number;
+      deposit_minor: number;
+      /** Format: uuid */
+      category_id: string | null;
+      options: components["schemas"]["BookingOption"][];
+    };
+    Booked: {
+      appointment: components["schemas"]["Appointment"];
+      manage_url: string | null;
+      checkout_url: string | null;
+    };
+    BookingOption: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      price_minor: number;
+      extra_minutes: number;
+    };
+    BookingPage: {
+      pro: components["schemas"]["BookingPro"];
+      services: components["schemas"]["BookableService"][];
+      staff: components["schemas"]["StaffBrief"][];
+      accepts_guests: boolean;
+      auto_confirm: boolean;
+      free_cancel_hours: number;
+      last_minute: components["schemas"]["LastMinute"] | null;
+      /** Format: date */
+      first_day: string;
+      /** Format: date */
+      last_day: string;
+    };
+    BookingPro: {
+      /** Format: uuid */
+      id: string;
+      slug: string | null;
+      name: string;
+      photo: components["schemas"]["Media"] | null;
+      city: string;
+      district: string;
+      address: string;
+      is_verified: boolean;
+      /** Format: double */
+      rating_average: number | null;
+      rating_count: number;
+      timezone: string;
+    };
     Bundle: {
       /** Format: uuid */
       id: string;
@@ -2625,6 +3552,9 @@ export interface components {
       variant_id: string;
       /** @default 1 */
       quantity: number;
+    };
+    CancelInputRequest: {
+      reason?: string;
     };
     Card: {
       slug: string;
@@ -2717,6 +3647,9 @@ export interface components {
      * @enum {string}
      */
     ChannelEnum: "whatsapp" | "sms" | "email" | "console";
+    Checkout: {
+      checkout_url: string;
+    };
     CheckoutInputRequest: {
       shops: components["schemas"]["ShopChoiceRequest"][];
       address?: string;
@@ -2743,6 +3676,29 @@ export interface components {
       /** @default false */
       no_show: boolean;
       note?: string;
+    };
+    ClientRecord: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      phone: string;
+      has_account: boolean;
+      notes: string;
+      preferences: string;
+      /** Format: date-time */
+      updated_at: string;
+    };
+    ClientRecordDetail: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      phone: string;
+      has_account: boolean;
+      notes: string;
+      preferences: string;
+      /** Format: date-time */
+      updated_at: string;
+      history: components["schemas"]["Appointment"][];
     };
     Closure: {
       /** Format: uuid */
@@ -2915,6 +3871,13 @@ export interface components {
      * @enum {string}
      */
     DeliveryZoneModeEnum: "seller" | "partner";
+    /**
+     * @description * `none` - None
+     *     * `amount` - Amount
+     *     * `percent` - Percentage
+     * @enum {string}
+     */
+    DepositKindEnum: "none" | "amount" | "percent";
     Dispute: {
       /** Format: uuid */
       id: string;
@@ -3017,6 +3980,44 @@ export interface components {
       followed: boolean;
       post_count: number;
     };
+    Group: {
+      /** Format: uuid */
+      id: string;
+      title: string;
+      status: string;
+      /** Format: date-time */
+      pay_by: string | null;
+      share_url: string;
+      is_organizer: boolean;
+      organizer_name: string;
+      pro: components["schemas"]["BookingPro"];
+      service_name: string;
+      currency: string;
+      share_minor: number;
+      places: components["schemas"]["GroupPlace"][];
+    };
+    GroupInputRequest: {
+      /** Format: uuid */
+      service_id: string;
+      /** Format: date-time */
+      start: string;
+      size: number;
+      title?: string;
+    };
+    GroupPlace: {
+      /** Format: uuid */
+      id: string;
+      /** Format: date-time */
+      starts_at: string;
+      status: string;
+      taken: boolean;
+      mine: boolean;
+      paid: boolean;
+    };
+    GroupShareInputRequest: {
+      /** Format: uuid */
+      place_id?: string | null;
+    };
     Guest: {
       /** Format: uuid */
       readonly id: string;
@@ -3036,6 +4037,20 @@ export interface components {
     };
     HoursRequest: {
       periods: components["schemas"]["PeriodRequest"][];
+    };
+    HoursRow: {
+      weekday: number;
+      /** Format: time */
+      starts_at: string;
+      /** Format: time */
+      ends_at: string;
+    };
+    HoursRowRequest: {
+      weekday: number;
+      /** Format: time */
+      starts_at: string;
+      /** Format: time */
+      ends_at: string;
     };
     /**
      * @description * `makeup` - Lipstick
@@ -3095,6 +4110,16 @@ export interface components {
       | "es"
       | "pt"
       | "sk";
+    LastMinute: {
+      percent_off: number;
+      window_hours: number;
+      is_active: boolean;
+    };
+    LastMinuteInputRequest: {
+      percent_off: number;
+      window_hours: number;
+      is_active: boolean;
+    };
     LinkedProduct: {
       /** Format: uuid */
       id: string;
@@ -3121,8 +4146,15 @@ export interface components {
       /** Format: double */
       longitude: number;
       /** @default map */
-      source: components["schemas"]["SourceEnum"];
+      source: components["schemas"]["LocationSourceEnum"];
     };
+    /**
+     * @description * `map` - Placed on the map
+     *     * `gps` - Phone GPS
+     *     * `admin` - Set by the team
+     * @enum {string}
+     */
+    LocationSourceEnum: "map" | "gps" | "admin";
     LowStock: {
       /** Format: uuid */
       variant_id: string;
@@ -3240,6 +4272,7 @@ export interface components {
     MediaStatusEnum: "pending" | "processing" | "ready" | "rejected" | "failed";
     /**
      * @description * `avatar` - avatar
+     *     * `booking_result` - booking_result
      *     * `delivery_proof` - delivery_proof
      *     * `dispute_evidence` - dispute_evidence
      *     * `identity_document` - identity_document
@@ -3264,6 +4297,7 @@ export interface components {
      */
     MediaUploadPurposeEnum:
       | "avatar"
+      | "booking_result"
       | "delivery_proof"
       | "dispute_evidence"
       | "identity_document"
@@ -3328,6 +4362,9 @@ export interface components {
        */
       client_id?: string | null;
     };
+    MessageInputRequest: {
+      message?: string;
+    };
     /**
      * @description * `text` - Text
      *     * `photo` - Picture
@@ -3345,6 +4382,12 @@ export interface components {
     MessageReportRequest: {
       reason: components["schemas"]["ReportReasonEnum"];
       comment?: string;
+    };
+    MoveInputRequest: {
+      /** Format: date-time */
+      start: string;
+      /** Format: uuid */
+      staff_id?: string | null;
     };
     /** @description The pro's own showcase, with what only she sees. */
     MyPro: {
@@ -3485,6 +4528,11 @@ export interface components {
       reason: components["schemas"]["OpenDisputeReasonEnum"];
       description?: string;
       media_ids?: string[];
+    };
+    Opening: {
+      weekday: number;
+      opens_at: string;
+      closes_at: string;
     };
     OpeningStatus: {
       is_open: boolean;
@@ -3633,6 +4681,15 @@ export interface components {
     PasswordSetRequest: {
       password: string;
     };
+    PatchedAgendaSettingsInputRequest: {
+      auto_confirm?: boolean;
+      slot_step_minutes?: number;
+      min_notice_minutes?: number | null;
+      horizon_days?: number | null;
+      free_cancel_hours?: number | null;
+      late_tolerance_minutes?: number | null;
+      accepts_guests?: boolean;
+    };
     PatchedBundleInputRequest: {
       title?: string;
       description?: string;
@@ -3646,6 +4703,10 @@ export interface components {
     PatchedCategoryRequest: {
       name?: string;
       position?: number;
+    };
+    PatchedClientRecordInputRequest: {
+      notes?: string;
+      preferences?: string;
     };
     PatchedConversationUpdateRequest: {
       muted?: boolean;
@@ -3728,6 +4789,10 @@ export interface components {
     PatchedQuantityRequest: {
       quantity?: number;
     };
+    PatchedResourceInputRequest: {
+      name?: string;
+      quantity?: number;
+    };
     PatchedServiceWriteRequest: {
       name?: string;
       description?: string;
@@ -3737,9 +4802,11 @@ export interface components {
       price_kind?: components["schemas"]["PriceKindEnum"];
       price_minor?: number | null;
       available_at_home?: boolean;
+      deposit_kind?: components["schemas"]["DepositKindEnum"];
+      deposit_value?: number;
       is_active?: boolean;
       position?: number;
-      steps?: components["schemas"]["StepRequest"][];
+      steps?: components["schemas"]["StepWriteRequest"][];
       options?: components["schemas"]["OptionRequest"][];
     };
     PatchedShopSettingsInputRequest: {
@@ -3750,6 +4817,15 @@ export interface components {
       partner_delivery?: boolean;
       partner_name?: string;
       return_policy?: string;
+    };
+    PatchedStaffInputRequest: {
+      name?: string;
+      color?: string;
+      phone?: string;
+      service_ids?: string[];
+      daily_limit?: number | null;
+      own_hours?: boolean;
+      is_active?: boolean;
     };
     PatchedStockInputRequest: {
       stock?: number;
@@ -3955,6 +5031,10 @@ export interface components {
       online?: boolean;
       /** Format: date-time */
       last_seen?: string | null;
+    };
+    PhotoInputRequest: {
+      /** Format: uuid */
+      media_id: string;
     };
     PhotoRequest: {
       /** Format: binary */
@@ -4230,6 +5310,11 @@ export interface components {
       bundles: components["schemas"]["Bundle"][];
       flash_sales: components["schemas"]["FlashSaleRow"][];
     };
+    ProposeInputRequest: {
+      /** Format: date-time */
+      start: string;
+      message?: string;
+    };
     PushKey: {
       public_key: string | null;
     };
@@ -4245,6 +5330,18 @@ export interface components {
     PushUnsubscribeRequest: {
       /** Format: uri */
       endpoint: string;
+    };
+    QuickBookInputRequest: {
+      /** Format: uuid */
+      service_id: string;
+      /** Format: date-time */
+      start: string;
+      /** Format: uuid */
+      staff_id?: string | null;
+      option_ids?: string[];
+      client_name: string;
+      client_phone: string;
+      note?: string;
     };
     QuickReplies: {
       texts: string[];
@@ -4310,6 +5407,16 @@ export interface components {
       reason: components["schemas"]["ReportReasonEnum"];
       comment?: string;
     };
+    Resource: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      quantity: number;
+    };
+    ResourceInputRequest: {
+      name: string;
+      quantity: number;
+    };
     Review: {
       /** Format: uuid */
       id: string;
@@ -4352,10 +5459,11 @@ export interface components {
     /**
      * @description * `client` - Client
      *     * `pro` - Professional
+     *     * `collaborator` - Collaborator of a salon
      *     * `staff` - Staff
      * @enum {string}
      */
-    RolesEnum: "client" | "pro" | "staff";
+    RolesEnum: "client" | "pro" | "collaborator" | "staff";
     SearchResults: {
       results: components["schemas"]["Card"][];
       next: string | null;
@@ -4589,6 +5697,10 @@ export interface components {
       waiting_minutes: number;
       /** Also at the client's home */
       available_at_home: boolean;
+      /** Deposit */
+      deposit_kind: components["schemas"]["DepositKindEnum"];
+      /** @description An amount in the smallest unit, or a percentage (100 = paid in full). */
+      deposit_value: number;
       /** Shown */
       is_active: boolean;
       position: number;
@@ -4610,10 +5722,18 @@ export interface components {
       price_kind: components["schemas"]["PriceKindEnum"];
       price_minor?: number | null;
       available_at_home?: boolean;
+      deposit_kind?: components["schemas"]["DepositKindEnum"];
+      deposit_value?: number;
       is_active?: boolean;
       position?: number;
-      steps?: components["schemas"]["StepRequest"][];
+      steps?: components["schemas"]["StepWriteRequest"][];
       options?: components["schemas"]["OptionRequest"][];
+    };
+    SettingsDefaults: {
+      min_notice_minutes: number;
+      horizon_days: number;
+      free_cancel_hours: number;
+      late_tolerance_minutes: number;
     };
     ShareCard: {
       kind: components["schemas"]["SharedCardKindEnum"];
@@ -4740,18 +5860,67 @@ export interface components {
       deletion_cancelled: boolean;
       user: components["schemas"]["Me"];
     };
+    Slot: {
+      /** Format: date-time */
+      start: string;
+      /** Format: date-time */
+      end: string;
+      /** Format: uuid */
+      staff_id: string | null;
+      discount_percent: number;
+    };
+    SlotDay: {
+      /** Format: date */
+      day: string;
+      slots: components["schemas"]["Slot"][];
+    };
+    Slots: {
+      days: components["schemas"]["SlotDay"][];
+      /** Format: date */
+      next_day: string | null;
+    };
     SlugCheck: {
       slug: string;
       available: boolean;
       short_link: string;
     };
-    /**
-     * @description * `map` - Placed on the map
-     *     * `gps` - Phone GPS
-     *     * `admin` - Set by the team
-     * @enum {string}
-     */
-    SourceEnum: "map" | "gps" | "admin";
+    Staff: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      color: string;
+      photo: components["schemas"]["Media"] | null;
+      service_ids: string[];
+      phone: string;
+      is_owner: boolean;
+      is_active: boolean;
+      has_account: boolean;
+      daily_limit: number | null;
+      own_hours: boolean;
+      periods: components["schemas"]["HoursRow"][];
+      breaks: components["schemas"]["HoursRow"][];
+    };
+    StaffBrief: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      color: string;
+      photo: components["schemas"]["Media"] | null;
+      service_ids: string[];
+    };
+    StaffHoursInputRequest: {
+      periods?: components["schemas"]["HoursRowRequest"][];
+      breaks?: components["schemas"]["HoursRowRequest"][];
+    };
+    StaffInputRequest: {
+      name: string;
+      color?: string;
+      phone?: string;
+      service_ids?: string[];
+      daily_limit?: number | null;
+      own_hours?: boolean;
+      is_active?: boolean;
+    };
     StartRequest: {
       /** Format: uuid */
       person_id: string;
@@ -4781,6 +5950,13 @@ export interface components {
       label?: string;
       /** Duration (min) */
       duration_minutes: number;
+      /**
+       * Another person may do it
+       * @description The step can be done by someone else than the previous one.
+       */
+      other_staff_ok: boolean;
+      /** Format: uuid */
+      readonly resource_id: string | null;
     };
     /**
      * @description * `work` - Work
@@ -4788,12 +5964,13 @@ export interface components {
      * @enum {string}
      */
     StepKindEnum: "work" | "wait";
-    StepRequest: {
-      /** Type */
-      kind?: components["schemas"]["StepKindEnum"];
+    StepWriteRequest: {
+      kind: components["schemas"]["StepKindEnum"];
       label?: string;
-      /** Duration (min) */
       duration_minutes: number;
+      other_staff_ok?: boolean;
+      /** Format: uuid */
+      resource_id?: string | null;
     };
     Story: {
       /** Format: uuid */
@@ -4889,6 +6066,35 @@ export interface components {
      * @enum {string}
      */
     ThemeEnum: "system" | "light" | "dark";
+    TimeOff: {
+      /** Format: uuid */
+      id: string;
+      /** Format: uuid */
+      staff_id: string | null;
+      kind: components["schemas"]["TimeOffKindEnum"];
+      /** Format: date-time */
+      starts_at: string;
+      /** Format: date-time */
+      ends_at: string;
+      note: string;
+    };
+    TimeOffInputRequest: {
+      /** Format: uuid */
+      staff_id?: string | null;
+      kind?: components["schemas"]["TimeOffKindEnum"];
+      /** Format: date-time */
+      starts_at: string;
+      /** Format: date-time */
+      ends_at: string;
+      note?: string;
+    };
+    /**
+     * @description * `absence` - Absence
+     *     * `leave` - Holidays
+     *     * `block` - Blocked range
+     * @enum {string}
+     */
+    TimeOffKindEnum: "absence" | "leave" | "block";
     TopProduct: {
       /** Format: uuid */
       product_id: string;
@@ -4974,6 +6180,44 @@ export interface components {
       /** Format: binary */
       selfie: string;
     };
+    WaitlistEntry: {
+      /** Format: uuid */
+      id: string;
+      pro: components["schemas"]["BookingPro"];
+      service_name: string;
+      /** Format: date */
+      day: string;
+      from_time: string | null;
+      to_time: string | null;
+      status: components["schemas"]["WaitlistStatusEnum"];
+      /** Format: uuid */
+      offer_id: string | null;
+      /** Format: date-time */
+      offer_expires_at: string | null;
+    };
+    WaitlistInputRequest: {
+      /** Format: uuid */
+      service_id: string;
+      /** Format: date */
+      day: string;
+      /** Format: uuid */
+      staff_id?: string | null;
+      /** Format: time */
+      from_time?: string | null;
+      /** Format: time */
+      to_time?: string | null;
+      guest_name?: string;
+      guest_phone?: string;
+    };
+    /**
+     * @description * `waiting` - Waiting
+     *     * `offered` - Place offered
+     *     * `booked` - Booked
+     *     * `expired` - No answer
+     *     * `cancelled` - Cancelled
+     * @enum {string}
+     */
+    WaitlistStatusEnum: "waiting" | "offered" | "booked" | "expired" | "cancelled";
     Wallet: {
       currency: string;
       pending_minor: number;
@@ -5034,6 +6278,27 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+  agenda_ical: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "text/calendar": string;
+        };
+      };
+    };
+  };
   auth_logout_create: {
     parameters: {
       query?: never;
@@ -5171,6 +6436,325 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["Ok"];
         };
+      };
+    };
+  };
+  booking_my_appointments: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AppointmentList"];
+        };
+      };
+    };
+  };
+  booking_appointments_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        appointment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Appointment"];
+        };
+      };
+    };
+  };
+  booking_appointments_accept_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        appointment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Booked"];
+        };
+      };
+    };
+  };
+  booking_appointments_answer_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        appointment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["AnswerInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["AnswerInputRequest"];
+        "multipart/form-data": components["schemas"]["AnswerInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Appointment"];
+        };
+      };
+    };
+  };
+  booking_appointments_cancel_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        appointment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["CancelInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["CancelInputRequest"];
+        "multipart/form-data": components["schemas"]["CancelInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Appointment"];
+        };
+      };
+    };
+  };
+  booking_appointments_pay_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        appointment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Checkout"];
+        };
+      };
+    };
+  };
+  booking_groups_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Group"];
+        };
+      };
+    };
+  };
+  booking_groups_share_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["GroupShareInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["GroupShareInputRequest"];
+        "multipart/form-data": components["schemas"]["GroupShareInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Checkout"];
+        };
+      };
+    };
+  };
+  booking_manage_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Appointment"];
+        };
+      };
+    };
+  };
+  booking_manage_accept_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Booked"];
+        };
+      };
+    };
+  };
+  booking_manage_answer_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["AnswerInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["AnswerInputRequest"];
+        "multipart/form-data": components["schemas"]["AnswerInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Appointment"];
+        };
+      };
+    };
+  };
+  booking_manage_cancel_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["CancelInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["CancelInputRequest"];
+        "multipart/form-data": components["schemas"]["CancelInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Appointment"];
+        };
+      };
+    };
+  };
+  booking_waitlist_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["WaitlistEntry"][];
+        };
+      };
+    };
+  };
+  booking_waitlist_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        entry_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
@@ -5630,6 +7214,673 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["Me"];
         };
+      };
+    };
+  };
+  me_agenda_retrieve: {
+    parameters: {
+      query: {
+        days?: number;
+        pro?: string;
+        staff?: string;
+        start: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Agenda"];
+        };
+      };
+    };
+  };
+  me_agenda_appointments_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["QuickBookInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["QuickBookInputRequest"];
+        "multipart/form-data": components["schemas"]["QuickBookInputRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AppointmentDetail"];
+        };
+      };
+    };
+  };
+  me_agenda_appointments_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        appointment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AppointmentDetail"];
+        };
+      };
+    };
+  };
+  me_agenda_appointments_advice_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        appointment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["AdviceInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["AdviceInputRequest"];
+        "multipart/form-data": components["schemas"]["AdviceInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AppointmentDetail"];
+        };
+      };
+    };
+  };
+  me_agenda_appointments_cancel_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        appointment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["CancelInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["CancelInputRequest"];
+        "multipart/form-data": components["schemas"]["CancelInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AppointmentDetail"];
+        };
+      };
+    };
+  };
+  me_agenda_appointments_complete_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        appointment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AppointmentDetail"];
+        };
+      };
+    };
+  };
+  me_agenda_appointments_confirm_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        appointment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AppointmentDetail"];
+        };
+      };
+    };
+  };
+  me_agenda_appointments_decline_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        appointment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["MessageInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["MessageInputRequest"];
+        "multipart/form-data": components["schemas"]["MessageInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AppointmentDetail"];
+        };
+      };
+    };
+  };
+  me_agenda_appointments_move_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        appointment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["MoveInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["MoveInputRequest"];
+        "multipart/form-data": components["schemas"]["MoveInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AppointmentDetail"];
+        };
+      };
+    };
+  };
+  me_agenda_appointments_no_show_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        appointment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AppointmentDetail"];
+        };
+      };
+    };
+  };
+  me_agenda_appointments_photos_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        appointment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PhotoInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PhotoInputRequest"];
+        "multipart/form-data": components["schemas"]["PhotoInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AppointmentDetail"];
+        };
+      };
+    };
+  };
+  me_agenda_appointments_propose_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        appointment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ProposeInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["ProposeInputRequest"];
+        "multipart/form-data": components["schemas"]["ProposeInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AppointmentDetail"];
+        };
+      };
+    };
+  };
+  me_agenda_clients_list: {
+    parameters: {
+      query?: {
+        q?: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ClientRecord"][];
+        };
+      };
+    };
+  };
+  me_agenda_clients_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        record_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ClientRecordDetail"];
+        };
+      };
+    };
+  };
+  me_agenda_clients_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        record_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PatchedClientRecordInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PatchedClientRecordInputRequest"];
+        "multipart/form-data": components["schemas"]["PatchedClientRecordInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ClientRecordDetail"];
+        };
+      };
+    };
+  };
+  me_agenda_last_minute_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["LastMinuteInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["LastMinuteInputRequest"];
+        "multipart/form-data": components["schemas"]["LastMinuteInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LastMinute"];
+        };
+      };
+    };
+  };
+  "me_agenda_qr.png_retrieve": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "image/png": string;
+        };
+      };
+    };
+  };
+  me_agenda_resources_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ResourceInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["ResourceInputRequest"];
+        "multipart/form-data": components["schemas"]["ResourceInputRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Resource"];
+        };
+      };
+    };
+  };
+  me_agenda_resources_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        resource_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  me_agenda_resources_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        resource_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PatchedResourceInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PatchedResourceInputRequest"];
+        "multipart/form-data": components["schemas"]["PatchedResourceInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Resource"];
+        };
+      };
+    };
+  };
+  me_agenda_settings_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AgendaSettings"];
+        };
+      };
+    };
+  };
+  me_agenda_settings_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PatchedAgendaSettingsInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PatchedAgendaSettingsInputRequest"];
+        "multipart/form-data": components["schemas"]["PatchedAgendaSettingsInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AgendaSettings"];
+        };
+      };
+    };
+  };
+  me_agenda_staff_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Staff"][];
+        };
+      };
+    };
+  };
+  me_agenda_staff_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["StaffInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["StaffInputRequest"];
+        "multipart/form-data": components["schemas"]["StaffInputRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Staff"];
+        };
+      };
+    };
+  };
+  me_agenda_staff_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        staff_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PatchedStaffInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PatchedStaffInputRequest"];
+        "multipart/form-data": components["schemas"]["PatchedStaffInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Staff"];
+        };
+      };
+    };
+  };
+  me_agenda_staff_hours_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        staff_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["StaffHoursInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["StaffHoursInputRequest"];
+        "multipart/form-data": components["schemas"]["StaffHoursInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Staff"];
+        };
+      };
+    };
+  };
+  me_agenda_time_off_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["TimeOffInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["TimeOffInputRequest"];
+        "multipart/form-data": components["schemas"]["TimeOffInputRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["TimeOff"];
+        };
+      };
+    };
+  };
+  me_agenda_time_off_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        time_off_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
@@ -8425,6 +10676,135 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["Arrival"];
+        };
+      };
+    };
+  };
+  pros_booking_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        slug: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["BookingPage"];
+        };
+      };
+    };
+  };
+  pros_booking_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        slug: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["BookInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["BookInputRequest"];
+        "multipart/form-data": components["schemas"]["BookInputRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Booked"];
+        };
+      };
+    };
+  };
+  pros_booking_groups_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        slug: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["GroupInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["GroupInputRequest"];
+        "multipart/form-data": components["schemas"]["GroupInputRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Group"];
+        };
+      };
+    };
+  };
+  pros_booking_slots_retrieve: {
+    parameters: {
+      query: {
+        day?: string;
+        days?: number;
+        options?: string;
+        service: string;
+        staff?: string;
+      };
+      header?: never;
+      path: {
+        slug: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Slots"];
+        };
+      };
+    };
+  };
+  pros_booking_waitlist_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        slug: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["WaitlistInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["WaitlistInputRequest"];
+        "multipart/form-data": components["schemas"]["WaitlistInputRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["WaitlistEntry"];
         };
       };
     };

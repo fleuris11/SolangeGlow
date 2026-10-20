@@ -1,31 +1,27 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import dynamic from "next/dynamic";
 import { useState, type ReactNode } from "react";
 
 import { Button, buttonClasses } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { ApiError } from "@/lib/api/client";
 import { announceArrival } from "@/lib/api/pros";
-
-// The dialog is downloaded when the button is tapped, not with the page (ADR-004).
-const BookSheet = dynamic(() => import("./book-sheet").then((m) => m.BookSheet));
+import { Link } from "@/lib/i18n/navigation";
 
 type Props = {
   name: string;
+  slug: string;
   shortLink: string;
-  whatsapp?: string;
   directionsUrl?: string | null;
   /** Drawn by the server page: no icon code is sent to the phone. */
   icons: { book: ReactNode; directions: ReactNode; share: ReactNode };
 };
 
 /** The main action (book), then directions and sharing. */
-export function ShowcaseActions({ name, shortLink, whatsapp, directionsUrl, icons }: Props) {
+export function ShowcaseActions({ name, slug, shortLink, directionsUrl, icons }: Props) {
   const t = useTranslations("pros.showcase");
   const toast = useToast();
-  const [bookOpen, setBookOpen] = useState(false);
 
   const share = async () => {
     const data = { title: name, text: t("shareText", { name }), url: shortLink };
@@ -43,10 +39,10 @@ export function ShowcaseActions({ name, shortLink, whatsapp, directionsUrl, icon
 
   return (
     <div className="flex flex-col gap-3">
-      <Button size="lg" fullWidth onClick={() => setBookOpen(true)}>
+      <Link href={`/${slug}/rdv`} className={buttonClasses({ size: "lg", fullWidth: true })}>
         {icons.book}
         {t("book")}
-      </Button>
+      </Link>
       <div className="grid grid-cols-2 gap-3">
         {directionsUrl ? (
           <a
@@ -69,9 +65,6 @@ export function ShowcaseActions({ name, shortLink, whatsapp, directionsUrl, icon
           {t("share")}
         </Button>
       </div>
-      {bookOpen && (
-        <BookSheet open={bookOpen} onOpenChange={setBookOpen} name={name} whatsapp={whatsapp} />
-      )}
     </div>
   );
 }

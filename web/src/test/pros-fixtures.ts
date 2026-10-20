@@ -15,7 +15,11 @@ export const SERVICE: Service = {
   available_at_home: false,
   is_active: true,
   position: 0,
-  steps: [{ kind: "work", label: "", duration_minutes: 300 }],
+  steps: [
+    { kind: "work", label: "", duration_minutes: 300, other_staff_ok: false, resource_id: null },
+  ],
+  deposit_kind: "none",
+  deposit_value: 0,
   options: [{ name: "Mèches fournies", price_minor: 5000, extra_minutes: 0 }],
   photos: [],
 };

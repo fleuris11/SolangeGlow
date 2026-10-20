@@ -32,6 +32,14 @@
   --peau-4: #7a4a2c;
   --peau-5: #4f2e1c;
   --cheveux: #241018;
+
+  /* Colours a pro can give to the people of her agenda (stored with each person). */
+  --agenda-1: #c8102e;
+  --agenda-2: #7a3e9d;
+  --agenda-3: #1f7a5a;
+  --agenda-4: #b54708;
+  --agenda-5: #2563a8;
+  --agenda-6: #a8326e;
   color-scheme: light;
 }
 

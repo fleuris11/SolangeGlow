@@ -164,3 +164,19 @@ export async function pickupPointsOnServer(locale: string) {
   const { data } = await api.GET("/api/v1/selection/pickup-points");
   return data ?? [];
 }
+
+// --- Appointments (module 8) ---------------------------------------------------------------------
+
+/** The booking page of a pro, or null when she does not take online bookings. */
+export async function bookingOnServer(
+  slug: string,
+  locale: string,
+): Promise<Schemas["BookingPage"] | null> {
+  const api = await serverApi(locale);
+  const { data, response } = await api.GET("/api/v1/pros/{slug}/booking", {
+    params: { path: { slug } },
+  });
+  if (response.status === 404) return null;
+  if (!response.ok || !data) throw new Error(`Booking ${slug}: ${response.status}`);
+  return data;
+}

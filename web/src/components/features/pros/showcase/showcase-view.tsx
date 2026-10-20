@@ -105,7 +105,7 @@ function OpeningLine({ showcase }: { showcase: Showcase }) {
   );
 }
 
-function ServiceRow({ service }: { service: Service }) {
+function ServiceRow({ service, slug }: { service: Service; slug: string }) {
   const t = useTranslations("pros.showcase");
   const duration = durationParts(service.duration_minutes);
   return (
@@ -150,6 +150,13 @@ function ServiceRow({ service }: { service: Service }) {
           ))}
         </ul>
       )}
+      <Link
+        href={`/${slug}/rdv?service=${service.id}`}
+        className={buttonClasses({ variant: "secondary", className: "self-start" })}
+      >
+        <CalendarCheck aria-hidden size={22} />
+        {t("bookService")}
+      </Link>
     </li>
   );
 }
@@ -258,8 +265,8 @@ export function ShowcaseView({
         </div>
         <ShowcaseActions
           name={name}
+          slug={showcase.slug}
           shortLink={showcase.short_link}
-          whatsapp={showcase.social_links.whatsapp}
           directionsUrl={place.directions_url}
           icons={{
             book: <CalendarCheck aria-hidden size={26} weight="bold" />,
@@ -297,7 +304,7 @@ export function ShowcaseView({
               )}
               <ul className="flex flex-col">
                 {group.services.map((service) => (
-                  <ServiceRow key={service.id} service={service} />
+                  <ServiceRow key={service.id} service={service} slug={showcase.slug} />
                 ))}
               </ul>
             </div>

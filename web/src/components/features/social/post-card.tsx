@@ -166,7 +166,10 @@ export function PostCard({ post, eager = false }: { post: Post; eager?: boolean 
           <TradeLabel trade={post.trade.key} className="text-small text-prune-doux" />
         )}
         {post.service && author.pro_slug && (
-          <Link href={`/${author.pro_slug}`} className={buttonClasses({ fullWidth: true })}>
+          <Link
+            href={`/${author.pro_slug}/rdv?service=${post.service.id}&post=${post.id}`}
+            className={buttonClasses({ fullWidth: true })}
+          >
             <CalendarCheck aria-hidden size={22} weight="bold" />
             {t("bookLook")}
           </Link>

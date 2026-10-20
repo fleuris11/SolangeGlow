@@ -3,6 +3,8 @@
 import {
   AirplaneTilt,
   BookmarkSimple,
+  CalendarCheck,
+  CalendarDots,
   CaretRight,
   Heart,
   Images,
@@ -20,6 +22,11 @@ import type { ReactNode } from "react";
 import { Link } from "@/lib/i18n/navigation";
 
 const LINKS: { href: string; key: string; icon: ReactNode }[] = [
+  {
+    href: "/appointments",
+    key: "appointments",
+    icon: <CalendarCheck size={28} weight="duotone" />,
+  },
   { href: "/cart", key: "cart", icon: <ShoppingBag size={28} weight="duotone" /> },
   { href: "/orders", key: "orders", icon: <Package size={28} weight="duotone" /> },
   { href: "/wishlist", key: "wishlist", icon: <Heart size={28} weight="duotone" /> },
@@ -33,6 +40,7 @@ const LINKS: { href: string; key: string; icon: ReactNode }[] = [
   { href: "/following", key: "following", icon: <UsersThree size={28} weight="duotone" /> },
   { href: "/me/reviews", key: "reviews", icon: <Star size={28} weight="duotone" /> },
   { href: "/payments", key: "payments", icon: <Receipt size={28} weight="duotone" /> },
+  { href: "/pro/agenda", key: "agenda", icon: <CalendarDots size={28} weight="duotone" /> },
   { href: "/pro/wallet", key: "wallet", icon: <Wallet size={28} weight="duotone" /> },
   { href: "/pro/shop", key: "myShop", icon: <Storefront size={28} weight="duotone" /> },
 ];

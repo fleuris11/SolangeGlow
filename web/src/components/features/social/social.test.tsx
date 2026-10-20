@@ -77,7 +77,7 @@ describe("PostCard", () => {
     expect(screen.getByLabelText("Pro vérifiée")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Réserver ce look/ })).toHaveAttribute(
       "href",
-      "/fr/aicha",
+      "/fr/aicha/rdv?service=s1&post=p1",
     );
   });
 

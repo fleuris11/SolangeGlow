@@ -1,7 +1,7 @@
 "use client";
 
 import { Clock, PencilSimple, Plus, Trash, Van } from "@phosphor-icons/react";
-import { useQueryClient } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
@@ -12,6 +12,7 @@ import { PriceTag } from "@/components/ui/price-tag";
 import { Sheet } from "@/components/ui/sheet";
 import { SwitchRow } from "@/components/ui/switch-row";
 import { useToast } from "@/components/ui/toast";
+import { getAgendaSettings } from "@/lib/api/booking";
 import { ApiError } from "@/lib/api/client";
 import {
   createCategory,
@@ -39,7 +40,11 @@ type Draft = {
   pose: number;
   after: number;
   atHome: boolean;
-  options: { name: string; price: string }[];
+  afterByOther: boolean;
+  resourceId: string;
+  depositKind: "none" | "amount" | "percent";
+  deposit: string;
+  options: { name: string; price: string; minutes: number }[];
 };
 
 const WORK = [15, 30, 45, 60, 75, 90, 120, 150, 180, 240, 300, 360, 480];
@@ -70,6 +75,10 @@ function draftOf(service: Service | null, currency: string): Draft {
       pose: 0,
       after: 0,
       atHome: false,
+      afterByOther: false,
+      resourceId: "",
+      depositKind: "none",
+      deposit: "",
       options: [],
     };
   }
@@ -87,9 +96,19 @@ function draftOf(service: Service | null, currency: string): Draft {
     pose: service.waiting_minutes,
     after: later.reduce((sum, step) => sum + (step.kind === "work" ? step.duration_minutes : 0), 0),
     atHome: service.available_at_home,
+    afterByOther: later.some((step) => step.other_staff_ok),
+    resourceId: service.steps.find((step) => step.resource_id)?.resource_id ?? "",
+    depositKind: service.deposit_kind,
+    deposit:
+      service.deposit_kind === "amount"
+        ? toMajor(service.deposit_value, currency)
+        : service.deposit_kind === "percent"
+          ? String(service.deposit_value)
+          : "",
     options: service.options.map((option) => ({
       name: option.name,
       price: toMajor(option.price_minor ?? 0, currency),
+      minutes: option.extra_minutes ?? 0,
     })),
   };
 }
@@ -106,6 +125,13 @@ export function ServicesSection({ pro }: { pro: MyPro }) {
   const [busy, setBusy] = useState(false);
   const currency = pro.currency || "XOF";
   const set = (changes: Partial<Draft>) => setDraft((current) => ({ ...current, ...changes }));
+  const agenda = useQuery({
+    queryKey: ["agenda-settings"],
+    queryFn: getAgendaSettings,
+    enabled: editing !== null,
+    retry: false,
+  });
+  const resources = agenda.data?.resources ?? [];
 
   const open = (service: Service | null) => {
     setDraft(draftOf(service, currency));
@@ -123,10 +149,25 @@ export function ServicesSection({ pro }: { pro: MyPro }) {
       if (draft.categoryId === "new" && draft.newCategory.trim()) {
         categoryId = (await createCategory(draft.newCategory.trim())).id;
       } else if (draft.categoryId === "new") categoryId = null;
-      const steps: ServiceInput["steps"] = [{ kind: "work", duration_minutes: draft.work }];
+      const resource = draft.resourceId || null;
+      const steps: ServiceInput["steps"] = [
+        { kind: "work", duration_minutes: draft.work, resource_id: resource },
+      ];
       if (draft.pose > 0) {
-        steps.push({ kind: "wait", duration_minutes: draft.pose, label: t("poseLabel") });
-        if (draft.after > 0) steps.push({ kind: "work", duration_minutes: draft.after });
+        steps.push({
+          kind: "wait",
+          duration_minutes: draft.pose,
+          label: t("poseLabel"),
+          resource_id: resource,
+        });
+        if (draft.after > 0) {
+          steps.push({
+            kind: "work",
+            duration_minutes: draft.after,
+            other_staff_ok: draft.afterByOther,
+            resource_id: resource,
+          });
+        }
       }
       const body: ServiceInput = {
         name: draft.name,
@@ -135,12 +176,20 @@ export function ServicesSection({ pro }: { pro: MyPro }) {
         price_kind: draft.priceKind,
         price_minor: draft.priceKind === "quote" ? null : toMinor(draft.price, currency),
         available_at_home: draft.atHome,
+        deposit_kind: draft.depositKind,
+        deposit_value:
+          draft.depositKind === "amount"
+            ? (toMinor(draft.deposit, currency) ?? 0)
+            : draft.depositKind === "percent"
+              ? Math.round(Number(draft.deposit) || 0)
+              : 0,
         steps,
         options: draft.options
           .filter((option) => option.name.trim())
           .map((option) => ({
             name: option.name.trim(),
             price_minor: toMinor(option.price || "0", currency) ?? 0,
+            extra_minutes: option.minutes,
           })),
       };
       if (editing === "new") await createService(body);
@@ -306,6 +355,64 @@ export function ServicesSection({ pro }: { pro: MyPro }) {
             )}
           </div>
           <p className="text-small text-prune-doux">{t("poseHelp")}</p>
+          {draft.pose > 0 && draft.after > 0 && (
+            <SwitchRow
+              icon={<Clock size={28} weight="duotone" />}
+              label={t("afterByOther")}
+              description={t("afterByOtherHelp")}
+              checked={draft.afterByOther}
+              onChange={(value) => set({ afterByOther: value })}
+            />
+          )}
+          {resources.length > 0 && (
+            <div className="flex flex-col gap-2">
+              <label htmlFor="service-resource" className="font-bold">
+                {t("resource")}
+              </label>
+              <select
+                id="service-resource"
+                value={draft.resourceId}
+                onChange={(event) => set({ resourceId: event.target.value })}
+                className={fieldClass}
+              >
+                <option value="">{t("noResource")}</option>
+                {resources.map((resource) => (
+                  <option key={resource.id} value={resource.id}>
+                    {resource.name}
+                  </option>
+                ))}
+              </select>
+              <p className="text-small text-prune-doux">{t("resourceHelp")}</p>
+            </div>
+          )}
+
+          <fieldset className="flex flex-col gap-2">
+            <legend className="mb-2 font-bold">{t("deposit")}</legend>
+            <div className="flex flex-wrap gap-2">
+              {(["none", "amount", "percent"] as const).map((kind) => (
+                <Chip
+                  key={kind}
+                  selected={draft.depositKind === kind}
+                  onClick={() => set({ depositKind: kind })}
+                >
+                  {t(`depositKinds.${kind}`)}
+                </Chip>
+              ))}
+            </div>
+            {draft.depositKind !== "none" && (
+              <Input
+                label={
+                  draft.depositKind === "amount"
+                    ? t("depositAmount", { currency: currency === "XOF" ? "FCFA" : "€" })
+                    : t("depositPercent")
+                }
+                inputMode="decimal"
+                value={draft.deposit}
+                onChange={(event) => set({ deposit: event.target.value })}
+              />
+            )}
+            <p className="text-small text-prune-doux">{t("depositHelp")}</p>
+          </fieldset>
 
           <div className="flex flex-col gap-2">
             <label htmlFor="service-description" className="font-bold">
@@ -358,6 +465,29 @@ export function ServicesSection({ pro }: { pro: MyPro }) {
                     })
                   }
                 />
+                <div className="flex flex-col gap-2">
+                  <label htmlFor={`option-minutes-${index}`} className="font-bold">
+                    {t("optionMinutes")}
+                  </label>
+                  <select
+                    id={`option-minutes-${index}`}
+                    value={option.minutes}
+                    onChange={(event) =>
+                      set({
+                        options: draft.options.map((item, i) =>
+                          i === index ? { ...item, minutes: Number(event.target.value) } : item,
+                        ),
+                      })
+                    }
+                    className={fieldClass}
+                  >
+                    {AFTER.map((minutes) => (
+                      <option key={minutes} value={minutes}>
+                        {minutes === 0 ? t("none") : tShowcase("duration", durationParts(minutes))}
+                      </option>
+                    ))}
+                  </select>
+                </div>
                 <Button
                   variant="quiet"
                   onClick={() => set({ options: draft.options.filter((_, i) => i !== index) })}
@@ -369,7 +499,9 @@ export function ServicesSection({ pro }: { pro: MyPro }) {
             ))}
             <Button
               variant="secondary"
-              onClick={() => set({ options: [...draft.options, { name: "", price: "" }] })}
+              onClick={() =>
+                set({ options: [...draft.options, { name: "", price: "", minutes: 0 }] })
+              }
             >
               <Plus aria-hidden size={20} weight="bold" />
               {t("addOption")}
