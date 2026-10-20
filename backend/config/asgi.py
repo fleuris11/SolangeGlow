@@ -11,11 +11,12 @@ from channels.routing import ProtocolTypeRouter, URLRouter  # noqa: E402
 from channels.security.websocket import AllowedHostsOriginValidator  # noqa: E402
 
 from apps.accounts.ws_auth import JwtCookieAuthMiddleware  # noqa: E402
+from apps.booking.routing import websocket_urlpatterns as agenda_routes  # noqa: E402
 from apps.messaging.routing import websocket_urlpatterns as messaging_routes  # noqa: E402
 from apps.notifications.routing import websocket_urlpatterns as notification_routes  # noqa: E402
 
 # Each module adds its WebSocket routes here.
-websocket_urlpatterns = [*notification_routes, *messaging_routes]
+websocket_urlpatterns = [*notification_routes, *messaging_routes, *agenda_routes]
 
 application = ProtocolTypeRouter(
     {

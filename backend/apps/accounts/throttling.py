@@ -20,6 +20,7 @@ DEFAULT_RATES = {
     "receipt_code": "20/hour",
     "shop": "120/minute",
     "selection": "60/minute",
+    "booking": "60/minute",
 }
 
 

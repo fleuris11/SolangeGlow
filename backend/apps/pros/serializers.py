@@ -42,10 +42,25 @@ Media = MediaSerializer(allow_null=True)
 
 
 class StepSerializer(serializers.ModelSerializer):
+    resource_id = serializers.SerializerMethodField()
+
     class Meta:
         model = ServiceStep
-        fields = ["kind", "label", "duration_minutes"]
-        extra_kwargs = {"label": {"required": False}}
+        fields = ["kind", "label", "duration_minutes", "other_staff_ok", "resource_id"]
+        extra_kwargs = {"label": {"required": False}, "other_staff_ok": {"required": True}}
+
+    @extend_schema_field(serializers.UUIDField(allow_null=True))
+    def get_resource_id(self, step):
+        need = getattr(step, "resource_need", None)
+        return str(need.resource_id) if need else None
+
+
+class StepWriteSerializer(serializers.Serializer):
+    kind = serializers.ChoiceField(choices=ServiceStep.Kind.choices)
+    label = serializers.CharField(max_length=60, required=False, allow_blank=True)
+    duration_minutes = serializers.IntegerField(min_value=1, max_value=24 * 60)
+    other_staff_ok = serializers.BooleanField(required=False)
+    resource_id = serializers.UUIDField(required=False, allow_null=True)
 
 
 class OptionSerializer(serializers.ModelSerializer):
@@ -84,6 +99,8 @@ class ServiceSerializer(serializers.ModelSerializer):
             "work_minutes",
             "waiting_minutes",
             "available_at_home",
+            "deposit_kind",
+            "deposit_value",
             "is_active",
             "position",
             "steps",
@@ -109,9 +126,13 @@ class ServiceWriteSerializer(serializers.Serializer):
     price_kind = serializers.ChoiceField(choices=Service.PriceKind.choices)
     price_minor = serializers.IntegerField(required=False, allow_null=True, min_value=0)
     available_at_home = serializers.BooleanField(required=False)
+    deposit_kind = serializers.ChoiceField(
+        choices=Service._meta.get_field("deposit_kind").choices, required=False
+    )
+    deposit_value = serializers.IntegerField(required=False, min_value=0)
     is_active = serializers.BooleanField(required=False)
     position = serializers.IntegerField(required=False, min_value=0)
-    steps = StepSerializer(many=True, required=False)
+    steps = StepWriteSerializer(many=True, required=False)
     options = OptionSerializer(many=True, required=False)
 
 

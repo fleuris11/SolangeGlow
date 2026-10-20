@@ -21,7 +21,7 @@ def visible_services() -> QuerySet[Service]:
     return (
         Service.objects.filter(is_active=True, archived_at__isnull=True)
         .select_related("trade", "category")
-        .prefetch_related("steps", "options", "photos__media")
+        .prefetch_related("steps__resource_need", "options", "photos__media")
         .order_by("position", "name")
     )
 

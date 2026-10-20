@@ -400,7 +400,7 @@ class MyServicesView(MyProBaseView):
         services_ = selectors.visible_services().filter(pro=self.pro(request))
         hidden = Service.objects.filter(
             pro__user=request.user, is_active=False, archived_at__isnull=True
-        ).prefetch_related("steps", "options", "photos__media")
+        ).prefetch_related("steps__resource_need", "options", "photos__media")
         rows = [*services_, *hidden]
         return Response(s.ServiceSerializer(rows, many=True, context={"owner": True}).data)
 

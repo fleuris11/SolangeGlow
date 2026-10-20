@@ -16,6 +16,7 @@ api_v1 = [
     path("", include("apps.payments.urls")),
     path("", include("apps.shop.urls")),
     path("", include("apps.selection_france.urls")),
+    path("", include("apps.booking.urls")),
     path("", include("apps.pros.urls")),
     path("", include("apps.accounts.urls")),
     path("", include("apps.notifications.urls")),
