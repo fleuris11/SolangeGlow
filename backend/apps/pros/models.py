@@ -300,6 +300,18 @@ class Service(BaseModel):
         _("total duration (min)"), default=0, help_text=_("Sum of the steps.")
     )
     available_at_home = models.BooleanField(_("also at the client's home"), default=False)
+    # Module 8: the deposit asked when booking (paid through the secure payment).
+    deposit_kind = models.CharField(
+        _("deposit"),
+        max_length=8,
+        choices=[("none", _("None")), ("amount", _("Amount")), ("percent", _("Percentage"))],
+        default="none",
+    )
+    deposit_value = models.PositiveIntegerField(
+        _("deposit value"),
+        default=0,
+        help_text=_("An amount in the smallest unit, or a percentage (100 = paid in full)."),
+    )
     position = models.PositiveSmallIntegerField(_("position"), default=0)
     is_active = models.BooleanField(_("shown"), default=True)
     archived_at = models.DateTimeField(_("archived at"), null=True, blank=True)
@@ -341,6 +353,11 @@ class ServiceStep(BaseModel):
     duration_minutes = models.PositiveIntegerField(_("duration (min)"))
     # Module 8: steps that need someone (work) are assigned to a collaborator.
     needs_staff = models.BooleanField(_("needs someone"), default=True)
+    other_staff_ok = models.BooleanField(
+        _("another person may do it"),
+        default=False,
+        help_text=_("The step can be done by someone else than the previous one."),
+    )
 
     class Meta:
         verbose_name = _("step")

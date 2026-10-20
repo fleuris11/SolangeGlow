@@ -7,4 +7,5 @@ class Role(models.TextChoices):
 
     CLIENT = "client", _("Client")
     PRO = "pro", _("Professional")
+    COLLABORATOR = "collaborator", _("Collaborator of a salon")
     STAFF = "staff", _("Staff")
