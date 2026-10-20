@@ -16,6 +16,7 @@ from apps.accounts.models import GuestIdentity, SignupChannel, User
 from apps.booking.demo import seed_booking
 from apps.core.choices import Role
 from apps.core.models import Country
+from apps.glowpro.demo import seed_glowpro
 from apps.notifications.services import notify
 from apps.pros import demo
 from apps.pros.models import ProProfile
@@ -53,6 +54,7 @@ class Command(BaseCommand):
             social = seed_social()
         shop = seed_shop()
         selection = seed_selection()
+        glowpro = seed_glowpro()
         booking = seed_booking()
         self.stdout.write(
             self.style.SUCCESS(
@@ -61,7 +63,8 @@ class Command(BaseCommand):
                 f"{social['reviews']} reviews, {shop['shops']} shops, "
                 f"{shop['products']} new products, {shop['orders']} demo orders, "
                 f"{selection['products']} France Selection products, "
-                f"{booking['agendas']} agendas with {booking['appointments']} new appointments."
+                f"{booking['agendas']} agendas with {booking['appointments']} new appointments, "
+                f"{glowpro['premium']} Glow Pro subscriptions."
             )
         )
 

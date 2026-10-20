@@ -68,6 +68,9 @@ LOCAL_APPS = [
     "apps.selection_france",
     "apps.academy",
     "apps.booking",
+    "apps.glowpro",
+    "apps.salon",
+    "apps.invoicing",
     "apps.gamification",
     "apps.ads",
     "apps.moderation",
@@ -279,6 +282,21 @@ SPECTACULAR_SETTINGS = {
         "AppointmentStatusEnum": "apps.booking.models.Appointment.Status",
         "AppointmentSourceEnum": "apps.booking.models.Appointment.Source",
         "WaitlistStatusEnum": "apps.booking.models.WaitlistEntry.Status",
+        "DocumentKindEnum": "apps.invoicing.models.Document.Kind",
+        "EInvoiceStatusEnum": "apps.invoicing.models.Document.EInvoice",
+        "StockItemKindEnum": "apps.salon.models.StockItem.Kind",
+        "StockUnitEnum": "apps.salon.models.StockItem.Unit",
+        "StockMovementKindEnum": "apps.salon.models.StockMovement.Kind",
+        "StockMoveKindEnum": ["in", "out", "sale", "loss"],
+        "MarketingChannelEnum": "apps.salon.models.Channel",
+        "OnSiteMethodEnum": "apps.salon.models.OnSitePayment.Method",
+        "GiftCardStatusEnum": "apps.salon.models.GiftCard.Status",
+        "SoldPackageStatusEnum": "apps.salon.models.ClientPackage.Status",
+        "InstallmentStatusEnum": "apps.salon.models.Installment.Status",
+        "CampaignSegmentEnum": "apps.salon.models.Campaign.Segment",
+        "CampaignStatusEnum": "apps.salon.models.Campaign.Status",
+        "SubscriptionStatusEnum": "apps.glowpro.models.Subscription.Status",
+        "GlowFeatureEnum": "apps.glowpro.models.Feature",
     },
 }
 
@@ -415,7 +433,19 @@ CELERY_BEAT_SCHEDULE = {
         "task": "apps.selection_france.tasks.run_deadlines",
         "schedule": crontab(minute="*/15"),
     },
+    "glowpro.run_subscriptions": {
+        "task": "apps.glowpro.tasks.run_subscriptions",
+        "schedule": crontab(minute=20),
+    },
+    "salon.run_daily": {
+        "task": "apps.salon.tasks.run_daily",
+        "schedule": crontab(hour=7, minute=30),
+    },
 }
+
+# Approved e-invoicing platform and card terminal: empty until a partner is chosen.
+EINVOICE_PROVIDER = env("EINVOICE_PROVIDER", default="")
+TERMINAL_PROVIDER = env("TERMINAL_PROVIDER", default="")
 
 # --- Platform settings cache ----------------------------------------------------
 
@@ -665,6 +695,67 @@ UNFOLD = {
                         "title": _("Pick-up points"),
                         "icon": "place",
                         "link": reverse_lazy("admin:selection_france_pickuppoint_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("Glow Pro"),
+                "separator": True,
+                "items": [
+                    {
+                        "title": _("Appointments"),
+                        "icon": "event",
+                        "link": reverse_lazy("admin:booking_appointment_changelist"),
+                    },
+                    {
+                        "title": _("Agenda people"),
+                        "icon": "groups",
+                        "link": reverse_lazy("admin:booking_staffmember_changelist"),
+                    },
+                    {
+                        "title": _("Glow Pro plans"),
+                        "icon": "workspace_premium",
+                        "link": reverse_lazy("admin:glowpro_plan_changelist"),
+                    },
+                    {
+                        "title": _("Subscriptions"),
+                        "icon": "card_membership",
+                        "link": reverse_lazy("admin:glowpro_subscription_changelist"),
+                    },
+                    {
+                        "title": _("Gift cards"),
+                        "icon": "redeem",
+                        "link": reverse_lazy("admin:salon_giftcard_changelist"),
+                    },
+                    {
+                        "title": _("Packages"),
+                        "icon": "inventory",
+                        "link": reverse_lazy("admin:salon_clientpackage_changelist"),
+                    },
+                    {
+                        "title": _("Salon stock"),
+                        "icon": "inventory_2",
+                        "link": reverse_lazy("admin:salon_stockitem_changelist"),
+                    },
+                    {
+                        "title": _("Payments at the salon"),
+                        "icon": "point_of_sale",
+                        "link": reverse_lazy("admin:salon_onsitepayment_changelist"),
+                    },
+                    {
+                        "title": _("Campaigns"),
+                        "icon": "campaign",
+                        "link": reverse_lazy("admin:salon_campaign_changelist"),
+                    },
+                    {
+                        "title": _("Invoices and receipts"),
+                        "icon": "receipt",
+                        "link": reverse_lazy("admin:invoicing_document_changelist"),
+                    },
+                    {
+                        "title": _("Invoice issuers"),
+                        "icon": "badge",
+                        "link": reverse_lazy("admin:invoicing_issuer_changelist"),
                     },
                 ],
             },

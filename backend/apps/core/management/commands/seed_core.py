@@ -1119,6 +1119,96 @@ SETTINGS += [
 ]
 
 
+# Glow Pro offers and salon management (prompt 12).
+SETTINGS += [
+    _s(
+        "glowpro.renewal_notice_days",
+        INT,
+        "3",
+        "Jours avant la fin du mois où la pro reçoit le paiement du mois suivant (ou la fin de l'essai).",
+        "Days before the end of the month when the pro gets the payment of next month (or the end of the trial).",
+    ),
+    _s(
+        "glowpro.grace_days",
+        INT,
+        "7",
+        "Jours de grâce après un mois non payé avant le retour à l'offre gratuite.",
+        "Days of grace after an unpaid month before going back to the free plan.",
+    ),
+    {
+        **_s(
+            "glowpro.house_email",
+            STR,
+            "glowpro.bj@solangeglow.com",
+            "Compte de la plateforme qui vend les abonnements au Bénin.",
+            "Platform account that sells the subscriptions in Benin.",
+        ),
+        "country": "BJ",
+    },
+    {
+        **_s(
+            "glowpro.house_email",
+            STR,
+            "glowpro.fr@solangeglow.com",
+            "Compte de la plateforme qui vend les abonnements en France.",
+            "Platform account that sells the subscriptions in France.",
+        ),
+        "country": "FR",
+    },
+    _s(
+        "salon.cash_countries",
+        JSON,
+        '["BJ"]',
+        "Pays où la pro peut enregistrer des paiements en espèces ou Mobile Money (pas une caisse certifiée NF525 : à ne pas ouvrir en France sans avis).",
+        "Countries where the pro can record cash or Mobile Money payments (not a certified NF525 till: do not open in France without advice).",
+    ),
+    _s(
+        "salon.gift_card_validity_days",
+        INT,
+        "365",
+        "Durée de validité d'une carte cadeau (jours).",
+        "How long a gift card can be used (days).",
+    ),
+    {
+        **_s(
+            "salon.gift_card_limits",
+            JSON,
+            "[5000, 500000]",
+            "Montant minimum et maximum d'une carte cadeau (FCFA).",
+            "Minimum and maximum amount of a gift card (FCFA).",
+        ),
+        "country": "BJ",
+    },
+    {
+        **_s(
+            "salon.gift_card_limits",
+            JSON,
+            "[1000, 50000]",
+            "Montant minimum et maximum d'une carte cadeau (centimes d'euro).",
+            "Minimum and maximum amount of a gift card (euro cents).",
+        ),
+        "country": "FR",
+    },
+    _s(
+        "throttle.salon",
+        STR,
+        "120/minute",
+        "Limite des actions de gestion du salon par adresse IP.",
+        "Salon management actions limit per IP address.",
+    ),
+    _s(
+        "throttle.widget",
+        STR,
+        "120/minute",
+        "Limite des appels du widget de réservation par adresse IP.",
+        "Booking widget calls limit per IP address.",
+    ),
+]
+
+# Monthly price of Premium (created with the countries; edited in the admin afterwards).
+PLAN_PRICES = [("premium", "BJ", "XOF", 9_900), ("premium", "FR", "EUR", 2_900)]
+
+
 class Command(BaseCommand):
     help = "Create countries (BJ, FR), currencies (XOF, EUR) and the platform settings."
 
@@ -1153,6 +1243,17 @@ class Command(BaseCommand):
                 key=key, country=country, defaults=data
             )
             created["settings"] += was_created
+
+        from apps.glowpro.models import Plan, PlanPrice
+
+        for key, code, currency, amount in PLAN_PRICES:
+            plan = Plan.objects.filter(key=key).first()
+            if plan is not None and code in countries:
+                PlanPrice.objects.get_or_create(
+                    plan=plan,
+                    country=countries[code],
+                    defaults={"currency": currency, "amount_minor": amount},
+                )
 
         self.stdout.write(
             self.style.SUCCESS(
