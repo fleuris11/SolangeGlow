@@ -133,3 +133,33 @@ class PushSubscription(BaseModel):
 
     def __str__(self):
         return f"{self.user} {self.user_agent[:40]}"
+
+
+class ContactMessage(BaseModel):
+    """A message to someone without an account (a guest who booked): WhatsApp first, then
+    SMS when WhatsApp cannot be used. Same templates as the notifications."""
+
+    class Status(models.TextChoices):
+        PENDING = "pending", _("Waiting")
+        SENT = "sent", _("Sent")
+        FAILED = "failed", _("Failed")
+
+    phone = models.CharField(_("phone"), max_length=20)
+    event_key = models.CharField(_("event"), max_length=80)
+    channel = models.CharField(_("channel"), max_length=10, choices=Channel.choices)
+    title = models.CharField(_("title"), max_length=200, blank=True)
+    body = models.TextField(_("text"), blank=True)
+    status = models.CharField(
+        _("status"), max_length=10, choices=Status.choices, default=Status.PENDING
+    )
+    attempts = models.PositiveSmallIntegerField(_("attempts"), default=0)
+    error = models.CharField(_("error"), max_length=255, blank=True)
+    sent_at = models.DateTimeField(_("sent at"), null=True, blank=True)
+
+    class Meta:
+        verbose_name = _("message to a guest")
+        verbose_name_plural = _("messages to guests")
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"{self.event_key} ({self.get_channel_display()})"

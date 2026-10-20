@@ -13,3 +13,9 @@ def deliver_notification(self, delivery_id: str) -> str:
             services.mark_failed(delivery_id)
             return "failed"
         raise self.retry(exc=exc, countdown=60 * 2**self.request.retries) from exc
+
+
+@shared_task(acks_late=True)
+def deliver_contact_message(message_id: str) -> str:
+    """A message to a guest (no account): WhatsApp, else SMS."""
+    return services.deliver_contact(message_id)

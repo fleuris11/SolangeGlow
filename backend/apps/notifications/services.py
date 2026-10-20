@@ -17,7 +17,13 @@ from apps.core.providers import ProviderError, ProviderNotConfigured
 
 from . import quiet_hours, realtime
 from .channels import SENDERS
-from .models import Channel, Notification, NotificationDelivery, NotificationTemplate
+from .models import (
+    Channel,
+    ContactMessage,
+    Notification,
+    NotificationDelivery,
+    NotificationTemplate,
+)
 
 logger = logging.getLogger("solangeglow.notifications")
 
@@ -205,3 +211,73 @@ def mark_read(user, ids: list[str] | None = None) -> int:
     count = queryset.update(read_at=timezone.now())
     realtime.push_update(user.pk, unread_count(user))
     return count
+
+
+# --- Guests (no account): WhatsApp, then SMS -----------------------------------------------------
+
+CONTACT_CHANNELS = (Channel.WHATSAPP, Channel.SMS)
+
+
+def notify_contact(
+    phone: str, event_key: str, context: dict | None = None, *, language: str = "fr"
+):
+    """Sends an event to a phone number without account (guest), in her language.
+
+    WhatsApp when its template is active, else SMS; a WhatsApp that cannot be delivered
+    falls back on SMS. Returns the ContactMessage, or None (no number, no template).
+    """
+    if not phone:
+        return None
+    templates = {
+        t.channel: t
+        for t in NotificationTemplate.objects.filter(
+            event_key=event_key, channel__in=CONTACT_CHANNELS, is_active=True
+        )
+    }
+    channel = next((c for c in CONTACT_CHANNELS if c in templates), None)
+    if channel is None:
+        logger.warning("No guest template for event %s", event_key)
+        return None
+    with translation.override(language):
+        template = templates[channel]
+        title = _render(template.title, context or {})
+        body = _render(template.body, context or {})
+    message = ContactMessage.objects.create(
+        phone=phone, event_key=event_key, channel=channel, title=title, body=body
+    )
+
+    def after_commit():
+        from .tasks import deliver_contact_message
+
+        deliver_contact_message.delay(str(message.pk))
+
+    transaction.on_commit(after_commit)
+    return message
+
+
+def deliver_contact(message_id: str) -> str:
+    """Sends one guest message; WhatsApp that fails becomes an SMS (same text)."""
+    from apps.core.providers import sms_client, whatsapp_client
+
+    message = ContactMessage.objects.filter(pk=message_id).first()
+    if message is None or message.status != ContactMessage.Status.PENDING:
+        return message.status if message else "missing"
+    message.attempts += 1
+    try:
+        if message.channel == Channel.WHATSAPP:
+            text = "\n".join(filter(None, (message.title, message.body)))
+            whatsapp_client().send_text(message.phone, text)
+        else:
+            sms_client().send(message.phone, message.body)
+    except (ProviderNotConfigured, ProviderError) as exc:
+        message.error = str(exc)[:255]
+        if message.channel == Channel.WHATSAPP:
+            message.channel = Channel.SMS
+            message.save(update_fields=["channel", "error", "attempts", "updated_at"])
+            return deliver_contact(message_id)
+        message.status = ContactMessage.Status.FAILED
+    else:
+        message.status = ContactMessage.Status.SENT
+        message.sent_at = timezone.now()
+    message.save()
+    return message.status
