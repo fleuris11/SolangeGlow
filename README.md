@@ -240,6 +240,29 @@ Le calcul détaillé du prix est sur chaque fiche produit de l'admin ; « Recalc
 prix » après un changement des paramètres d'une catégorie. Réglages : `selection.*` (taux,
 arrondi, paramètres par défaut, délais, pays, devis, blocage des parfums et aérosols).
 
+## Tester les rendez-vous en local
+
+Avec les données de démo (`seed_demo`) :
+
+1. Ouvre http://localhost:3000/fr/bene-coiffure/rdv sans être connectée : choisis
+   « Brushing », un créneau, donne un prénom et un numéro : « Demande envoyée » (Béné
+   Coiffure confirme chaque demande). Garde le lien « Voir mon rendez-vous ».
+2. Connecte-toi comme Bénédicta (+2290196000109) : http://localhost:3000/fr/pro/agenda,
+   « 1 demande à confirmer », « Confirmer » (ou « Proposer un autre créneau »).
+3. Institut Prisca (+2290197000108) a une équipe de quatre : vue « Jour » par personne,
+   « Semaine », glisser un rendez-vous pour le déplacer, toucher une heure libre pour
+   ajouter un rendez-vous ou bloquer un moment. « Réglages » : équipe, horaires, règles,
+   matériel, dernière minute, lien et QR code, adresse iCal. « Clientes » : fiches.
+4. Côté cliente : http://localhost:3000/fr/appointments (Awa, +2290197000201, a un
+   rendez-vous demain chez Institut Prisca). Les messages aux invitées (WhatsApp, puis
+   SMS) s'affichent dans les journaux du worker.
+
+Les rappels, les demandes sans réponse, la liste d'attente et les groupes avancent seuls
+(Celery Beat, toutes les 5 minutes). En développement, `POST /api/v1/dev/booking/time-travel`
+(`reference`, `starts_in_minutes`) déplace un rendez-vous dans le temps pour tester ces
+étapes. Réglages : `booking.*` (délais, annulation, retard, lapins, rappels, liste
+d'attente, groupes) et l'interrupteur « booking » par pays.
+
 ## Client de l'API (web)
 
 Les types du client web sont générés depuis le schéma de l'API. Après toute
