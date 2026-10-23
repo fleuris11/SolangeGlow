@@ -32,7 +32,12 @@ test("a guest books, the pro confirms, reminder, done, then a verified review", 
   await guest.screenshot({ path: "e2e/screenshots/booking-service.png", fullPage: true });
   await guest.getByRole("button", { name: /^Brushing/ }).click();
 
-  await expect(guest.getByRole("heading", { name: "Choisis ton créneau" })).toBeVisible();
+  // The team step only shows when several people do the service (Glow Pro runs add some).
+  const staffStep = guest.getByRole("heading", { name: "Avec qui ?" });
+  const timeStep = guest.getByRole("heading", { name: "Choisis ton créneau" });
+  await expect(staffStep.or(timeStep)).toBeVisible();
+  if (await staffStep.isVisible()) await guest.getByRole("button", { name: "Peu importe" }).click();
+  await expect(timeStep).toBeVisible();
   const slot = guest.getByRole("button", { name: /^\d{1,2}\sh(\s\d{2})?$/ }).first();
   await expect(slot).toBeVisible({ timeout: 30_000 });
   await guest.evaluate(() => window.scrollTo(0, 0));
