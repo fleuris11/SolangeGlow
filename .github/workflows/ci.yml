@@ -192,6 +192,17 @@ jobs:
       - name: Demo data (pros of Cotonou, Calavi, Porto-Novo, Paris, Brest)
         run: docker compose exec -T backend python manage.py seed_demo
 
+      # Every journey signs in new people through the same address (the e2e container):
+      # the limit per IP address is raised for this run only, like an admin would.
+      - name: Raise the sign-in code limit per address (journeys only)
+        run: |
+          docker compose exec -T backend python manage.py shell -c "
+          from apps.core.models import PlatformSetting
+          for setting in PlatformSetting.objects.filter(key='otp.max_requests_per_ip_per_hour'):
+              setting.value = '500'
+              setting.save()
+          "
+
       - name: Compile the pages once (development server)
         run: |
           pages="fr en sk fr/auth fr/welcome fr/me fr/notifications fr/design"
