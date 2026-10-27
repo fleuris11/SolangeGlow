@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-27 10:56+0100\n"
+"POT-Creation-Date: 2026-10-27 23:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -172,9 +172,6 @@ msgstr "V tomto live už nie je miesto."
 #, python-format
 msgid "The room opens %(minutes)s minutes before the start."
 msgstr "Miestnosť sa otvorí %(minutes)s minút pred začiatkom."
-
-msgid "The live video is not available yet: it is coming soon."
-msgstr "Živé video zatiaľ nie je dostupné: čoskoro príde."
 
 msgid "No certificate with this code."
 msgstr "Žiadny certifikát s týmto kódom."
@@ -512,9 +509,6 @@ msgstr "dĺžka (min)"
 msgid "places"
 msgstr "miesta"
 
-msgid "room at the broadcast service"
-msgstr "miestnosť u služby vysielania"
-
 msgid "registered"
 msgstr "prihlásené"
 
@@ -743,6 +737,12 @@ msgstr "upozornenia e-mailom"
 
 msgid "push notifications"
 msgstr "push upozornenia"
+
+msgid "receives calls"
+msgstr "prijíma hovory"
+
+msgid "Audio and video calls in the app (never her phone number)."
+msgstr "Hlasové a videohovory v aplikácii (nikdy jej číslo)."
 
 msgid "quiet hours start"
 msgstr "začiatok tichých hodín"
@@ -1901,6 +1901,201 @@ msgstr "Tento doklad neexistuje alebo nie je tvoj."
 msgid "This document was already cancelled by a credit note."
 msgstr "Tento doklad už bol zrušený dobropisom."
 
+msgid "host"
+msgstr "moderátorka"
+
+msgid "Cut the live"
+msgstr "Ukončiť live"
+
+msgid "This live is already over."
+msgstr "Tento live už skončil."
+
+msgid "The live is cut."
+msgstr "Live je ukončený."
+
+msgid "Delete the replay"
+msgstr "Vymazať záznam"
+
+msgid "This live has no replay."
+msgstr "Tento live nemá záznam."
+
+msgid "The replay is deleted."
+msgstr "Záznam je vymazaný."
+
+msgid "Lives"
+msgstr "Live"
+
+msgid "This live does not exist or is not open to you."
+msgstr "Tento live neexistuje alebo ti nie je otvorený."
+
+msgid "Only the host of this live can do this."
+msgstr "Toto môže urobiť len moderátorka live."
+
+msgid "This live is not on air."
+msgstr "Tento live nie je naživo."
+
+#, python-format
+msgid "You can go on air %(minutes)s minutes before the planned time."
+msgstr "Live môžeš spustiť %(minutes)s minút pred plánovaným časom."
+
+msgid "This live is over."
+msgstr "Tento live skončil."
+
+#, python-format
+msgid "The live is full (%(max)s people). Try again in a moment."
+msgstr "Live je plný (%(max)s osôb). Skús to o chvíľu znova."
+
+msgid "Sign in to write a question."
+msgstr "Prihlás sa, aby si mohla napísať otázku."
+
+msgid "You cannot write in this live."
+msgstr "V tomto live nemôžeš písať."
+
+msgid "Write your question (300 characters at most)."
+msgstr "Napíš svoju otázku (najviac 300 znakov)."
+
+msgid "Raising your hand is not possible in this live."
+msgstr "V tomto live sa nedá zdvihnúť ruka."
+
+msgid "This person has not raised her hand."
+msgstr "Táto osoba nezdvihla ruku."
+
+#, python-format
+msgid "You have used your %(max)s lives of the month. Glow Pro Premium gives you more."
+msgstr "Využila si svojich %(max)s live tento mesiac. Glow Pro Premium ti dá viac."
+
+msgid "The live video is not available right now. Try again in a few minutes."
+msgstr "Video live momentálne nie je dostupné. Skús to o pár minút."
+
+msgid "Training live"
+msgstr "Školiaci live"
+
+msgid "Sales live"
+msgstr "Predaj naživo"
+
+msgid "Not started"
+msgstr "Nezačal"
+
+msgid "No replay"
+msgstr "Bez záznamu"
+
+msgid "Recording"
+msgstr "Nahráva sa"
+
+msgid "Being prepared"
+msgstr "Pripravuje sa"
+
+msgid "planned live"
+msgstr "naplánovaný live"
+
+msgid "room at LiveKit"
+msgstr "miestnosť v LiveKit"
+
+msgid "started at"
+msgstr "začal o"
+
+msgid "ended at"
+msgstr "skončil o"
+
+msgid "cut at the latest"
+msgstr "ukončí sa najneskôr"
+
+msgid "Start + the longest length allowed (setting live.max_minutes)."
+msgstr "Začiatok + najdlhšia povolená dĺžka (nastavenie live.max_minutes)."
+
+msgid "watching now"
+msgstr "práve pozerajú"
+
+msgid "most at the same time"
+msgstr "najviac naraz"
+
+msgid "people who came"
+msgstr "prišlo ľudí"
+
+msgid "has the floor"
+msgstr "má slovo"
+
+msgid "cut by the team"
+msgstr "ukončil tím"
+
+msgid "replay"
+msgstr "záznam"
+
+msgid "replay video"
+msgstr "video záznamu"
+
+msgid "replay visible until"
+msgstr "záznam viditeľný do"
+
+msgid "live room"
+msgstr "miestnosť live"
+
+msgid "live rooms"
+msgstr "miestnosti live"
+
+msgid "Visible"
+msgstr "Viditeľné"
+
+msgid "Held for review"
+msgstr "Zadržané na posúdenie"
+
+msgid "Removed"
+msgstr "Odstránené"
+
+msgid "author"
+msgstr "autorka"
+
+msgid "second of the live"
+msgstr "sekunda live"
+
+msgid "Places it in the replay."
+msgstr "Umiestni ju v zázname."
+
+msgid "answered"
+msgstr "zodpovedaná"
+
+msgid "question in a live"
+msgstr "otázka v live"
+
+msgid "questions in the lives"
+msgstr "otázky v live"
+
+msgid "Hand raised"
+msgstr "Zdvihnutá ruka"
+
+msgid "Has the floor"
+msgstr "Má slovo"
+
+msgid "raised at"
+msgstr "zdvihnutá o"
+
+msgid "raised hand"
+msgstr "zdvihnutá ruka"
+
+msgid "raised hands"
+msgstr "zdvihnuté ruky"
+
+msgid "identity"
+msgstr "identita"
+
+msgid "came in"
+msgstr "vstúpila o"
+
+msgid "left"
+msgstr "odišla o"
+
+msgid "presence"
+msgstr "prítomnosť"
+
+msgid "presences"
+msgstr "prítomnosti"
+
+msgid "Three-way call"
+msgstr "Hovor vo troch"
+
+msgid "Calls are only for dispute rooms."
+msgstr "Hovory sú len pre miestnosti sporov."
+
 msgid "people"
 msgstr "osoby"
 
@@ -1992,6 +2187,31 @@ msgstr "Toto môže používať len profesionálka."
 msgid "A group can have %(max)s people at most."
 msgstr "Skupina môže mať najviac %(max)s osôb."
 
+msgid "Calls are not open in your country yet."
+msgstr "Hovory v tvojej krajine ešte nie sú otvorené."
+
+msgid "Calls are possible between two people, or in a dispute room."
+msgstr "Hovory sú možné medzi dvoma ľuďmi alebo v miestnosti sporu."
+
+msgid "You can call once she has accepted your messages."
+msgstr "Zavolať môžeš, keď prijme tvoje správy."
+
+msgid "This person does not take calls. Write her a message."
+msgstr "Táto osoba neprijíma hovory. Napíš jej správu."
+
+msgid "Calls are not available right now. Try again in a few minutes."
+msgstr "Hovory momentálne nie sú dostupné. Skús to o pár minút."
+
+msgid "This call does not exist or is not yours."
+msgstr "Tento hovor neexistuje alebo nie je tvoj."
+
+msgid "This call is over."
+msgstr "Tento hovor skončil."
+
+#, python-format
+msgid "This call already has %(max)s people."
+msgstr "V tomto hovore je už %(max)s osôb."
+
 msgid "Between two people"
 msgstr "Medzi dvoma osobami"
 
@@ -2067,6 +2287,9 @@ msgstr "Zdieľaná karta"
 msgid "Information"
 msgstr "Informácia"
 
+msgid "Call"
+msgstr "Hovor"
+
 msgid "Post"
 msgstr "Príspevok"
 
@@ -2079,15 +2302,6 @@ msgstr "Služba"
 msgid "Free slot"
 msgstr "Voľný termín"
 
-msgid "Visible"
-msgstr "Viditeľné"
-
-msgid "Held for review"
-msgstr "Zadržané na posúdenie"
-
-msgid "Removed"
-msgstr "Odstránené"
-
 msgid "sender"
 msgstr "odosielateľka"
 
@@ -2099,6 +2313,9 @@ msgstr "súbor"
 
 msgid "shared"
 msgstr "zdieľané"
+
+msgid "call"
+msgstr "hovor"
 
 msgid "risk detected"
 msgstr "zistené riziko"
@@ -2120,6 +2337,60 @@ msgstr "správa o neprítomnosti"
 
 msgid "away messages"
 msgstr "správy o neprítomnosti"
+
+msgid "Audio call"
+msgstr "Hlasový hovor"
+
+msgid "Video call"
+msgstr "Videohovor"
+
+msgid "Ringing"
+msgstr "Zvoní"
+
+msgid "Ongoing"
+msgstr "Prebieha"
+
+msgid "Missed"
+msgstr "Zmeškaný"
+
+msgid "caller"
+msgstr "volajúca"
+
+msgid "rings until"
+msgstr "zvoní do"
+
+msgid "answered at"
+msgstr "prijatý o"
+
+msgid "people at most"
+msgstr "najviac osôb"
+
+msgid "calls"
+msgstr "hovory"
+
+msgid "Called"
+msgstr "Volaná"
+
+msgid "In the call"
+msgstr "V hovore"
+
+msgid "Hung up"
+msgstr "Zavesila"
+
+msgid "state"
+msgstr "stav"
+
+msgid "joined at"
+msgstr "pripojená o"
+
+msgid "left at"
+msgstr "odišlo"
+
+msgid "person in a call"
+msgstr "osoba v hovore"
+
+msgid "people in calls"
+msgstr "osoby v hovoroch"
 
 msgid "Conversation"
 msgstr "Rozhovor"
@@ -2243,9 +2514,6 @@ msgstr "Automatická kontrola"
 
 msgid "found by"
 msgstr "zistil(a)"
-
-msgid "author"
-msgstr "autorka"
 
 msgid "excerpt"
 msgstr "úryvok"
@@ -4127,9 +4395,6 @@ msgstr "výdajné miesto"
 msgid "pick-up points"
 msgstr "výdajné miesta"
 
-msgid "Being prepared"
-msgstr "Pripravuje sa"
-
 msgid "On its way"
 msgstr "Na ceste"
 
@@ -4138,9 +4403,6 @@ msgstr "Dorazilo do Beninu"
 
 msgid "mode"
 msgstr "spôsob"
-
-msgid "left at"
-msgstr "odišlo"
 
 msgid "arrived at"
 msgstr "dorazilo"
@@ -4385,6 +4647,16 @@ msgstr "Obchody z každej krajiny zaplať zvlášť."
 msgid "Add a photo of the parcel."
 msgstr "Pridaj fotku balíka."
 
+msgid "Sales lives are not open in your country yet."
+msgstr "Predaj naživo v tvojej krajine ešte nie je otvorený."
+
+#, python-format
+msgid "Give a title, a time to come and a length of 15 to %(max)s minutes."
+msgstr "Zadaj názov, budúci čas a dĺžku od 15 do %(max)s minút."
+
+msgid "This live does not exist or cannot change any more."
+msgstr "Tento live neexistuje alebo sa už nedá zmeniť."
+
 msgid "Name of a Phosphor icon."
 msgstr "Názov ikony Phosphor."
 
@@ -4565,6 +4837,9 @@ msgstr "promo kód"
 msgid "promo codes"
 msgstr "promo kódy"
 
+msgid "added during the live"
+msgstr "pridané počas live"
+
 msgid "cart line"
 msgstr "riadok košíka"
 
@@ -4619,6 +4894,9 @@ msgstr "fotka balíka"
 msgid "prepared from"
 msgstr "pripravuje sa od"
 
+msgid "bought during the live"
+msgstr "kúpené počas live"
+
 msgid "order"
 msgstr "objednávka"
 
@@ -4630,6 +4908,27 @@ msgstr "riadok objednávky"
 
 msgid "order lines"
 msgstr "riadky objednávky"
+
+msgid "sales"
+msgstr "predaj"
+
+msgid "sales live"
+msgstr "predaj naživo"
+
+msgid "sales lives"
+msgstr "predaje naživo"
+
+msgid "pinned at"
+msgstr "pripnuté o"
+
+msgid "unpinned at"
+msgstr "odopnuté o"
+
+msgid "pinned product"
+msgstr "pripnutý produkt"
+
+msgid "pinned products"
+msgstr "pripnuté produkty"
 
 #, python-format
 msgid "The product leaves the shop of %(shop)s and every cart. The pro receives this reason."
@@ -4983,6 +5282,21 @@ msgstr "Pasy Akadémie"
 msgid "Training lives"
 msgstr "Školiace live"
 
+msgid "Lives and calls"
+msgstr "Live a hovory"
+
+msgid "Live rooms"
+msgstr "Miestnosti live"
+
+msgid "Sales lives"
+msgstr "Predaje naživo"
+
+msgid "Questions in the lives"
+msgstr "Otázky v live"
+
+msgid "Calls"
+msgstr "Hovory"
+
 msgid "Finance dashboard"
 msgstr "Finančný prehľad"
 
@@ -5045,6 +5359,12 @@ msgstr "Hostia"
 
 msgid "Groups"
 msgstr "Skupiny"
+
+#~ msgid "The live video is not available yet: it is coming soon."
+#~ msgstr "Živé video zatiaľ nie je dostupné: čoskoro príde."
+
+#~ msgid "room at the broadcast service"
+#~ msgstr "miestnosť u služby vysielania"
 
 #~ msgid "Sendings"
 #~ msgstr "Odoslania"

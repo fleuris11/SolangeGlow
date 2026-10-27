@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-27 10:56+0100\n"
+"POT-Creation-Date: 2026-10-27 23:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -171,9 +171,6 @@ msgstr ""
 
 #, python-format
 msgid "The room opens %(minutes)s minutes before the start."
-msgstr ""
-
-msgid "The live video is not available yet: it is coming soon."
 msgstr ""
 
 msgid "No certificate with this code."
@@ -512,9 +509,6 @@ msgstr ""
 msgid "places"
 msgstr ""
 
-msgid "room at the broadcast service"
-msgstr ""
-
 msgid "registered"
 msgstr ""
 
@@ -738,6 +732,12 @@ msgid "e-mail notifications"
 msgstr ""
 
 msgid "push notifications"
+msgstr ""
+
+msgid "receives calls"
+msgstr ""
+
+msgid "Audio and video calls in the app (never her phone number)."
 msgstr ""
 
 msgid "quiet hours start"
@@ -1897,6 +1897,201 @@ msgstr ""
 msgid "This document was already cancelled by a credit note."
 msgstr ""
 
+msgid "host"
+msgstr ""
+
+msgid "Cut the live"
+msgstr ""
+
+msgid "This live is already over."
+msgstr ""
+
+msgid "The live is cut."
+msgstr ""
+
+msgid "Delete the replay"
+msgstr ""
+
+msgid "This live has no replay."
+msgstr ""
+
+msgid "The replay is deleted."
+msgstr ""
+
+msgid "Lives"
+msgstr ""
+
+msgid "This live does not exist or is not open to you."
+msgstr ""
+
+msgid "Only the host of this live can do this."
+msgstr ""
+
+msgid "This live is not on air."
+msgstr ""
+
+#, python-format
+msgid "You can go on air %(minutes)s minutes before the planned time."
+msgstr ""
+
+msgid "This live is over."
+msgstr ""
+
+#, python-format
+msgid "The live is full (%(max)s people). Try again in a moment."
+msgstr ""
+
+msgid "Sign in to write a question."
+msgstr ""
+
+msgid "You cannot write in this live."
+msgstr ""
+
+msgid "Write your question (300 characters at most)."
+msgstr ""
+
+msgid "Raising your hand is not possible in this live."
+msgstr ""
+
+msgid "This person has not raised her hand."
+msgstr ""
+
+#, python-format
+msgid "You have used your %(max)s lives of the month. Glow Pro Premium gives you more."
+msgstr ""
+
+msgid "The live video is not available right now. Try again in a few minutes."
+msgstr ""
+
+msgid "Training live"
+msgstr ""
+
+msgid "Sales live"
+msgstr ""
+
+msgid "Not started"
+msgstr ""
+
+msgid "No replay"
+msgstr ""
+
+msgid "Recording"
+msgstr ""
+
+msgid "Being prepared"
+msgstr ""
+
+msgid "planned live"
+msgstr ""
+
+msgid "room at LiveKit"
+msgstr ""
+
+msgid "started at"
+msgstr ""
+
+msgid "ended at"
+msgstr ""
+
+msgid "cut at the latest"
+msgstr ""
+
+msgid "Start + the longest length allowed (setting live.max_minutes)."
+msgstr ""
+
+msgid "watching now"
+msgstr ""
+
+msgid "most at the same time"
+msgstr ""
+
+msgid "people who came"
+msgstr ""
+
+msgid "has the floor"
+msgstr ""
+
+msgid "cut by the team"
+msgstr ""
+
+msgid "replay"
+msgstr ""
+
+msgid "replay video"
+msgstr ""
+
+msgid "replay visible until"
+msgstr ""
+
+msgid "live room"
+msgstr ""
+
+msgid "live rooms"
+msgstr ""
+
+msgid "Visible"
+msgstr ""
+
+msgid "Held for review"
+msgstr ""
+
+msgid "Removed"
+msgstr ""
+
+msgid "author"
+msgstr ""
+
+msgid "second of the live"
+msgstr ""
+
+msgid "Places it in the replay."
+msgstr ""
+
+msgid "answered"
+msgstr ""
+
+msgid "question in a live"
+msgstr ""
+
+msgid "questions in the lives"
+msgstr ""
+
+msgid "Hand raised"
+msgstr ""
+
+msgid "Has the floor"
+msgstr ""
+
+msgid "raised at"
+msgstr ""
+
+msgid "raised hand"
+msgstr ""
+
+msgid "raised hands"
+msgstr ""
+
+msgid "identity"
+msgstr ""
+
+msgid "came in"
+msgstr ""
+
+msgid "left"
+msgstr ""
+
+msgid "presence"
+msgstr ""
+
+msgid "presences"
+msgstr ""
+
+msgid "Three-way call"
+msgstr ""
+
+msgid "Calls are only for dispute rooms."
+msgstr ""
+
 msgid "people"
 msgstr ""
 
@@ -1988,6 +2183,31 @@ msgstr ""
 msgid "A group can have %(max)s people at most."
 msgstr ""
 
+msgid "Calls are not open in your country yet."
+msgstr ""
+
+msgid "Calls are possible between two people, or in a dispute room."
+msgstr ""
+
+msgid "You can call once she has accepted your messages."
+msgstr ""
+
+msgid "This person does not take calls. Write her a message."
+msgstr ""
+
+msgid "Calls are not available right now. Try again in a few minutes."
+msgstr ""
+
+msgid "This call does not exist or is not yours."
+msgstr ""
+
+msgid "This call is over."
+msgstr ""
+
+#, python-format
+msgid "This call already has %(max)s people."
+msgstr ""
+
 msgid "Between two people"
 msgstr ""
 
@@ -2063,6 +2283,9 @@ msgstr ""
 msgid "Information"
 msgstr ""
 
+msgid "Call"
+msgstr ""
+
 msgid "Post"
 msgstr ""
 
@@ -2075,15 +2298,6 @@ msgstr ""
 msgid "Free slot"
 msgstr ""
 
-msgid "Visible"
-msgstr ""
-
-msgid "Held for review"
-msgstr ""
-
-msgid "Removed"
-msgstr ""
-
 msgid "sender"
 msgstr ""
 
@@ -2094,6 +2308,9 @@ msgid "file"
 msgstr ""
 
 msgid "shared"
+msgstr ""
+
+msgid "call"
 msgstr ""
 
 msgid "risk detected"
@@ -2115,6 +2332,60 @@ msgid "away message"
 msgstr ""
 
 msgid "away messages"
+msgstr ""
+
+msgid "Audio call"
+msgstr ""
+
+msgid "Video call"
+msgstr ""
+
+msgid "Ringing"
+msgstr ""
+
+msgid "Ongoing"
+msgstr ""
+
+msgid "Missed"
+msgstr ""
+
+msgid "caller"
+msgstr ""
+
+msgid "rings until"
+msgstr ""
+
+msgid "answered at"
+msgstr ""
+
+msgid "people at most"
+msgstr ""
+
+msgid "calls"
+msgstr ""
+
+msgid "Called"
+msgstr ""
+
+msgid "In the call"
+msgstr ""
+
+msgid "Hung up"
+msgstr ""
+
+msgid "state"
+msgstr ""
+
+msgid "joined at"
+msgstr ""
+
+msgid "left at"
+msgstr ""
+
+msgid "person in a call"
+msgstr ""
+
+msgid "people in calls"
 msgstr ""
 
 msgid "Conversation"
@@ -2238,9 +2509,6 @@ msgid "Automatic check"
 msgstr ""
 
 msgid "found by"
-msgstr ""
-
-msgid "author"
 msgstr ""
 
 msgid "excerpt"
@@ -4111,9 +4379,6 @@ msgstr ""
 msgid "pick-up points"
 msgstr ""
 
-msgid "Being prepared"
-msgstr ""
-
 msgid "On its way"
 msgstr ""
 
@@ -4121,9 +4386,6 @@ msgid "Arrived in Benin"
 msgstr ""
 
 msgid "mode"
-msgstr ""
-
-msgid "left at"
 msgstr ""
 
 msgid "arrived at"
@@ -4369,6 +4631,16 @@ msgstr ""
 msgid "Add a photo of the parcel."
 msgstr ""
 
+msgid "Sales lives are not open in your country yet."
+msgstr ""
+
+#, python-format
+msgid "Give a title, a time to come and a length of 15 to %(max)s minutes."
+msgstr ""
+
+msgid "This live does not exist or cannot change any more."
+msgstr ""
+
 msgid "Name of a Phosphor icon."
 msgstr ""
 
@@ -4549,6 +4821,9 @@ msgstr ""
 msgid "promo codes"
 msgstr ""
 
+msgid "added during the live"
+msgstr ""
+
 msgid "cart line"
 msgstr ""
 
@@ -4603,6 +4878,9 @@ msgstr ""
 msgid "prepared from"
 msgstr ""
 
+msgid "bought during the live"
+msgstr ""
+
 msgid "order"
 msgstr ""
 
@@ -4613,6 +4891,27 @@ msgid "order line"
 msgstr ""
 
 msgid "order lines"
+msgstr ""
+
+msgid "sales"
+msgstr ""
+
+msgid "sales live"
+msgstr ""
+
+msgid "sales lives"
+msgstr ""
+
+msgid "pinned at"
+msgstr ""
+
+msgid "unpinned at"
+msgstr ""
+
+msgid "pinned product"
+msgstr ""
+
+msgid "pinned products"
 msgstr ""
 
 #, python-format
@@ -4965,6 +5264,21 @@ msgid "Academy passes"
 msgstr ""
 
 msgid "Training lives"
+msgstr ""
+
+msgid "Lives and calls"
+msgstr ""
+
+msgid "Live rooms"
+msgstr ""
+
+msgid "Sales lives"
+msgstr ""
+
+msgid "Questions in the lives"
+msgstr ""
+
+msgid "Calls"
 msgstr ""
 
 msgid "Finance dashboard"
