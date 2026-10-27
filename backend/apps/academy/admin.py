@@ -374,7 +374,7 @@ class LiveSessionAdmin(AuditedModelAdmin):
     list_display = ["title", "trainer", "starts_at", "status", "registered_count", "capacity"]
     list_filter = ["status", "country", "language"]
     search_fields = ["title", "pro__business_name"]
-    readonly_fields = ["pro", "author", "country", "course", "registered_count", "room"]
+    readonly_fields = ["pro", "author", "country", "course", "registered_count"]
     fields = [
         "title",
         "pro",
@@ -388,7 +388,6 @@ class LiveSessionAdmin(AuditedModelAdmin):
         "capacity",
         "status",
         "registered_count",
-        "room",
     ]
 
     def has_add_permission(self, request):

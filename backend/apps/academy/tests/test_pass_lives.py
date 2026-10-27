@@ -122,7 +122,7 @@ def test_a_live_is_planned_its_students_invited_and_places_counted():
     assert live.registered_count == 1
 
 
-def test_reminders_waiting_room_and_the_broadcast_not_connected_yet(clock):
+def test_reminders_and_the_waiting_room(clock):
     pro = trainer()
     student = adult("Awa")
     live = plan(pro, starts_at=timezone.now() + datetime.timedelta(days=2))
@@ -135,17 +135,12 @@ def test_reminders_waiting_room_and_the_broadcast_not_connected_yet(clock):
 
     state = lives.room(student, live)
     assert state["registered"] and not state["open"] and state["seconds_left"] > 0
-    with pytest.raises(errors.LiveNotOpen):
-        lives.join(student, live)
 
     clock.move(hours=22, minutes=50)  # 10 minutes before
     assert lives.send_reminders() == 1
     assert "academy.live_starting" in events(student)
     assert lives.room(student, live)["open"]
-    with pytest.raises(errors.BroadcastNotAvailable):
-        lives.join(student, live)
-    with pytest.raises(errors.LiveNotFound):
-        lives.join(adult("Pas inscrite"), live)
+    assert not lives.room(adult("Pas inscrite"), live)["open"]
 
     clock.move(hours=1)
     assert lives.close_lives() == 1

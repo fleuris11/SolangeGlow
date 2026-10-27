@@ -122,8 +122,7 @@ def test_pass_and_lives():
     assert registered["registered"] and registered["places_left"] == 9
     room = student.get(reverse("v1:academy-live", args=[live.pk])).json()
     assert room["registered"] and not room["open"] and room["broadcast_ready"] is False
-    join = student.post(reverse("v1:academy-live-join", args=[live.pk]), **H)
-    assert join.json()["code"] == "live_not_open"
+    assert room["room_link"] == f"/live/training/{live.pk}"
     left = student.delete(reverse("v1:academy-live-registration", args=[live.pk]), **H).json()
     assert left["registered"] is False
 

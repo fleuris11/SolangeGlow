@@ -1,6 +1,6 @@
 """Training lives: a trainer plans a session, students register, reminders the day before
 and just before, a waiting room that opens a few minutes before the start. The broadcast
-goes through LiveProvider (not connected yet)."""
+itself happens in the live room (apps.live, source « training », ADR-013)."""
 
 from __future__ import annotations
 
@@ -12,11 +12,9 @@ from django.utils import timezone
 
 from apps.core.audit.services import record
 from apps.core.models import Country
-from apps.core.providers.base import ProviderNotConfigured
 from apps.notifications.services import notify
 
 from .. import errors, selectors
-from ..live import live_provider
 from ..models import Course, CourseLanguage, Enrollment, LiveRegistration, LiveSession
 from .common import setting
 
@@ -68,6 +66,9 @@ def plan_live(user, *, platform: bool = False, country: str = "", course_id=None
         raise errors.InvalidLive()
     _check_open(place)
     _validate(values, now)
+    from apps.live.services import check_quota
+
+    check_quota(pro, values["starts_at"])
     course = None
     if course_id:
         course = Course.objects.filter(pk=course_id).select_related("pro").first()
@@ -200,24 +201,6 @@ def _is_host(user, live: LiveSession) -> bool:
     return selectors.can_manage_platform(user)
 
 
-def join(user, live: LiveSession, now=None) -> str:
-    """The link to the broadcast (when a provider is connected)."""
-    state = room(user, live, now)
-    if not state["registered"]:
-        raise errors.LiveNotFound()
-    if not state["open"]:
-        minutes = int(setting("academy.live_room_open_minutes", live.country, 10))
-        raise errors.LiveNotOpen(details={"minutes": minutes})
-    try:
-        provider = live_provider()
-    except ProviderNotConfigured as exc:
-        raise errors.BroadcastNotAvailable() from exc
-    if not live.room:  # pragma: no cover - needs a provider (prompt 14)
-        live.room = provider.create_room(live)
-        live.save(update_fields=["room", "updated_at"])
-    return provider.join_url(live, user, host=state["host"])  # pragma: no cover
-
-
 # --- By itself (Celery Beat, every 5 minutes) ---------------------------------------------------
 
 
@@ -251,10 +234,11 @@ def send_reminders(now=None) -> int:
 
 
 def close_lives(now=None) -> int:
-    """A live past its end is over."""
+    """A live that never went on air is over once its time has passed (a live on air is
+    ended by its host, or cut by the live room at the longest length)."""
     now = now or timezone.now()
     count = 0
-    for live in LiveSession.objects.filter(status__in=[L.SCHEDULED, L.LIVE], starts_at__lt=now):
+    for live in LiveSession.objects.filter(status=L.SCHEDULED, starts_at__lt=now):
         if live.starts_at + datetime.timedelta(minutes=live.duration_minutes) <= now:
             live.status = L.ENDED
             live.save(update_fields=["status", "updated_at"])

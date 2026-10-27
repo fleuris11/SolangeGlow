@@ -396,8 +396,8 @@ class PassPeriod(BaseModel):
 
 
 class LiveSession(BaseModel):
-    """A training live: planned, students register; the broadcast itself comes later
-    (LiveProvider, not connected)."""
+    """A training live: planned, students register; the broadcast happens in the live room
+    (apps.live, ADR-013)."""
 
     class Status(models.TextChoices):
         SCHEDULED = "scheduled", _("Planned")
@@ -442,7 +442,6 @@ class LiveSession(BaseModel):
     status = models.CharField(
         _("status"), max_length=10, choices=Status.choices, default=Status.SCHEDULED
     )
-    room = models.CharField(_("room at the broadcast service"), max_length=120, blank=True)
     registered_count = models.PositiveIntegerField(_("registered"), default=0, editable=False)
 
     class Meta:

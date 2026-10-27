@@ -13,6 +13,10 @@ REVIEW_PERMISSIONS = [
     "view_certificate",
     "change_certificate",
     "view_livesession",
+    "view_liveroom",
+    "change_liveroom",
+    "view_livequestion",
+    "change_livequestion",
 ]
 
 
@@ -23,7 +27,7 @@ def create_group(sender, **kwargs):
     group, _created = Group.objects.get_or_create(name=REVIEW_GROUP)
     group.permissions.add(
         *Permission.objects.filter(
-            content_type__app_label="academy", codename__in=REVIEW_PERMISSIONS
+            content_type__app_label__in=["academy", "live"], codename__in=REVIEW_PERMISSIONS
         )
     )
 
@@ -34,11 +38,14 @@ class AcademyConfig(AppConfig):
     verbose_name = _("Academy")
 
     def ready(self):
+        from apps.live import registry
         from apps.payments import services as payment_services
 
+        from .live_source import TrainingLives
         from .services import common, enrollments, passes
 
         post_migrate.connect(create_group, sender=self)
+        registry.register(TrainingLives())
 
         payment_services.listen(
             common.SOURCE, enrollments.on_payment_change, may_cancel=enrollments.may_cancel_payment

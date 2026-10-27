@@ -10,7 +10,7 @@ from rest_framework.views import APIView
 from apps.accounts.throttling import SettingRateThrottle
 from apps.accounts.views import client_ip
 from apps.accounts.views_base import OptionalAuthView
-from apps.core.providers.base import ProviderNotConfigured
+from apps.core.providers import livekit
 from apps.glowpro.serializers import CheckoutUrlSerializer
 from apps.pros.models import ProProfile
 from apps.pros.search import decode_cursor, encode_cursor
@@ -18,7 +18,7 @@ from apps.pros.search import decode_cursor, encode_cursor
 from . import certificate as certificate_pdf
 from . import errors, selectors, stats
 from . import serializers as s
-from .live import live_provider
+from .live_source import room_link
 from .models import (
     Certificate,
     Course,
@@ -274,14 +274,6 @@ class LivesView(PublicAcademyView):
         )
 
 
-def _broadcast_ready() -> bool:
-    try:
-        live_provider()
-    except ProviderNotConfigured:  # the room says « coming soon »
-        return False
-    return True
-
-
 class LiveRoomView(AcademyView):
     @extend_schema(tags=["academy"], responses=s.LiveRoomSerializer)
     def get(self, request, live_id):
@@ -292,7 +284,8 @@ class LiveRoomView(AcademyView):
             {
                 **state,
                 "live": s.live_payload(live, registered),
-                "broadcast_ready": _broadcast_ready(),
+                "broadcast_ready": livekit.available(),
+                "room_link": room_link(live.pk),
             }
         )
 
@@ -309,12 +302,6 @@ class LiveRegisterView(AcademyView):
         live = lives.get_live(live_id)
         lives.unregister(request.user, live)
         return Response(s.live_payload(lives.get_live(live_id), False))
-
-
-class LiveJoinView(AcademyView):
-    @extend_schema(tags=["academy"], request=None, responses=s.JoinSerializer)
-    def post(self, request, live_id):
-        return Response({"url": lives.join(request.user, lives.get_live(live_id))})
 
 
 # --- Trainer space ------------------------------------------------------------------------------

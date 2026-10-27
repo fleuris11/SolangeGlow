@@ -149,12 +149,6 @@ class LiveNotOpen(DomainError):
     message = _("The room opens %(minutes)s minutes before the start.")
 
 
-class BroadcastNotAvailable(DomainError):
-    code = "broadcast_not_available"
-    status_code = 503
-    message = _("The live video is not available yet: it is coming soon.")
-
-
 class CertificateNotFound(DomainError):
     code = "certificate_not_found"
     status_code = 404

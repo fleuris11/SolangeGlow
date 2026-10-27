@@ -45,9 +45,6 @@ urlpatterns = [
         views.LiveRegisterView.as_view(),
         name="academy-live-registration",
     ),
-    path(
-        "academy/lives/<uuid:live_id>/join", views.LiveJoinView.as_view(), name="academy-live-join"
-    ),
     # Trainer space.
     path("academy/studio", views.StudioView.as_view(), name="academy-studio"),
     path("academy/studio/courses", views.StudioCoursesView.as_view(), name="studio-courses"),

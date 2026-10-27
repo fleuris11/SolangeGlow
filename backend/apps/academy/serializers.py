@@ -522,10 +522,7 @@ class LiveRoomSerializer(serializers.Serializer):
     open = serializers.BooleanField()
     seconds_left = serializers.IntegerField()
     broadcast_ready = serializers.BooleanField()
-
-
-class JoinSerializer(serializers.Serializer):
-    url = serializers.CharField()
+    room_link = serializers.CharField(help_text="The live room (on air, then the replay).")
 
 
 # --- Trainer space ------------------------------------------------------------------------------
