@@ -6,6 +6,8 @@ import {
   CalendarCheck,
   CalendarDots,
   CaretRight,
+  ChalkboardTeacher,
+  GraduationCap,
   Heart,
   Images,
   Package,
@@ -35,6 +37,11 @@ const LINKS: { href: string; key: string; icon: ReactNode }[] = [
     key: "selection",
     icon: <AirplaneTilt size={28} weight="duotone" />,
   },
+  {
+    href: "/academie/mes-formations",
+    key: "courses",
+    icon: <GraduationCap size={28} weight="duotone" />,
+  },
   { href: "/me/posts", key: "posts", icon: <Images size={28} weight="duotone" /> },
   { href: "/saved", key: "saved", icon: <BookmarkSimple size={28} weight="duotone" /> },
   { href: "/following", key: "following", icon: <UsersThree size={28} weight="duotone" /> },
@@ -43,6 +50,7 @@ const LINKS: { href: string; key: string; icon: ReactNode }[] = [
   { href: "/pro/agenda", key: "agenda", icon: <CalendarDots size={28} weight="duotone" /> },
   { href: "/pro/salon", key: "salon", icon: <Storefront size={28} weight="duotone" /> },
   { href: "/pro/wallet", key: "wallet", icon: <Wallet size={28} weight="duotone" /> },
+  { href: "/pro/academy", key: "trainer", icon: <ChalkboardTeacher size={28} weight="duotone" /> },
   { href: "/pro/shop", key: "myShop", icon: <Storefront size={28} weight="duotone" /> },
 ];
 
