@@ -319,6 +319,7 @@ class ShowcaseSerializer(serializers.Serializer):
     social_links = serializers.DictField(child=serializers.CharField())
     languages = LanguageSerializer(many=True)
     verified = serializers.BooleanField()
+    trained = serializers.BooleanField()
     rating_average = serializers.FloatField(allow_null=True)
     rating_count = serializers.IntegerField()
     currency = serializers.CharField()
@@ -363,6 +364,7 @@ def showcase_payload(pro: ProProfile, *, private: bool = False, viewer=None) -> 
         "social_links": {k: v for k, v in pro.social_links.items() if k in SocialNetwork.values},
         "languages": [{"code": c, "label": str(labels.get(c, c))} for c in pro.languages],
         "verified": pro.is_verified,
+        "trained": pro.is_trained,
         "rating_average": float(pro.rating_average) if pro.rating_average is not None else None,
         "rating_count": pro.rating_count,
         "currency": pro.currency,
@@ -496,6 +498,7 @@ class SearchQuerySerializer(serializers.Serializer):
     open_now = serializers.BooleanField(required=False)
     at_home = serializers.BooleanField(required=False)
     verified = serializers.BooleanField(required=False)
+    trained = serializers.BooleanField(required=False)
     sort = serializers.ChoiceField(
         choices=["relevance", "distance", "rating", "price"], required=False
     )
@@ -533,6 +536,7 @@ class CardSerializer(serializers.Serializer):
     receives_clients = serializers.BooleanField()
     travels_to_clients = serializers.BooleanField()
     verified = serializers.BooleanField()
+    trained = serializers.BooleanField()
 
 
 def card_payload(pro: ProProfile) -> dict:
@@ -562,6 +566,7 @@ def card_payload(pro: ProProfile) -> dict:
         "receives_clients": pro.receives_clients,
         "travels_to_clients": pro.travels_to_clients,
         "verified": pro.is_verified,
+        "trained": pro.is_trained,
     }
 
 

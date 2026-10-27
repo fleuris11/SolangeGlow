@@ -46,7 +46,7 @@ RESERVED_SLUGS = {
     "support", "legal", "cgu", "cgv", "privacy", "login", "signup", "settings", "search",
     "solange", "solangeglow", "sw", "manifest", "robots", "sitemap", "favicon", "offline",
     "cart", "checkout", "orders", "wishlist", "payments", "pay", "courier", "following",
-    "saved", "appointments", "agenda",
+    "saved", "appointments", "agenda", "certificat", "certificate", "desabonnement", "embed",
 }  # fmt: skip
 
 MEDIA_FIELDS = {

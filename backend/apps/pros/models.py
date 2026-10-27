@@ -190,6 +190,8 @@ class ProProfile(BaseModel):
         db_index=True,
     )
     verified_at = models.DateTimeField(_("verified at"), null=True, blank=True)
+    # « Trained on Solange Glow »: she finished a course that counts for the badge (module 7).
+    trained_at = models.DateTimeField(_("trained on Solange Glow since"), null=True, blank=True)
 
     # Filled by the reviews module.
     rating_average = models.DecimalField(
@@ -233,6 +235,10 @@ class ProProfile(BaseModel):
     @property
     def is_verified(self) -> bool:
         return self.verification_status == self.Verification.VERIFIED
+
+    @property
+    def is_trained(self) -> bool:
+        return self.trained_at is not None
 
 
 class ServiceCategory(BaseModel):

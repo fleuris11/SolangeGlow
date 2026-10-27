@@ -59,6 +59,7 @@ def _params(data: dict) -> search.SearchParams:
         open_now=data.get("open_now", False),
         at_home=data.get("at_home", False),
         verified=data.get("verified", False),
+        trained=data.get("trained", False),
         bbox=data.get("bbox"),
         sort=data.get("sort", ""),
     )

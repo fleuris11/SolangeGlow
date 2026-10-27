@@ -94,6 +94,7 @@ class SearchParams:
     open_now: bool = False
     at_home: bool = False
     verified: bool = False
+    trained: bool = False
     bbox: tuple[float, float, float, float] | None = None
     sort: str = ""
 
@@ -120,6 +121,8 @@ def search(params: SearchParams) -> QuerySet[ProProfile]:
         pros = pros.filter(rating_average__gte=params.rating_min)
     if params.verified:
         pros = pros.filter(verification_status=ProProfile.Verification.VERIFIED)
+    if params.trained:
+        pros = pros.filter(trained_at__isnull=False)
     if params.price_max is not None:
         pros = pros.filter(min_price__lte=params.price_max)
         if params.currency:
@@ -169,17 +172,19 @@ def search(params: SearchParams) -> QuerySet[ProProfile]:
 
 def _ordering(params: SearchParams, has_words: bool) -> list:
     rating = Coalesce("rating_average", Value(0), output_field=FloatField()).desc()
+    # « Trained on Solange Glow »: ahead of the pros equal to her (module 7).
+    trained = F("trained_at").desc(nulls_last=True)
     if params.sort == "rating":
-        return [rating, "-rating_count", "pk"]
+        return [rating, "-rating_count", trained, "pk"]
     if params.sort == "price":
-        return [F("min_price").asc(nulls_last=True), "pk"]
+        return [F("min_price").asc(nulls_last=True), trained, "pk"]
     if params.sort == "distance" and params.near is not None:
-        return ["distance", "pk"]
+        return ["distance", trained, "pk"]
     if has_words:
-        return [F("rank").desc(), F("similarity").desc(), rating, "pk"]
+        return [F("rank").desc(), F("similarity").desc(), rating, trained, "pk"]
     if params.near is not None:
-        return ["distance", "pk"]
-    return [rating, "-published_at", "pk"]
+        return ["distance", trained, "pk"]
+    return [rating, trained, "-published_at", "pk"]
 
 
 # --- Cursor: an opaque position in the results ------------------------------------
