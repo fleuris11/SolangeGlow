@@ -24,6 +24,9 @@ DEFAULT_RATES = {
     "salon": "120/minute",
     "widget": "120/minute",
     "academy": "240/minute",
+    "live": "240/minute",
+    "live_write": "20/minute",
+    "calls": "60/minute",
 }
 
 

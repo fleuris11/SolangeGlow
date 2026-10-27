@@ -1,0 +1,17 @@
+# LiveKit recording service (replays of the lives), local development only:
+# docker compose --profile replay up -d egress  (and LIVEKIT_EGRESS=true in .env).
+# Files land in MinIO under private/lives/ and the webhook tells the backend.
+api_key: devkey
+api_secret: solangeglow-livekit-dev-secret-not-for-production
+ws_url: ws://localhost:7880
+redis:
+  address: redis:6379
+  db: 4
+health_port: 9090
+s3:
+  access_key: solange
+  secret: solange-minio-dev
+  region: us-east-1
+  endpoint: http://minio:9000
+  bucket: solangeglow
+  force_path_style: true

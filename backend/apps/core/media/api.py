@@ -31,7 +31,9 @@ MediaPayload = MediaSerializer
 
 class MediaUploadSerializer(serializers.Serializer):
     file = serializers.FileField()
-    purpose = serializers.ChoiceField(choices=sorted(PURPOSES))
+    purpose = serializers.ChoiceField(
+        choices=sorted(name for name, rule in PURPOSES.items() if rule.uploadable)
+    )
     kind = serializers.ChoiceField(choices=MediaAsset.Kind.choices, required=False)
 
 

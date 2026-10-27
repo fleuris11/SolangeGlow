@@ -1358,6 +1358,107 @@ SETTINGS += [
         "Limite des actions de l'Académie par adresse IP (la lecture enregistre la position souvent).",
         "Academy actions limit per IP address (the player saves the position often).",
     ),
+    # --- Calls and lives (ADR-013) ---
+    _s(
+        "rtc.token_ttl_seconds",
+        INT,
+        "600",
+        "Durée de validité d'un jeton pour entrer dans un appel ou un live (secondes).",
+        "How long a token to enter a call or a live stays valid (seconds).",
+    ),
+    _s(
+        "calls.max_minutes",
+        INT,
+        "60",
+        "Durée maximale d'un appel (minutes) ; l'appel est coupé ensuite.",
+        "Longest call (minutes); the call is cut afterwards.",
+    ),
+    _s(
+        "calls.ring_seconds",
+        INT,
+        "45",
+        "Durée de la sonnerie avant « Appel manqué » (secondes).",
+        "How long a call rings before « Missed call » (seconds).",
+    ),
+    _s(
+        "calls.max_participants",
+        INT,
+        "3",
+        "Nombre de personnes au plus dans l'appel d'une salle de litige.",
+        "Most people in the call of a dispute room.",
+    ),
+    _s(
+        "live.max_minutes",
+        INT,
+        "120",
+        "Durée maximale d'un live (minutes) ; il est coupé ensuite.",
+        "Longest live (minutes); it is cut afterwards.",
+    ),
+    _s(
+        "live.max_viewers",
+        INT,
+        "300",
+        "Nombre de spectatrices au plus dans un live.",
+        "Most viewers in a live.",
+    ),
+    _s(
+        "live.free_per_month",
+        INT,
+        "2",
+        "Lives gratuits par mois et par pro (formation et vente ensemble) ; Glow Pro Premium "
+        "en donne plus (limite « lives_per_month » de l'offre).",
+        "Free lives a month for each pro (training and sales together); Glow Pro Premium "
+        "gives more (limit « lives_per_month » of the plan).",
+    ),
+    _s(
+        "live.start_early_minutes",
+        INT,
+        "15",
+        "Minutes avant l'heure prévue où la pro peut passer en direct.",
+        "Minutes before the planned time when the pro can go on air.",
+    ),
+    _s(
+        "live.replay_max_seconds",
+        INT,
+        "7800",
+        "Durée maximale d'un replay enregistré (secondes).",
+        "Longest recorded replay (seconds).",
+    ),
+    _s(
+        "academy.live_replay_days",
+        INT,
+        "30",
+        "Jours pendant lesquels le replay d'un live de formation reste visible pour les inscrites.",
+        "Days during which the replay of a training live stays visible to registered students.",
+    ),
+    _s(
+        "shop.live_replay_days",
+        INT,
+        "7",
+        "Jours pendant lesquels le replay d'une vente en live reste visible (et ses produits).",
+        "Days during which the replay of a sales live stays visible (and its products).",
+    ),
+    _s(
+        "throttle.live",
+        STR,
+        "240/minute",
+        "Limite des lectures d'un live par adresse IP (l'écran se recharge souvent).",
+        "Live reads limit per IP address (the screen reloads often).",
+    ),
+    _s(
+        "throttle.live_write",
+        STR,
+        "20/minute",
+        "Limite des questions et mains levées par adresse IP.",
+        "Questions and raised hands limit per IP address.",
+    ),
+    _s(
+        "throttle.calls",
+        STR,
+        "60/minute",
+        "Limite des actions d'appel par adresse IP.",
+        "Call actions limit per IP address.",
+    ),
 ]
 
 # Monthly price of Premium (created with the countries; edited in the admin afterwards).

@@ -63,14 +63,16 @@ def _probe(path: Path) -> dict:
 
 
 def _check_duration(asset: MediaAsset, seconds: float, setting: str, default: int) -> None:
-    """General limit of the kind, then the limits of the use (e.g. itinerary: 30 to 60 s)."""
+    """General limit of the kind, then the limits of the use (e.g. itinerary: 30 to 60 s);
+    a replay of a live replaces the general limit (up to two hours)."""
     maximum = int(get_setting(setting, default=default))
     minimum = 0
     rule = PURPOSES.get(asset.purpose)
     if rule and rule.duration:
         limits = rule.duration
         if limits.max_setting:
-            maximum = min(maximum, int(get_setting(limits.max_setting, default=limits.max_default)))
+            own = int(get_setting(limits.max_setting, default=limits.max_default))
+            maximum = own if limits.replaces_general else min(maximum, own)
         if limits.min_setting:
             minimum = int(get_setting(limits.min_setting, default=limits.min_default))
     if seconds <= 0:

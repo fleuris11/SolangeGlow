@@ -1,0 +1,24 @@
+# LiveKit server for local development (ADR-013). Keys come from LIVEKIT_KEYS
+# (docker-compose.yml). The server shares the network of the "web" container, so the
+# browser (Windows or the e2e container) reaches it at localhost.
+port: 7880
+bind_addresses:
+  - 0.0.0.0
+rtc:
+  tcp_port: 7881
+  udp_port: 7882
+  use_external_ip: false
+  node_ip: 127.0.0.1
+redis:
+  # Shared with the recording service (egress, profile "replay").
+  address: redis:6379
+  db: 4
+room:
+  empty_timeout: 120
+  departure_timeout: 20
+webhook:
+  api_key: devkey
+  urls:
+    - http://backend:8000/api/v1/livekit/webhook
+logging:
+  level: info

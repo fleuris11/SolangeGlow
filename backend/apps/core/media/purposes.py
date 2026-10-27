@@ -11,6 +11,8 @@ class Duration:
     min_default: int = 0
     max_setting: str | None = None
     max_default: int | None = None
+    # True: replaces the general limit of the kind instead of lowering it (long replays).
+    replaces_general: bool = False
 
 
 @dataclass(frozen=True)
@@ -21,6 +23,8 @@ class Purpose:
     # Size limit of this use (else the general limit of the kind, media.<kind>_max_bytes).
     max_bytes_setting: str | None = None
     max_bytes_default: int | None = None
+    # False: written by the platform itself (replays), never sent through the media API.
+    uploadable: bool = True
 
 
 PURPOSES: dict[str, Purpose] = {
@@ -91,6 +95,17 @@ PURPOSES: dict[str, Purpose] = {
         ),
         max_bytes_setting="academy.lesson_max_bytes",
         max_bytes_default=500 * 1024 * 1024,
+    ),
+    # Lives (ADR-013): the recording of the host, written by LiveKit, kept a few days.
+    "live_replay": Purpose(
+        ("video",),
+        "private",
+        Duration(
+            max_setting="live.replay_max_seconds",
+            max_default=2 * 3600 + 600,
+            replaces_general=True,
+        ),
+        uploadable=False,
     ),
     "course_resource": Purpose(
         ("document",),

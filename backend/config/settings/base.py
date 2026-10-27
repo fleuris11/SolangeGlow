@@ -67,6 +67,7 @@ LOCAL_APPS = [
     "apps.payments",
     "apps.selection_france",
     "apps.academy",
+    "apps.live",
     "apps.booking",
     "apps.glowpro",
     "apps.salon",
@@ -268,6 +269,11 @@ SPECTACULAR_SETTINGS = {
         "ConversationKindEnum": "apps.messaging.models.Conversation.Kind",
         "ConversationPurposeEnum": "apps.messaging.models.Conversation.Purpose",
         "MemberStatusEnum": "apps.messaging.models.ConversationMember.Status",
+        "CallKindEnum": "apps.messaging.models.Call.Kind",
+        "CallStatusEnum": "apps.messaging.models.Call.Status",
+        "CallPersonStateEnum": "apps.messaging.models.CallParticipant.State",
+        "LiveKindEnum": "apps.live.models.LiveRoom.Kind",
+        "LiveHandStatusEnum": "apps.live.models.LiveHand.Status",
         "PayoutMethodKindEnum": "apps.payments.models.PayoutMethod.Kind",
         "DisputeReasonEnum": "apps.payments.models.Dispute.Reason",
         "OpenDisputeReasonEnum": ["not_received", "not_as_described", "damaged", "other"],
@@ -356,11 +362,15 @@ PROVIDERS_HTTP_TIMEOUT = env.float("PROVIDERS_HTTP_TIMEOUT", default=8.0)
 MODERATION_AI_URL = env("MODERATION_AI_URL", default="")
 MODERATION_AI_KEY = env("MODERATION_AI_KEY", default="")
 
-# Audio and video calls (connected later). Development: the "livekit" service of
-# docker compose (profile "calls"), keys devkey / secret.
+# Audio and video calls, lives (ADR-013). LIVEKIT_URL is the address browsers open
+# (wss://… in production); LIVEKIT_API_URL the one the backend calls (empty: the same in
+# http). Empty: calls and lives are off. LIVEKIT_EGRESS: the recording service runs
+# (replays of the lives).
 LIVEKIT_URL = env("LIVEKIT_URL", default="")
+LIVEKIT_API_URL = env("LIVEKIT_API_URL", default="")
 LIVEKIT_API_KEY = env("LIVEKIT_API_KEY", default="")
 LIVEKIT_API_SECRET = env("LIVEKIT_API_SECRET", default="")
+LIVEKIT_EGRESS = env.bool("LIVEKIT_EGRESS", default=False)
 
 # Web Push (VAPID). Empty in development: keys are created in backend/.vapid.json.
 VAPID_PUBLIC_KEY = env("VAPID_PUBLIC_KEY", default="")
@@ -456,13 +466,24 @@ CELERY_BEAT_SCHEDULE = {
         "task": "apps.academy.tasks.run_daily",
         "schedule": crontab(hour=6, minute=40),
     },
+    # Lives and calls (ADR-013): too long, ringing for nobody, replays ready or past time.
+    "live.run_minutely": {
+        "task": "apps.live.tasks.run_minutely",
+        "schedule": crontab(),
+    },
+    "live.run_daily": {
+        "task": "apps.live.tasks.run_daily",
+        "schedule": crontab(hour=4, minute=20),
+    },
+    "messaging.calls_minutely": {
+        "task": "apps.messaging.tasks.calls_minutely",
+        "schedule": crontab(),
+    },
 }
 
 # Approved e-invoicing platform and card terminal: empty until a partner is chosen.
 EINVOICE_PROVIDER = env("EINVOICE_PROVIDER", default="")
 TERMINAL_PROVIDER = env("TERMINAL_PROVIDER", default="")
-# Broadcast of the training lives (class path, ADR-012): empty until prompt 14.
-LIVE_PROVIDER = env("LIVE_PROVIDER", default="")
 
 # --- Platform settings cache ----------------------------------------------------
 
@@ -809,6 +830,32 @@ UNFOLD = {
                         "title": _("Training lives"),
                         "icon": "live_tv",
                         "link": reverse_lazy("admin:academy_livesession_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("Lives and calls"),
+                "separator": True,
+                "items": [
+                    {
+                        "title": _("Live rooms"),
+                        "icon": "sensors",
+                        "link": reverse_lazy("admin:live_liveroom_changelist"),
+                    },
+                    {
+                        "title": _("Sales lives"),
+                        "icon": "storefront",
+                        "link": reverse_lazy("admin:shop_salelive_changelist"),
+                    },
+                    {
+                        "title": _("Questions in the lives"),
+                        "icon": "forum",
+                        "link": reverse_lazy("admin:live_livequestion_changelist"),
+                    },
+                    {
+                        "title": _("Calls"),
+                        "icon": "call",
+                        "link": reverse_lazy("admin:messaging_call_changelist"),
                     },
                 ],
             },

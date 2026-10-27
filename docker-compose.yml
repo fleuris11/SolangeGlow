@@ -21,6 +21,13 @@ x-backend-env: &backend-env
   AWS_ACCESS_KEY_ID: ${MINIO_ROOT_USER:-solange}
   AWS_SECRET_ACCESS_KEY: ${MINIO_ROOT_PASSWORD:-solange-minio-dev}
   MEDIA_PUBLIC_BASE_URL: /s3
+  # Calls and lives (ADR-013): the browser opens LIVEKIT_URL; the backend reaches the
+  # server inside the network of "web" (LiveKit shares it, see the livekit service).
+  LIVEKIT_URL: ${LIVEKIT_URL:-ws://localhost:7880}
+  LIVEKIT_API_URL: ${LIVEKIT_API_URL:-http://web:7880}
+  LIVEKIT_API_KEY: ${LIVEKIT_API_KEY:-devkey}
+  LIVEKIT_API_SECRET: ${LIVEKIT_API_SECRET:-solangeglow-livekit-dev-secret-not-for-production}
+  LIVEKIT_EGRESS: ${LIVEKIT_EGRESS:-false}
 
 x-backend: &backend
   build:
@@ -150,6 +157,10 @@ services:
       - web_next:/app/.next
     ports:
       - "3000:3000"
+      # LiveKit (it lives in this network, see below): signalling, media over TCP, UDP.
+      - "7880:7880"
+      - "7881:7881"
+      - "7882:7882/udp"
     depends_on:
       - backend
     restart: unless-stopped
@@ -172,16 +183,39 @@ services:
       - web
     command: npx playwright test
 
-  # Audio and video calls (connected later, ADR-006): a LiveKit server in development mode
-  # (keys devkey / secret). Started only on demand: docker compose --profile calls up livekit
+  # Calls and lives (ADR-013): LiveKit shares the network of "web", so the browsers of
+  # Windows and of the e2e container both reach it at localhost (real calls in the
+  # e2e tests). After `docker compose restart web`, restart livekit too.
   livekit:
-    image: livekit/livekit-server:v1.8.4
-    profiles: ["calls"]
-    command: --dev --bind 0.0.0.0
-    ports:
-      - "7880:7880"
-      - "7881:7881"
-      - "7882:7882/udp"
+    image: livekit/livekit-server:v1.13.9
+    command: --config /etc/livekit.yaml
+    network_mode: "service:web"
+    environment:
+      LIVEKIT_KEYS: "${LIVEKIT_API_KEY:-devkey}: ${LIVEKIT_API_SECRET:-solangeglow-livekit-dev-secret-not-for-production}"
+    volumes:
+      - ./docker/livekit/livekit.yaml:/etc/livekit.yaml:ro
+    depends_on:
+      web:
+        condition: service_started
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # Recording of the lives (replays), heavy image: only on demand.
+  # docker compose --profile replay up -d egress, with LIVEKIT_EGRESS=true in .env.
+  egress:
+    image: livekit/egress:v1.14.1
+    profiles: ["replay"]
+    network_mode: "service:web"
+    cap_add:
+      - SYS_ADMIN
+    environment:
+      EGRESS_CONFIG_FILE: /etc/egress.yaml
+    volumes:
+      - ./docker/livekit/egress.yaml:/etc/egress.yaml:ro
+    depends_on:
+      - livekit
+    restart: unless-stopped
 
 volumes:
   minio_data:
