@@ -18,6 +18,9 @@ class Purpose:
     kinds: tuple[str, ...]
     visibility: str
     duration: Duration | None = None
+    # Size limit of this use (else the general limit of the kind, media.<kind>_max_bytes).
+    max_bytes_setting: str | None = None
+    max_bytes_default: int | None = None
 
 
 PURPOSES: dict[str, Purpose] = {
@@ -74,5 +77,25 @@ PURPOSES: dict[str, Purpose] = {
             max_setting="pros.itinerary_video_max_seconds",
             max_default=60,
         ),
+    ),
+    # Academy (module 7): course covers, lessons of 3 to 10 minutes, PDF resources.
+    "course_cover": Purpose(("image",), "public"),
+    "lesson_video": Purpose(
+        ("video",),
+        "private",
+        Duration(
+            min_setting="academy.lesson_min_seconds",
+            min_default=180,
+            max_setting="academy.lesson_max_seconds",
+            max_default=600,
+        ),
+        max_bytes_setting="academy.lesson_max_bytes",
+        max_bytes_default=500 * 1024 * 1024,
+    ),
+    "course_resource": Purpose(
+        ("document",),
+        "private",
+        max_bytes_setting="academy.resource_max_bytes",
+        max_bytes_default=20 * 1024 * 1024,
     ),
 }

@@ -277,3 +277,47 @@ def test_itinerary_video_must_last_30_to_60_seconds(owner, tmp_path):
     )
     asset.refresh_from_db()
     assert (asset.status, asset.error) == (MediaAsset.Status.REJECTED, "too_short")
+
+
+# --- Academy: PDF documents, lessons of 3 to 10 minutes ---------------------------------------
+
+
+def test_a_pdf_is_kept_and_a_renamed_file_is_refused(owner):
+    pdf = b"%PDF-1.4\n1 0 obj << >> endobj\ntrailer << >>\n%%EOF\n"
+    asset = services.create_asset(
+        owner=owner, uploaded=upload(pdf, "fiche.pdf", "application/pdf"), purpose="course_resource"
+    )
+    asset.refresh_from_db()
+    assert asset.kind == MediaAsset.Kind.DOCUMENT
+    assert asset.status == MediaAsset.Status.READY
+    assert asset.visibility == MediaAsset.Visibility.PRIVATE
+    assert services.variant_url(asset, "file")
+
+    fake = services.create_asset(
+        owner=owner,
+        uploaded=upload(picture(), "fiche.pdf", "application/pdf"),
+        purpose="course_resource",
+    )
+    fake.refresh_from_db()
+    assert (fake.status, fake.error) == (MediaAsset.Status.REJECTED, "not_a_pdf")
+
+
+def test_a_lesson_shorter_than_three_minutes_is_refused(owner, tmp_path):
+    data = ffmpeg_file(
+        tmp_path, "short.mp4", ["-f", "lavfi", "-i", "testsrc=size=160x90:rate=5:duration=20"]
+    )
+    asset = services.create_asset(
+        owner=owner, uploaded=upload(data, "short.mp4", "video/mp4"), purpose="lesson_video"
+    )
+    asset.refresh_from_db()
+    assert (asset.status, asset.error) == (MediaAsset.Status.REJECTED, "too_short")
+
+
+def test_a_lesson_has_its_own_size_limit(owner):
+    PlatformSettingFactory(key="academy.lesson_max_bytes", value="10")
+    with pytest.raises(errors.FileTooLarge):
+        services.create_asset(
+            owner=owner,
+            uploaded=upload(b"x" * 64, "big.mp4", "video/mp4"),
+            purpose="lesson_video",
+        )

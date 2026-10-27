@@ -14,7 +14,7 @@ def original_upload_to(instance, filename):
 
 
 class MediaAsset(BaseModel):
-    """A picture, video or voice note, with its processed variants.
+    """A picture, video, voice note or PDF document, with its processed variants.
 
     Modules keep a ForeignKey to MediaAsset, never a FileField.
     """
@@ -23,6 +23,7 @@ class MediaAsset(BaseModel):
         IMAGE = "image", _("Picture")
         VIDEO = "video", _("Video")
         AUDIO = "audio", _("Voice note")
+        DOCUMENT = "document", _("Document (PDF)")
 
     class Visibility(models.TextChoices):
         PUBLIC = "public", _("Public")

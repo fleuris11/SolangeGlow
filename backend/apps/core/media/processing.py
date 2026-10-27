@@ -163,10 +163,22 @@ def process_audio(asset: MediaAsset) -> None:
         asset.variants = {"voice": _upload(save, "voice.webm", output, "audio/webm")}
 
 
+def process_document(asset: MediaAsset) -> None:
+    """A PDF is kept as sent, once its real type is checked (a renamed file is refused)."""
+    content = _read_original(asset)
+    if not content.startswith(b"%PDF-"):
+        raise Rejected("not_a_pdf")
+    with tempfile.TemporaryDirectory() as tmp:
+        path = Path(tmp) / "document.pdf"
+        path.write_bytes(content)
+        asset.variants = {"file": _upload(_saver(asset), "document.pdf", path, "application/pdf")}
+
+
 PIPELINES = {
     MediaAsset.Kind.IMAGE: process_image,
     MediaAsset.Kind.VIDEO: process_video,
     MediaAsset.Kind.AUDIO: process_audio,
+    MediaAsset.Kind.DOCUMENT: process_document,
 }
 
 

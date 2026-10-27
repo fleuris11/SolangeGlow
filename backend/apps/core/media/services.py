@@ -15,13 +15,15 @@ from .purposes import PURPOSES
 from .storage import private_storage, public_storage
 
 MB = 1024 * 1024
-DEFAULT_MAX_BYTES = {"image": 15 * MB, "video": 200 * MB, "audio": 10 * MB}
+DEFAULT_MAX_BYTES = {"image": 15 * MB, "video": 200 * MB, "audio": 10 * MB, "document": 20 * MB}
 
 
 def guess_kind(uploaded) -> str | None:
     content_type = (
         getattr(uploaded, "content_type", "") or mimetypes.guess_type(uploaded.name)[0] or ""
     )
+    if content_type == "application/pdf":
+        return "document"
     family = content_type.split("/")[0]
     return {"image": "image", "video": "video", "audio": "audio"}.get(family)
 
@@ -37,9 +39,12 @@ def create_asset(*, owner, uploaded, purpose: str, kind: str | None = None) -> M
     kind = kind or guess_kind(uploaded)
     if kind not in rule.kinds:
         raise errors.WrongKind()
-    max_bytes = int(
-        get_setting(f"media.{kind}_max_bytes", default=DEFAULT_MAX_BYTES.get(kind, 10 * MB))
-    )
+    if rule.max_bytes_setting:
+        max_bytes = int(get_setting(rule.max_bytes_setting, default=rule.max_bytes_default))
+    else:
+        max_bytes = int(
+            get_setting(f"media.{kind}_max_bytes", default=DEFAULT_MAX_BYTES.get(kind, 10 * MB))
+        )
     if uploaded.size > max_bytes:
         raise errors.FileTooLarge(errors.FileTooLarge.message % {"size": max_bytes // MB})
 
@@ -62,14 +67,17 @@ def create_asset(*, owner, uploaded, purpose: str, kind: str | None = None) -> M
     return asset
 
 
-def variant_url(asset: MediaAsset, name: str) -> str | None:
-    """Public link, or a signed link valid a few minutes for private media."""
+def variant_url(asset: MediaAsset, name: str, *, ttl: int | None = None) -> str | None:
+    """Public link, or a signed link valid a few minutes for private media.
+
+    A longer `ttl` suits a long video, whose player asks for parts of it while it plays.
+    """
     variant = (asset.variants or {}).get(name)
     if not variant:
         return None
     if asset.visibility == MediaAsset.Visibility.PUBLIC:
         return public_storage().url(variant["path"])
-    ttl = int(get_setting("media.signed_url_ttl_seconds", default=600))
+    ttl = ttl or int(get_setting("media.signed_url_ttl_seconds", default=600))
     storage = private_storage()
     try:
         return storage.url(variant["path"], expire=ttl)
