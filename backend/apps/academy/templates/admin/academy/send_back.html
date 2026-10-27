@@ -1,0 +1,16 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+  <form method="post" class="flex flex-col gap-4" style="max-width:520px">
+    {% csrf_token %}
+    <p>{% blocktranslate with title=course.title %}« {{ title }} » goes back to its trainer, who receives this note. A published course leaves the catalogue; its students keep it.{% endblocktranslate %}</p>
+    {{ form.as_div }}
+    <div class="flex gap-3">
+      <button type="submit" class="bg-primary-600 text-white rounded px-4 py-2 font-semibold">{% translate "Send back with a note" %}</button>
+      <a class="underline" href="{{ back_url }}">{% translate "Back" %}</a>
+    </div>
+  </form>
+{% endblock %}

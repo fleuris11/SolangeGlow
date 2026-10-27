@@ -23,12 +23,12 @@ def test_flag_without_restrictions_is_on_for_everyone():
 
 
 def test_flag_limited_by_country_and_role():
-    flag = FeatureFlagFactory(key="academy", roles=[Role.PRO])
+    flag = FeatureFlagFactory(key="beta_module", roles=[Role.PRO])
     flag.countries.add(CountryFactory(code="BJ"))
 
-    assert is_feature_enabled("academy", country="BJ", roles=[Role.PRO]) is True
-    assert is_feature_enabled("academy", country="FR", roles=[Role.PRO]) is False
-    assert is_feature_enabled("academy", country="BJ", roles=[Role.CLIENT]) is False
+    assert is_feature_enabled("beta_module", country="BJ", roles=[Role.PRO]) is True
+    assert is_feature_enabled("beta_module", country="FR", roles=[Role.PRO]) is False
+    assert is_feature_enabled("beta_module", country="BJ", roles=[Role.CLIENT]) is False
 
 
 def test_flag_cache_follows_changes():
