@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-20 23:11+0200\n"
+"POT-Creation-Date: 2026-10-27 10:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,530 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+msgid "What the trainer should change"
+msgstr ""
+
+msgid "trainer"
+msgstr ""
+
+msgid "price"
+msgstr ""
+
+msgid "status"
+msgstr ""
+
+msgid "Publish"
+msgstr ""
+
+msgid "Published; the trainer is told."
+msgstr ""
+
+msgid "Send back with a note"
+msgstr ""
+
+msgid "Sent back; the trainer is told."
+msgstr ""
+
+#, python-format
+msgid "Send back « %(title)s »"
+msgstr ""
+
+msgid "Why it is cancelled"
+msgstr ""
+
+msgid "valid"
+msgstr ""
+
+msgid "Cancel the certificate"
+msgstr ""
+
+msgid "The certificate is cancelled."
+msgstr ""
+
+#, python-format
+msgid "Cancel the certificate %(code)s"
+msgstr ""
+
 msgid "Academy"
+msgstr ""
+
+#, python-format
+msgid "Certificate %(code)s"
+msgstr ""
+
+msgid "Certificate of training"
+msgstr ""
+
+msgid "This certifies that"
+msgstr ""
+
+msgid "finished the course"
+msgstr ""
+
+#, python-format
+msgid "With %(trainer)s, on %(date)s"
+msgstr ""
+
+#, python-format
+msgid "Code: %(code)s"
+msgstr ""
+
+#, python-format
+msgid "Check it: %(url)s"
+msgstr ""
+
+msgid "The academy is not open in your country yet."
+msgstr ""
+
+msgid "Training lives are not open in your country yet."
+msgstr ""
+
+msgid "This course does not exist or is not available."
+msgstr ""
+
+msgid "Only the trainer of this course can change it."
+msgstr ""
+
+msgid "Check the title, the level, the language and the trade."
+msgstr ""
+
+#, python-format
+msgid "Choose a price between %(min)s and %(max)s."
+msgstr ""
+
+msgid "Only the courses of Solange Glow are included in the pass for now."
+msgstr ""
+
+msgid "This course is being reviewed: wait for the answer before changing it."
+msgstr ""
+
+msgid "Before sending it: a title, at least one module with a lesson, and every video ready."
+msgstr ""
+
+msgid "Give a title and a video of 3 to 10 minutes."
+msgstr ""
+
+msgid "Write the question, 2 to 4 answers, and tick the right one."
+msgstr ""
+
+msgid "This course cannot do that now."
+msgstr ""
+
+msgid "Tick the box to start right away: it is needed to open the course at once."
+msgstr ""
+
+msgid "Buying is not open to your account. Free courses stay open to you."
+msgstr ""
+
+msgid "You already follow this course."
+msgstr ""
+
+msgid "Get this course to watch this lesson."
+msgstr ""
+
+msgid "This course is included in the pass: take the pass to follow it."
+msgstr ""
+
+#, python-format
+msgid "A refund is only possible within %(days)s days and before opening a lesson."
+msgstr ""
+
+msgid "Watch every lesson of the module first."
+msgstr ""
+
+msgid "Answer every question."
+msgstr ""
+
+msgid "The pass is not offered in your country yet."
+msgstr ""
+
+msgid "Your pass is already paid for this month."
+msgstr ""
+
+msgid "There is nothing to pay right now."
+msgstr ""
+
+msgid "Give a title, a date in the future, a length and a number of places."
+msgstr ""
+
+msgid "This live does not exist or is over."
+msgstr ""
+
+msgid "No place left in this live."
+msgstr ""
+
+#, python-format
+msgid "The room opens %(minutes)s minutes before the start."
+msgstr ""
+
+msgid "The live video is not available yet: it is coming soon."
+msgstr ""
+
+msgid "No certificate with this code."
+msgstr ""
+
+msgid "Beginner"
+msgstr ""
+
+msgid "Intermediate"
+msgstr ""
+
+msgid "Expert"
+msgstr ""
+
+msgid "French"
+msgstr ""
+
+msgid "English"
+msgstr ""
+
+msgid "Slovak"
+msgstr ""
+
+msgid "Free"
+msgstr ""
+
+msgid "Paid once"
+msgstr ""
+
+msgid "Included in the pass"
+msgstr ""
+
+msgid "Draft"
+msgstr ""
+
+msgid "Waiting for review"
+msgstr ""
+
+msgid "Published"
+msgstr ""
+
+msgid "Sent back"
+msgstr ""
+
+msgid "Archived"
+msgstr ""
+
+msgid "short link"
+msgstr ""
+
+msgid "Empty: a course of the platform."
+msgstr ""
+
+msgid "written by"
+msgstr ""
+
+msgid "country"
+msgstr ""
+
+msgid "title"
+msgstr ""
+
+msgid "in one sentence"
+msgstr ""
+
+msgid "description"
+msgstr ""
+
+msgid "cover picture"
+msgstr ""
+
+msgid "trade"
+msgstr ""
+
+msgid "level"
+msgstr ""
+
+msgid "language"
+msgstr ""
+
+msgid "price (smallest unit)"
+msgstr ""
+
+msgid "currency"
+msgstr ""
+
+msgid "note of the review"
+msgstr ""
+
+msgid "changed since the review"
+msgstr ""
+
+msgid "The trainer changed a published course: to look at again."
+msgstr ""
+
+msgid "sent for review at"
+msgstr ""
+
+msgid "published at"
+msgstr ""
+
+msgid "counts for the badge"
+msgstr ""
+
+msgid "Finishing it gives the « Trained on Solange Glow » badge to a pro."
+msgstr ""
+
+msgid "length (s)"
+msgstr ""
+
+msgid "students"
+msgstr ""
+
+msgid "course"
+msgstr ""
+
+msgid "courses"
+msgstr ""
+
+msgid "Can publish or send back the courses of the pros"
+msgstr ""
+
+msgid "course to review"
+msgstr ""
+
+msgid "courses to review"
+msgstr ""
+
+msgid "position"
+msgstr ""
+
+msgid "module"
+msgstr ""
+
+msgid "modules"
+msgstr ""
+
+msgid "video"
+msgstr ""
+
+msgid "free preview"
+msgstr ""
+
+msgid "Everybody can watch it."
+msgstr ""
+
+msgid "lesson"
+msgstr ""
+
+msgid "lessons"
+msgstr ""
+
+msgid "PDF file"
+msgstr ""
+
+msgid "resource"
+msgstr ""
+
+msgid "resources"
+msgstr ""
+
+msgid "question"
+msgstr ""
+
+msgid "answers"
+msgstr ""
+
+msgid "right answer (0 = the first)"
+msgstr ""
+
+msgid "quiz question"
+msgstr ""
+
+msgid "quiz questions"
+msgstr ""
+
+msgid "Bought"
+msgstr ""
+
+msgid "With the pass"
+msgstr ""
+
+msgid "Trainer"
+msgstr ""
+
+msgid "Waiting for the payment"
+msgstr ""
+
+msgid "Following"
+msgstr ""
+
+msgid "Refunded"
+msgstr ""
+
+msgid "student"
+msgstr ""
+
+msgid "access"
+msgstr ""
+
+msgid "payment"
+msgstr ""
+
+msgid "waiver ticked at"
+msgstr ""
+
+msgid "waiver wording"
+msgstr ""
+
+msgid "address (hashed)"
+msgstr ""
+
+msgid "first lesson opened at"
+msgstr ""
+
+msgid "finished at"
+msgstr ""
+
+msgid "progress (%)"
+msgstr ""
+
+msgid "last lesson"
+msgstr ""
+
+msgid "student of a course"
+msgstr ""
+
+msgid "students of the courses"
+msgstr ""
+
+msgid "stopped at (s)"
+msgstr ""
+
+msgid "watched at"
+msgstr ""
+
+msgid "progress in a lesson"
+msgstr ""
+
+msgid "progress in the lessons"
+msgstr ""
+
+msgid "score (%)"
+msgstr ""
+
+msgid "passed"
+msgstr ""
+
+msgid "quiz attempt"
+msgstr ""
+
+msgid "quiz attempts"
+msgstr ""
+
+msgid "code"
+msgstr ""
+
+msgid "name of the student"
+msgstr ""
+
+msgid "issued at"
+msgstr ""
+
+msgid "cancelled at"
+msgstr ""
+
+msgid "why it was cancelled"
+msgstr ""
+
+msgid "certificate"
+msgstr ""
+
+msgid "certificates"
+msgstr ""
+
+msgid "Active"
+msgstr ""
+
+msgid "Ended"
+msgstr ""
+
+msgid "paid until"
+msgstr ""
+
+msgid "stops at the end of the month"
+msgstr ""
+
+msgid "payment to make"
+msgstr ""
+
+msgid "academy pass"
+msgstr ""
+
+msgid "academy passes"
+msgstr ""
+
+msgid "pass"
+msgstr ""
+
+msgid "from"
+msgstr ""
+
+msgid "until"
+msgstr ""
+
+msgid "paid month of a pass"
+msgstr ""
+
+msgid "paid months of the passes"
+msgstr ""
+
+msgid "Planned"
+msgstr ""
+
+msgid "On air"
+msgstr ""
+
+msgid "Over"
+msgstr ""
+
+msgid "Cancelled"
+msgstr ""
+
+msgid "Empty: a live of the platform."
+msgstr ""
+
+msgid "planned by"
+msgstr ""
+
+msgid "starts at"
+msgstr ""
+
+msgid "length (min)"
+msgstr ""
+
+msgid "places"
+msgstr ""
+
+msgid "room at the broadcast service"
+msgstr ""
+
+msgid "registered"
+msgstr ""
+
+msgid "training live"
+msgstr ""
+
+msgid "training lives"
+msgstr ""
+
+msgid "live"
+msgstr ""
+
+msgid "registration to a live"
+msgstr ""
+
+msgid "registrations to the lives"
+msgstr ""
+
+msgid "The public page of this code will say that the certificate is no longer valid."
+msgstr ""
+
+msgid "Back"
+msgstr ""
+
+#, python-format
+msgid "« %(title)s » goes back to its trainer, who receives this note. A published course leaves the catalogue; its students keep it."
 msgstr ""
 
 msgid "roles"
@@ -27,12 +550,6 @@ msgid "Enter a phone number or an e-mail address."
 msgstr ""
 
 msgid "role"
-msgstr ""
-
-msgid "status"
-msgstr ""
-
-msgid "Active"
 msgstr ""
 
 msgid "Suspended"
@@ -173,9 +690,6 @@ msgid "first name"
 msgstr ""
 
 msgid "last name"
-msgstr ""
-
-msgid "country"
 msgstr ""
 
 msgid "preferred language"
@@ -378,9 +892,6 @@ msgstr ""
 msgid "deposit"
 msgstr ""
 
-msgid "payment"
-msgstr ""
-
 msgid "Cancel and refund"
 msgstr ""
 
@@ -556,9 +1067,6 @@ msgstr ""
 msgid "Off: the opening hours of the salon."
 msgstr ""
 
-msgid "position"
-msgstr ""
-
 msgid "staff member"
 msgstr ""
 
@@ -569,9 +1077,6 @@ msgid "person"
 msgstr ""
 
 msgid "day"
-msgstr ""
-
-msgid "from"
 msgstr ""
 
 msgid "to"
@@ -610,12 +1115,6 @@ msgstr ""
 msgid "how many"
 msgstr ""
 
-msgid "resource"
-msgstr ""
-
-msgid "resources"
-msgstr ""
-
 msgid "step"
 msgstr ""
 
@@ -629,9 +1128,6 @@ msgid "Waiting for the shares"
 msgstr ""
 
 msgid "Confirmed"
-msgstr ""
-
-msgid "Cancelled"
 msgstr ""
 
 msgid "organiser"
@@ -709,19 +1205,10 @@ msgstr ""
 msgid "client phone"
 msgstr ""
 
-msgid "starts at"
-msgstr ""
-
 msgid "ends at"
 msgstr ""
 
 msgid "made"
-msgstr ""
-
-msgid "price"
-msgstr ""
-
-msgid "currency"
 msgstr ""
 
 msgid "last-minute discount (%)"
@@ -752,9 +1239,6 @@ msgid "confirmed at"
 msgstr ""
 
 msgid "done at"
-msgstr ""
-
-msgid "cancelled at"
 msgstr ""
 
 msgid "cancelled by"
@@ -941,6 +1425,9 @@ msgstr ""
 msgid "Voice note"
 msgstr ""
 
+msgid "Document (PDF)"
+msgstr ""
+
 msgid "Public"
 msgstr ""
 
@@ -1008,9 +1495,6 @@ msgid "created at"
 msgstr ""
 
 msgid "updated at"
-msgstr ""
-
-msgid "code"
 msgstr ""
 
 msgid "Use a 3-letter ISO 4217 code."
@@ -1089,9 +1573,6 @@ msgstr ""
 msgid "Booleans: true or false. Decimals use a dot: 12.5."
 msgstr ""
 
-msgid "description"
-msgstr ""
-
 msgid "platform setting"
 msgstr ""
 
@@ -1160,9 +1641,6 @@ msgid "You are already on this plan."
 msgstr ""
 
 msgid "This plan is not offered in your country."
-msgstr ""
-
-msgid "There is nothing to pay right now."
 msgstr ""
 
 msgid "Give a colour like #C8102E and website addresses like salon.fr."
@@ -1234,25 +1712,13 @@ msgstr ""
 msgid "Free trial"
 msgstr ""
 
-msgid "Waiting for the payment"
-msgstr ""
-
 msgid "Back to the free plan"
 msgstr ""
 
 msgid "trial used"
 msgstr ""
 
-msgid "paid until"
-msgstr ""
-
 msgid "grace until"
-msgstr ""
-
-msgid "stops at the end of the month"
-msgstr ""
-
-msgid "payment to make"
 msgstr ""
 
 msgid "subscription"
@@ -1352,9 +1818,6 @@ msgid "issuer"
 msgstr ""
 
 msgid "number"
-msgstr ""
-
-msgid "issued at"
 msgstr ""
 
 msgid "client details"
@@ -1532,9 +1995,6 @@ msgid "Discussion"
 msgstr ""
 
 msgid "Support"
-msgstr ""
-
-msgid "title"
 msgstr ""
 
 msgid "linked to"
@@ -1813,12 +2273,6 @@ msgstr ""
 msgid "Banned"
 msgstr ""
 
-msgid "level"
-msgstr ""
-
-msgid "until"
-msgstr ""
-
 msgid "sanction"
 msgstr ""
 
@@ -1934,9 +2388,6 @@ msgid "Total paid"
 msgstr ""
 
 msgid "Commission"
-msgstr ""
-
-msgid "Refunded"
 msgstr ""
 
 msgid "dates"
@@ -2153,6 +2604,9 @@ msgid "Gift card"
 msgstr ""
 
 msgid "Package of sessions"
+msgstr ""
+
+msgid "Academy pass"
 msgstr ""
 
 msgid "Other"
@@ -2515,9 +2969,6 @@ msgstr ""
 msgid "Refund this amount"
 msgstr ""
 
-msgid "Back"
-msgstr ""
-
 msgid "latitude"
 msgstr ""
 
@@ -2534,9 +2985,6 @@ msgid "Status"
 msgstr ""
 
 msgid "Media"
-msgstr ""
-
-msgid "short link"
 msgstr ""
 
 msgid "verification"
@@ -2698,16 +3146,7 @@ msgstr ""
 msgid "pictogram"
 msgstr ""
 
-msgid "trade"
-msgstr ""
-
 msgid "trades"
-msgstr ""
-
-msgid "French"
-msgstr ""
-
-msgid "English"
 msgstr ""
 
 msgid "Fon"
@@ -2749,9 +3188,6 @@ msgstr ""
 msgid "Portuguese"
 msgstr ""
 
-msgid "Slovak"
-msgstr ""
-
 msgid "Website"
 msgstr ""
 
@@ -2759,15 +3195,6 @@ msgid "Independent"
 msgstr ""
 
 msgid "Salon or business"
-msgstr ""
-
-msgid "Draft"
-msgstr ""
-
-msgid "Published"
-msgstr ""
-
-msgid "Waiting for review"
 msgstr ""
 
 msgid "Verified pro"
@@ -2789,9 +3216,6 @@ msgid "presentation"
 msgstr ""
 
 msgid "presentation (voice note)"
-msgstr ""
-
-msgid "cover picture"
 msgstr ""
 
 msgid "social networks"
@@ -2839,13 +3263,13 @@ msgstr ""
 msgid "In the smallest unit of the currency (FCFA, cents)."
 msgstr ""
 
-msgid "published at"
-msgstr ""
-
 msgid "suspended at"
 msgstr ""
 
 msgid "reason of the suspension"
+msgstr ""
+
+msgid "trained on Solange Glow since"
 msgstr ""
 
 msgid "average rating"
@@ -4041,9 +4465,6 @@ msgstr ""
 msgid "description (voice note)"
 msgstr ""
 
-msgid "video"
-msgstr ""
-
 msgid "preparation (days)"
 msgstr ""
 
@@ -4526,6 +4947,24 @@ msgid "Payments at the salon"
 msgstr ""
 
 msgid "Invoice issuers"
+msgstr ""
+
+msgid "Courses to review"
+msgstr ""
+
+msgid "Courses"
+msgstr ""
+
+msgid "Students"
+msgstr ""
+
+msgid "Certificates"
+msgstr ""
+
+msgid "Academy passes"
+msgstr ""
+
+msgid "Training lives"
 msgstr ""
 
 msgid "Finance dashboard"

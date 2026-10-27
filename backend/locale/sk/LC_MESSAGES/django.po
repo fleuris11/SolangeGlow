@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-20 23:11+0200\n"
+"POT-Creation-Date: 2026-10-27 10:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,531 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n >= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
 
+msgid "What the trainer should change"
+msgstr "Čo má lektorka zmeniť"
+
+msgid "trainer"
+msgstr "lektorka"
+
+msgid "price"
+msgstr "cena"
+
+msgid "status"
+msgstr "stav"
+
+msgid "Publish"
+msgstr "Zverejniť"
+
+msgid "Published; the trainer is told."
+msgstr "Zverejnené; lektorka dostala správu."
+
+msgid "Send back with a note"
+msgstr "Vrátiť s poznámkou"
+
+msgid "Sent back; the trainer is told."
+msgstr "Vrátené; lektorka dostala správu."
+
+#, python-format
+msgid "Send back « %(title)s »"
+msgstr "Vrátiť « %(title)s »"
+
+msgid "Why it is cancelled"
+msgstr "Prečo sa ruší"
+
+msgid "valid"
+msgstr "platný"
+
+msgid "Cancel the certificate"
+msgstr "Zrušiť certifikát"
+
+msgid "The certificate is cancelled."
+msgstr "Certifikát je zrušený."
+
+#, python-format
+msgid "Cancel the certificate %(code)s"
+msgstr "Zrušiť certifikát %(code)s"
+
 msgid "Academy"
 msgstr "Akadémia"
+
+#, python-format
+msgid "Certificate %(code)s"
+msgstr "Certifikát %(code)s"
+
+msgid "Certificate of training"
+msgstr "Certifikát o absolvovaní kurzu"
+
+msgid "This certifies that"
+msgstr "Týmto sa potvrdzuje, že"
+
+msgid "finished the course"
+msgstr "dokončila kurz"
+
+#, python-format
+msgid "With %(trainer)s, on %(date)s"
+msgstr "S %(trainer)s, %(date)s"
+
+#, python-format
+msgid "Code: %(code)s"
+msgstr "Kód: %(code)s"
+
+#, python-format
+msgid "Check it: %(url)s"
+msgstr "Overiť: %(url)s"
+
+msgid "The academy is not open in your country yet."
+msgstr "Akadémia v tvojej krajine ešte nie je otvorená."
+
+msgid "Training lives are not open in your country yet."
+msgstr "Školiace live v tvojej krajine ešte nie sú otvorené."
+
+msgid "This course does not exist or is not available."
+msgstr "Tento kurz neexistuje alebo nie je dostupný."
+
+msgid "Only the trainer of this course can change it."
+msgstr "Upraviť ho môže len lektorka kurzu."
+
+msgid "Check the title, the level, the language and the trade."
+msgstr "Skontroluj názov, úroveň, jazyk a remeslo."
+
+#, python-format
+msgid "Choose a price between %(min)s and %(max)s."
+msgstr "Vyber cenu od %(min)s do %(max)s."
+
+msgid "Only the courses of Solange Glow are included in the pass for now."
+msgstr "Zatiaľ sú v pase len kurzy Solange Glow."
+
+msgid "This course is being reviewed: wait for the answer before changing it."
+msgstr "Kurz sa kontroluje: pred úpravou počkaj na odpoveď."
+
+msgid "Before sending it: a title, at least one module with a lesson, and every video ready."
+msgstr "Pred odoslaním: názov, aspoň jeden modul s lekciou a všetky videá pripravené."
+
+msgid "Give a title and a video of 3 to 10 minutes."
+msgstr "Zadaj názov a video s dĺžkou 3 až 10 minút."
+
+msgid "Write the question, 2 to 4 answers, and tick the right one."
+msgstr "Napíš otázku, 2 až 4 odpovede a označ správnu."
+
+msgid "This course cannot do that now."
+msgstr "Pre tento kurz to teraz nie je možné."
+
+msgid "Tick the box to start right away: it is needed to open the course at once."
+msgstr "Zaškrtni políčko a začni hneď: je to potrebné na otvorenie kurzu."
+
+msgid "Buying is not open to your account. Free courses stay open to you."
+msgstr "Nákup nie je pre tvoj účet otvorený. Kurzy zadarmo ti ostávajú."
+
+msgid "You already follow this course."
+msgstr "Tento kurz už máš."
+
+msgid "Get this course to watch this lesson."
+msgstr "Získaj tento kurz a pozri si lekciu."
+
+msgid "This course is included in the pass: take the pass to follow it."
+msgstr "Tento kurz je v rámci pasu: získaj pas a sleduj ho."
+
+#, python-format
+msgid "A refund is only possible within %(days)s days and before opening a lesson."
+msgstr "Vrátenie peňazí je možné len do %(days)s dní a pred otvorením lekcie."
+
+msgid "Watch every lesson of the module first."
+msgstr "Najprv si pozri všetky lekcie modulu."
+
+msgid "Answer every question."
+msgstr "Odpovedz na všetky otázky."
+
+msgid "The pass is not offered in your country yet."
+msgstr "Pas sa v tvojej krajine zatiaľ neponúka."
+
+msgid "Your pass is already paid for this month."
+msgstr "Tvoj pas je na tento mesiac už zaplatený."
+
+msgid "There is nothing to pay right now."
+msgstr "Momentálne nie je čo platiť."
+
+msgid "Give a title, a date in the future, a length and a number of places."
+msgstr "Zadaj názov, budúci dátum, dĺžku a počet miest."
+
+msgid "This live does not exist or is over."
+msgstr "Tento live neexistuje alebo už skončil."
+
+msgid "No place left in this live."
+msgstr "V tomto live už nie je miesto."
+
+#, python-format
+msgid "The room opens %(minutes)s minutes before the start."
+msgstr "Miestnosť sa otvorí %(minutes)s minút pred začiatkom."
+
+msgid "The live video is not available yet: it is coming soon."
+msgstr "Živé video zatiaľ nie je dostupné: čoskoro príde."
+
+msgid "No certificate with this code."
+msgstr "Žiadny certifikát s týmto kódom."
+
+msgid "Beginner"
+msgstr "Začiatočníčka"
+
+msgid "Intermediate"
+msgstr "Pokročilá"
+
+msgid "Expert"
+msgstr "Expertka"
+
+msgid "French"
+msgstr "Francúzština"
+
+msgid "English"
+msgstr "Angličtina"
+
+msgid "Slovak"
+msgstr "Slovenčina"
+
+msgid "Free"
+msgstr "Zadarmo"
+
+msgid "Paid once"
+msgstr "Jednorazovo"
+
+msgid "Included in the pass"
+msgstr "V rámci pasu"
+
+msgid "Draft"
+msgstr "Koncept"
+
+msgid "Waiting for review"
+msgstr "Čaká na kontrolu"
+
+msgid "Published"
+msgstr "Zverejnená"
+
+msgid "Sent back"
+msgstr "Vrátený"
+
+msgid "Archived"
+msgstr "Archivovaný"
+
+msgid "short link"
+msgstr "krátky odkaz"
+
+msgid "Empty: a course of the platform."
+msgstr "Prázdne: kurz platformy."
+
+msgid "written by"
+msgstr "napísala"
+
+msgid "country"
+msgstr "krajina"
+
+msgid "title"
+msgstr "nadpis"
+
+msgid "in one sentence"
+msgstr "jednou vetou"
+
+msgid "description"
+msgstr "popis"
+
+msgid "cover picture"
+msgstr "titulná fotka"
+
+msgid "trade"
+msgstr "odbor"
+
+msgid "level"
+msgstr "úroveň"
+
+msgid "language"
+msgstr "jazyk"
+
+msgid "price (smallest unit)"
+msgstr "cena (najmenšia jednotka)"
+
+msgid "currency"
+msgstr "mena"
+
+msgid "note of the review"
+msgstr "poznámka z kontroly"
+
+msgid "changed since the review"
+msgstr "zmenený od kontroly"
+
+msgid "The trainer changed a published course: to look at again."
+msgstr "Lektorka zmenila zverejnený kurz: treba ho znova pozrieť."
+
+msgid "sent for review at"
+msgstr "odoslaný na kontrolu"
+
+msgid "published at"
+msgstr "zverejnené"
+
+msgid "counts for the badge"
+msgstr "počíta sa do odznaku"
+
+msgid "Finishing it gives the « Trained on Solange Glow » badge to a pro."
+msgstr "Jeho dokončenie dá profesionálke odznak « Vyškolená na Solange Glow »."
+
+msgid "length (s)"
+msgstr "dĺžka (s)"
+
+msgid "students"
+msgstr "študentky"
+
+msgid "course"
+msgstr "kurz"
+
+msgid "courses"
+msgstr "kurzy"
+
+msgid "Can publish or send back the courses of the pros"
+msgstr "Môže zverejniť alebo vrátiť kurzy profesionálok"
+
+msgid "course to review"
+msgstr "kurz na kontrolu"
+
+msgid "courses to review"
+msgstr "kurzy na kontrolu"
+
+msgid "position"
+msgstr "poradie"
+
+msgid "module"
+msgstr "modul"
+
+msgid "modules"
+msgstr "moduly"
+
+msgid "video"
+msgstr "video"
+
+msgid "free preview"
+msgstr "ukážka zadarmo"
+
+msgid "Everybody can watch it."
+msgstr "Pozrieť si ju môže každý."
+
+msgid "lesson"
+msgstr "lekcia"
+
+msgid "lessons"
+msgstr "lekcie"
+
+msgid "PDF file"
+msgstr "súbor PDF"
+
+msgid "resource"
+msgstr "vybavenie"
+
+msgid "resources"
+msgstr "vybavenie"
+
+msgid "question"
+msgstr "otázka"
+
+msgid "answers"
+msgstr "odpovede"
+
+msgid "right answer (0 = the first)"
+msgstr "správna odpoveď (0 = prvá)"
+
+msgid "quiz question"
+msgstr "otázka kvízu"
+
+msgid "quiz questions"
+msgstr "otázky kvízu"
+
+msgid "Bought"
+msgstr "Kúpený"
+
+msgid "With the pass"
+msgstr "S pasom"
+
+msgid "Trainer"
+msgstr "Lektorka"
+
+msgid "Waiting for the payment"
+msgstr "Čaká sa na platbu"
+
+msgid "Following"
+msgstr "Prebieha"
+
+msgid "Refunded"
+msgstr "Vrátené"
+
+msgid "student"
+msgstr "študentka"
+
+msgid "access"
+msgstr "prístup"
+
+msgid "payment"
+msgstr "platba"
+
+msgid "waiver ticked at"
+msgstr "vzdanie sa zaškrtnuté"
+
+msgid "waiver wording"
+msgstr "znenie vzdania sa"
+
+msgid "address (hashed)"
+msgstr "adresa (zašifrovaná)"
+
+msgid "first lesson opened at"
+msgstr "prvá lekcia otvorená"
+
+msgid "finished at"
+msgstr "dokončené"
+
+msgid "progress (%)"
+msgstr "pokrok (%)"
+
+msgid "last lesson"
+msgstr "posledná lekcia"
+
+msgid "student of a course"
+msgstr "študentka kurzu"
+
+msgid "students of the courses"
+msgstr "študentky kurzov"
+
+msgid "stopped at (s)"
+msgstr "zastavené na (s)"
+
+msgid "watched at"
+msgstr "pozreté"
+
+msgid "progress in a lesson"
+msgstr "pokrok v lekcii"
+
+msgid "progress in the lessons"
+msgstr "pokrok v lekciách"
+
+msgid "score (%)"
+msgstr "skóre (%)"
+
+msgid "passed"
+msgstr "zvládnutý"
+
+msgid "quiz attempt"
+msgstr "pokus o kvíz"
+
+msgid "quiz attempts"
+msgstr "pokusy o kvíz"
+
+msgid "code"
+msgstr "kód"
+
+msgid "name of the student"
+msgstr "meno študentky"
+
+msgid "issued at"
+msgstr "vystavené"
+
+msgid "cancelled at"
+msgstr "zrušené"
+
+msgid "why it was cancelled"
+msgstr "prečo bol zrušený"
+
+msgid "certificate"
+msgstr "certifikát"
+
+msgid "certificates"
+msgstr "certifikáty"
+
+msgid "Active"
+msgstr "Aktívny"
+
+msgid "Ended"
+msgstr "Skončený"
+
+msgid "paid until"
+msgstr "zaplatené do"
+
+msgid "stops at the end of the month"
+msgstr "končí na konci mesiaca"
+
+msgid "payment to make"
+msgstr "platba na úhradu"
+
+msgid "academy pass"
+msgstr "pas Akadémie"
+
+msgid "academy passes"
+msgstr "pasy Akadémie"
+
+msgid "pass"
+msgstr "pas"
+
+msgid "from"
+msgstr "prvý deň"
+
+msgid "until"
+msgstr "do"
+
+msgid "paid month of a pass"
+msgstr "zaplatený mesiac pasu"
+
+msgid "paid months of the passes"
+msgstr "zaplatené mesiace pasov"
+
+msgid "Planned"
+msgstr "Naplánovaný"
+
+msgid "On air"
+msgstr "Naživo"
+
+msgid "Over"
+msgstr "Skončený"
+
+msgid "Cancelled"
+msgstr "Zrušené"
+
+msgid "Empty: a live of the platform."
+msgstr "Prázdne: live platformy."
+
+msgid "planned by"
+msgstr "naplánoval(a)"
+
+msgid "starts at"
+msgstr "začína"
+
+msgid "length (min)"
+msgstr "dĺžka (min)"
+
+msgid "places"
+msgstr "miesta"
+
+msgid "room at the broadcast service"
+msgstr "miestnosť u služby vysielania"
+
+msgid "registered"
+msgstr "prihlásené"
+
+msgid "training live"
+msgstr "školiaci live"
+
+msgid "training lives"
+msgstr "školiace live"
+
+msgid "live"
+msgstr "live"
+
+msgid "registration to a live"
+msgstr "prihláška na live"
+
+msgid "registrations to the lives"
+msgstr "prihlášky na live"
+
+msgid "The public page of this code will say that the certificate is no longer valid."
+msgstr "Verejná stránka tohto kódu uvedie, že certifikát už nie je platný."
+
+msgid "Back"
+msgstr "Späť"
+
+#, python-format
+msgid "« %(title)s » goes back to its trainer, who receives this note. A published course leaves the catalogue; its students keep it."
+msgstr "« %(title)s » sa vráti lektorke, ktorá dostane túto poznámku. Zverejnený kurz zmizne z katalógu; študentkám ostane."
 
 msgid "roles"
 msgstr "roly"
@@ -28,12 +551,6 @@ msgstr "Zadaj telefónne číslo alebo e-mailovú adresu."
 
 msgid "role"
 msgstr "rola"
-
-msgid "status"
-msgstr "stav"
-
-msgid "Active"
-msgstr "Aktívny"
 
 msgid "Suspended"
 msgstr "Pozastavený"
@@ -178,9 +695,6 @@ msgstr "meno"
 
 msgid "last name"
 msgstr "priezvisko"
-
-msgid "country"
-msgstr "krajina"
 
 msgid "preferred language"
 msgstr "preferovaný jazyk"
@@ -382,9 +896,6 @@ msgstr "Reklama"
 msgid "deposit"
 msgstr "záloha"
 
-msgid "payment"
-msgstr "platba"
-
 msgid "Cancel and refund"
 msgstr "Zrušiť a vrátiť peniaze"
 
@@ -560,9 +1071,6 @@ msgstr "vlastný pracovný čas"
 msgid "Off: the opening hours of the salon."
 msgstr "Vypnuté: otváracie hodiny salónu."
 
-msgid "position"
-msgstr "poradie"
-
 msgid "staff member"
 msgstr "člen tímu"
 
@@ -574,9 +1082,6 @@ msgstr "osoba"
 
 msgid "day"
 msgstr "deň"
-
-msgid "from"
-msgstr "prvý deň"
 
 msgid "to"
 msgstr "posledný deň"
@@ -614,12 +1119,6 @@ msgstr "nedostupnosť"
 msgid "how many"
 msgstr "koľko"
 
-msgid "resource"
-msgstr "vybavenie"
-
-msgid "resources"
-msgstr "vybavenie"
-
 msgid "step"
 msgstr "krok"
 
@@ -634,9 +1133,6 @@ msgstr "Čaká sa na podiely"
 
 msgid "Confirmed"
 msgstr "Potvrdené"
-
-msgid "Cancelled"
-msgstr "Zrušené"
 
 msgid "organiser"
 msgstr "organizátorka"
@@ -713,20 +1209,11 @@ msgstr "meno klientky"
 msgid "client phone"
 msgstr "telefón klientky"
 
-msgid "starts at"
-msgstr "začína"
-
 msgid "ends at"
 msgstr "končí"
 
 msgid "made"
 msgstr "vytvorené"
-
-msgid "price"
-msgstr "cena"
-
-msgid "currency"
-msgstr "mena"
 
 msgid "last-minute discount (%)"
 msgstr "zľava na poslednú chvíľu (%)"
@@ -757,9 +1244,6 @@ msgstr "potvrdené"
 
 msgid "done at"
 msgstr "dokončené"
-
-msgid "cancelled at"
-msgstr "zrušené"
 
 msgid "cancelled by"
 msgstr "zrušil(a)"
@@ -945,6 +1429,9 @@ msgstr "Video"
 msgid "Voice note"
 msgstr "Hlasová správa"
 
+msgid "Document (PDF)"
+msgstr "Dokument (PDF)"
+
 msgid "Public"
 msgstr "Verejné"
 
@@ -1013,9 +1500,6 @@ msgstr "vytvorené"
 
 msgid "updated at"
 msgstr "upravené"
-
-msgid "code"
-msgstr "kód"
 
 msgid "Use a 3-letter ISO 4217 code."
 msgstr "Použi 3-písmenový kód ISO 4217."
@@ -1093,9 +1577,6 @@ msgstr "hodnota"
 msgid "Booleans: true or false. Decimals use a dot: 12.5."
 msgstr "Áno/nie: true alebo false. Desatinné čísla s bodkou: 12.5."
 
-msgid "description"
-msgstr "popis"
-
 msgid "platform setting"
 msgstr "nastavenie"
 
@@ -1166,9 +1647,6 @@ msgstr "Tento plán už máš."
 msgid "This plan is not offered in your country."
 msgstr "Tento plán sa v tvojej krajine neponúka."
 
-msgid "There is nothing to pay right now."
-msgstr "Momentálne nie je čo platiť."
-
 msgid "Give a colour like #C8102E and website addresses like salon.fr."
 msgstr "Zadaj farbu ako #C8102E a adresy ako salon.fr."
 
@@ -1238,26 +1716,14 @@ msgstr "ceny"
 msgid "Free trial"
 msgstr "Skúšobná doba"
 
-msgid "Waiting for the payment"
-msgstr "Čaká sa na platbu"
-
 msgid "Back to the free plan"
 msgstr "Späť na bezplatnom pláne"
 
 msgid "trial used"
 msgstr "skúšobná doba využitá"
 
-msgid "paid until"
-msgstr "zaplatené do"
-
 msgid "grace until"
 msgstr "odklad do"
-
-msgid "stops at the end of the month"
-msgstr "končí na konci mesiaca"
-
-msgid "payment to make"
-msgstr "platba na úhradu"
 
 msgid "subscription"
 msgstr "predplatné"
@@ -1357,9 +1823,6 @@ msgstr "vystavovateľ"
 
 msgid "number"
 msgstr "číslo"
-
-msgid "issued at"
-msgstr "vystavené"
 
 msgid "client details"
 msgstr "údaje klientky"
@@ -1537,9 +2000,6 @@ msgstr "Rozhovor"
 
 msgid "Support"
 msgstr "Podpora"
-
-msgid "title"
-msgstr "nadpis"
 
 msgid "linked to"
 msgstr "prepojené s"
@@ -1817,12 +2277,6 @@ msgstr "Nemôže zverejňovať ani komentovať"
 msgid "Banned"
 msgstr "Zakázaná"
 
-msgid "level"
-msgstr "úroveň"
-
-msgid "until"
-msgstr "do"
-
 msgid "sanction"
 msgstr "sankcia"
 
@@ -1939,9 +2393,6 @@ msgstr "Zaplatené spolu"
 
 msgid "Commission"
 msgstr "Provízia"
-
-msgid "Refunded"
-msgstr "Vrátené"
 
 msgid "dates"
 msgstr "dátumy"
@@ -2158,6 +2609,9 @@ msgstr "Darčeková karta"
 
 msgid "Package of sessions"
 msgstr "Balík sedení"
+
+msgid "Academy pass"
+msgstr "Pas Akadémie"
 
 msgid "Other"
 msgstr "Iné"
@@ -2525,9 +2979,6 @@ msgstr "Časť sumy predávajúcej (%(seller_amount)s) sa vráti klientke, v naj
 msgid "Refund this amount"
 msgstr "Vrátiť túto sumu"
 
-msgid "Back"
-msgstr "Späť"
-
 msgid "latitude"
 msgstr "zemepisná šírka"
 
@@ -2545,9 +2996,6 @@ msgstr "Stav"
 
 msgid "Media"
 msgstr "Médiá"
-
-msgid "short link"
-msgstr "krátky odkaz"
 
 msgid "verification"
 msgstr "overenie"
@@ -2712,17 +3160,8 @@ msgstr "Téglik krému"
 msgid "pictogram"
 msgstr "piktogram"
 
-msgid "trade"
-msgstr "odbor"
-
 msgid "trades"
 msgstr "odbory"
-
-msgid "French"
-msgstr "Francúzština"
-
-msgid "English"
-msgstr "Angličtina"
 
 msgid "Fon"
 msgstr "Fon"
@@ -2763,9 +3202,6 @@ msgstr "Španielčina"
 msgid "Portuguese"
 msgstr "Portugalčina"
 
-msgid "Slovak"
-msgstr "Slovenčina"
-
 msgid "Website"
 msgstr "Webová stránka"
 
@@ -2774,15 +3210,6 @@ msgstr "Samostatná"
 
 msgid "Salon or business"
 msgstr "Salón alebo firma"
-
-msgid "Draft"
-msgstr "Koncept"
-
-msgid "Published"
-msgstr "Zverejnená"
-
-msgid "Waiting for review"
-msgstr "Čaká na kontrolu"
 
 msgid "Verified pro"
 msgstr "Overená profesionálka"
@@ -2804,9 +3231,6 @@ msgstr "predstavenie"
 
 msgid "presentation (voice note)"
 msgstr "predstavenie (hlasová správa)"
-
-msgid "cover picture"
-msgstr "titulná fotka"
 
 msgid "social networks"
 msgstr "sociálne siete"
@@ -2853,14 +3277,14 @@ msgstr "príplatok za cestu"
 msgid "In the smallest unit of the currency (FCFA, cents)."
 msgstr "V najmenšej jednotke meny (FCFA, centy)."
 
-msgid "published at"
-msgstr "zverejnené"
-
 msgid "suspended at"
 msgstr "pozastavené"
 
 msgid "reason of the suspension"
 msgstr "dôvod pozastavenia"
+
+msgid "trained on Solange Glow since"
+msgstr "vyškolená na Solange Glow od"
 
 msgid "average rating"
 msgstr "priemerné hodnotenie"
@@ -4057,9 +4481,6 @@ msgstr "Zablokované"
 msgid "description (voice note)"
 msgstr "popis (hlasová poznámka)"
 
-msgid "video"
-msgstr "video"
-
 msgid "preparation (days)"
 msgstr "príprava (dni)"
 
@@ -4543,6 +4964,24 @@ msgstr "Platby v salóne"
 
 msgid "Invoice issuers"
 msgstr "Vystavovatelia faktúr"
+
+msgid "Courses to review"
+msgstr "Kurzy na kontrolu"
+
+msgid "Courses"
+msgstr "Kurzy"
+
+msgid "Students"
+msgstr "Študentky"
+
+msgid "Certificates"
+msgstr "Certifikáty"
+
+msgid "Academy passes"
+msgstr "Pasy Akadémie"
+
+msgid "Training lives"
+msgstr "Školiace live"
 
 msgid "Finance dashboard"
 msgstr "Finančný prehľad"

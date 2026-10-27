@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-20 23:11+0200\n"
+"POT-Creation-Date: 2026-10-27 10:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,531 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+msgid "What the trainer should change"
+msgstr "Ce que la formatrice doit changer"
+
+msgid "trainer"
+msgstr "formatrice"
+
+msgid "price"
+msgstr "prix"
+
+msgid "status"
+msgstr "statut"
+
+msgid "Publish"
+msgstr "Publier"
+
+msgid "Published; the trainer is told."
+msgstr "Publiée ; la formatrice est prévenue."
+
+msgid "Send back with a note"
+msgstr "Renvoyer avec une remarque"
+
+msgid "Sent back; the trainer is told."
+msgstr "Renvoyée ; la formatrice est prévenue."
+
+#, python-format
+msgid "Send back « %(title)s »"
+msgstr "Renvoyer « %(title)s »"
+
+msgid "Why it is cancelled"
+msgstr "Pourquoi il est annulé"
+
+msgid "valid"
+msgstr "valable"
+
+msgid "Cancel the certificate"
+msgstr "Annuler le certificat"
+
+msgid "The certificate is cancelled."
+msgstr "Le certificat est annulé."
+
+#, python-format
+msgid "Cancel the certificate %(code)s"
+msgstr "Annuler le certificat %(code)s"
+
 msgid "Academy"
 msgstr "Académie"
+
+#, python-format
+msgid "Certificate %(code)s"
+msgstr "Certificat %(code)s"
+
+msgid "Certificate of training"
+msgstr "Certificat de formation"
+
+msgid "This certifies that"
+msgstr "Ce certificat atteste que"
+
+msgid "finished the course"
+msgstr "a terminé la formation"
+
+#, python-format
+msgid "With %(trainer)s, on %(date)s"
+msgstr "Avec %(trainer)s, le %(date)s"
+
+#, python-format
+msgid "Code: %(code)s"
+msgstr "Code : %(code)s"
+
+#, python-format
+msgid "Check it: %(url)s"
+msgstr "Vérifier : %(url)s"
+
+msgid "The academy is not open in your country yet."
+msgstr "L'Académie n'est pas encore ouverte dans ton pays."
+
+msgid "Training lives are not open in your country yet."
+msgstr "Les lives de formation ne sont pas encore ouverts dans ton pays."
+
+msgid "This course does not exist or is not available."
+msgstr "Cette formation n'existe pas ou n'est pas disponible."
+
+msgid "Only the trainer of this course can change it."
+msgstr "Seule la formatrice de cette formation peut la modifier."
+
+msgid "Check the title, the level, the language and the trade."
+msgstr "Vérifie le titre, le niveau, la langue et le métier."
+
+#, python-format
+msgid "Choose a price between %(min)s and %(max)s."
+msgstr "Choisis un prix entre %(min)s et %(max)s."
+
+msgid "Only the courses of Solange Glow are included in the pass for now."
+msgstr "Pour l'instant, seules les formations de Solange Glow sont dans le pass."
+
+msgid "This course is being reviewed: wait for the answer before changing it."
+msgstr "Cette formation est en vérification : attends la réponse avant de la modifier."
+
+msgid "Before sending it: a title, at least one module with a lesson, and every video ready."
+msgstr "Avant l'envoi : un titre, au moins un module avec une leçon, et toutes les vidéos prêtes."
+
+msgid "Give a title and a video of 3 to 10 minutes."
+msgstr "Donne un titre et une vidéo de 3 à 10 minutes."
+
+msgid "Write the question, 2 to 4 answers, and tick the right one."
+msgstr "Écris la question, 2 à 4 réponses, et coche la bonne."
+
+msgid "This course cannot do that now."
+msgstr "Ce n'est pas possible pour cette formation maintenant."
+
+msgid "Tick the box to start right away: it is needed to open the course at once."
+msgstr "Coche la case pour commencer tout de suite : c'est nécessaire pour ouvrir la formation."
+
+msgid "Buying is not open to your account. Free courses stay open to you."
+msgstr "L'achat n'est pas ouvert à ton compte. Les formations gratuites restent ouvertes."
+
+msgid "You already follow this course."
+msgstr "Tu suis déjà cette formation."
+
+msgid "Get this course to watch this lesson."
+msgstr "Prends cette formation pour regarder cette leçon."
+
+msgid "This course is included in the pass: take the pass to follow it."
+msgstr "Cette formation est dans le pass : prends le pass pour la suivre."
+
+#, python-format
+msgid "A refund is only possible within %(days)s days and before opening a lesson."
+msgstr "Le remboursement n'est possible que pendant %(days)s jours et avant d'ouvrir une leçon."
+
+msgid "Watch every lesson of the module first."
+msgstr "Regarde d'abord toutes les leçons du module."
+
+msgid "Answer every question."
+msgstr "Réponds à toutes les questions."
+
+msgid "The pass is not offered in your country yet."
+msgstr "Le pass n'est pas encore proposé dans ton pays."
+
+msgid "Your pass is already paid for this month."
+msgstr "Ton pass est déjà payé pour ce mois."
+
+msgid "There is nothing to pay right now."
+msgstr "Il n'y a rien à payer pour l'instant."
+
+msgid "Give a title, a date in the future, a length and a number of places."
+msgstr "Donne un titre, une date à venir, une durée et un nombre de places."
+
+msgid "This live does not exist or is over."
+msgstr "Ce live n'existe pas ou est terminé."
+
+msgid "No place left in this live."
+msgstr "Plus de place dans ce live."
+
+#, python-format
+msgid "The room opens %(minutes)s minutes before the start."
+msgstr "La salle ouvre %(minutes)s minutes avant le début."
+
+msgid "The live video is not available yet: it is coming soon."
+msgstr "La vidéo en direct n'est pas encore disponible : elle arrive bientôt."
+
+msgid "No certificate with this code."
+msgstr "Aucun certificat avec ce code."
+
+msgid "Beginner"
+msgstr "Débutante"
+
+msgid "Intermediate"
+msgstr "Confirmée"
+
+msgid "Expert"
+msgstr "Experte"
+
+msgid "French"
+msgstr "Français"
+
+msgid "English"
+msgstr "Anglais"
+
+msgid "Slovak"
+msgstr "Slovaque"
+
+msgid "Free"
+msgstr "Gratuite"
+
+msgid "Paid once"
+msgstr "À l'unité"
+
+msgid "Included in the pass"
+msgstr "Incluse dans le pass"
+
+msgid "Draft"
+msgstr "Brouillon"
+
+msgid "Waiting for review"
+msgstr "En attente de contrôle"
+
+msgid "Published"
+msgstr "Publiée"
+
+msgid "Sent back"
+msgstr "Renvoyée"
+
+msgid "Archived"
+msgstr "Archivée"
+
+msgid "short link"
+msgstr "lien court"
+
+msgid "Empty: a course of the platform."
+msgstr "Vide : une formation de la plateforme."
+
+msgid "written by"
+msgstr "écrite par"
+
+msgid "country"
+msgstr "pays"
+
+msgid "title"
+msgstr "titre"
+
+msgid "in one sentence"
+msgstr "en une phrase"
+
+msgid "description"
+msgstr "description"
+
+msgid "cover picture"
+msgstr "photo de couverture"
+
+msgid "trade"
+msgstr "métier"
+
+msgid "level"
+msgstr "niveau"
+
+msgid "language"
+msgstr "langue"
+
+msgid "price (smallest unit)"
+msgstr "prix (plus petite unité)"
+
+msgid "currency"
+msgstr "devise"
+
+msgid "note of the review"
+msgstr "remarque de la revue"
+
+msgid "changed since the review"
+msgstr "modifiée depuis la revue"
+
+msgid "The trainer changed a published course: to look at again."
+msgstr "La formatrice a modifié une formation publiée : à revoir."
+
+msgid "sent for review at"
+msgstr "envoyée en revue le"
+
+msgid "published at"
+msgstr "publiée le"
+
+msgid "counts for the badge"
+msgstr "compte pour le badge"
+
+msgid "Finishing it gives the « Trained on Solange Glow » badge to a pro."
+msgstr "La terminer donne à une pro le badge « Formée sur Solange Glow »."
+
+msgid "length (s)"
+msgstr "durée (s)"
+
+msgid "students"
+msgstr "élèves"
+
+msgid "course"
+msgstr "formation"
+
+msgid "courses"
+msgstr "formations"
+
+msgid "Can publish or send back the courses of the pros"
+msgstr "Peut publier ou renvoyer les formations des pros"
+
+msgid "course to review"
+msgstr "formation à vérifier"
+
+msgid "courses to review"
+msgstr "formations à vérifier"
+
+msgid "position"
+msgstr "position"
+
+msgid "module"
+msgstr "module"
+
+msgid "modules"
+msgstr "modules"
+
+msgid "video"
+msgstr "vidéo"
+
+msgid "free preview"
+msgstr "aperçu gratuit"
+
+msgid "Everybody can watch it."
+msgstr "Tout le monde peut la regarder."
+
+msgid "lesson"
+msgstr "leçon"
+
+msgid "lessons"
+msgstr "leçons"
+
+msgid "PDF file"
+msgstr "fichier PDF"
+
+msgid "resource"
+msgstr "matériel"
+
+msgid "resources"
+msgstr "matériel"
+
+msgid "question"
+msgstr "question"
+
+msgid "answers"
+msgstr "réponses"
+
+msgid "right answer (0 = the first)"
+msgstr "bonne réponse (0 = la première)"
+
+msgid "quiz question"
+msgstr "question de quiz"
+
+msgid "quiz questions"
+msgstr "questions de quiz"
+
+msgid "Bought"
+msgstr "Achetée"
+
+msgid "With the pass"
+msgstr "Avec le pass"
+
+msgid "Trainer"
+msgstr "Formatrice"
+
+msgid "Waiting for the payment"
+msgstr "En attente du paiement"
+
+msgid "Following"
+msgstr "En cours"
+
+msgid "Refunded"
+msgstr "Remboursé"
+
+msgid "student"
+msgstr "élève"
+
+msgid "access"
+msgstr "accès"
+
+msgid "payment"
+msgstr "paiement"
+
+msgid "waiver ticked at"
+msgstr "renonciation cochée le"
+
+msgid "waiver wording"
+msgstr "texte de la renonciation"
+
+msgid "address (hashed)"
+msgstr "adresse (chiffrée)"
+
+msgid "first lesson opened at"
+msgstr "première leçon ouverte le"
+
+msgid "finished at"
+msgstr "terminée le"
+
+msgid "progress (%)"
+msgstr "avancement (%)"
+
+msgid "last lesson"
+msgstr "dernière leçon"
+
+msgid "student of a course"
+msgstr "élève d'une formation"
+
+msgid "students of the courses"
+msgstr "élèves des formations"
+
+msgid "stopped at (s)"
+msgstr "arrêtée à (s)"
+
+msgid "watched at"
+msgstr "vue le"
+
+msgid "progress in a lesson"
+msgstr "avancement dans une leçon"
+
+msgid "progress in the lessons"
+msgstr "avancement dans les leçons"
+
+msgid "score (%)"
+msgstr "score (%)"
+
+msgid "passed"
+msgstr "réussi"
+
+msgid "quiz attempt"
+msgstr "essai de quiz"
+
+msgid "quiz attempts"
+msgstr "essais de quiz"
+
+msgid "code"
+msgstr "code"
+
+msgid "name of the student"
+msgstr "nom de l'élève"
+
+msgid "issued at"
+msgstr "émise le"
+
+msgid "cancelled at"
+msgstr "annulé le"
+
+msgid "why it was cancelled"
+msgstr "pourquoi il a été annulé"
+
+msgid "certificate"
+msgstr "certificat"
+
+msgid "certificates"
+msgstr "certificats"
+
+msgid "Active"
+msgstr "Actif"
+
+msgid "Ended"
+msgstr "Terminé"
+
+msgid "paid until"
+msgstr "payé jusqu'au"
+
+msgid "stops at the end of the month"
+msgstr "s'arrête à la fin du mois"
+
+msgid "payment to make"
+msgstr "paiement à faire"
+
+msgid "academy pass"
+msgstr "pass Académie"
+
+msgid "academy passes"
+msgstr "pass Académie"
+
+msgid "pass"
+msgstr "pass"
+
+msgid "from"
+msgstr "premier jour"
+
+msgid "until"
+msgstr "jusqu'au"
+
+msgid "paid month of a pass"
+msgstr "mois payé d'un pass"
+
+msgid "paid months of the passes"
+msgstr "mois payés des pass"
+
+msgid "Planned"
+msgstr "Prévu"
+
+msgid "On air"
+msgstr "En direct"
+
+msgid "Over"
+msgstr "Terminé"
+
+msgid "Cancelled"
+msgstr "Annulé"
+
+msgid "Empty: a live of the platform."
+msgstr "Vide : un live de la plateforme."
+
+msgid "planned by"
+msgstr "programmé par"
+
+msgid "starts at"
+msgstr "commence le"
+
+msgid "length (min)"
+msgstr "durée (min)"
+
+msgid "places"
+msgstr "places"
+
+msgid "room at the broadcast service"
+msgstr "salle chez le service de diffusion"
+
+msgid "registered"
+msgstr "inscrites"
+
+msgid "training live"
+msgstr "live de formation"
+
+msgid "training lives"
+msgstr "lives de formation"
+
+msgid "live"
+msgstr "live"
+
+msgid "registration to a live"
+msgstr "inscription à un live"
+
+msgid "registrations to the lives"
+msgstr "inscriptions aux lives"
+
+msgid "The public page of this code will say that the certificate is no longer valid."
+msgstr "La page publique de ce code dira que le certificat n'est plus valable."
+
+msgid "Back"
+msgstr "Retour"
+
+#, python-format
+msgid "« %(title)s » goes back to its trainer, who receives this note. A published course leaves the catalogue; its students keep it."
+msgstr "« %(title)s » retourne à sa formatrice, qui reçoit cette remarque. Une formation publiée quitte le catalogue ; ses élèves la gardent."
 
 msgid "roles"
 msgstr "rôles"
@@ -28,12 +551,6 @@ msgstr "Indique un numéro de téléphone ou une adresse e-mail."
 
 msgid "role"
 msgstr "rôle"
-
-msgid "status"
-msgstr "statut"
-
-msgid "Active"
-msgstr "Actif"
 
 msgid "Suspended"
 msgstr "Suspendu"
@@ -174,9 +691,6 @@ msgstr "prénom"
 
 msgid "last name"
 msgstr "nom"
-
-msgid "country"
-msgstr "pays"
 
 msgid "preferred language"
 msgstr "langue préférée"
@@ -378,9 +892,6 @@ msgstr "Publicité"
 msgid "deposit"
 msgstr "acompte"
 
-msgid "payment"
-msgstr "paiement"
-
 msgid "Cancel and refund"
 msgstr "Annuler et rembourser"
 
@@ -556,9 +1067,6 @@ msgstr "horaires propres"
 msgid "Off: the opening hours of the salon."
 msgstr "Désactivé : les horaires du salon."
 
-msgid "position"
-msgstr "position"
-
 msgid "staff member"
 msgstr "personne de l'équipe"
 
@@ -570,9 +1078,6 @@ msgstr "personne"
 
 msgid "day"
 msgstr "jour"
-
-msgid "from"
-msgstr "premier jour"
 
 msgid "to"
 msgstr "dernier jour"
@@ -610,12 +1115,6 @@ msgstr "indisponibilité"
 msgid "how many"
 msgstr "combien"
 
-msgid "resource"
-msgstr "matériel"
-
-msgid "resources"
-msgstr "matériel"
-
 msgid "step"
 msgstr "étape"
 
@@ -630,9 +1129,6 @@ msgstr "En attente des parts"
 
 msgid "Confirmed"
 msgstr "Confirmé"
-
-msgid "Cancelled"
-msgstr "Annulé"
 
 msgid "organiser"
 msgstr "organisatrice"
@@ -709,20 +1205,11 @@ msgstr "nom de la cliente"
 msgid "client phone"
 msgstr "téléphone de la cliente"
 
-msgid "starts at"
-msgstr "commence le"
-
 msgid "ends at"
 msgstr "finit le"
 
 msgid "made"
 msgstr "prise par"
-
-msgid "price"
-msgstr "prix"
-
-msgid "currency"
-msgstr "devise"
 
 msgid "last-minute discount (%)"
 msgstr "réduction dernière minute (%)"
@@ -753,9 +1240,6 @@ msgstr "confirmé le"
 
 msgid "done at"
 msgstr "terminé le"
-
-msgid "cancelled at"
-msgstr "annulé le"
 
 msgid "cancelled by"
 msgstr "annulé par"
@@ -941,6 +1425,9 @@ msgstr "Vidéo"
 msgid "Voice note"
 msgstr "Note vocale"
 
+msgid "Document (PDF)"
+msgstr "Document (PDF)"
+
 msgid "Public"
 msgstr "Public"
 
@@ -1009,9 +1496,6 @@ msgstr "créé le"
 
 msgid "updated at"
 msgstr "modifié le"
-
-msgid "code"
-msgstr "code"
 
 msgid "Use a 3-letter ISO 4217 code."
 msgstr "Utilise un code ISO 4217 de 3 lettres."
@@ -1089,9 +1573,6 @@ msgstr "valeur"
 msgid "Booleans: true or false. Decimals use a dot: 12.5."
 msgstr "Oui/non : true ou false. Décimales avec un point : 12.5."
 
-msgid "description"
-msgstr "description"
-
 msgid "platform setting"
 msgstr "réglage"
 
@@ -1162,9 +1643,6 @@ msgstr "Tu as déjà cette offre."
 msgid "This plan is not offered in your country."
 msgstr "Cette offre n'est pas proposée dans ton pays."
 
-msgid "There is nothing to pay right now."
-msgstr "Il n'y a rien à payer pour l'instant."
-
 msgid "Give a colour like #C8102E and website addresses like salon.fr."
 msgstr "Donne une couleur comme #C8102E et des adresses comme salon.fr."
 
@@ -1234,26 +1712,14 @@ msgstr "prix"
 msgid "Free trial"
 msgstr "Essai gratuit"
 
-msgid "Waiting for the payment"
-msgstr "En attente du paiement"
-
 msgid "Back to the free plan"
 msgstr "Revenue à l'offre gratuite"
 
 msgid "trial used"
 msgstr "essai utilisé"
 
-msgid "paid until"
-msgstr "payé jusqu'au"
-
 msgid "grace until"
 msgstr "grâce jusqu'au"
-
-msgid "stops at the end of the month"
-msgstr "s'arrête à la fin du mois"
-
-msgid "payment to make"
-msgstr "paiement à faire"
 
 msgid "subscription"
 msgstr "abonnement"
@@ -1353,9 +1819,6 @@ msgstr "émetteur"
 
 msgid "number"
 msgstr "numéro"
-
-msgid "issued at"
-msgstr "émise le"
 
 msgid "client details"
 msgstr "coordonnées de la cliente"
@@ -1533,9 +1996,6 @@ msgstr "Discussion"
 
 msgid "Support"
 msgstr "Assistance"
-
-msgid "title"
-msgstr "titre"
 
 msgid "linked to"
 msgstr "lié à"
@@ -1813,12 +2273,6 @@ msgstr "Ne peut plus publier ni commenter"
 msgid "Banned"
 msgstr "Bannie"
 
-msgid "level"
-msgstr "niveau"
-
-msgid "until"
-msgstr "jusqu'au"
-
 msgid "sanction"
 msgstr "sanction"
 
@@ -1935,9 +2389,6 @@ msgstr "Total payé"
 
 msgid "Commission"
 msgstr "Commission"
-
-msgid "Refunded"
-msgstr "Remboursé"
 
 msgid "dates"
 msgstr "dates"
@@ -2154,6 +2605,9 @@ msgstr "Carte cadeau"
 
 msgid "Package of sessions"
 msgstr "Forfait de séances"
+
+msgid "Academy pass"
+msgstr "Pass Académie"
 
 msgid "Other"
 msgstr "Autre"
@@ -2515,9 +2969,6 @@ msgstr "Une partie du montant de la vendeuse (%(seller_amount)s) revient à la c
 msgid "Refund this amount"
 msgstr "Rembourser ce montant"
 
-msgid "Back"
-msgstr "Retour"
-
 msgid "latitude"
 msgstr "latitude"
 
@@ -2535,9 +2986,6 @@ msgstr "Statut"
 
 msgid "Media"
 msgstr "Médias"
-
-msgid "short link"
-msgstr "lien court"
 
 msgid "verification"
 msgstr "vérification"
@@ -2698,17 +3146,8 @@ msgstr "Pot de crème"
 msgid "pictogram"
 msgstr "pictogramme"
 
-msgid "trade"
-msgstr "métier"
-
 msgid "trades"
 msgstr "métiers"
-
-msgid "French"
-msgstr "Français"
-
-msgid "English"
-msgstr "Anglais"
 
 msgid "Fon"
 msgstr "Fon"
@@ -2749,9 +3188,6 @@ msgstr "Espagnol"
 msgid "Portuguese"
 msgstr "Portugais"
 
-msgid "Slovak"
-msgstr "Slovaque"
-
 msgid "Website"
 msgstr "Site web"
 
@@ -2760,15 +3196,6 @@ msgstr "Indépendante"
 
 msgid "Salon or business"
 msgstr "Salon ou entreprise"
-
-msgid "Draft"
-msgstr "Brouillon"
-
-msgid "Published"
-msgstr "Publiée"
-
-msgid "Waiting for review"
-msgstr "En attente de contrôle"
 
 msgid "Verified pro"
 msgstr "Pro vérifiée"
@@ -2790,9 +3217,6 @@ msgstr "présentation"
 
 msgid "presentation (voice note)"
 msgstr "présentation (note vocale)"
-
-msgid "cover picture"
-msgstr "photo de couverture"
 
 msgid "social networks"
 msgstr "réseaux sociaux"
@@ -2839,14 +3263,14 @@ msgstr "supplément déplacement"
 msgid "In the smallest unit of the currency (FCFA, cents)."
 msgstr "Dans la plus petite unité de la devise (FCFA, centimes)."
 
-msgid "published at"
-msgstr "publiée le"
-
 msgid "suspended at"
 msgstr "suspendue le"
 
 msgid "reason of the suspension"
 msgstr "raison de la suspension"
+
+msgid "trained on Solange Glow since"
+msgstr "formée sur Solange Glow depuis"
 
 msgid "average rating"
 msgstr "note moyenne"
@@ -4041,9 +4465,6 @@ msgstr "Bloqué"
 msgid "description (voice note)"
 msgstr "description (note vocale)"
 
-msgid "video"
-msgstr "vidéo"
-
 msgid "preparation (days)"
 msgstr "préparation (jours)"
 
@@ -4527,6 +4948,24 @@ msgstr "Encaissements au salon"
 
 msgid "Invoice issuers"
 msgstr "Émetteurs de factures"
+
+msgid "Courses to review"
+msgstr "Formations à vérifier"
+
+msgid "Courses"
+msgstr "Formations"
+
+msgid "Students"
+msgstr "Élèves"
+
+msgid "Certificates"
+msgstr "Certificats"
+
+msgid "Academy passes"
+msgstr "Pass Académie"
+
+msgid "Training lives"
+msgstr "Lives de formation"
 
 msgid "Finance dashboard"
 msgstr "Tableau de bord finance"
