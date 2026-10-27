@@ -18,6 +18,7 @@ from apps.booking.demo import seed_booking
 from apps.core.choices import Role
 from apps.core.models import Country
 from apps.glowpro.demo import seed_glowpro
+from apps.live.demo import seed_live
 from apps.notifications.services import notify
 from apps.pros import demo
 from apps.pros.models import ProProfile
@@ -58,6 +59,7 @@ class Command(BaseCommand):
         glowpro = seed_glowpro()
         booking = seed_booking()
         academy = seed_academy()
+        live = seed_live()
         self.stdout.write(
             self.style.SUCCESS(
                 f"seed_demo: {created} new demo accounts, {self.showcases} showcases filled, "
@@ -67,7 +69,8 @@ class Command(BaseCommand):
                 f"{selection['products']} France Selection products, "
                 f"{booking['agendas']} agendas with {booking['appointments']} new appointments, "
                 f"{glowpro['premium']} Glow Pro subscriptions, "
-                f"{academy['courses']} academy courses, {academy['lives']} lives."
+                f"{academy['courses']} academy courses, {academy['lives']} lives, "
+                f"{live['lives']} demo lives and replays, {live['calls']} call."
             )
         )
 
