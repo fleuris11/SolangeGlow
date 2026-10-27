@@ -150,6 +150,7 @@ class Purpose(models.TextChoices):
     SUBSCRIPTION = "subscription", _("Glow Pro subscription")
     GIFT_CARD = "gift_card", _("Gift card")
     PACKAGE = "package", _("Package of sessions")
+    ACADEMY_PASS = "academy_pass", _("Academy pass")
     OTHER = "other", _("Other")
 
 
