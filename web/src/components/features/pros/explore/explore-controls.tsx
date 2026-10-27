@@ -58,6 +58,7 @@ export function ExploreControls({ icons }: { icons: Icons }) {
     filters.openNow,
     filters.atHome,
     filters.verified,
+    filters.trained,
     filters.ratingMin,
     filters.priceMax,
   ].filter(Boolean).length;

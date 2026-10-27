@@ -1,6 +1,6 @@
 "use client";
 
-import { Clock, SealCheck, Van } from "@phosphor-icons/react";
+import { Clock, GraduationCap, SealCheck, Van } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
@@ -96,6 +96,13 @@ export function FiltersSheet({ open, onOpenChange, filters, onApply }: Props) {
             description={t("verifiedText")}
             checked={draft.verified}
             onChange={(value) => set({ verified: value })}
+          />
+          <SwitchRow
+            icon={<GraduationCap size={28} weight="duotone" />}
+            label={t("trained")}
+            description={t("trainedText")}
+            checked={draft.trained}
+            onChange={(value) => set({ trained: value })}
           />
         </div>
 

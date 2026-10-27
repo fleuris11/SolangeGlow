@@ -14,6 +14,7 @@ export type Filters = {
   openNow: boolean;
   atHome: boolean;
   verified: boolean;
+  trained: boolean;
   ratingMin?: number;
   priceMax?: number;
   currency: string;
@@ -42,6 +43,7 @@ export function readFilters(params: URLSearchParams): Filters {
     openNow: params.get("open") === "1",
     atHome: params.get("home") === "1",
     verified: params.get("verified") === "1",
+    trained: params.get("trained") === "1",
     ratingMin: number(params.get("rating")),
     priceMax: number(params.get("price")),
     currency: params.get("currency") ?? "XOF",
@@ -65,6 +67,7 @@ export function toQuery(filters: Filters): Record<string, string> {
   set("open", filters.openNow && "1");
   set("home", filters.atHome && "1");
   set("verified", filters.verified && "1");
+  set("trained", filters.trained && "1");
   set("rating", filters.ratingMin);
   set("price", filters.priceMax);
   if (filters.priceMax) set("currency", filters.currency);
@@ -86,6 +89,7 @@ export function toApiQuery(filters: Filters): SearchQuery {
     ...(filters.openNow ? { open_now: true } : {}),
     ...(filters.atHome ? { at_home: true } : {}),
     ...(filters.verified ? { verified: true } : {}),
+    ...(filters.trained ? { trained: true } : {}),
     ...(filters.ratingMin ? { rating_min: filters.ratingMin } : {}),
     ...(filters.priceMax ? { price_max: filters.priceMax, currency: filters.currency } : {}),
     ...(filters.sort ? { sort: filters.sort } : {}),

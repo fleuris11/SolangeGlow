@@ -1,9 +1,15 @@
-import { CrownSimple, SealCheck, Sparkle, Star } from "@phosphor-icons/react/dist/ssr";
+import {
+  CrownSimple,
+  GraduationCap,
+  SealCheck,
+  Sparkle,
+  Star,
+} from "@phosphor-icons/react/dist/ssr";
 import type { ReactNode } from "react";
 
 import { cn } from "@/lib/cn";
 
-export type BadgeTone = "glow" | "star" | "icon" | "verified";
+export type BadgeTone = "glow" | "star" | "icon" | "verified" | "trained";
 
 const tones: Record<BadgeTone, { className: string; icon: ReactNode }> = {
   glow: { className: "bg-poudre text-prune", icon: <Sparkle weight="duotone" size={16} /> },
@@ -15,6 +21,11 @@ const tones: Record<BadgeTone, { className: string; icon: ReactNode }> = {
   verified: {
     className: "bg-feuille text-lait",
     icon: <SealCheck weight="fill" size={16} />,
+  },
+  // « Trained on Solange Glow »: a finished course of the academy (module 7).
+  trained: {
+    className: "border-2 border-or bg-carte text-prune",
+    icon: <GraduationCap weight="fill" size={16} className="text-or" />,
   },
 };
 

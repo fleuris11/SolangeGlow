@@ -41,6 +41,7 @@ export const SHOWCASE: Showcase = {
   social_links: { instagram: "@aicha", whatsapp: "+2290197000101" },
   languages: [{ code: "fr", label: "Français" }],
   verified: true,
+  trained: false,
   rating_average: 4.9,
   rating_count: 128,
   currency: "XOF",
@@ -115,4 +116,5 @@ export const CARD: ProCard = {
   receives_clients: true,
   travels_to_clients: true,
   verified: true,
+  trained: false,
 };
