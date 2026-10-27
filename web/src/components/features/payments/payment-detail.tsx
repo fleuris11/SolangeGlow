@@ -178,6 +178,15 @@ export function PaymentDetail({ paymentId }: { paymentId: string }) {
               {t("seeOrder")}
             </Link>
           )}
+        {(payment.source_type === "academy" || payment.source_type === "academy_pass") &&
+          payment.role === "buyer" && (
+            <Link
+              href={payment.source_type === "academy" ? "/academie/mes-formations" : "/academie"}
+              className={buttonClasses({ variant: "secondary", className: "self-start" })}
+            >
+              {t(payment.source_type === "academy" ? "seeCourses" : "seeAcademy")}
+            </Link>
+          )}
         <p className="flex items-center gap-2">
           <Avatar name={other.name} src={mediaSrc(other.photo, "thumb")} size="sm" />
           {payment.role === "buyer"

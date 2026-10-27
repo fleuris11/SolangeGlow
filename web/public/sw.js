@@ -1,10 +1,13 @@
-/* Solange Glow service worker: phone alerts (Web Push) and pages already visited offline.
+/* Solange Glow service worker: phone alerts (Web Push), pages already visited offline, and
+ * the cache of the lessons saved by the student (written by the page, kept across versions).
  * Registered as /sw.js?dev=1 in development: alerts work, but nothing is cached
  * (the cache would fight hot reload). */
 const VERSION = "v2";
 const PAGES = `sg-pages-${VERSION}`;
 const ASSETS = `sg-assets-${VERSION}`;
 const DEV = new URL(self.location.href).searchParams.get("dev") === "1";
+// Lessons saved by the student to watch offline (Academy): never emptied here.
+const LESSONS = "sg-lessons-v1";
 
 self.addEventListener("install", () => self.skipWaiting());
 
@@ -15,7 +18,7 @@ self.addEventListener("activate", (event) => {
       .then((keys) =>
         Promise.all(
           keys
-            .filter((k) => DEV || ![PAGES, ASSETS].includes(k))
+            .filter((k) => k !== LESSONS && (DEV || ![PAGES, ASSETS].includes(k)))
             .map((k) => caches.delete(k)),
         ),
       )
