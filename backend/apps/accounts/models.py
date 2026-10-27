@@ -122,6 +122,11 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     notify_whatsapp = models.BooleanField(_("WhatsApp notifications"), default=True)
     notify_email = models.BooleanField(_("e-mail notifications"), default=True)
     notify_push = models.BooleanField(_("push notifications"), default=True)
+    accept_calls = models.BooleanField(
+        _("receives calls"),
+        default=True,
+        help_text=_("Audio and video calls in the app (never her phone number)."),
+    )
     # Quiet hours, in the time zone of the country. Empty = platform default.
     quiet_hours_start = models.TimeField(_("quiet hours start"), null=True, blank=True)
     quiet_hours_end = models.TimeField(_("quiet hours end"), null=True, blank=True)

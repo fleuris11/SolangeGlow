@@ -155,6 +155,7 @@ class UserAdmin(BaseUserAdmin, AuditedModelAdmin):
                     "notify_whatsapp",
                     "notify_email",
                     "notify_push",
+                    "accept_calls",
                 )
             },
         ),

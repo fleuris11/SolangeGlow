@@ -119,3 +119,50 @@ class NotAPro(DomainError):
 class TooManyMembers(DomainError):
     code = "too_many_members"
     message = _("A group can have %(max)s people at most.")
+
+
+class CallsClosed(DomainError):
+    code = "calls_closed"
+    status_code = 403
+    message = _("Calls are not open in your country yet.")
+
+
+class CannotCall(DomainError):
+    code = "cannot_call"
+    status_code = 403
+    message = _("Calls are possible between two people, or in a dispute room.")
+
+
+class CallNeedsAcceptedChat(DomainError):
+    code = "call_needs_accepted_chat"
+    status_code = 403
+    message = _("You can call once she has accepted your messages.")
+
+
+class DoesNotTakeCalls(DomainError):
+    code = "does_not_take_calls"
+    status_code = 403
+    message = _("This person does not take calls. Write her a message.")
+
+
+class CallsUnavailable(DomainError):
+    code = "calls_unavailable"
+    status_code = 503
+    message = _("Calls are not available right now. Try again in a few minutes.")
+
+
+class CallNotFound(DomainError):
+    code = "call_not_found"
+    status_code = 404
+    message = _("This call does not exist or is not yours.")
+
+
+class CallOver(DomainError):
+    code = "call_over"
+    message = _("This call is over.")
+
+
+class CallFull(DomainError):
+    code = "call_full"
+    status_code = 409
+    message = _("This call already has %(max)s people.")

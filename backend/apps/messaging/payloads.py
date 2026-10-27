@@ -57,11 +57,22 @@ def message_payload(message: Message, viewer=None) -> dict:
         "share": None
         if removed or not message.share_kind
         else {"kind": message.share_kind, "id": str(message.share_id), **message.share_data},
+        "call": call_line(message.call) if message.call_id else None,
         "client_id": str(message.client_id) if message.client_id else None,
         "fraud_labels": message.fraud_labels,
         "is_automatic": message.is_automatic,
         "state": state,
         "created_at": message.created_at.isoformat(),
+    }
+
+
+def call_line(call) -> dict:
+    return {
+        "id": str(call.pk),
+        "kind": call.kind,
+        "status": call.status,
+        "duration_seconds": call.duration_seconds,
+        "caller_id": str(call.caller_id) if call.caller_id else None,
     }
 
 

@@ -13,7 +13,7 @@ from apps.accounts.models import User
 from apps.accounts.throttling import SettingRateThrottle
 from apps.core.selectors import get_setting
 
-from . import errors, selectors, services
+from . import calls, errors, selectors, services
 from . import serializers as s
 from .models import AwayMessage, ConversationMember, QuickReply
 from .payloads import conversation_payload, message_payload
@@ -273,3 +273,93 @@ class AwayMessageView(MessagingView):
         data.is_valid(raise_exception=True)
         away = services.set_away_message(request.user, **data.validated_data)
         return Response({"enabled": away.enabled, "text": away.text})
+
+
+# --- Calls ----------------------------------------------------------------------------------
+
+
+class CallsView(MessagingView):
+    throttle_classes = [SettingRateThrottle]
+    throttle_scope = "calls"
+
+
+def _conversation(user, conversation_id):
+    return selectors.membership(user, conversation_id).conversation
+
+
+def _joined(user, call) -> dict:
+    call.refresh_from_db()
+    return {"call": calls.call_payload(call, user), "access": calls.access(user, call)}
+
+
+class ConversationCallView(CallsView):
+    @extend_schema(tags=["messaging"], responses=s.CallStateSerializer)
+    def get(self, request, conversation_id):
+        conversation = _conversation(request.user, conversation_id)
+        return Response(calls.call_state(request.user, conversation))
+
+    @extend_schema(
+        tags=["messaging"], request=s.CallStartSerializer, responses=s.CallJoinSerializer
+    )
+    def post(self, request, conversation_id):
+        data = s.CallStartSerializer(data=request.data)
+        data.is_valid(raise_exception=True)
+        conversation = _conversation(request.user, conversation_id)
+        call = calls.start_call(request.user, conversation, video=data.validated_data["video"])
+        if call.caller_id != request.user.pk:  # a call was already going on: she joins it
+            call = calls.answer(request.user, call)
+        return Response(_joined(request.user, call), status=status.HTTP_201_CREATED)
+
+
+class CallView(CallsView):
+    @extend_schema(tags=["messaging"], responses=s.CallSerializer)
+    def get(self, request, call_id):
+        call = calls.get_call(request.user, call_id)
+        return Response(calls.call_payload(call, request.user))
+
+
+class CallAnswerView(CallsView):
+    """Picks up (or comes back into a call going on)."""
+
+    @extend_schema(tags=["messaging"], request=None, responses=s.CallJoinSerializer)
+    def post(self, request, call_id):
+        call = calls.answer(request.user, calls.get_call(request.user, call_id))
+        return Response(_joined(request.user, call))
+
+
+class CallDeclineView(CallsView):
+    @extend_schema(tags=["messaging"], request=None, responses=s.CallSerializer)
+    def post(self, request, call_id):
+        call = calls.decline(request.user, calls.get_call(request.user, call_id))
+        call.refresh_from_db()
+        return Response(calls.call_payload(call, request.user))
+
+
+class CallHangUpView(CallsView):
+    @extend_schema(tags=["messaging"], request=None, responses=s.CallSerializer)
+    def post(self, request, call_id):
+        call = calls.hang_up(request.user, calls.get_call(request.user, call_id))
+        call.refresh_from_db()
+        return Response(calls.call_payload(call, request.user))
+
+
+class CallLogView(CallsView):
+    @extend_schema(
+        tags=["messaging"],
+        parameters=[OpenApiParameter("before", str, required=False)],
+        responses=s.CallPageSerializer,
+    )
+    def get(self, request):
+        rows = calls.call_log(request.user)
+        before = _before(request)
+        if before:
+            rows = rows.filter(created_at__lt=before)
+        page = list(rows[: _page_size() + 1])
+        more = len(page) > _page_size()
+        page = page[: _page_size()]
+        return Response(
+            {
+                "results": [calls.call_payload(call, request.user) for call in page],
+                "next": page[-1].created_at.isoformat() if more else None,
+            }
+        )

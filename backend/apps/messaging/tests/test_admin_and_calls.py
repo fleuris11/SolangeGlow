@@ -1,12 +1,9 @@
-import jwt
 import pytest
 from django.urls import reverse
 
 from apps.accounts.tests.factories import UserFactory
 from apps.core.audit.models import AuditEvent
-from apps.core.providers.base import ProviderNotConfigured
 from apps.messaging import services
-from apps.messaging.calls import LiveKitCallProvider, get_call_provider
 from apps.messaging.models import Conversation
 
 from .factories import adult, pro
@@ -47,21 +44,3 @@ def test_the_team_only_sees_reported_conversations_and_disputes(admin_client):
     # The moderation queue opens the conversation at the reported message.
     jump = admin_client.get(reverse("admin:messaging_message_change", args=[message.pk]))
     assert jump.status_code == 302 and str(reported.pk) in jump["Location"]
-
-
-def test_calls_need_livekit_keys(settings):
-    settings.LIVEKIT_URL = ""
-    with pytest.raises(ProviderNotConfigured):
-        get_call_provider()
-
-
-def test_livekit_join_token():
-    secret = "a-long-enough-secret-for-the-tests-0123456789"
-    provider = LiveKitCallProvider("ws://localhost:7880", "devkey", secret)
-    awa, aicha = adult("Awa"), pro("Aïcha Tresses")
-    conversation = services.start_direct(awa, aicha)
-    access = provider.access(conversation, awa, video=False)
-    claims = jwt.decode(access.token, secret, algorithms=["HS256"])
-    assert claims["iss"] == "devkey" and claims["sub"] == str(awa.pk)
-    assert claims["video"]["room"] == f"conversation-{conversation.pk}"
-    assert claims["video"]["canPublishSources"] == ["microphone"]

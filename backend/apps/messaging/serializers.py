@@ -3,7 +3,7 @@ from rest_framework import serializers
 from apps.core.media.api import MediaSerializer
 from apps.moderation.models import Reason
 
-from .models import Conversation, ConversationMember, Message
+from .models import Call, CallParticipant, Conversation, ConversationMember, Message
 
 
 class PersonSerializer(serializers.Serializer):
@@ -31,6 +31,14 @@ class ShareCardSerializer(serializers.Serializer):
     starts_at = serializers.DateTimeField(required=False)
 
 
+class CallLineSerializer(serializers.Serializer):
+    id = serializers.UUIDField()
+    kind = serializers.ChoiceField(choices=Call.Kind.choices)
+    status = serializers.ChoiceField(choices=Call.Status.choices)
+    duration_seconds = serializers.IntegerField()
+    caller_id = serializers.UUIDField(allow_null=True)
+
+
 class MessageSerializer(serializers.Serializer):
     id = serializers.UUIDField()
     conversation_id = serializers.UUIDField()
@@ -39,6 +47,7 @@ class MessageSerializer(serializers.Serializer):
     text = serializers.CharField(allow_blank=True)
     media = MediaSerializer(allow_null=True)
     share = ShareCardSerializer(allow_null=True)
+    call = CallLineSerializer(allow_null=True)
     client_id = serializers.UUIDField(allow_null=True)
     fraud_labels = serializers.ListField(child=serializers.CharField())
     is_automatic = serializers.BooleanField()
@@ -122,3 +131,51 @@ class QuickRepliesSerializer(serializers.Serializer):
 class AwayMessageSerializer(serializers.Serializer):
     enabled = serializers.BooleanField()
     text = serializers.CharField(max_length=500, allow_blank=True)
+
+
+# --- Calls ----------------------------------------------------------------------------------
+
+
+class CallPersonSerializer(PersonSerializer):
+    state = serializers.ChoiceField(choices=CallParticipant.State.choices)
+
+
+class CallSerializer(CallLineSerializer):
+    conversation_id = serializers.UUIDField()
+    is_dispute = serializers.BooleanField()
+    mine = serializers.BooleanField(help_text="She is the caller.")
+    my_state = serializers.ChoiceField(choices=CallParticipant.State.choices, allow_null=True)
+    people = CallPersonSerializer(many=True, help_text="The others.")
+    ring_until = serializers.DateTimeField()
+    answered_at = serializers.DateTimeField(allow_null=True)
+    ended_at = serializers.DateTimeField(allow_null=True)
+    ends_by = serializers.DateTimeField(allow_null=True)
+    created_at = serializers.DateTimeField()
+
+
+class CallStateSerializer(serializers.Serializer):
+    active = CallSerializer(allow_null=True)
+    can_call = serializers.BooleanField()
+    reason = serializers.CharField(allow_null=True, help_text="Error code when she cannot call.")
+
+
+class CallStartSerializer(serializers.Serializer):
+    video = serializers.BooleanField(default=False)
+
+
+class CallAccessSerializer(serializers.Serializer):
+    url = serializers.CharField()
+    room = serializers.CharField()
+    token = serializers.CharField()
+    identity = serializers.CharField()
+    expires_at = serializers.DateTimeField()
+
+
+class CallJoinSerializer(serializers.Serializer):
+    call = CallSerializer()
+    access = CallAccessSerializer()
+
+
+class CallPageSerializer(serializers.Serializer):
+    results = CallSerializer(many=True)
+    next = serializers.CharField(allow_null=True, help_text="Older calls: pass as `before`.")

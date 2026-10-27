@@ -4,20 +4,23 @@ The list shows those conversations only; each opening of one is written in the a
 journal (who, when, why).
 """
 
-from django.contrib import admin
+from django.conf import settings
+from django.contrib import admin, messages
 from django.contrib.contenttypes.models import ContentType
 from django.db.models import Count, Q
-from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 from django.utils.html import format_html, format_html_join
 from django.utils.translation import gettext_lazy as _
-from unfold.decorators import display
+from unfold.decorators import action, display
 
 from apps.core.audit.admin import AuditedModelAdmin
 from apps.core.audit.services import record
+from apps.core.errors import DomainError
 from apps.moderation.models import ModerationCase
 
-from .models import Conversation, Message
+from . import calls
+from .models import Call, Conversation, ConversationMember, Message
 
 
 def reported_message_ids():
@@ -48,6 +51,28 @@ class ConversationAdmin(AuditedModelAdmin):
         "transcript",
     ]
     readonly_fields = fields
+    actions_detail = ["call_detail"]
+
+    @action(description=_("Three-way call"), url_path="call", icon="call")
+    def call_detail(self, request, object_id):
+        """Starts (or joins) the audio call of a dispute room; the team member answers in
+        the web app, like the buyer and the seller."""
+        conversation = get_object_or_404(reviewable_conversations(), pk=object_id)
+        back = reverse("admin:messaging_conversation_change", args=[object_id])
+        if conversation.purpose != Conversation.Purpose.DISPUTE:
+            self.message_user(request, _("Calls are only for dispute rooms."), messages.WARNING)
+            return redirect(back)
+        ConversationMember.objects.get_or_create(
+            conversation=conversation,
+            user=request.user,
+            defaults={"role": ConversationMember.Role.STAFF},
+        )
+        try:
+            call = calls.start_call(request.user, conversation, video=False)
+        except DomainError as exc:
+            self.message_user(request, exc.text(), messages.ERROR)
+            return redirect(back)
+        return redirect(f"{settings.SITE_URL}/fr/appel/{call.pk}")
 
     def get_queryset(self, request):
         return (
@@ -172,3 +197,53 @@ class MessageAdmin(AuditedModelAdmin):
             return redirect(reverse("admin:messaging_conversation_changelist"))
         url = reverse("admin:messaging_conversation_change", args=[message.conversation_id])
         return redirect(f"{url}#m-{message.pk}")
+
+
+@admin.register(Call)
+class CallAdmin(AuditedModelAdmin):
+    """The call log: who, when, how long. Nothing of what was said."""
+
+    list_display = ["created_at", "kind", "status", "purpose", "people", "minutes"]
+    list_filter = ["kind", "status", "conversation__purpose"]
+    date_hierarchy = "created_at"
+    fields = [
+        "conversation",
+        "caller",
+        "kind",
+        "status",
+        "people",
+        "created_at",
+        "answered_at",
+        "ended_at",
+        "minutes",
+    ]
+    readonly_fields = fields
+
+    def get_queryset(self, request):
+        return (
+            super()
+            .get_queryset(request)
+            .select_related("conversation", "caller")
+            .prefetch_related("participants__user")
+        )
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    @display(description=_("purpose"))
+    def purpose(self, call):
+        return call.conversation.get_purpose_display()
+
+    @display(description=_("people"))
+    def people(self, call):
+        return ", ".join(str(p.user) for p in call.participants.all())
+
+    @display(description=_("length (min)"))
+    def minutes(self, call):
+        return round(call.duration_seconds / 60, 1)

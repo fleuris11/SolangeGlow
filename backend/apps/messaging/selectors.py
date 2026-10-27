@@ -88,7 +88,7 @@ def visible_messages(user):
     """What a member sees: everything visible, and her own messages even when held."""
     return Message.objects.filter(
         Q(visibility=Message.Visibility.VISIBLE) | Q(sender=user)
-    ).select_related("media", "sender")
+    ).select_related("media", "sender", "call")
 
 
 def unread_messages(member: ConversationMember):

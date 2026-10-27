@@ -88,6 +88,7 @@ class MeSerializer(serializers.ModelSerializer):
             "notify_whatsapp",
             "notify_email",
             "notify_push",
+            "accept_calls",
             "quiet_hours_start",
             "quiet_hours_end",
             "roles",
@@ -114,6 +115,7 @@ class MeSerializer(serializers.ModelSerializer):
                 "notify_whatsapp",
                 "notify_email",
                 "notify_push",
+                "accept_calls",
             ]
         }
 

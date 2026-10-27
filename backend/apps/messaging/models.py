@@ -110,6 +110,7 @@ class Message(BaseModel):
         VOICE = "voice", _("Voice note")
         SHARE = "share", _("Shared card")
         SYSTEM = "system", _("Information")
+        CALL = "call", _("Call")
 
     class ShareKind(models.TextChoices):
         POST = "post", _("Post")
@@ -150,6 +151,15 @@ class Message(BaseModel):
     share_id = models.UUIDField(null=True, blank=True)
     # Copy taken when sharing: the card stays readable if the original changes.
     share_data = models.JSONField(default=dict, blank=True)
+    # A line of the call log (« Video call, 3 min », « Missed call »), written in her language.
+    call = models.ForeignKey(
+        "messaging.Call",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="+",
+        verbose_name=_("call"),
+    )
     # Chosen by the sending device: sending twice (offline queue) never makes two messages.
     client_id = models.UUIDField(null=True, blank=True)
     fraud_labels = models.JSONField(_("risk detected"), default=list, blank=True)
@@ -220,3 +230,83 @@ class AwayMessage(BaseModel):
 
     def __str__(self):
         return str(self.user)
+
+
+class Call(BaseModel):
+    """An audio or video call in a conversation (two people, or three in a dispute room).
+    Nothing is recorded: only who, when and how long (the call log)."""
+
+    class Kind(models.TextChoices):
+        AUDIO = "audio", _("Audio call")
+        VIDEO = "video", _("Video call")
+
+    class Status(models.TextChoices):
+        RINGING = "ringing", _("Ringing")
+        ONGOING = "ongoing", _("Ongoing")
+        ENDED = "ended", _("Ended")
+        MISSED = "missed", _("Missed")
+        DECLINED = "declined", _("Declined")
+        CANCELLED = "cancelled", _("Cancelled")
+
+    conversation = models.ForeignKey(
+        Conversation, on_delete=models.CASCADE, related_name="calls", verbose_name=_("conversation")
+    )
+    caller = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name="+",
+        verbose_name=_("caller"),
+    )
+    kind = models.CharField(_("type"), max_length=5, choices=Kind.choices)
+    status = models.CharField(
+        _("status"), max_length=10, choices=Status.choices, default=Status.RINGING, db_index=True
+    )
+    room = models.CharField(_("room at LiveKit"), max_length=80, unique=True)
+    ring_until = models.DateTimeField(_("rings until"))
+    answered_at = models.DateTimeField(_("answered at"), null=True, blank=True)
+    ended_at = models.DateTimeField(_("ended at"), null=True, blank=True)
+    ends_by = models.DateTimeField(_("cut at the latest"), null=True, blank=True)
+    max_people = models.PositiveSmallIntegerField(_("people at most"), default=2)
+
+    class Meta:
+        verbose_name = _("call")
+        verbose_name_plural = _("calls")
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"{self.get_kind_display()} {self.created_at:%Y-%m-%d %H:%M}"
+
+    @property
+    def duration_seconds(self) -> int:
+        if self.answered_at and self.ended_at:
+            return max(0, int((self.ended_at - self.answered_at).total_seconds()))
+        return 0
+
+
+class CallParticipant(BaseModel):
+    class State(models.TextChoices):
+        INVITED = "invited", _("Called")
+        JOINED = "joined", _("In the call")
+        LEFT = "left", _("Hung up")
+        DECLINED = "declined", _("Declined")
+
+    call = models.ForeignKey(
+        Call, on_delete=models.CASCADE, related_name="participants", verbose_name=_("call")
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="call_participations",
+        verbose_name=_("person"),
+    )
+    state = models.CharField(_("state"), max_length=8, choices=State.choices, default=State.INVITED)
+    joined_at = models.DateTimeField(_("joined at"), null=True, blank=True)
+    left_at = models.DateTimeField(_("left at"), null=True, blank=True)
+
+    class Meta:
+        verbose_name = _("person in a call")
+        verbose_name_plural = _("people in calls")
+        constraints = [
+            models.UniqueConstraint(fields=["call", "user"], name="messaging_one_call_participant")
+        ]
