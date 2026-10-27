@@ -293,6 +293,32 @@ cadeaux) ; offres et prix dans l'admin, section Glow Pro. `TERMINAL_PROVIDER` et
 `EINVOICE_PROVIDER` restent vides tant que Stripe Terminal et une plateforme de facture
 électronique ne sont pas choisis.
 
+## Tester l'Académie en local
+
+Avec les données de démo (`seed_demo`, qui fabrique une vidéo de leçon de 3 minutes) :
+
+1. Catalogue : http://localhost:3000/fr/academie (filtres métier, niveau, langue, prix ;
+   fonctionnent sans JavaScript). « Hygiène et sécurité au salon » est gratuite, avec des
+   quiz, et donne le badge « Formée sur Solange Glow » ; « Maquillage mariée en 5 étapes »
+   (Institut Prisca) coûte 5 000 FCFA ; une formation de Fatou Braids attend la revue.
+2. Lecteur : qualité « Économie » d'office en mode économie de données ; « Télécharger
+   pour regarder sans réseau », puis couper le réseau : la copie du téléphone est lue.
+3. Quiz à la fin de chaque module (bonnes réponses de la démo : « 48 heures », « Après
+   chaque cliente ») ; à la fin, « Mes formations » propose le certificat PDF et sa page de
+   vérification publique (`/fr/certificat/<code>`, ouverte par le QR code).
+4. Achat : la case de renonciation est obligatoire ; paiement de test ; tant qu'aucune
+   leçon n'est ouverte, « Me faire rembourser » reste possible 14 jours.
+5. Espace formatrice : connecte-toi comme Institut Prisca (+2290197000108) puis
+   http://localhost:3000/fr/pro/academy (création en 5 étapes, statistiques, lives).
+   La revue se fait dans l'admin, Académie, « Formations à vérifier ».
+6. Lives : http://localhost:3000/fr/academie/lives (inscription, salle d'attente ; la
+   vidéo en direct arrivera au prompt 14).
+
+Réglages : `academy.*` (prix plancher et plafond, prix du pass par pays, délai de
+remboursement, réussite des quiz, durée des leçons, rappels des lives) ; interrupteurs
+« academy » et « lives » par pays. `LIVE_PROVIDER` reste vide tant que la diffusion n'est
+pas branchée.
+
 ## Client de l'API (web)
 
 Les types du client web sont générés depuis le schéma de l'API. Après toute
