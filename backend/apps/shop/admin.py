@@ -25,11 +25,13 @@ from .models import (
     DeliveryZone,
     FlashSale,
     ForbiddenTerm,
+    LivePin,
     Order,
     OrderLine,
     Product,
     ProductPhoto,
     PromoCode,
+    SaleLive,
     ShopProfile,
     Variant,
 )
@@ -324,4 +326,44 @@ class BundleAdmin(AuditedModelAdmin):
     inlines = [BundleItemInline]
 
     def has_add_permission(self, request):
+        return False
+
+
+class LivePinInline(TabularInline):
+    model = LivePin
+    fields = ["product", "pinned_at", "unpinned_at"]
+    readonly_fields = fields
+    extra = 0
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+
+@admin.register(SaleLive)
+class SaleLiveAdmin(AuditedModelAdmin):
+    """Sales lives of the shops: when, orders and sales made on air. Cutting a live and
+    deleting a replay happen in « Live rooms »."""
+
+    list_display = ["title", "pro", "starts_at", "status", "orders_count", "revenue_minor"]
+    list_filter = ["status", "currency"]
+    search_fields = ["title", "pro__business_name"]
+    date_hierarchy = "starts_at"
+    readonly_fields = [
+        "pro",
+        "title",
+        "description",
+        "starts_at",
+        "duration_minutes",
+        "status",
+        "orders_count",
+        "revenue_minor",
+        "currency",
+    ]
+    fields = readonly_fields
+    inlines = [LivePinInline]
+
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
         return False

@@ -178,6 +178,10 @@ def on_payment_change(payment: Payment) -> None:
                 order.status = OS.REFUNDED
             order.cancelled_at = order.cancelled_at or timezone.now()
         order.save()
+        if status == PS.HELD and order.sale_live_id and not order.counted_in_live:
+            from .lives import count_purchase
+
+            transaction.on_commit(lambda: count_purchase(order))
     if restocked:
         from . import alerts
 

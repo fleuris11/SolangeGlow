@@ -197,3 +197,20 @@ class OrderNotFound(DomainError):
 class ParcelPhotoNeeded(DomainError):
     code = "parcel_photo_needed"
     message = _("Add a photo of the parcel.")
+
+
+class SaleLivesClosed(DomainError):
+    code = "sale_lives_closed"
+    status_code = 403
+    message = _("Sales lives are not open in your country yet.")
+
+
+class InvalidSaleLive(DomainError):
+    code = "invalid_sale_live"
+    message = _("Give a title, a time to come and a length of 15 to %(max)s minutes.")
+
+
+class SaleLiveNotFound(DomainError):
+    code = "sale_live_not_found"
+    status_code = 404
+    message = _("This live does not exist or cannot change any more.")

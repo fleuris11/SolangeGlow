@@ -31,11 +31,13 @@ class ShopConfig(AppConfig):
     verbose_name = _("Shop")
 
     def ready(self):
+        from apps.live import registry
         from apps.messaging import shares
         from apps.payments import services as payment_services
         from apps.social import eligibility, products
 
         from . import links
+        from .live_source import SaleLives
         from .services import orders
 
         post_migrate.connect(create_group, sender=self)
@@ -43,3 +45,4 @@ class ShopConfig(AppConfig):
         eligibility.register(links.OrderEligibility())
         shares.register("product", links.share_product)
         products.register(links.owns_product, links.post_product_card)
+        registry.register(SaleLives())

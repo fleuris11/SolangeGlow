@@ -7,12 +7,22 @@ from rest_framework import serializers
 
 from apps.core.media.api import MediaSerializer
 from apps.core.media.services import asset_payload
+from apps.live.serializers import LiveQuotaSerializer
 from apps.messaging.payloads import person_payload
 from apps.messaging.serializers import PersonSerializer
 from apps.payments.serializers import PaymentSerializer, payment_payload
 
 from . import prices
-from .models import ZONE_MODES, DeliveryMode, DeliveryZone, Order, Product, PromoCode, Variant
+from .models import (
+    ZONE_MODES,
+    DeliveryMode,
+    DeliveryZone,
+    Order,
+    Product,
+    PromoCode,
+    SaleLive,
+    Variant,
+)
 
 
 def _iso(value):
@@ -229,12 +239,23 @@ class BundleSerializer(serializers.Serializer):
     items = BundleItemSerializer(many=True)
 
 
+class ShopLiveSerializer(serializers.Serializer):
+    id = serializers.UUIDField()
+    title = serializers.CharField()
+    starts_at = serializers.DateTimeField()
+    status = serializers.ChoiceField(choices=SaleLive.Status.choices)
+    replay = serializers.BooleanField(help_text="A replay can be watched.")
+    link = serializers.CharField()
+    time_zone = serializers.CharField()
+
+
 class ShopPageSerializer(serializers.Serializer):
     shop = ShopBriefSerializer()
     delivery = DeliverySerializer()
     categories = ProductCategorySerializer(many=True)
     products = ProductSummarySerializer(many=True)
     bundles = BundleSerializer(many=True)
+    lives = ShopLiveSerializer(many=True, help_text="Sales lives: on air, coming, replays.")
 
 
 def product_detail(product: Product, viewer=None, *, wished: bool = False, watching=()):
@@ -551,6 +572,9 @@ class CartAddSerializer(serializers.Serializer):
     variant_id = serializers.UUIDField(required=False, allow_null=True)
     bundle_id = serializers.UUIDField(required=False, allow_null=True)
     quantity = serializers.IntegerField(min_value=1, default=1)
+    sale_live_id = serializers.UUIDField(
+        required=False, allow_null=True, help_text="Added during this sales live."
+    )
 
     def validate(self, attrs):
         if bool(attrs.get("variant_id")) == bool(attrs.get("bundle_id")):
@@ -805,3 +829,30 @@ class ProductReviewsSerializer(serializers.Serializer):
     average = serializers.FloatField(allow_null=True)
     count = serializers.IntegerField()
     results = ProductReviewSerializer(many=True)
+
+
+# --- Sales lives -----------------------------------------------------------------------------
+
+
+class MySaleLiveSerializer(ShopLiveSerializer):
+    description = serializers.CharField()
+    duration_minutes = serializers.IntegerField()
+    orders_count = serializers.IntegerField()
+    revenue_minor = serializers.IntegerField()
+    currency = serializers.CharField()
+    peak_viewers = serializers.IntegerField()
+    total_viewers = serializers.IntegerField()
+
+
+class MySaleLivesSerializer(serializers.Serializer):
+    results = MySaleLiveSerializer(many=True)
+    quota = LiveQuotaSerializer()
+    open = serializers.BooleanField(help_text="Sales lives are open in her country.")
+    can_sell = serializers.BooleanField(help_text="Her shop is verified (needed to go live).")
+
+
+class SaleLiveInputSerializer(serializers.Serializer):
+    title = serializers.CharField(max_length=120)
+    description = serializers.CharField(max_length=500, required=False, allow_blank=True)
+    starts_at = serializers.DateTimeField()
+    duration_minutes = serializers.IntegerField(min_value=15, max_value=480)

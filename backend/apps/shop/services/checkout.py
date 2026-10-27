@@ -237,6 +237,9 @@ def place_orders(
             contact_phone=phone if delivered else "",
             note=q.note,
             prep_days=cart.prep_days,
+            sale_live_id=next(
+                (line.item.sale_live_id for line in cart.lines if line.item.sale_live_id), None
+            ),
         )
         OrderLine.objects.bulk_create(
             OrderLine(

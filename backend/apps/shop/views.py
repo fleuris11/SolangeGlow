@@ -15,7 +15,7 @@ from apps.pros.models import ProProfile
 from apps.pros.selectors import can_collect_payments
 from apps.social.models import Review, Visibility
 
-from . import errors, selectors
+from . import errors, live_source, selectors
 from . import serializers as s
 from .models import (
     Category,
@@ -23,10 +23,11 @@ from .models import (
     Order,
     OrderLine,
     PromoCode,
+    SaleLive,
     StockAlert,
     WishlistItem,
 )
-from .services import alerts, cart, catalog, checkout, orders, promotions
+from .services import alerts, cart, catalog, checkout, lives, orders, promotions
 
 
 def _wished(user, products) -> frozenset:
@@ -101,6 +102,9 @@ class ShopPageView(OptionalAuthView):
                 ],
                 "products": [s.product_summary(p, wished=wished) for p in products],
                 "bundles": [s.bundle_payload(b) for b in bundles],
+                "lives": live_source.public_payloads(lives.public_lives(pro))
+                if lives.lives_open(pro.country)
+                else [],
             }
         )
 
@@ -181,6 +185,7 @@ class CartItemsView(ShopWriteView):
             variant_id=values.get("variant_id"),
             bundle_id=values.get("bundle_id"),
             quantity=values["quantity"],
+            sale_live_id=values.get("sale_live_id"),
         )
         return _cart_answer(request.user, status.HTTP_201_CREATED)
 
@@ -653,3 +658,63 @@ class StatsView(ShopWriteView):
             for v in data["running_out"]
         ]
         return Response(data)
+
+
+# --- Sales lives (pro side) ----------------------------------------------------------------------
+
+
+def _my_lives(user) -> dict:
+    from apps.live.selectors import quota
+
+    pro = catalog.pro_of(user)
+    rows = (
+        SaleLive.objects.filter(pro=pro)
+        .select_related("pro__country")
+        .exclude(status=SaleLive.Status.CANCELLED)[:30]
+    )
+    return {
+        "results": live_source.my_payloads(list(rows)),
+        "quota": quota(user, timezone.now()),
+        "open": lives.lives_open(pro.country),
+        "can_sell": can_collect_payments(pro),
+    }
+
+
+class MySaleLivesView(ShopWriteView):
+    @extend_schema(tags=["my-shop"], responses=s.MySaleLivesSerializer)
+    def get(self, request):
+        return Response(_my_lives(request.user))
+
+    @extend_schema(
+        tags=["my-shop"],
+        request=s.SaleLiveInputSerializer,
+        responses={201: s.MySaleLivesSerializer},
+    )
+    def post(self, request):
+        data = s.SaleLiveInputSerializer(data=request.data)
+        data.is_valid(raise_exception=True)
+        lives.plan(request.user, **data.validated_data)
+        return Response(_my_lives(request.user), status=status.HTTP_201_CREATED)
+
+
+class MySaleLiveCancelView(ShopWriteView):
+    @extend_schema(tags=["my-shop"], request=None, responses=s.MySaleLivesSerializer)
+    def post(self, request, live_id):
+        lives.cancel(request.user, live_id)
+        return Response(_my_lives(request.user))
+
+
+class MySaleLivePinView(ShopWriteView):
+    """Pins a product on screen (or takes it off; it stays in the list of the live)."""
+
+    @extend_schema(
+        tags=["my-shop"], operation_id="shop_live_pin", request=None, responses={204: None}
+    )
+    def post(self, request, live_id, product_id):
+        lives.pin(request.user, live_id, product_id)
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+    @extend_schema(tags=["my-shop"], operation_id="shop_live_unpin", responses={204: None})
+    def delete(self, request, live_id, product_id):
+        lives.unpin(request.user, live_id, product_id)
+        return Response(status=status.HTTP_204_NO_CONTENT)

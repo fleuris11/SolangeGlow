@@ -422,6 +422,14 @@ class CartItem(BaseModel):
         Bundle, on_delete=models.CASCADE, null=True, blank=True, related_name="+"
     )
     quantity = models.PositiveSmallIntegerField(_("quantity"), default=1)
+    sale_live = models.ForeignKey(
+        "shop.SaleLive",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="+",
+        verbose_name=_("added during the live"),
+    )
 
     class Meta:
         verbose_name = _("cart line")
@@ -553,6 +561,15 @@ class Order(BaseModel):
     cancelled_at = models.DateTimeField(_("cancelled at"), null=True, blank=True)
     stock_returned = models.BooleanField(default=False, editable=False)
     counted_as_sold = models.BooleanField(default=False, editable=False)
+    sale_live = models.ForeignKey(
+        "shop.SaleLive",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="orders",
+        verbose_name=_("bought during the live"),
+    )
+    counted_in_live = models.BooleanField(default=False, editable=False)
 
     class Meta:
         verbose_name = _("order")
@@ -600,3 +617,60 @@ class OrderLine(BaseModel):
 
     def __str__(self):
         return f"{self.quantity} x {self.title}"
+
+
+class SaleLive(BaseModel):
+    """A sales live (module 4, ADR-013): the pro shows her products on air, pins them, and
+    the viewers buy without leaving the live. The replay stays a few days."""
+
+    class Status(models.TextChoices):
+        SCHEDULED = "scheduled", _("Planned")
+        LIVE = "live", _("On air")
+        ENDED = "ended", _("Over")
+        CANCELLED = "cancelled", _("Cancelled")
+
+    pro = models.ForeignKey(
+        "pros.ProProfile",
+        on_delete=models.CASCADE,
+        related_name="sale_lives",
+        verbose_name=_("shop"),
+    )
+    title = models.CharField(_("title"), max_length=120)
+    description = models.CharField(_("description"), max_length=500, blank=True)
+    starts_at = models.DateTimeField(_("starts at"), db_index=True)
+    duration_minutes = models.PositiveSmallIntegerField(_("length (min)"), default=60)
+    status = models.CharField(
+        _("status"), max_length=10, choices=Status.choices, default=Status.SCHEDULED
+    )
+    orders_count = models.PositiveIntegerField(_("orders"), default=0, editable=False)
+    revenue_minor = models.BigIntegerField(_("sales"), default=0, editable=False)
+    currency = models.CharField(_("currency"), max_length=3)
+
+    class Meta:
+        verbose_name = _("sales live")
+        verbose_name_plural = _("sales lives")
+        ordering = ["-starts_at"]
+
+    def __str__(self):
+        return self.title
+
+
+class LivePin(BaseModel):
+    """A product shown during a sales live. Unpinned products stay in the list (replay)."""
+
+    sale_live = models.ForeignKey(
+        SaleLive, on_delete=models.CASCADE, related_name="pins", verbose_name=_("live")
+    )
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name="+", verbose_name=_("product")
+    )
+    pinned_at = models.DateTimeField(_("pinned at"))
+    unpinned_at = models.DateTimeField(_("unpinned at"), null=True, blank=True)
+
+    class Meta:
+        verbose_name = _("pinned product")
+        verbose_name_plural = _("pinned products")
+        ordering = ["-pinned_at"]
+        constraints = [
+            models.UniqueConstraint(fields=["sale_live", "product"], name="shop_one_pin")
+        ]

@@ -61,4 +61,15 @@ urlpatterns = [
     path("me/shop/bundles", views.BundlesView.as_view(), name="my-bundles"),
     path("me/shop/bundles/<uuid:bundle_id>", views.BundleView.as_view(), name="my-bundle"),
     path("me/shop/stats", views.StatsView.as_view(), name="my-shop-stats"),
+    path("me/shop/lives", views.MySaleLivesView.as_view(), name="my-sale-lives"),
+    path(
+        "me/shop/lives/<uuid:live_id>/cancel",
+        views.MySaleLiveCancelView.as_view(),
+        name="my-sale-live-cancel",
+    ),
+    path(
+        "me/shop/lives/<uuid:live_id>/pins/<uuid:product_id>",
+        views.MySaleLivePinView.as_view(),
+        name="my-sale-live-pin",
+    ),
 ]

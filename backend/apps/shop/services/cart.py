@@ -164,8 +164,9 @@ def _max_quantity(pro) -> int:
 
 
 @transaction.atomic
-def add(user, *, variant_id=None, bundle_id=None, quantity: int = 1) -> CartItem:
-    """Adds to the cart (or adds up). The stock is only taken when the order is placed."""
+def add(user, *, variant_id=None, bundle_id=None, quantity: int = 1, sale_live_id=None) -> CartItem:
+    """Adds to the cart (or adds up). The stock is only taken when the order is placed.
+    From a sales live, the line remembers it (the live counts its orders)."""
     if not can_purchase(user):
         raise errors.CannotBuy()
     if type(quantity) is not int or quantity < 1:
@@ -190,6 +191,9 @@ def add(user, *, variant_id=None, bundle_id=None, quantity: int = 1) -> CartItem
         lookup = {"bundle": bundle}
     if pro.user_id == user.pk:
         raise errors.OwnShop()
+    from .lives import sale_live_for_cart
+
+    sale_live = sale_live_for_cart(sale_live_id, pro.pk)
     existing = CartItem.objects.select_for_update().filter(user=user, **lookup).first()
     wanted = quantity + (existing.quantity if existing else 0)
     maximum = _max_quantity(pro)
@@ -199,12 +203,13 @@ def add(user, *, variant_id=None, bundle_id=None, quantity: int = 1) -> CartItem
         raise errors.OutOfStock(details={"title": title, "left": stock})
     if existing is not None:
         existing.quantity = wanted
-        existing.save(update_fields=["quantity", "updated_at"])
+        existing.sale_live = sale_live or existing.sale_live
+        existing.save(update_fields=["quantity", "sale_live", "updated_at"])
         return existing
     lines_max = int(get_setting("shop.cart_max_lines", default=30))
     if CartItem.objects.filter(user=user).count() >= lines_max:
         raise errors.CartFull(details={"max": lines_max})
-    return CartItem.objects.create(user=user, quantity=quantity, **lookup)
+    return CartItem.objects.create(user=user, quantity=quantity, sale_live=sale_live, **lookup)
 
 
 def set_quantity(user, item_id, quantity: int) -> CartItem | None:
