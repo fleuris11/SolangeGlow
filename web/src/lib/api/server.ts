@@ -190,3 +190,58 @@ export async function widgetOnServer(slug: string, locale: string) {
   if (!response.ok || !data) return null;
   return data;
 }
+
+// --- Academy (module 7) --------------------------------------------------------------------------
+
+export type CatalogueQuery = NonNullable<
+  import("./schema").operations["academy_catalogue"]["parameters"]["query"]
+>;
+
+/** First page of the catalogue, rendered on the server. */
+export async function catalogueOnServer(query: CatalogueQuery, locale: string) {
+  const api = await serverApi(locale);
+  const { data, response } = await api.GET("/api/v1/academy/courses", { params: { query } });
+  if (!response.ok || !data) throw new Error(`Catalogue: ${response.status}`);
+  return data;
+}
+
+/** A course page, or null when it does not exist or is not published. */
+export async function courseOnServer(
+  slug: string,
+  locale: string,
+): Promise<Schemas["CourseDetail"] | null> {
+  const api = await serverApi(locale);
+  const { data, response } = await api.GET("/api/v1/academy/courses/{slug}", {
+    params: { path: { slug } },
+  });
+  if (response.status === 404) return null;
+  if (!response.ok || !data) throw new Error(`Course ${slug}: ${response.status}`);
+  return data;
+}
+
+/** The public check of a certificate, or null when the code is unknown. */
+export async function certificateOnServer(
+  code: string,
+  locale: string,
+): Promise<Schemas["CertificateCheck"] | null> {
+  const api = await serverApi(locale);
+  const { data, response } = await api.GET("/api/v1/academy/certificates/{code}", {
+    params: { path: { code } },
+  });
+  if (response.status === 404) return null;
+  if (!response.ok || !data) throw new Error(`Certificate: ${response.status}`);
+  return data;
+}
+
+export async function livesOnServer(locale: string) {
+  const api = await serverApi(locale);
+  const { data, response } = await api.GET("/api/v1/academy/lives");
+  if (!response.ok || !data) throw new Error(`Lives: ${response.status}`);
+  return data;
+}
+
+export async function tradesOnServer(locale: string) {
+  const api = await serverApi(locale);
+  const { data } = await api.GET("/api/v1/trades");
+  return data ?? [];
+}

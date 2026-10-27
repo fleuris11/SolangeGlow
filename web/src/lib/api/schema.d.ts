@@ -4,6 +4,523 @@
  */
 
 export interface paths {
+  "/api/v1/academy/certificates/{code}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["academy_certificates_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/courses": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["academy_catalogue"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/courses/{slug}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["academy_courses_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/courses/{slug}/get": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["academy_courses_get_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/enrollments/{enrollment_id}/refund": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["academy_enrollments_refund_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/lessons/{lesson_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["academy_lessons_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/lessons/{lesson_id}/position": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["academy_lessons_position_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/lives": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["academy_lives_list"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/lives/{live_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["academy_lives_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/lives/{live_id}/join": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["academy_lives_join_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/lives/{live_id}/registration": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["academy_lives_registration_create"];
+    delete: operations["academy_lives_registration_destroy"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/me": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["academy_me_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/me/certificates/{code}.pdf": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["academy_me_certificates_.pdf_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/modules/{module_id}/quiz": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["academy_modules_quiz_retrieve"];
+    put?: never;
+    post: operations["academy_modules_quiz_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/pass": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["academy_pass_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/pass/cancel": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["academy_pass_cancel_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/pass/subscribe": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["academy_pass_subscribe_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/studio": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["academy_studio_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/studio/courses": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["academy_studio_courses_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/studio/courses/{course_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["academy_studio_courses_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch: operations["academy_studio_courses_partial_update"];
+    trace?: never;
+  };
+  "/api/v1/academy/studio/courses/{course_id}/archive": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["academy_studio_courses_archive_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/studio/courses/{course_id}/modules": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["academy_studio_courses_modules_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/studio/courses/{course_id}/submit": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["academy_studio_courses_submit_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/studio/lessons/{lesson_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete: operations["academy_studio_lessons_destroy"];
+    options?: never;
+    head?: never;
+    patch: operations["academy_studio_lessons_partial_update"];
+    trace?: never;
+  };
+  "/api/v1/academy/studio/lessons/{lesson_id}/resources": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["academy_studio_lessons_resources_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/studio/lives": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["academy_studio_lives_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/studio/lives/{live_id}/cancel": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["academy_studio_lives_cancel_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/studio/modules/{module_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete: operations["academy_studio_modules_destroy"];
+    options?: never;
+    head?: never;
+    patch: operations["academy_studio_modules_partial_update"];
+    trace?: never;
+  };
+  "/api/v1/academy/studio/modules/{module_id}/lessons": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["academy_studio_modules_lessons_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/studio/modules/{module_id}/questions": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["academy_studio_modules_questions_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/academy/studio/questions/{question_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete: operations["academy_studio_questions_destroy"];
+    options?: never;
+    head?: never;
+    patch: operations["academy_studio_questions_partial_update"];
+    trace?: never;
+  };
+  "/api/v1/academy/studio/resources/{resource_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete: operations["academy_studio_resources_destroy"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/agenda/{token}.ics": {
     parameters: {
       query?: never;
@@ -3966,6 +4483,22 @@ export interface components {
       dispute: boolean;
       new_code: boolean;
     };
+    AcademyPass: {
+      status: components["schemas"]["AcademyPassStatusEnum"];
+      active: boolean;
+      /** Format: date-time */
+      current_period_end: string | null;
+      cancel_at_period_end: boolean;
+      payment_due: boolean;
+      price_minor: number | null;
+      currency: string;
+    };
+    /**
+     * @description * `active` - Active
+     *     * `ended` - Ended
+     * @enum {string}
+     */
+    AcademyPassStatusEnum: "active" | "ended";
     /**
      * @description * `pending` - pending
      *     * `available` - available
@@ -4019,6 +4552,9 @@ export interface components {
     AisleEnum: "small_prices" | "trending" | "luxury";
     AnswerInputRequest: {
       accept: boolean;
+    };
+    AnswersRequest: {
+      answers: number[];
     };
     Appointment: {
       /** Format: uuid */
@@ -4392,6 +4928,7 @@ export interface components {
       receives_clients: boolean;
       travels_to_clients: boolean;
       verified: boolean;
+      trained: boolean;
     };
     Cart: {
       shops: components["schemas"]["CartShop"][];
@@ -4444,6 +4981,13 @@ export interface components {
       prep_days: number;
       lines: components["schemas"]["CartLine"][];
     };
+    Catalogue: {
+      results: components["schemas"]["CourseCard"][];
+      next: string | null;
+      open: boolean;
+      country: string;
+      pass_offer: components["schemas"]["PassOffer"];
+    };
     Category: {
       /** Format: uuid */
       readonly id: string;
@@ -4453,6 +4997,18 @@ export interface components {
     CategoryRequest: {
       name: string;
       position?: number;
+    };
+    CertificateCheck: {
+      code: string;
+      valid: boolean;
+      holder_name: string;
+      course_title: string;
+      course_slug: string | null;
+      trainer_name: string;
+      /** Format: date-time */
+      issued_at: string;
+      /** Format: date-time */
+      revoked_at: string | null;
     };
     Checkout: {
       checkout_url: string;
@@ -4693,16 +5249,105 @@ export interface components {
       description: string;
       seller: string;
     };
+    CourseCard: {
+      /** Format: uuid */
+      id: string;
+      slug: string;
+      title: string;
+      summary: string;
+      cover: components["schemas"]["Media"] | null;
+      trade: string | null;
+      trade_name: string | null;
+      level: components["schemas"]["CourseLevelEnum"];
+      language: components["schemas"]["LanguageEnum"];
+      pricing: components["schemas"]["CoursePricingEnum"];
+      price_minor: number;
+      currency: string;
+      duration_seconds: number;
+      lessons_count: number;
+      students_count: number;
+      trainer: components["schemas"]["Trainer"];
+      status: components["schemas"]["CourseStatusEnum"];
+    };
+    CourseDetail: {
+      /** Format: uuid */
+      id: string;
+      slug: string;
+      title: string;
+      summary: string;
+      cover: components["schemas"]["Media"] | null;
+      trade: string | null;
+      trade_name: string | null;
+      level: components["schemas"]["CourseLevelEnum"];
+      language: components["schemas"]["LanguageEnum"];
+      pricing: components["schemas"]["CoursePricingEnum"];
+      price_minor: number;
+      currency: string;
+      duration_seconds: number;
+      lessons_count: number;
+      students_count: number;
+      trainer: components["schemas"]["Trainer"];
+      status: components["schemas"]["CourseStatusEnum"];
+      description: string;
+      country: string;
+      /** Format: date-time */
+      published_at: string | null;
+      modules: components["schemas"]["ModuleSummary"][];
+      enrollment: components["schemas"]["MyEnrollment"] | null;
+      is_trainer: boolean;
+      pass_offer: components["schemas"]["PassOffer"];
+      refund_days: number;
+    };
+    /**
+     * @description * `beginner` - Beginner
+     *     * `intermediate` - Intermediate
+     *     * `expert` - Expert
+     * @enum {string}
+     */
+    CourseLevelEnum: "beginner" | "intermediate" | "expert";
+    /**
+     * @description * `free` - Free
+     *     * `paid` - Paid once
+     *     * `pass` - Included in the pass
+     * @enum {string}
+     */
+    CoursePricingEnum: "free" | "paid" | "pass";
+    CourseResourceInputRequest: {
+      title: string;
+      /** Format: uuid */
+      file_id: string;
+    };
+    CourseStats: {
+      students: number;
+      finished: number;
+      completion_percent: number;
+      earned_minor: number;
+    };
+    /**
+     * @description * `draft` - Draft
+     *     * `in_review` - Waiting for review
+     *     * `published` - Published
+     *     * `rejected` - Sent back
+     *     * `archived` - Archived
+     * @enum {string}
+     */
+    CourseStatusEnum: "draft" | "in_review" | "published" | "rejected" | "archived";
     CreditInputRequest: {
       reason: string;
     };
     Dashboard: {
-      level: components["schemas"]["LevelEnum"];
+      level: components["schemas"]["DashboardLevelEnum"];
       currency: string;
       basic: components["schemas"]["BasicStats"];
       current: components["schemas"]["PeriodStats"] | null;
       previous: components["schemas"]["PeriodStats"] | null;
     };
+    /**
+     * @description * `basic` - basic
+     *     * `complete` - complete
+     * @enum {string}
+     */
+    DashboardLevelEnum: "basic" | "complete";
     /**
      * @description * `release` - Pay the seller
      *     * `refund` - Refund everything
@@ -4818,6 +5463,21 @@ export interface components {
      * @enum {string}
      */
     EInvoiceStatusEnum: "not_sent" | "sent" | "failed";
+    /**
+     * @description * `free` - Free
+     *     * `purchase` - Bought
+     *     * `pass` - With the pass
+     *     * `trainer` - Trainer
+     * @enum {string}
+     */
+    EnrollmentAccessEnum: "free" | "purchase" | "pass" | "trainer";
+    /**
+     * @description * `waiting` - Waiting for the payment
+     *     * `active` - Following
+     *     * `refunded` - Refunded
+     * @enum {string}
+     */
+    EnrollmentStatusEnum: "waiting" | "active" | "refunded";
     Evidence: {
       /** Format: uuid */
       id: string;
@@ -4881,6 +5541,15 @@ export interface components {
       has_story: boolean;
       followed: boolean;
       post_count: number;
+    };
+    GetCourseRequest: {
+      /** @default false */
+      waiver: boolean;
+      waiver_text?: string;
+    };
+    GetCourseResult: {
+      enrollment: components["schemas"]["MyEnrollment"] | null;
+      checkout_url: string | null;
     };
     GiftCard: {
       /** Format: uuid */
@@ -5055,6 +5724,9 @@ export interface components {
      * @enum {string}
      */
     InstallmentStatusEnum: "due" | "paid" | "cancelled";
+    Join: {
+      url: string;
+    };
     Language: {
       code: string;
       label: string;
@@ -5112,12 +5784,44 @@ export interface components {
       window_hours: number;
       is_active: boolean;
     };
-    /**
-     * @description * `basic` - basic
-     *     * `complete` - complete
-     * @enum {string}
-     */
-    LevelEnum: "basic" | "complete";
+    LessonInputRequest: {
+      title: string;
+      description?: string;
+      /** Format: uuid */
+      video_id?: string | null;
+      /** @default false */
+      is_preview: boolean;
+    };
+    LessonPlayback: {
+      /** Format: uuid */
+      id: string;
+      title: string;
+      description: string;
+      duration_seconds: number;
+      course_slug: string;
+      course_title: string;
+      /** Format: uuid */
+      module_id: string;
+      module_title: string;
+      /** Format: uuid */
+      previous: string | null;
+      /** Format: uuid */
+      next: string | null;
+      /** Format: uuid */
+      quiz_after: string | null;
+      urls: components["schemas"]["VideoLinks"];
+      resources: components["schemas"]["ResourceLink"][];
+      position_seconds: number;
+      expires_in: number;
+    };
+    LessonSummary: {
+      /** Format: uuid */
+      id: string;
+      title: string;
+      duration_seconds: number;
+      is_preview: boolean;
+      done: boolean;
+    };
     LinkedProduct: {
       /** Format: uuid */
       id: string;
@@ -5137,6 +5841,61 @@ export interface components {
       price_minor: number | null;
       currency: string;
       duration_minutes: number;
+    };
+    Live: {
+      /** Format: uuid */
+      id: string;
+      title: string;
+      description: string;
+      language: components["schemas"]["LanguageEnum"];
+      /** Format: date-time */
+      starts_at: string;
+      duration_minutes: number;
+      capacity: number;
+      places_left: number;
+      status: components["schemas"]["LiveStatusEnum"];
+      trainer_name: string;
+      course_slug: string | null;
+      course_title: string | null;
+      registered: boolean;
+    };
+    LiveInputRequest: {
+      title: string;
+      description?: string;
+      language?: components["schemas"]["LanguageEnum"];
+      /** Format: date-time */
+      starts_at: string;
+      duration_minutes: number;
+      capacity: number;
+      /** Format: uuid */
+      course_id?: string | null;
+      /** @default false */
+      platform: boolean;
+      country?: string;
+    };
+    LiveRoom: {
+      live: components["schemas"]["Live"];
+      registered: boolean;
+      host: boolean;
+      /** Format: date-time */
+      opens_at: string;
+      /** Format: date-time */
+      ends_at: string;
+      open: boolean;
+      seconds_left: number;
+      broadcast_ready: boolean;
+    };
+    /**
+     * @description * `scheduled` - Planned
+     *     * `live` - On air
+     *     * `ended` - Over
+     *     * `cancelled` - Cancelled
+     * @enum {string}
+     */
+    LiveStatusEnum: "scheduled" | "live" | "ended" | "cancelled";
+    Lives: {
+      results: components["schemas"]["Live"][];
+      open: boolean;
     };
     LocationRequest: {
       /** Format: double */
@@ -5262,9 +6021,10 @@ export interface components {
      * @description * `image` - Picture
      *     * `video` - Video
      *     * `audio` - Voice note
+     *     * `document` - Document (PDF)
      * @enum {string}
      */
-    MediaKindEnum: "image" | "video" | "audio";
+    MediaKindEnum: "image" | "video" | "audio" | "document";
     /**
      * @description * `pending` - Waiting
      *     * `processing` - Processing
@@ -5277,10 +6037,13 @@ export interface components {
     /**
      * @description * `avatar` - avatar
      *     * `booking_result` - booking_result
+     *     * `course_cover` - course_cover
+     *     * `course_resource` - course_resource
      *     * `delivery_proof` - delivery_proof
      *     * `dispute_evidence` - dispute_evidence
      *     * `identity_document` - identity_document
      *     * `itinerary_video` - itinerary_video
+     *     * `lesson_video` - lesson_video
      *     * `message_photo` - message_photo
      *     * `portfolio` - portfolio
      *     * `post` - post
@@ -5302,10 +6065,13 @@ export interface components {
     MediaUploadPurposeEnum:
       | "avatar"
       | "booking_result"
+      | "course_cover"
+      | "course_resource"
       | "delivery_proof"
       | "dispute_evidence"
       | "identity_document"
       | "itinerary_video"
+      | "lesson_video"
       | "message_photo"
       | "portfolio"
       | "post"
@@ -5390,6 +6156,14 @@ export interface components {
     MethodInputRequest: {
       method: components["schemas"]["OnSiteMethodEnum"];
     };
+    ModuleSummary: {
+      /** Format: uuid */
+      id: string;
+      title: string;
+      lessons: components["schemas"]["LessonSummary"][];
+      questions_count: number;
+      quiz_passed: boolean;
+    };
     MoveInputRequest: {
       /** Format: date-time */
       start: string;
@@ -5405,6 +6179,30 @@ export interface components {
       note: string;
       /** Format: date-time */
       created_at: string;
+    };
+    MyAcademy: {
+      courses: components["schemas"]["MyCourse"][];
+      academy_pass: components["schemas"]["AcademyPass"];
+    };
+    MyCourse: {
+      course: components["schemas"]["CourseCard"];
+      enrollment: components["schemas"]["MyEnrollment"];
+    };
+    MyEnrollment: {
+      /** Format: uuid */
+      id: string;
+      access: components["schemas"]["EnrollmentAccessEnum"];
+      status: components["schemas"]["EnrollmentStatusEnum"];
+      progress_percent: number;
+      /** Format: uuid */
+      last_lesson: string | null;
+      started: boolean;
+      /** Format: date-time */
+      completed_at: string | null;
+      certificate: string | null;
+      can_watch: boolean;
+      /** Format: date-time */
+      refund_until: string | null;
     };
     MyGlowPro: {
       current: components["schemas"]["GlowPlan"];
@@ -5435,6 +6233,7 @@ export interface components {
       };
       languages: components["schemas"]["Language"][];
       verified: boolean;
+      trained: boolean;
       /** Format: double */
       rating_average: number | null;
       rating_count: number;
@@ -5509,6 +6308,21 @@ export interface components {
      * @enum {string}
      */
     NetworkEnum: "whatsapp" | "facebook" | "tiktok" | "link" | "other";
+    NewCourseRequest: {
+      title: string;
+      summary?: string;
+      description?: string;
+      trade?: string;
+      level?: components["schemas"]["CourseLevelEnum"];
+      language?: components["schemas"]["LanguageEnum"];
+      pricing?: components["schemas"]["CoursePricingEnum"];
+      price_minor?: number;
+      /** Format: uuid */
+      cover_id?: string | null;
+      /** @default false */
+      platform: boolean;
+      country?: string;
+    };
     Notification: {
       /** Format: uuid */
       readonly id: string;
@@ -5755,6 +6569,11 @@ export interface components {
       previous?: string | null;
       results: components["schemas"]["Notification"][];
     };
+    PassOffer: {
+      price_minor: number | null;
+      currency: string;
+      active: boolean;
+    };
     PasswordLoginRequest: {
       identifier: string;
       password: string;
@@ -5817,6 +6636,26 @@ export interface components {
     PatchedConversationUpdateRequest: {
       muted?: boolean;
       archived?: boolean;
+    };
+    PatchedCourseInputRequest: {
+      title?: string;
+      summary?: string;
+      description?: string;
+      trade?: string;
+      level?: components["schemas"]["CourseLevelEnum"];
+      language?: components["schemas"]["LanguageEnum"];
+      pricing?: components["schemas"]["CoursePricingEnum"];
+      price_minor?: number;
+      /** Format: uuid */
+      cover_id?: string | null;
+    };
+    PatchedLessonInputRequest: {
+      title?: string;
+      description?: string;
+      /** Format: uuid */
+      video_id?: string | null;
+      /** @default false */
+      is_preview: boolean;
     };
     PatchedMeRequest: {
       first_name?: string;
@@ -5895,6 +6734,11 @@ export interface components {
     PatchedQuantityRequest: {
       quantity?: number;
     };
+    PatchedQuestionInputRequest: {
+      text?: string;
+      choices?: string[];
+      correct?: number;
+    };
     PatchedResourceInputRequest: {
       name?: string;
       quantity?: number;
@@ -5935,6 +6779,9 @@ export interface components {
     };
     PatchedStockInputRequest: {
       stock?: number;
+    };
+    PatchedTitleRequest: {
+      title?: string;
     };
     PatchedZoneInputRequest: {
       mode?: components["schemas"]["DeliveryZoneModeEnum"];
@@ -6243,6 +7090,11 @@ export interface components {
       /** Format: uuid */
       service_id?: string | null;
     };
+    PositionRequest: {
+      seconds: number;
+      /** @default false */
+      ended: boolean;
+    };
     Post: {
       /** Format: uuid */
       id: string;
@@ -6421,6 +7273,11 @@ export interface components {
       wished: boolean;
       shop_slug: string | null;
     };
+    Progress: {
+      progress_percent: number;
+      completed: boolean;
+      certificate: string | null;
+    };
     Promo: {
       /** Format: uuid */
       id: string;
@@ -6490,6 +7347,11 @@ export interface components {
       /** Format: uri */
       endpoint: string;
     };
+    QuestionInputRequest: {
+      text: string;
+      choices: string[];
+      correct: number;
+    };
     QuickBookInputRequest: {
       /** Format: uuid */
       service_id: string;
@@ -6507,6 +7369,36 @@ export interface components {
     };
     QuickRepliesRequest: {
       texts: string[];
+    };
+    Quiz: {
+      /** Format: uuid */
+      module_id: string;
+      module_title: string;
+      course_slug: string;
+      questions: components["schemas"]["QuizQuestion"][];
+      unlocked: boolean;
+      passed: boolean;
+      last_score: number | null;
+      pass_percent: number;
+    };
+    QuizQuestion: {
+      /** Format: uuid */
+      id: string;
+      text: string;
+      choices: string[];
+    };
+    QuizResult: {
+      score_percent: number;
+      passed: boolean;
+      pass_percent: number;
+      results: components["schemas"]["QuizResultLine"][];
+      progress: components["schemas"]["Progress"];
+    };
+    QuizResultLine: {
+      /** Format: uuid */
+      question: string;
+      right: boolean;
+      correct: number;
     };
     Quote: {
       currency: string;
@@ -6584,6 +7476,12 @@ export interface components {
     ResourceInputRequest: {
       name: string;
       quantity: number;
+    };
+    ResourceLink: {
+      /** Format: uuid */
+      id: string;
+      title: string;
+      url: string | null;
     };
     Review: {
       /** Format: uuid */
@@ -7030,6 +7928,7 @@ export interface components {
       };
       languages: components["schemas"]["Language"][];
       verified: boolean;
+      trained: boolean;
       /** Format: double */
       rating_average: number | null;
       rating_count: number;
@@ -7299,6 +8198,94 @@ export interface components {
      * @enum {string}
      */
     StoryKindEnum: "photo" | "video" | "text" | "free_slots";
+    Studio: {
+      courses: components["schemas"]["StudioCard"][];
+      lives: components["schemas"]["Live"][];
+      can_platform: boolean;
+      is_pro: boolean;
+      open: boolean;
+      lives_open: boolean;
+    };
+    StudioCard: {
+      /** Format: uuid */
+      id: string;
+      slug: string;
+      title: string;
+      summary: string;
+      cover: components["schemas"]["Media"] | null;
+      trade: string | null;
+      trade_name: string | null;
+      level: components["schemas"]["CourseLevelEnum"];
+      language: components["schemas"]["LanguageEnum"];
+      pricing: components["schemas"]["CoursePricingEnum"];
+      price_minor: number;
+      currency: string;
+      duration_seconds: number;
+      lessons_count: number;
+      students_count: number;
+      trainer: components["schemas"]["Trainer"];
+      status: components["schemas"]["CourseStatusEnum"];
+      stats: components["schemas"]["CourseStats"];
+      review_note: string;
+    };
+    StudioCourse: {
+      /** Format: uuid */
+      id: string;
+      slug: string;
+      title: string;
+      summary: string;
+      cover: components["schemas"]["Media"] | null;
+      trade: string | null;
+      trade_name: string | null;
+      level: components["schemas"]["CourseLevelEnum"];
+      language: components["schemas"]["LanguageEnum"];
+      pricing: components["schemas"]["CoursePricingEnum"];
+      price_minor: number;
+      currency: string;
+      duration_seconds: number;
+      lessons_count: number;
+      students_count: number;
+      trainer: components["schemas"]["Trainer"];
+      status: components["schemas"]["CourseStatusEnum"];
+      description: string;
+      country: string;
+      review_note: string;
+      needs_recheck: boolean;
+      modules: components["schemas"]["StudioModule"][];
+      stats: components["schemas"]["CourseStats"];
+      price_min: number;
+      price_max: number;
+    };
+    StudioLesson: {
+      /** Format: uuid */
+      id: string;
+      title: string;
+      description: string;
+      duration_seconds: number;
+      is_preview: boolean;
+      video: components["schemas"]["Media"] | null;
+      resources: components["schemas"]["StudioResource"][];
+    };
+    StudioModule: {
+      /** Format: uuid */
+      id: string;
+      title: string;
+      lessons: components["schemas"]["StudioLesson"][];
+      questions: components["schemas"]["StudioQuestion"][];
+    };
+    StudioQuestion: {
+      /** Format: uuid */
+      id: string;
+      text: string;
+      choices: string[];
+      correct: number;
+    };
+    StudioResource: {
+      /** Format: uuid */
+      id: string;
+      title: string;
+      file: components["schemas"]["Media"] | null;
+    };
     SubscriptionState: {
       status: components["schemas"]["SubscriptionStatusEnum"];
       plan: string;
@@ -7405,6 +8392,9 @@ export interface components {
      * @enum {string}
      */
     TimeOffKindEnum: "absence" | "leave" | "block";
+    TitleRequest: {
+      title: string;
+    };
     TopProduct: {
       /** Format: uuid */
       product_id: string;
@@ -7417,6 +8407,13 @@ export interface components {
       name: string;
       /** Pictogram */
       icon: components["schemas"]["IconEnum"];
+    };
+    Trainer: {
+      name: string;
+      slug: string | null;
+      photo: components["schemas"]["Media"] | null;
+      platform: boolean;
+      trained: boolean;
     };
     /**
      * @description * `booking` - Booking
@@ -7498,6 +8495,11 @@ export interface components {
       document: string;
       /** Format: binary */
       selfie: string;
+    };
+    VideoLinks: {
+      low?: string | null;
+      medium?: string | null;
+      poster?: string | null;
     };
     WaitlistEntry: {
       /** Format: uuid */
@@ -7609,6 +8611,885 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+  academy_certificates_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["CertificateCheck"];
+        };
+      };
+    };
+  };
+  academy_catalogue: {
+    parameters: {
+      query?: {
+        country?: string;
+        cursor?: string;
+        /**
+         * @description * `fr` - French
+         *     * `en` - English
+         *     * `sk` - Slovak
+         */
+        language?: "fr" | "en" | "sk";
+        /**
+         * @description * `beginner` - Beginner
+         *     * `intermediate` - Intermediate
+         *     * `expert` - Expert
+         */
+        level?: "beginner" | "intermediate" | "expert";
+        /**
+         * @description * `free` - Free
+         *     * `paid` - Paid once
+         *     * `pass` - Included in the pass
+         */
+        pricing?: "free" | "paid" | "pass";
+        q?: string;
+        trade?: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Catalogue"];
+        };
+      };
+    };
+  };
+  academy_courses_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        slug: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["CourseDetail"];
+        };
+      };
+    };
+  };
+  academy_courses_get_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        slug: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["GetCourseRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["GetCourseRequest"];
+        "multipart/form-data": components["schemas"]["GetCourseRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GetCourseResult"];
+        };
+      };
+    };
+  };
+  academy_enrollments_refund_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        enrollment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MyEnrollment"];
+        };
+      };
+    };
+  };
+  academy_lessons_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        lesson_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LessonPlayback"];
+        };
+      };
+    };
+  };
+  academy_lessons_position_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        lesson_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PositionRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PositionRequest"];
+        "multipart/form-data": components["schemas"]["PositionRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Progress"];
+        };
+      };
+    };
+  };
+  academy_lives_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Lives"];
+        };
+      };
+    };
+  };
+  academy_lives_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        live_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LiveRoom"];
+        };
+      };
+    };
+  };
+  academy_lives_join_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        live_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Join"];
+        };
+      };
+    };
+  };
+  academy_lives_registration_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        live_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Live"];
+        };
+      };
+    };
+  };
+  academy_lives_registration_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        live_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  academy_me_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MyAcademy"];
+        };
+      };
+    };
+  };
+  "academy_me_certificates_.pdf_retrieve": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description PDF */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  academy_modules_quiz_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        module_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Quiz"];
+        };
+      };
+    };
+  };
+  academy_modules_quiz_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        module_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["AnswersRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["AnswersRequest"];
+        "multipart/form-data": components["schemas"]["AnswersRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["QuizResult"];
+        };
+      };
+    };
+  };
+  academy_pass_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AcademyPass"];
+        };
+      };
+    };
+  };
+  academy_pass_cancel_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AcademyPass"];
+        };
+      };
+    };
+  };
+  academy_pass_subscribe_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["CheckoutUrl"];
+        };
+      };
+    };
+  };
+  academy_studio_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Studio"];
+        };
+      };
+    };
+  };
+  academy_studio_courses_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["NewCourseRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["NewCourseRequest"];
+        "multipart/form-data": components["schemas"]["NewCourseRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StudioCourse"];
+        };
+      };
+    };
+  };
+  academy_studio_courses_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        course_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StudioCourse"];
+        };
+      };
+    };
+  };
+  academy_studio_courses_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        course_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PatchedCourseInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PatchedCourseInputRequest"];
+        "multipart/form-data": components["schemas"]["PatchedCourseInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StudioCourse"];
+        };
+      };
+    };
+  };
+  academy_studio_courses_archive_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        course_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StudioCourse"];
+        };
+      };
+    };
+  };
+  academy_studio_courses_modules_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        course_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["TitleRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["TitleRequest"];
+        "multipart/form-data": components["schemas"]["TitleRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StudioCourse"];
+        };
+      };
+    };
+  };
+  academy_studio_courses_submit_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        course_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StudioCourse"];
+        };
+      };
+    };
+  };
+  academy_studio_lessons_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        lesson_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StudioCourse"];
+        };
+      };
+    };
+  };
+  academy_studio_lessons_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        lesson_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PatchedLessonInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PatchedLessonInputRequest"];
+        "multipart/form-data": components["schemas"]["PatchedLessonInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StudioCourse"];
+        };
+      };
+    };
+  };
+  academy_studio_lessons_resources_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        lesson_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CourseResourceInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["CourseResourceInputRequest"];
+        "multipart/form-data": components["schemas"]["CourseResourceInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StudioCourse"];
+        };
+      };
+    };
+  };
+  academy_studio_lives_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["LiveInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["LiveInputRequest"];
+        "multipart/form-data": components["schemas"]["LiveInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Live"];
+        };
+      };
+    };
+  };
+  academy_studio_lives_cancel_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        live_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Live"];
+        };
+      };
+    };
+  };
+  academy_studio_modules_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        module_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StudioCourse"];
+        };
+      };
+    };
+  };
+  academy_studio_modules_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        module_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PatchedTitleRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PatchedTitleRequest"];
+        "multipart/form-data": components["schemas"]["PatchedTitleRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StudioCourse"];
+        };
+      };
+    };
+  };
+  academy_studio_modules_lessons_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        module_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["LessonInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["LessonInputRequest"];
+        "multipart/form-data": components["schemas"]["LessonInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StudioCourse"];
+        };
+      };
+    };
+  };
+  academy_studio_modules_questions_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        module_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["QuestionInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["QuestionInputRequest"];
+        "multipart/form-data": components["schemas"]["QuestionInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StudioCourse"];
+        };
+      };
+    };
+  };
+  academy_studio_questions_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        question_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StudioCourse"];
+        };
+      };
+    };
+  };
+  academy_studio_questions_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        question_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PatchedQuestionInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PatchedQuestionInputRequest"];
+        "multipart/form-data": components["schemas"]["PatchedQuestionInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StudioCourse"];
+        };
+      };
+    };
+  };
+  academy_studio_resources_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        resource_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StudioCourse"];
+        };
+      };
+    };
+  };
   agenda_ical: {
     parameters: {
       query?: never;
@@ -13029,6 +14910,7 @@ export interface operations {
          */
         sort?: "relevance" | "distance" | "rating" | "price";
         trade?: string;
+        trained?: boolean;
         verified?: boolean;
       };
       header?: never;
@@ -13409,6 +15291,7 @@ export interface operations {
          */
         sort?: "relevance" | "distance" | "rating" | "price";
         trade?: string;
+        trained?: boolean;
         verified?: boolean;
       };
       header?: never;

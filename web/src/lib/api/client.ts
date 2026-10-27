@@ -51,7 +51,7 @@ export function hasSession(): boolean {
 let refreshing: Promise<boolean> | null = null;
 
 /** Renews the session cookies once, shared by every call that needs it. */
-function refreshSession(): Promise<boolean> {
+export function refreshSession(): Promise<boolean> {
   refreshing ??= fetch(`${origin()}/api/v1/auth/refresh`, {
     method: "POST",
     credentials: "same-origin",
