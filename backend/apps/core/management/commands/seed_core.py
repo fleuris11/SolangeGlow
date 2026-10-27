@@ -1205,6 +1205,161 @@ SETTINGS += [
     ),
 ]
 
+# Academy (prompt 13): prices of the courses, the pass, withdrawal, quizzes, lives.
+SETTINGS += [
+    {
+        **_s(
+            "academy.price_limits",
+            JSON,
+            "[500, 25000]",
+            "Prix minimum et maximum d'une formation vendue à l'unité (FCFA).",
+            "Lowest and highest price of a course sold once (FCFA).",
+        ),
+        "country": "BJ",
+    },
+    {
+        **_s(
+            "academy.price_limits",
+            JSON,
+            "[200, 5000]",
+            "Prix minimum et maximum d'une formation vendue à l'unité (centimes d'euro).",
+            "Lowest and highest price of a course sold once (euro cents).",
+        ),
+        "country": "FR",
+    },
+    {
+        **_s(
+            "academy.pass_price_minor",
+            INT,
+            "2000",
+            "Prix d'un mois de pass de l'Académie (FCFA). 0 : pas de pass dans ce pays.",
+            "Price of a month of the Academy pass (FCFA). 0: no pass in this country.",
+        ),
+        "country": "BJ",
+    },
+    {
+        **_s(
+            "academy.pass_price_minor",
+            INT,
+            "500",
+            "Prix d'un mois de pass de l'Académie (centimes d'euro). 0 : pas de pass dans ce pays.",
+            "Price of a month of the Academy pass (euro cents). 0: no pass in this country.",
+        ),
+        "country": "FR",
+    },
+    {
+        **_s(
+            "academy.house_email",
+            STR,
+            "academy.bj@solangeglow.com",
+            "Compte de la plateforme qui vend ses formations et le pass au Bénin.",
+            "Platform account that sells its courses and the pass in Benin.",
+        ),
+        "country": "BJ",
+    },
+    {
+        **_s(
+            "academy.house_email",
+            STR,
+            "academy.fr@solangeglow.com",
+            "Compte de la plateforme qui vend ses formations et le pass en France.",
+            "Platform account that sells its courses and the pass in France.",
+        ),
+        "country": "FR",
+    },
+    _s(
+        "academy.refund_days",
+        INT,
+        "14",
+        "Jours pendant lesquels une élève peut se faire rembourser tant qu'elle n'a ouvert aucune leçon.",
+        "Days during which a student can get her money back while she has opened no lesson.",
+    ),
+    _s(
+        "academy.quiz_pass_percent",
+        INT,
+        "70",
+        "Pourcentage de bonnes réponses pour réussir le quiz d'un module.",
+        "Share of right answers needed to pass the quiz of a module.",
+    ),
+    _s(
+        "academy.watched_percent",
+        INT,
+        "90",
+        "Part d'une leçon à regarder pour qu'elle compte comme vue (%).",
+        "Share of a lesson to watch for it to count as watched (%).",
+    ),
+    _s(
+        "academy.lesson_min_seconds",
+        INT,
+        "180",
+        "Durée minimum d'une vidéo de leçon (secondes).",
+        "Shortest video of a lesson (seconds).",
+    ),
+    _s(
+        "academy.lesson_max_seconds",
+        INT,
+        "600",
+        "Durée maximum d'une vidéo de leçon (secondes).",
+        "Longest video of a lesson (seconds).",
+    ),
+    _s(
+        "academy.lesson_max_bytes",
+        INT,
+        str(500 * 1024 * 1024),
+        "Taille maximum d'une vidéo de leçon envoyée (octets).",
+        "Biggest video of a lesson that can be sent (bytes).",
+    ),
+    _s(
+        "academy.resource_max_bytes",
+        INT,
+        str(20 * 1024 * 1024),
+        "Taille maximum d'un PDF joint à une leçon (octets).",
+        "Biggest PDF given with a lesson (bytes).",
+    ),
+    _s(
+        "academy.video_url_ttl_seconds",
+        INT,
+        "3600",
+        "Durée de validité du lien d'une vidéo de leçon (secondes).",
+        "How long the link of a lesson video works (seconds).",
+    ),
+    _s(
+        "academy.pass_notice_days",
+        INT,
+        "3",
+        "Jours avant la fin du mois où l'élève reçoit le paiement du mois suivant du pass.",
+        "Days before the end of the month when the student gets the payment of next month.",
+    ),
+    _s(
+        "academy.live_room_open_minutes",
+        INT,
+        "10",
+        "Minutes avant le début où la salle d'un live s'ouvre.",
+        "Minutes before the start when the room of a live opens.",
+    ),
+    _s(
+        "academy.live_reminder_hours",
+        INT,
+        "24",
+        "Heures avant un live pour le premier rappel.",
+        "Hours before a live for the first reminder.",
+    ),
+    _s(
+        "academy.live_reminder_minutes",
+        INT,
+        "15",
+        "Minutes avant un live pour le dernier rappel.",
+        "Minutes before a live for the last reminder.",
+    ),
+    _s(
+        "throttle.academy",
+        STR,
+        "240/minute",
+        "Limite des actions de l'Académie par adresse IP (la lecture enregistre la position souvent).",
+        "Academy actions limit per IP address (the player saves the position often).",
+    ),
+]
+
 # Monthly price of Premium (created with the countries; edited in the admin afterwards).
 PLAN_PRICES = [("premium", "BJ", "XOF", 9_900), ("premium", "FR", "EUR", 2_900)]
 

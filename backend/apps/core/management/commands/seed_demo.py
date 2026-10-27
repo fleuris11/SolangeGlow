@@ -12,6 +12,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.db import transaction
 from django.utils import timezone
 
+from apps.academy.demo import seed_academy
 from apps.accounts.models import GuestIdentity, SignupChannel, User
 from apps.booking.demo import seed_booking
 from apps.core.choices import Role
@@ -56,6 +57,7 @@ class Command(BaseCommand):
         selection = seed_selection()
         glowpro = seed_glowpro()
         booking = seed_booking()
+        academy = seed_academy()
         self.stdout.write(
             self.style.SUCCESS(
                 f"seed_demo: {created} new demo accounts, {self.showcases} showcases filled, "
@@ -64,7 +66,8 @@ class Command(BaseCommand):
                 f"{shop['products']} new products, {shop['orders']} demo orders, "
                 f"{selection['products']} France Selection products, "
                 f"{booking['agendas']} agendas with {booking['appointments']} new appointments, "
-                f"{glowpro['premium']} Glow Pro subscriptions."
+                f"{glowpro['premium']} Glow Pro subscriptions, "
+                f"{academy['courses']} academy courses, {academy['lives']} lives."
             )
         )
 

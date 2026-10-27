@@ -20,6 +20,7 @@ api_v1 = [
     path("", include("apps.glowpro.urls")),
     path("", include("apps.salon.urls")),
     path("", include("apps.invoicing.urls")),
+    path("", include("apps.academy.urls")),
     path("", include("apps.pros.urls")),
     path("", include("apps.accounts.urls")),
     path("", include("apps.notifications.urls")),

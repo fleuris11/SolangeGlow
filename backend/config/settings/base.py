@@ -297,6 +297,13 @@ SPECTACULAR_SETTINGS = {
         "CampaignStatusEnum": "apps.salon.models.Campaign.Status",
         "SubscriptionStatusEnum": "apps.glowpro.models.Subscription.Status",
         "GlowFeatureEnum": "apps.glowpro.models.Feature",
+        "CourseLevelEnum": "apps.academy.models.Level",
+        "CoursePricingEnum": "apps.academy.models.Course.Pricing",
+        "CourseStatusEnum": "apps.academy.models.Course.Status",
+        "EnrollmentAccessEnum": "apps.academy.models.Enrollment.Access",
+        "EnrollmentStatusEnum": "apps.academy.models.Enrollment.Status",
+        "AcademyPassStatusEnum": "apps.academy.models.AcademyPass.Status",
+        "LiveStatusEnum": "apps.academy.models.LiveSession.Status",
     },
 }
 
@@ -441,11 +448,21 @@ CELERY_BEAT_SCHEDULE = {
         "task": "apps.salon.tasks.run_daily",
         "schedule": crontab(hour=7, minute=30),
     },
+    "academy.run_frequent": {
+        "task": "apps.academy.tasks.run_frequent",
+        "schedule": crontab(minute="*/5"),
+    },
+    "academy.run_daily": {
+        "task": "apps.academy.tasks.run_daily",
+        "schedule": crontab(hour=6, minute=40),
+    },
 }
 
 # Approved e-invoicing platform and card terminal: empty until a partner is chosen.
 EINVOICE_PROVIDER = env("EINVOICE_PROVIDER", default="")
 TERMINAL_PROVIDER = env("TERMINAL_PROVIDER", default="")
+# Broadcast of the training lives (class path, ADR-012): empty until prompt 14.
+LIVE_PROVIDER = env("LIVE_PROVIDER", default="")
 
 # --- Platform settings cache ----------------------------------------------------
 
@@ -756,6 +773,42 @@ UNFOLD = {
                         "title": _("Invoice issuers"),
                         "icon": "badge",
                         "link": reverse_lazy("admin:invoicing_issuer_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("Academy"),
+                "separator": True,
+                "items": [
+                    {
+                        "title": _("Courses to review"),
+                        "icon": "fact_check",
+                        "link": reverse_lazy("admin:academy_coursereview_changelist"),
+                    },
+                    {
+                        "title": _("Courses"),
+                        "icon": "school",
+                        "link": reverse_lazy("admin:academy_course_changelist"),
+                    },
+                    {
+                        "title": _("Students"),
+                        "icon": "groups",
+                        "link": reverse_lazy("admin:academy_enrollment_changelist"),
+                    },
+                    {
+                        "title": _("Certificates"),
+                        "icon": "workspace_premium",
+                        "link": reverse_lazy("admin:academy_certificate_changelist"),
+                    },
+                    {
+                        "title": _("Academy passes"),
+                        "icon": "card_membership",
+                        "link": reverse_lazy("admin:academy_academypass_changelist"),
+                    },
+                    {
+                        "title": _("Training lives"),
+                        "icon": "live_tv",
+                        "link": reverse_lazy("admin:academy_livesession_changelist"),
                     },
                 ],
             },

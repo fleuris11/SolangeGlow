@@ -23,6 +23,7 @@ DEFAULT_RATES = {
     "booking": "60/minute",
     "salon": "120/minute",
     "widget": "120/minute",
+    "academy": "240/minute",
 }
 
 
