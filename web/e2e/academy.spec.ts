@@ -73,8 +73,8 @@ test("a student follows a free course to its certificate, offline lesson include
   const detail = await json<Detail>(
     await student.request.get(`/api/v1/academy/courses/${FREE_COURSE}`),
   );
-  for (const module of detail.modules) {
-    for (const lesson of module.lessons) {
+  for (const chapter of detail.modules) {
+    for (const lesson of chapter.lessons) {
       await json(
         await student.request.post(`/api/v1/academy/lessons/${lesson.id}/position`, {
           data: { seconds: 185, ended: true },
@@ -83,8 +83,8 @@ test("a student follows a free course to its certificate, offline lesson include
       );
     }
   }
-  for (const [index, module] of detail.modules.entries()) {
-    await openWith(student, `/fr/academie/${FREE_COURSE}/quiz/${module.id}`, LOOK);
+  for (const [index, chapter] of detail.modules.entries()) {
+    await openWith(student, `/fr/academie/${FREE_COURSE}/quiz/${chapter.id}`, LOOK);
     await expect(student.getByRole("button", { name: "Valider mes réponses" })).toBeVisible({
       timeout: 90_000,
     });
