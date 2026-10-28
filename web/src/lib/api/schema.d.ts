@@ -1118,6 +1118,303 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/gifts": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["gifts_list"];
+    put?: never;
+    post: operations["gifts_offer"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/gifts/{gift_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["gifts_sent_detail"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/gifts/{gift_id}/cancel": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["gifts_cancel"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/gifts/{gift_id}/pay": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["gifts_pay_again"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/gifts/{gift_id}/resend": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["gifts_resend"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/gifts/cards/check": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["gifts_card_check"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/gifts/cards/pay": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["gifts_pay_with_card"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/gifts/ideas": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["gifts_ideas_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/gifts/open/{token}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["gifts_open"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/gifts/open/{token}/as-card": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    post: operations["gifts_as_card"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/gifts/open/{token}/book": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    post: operations["gifts_book"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/gifts/open/{token}/claim": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["gifts_claim"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/gifts/open/{token}/photos": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    post: operations["gifts_add_photo"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/gifts/open/{token}/proof": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    post: operations["gifts_answer_proof"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/gifts/open/{token}/receive": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    post: operations["gifts_receive"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/gifts/products/{variant_id}/options": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["gifts_product_options"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/gifts/quote": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["gifts_quote_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/gifts/received": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["gifts_received_list"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/guest": {
     parameters: {
       query?: never;
@@ -5028,6 +5325,8 @@ export interface components {
       vat_mention?: string;
       footer?: string;
     };
+    /** @enum {unknown} */
+    BlankEnum: "";
     BlockedPerson: {
       /** Format: uuid */
       id: string;
@@ -5952,6 +6251,22 @@ export interface components {
       enrollment: components["schemas"]["MyEnrollment"] | null;
       checkout_url: string | null;
     };
+    GiftAmount: {
+      amount_minor: number;
+      currency: string;
+    };
+    GiftBookRequest: {
+      /** Format: date-time */
+      start: string;
+      /** Format: uuid */
+      staff_id?: string | null;
+      /** @default  */
+      guest_name: string;
+      /** @default  */
+      guest_phone: string;
+      /** @default  */
+      note: string;
+    };
     GiftCard: {
       /** Format: uuid */
       id: string;
@@ -5994,6 +6309,314 @@ export interface components {
      * @enum {string}
      */
     GiftCardStatusEnum: "waiting" | "active" | "used_up" | "expired" | "cancelled";
+    GiftCheckout: {
+      gift: components["schemas"]["GiftSent"];
+      checkout_url: string;
+    };
+    /**
+     * @description * `fr` - fr
+     *     * `en` - en
+     *     * `sk` - sk
+     * @enum {string}
+     */
+    GiftCreateLanguageEnum: "fr" | "en" | "sk";
+    GiftCreateRequest: {
+      kind: components["schemas"]["GiftKindEnum"];
+      /** Format: uuid */
+      service?: string;
+      /** Format: uuid */
+      variant?: string;
+      /** @default  */
+      delivery_mode: string;
+      /** Format: uuid */
+      zone?: string;
+      /** Format: uuid */
+      selection_product?: string;
+      /** @default  */
+      option: string;
+      /** @description Euro cents (card). */
+      amount_minor?: number;
+      recipient_name: string;
+      recipient_phone: string;
+      recipient_email?: string;
+      /** @default fr */
+      language: components["schemas"]["GiftCreateLanguageEnum"];
+      /** @default none */
+      occasion: components["schemas"]["OccasionEnum"];
+      /** @default  */
+      message: string;
+      /** Format: uuid */
+      message_media_id?: string | null;
+      /** Format: date-time */
+      send_at?: string | null;
+      /** @default  */
+      from_name: string;
+    };
+    GiftIdea: {
+      kind: components["schemas"]["GiftKindEnum"];
+      /** Format: uuid */
+      id: string;
+      slug: string;
+      shop: string;
+      shop_name: string;
+      title: string;
+      photo: components["schemas"]["Media"] | null;
+      price: components["schemas"]["GiftAmount"];
+    };
+    GiftIdeas: {
+      products: components["schemas"]["GiftIdea"][];
+      selection: components["schemas"]["GiftIdea"][];
+      card_min: components["schemas"]["GiftAmount"];
+      card_max: components["schemas"]["GiftAmount"];
+    };
+    /**
+     * @description * `service` - A service
+     *     * `product` - A product of a shop
+     *     * `selection` - A France Selection product
+     *     * `card` - Glow gift card
+     * @enum {string}
+     */
+    GiftKindEnum: "service" | "product" | "selection" | "card";
+    /** @description What a product gift may choose: its hand-over modes and zones. */
+    GiftOptions: {
+      pickup: boolean;
+      zones: components["schemas"]["GiftZone"][];
+    };
+    GiftPaid: {
+      balance: components["schemas"]["GiftAmount"];
+    };
+    GiftPayRequest: {
+      code: string;
+      /** Format: uuid */
+      payment_id?: string | null;
+      /** Format: uuid */
+      group_id?: string | null;
+    };
+    GiftPhoto: {
+      /** Format: uuid */
+      id: string;
+      source: string;
+      media: components["schemas"]["Media"];
+    };
+    GiftPhotoUploadRequest: {
+      /** Format: binary */
+      file: string;
+    };
+    GiftPickupPoint: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      city: string;
+      address: string;
+      hours: string;
+    };
+    GiftPro: {
+      slug: string;
+      name: string;
+      photo: components["schemas"]["Media"] | null;
+      city: string;
+    };
+    GiftProofRequest: {
+      /** Format: uuid */
+      media_id?: string | null;
+      send: boolean;
+    };
+    GiftQuote: {
+      kind: components["schemas"]["GiftKindEnum"];
+      title: string;
+      value: components["schemas"]["GiftAmount"];
+      price: components["schemas"]["GiftAmount"];
+      fee: components["schemas"]["GiftAmount"];
+      total: components["schemas"]["GiftAmount"];
+      rate: string;
+      card_min: components["schemas"]["GiftAmount"];
+      card_max: components["schemas"]["GiftAmount"];
+      validity_days: number;
+      cancel_days: number;
+      message_max_seconds: number;
+      photo: components["schemas"]["Media"] | null;
+      pro: components["schemas"]["GiftPro"] | null;
+    };
+    GiftReceiveRequest: {
+      /** @default  */
+      address: string;
+      /** @default  */
+      landmarks: string;
+      /** @default  */
+      phone: string;
+      /** Format: uuid */
+      pickup_point_id?: string | null;
+    };
+    GiftReceived: {
+      /** Format: uuid */
+      id: string;
+      reference: string;
+      kind: components["schemas"]["GiftKindEnum"];
+      status: components["schemas"]["GiftStatusEnum"];
+      title: string;
+      recipient_name: string;
+      occasion: components["schemas"]["OccasionEnum"];
+      /** Format: date-time */
+      send_at: string;
+      value: components["schemas"]["GiftAmount"];
+      balance: components["schemas"]["GiftAmount"];
+      paid: components["schemas"]["GiftAmount"] | null;
+      /** Format: date-time */
+      created_at: string;
+      proof_status: components["schemas"]["ProofStatusEnum"] | components["schemas"]["BlankEnum"];
+      pro: components["schemas"]["GiftPro"] | null;
+      photo: components["schemas"]["Media"] | null;
+      from_name: string;
+      token: string;
+      code: string | null;
+      /** Format: date */
+      expires_on: string;
+    };
+    /** @description The page of the gift (only the first fields while it is not open yet). */
+    GiftReception: {
+      status: components["schemas"]["GiftStatusEnum"];
+      kind: components["schemas"]["GiftKindEnum"];
+      locked: boolean;
+      /** Format: date-time */
+      opens_at: string;
+      is_giver: boolean;
+      from_name: string;
+      recipient_name: string;
+      occasion: components["schemas"]["OccasionEnum"];
+      message?: string;
+      message_media?: components["schemas"]["Media"] | null;
+      title?: string;
+      value?: components["schemas"]["GiftAmount"];
+      balance?: components["schemas"]["GiftAmount"];
+      /** Format: date */
+      expires_on?: string;
+      expired?: boolean;
+      cancelled?: boolean;
+      usable?: boolean;
+      unused?: boolean;
+      code?: string | null;
+      claimed?: boolean;
+      pro?: components["schemas"]["GiftPro"] | null;
+      /** Format: uuid */
+      service_id?: string | null;
+      thing?: components["schemas"]["GiftThing"];
+      uses?: components["schemas"]["GiftUse"][];
+      pickup_points?: components["schemas"]["GiftPickupPoint"][];
+      recipient_phone?: string;
+      time_zone?: string;
+      photos?: components["schemas"]["GiftPhoto"][];
+      proof_status?: components["schemas"]["ProofStatusEnum"] | components["schemas"]["BlankEnum"];
+      /** Format: uuid */
+      proof_sent_id?: string | null;
+    };
+    GiftSent: {
+      /** Format: uuid */
+      id: string;
+      reference: string;
+      kind: components["schemas"]["GiftKindEnum"];
+      status: components["schemas"]["GiftStatusEnum"];
+      title: string;
+      recipient_name: string;
+      occasion: components["schemas"]["OccasionEnum"];
+      /** Format: date-time */
+      send_at: string;
+      value: components["schemas"]["GiftAmount"];
+      balance: components["schemas"]["GiftAmount"];
+      paid: components["schemas"]["GiftAmount"] | null;
+      /** Format: date-time */
+      created_at: string;
+      proof_status: components["schemas"]["ProofStatusEnum"] | components["schemas"]["BlankEnum"];
+      pro: components["schemas"]["GiftPro"] | null;
+      photo: components["schemas"]["Media"] | null;
+      from_name: string;
+      recipient_phone: string;
+      message: string;
+      message_media: components["schemas"]["Media"] | null;
+      link: string;
+      code: string | null;
+      price: components["schemas"]["GiftAmount"];
+      fee: components["schemas"]["GiftAmount"] | null;
+      /** Format: uuid */
+      payment_id: string | null;
+      payment_status: string;
+      checkout_url: string;
+      /** Format: date */
+      expires_on: string;
+      /** Format: date-time */
+      cancel_until: string | null;
+      can_cancel: boolean;
+      can_resend: boolean;
+      steps: components["schemas"]["GiftStep"][];
+      uses: components["schemas"]["GiftUse"][];
+      proof: components["schemas"]["Media"] | null;
+    };
+    /**
+     * @description * `waiting_payment` - Waiting for the payment
+     *     * `scheduled` - Paid, sent on the chosen day
+     *     * `sent` - Sent
+     *     * `opened` - Opened
+     *     * `used` - Used
+     *     * `expired` - Expired
+     *     * `cancelled` - Not paid
+     *     * `refunded` - Cancelled and refunded
+     * @enum {string}
+     */
+    GiftStatusEnum:
+      | "waiting_payment"
+      | "scheduled"
+      | "sent"
+      | "opened"
+      | "used"
+      | "expired"
+      | "cancelled"
+      | "refunded";
+    GiftStep: {
+      key: components["schemas"]["KeyEnum"];
+      /** Format: date-time */
+      at: string | null;
+    };
+    GiftThing: {
+      name: string;
+      photo: components["schemas"]["Media"] | null;
+      available: boolean;
+      duration_minutes?: number;
+      variant?: string;
+      delivery_mode?: string;
+      zone?: string;
+    };
+    GiftUse: {
+      /** Format: uuid */
+      id: string;
+      label: string;
+      kind: string;
+      amount: components["schemas"]["GiftAmount"];
+      refunded: components["schemas"]["GiftAmount"];
+      payment_status: string;
+      /** Format: date-time */
+      created_at: string;
+      /** Format: date-time */
+      starts_at: string | null;
+      status: string;
+      link?: string;
+      receipt_code?: string | null;
+      pickup_point: string;
+    };
+    GiftZone: {
+      /** Format: uuid */
+      id: string;
+      mode: string;
+      name: string;
+      fee: components["schemas"]["GiftAmount"];
+    };
+    GlowCard: {
+      balance: components["schemas"]["GiftAmount"];
+      /** Format: date */
+      expires_on: string;
+      from_name: string;
+    };
+    GlowCardCheckRequest: {
+      code: string;
+    };
     /**
      * @description * `extra_staff` - More people in the agenda
      *     * `client_file` - Complete client file
@@ -6125,6 +6748,15 @@ export interface components {
      * @enum {string}
      */
     InstallmentStatusEnum: "due" | "paid" | "cancelled";
+    /**
+     * @description * `paid` - paid
+     *     * `sent` - sent
+     *     * `opened` - opened
+     *     * `used` - used
+     *     * `photo` - photo
+     * @enum {string}
+     */
+    KeyEnum: "paid" | "sent" | "opened" | "used" | "photo";
     Language: {
       code: string;
       label: string;
@@ -6580,6 +7212,8 @@ export interface components {
      *     * `course_resource` - course_resource
      *     * `delivery_proof` - delivery_proof
      *     * `dispute_evidence` - dispute_evidence
+     *     * `gift_message` - gift_message
+     *     * `gift_proof` - gift_proof
      *     * `identity_document` - identity_document
      *     * `itinerary_video` - itinerary_video
      *     * `lesson_video` - lesson_video
@@ -6608,6 +7242,8 @@ export interface components {
       | "course_resource"
       | "delivery_proof"
       | "dispute_evidence"
+      | "gift_message"
+      | "gift_proof"
       | "identity_document"
       | "itinerary_video"
       | "lesson_video"
@@ -6914,6 +7550,15 @@ export interface components {
     };
     /** @enum {unknown} */
     NullEnum: null;
+    /**
+     * @description * `none` - No occasion
+     *     * `mothers_day` - Mother's day
+     *     * `wedding` - Wedding
+     *     * `birthday` - Birthday
+     *     * `year_end` - End of year celebrations
+     * @enum {string}
+     */
+    OccasionEnum: "none" | "mothers_day" | "wedding" | "birthday" | "year_end";
     Ok: {
       status: string;
     };
@@ -7897,6 +8542,13 @@ export interface components {
       bundles: components["schemas"]["Bundle"][];
       flash_sales: components["schemas"]["FlashSaleRow"][];
     };
+    /**
+     * @description * `` - none
+     *     * `sent` - sent
+     *     * `declined` - declined
+     * @enum {string}
+     */
+    ProofStatusEnum: "sent" | "declined";
     ProposeInputRequest: {
       /** Format: date-time */
       start: string;
@@ -10997,6 +11649,447 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["PostPage"];
+        };
+      };
+    };
+  };
+  gifts_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GiftSent"][];
+        };
+      };
+    };
+  };
+  gifts_offer: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["GiftCreateRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["GiftCreateRequest"];
+        "multipart/form-data": components["schemas"]["GiftCreateRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GiftCheckout"];
+        };
+      };
+    };
+  };
+  gifts_sent_detail: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        gift_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GiftSent"];
+        };
+      };
+    };
+  };
+  gifts_cancel: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        gift_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GiftSent"];
+        };
+      };
+    };
+  };
+  gifts_pay_again: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        gift_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GiftCheckout"];
+        };
+      };
+    };
+  };
+  gifts_resend: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        gift_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GiftSent"];
+        };
+      };
+    };
+  };
+  gifts_card_check: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["GlowCardCheckRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["GlowCardCheckRequest"];
+        "multipart/form-data": components["schemas"]["GlowCardCheckRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GlowCard"];
+        };
+      };
+    };
+  };
+  gifts_pay_with_card: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["GiftPayRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["GiftPayRequest"];
+        "multipart/form-data": components["schemas"]["GiftPayRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GiftPaid"];
+        };
+      };
+    };
+  };
+  gifts_ideas_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GiftIdeas"];
+        };
+      };
+    };
+  };
+  gifts_open: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GiftReception"];
+        };
+      };
+    };
+  };
+  gifts_as_card: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GiftReception"];
+        };
+      };
+    };
+  };
+  gifts_book: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["GiftBookRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["GiftBookRequest"];
+        "multipart/form-data": components["schemas"]["GiftBookRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Booked"];
+        };
+      };
+    };
+  };
+  gifts_claim: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GiftReception"];
+        };
+      };
+    };
+  };
+  gifts_add_photo: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "multipart/form-data": components["schemas"]["GiftPhotoUploadRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GiftReception"];
+        };
+      };
+    };
+  };
+  gifts_answer_proof: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["GiftProofRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["GiftProofRequest"];
+        "multipart/form-data": components["schemas"]["GiftProofRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GiftReception"];
+        };
+      };
+    };
+  };
+  gifts_receive: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["GiftReceiveRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["GiftReceiveRequest"];
+        "multipart/form-data": components["schemas"]["GiftReceiveRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GiftReception"];
+        };
+      };
+    };
+  };
+  gifts_product_options: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        variant_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GiftOptions"];
+        };
+      };
+    };
+  };
+  gifts_quote_retrieve: {
+    parameters: {
+      query: {
+        /** @description Euro cents (card). */
+        amount_minor?: number;
+        delivery_mode?: string;
+        /**
+         * @description * `service` - A service
+         *     * `product` - A product of a shop
+         *     * `selection` - A France Selection product
+         *     * `card` - Glow gift card
+         */
+        kind: "service" | "product" | "selection" | "card";
+        option?: string;
+        selection_product?: string;
+        service?: string;
+        variant?: string;
+        zone?: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GiftQuote"];
+        };
+      };
+    };
+  };
+  gifts_received_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GiftReceived"][];
         };
       };
     };
