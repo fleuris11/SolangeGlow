@@ -77,9 +77,11 @@ test("a Glow gift card offered from Paris, opened in Cotonou without an account"
   const context = await browser.newContext({ viewport: VIEWPORTS.mobile });
   const mum = await context.newPage();
   await openWith(mum, `/fr/cadeau/${token}`, LOOK);
-  await expect(mum.getByRole("heading", { name: "Maman Pélagie, un cadeau pour toi" })).toBeVisible({
-    timeout: 120_000,
-  });
+  await expect(mum.getByRole("heading", { name: "Maman Pélagie, un cadeau pour toi" })).toBeVisible(
+    {
+      timeout: 120_000,
+    },
+  );
   await expectNoSeriousA11yIssue(mum);
   await mum.screenshot({ path: "e2e/screenshots/gift-envelope.png", fullPage: true });
   await mum.getByRole("button", { name: "Ouvrir mon cadeau" }).click();
@@ -122,7 +124,12 @@ test("a service offered from Paris, booked in Cotonou by the person herself", as
   await openWith(aunt, `/fr/cadeau/${token}`, LOOK);
   await aunt.getByRole("button", { name: "Ouvrir mon cadeau" }).click({ timeout: 120_000 });
   await expect(aunt.getByRole("heading", { name: "Choisis ton rendez-vous" })).toBeVisible();
-  await aunt.locator("section").getByRole("button", { pressed: false }).filter({ hasText: /^\d/ }).first().click();
+  await aunt
+    .locator("section")
+    .getByRole("button", { pressed: false })
+    .filter({ hasText: /^\d/ })
+    .first()
+    .click();
   await expectNoSeriousA11yIssue(aunt);
   await aunt.screenshot({ path: "e2e/screenshots/gift-book.png", fullPage: true });
   await aunt.getByRole("button", { name: /^Réserver/ }).click();
