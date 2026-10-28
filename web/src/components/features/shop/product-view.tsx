@@ -7,6 +7,7 @@ import {
   ShoppingBag,
   Star,
   Waveform,
+  Gift,
 } from "@phosphor-icons/react/dist/ssr";
 import { useLocale, useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
@@ -95,6 +96,7 @@ export function ProductView({ product, reviews }: { product: ProductDetail; revi
           heartFilled: <Heart aria-hidden size={22} weight="fill" className="text-hibiscus" />,
           bell: <BellRinging aria-hidden size={24} weight="bold" />,
           flash: <Lightning aria-hidden size={20} weight="fill" />,
+          gift: <Gift aria-hidden size={22} weight="bold" />,
         }}
       />
 

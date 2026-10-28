@@ -15,6 +15,7 @@ import { Link } from "@/lib/i18n/navigation";
 import { mediaSrc } from "@/lib/media";
 import { formatMoney } from "@/lib/money";
 
+import { GlowCardPay } from "../gifts/screens";
 import { BuyerActions, SellerActions } from "./payment-actions";
 import { Breakdown, ReceiptCode, Steps } from "./payment-parts";
 
@@ -178,6 +179,14 @@ export function PaymentDetail({ paymentId }: { paymentId: string }) {
               {t("seeOrder")}
             </Link>
           )}
+        {payment.source_type === "gift" && payment.source_id && payment.role === "buyer" && (
+          <Link
+            href={`/cadeaux/${payment.source_id}`}
+            className={buttonClasses({ variant: "secondary", className: "self-start" })}
+          >
+            {t("seeGift")}
+          </Link>
+        )}
         {(payment.source_type === "academy" || payment.source_type === "academy_pass") &&
           payment.role === "buyer" && (
             <Link
@@ -209,6 +218,11 @@ export function PaymentDetail({ paymentId }: { paymentId: string }) {
             : t("carrierOnly", { carrier: payment.carrier })}
         </p>
       )}
+      {payment.status === "pending_payment" &&
+        payment.role === "buyer" &&
+        payment.currency === "XOF" && (
+          <GlowCardPay target={{ paymentId: payment.id }} onPaid={() => void query.refetch()} />
+        )}
       <DisputePanel payment={payment} onChange={update} />
       {payment.role === "seller" ? (
         <SellerActions payment={payment} onChange={update} />

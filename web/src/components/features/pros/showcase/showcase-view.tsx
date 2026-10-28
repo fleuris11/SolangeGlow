@@ -270,10 +270,15 @@ export function ShowcaseView({
           slug={showcase.slug}
           shortLink={showcase.short_link}
           directionsUrl={place.directions_url}
+          giftable={showcase.services.some(
+            (service) =>
+              service.price_kind === "fixed" && service.price_minor && service.currency === "XOF",
+          )}
           icons={{
             book: <CalendarCheck aria-hidden size={26} weight="bold" />,
             directions: <NavigationArrow aria-hidden size={22} weight="bold" />,
             share: <ShareNetwork aria-hidden size={22} weight="bold" />,
+            gift: <Gift aria-hidden size={22} weight="bold" />,
           }}
         />
       </header>

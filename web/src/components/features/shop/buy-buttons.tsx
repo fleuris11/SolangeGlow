@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 
-import { Button } from "@/components/ui/button";
+import { Button, buttonClasses } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { ApiError, hasSession } from "@/lib/api/client";
 import { addToCart, watchStock, wish, type ProductDetail } from "@/lib/api/shop";
@@ -102,6 +102,7 @@ type Icons = {
   heartFilled: ReactNode;
   bell: ReactNode;
   flash: ReactNode;
+  gift?: ReactNode;
 };
 
 /** Choice of shade or size, quantity, price, countdown, cart, wishlist and stock alert. */
@@ -307,6 +308,15 @@ export function ProductBuy({
         </Button>
       )}
       {added && <CartLink />}
+      {!product.is_mine && !soldOut && product.currency === "XOF" && (
+        <Link
+          href={`/offrir?kind=product&variant=${variant.id}`}
+          className={buttonClasses({ variant: "secondary", fullWidth: true })}
+        >
+          {icons.gift}
+          {t("offer")}
+        </Link>
+      )}
       {!product.is_mine && (
         <Button variant="quiet" aria-pressed={wished} onClick={() => void toggleWish()}>
           {wished ? icons.heartFilled : icons.heart}

@@ -23,9 +23,10 @@ import {
 } from "@/lib/api/shop";
 import { useMe } from "@/lib/auth/use-me";
 import { cn } from "@/lib/cn";
-import { Link } from "@/lib/i18n/navigation";
+import { Link, useRouter } from "@/lib/i18n/navigation";
 import { formatMoney } from "@/lib/money";
 
+import { GlowCardPay } from "../gifts/screens";
 import { CART_KEY } from "./cart";
 
 type Choice = { mode: DeliveryMode; zoneId: string | null; promo: string; note: string };
@@ -225,6 +226,7 @@ export function CheckoutFlow() {
   const t = useTranslations("shop.checkout");
   const locale = useLocale();
   const toast = useToast();
+  const router = useRouter();
   const me = useMe().data;
   const cart = useQuery({ queryKey: CART_KEY, queryFn: getCart });
   const [step, setStep] = useState(1);
@@ -233,6 +235,7 @@ export function CheckoutFlow() {
   const [landmarks, setLandmarks] = useState("");
   const [phone, setPhone] = useState<string | null>(null);
   const [quote, setQuote] = useState<Quote | null>(null);
+  const [placed, setPlaced] = useState<{ group_id: string; checkout_url: string } | null>(null);
   const [busy, setBusy] = useState(false);
 
   if (cart.isPending) return <Skeleton className="rounded-card h-80" />;
@@ -300,15 +303,22 @@ export function CheckoutFlow() {
       setStep(2);
     });
 
+  // The orders are created once: paying by the provider or with a Glow gift card.
+  const place = async () => {
+    if (placed) return placed;
+    const result = await placeOrders({
+      shops: body,
+      address: delivering ? address : "",
+      landmarks: delivering ? landmarks : "",
+      phone: delivering ? phoneValue : "",
+    });
+    setPlaced(result);
+    return result;
+  };
+
   const pay = () =>
     run(async () => {
-      const result = await placeOrders({
-        shops: body,
-        address: delivering ? address : "",
-        landmarks: delivering ? landmarks : "",
-        phone: delivering ? phoneValue : "",
-      });
-      window.location.assign(result.checkout_url);
+      window.location.assign((await place()).checkout_url);
     });
 
   const titles = [t("step1"), t("step2"), t("step3")];
@@ -389,6 +399,14 @@ export function CheckoutFlow() {
             <LockKey aria-hidden size={24} weight="bold" />
             {t("pay", { amount: formatMoney(quote.total_minor, quote.currency, locale) })}
           </Button>
+          {quote.currency === "XOF" && (
+            <GlowCardPay
+              prepare={async () => ({ groupId: (await place()).group_id })}
+              onPaid={(target) =>
+                router.push(`/checkout/done/${"groupId" in target ? target.groupId : ""}`)
+              }
+            />
+          )}
         </div>
       )}
     </div>

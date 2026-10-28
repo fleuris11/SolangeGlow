@@ -1,4 +1,4 @@
-import { ArrowLeft, LockKey, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
+import { ArrowLeft, Gift, LockKey, ShieldCheck } from "@phosphor-icons/react/dist/ssr";
 import { useTranslations } from "next-intl";
 
 import { SpeakButton } from "@/components/ui/speak-button";
@@ -61,7 +61,10 @@ export function SelectionProductView({
       <SelectionBuy
         product={product}
         points={points}
-        icons={{ lock: <LockKey aria-hidden size={24} weight="bold" /> }}
+        icons={{
+          lock: <LockKey aria-hidden size={24} weight="bold" />,
+          gift: <Gift aria-hidden size={22} weight="bold" />,
+        }}
       />
 
       <p className="bg-poudre flex items-start gap-3 rounded-2xl p-4">

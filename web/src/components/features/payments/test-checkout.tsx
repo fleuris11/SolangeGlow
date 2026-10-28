@@ -29,7 +29,13 @@ export function TestCheckout({ paymentId }: { paymentId: string }) {
     setBusy(true);
     try {
       await testOutcome(paymentId, outcome);
-      router.push(`/payments/${paymentId}`);
+      const paid = query.data;
+      // A gift from abroad goes back to its follow-up (« Paid, it will leave… »).
+      router.push(
+        paid?.source_type === "gift" && paid.source_id
+          ? `/cadeaux/${paid.source_id}?paid=1`
+          : `/payments/${paymentId}`,
+      );
     } catch (failure) {
       toast(failure instanceof ApiError ? failure.message : t("error"), "warning");
       setBusy(false);

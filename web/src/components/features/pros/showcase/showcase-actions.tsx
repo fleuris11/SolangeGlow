@@ -14,12 +14,14 @@ type Props = {
   slug: string;
   shortLink: string;
   directionsUrl?: string | null;
+  /** A service of hers can be offered from abroad (fixed price in FCFA). */
+  giftable?: boolean;
   /** Drawn by the server page: no icon code is sent to the phone. */
-  icons: { book: ReactNode; directions: ReactNode; share: ReactNode };
+  icons: { book: ReactNode; directions: ReactNode; share: ReactNode; gift?: ReactNode };
 };
 
 /** The main action (book), then directions and sharing. */
-export function ShowcaseActions({ name, slug, shortLink, directionsUrl, icons }: Props) {
+export function ShowcaseActions({ name, slug, shortLink, directionsUrl, giftable, icons }: Props) {
   const t = useTranslations("pros.showcase");
   const toast = useToast();
 
@@ -65,6 +67,15 @@ export function ShowcaseActions({ name, slug, shortLink, directionsUrl, icons }:
           {t("share")}
         </Button>
       </div>
+      {giftable && (
+        <Link
+          href={`/offrir?kind=service&pro=${slug}`}
+          className={buttonClasses({ variant: "quiet", fullWidth: true })}
+        >
+          {icons.gift}
+          {t("offer")}
+        </Link>
+      )}
     </div>
   );
 }

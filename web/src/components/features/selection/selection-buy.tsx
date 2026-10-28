@@ -3,13 +3,13 @@
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState, type ReactNode } from "react";
 
-import { Button } from "@/components/ui/button";
+import { Button, buttonClasses } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { ApiError, hasSession } from "@/lib/api/client";
 import { placeSelectionOrder, type PickupPoint, type SelectionProduct } from "@/lib/api/selection";
 import { rememberReturnPath } from "@/lib/auth/return-path";
 import { cn } from "@/lib/cn";
-import { usePathname, useRouter } from "@/lib/i18n/navigation";
+import { Link, usePathname, useRouter } from "@/lib/i18n/navigation";
 import { formatMoney } from "@/lib/money";
 
 import { shortDate } from "./dates";
@@ -68,7 +68,7 @@ export function SelectionBuy({
 }: {
   product: SelectionProduct;
   points: PickupPoint[];
-  icons: { lock: ReactNode };
+  icons: { lock: ReactNode; gift?: ReactNode };
 }) {
   const t = useTranslations("selection.buy");
   const locale = useLocale();
@@ -256,6 +256,15 @@ export function SelectionBuy({
         {icons.lock}
         {t("pay", { amount: money(unit * quantity) })}
       </Button>
+      <Link
+        href={`/offrir?kind=selection&selection_product=${product.id}${
+          option ? `&option=${encodeURIComponent(option)}` : ""
+        }`}
+        className={buttonClasses({ variant: "secondary", fullWidth: true })}
+      >
+        {icons.gift}
+        {t("offer")}
+      </Link>
     </div>
   );
 }
