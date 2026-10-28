@@ -530,7 +530,7 @@ def state(user, kind: str, source_id) -> dict:
         "host": _host_payload(plan),
         "is_host": host,
         "can_watch": allowed,
-        "can_ask": allowed and _signed_in(user) and status == "on_air",
+        "can_ask": allowed and _signed_in(user) and status == "on_air" and not host,
         "can_raise_hand": allowed and _signed_in(user) and source.hands and not host,
         "signed_in": _signed_in(user),
         "viewers": room.viewers,
