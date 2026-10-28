@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-27 23:20+0100\n"
+"POT-Creation-Date: 2026-10-28 13:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1612,6 +1612,284 @@ msgstr ""
 msgid "Gamification"
 msgstr ""
 
+msgid "left"
+msgstr ""
+
+#, python-format
+msgid "Paid by gifts in FCFA this month: %(month)s (%(count)s uses). Since the start: %(total)s. To cover with the euros received."
+msgstr ""
+
+msgid "Send the link again to the person"
+msgstr ""
+
+#, python-format
+msgid "%(count)s links sent again."
+msgstr ""
+
+msgid "Cancel and refund in euros (unused gifts)"
+msgstr ""
+
+#, python-format
+msgid "%(count)s gifts cancelled."
+msgstr ""
+
+msgid "amount"
+msgstr ""
+
+msgid "given back"
+msgstr ""
+
+msgid "Gifts"
+msgstr ""
+
+msgid "This gift does not exist or can no longer be used."
+msgstr ""
+
+msgid "Gifts cannot be sent from here yet."
+msgstr ""
+
+msgid "You must be an adult to offer a gift."
+msgstr ""
+
+msgid "This cannot be offered right now. Choose something else."
+msgstr ""
+
+msgid "You cannot offer your own service or product."
+msgstr ""
+
+#, python-format
+msgid "Choose an amount between %(min)s and %(max)s."
+msgstr ""
+
+msgid "Write the first name and a phone number in Benin."
+msgstr ""
+
+#, python-format
+msgid "Choose a sending date within %(days)s days."
+msgstr ""
+
+#, python-format
+msgid "This gift opens on %(date)s. A little patience!"
+msgstr ""
+
+msgid "This gift cannot be used this way."
+msgstr ""
+
+msgid "This gift was already used."
+msgstr ""
+
+#, python-format
+msgid "The card has %(balance)s left: it must pay the whole purchase."
+msgstr ""
+
+msgid "A Glow gift card pays purchases in FCFA, in Benin."
+msgstr ""
+
+msgid "This gift can no longer be cancelled: it was used or the time is over."
+msgstr ""
+
+msgid "Only the person who receives the gift can do this."
+msgstr ""
+
+msgid "This photo does not exist."
+msgstr ""
+
+msgid "No occasion"
+msgstr ""
+
+msgid "Mother's day"
+msgstr ""
+
+msgid "Wedding"
+msgstr ""
+
+msgid "Birthday"
+msgstr ""
+
+msgid "End of year celebrations"
+msgstr ""
+
+msgid "A service"
+msgstr ""
+
+msgid "A product of a shop"
+msgstr ""
+
+msgid "A France Selection product"
+msgstr ""
+
+msgid "Glow gift card"
+msgstr ""
+
+msgid "Paid, sent on the chosen day"
+msgstr ""
+
+msgid "Sent"
+msgstr ""
+
+msgid "Opened"
+msgstr ""
+
+msgid "Used"
+msgstr ""
+
+msgid "Not paid"
+msgstr ""
+
+msgid "Cancelled and refunded"
+msgstr ""
+
+msgid "No photo yet"
+msgstr ""
+
+msgid "Photo sent"
+msgstr ""
+
+msgid "Not sent"
+msgstr ""
+
+msgid "offered by"
+msgstr ""
+
+msgid "for"
+msgstr ""
+
+msgid "phone of the person"
+msgstr ""
+
+msgid "e-mail of the person"
+msgstr ""
+
+msgid "account of the person"
+msgstr ""
+
+msgid "language of the person"
+msgstr ""
+
+msgid "occasion"
+msgstr ""
+
+msgid "message"
+msgstr ""
+
+msgid "voice or video message"
+msgstr ""
+
+msgid "to send on"
+msgstr ""
+
+msgid "opened at"
+msgstr ""
+
+msgid "paid in"
+msgstr ""
+
+msgid "rate EUR/XOF"
+msgstr ""
+
+msgid "payment in euros"
+msgstr ""
+
+msgid "quantity"
+msgstr ""
+
+msgid "hand-over"
+msgstr ""
+
+msgid "delivery zone"
+msgstr ""
+
+msgid "delivery"
+msgstr ""
+
+msgid "France Selection product"
+msgstr ""
+
+msgid "choice"
+msgstr ""
+
+msgid "what"
+msgstr ""
+
+msgid "valid until"
+msgstr ""
+
+msgid "can be cancelled until"
+msgstr ""
+
+msgid "photo sent"
+msgstr ""
+
+msgid "photo sent at"
+msgstr ""
+
+msgid "gift"
+msgstr ""
+
+msgid "gifts"
+msgstr ""
+
+msgid "linked to"
+msgstr ""
+
+msgid "linked id"
+msgstr ""
+
+msgid "use of a gift"
+msgstr ""
+
+msgid "uses of gifts"
+msgstr ""
+
+msgid "refund"
+msgstr ""
+
+msgid "money given back to a gift"
+msgstr ""
+
+msgid "money given back to gifts"
+msgstr ""
+
+msgid "Taken by the pro"
+msgstr ""
+
+msgid "Sent by the person"
+msgstr ""
+
+msgid "photo of a gift"
+msgstr ""
+
+msgid "photos of gifts"
+msgstr ""
+
+#, python-format
+msgid "Gift for %(name)s — %(what)s"
+msgstr ""
+
+#, python-format
+msgid "%(from)s sends you a gift"
+msgstr ""
+
+#, python-format
+msgid "Open it here: %(link)s"
+msgstr ""
+
+#, python-format
+msgid "%(service)s at %(pro)s"
+msgstr ""
+
+#, python-format
+msgid "Gift from %(name)s"
+msgstr ""
+
+#, python-format
+msgid "Gift from %(name)s for %(to)s"
+msgstr ""
+
+#, python-format
+msgid "Order %(reference)s"
+msgstr ""
+
 msgid "Back to the free plan now"
 msgstr ""
 
@@ -1803,9 +2081,6 @@ msgid "Receipt"
 msgstr ""
 
 msgid "Credit note"
-msgstr ""
-
-msgid "Not sent"
 msgstr ""
 
 msgid "Sent to the platform"
@@ -2077,9 +2352,6 @@ msgstr ""
 msgid "came in"
 msgstr ""
 
-msgid "left"
-msgstr ""
-
 msgid "presence"
 msgstr ""
 
@@ -2217,13 +2489,7 @@ msgstr ""
 msgid "Support"
 msgstr ""
 
-msgid "linked to"
-msgstr ""
-
 msgid "For example a dispute, an order or a booking."
-msgstr ""
-
-msgid "linked id"
 msgstr ""
 
 msgid "created by"
@@ -2317,9 +2583,6 @@ msgid "risk detected"
 msgstr ""
 
 msgid "automatic"
-msgstr ""
-
-msgid "message"
 msgstr ""
 
 msgid "quick reply"
@@ -2598,9 +2861,6 @@ msgstr ""
 msgid "Scheduled"
 msgstr ""
 
-msgid "Sent"
-msgstr ""
-
 msgid "Not sent (channel off)"
 msgstr ""
 
@@ -2732,9 +2992,6 @@ msgstr ""
 
 #, python-format
 msgid "Refund part of %(reference)s"
-msgstr ""
-
-msgid "amount"
 msgstr ""
 
 msgid "Mark as done at the provider (by hand)"
@@ -2877,6 +3134,9 @@ msgstr ""
 msgid "Academy pass"
 msgstr ""
 
+msgid "Gift from abroad"
+msgstr ""
+
 msgid "Other"
 msgstr ""
 
@@ -2884,9 +3144,6 @@ msgid "category"
 msgstr ""
 
 msgid "seller"
-msgstr ""
-
-msgid "for"
 msgstr ""
 
 msgid "Needed for a fixed amount, a minimum or a maximum."
@@ -2961,9 +3218,6 @@ msgstr ""
 msgid "items"
 msgstr ""
 
-msgid "delivery"
-msgstr ""
-
 msgid "buyer protection"
 msgstr ""
 
@@ -3022,9 +3276,6 @@ msgid "To do by hand at the provider"
 msgstr ""
 
 msgid "completed at"
-msgstr ""
-
-msgid "refund"
 msgstr ""
 
 msgid "refunds"
@@ -3751,10 +4002,6 @@ msgstr ""
 msgid "This payment was already made."
 msgstr ""
 
-#, python-format
-msgid "Choose an amount between %(min)s and %(max)s."
-msgstr ""
-
 msgid "No usable gift card with this code in this salon."
 msgstr ""
 
@@ -3821,9 +4068,6 @@ msgid "All sessions used"
 msgstr ""
 
 msgid "sessions used"
-msgstr ""
-
-msgid "valid until"
 msgstr ""
 
 msgid "package of a client"
@@ -3956,9 +4200,6 @@ msgid "stock movement"
 msgstr ""
 
 msgid "stock movements"
-msgstr ""
-
-msgid "quantity"
 msgstr ""
 
 msgid "product used by a service"
@@ -4466,9 +4707,6 @@ msgstr ""
 msgid "Handed over"
 msgstr ""
 
-msgid "choice"
-msgstr ""
-
 msgid "unit price (FCFA)"
 msgstr ""
 
@@ -4719,9 +4957,6 @@ msgstr ""
 msgid "delivery fee"
 msgstr ""
 
-msgid "delivery zone"
-msgstr ""
-
 msgid "delivery zones"
 msgstr ""
 
@@ -4861,9 +5096,6 @@ msgid "discount"
 msgstr ""
 
 msgid "code used"
-msgstr ""
-
-msgid "hand-over"
 msgstr ""
 
 msgid "phone for the delivery"
@@ -5264,6 +5496,12 @@ msgid "Academy passes"
 msgstr ""
 
 msgid "Training lives"
+msgstr ""
+
+msgid "Gifts from abroad"
+msgstr ""
+
+msgid "Uses of gifts"
 msgstr ""
 
 msgid "Lives and calls"

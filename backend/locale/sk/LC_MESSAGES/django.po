@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-27 23:20+0100\n"
+"POT-Creation-Date: 2026-10-28 13:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1616,6 +1616,284 @@ msgstr "prepínače funkcií"
 msgid "Gamification"
 msgstr "Gamifikácia"
 
+msgid "left"
+msgstr "odišla o"
+
+#, python-format
+msgid "Paid by gifts in FCFA this month: %(month)s (%(count)s uses). Since the start: %(total)s. To cover with the euros received."
+msgstr "Zaplatené darčekmi vo FCFA tento mesiac: %(month)s (%(count)s použití). Od začiatku: %(total)s. Pokryť z prijatých eur."
+
+msgid "Send the link again to the person"
+msgstr "Znova poslať odkaz osobe"
+
+#, python-format
+msgid "%(count)s links sent again."
+msgstr "%(count)s odkazov znova odoslaných."
+
+msgid "Cancel and refund in euros (unused gifts)"
+msgstr "Zrušiť a vrátiť v eurách (nepoužité darčeky)"
+
+#, python-format
+msgid "%(count)s gifts cancelled."
+msgstr "%(count)s darčekov zrušených."
+
+msgid "amount"
+msgstr "suma"
+
+msgid "given back"
+msgstr "vrátené"
+
+msgid "Gifts"
+msgstr "Darčeky"
+
+msgid "This gift does not exist or can no longer be used."
+msgstr "Tento darček neexistuje alebo sa už nedá použiť."
+
+msgid "Gifts cannot be sent from here yet."
+msgstr "Odtiaľto sa zatiaľ darčeky posielať nedajú."
+
+msgid "You must be an adult to offer a gift."
+msgstr "Na darovanie darčeka musíš byť plnoletá."
+
+msgid "This cannot be offered right now. Choose something else."
+msgstr "Toto sa teraz nedá darovať. Vyber niečo iné."
+
+msgid "You cannot offer your own service or product."
+msgstr "Nemôžeš darovať vlastnú službu ani vlastný produkt."
+
+#, python-format
+msgid "Choose an amount between %(min)s and %(max)s."
+msgstr "Vyber sumu od %(min)s do %(max)s."
+
+msgid "Write the first name and a phone number in Benin."
+msgstr "Napíš meno a telefónne číslo v Benine."
+
+#, python-format
+msgid "Choose a sending date within %(days)s days."
+msgstr "Vyber dátum odoslania do %(days)s dní."
+
+#, python-format
+msgid "This gift opens on %(date)s. A little patience!"
+msgstr "Tento darček sa otvorí %(date)s. Ešte trochu trpezlivosti!"
+
+msgid "This gift cannot be used this way."
+msgstr "Tento darček sa takto použiť nedá."
+
+msgid "This gift was already used."
+msgstr "Tento darček už bol použitý."
+
+#, python-format
+msgid "The card has %(balance)s left: it must pay the whole purchase."
+msgstr "Na karte zostáva %(balance)s: musí zaplatiť celý nákup."
+
+msgid "A Glow gift card pays purchases in FCFA, in Benin."
+msgstr "Darčeková karta Glow platí nákupy vo FCFA, v Benine."
+
+msgid "This gift can no longer be cancelled: it was used or the time is over."
+msgstr "Tento darček sa už nedá zrušiť: bol použitý alebo lehota uplynula."
+
+msgid "Only the person who receives the gift can do this."
+msgstr "Toto môže urobiť len osoba, ktorá darček dostala."
+
+msgid "This photo does not exist."
+msgstr "Táto fotka neexistuje."
+
+msgid "No occasion"
+msgstr "Bez príležitosti"
+
+msgid "Mother's day"
+msgstr "Deň matiek"
+
+msgid "Wedding"
+msgstr "Svadba"
+
+msgid "Birthday"
+msgstr "Narodeniny"
+
+msgid "End of year celebrations"
+msgstr "Koncoročné sviatky"
+
+msgid "A service"
+msgstr "Služba"
+
+msgid "A product of a shop"
+msgstr "Produkt z obchodu"
+
+msgid "A France Selection product"
+msgstr "Produkt z Výberu z Francúzska"
+
+msgid "Glow gift card"
+msgstr "Darčeková karta Glow"
+
+msgid "Paid, sent on the chosen day"
+msgstr "Zaplatené, odoslané vo zvolený deň"
+
+msgid "Sent"
+msgstr "Odoslané"
+
+msgid "Opened"
+msgstr "Otvorené"
+
+msgid "Used"
+msgstr "Použité"
+
+msgid "Not paid"
+msgstr "Nezaplatené"
+
+msgid "Cancelled and refunded"
+msgstr "Zrušené a vrátené"
+
+msgid "No photo yet"
+msgstr "Zatiaľ bez fotky"
+
+msgid "Photo sent"
+msgstr "Fotka odoslaná"
+
+msgid "Not sent"
+msgstr "Neodoslané"
+
+msgid "offered by"
+msgstr "daroval(a)"
+
+msgid "for"
+msgstr "pre"
+
+msgid "phone of the person"
+msgstr "telefón osoby"
+
+msgid "e-mail of the person"
+msgstr "e-mail osoby"
+
+msgid "account of the person"
+msgstr "účet osoby"
+
+msgid "language of the person"
+msgstr "jazyk osoby"
+
+msgid "occasion"
+msgstr "príležitosť"
+
+msgid "message"
+msgstr "správa"
+
+msgid "voice or video message"
+msgstr "hlasová alebo video správa"
+
+msgid "to send on"
+msgstr "odoslať dňa"
+
+msgid "opened at"
+msgstr "otvorené"
+
+msgid "paid in"
+msgstr "zaplatené v"
+
+msgid "rate EUR/XOF"
+msgstr "kurz EUR/XOF"
+
+msgid "payment in euros"
+msgstr "platba v eurách"
+
+msgid "quantity"
+msgstr "množstvo"
+
+msgid "hand-over"
+msgstr "odovzdanie"
+
+msgid "delivery zone"
+msgstr "zóna doručenia"
+
+msgid "delivery"
+msgstr "doručenie"
+
+msgid "France Selection product"
+msgstr "produkt z Výberu z Francúzska"
+
+msgid "choice"
+msgstr "variant"
+
+msgid "what"
+msgstr "čo"
+
+msgid "valid until"
+msgstr "platí do"
+
+msgid "can be cancelled until"
+msgstr "zrušiteľné do"
+
+msgid "photo sent"
+msgstr "odoslaná fotka"
+
+msgid "photo sent at"
+msgstr "fotka odoslaná"
+
+msgid "gift"
+msgstr "darček"
+
+msgid "gifts"
+msgstr "darčeky"
+
+msgid "linked to"
+msgstr "prepojené s"
+
+msgid "linked id"
+msgstr "prepojený identifikátor"
+
+msgid "use of a gift"
+msgstr "použitie darčeka"
+
+msgid "uses of gifts"
+msgstr "použitia darčekov"
+
+msgid "refund"
+msgstr "vrátenie"
+
+msgid "money given back to a gift"
+msgstr "peniaze vrátené na darček"
+
+msgid "money given back to gifts"
+msgstr "peniaze vrátené na darčeky"
+
+msgid "Taken by the pro"
+msgstr "Odfotila profesionálka"
+
+msgid "Sent by the person"
+msgstr "Poslala osoba"
+
+msgid "photo of a gift"
+msgstr "fotka darčeka"
+
+msgid "photos of gifts"
+msgstr "fotky darčekov"
+
+#, python-format
+msgid "Gift for %(name)s — %(what)s"
+msgstr "Darček pre %(name)s — %(what)s"
+
+#, python-format
+msgid "%(from)s sends you a gift"
+msgstr "%(from)s ti posiela darček"
+
+#, python-format
+msgid "Open it here: %(link)s"
+msgstr "Otvor ho tu: %(link)s"
+
+#, python-format
+msgid "%(service)s at %(pro)s"
+msgstr "%(service)s u %(pro)s"
+
+#, python-format
+msgid "Gift from %(name)s"
+msgstr "Darček od %(name)s"
+
+#, python-format
+msgid "Gift from %(name)s for %(to)s"
+msgstr "Darček od %(name)s pre %(to)s"
+
+#, python-format
+msgid "Order %(reference)s"
+msgstr "Objednávka %(reference)s"
+
 msgid "Back to the free plan now"
 msgstr "Vrátiť na bezplatný plán teraz"
 
@@ -1808,9 +2086,6 @@ msgstr "Doklad"
 
 msgid "Credit note"
 msgstr "Dobropis"
-
-msgid "Not sent"
-msgstr "Neodoslané"
 
 msgid "Sent to the platform"
 msgstr "Odoslané na platformu"
@@ -2081,9 +2356,6 @@ msgstr "identita"
 msgid "came in"
 msgstr "vstúpila o"
 
-msgid "left"
-msgstr "odišla o"
-
 msgid "presence"
 msgstr "prítomnosť"
 
@@ -2221,14 +2493,8 @@ msgstr "Rozhovor"
 msgid "Support"
 msgstr "Podpora"
 
-msgid "linked to"
-msgstr "prepojené s"
-
 msgid "For example a dispute, an order or a booking."
 msgstr "Napríklad spor, objednávka alebo rezervácia."
-
-msgid "linked id"
-msgstr "prepojený identifikátor"
 
 msgid "created by"
 msgstr "vytvoril(a)"
@@ -2322,9 +2588,6 @@ msgstr "zistené riziko"
 
 msgid "automatic"
 msgstr "automatická"
-
-msgid "message"
-msgstr "správa"
 
 msgid "quick reply"
 msgstr "rýchla odpoveď"
@@ -2602,9 +2865,6 @@ msgstr "upozornenia"
 msgid "Scheduled"
 msgstr "Naplánované"
 
-msgid "Sent"
-msgstr "Odoslané"
-
 msgid "Not sent (channel off)"
 msgstr "Neodoslané (kanál vypnutý)"
 
@@ -2737,9 +2997,6 @@ msgstr "Vrátiť časť"
 #, python-format
 msgid "Refund part of %(reference)s"
 msgstr "Vrátiť časť %(reference)s"
-
-msgid "amount"
-msgstr "suma"
 
 msgid "Mark as done at the provider (by hand)"
 msgstr "Označiť ako vykonané u poskytovateľa (ručne)"
@@ -2881,6 +3138,9 @@ msgstr "Balík sedení"
 msgid "Academy pass"
 msgstr "Pas Akadémie"
 
+msgid "Gift from abroad"
+msgstr "Darček zo zahraničia"
+
 msgid "Other"
 msgstr "Iné"
 
@@ -2889,9 +3149,6 @@ msgstr "kategória"
 
 msgid "seller"
 msgstr "predávajúca"
-
-msgid "for"
-msgstr "pre"
 
 msgid "Needed for a fixed amount, a minimum or a maximum."
 msgstr "Potrebné pre pevnú sumu, minimum alebo maximum."
@@ -2965,9 +3222,6 @@ msgstr "Služba (bez doručenia)"
 msgid "items"
 msgstr "položky"
 
-msgid "delivery"
-msgstr "doručenie"
-
 msgid "buyer protection"
 msgstr "ochrana kupujúcej"
 
@@ -3027,9 +3281,6 @@ msgstr "Vykonať ručne u poskytovateľa"
 
 msgid "completed at"
 msgstr "dokončené"
-
-msgid "refund"
-msgstr "vrátenie"
 
 msgid "refunds"
 msgstr "vrátenia"
@@ -3767,10 +4018,6 @@ msgstr "Rozdeľ na 2 až %(max)s platby s dátumami po dnešku."
 msgid "This payment was already made."
 msgstr "Táto platba už bola uhradená."
 
-#, python-format
-msgid "Choose an amount between %(min)s and %(max)s."
-msgstr "Vyber sumu od %(min)s do %(max)s."
-
 msgid "No usable gift card with this code in this salon."
 msgstr "V tomto salóne nie je použiteľná karta s týmto kódom."
 
@@ -3838,9 +4085,6 @@ msgstr "Všetky sedenia využité"
 
 msgid "sessions used"
 msgstr "využité sedenia"
-
-msgid "valid until"
-msgstr "platí do"
 
 msgid "package of a client"
 msgstr "balík klientky"
@@ -3973,9 +4217,6 @@ msgstr "pohyb skladu"
 
 msgid "stock movements"
 msgstr "pohyby skladu"
-
-msgid "quantity"
-msgstr "množstvo"
 
 msgid "product used by a service"
 msgstr "produkt používaný službou"
@@ -4482,9 +4723,6 @@ msgstr "Pripravené na výdajnom mieste"
 msgid "Handed over"
 msgstr "Odovzdaná"
 
-msgid "choice"
-msgstr "variant"
-
 msgid "unit price (FCFA)"
 msgstr "jednotková cena (FCFA)"
 
@@ -4735,9 +4973,6 @@ msgstr "zóna"
 msgid "delivery fee"
 msgstr "poplatok za doručenie"
 
-msgid "delivery zone"
-msgstr "zóna doručenia"
-
 msgid "delivery zones"
 msgstr "zóny doručenia"
 
@@ -4878,9 +5113,6 @@ msgstr "zľava"
 
 msgid "code used"
 msgstr "použitý kód"
-
-msgid "hand-over"
-msgstr "odovzdanie"
 
 msgid "phone for the delivery"
 msgstr "telefón pre doručenie"
@@ -5281,6 +5513,12 @@ msgstr "Pasy Akadémie"
 
 msgid "Training lives"
 msgstr "Školiace live"
+
+msgid "Gifts from abroad"
+msgstr "Darčeky zo zahraničia"
+
+msgid "Uses of gifts"
+msgstr "Použitia darčekov"
 
 msgid "Lives and calls"
 msgstr "Live a hovory"

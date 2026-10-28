@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-27 23:20+0100\n"
+"POT-Creation-Date: 2026-10-28 13:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1612,6 +1612,284 @@ msgstr "modules activables"
 msgid "Gamification"
 msgstr "Côté ludique"
 
+msgid "left"
+msgstr "partie à"
+
+#, python-format
+msgid "Paid by gifts in FCFA this month: %(month)s (%(count)s uses). Since the start: %(total)s. To cover with the euros received."
+msgstr "Payé par les cadeaux en FCFA ce mois-ci : %(month)s (%(count)s utilisations). Depuis le début : %(total)s. À couvrir avec les euros reçus."
+
+msgid "Send the link again to the person"
+msgstr "Renvoyer le lien à la personne"
+
+#, python-format
+msgid "%(count)s links sent again."
+msgstr "%(count)s liens renvoyés."
+
+msgid "Cancel and refund in euros (unused gifts)"
+msgstr "Annuler et rembourser en euros (cadeaux non utilisés)"
+
+#, python-format
+msgid "%(count)s gifts cancelled."
+msgstr "%(count)s cadeaux annulés."
+
+msgid "amount"
+msgstr "montant"
+
+msgid "given back"
+msgstr "rendu"
+
+msgid "Gifts"
+msgstr "Cadeaux"
+
+msgid "This gift does not exist or can no longer be used."
+msgstr "Ce cadeau n'existe pas ou ne peut plus être utilisé."
+
+msgid "Gifts cannot be sent from here yet."
+msgstr "On ne peut pas encore offrir de cadeau d'ici."
+
+msgid "You must be an adult to offer a gift."
+msgstr "Il faut être majeure pour offrir un cadeau."
+
+msgid "This cannot be offered right now. Choose something else."
+msgstr "Impossible de l'offrir pour l'instant. Choisis autre chose."
+
+msgid "You cannot offer your own service or product."
+msgstr "Tu ne peux pas offrir ta propre prestation ou ton propre produit."
+
+#, python-format
+msgid "Choose an amount between %(min)s and %(max)s."
+msgstr "Choisis un montant entre %(min)s et %(max)s."
+
+msgid "Write the first name and a phone number in Benin."
+msgstr "Écris le prénom et un numéro de téléphone au Bénin."
+
+#, python-format
+msgid "Choose a sending date within %(days)s days."
+msgstr "Choisis une date d'envoi dans les %(days)s jours."
+
+#, python-format
+msgid "This gift opens on %(date)s. A little patience!"
+msgstr "Ce cadeau s'ouvre le %(date)s. Encore un peu de patience !"
+
+msgid "This gift cannot be used this way."
+msgstr "Ce cadeau ne s'utilise pas de cette façon."
+
+msgid "This gift was already used."
+msgstr "Ce cadeau a déjà servi."
+
+#, python-format
+msgid "The card has %(balance)s left: it must pay the whole purchase."
+msgstr "Il reste %(balance)s sur la carte : elle doit payer tout l'achat."
+
+msgid "A Glow gift card pays purchases in FCFA, in Benin."
+msgstr "Une carte cadeau Glow paie les achats en FCFA, au Bénin."
+
+msgid "This gift can no longer be cancelled: it was used or the time is over."
+msgstr "Ce cadeau ne peut plus être annulé : il a servi ou le délai est passé."
+
+msgid "Only the person who receives the gift can do this."
+msgstr "Seule la personne qui reçoit le cadeau peut faire ça."
+
+msgid "This photo does not exist."
+msgstr "Cette photo n'existe pas."
+
+msgid "No occasion"
+msgstr "Sans occasion"
+
+msgid "Mother's day"
+msgstr "Fête des mères"
+
+msgid "Wedding"
+msgstr "Mariage"
+
+msgid "Birthday"
+msgstr "Anniversaire"
+
+msgid "End of year celebrations"
+msgstr "Fêtes de fin d'année"
+
+msgid "A service"
+msgstr "Une prestation"
+
+msgid "A product of a shop"
+msgstr "Un produit d'une boutique"
+
+msgid "A France Selection product"
+msgstr "Un produit Sélection France"
+
+msgid "Glow gift card"
+msgstr "Carte cadeau Glow"
+
+msgid "Paid, sent on the chosen day"
+msgstr "Payé, envoyé le jour choisi"
+
+msgid "Sent"
+msgstr "Envoyé"
+
+msgid "Opened"
+msgstr "Ouvert"
+
+msgid "Used"
+msgstr "Utilisé"
+
+msgid "Not paid"
+msgstr "Non payé"
+
+msgid "Cancelled and refunded"
+msgstr "Annulé et remboursé"
+
+msgid "No photo yet"
+msgstr "Pas encore de photo"
+
+msgid "Photo sent"
+msgstr "Photo envoyée"
+
+msgid "Not sent"
+msgstr "Pas envoyée"
+
+msgid "offered by"
+msgstr "offert par"
+
+msgid "for"
+msgstr "pour"
+
+msgid "phone of the person"
+msgstr "téléphone de la personne"
+
+msgid "e-mail of the person"
+msgstr "e-mail de la personne"
+
+msgid "account of the person"
+msgstr "compte de la personne"
+
+msgid "language of the person"
+msgstr "langue de la personne"
+
+msgid "occasion"
+msgstr "occasion"
+
+msgid "message"
+msgstr "message"
+
+msgid "voice or video message"
+msgstr "message vocal ou vidéo"
+
+msgid "to send on"
+msgstr "à envoyer le"
+
+msgid "opened at"
+msgstr "ouvert le"
+
+msgid "paid in"
+msgstr "payé en"
+
+msgid "rate EUR/XOF"
+msgstr "taux EUR/XOF"
+
+msgid "payment in euros"
+msgstr "paiement en euros"
+
+msgid "quantity"
+msgstr "quantité"
+
+msgid "hand-over"
+msgstr "remise"
+
+msgid "delivery zone"
+msgstr "zone de livraison"
+
+msgid "delivery"
+msgstr "livraison"
+
+msgid "France Selection product"
+msgstr "produit Sélection France"
+
+msgid "choice"
+msgstr "choix"
+
+msgid "what"
+msgstr "quoi"
+
+msgid "valid until"
+msgstr "valable jusqu'au"
+
+msgid "can be cancelled until"
+msgstr "annulable jusqu'au"
+
+msgid "photo sent"
+msgstr "photo envoyée"
+
+msgid "photo sent at"
+msgstr "photo envoyée le"
+
+msgid "gift"
+msgstr "cadeau"
+
+msgid "gifts"
+msgstr "cadeaux"
+
+msgid "linked to"
+msgstr "lié à"
+
+msgid "linked id"
+msgstr "identifiant lié"
+
+msgid "use of a gift"
+msgstr "utilisation d'un cadeau"
+
+msgid "uses of gifts"
+msgstr "utilisations des cadeaux"
+
+msgid "refund"
+msgstr "remboursement"
+
+msgid "money given back to a gift"
+msgstr "argent rendu à un cadeau"
+
+msgid "money given back to gifts"
+msgstr "argent rendu aux cadeaux"
+
+msgid "Taken by the pro"
+msgstr "Prise par la pro"
+
+msgid "Sent by the person"
+msgstr "Envoyée par la personne"
+
+msgid "photo of a gift"
+msgstr "photo d'un cadeau"
+
+msgid "photos of gifts"
+msgstr "photos des cadeaux"
+
+#, python-format
+msgid "Gift for %(name)s — %(what)s"
+msgstr "Cadeau pour %(name)s — %(what)s"
+
+#, python-format
+msgid "%(from)s sends you a gift"
+msgstr "%(from)s t'envoie un cadeau"
+
+#, python-format
+msgid "Open it here: %(link)s"
+msgstr "Ouvre-le ici : %(link)s"
+
+#, python-format
+msgid "%(service)s at %(pro)s"
+msgstr "%(service)s chez %(pro)s"
+
+#, python-format
+msgid "Gift from %(name)s"
+msgstr "Cadeau de %(name)s"
+
+#, python-format
+msgid "Gift from %(name)s for %(to)s"
+msgstr "Cadeau de %(name)s pour %(to)s"
+
+#, python-format
+msgid "Order %(reference)s"
+msgstr "Commande %(reference)s"
+
 msgid "Back to the free plan now"
 msgstr "Repasser à l'offre gratuite maintenant"
 
@@ -1804,9 +2082,6 @@ msgstr "Reçu"
 
 msgid "Credit note"
 msgstr "Avoir"
-
-msgid "Not sent"
-msgstr "Pas envoyée"
 
 msgid "Sent to the platform"
 msgstr "Envoyée à la plateforme"
@@ -2077,9 +2352,6 @@ msgstr "identité"
 msgid "came in"
 msgstr "entrée à"
 
-msgid "left"
-msgstr "partie à"
-
 msgid "presence"
 msgstr "présence"
 
@@ -2217,14 +2489,8 @@ msgstr "Discussion"
 msgid "Support"
 msgstr "Assistance"
 
-msgid "linked to"
-msgstr "lié à"
-
 msgid "For example a dispute, an order or a booking."
 msgstr "Par exemple un litige, une commande ou un rendez-vous."
-
-msgid "linked id"
-msgstr "identifiant lié"
 
 msgid "created by"
 msgstr "créé par"
@@ -2318,9 +2584,6 @@ msgstr "risque détecté"
 
 msgid "automatic"
 msgstr "automatique"
-
-msgid "message"
-msgstr "message"
 
 msgid "quick reply"
 msgstr "réponse rapide"
@@ -2598,9 +2861,6 @@ msgstr "notifications"
 msgid "Scheduled"
 msgstr "Programmé"
 
-msgid "Sent"
-msgstr "Envoyé"
-
 msgid "Not sent (channel off)"
 msgstr "Non envoyé (canal coupé)"
 
@@ -2733,9 +2993,6 @@ msgstr "Rembourser en partie"
 #, python-format
 msgid "Refund part of %(reference)s"
 msgstr "Rembourser en partie %(reference)s"
-
-msgid "amount"
-msgstr "montant"
 
 msgid "Mark as done at the provider (by hand)"
 msgstr "Marquer comme fait chez le prestataire (à la main)"
@@ -2877,6 +3134,9 @@ msgstr "Forfait de séances"
 msgid "Academy pass"
 msgstr "Pass Académie"
 
+msgid "Gift from abroad"
+msgstr "Cadeau de l'étranger"
+
 msgid "Other"
 msgstr "Autre"
 
@@ -2885,9 +3145,6 @@ msgstr "catégorie"
 
 msgid "seller"
 msgstr "vendeuse"
-
-msgid "for"
-msgstr "pour"
 
 msgid "Needed for a fixed amount, a minimum or a maximum."
 msgstr "Nécessaire pour un montant fixe, un minimum ou un maximum."
@@ -2961,9 +3218,6 @@ msgstr "Prestation (sans livraison)"
 msgid "items"
 msgstr "articles"
 
-msgid "delivery"
-msgstr "livraison"
-
 msgid "buyer protection"
 msgstr "protection acheteur"
 
@@ -3023,9 +3277,6 @@ msgstr "À faire à la main chez le prestataire"
 
 msgid "completed at"
 msgstr "terminé le"
-
-msgid "refund"
-msgstr "remboursement"
 
 msgid "refunds"
 msgstr "remboursements"
@@ -3751,10 +4002,6 @@ msgstr "Partage en 2 à %(max)s paiements, avec des dates après aujourd'hui."
 msgid "This payment was already made."
 msgstr "Ce paiement est déjà fait."
 
-#, python-format
-msgid "Choose an amount between %(min)s and %(max)s."
-msgstr "Choisis un montant entre %(min)s et %(max)s."
-
 msgid "No usable gift card with this code in this salon."
 msgstr "Aucune carte cadeau utilisable avec ce code dans ce salon."
 
@@ -3822,9 +4069,6 @@ msgstr "Toutes les séances utilisées"
 
 msgid "sessions used"
 msgstr "séances utilisées"
-
-msgid "valid until"
-msgstr "valable jusqu'au"
 
 msgid "package of a client"
 msgstr "forfait d'une cliente"
@@ -3957,9 +4201,6 @@ msgstr "mouvement de stock"
 
 msgid "stock movements"
 msgstr "mouvements de stock"
-
-msgid "quantity"
-msgstr "quantité"
 
 msgid "product used by a service"
 msgstr "produit utilisé par une prestation"
@@ -4466,9 +4707,6 @@ msgstr "Prête au point de retrait"
 msgid "Handed over"
 msgstr "Remise"
 
-msgid "choice"
-msgstr "choix"
-
 msgid "unit price (FCFA)"
 msgstr "prix unitaire (FCFA)"
 
@@ -4719,9 +4957,6 @@ msgstr "zone"
 msgid "delivery fee"
 msgstr "frais de livraison"
 
-msgid "delivery zone"
-msgstr "zone de livraison"
-
 msgid "delivery zones"
 msgstr "zones de livraison"
 
@@ -4862,9 +5097,6 @@ msgstr "remise"
 
 msgid "code used"
 msgstr "code utilisé"
-
-msgid "hand-over"
-msgstr "remise"
 
 msgid "phone for the delivery"
 msgstr "téléphone pour la livraison"
@@ -5265,6 +5497,12 @@ msgstr "Pass Académie"
 
 msgid "Training lives"
 msgstr "Lives de formation"
+
+msgid "Gifts from abroad"
+msgstr "Cadeaux de l'étranger"
+
+msgid "Uses of gifts"
+msgstr "Utilisations des cadeaux"
 
 msgid "Lives and calls"
 msgstr "Lives et appels"
