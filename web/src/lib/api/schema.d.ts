@@ -153,22 +153,6 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
-  "/api/v1/academy/lives/{live_id}/join": {
-    parameters: {
-      query?: never;
-      header?: never;
-      path?: never;
-      cookie?: never;
-    };
-    get?: never;
-    put?: never;
-    post: operations["academy_lives_join_create"];
-    delete?: never;
-    options?: never;
-    head?: never;
-    patch?: never;
-    trace?: never;
-  };
   "/api/v1/academy/lives/{live_id}/registration": {
     parameters: {
       query?: never;
@@ -871,6 +855,71 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/calls/{call_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["calls_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/calls/{call_id}/answer": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Picks up (or comes back into a call going on). */
+    post: operations["calls_answer_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/calls/{call_id}/decline": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["calls_decline_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/calls/{call_id}/hang-up": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["calls_hang_up_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/comments/{comment_id}": {
     parameters: {
       query?: never;
@@ -948,6 +997,22 @@ export interface paths {
     get?: never;
     put?: never;
     post: operations["conversations_accept_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/conversations/{conversation_id}/call": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["conversations_call_retrieve"];
+    put?: never;
+    post: operations["conversations_call_create"];
     delete?: never;
     options?: never;
     head?: never;
@@ -1099,6 +1164,153 @@ export interface paths {
     post: operations["hides_create"];
     /** @description « Hide »: a post, a story, a comment, or every post of a person. */
     delete: operations["hides_destroy"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/live/{kind}/{source_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["live_state"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/live/{kind}/{source_id}/end": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["live_end_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/live/{kind}/{source_id}/hand": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["live_raise_hand"];
+    delete: operations["live_lower_hand"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/live/{kind}/{source_id}/hands/{user_id}/floor": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["live_give_floor"];
+    delete: operations["live_take_floor"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/live/{kind}/{source_id}/join": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    post: operations["live_join_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/live/{kind}/{source_id}/questions": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["live_questions_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/live/{kind}/{source_id}/questions/{question_id}/answered": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["live_questions_answered_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/live/{kind}/{source_id}/start": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["live_start_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/live/upcoming": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Lives on air and coming soon (home page), in her country or the one asked. */
+    get: operations["live_upcoming_list"];
+    put?: never;
+    post?: never;
+    delete?: never;
     options?: never;
     head?: never;
     patch?: never;
@@ -1545,6 +1757,22 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/me/calls": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["me_calls_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/me/contact": {
     parameters: {
       query?: never;
@@ -1983,6 +2211,23 @@ export interface paths {
     get: operations["me_pro_hours_retrieve"];
     /** @description Replaces the whole week (several periods on a day = breaks between them). */
     put: operations["me_pro_hours_update"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/pro/lives/quota": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Her lives of the month (training and sales together) and how many she may plan. */
+    get: operations["me_pro_lives_quota_retrieve"];
+    put?: never;
     post?: never;
     delete?: never;
     options?: never;
@@ -2713,6 +2958,56 @@ export interface paths {
     put?: never;
     post?: never;
     delete: operations["me_shop_flash_sales_destroy"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/shop/lives": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["me_shop_lives_retrieve"];
+    put?: never;
+    post: operations["me_shop_lives_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/shop/lives/{live_id}/cancel": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["me_shop_lives_cancel_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/shop/lives/{live_id}/pins/{product_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Pins a product on screen (or takes it off; it stays in the list of the live). */
+    post: operations["shop_live_pin"];
+    /** @description Pins a product on screen (or takes it off; it stays in the list of the live). */
+    delete: operations["shop_live_unpin"];
     options?: never;
     head?: never;
     patch?: never;
@@ -4859,6 +5154,107 @@ export interface components {
       /** @default 1 */
       installments: number;
     };
+    Call: {
+      /** Format: uuid */
+      id: string;
+      kind: components["schemas"]["CallKindEnum"];
+      status: components["schemas"]["CallStatusEnum"];
+      duration_seconds: number;
+      /** Format: uuid */
+      caller_id: string | null;
+      /** Format: uuid */
+      conversation_id: string;
+      is_dispute: boolean;
+      /** @description She is the caller. */
+      mine: boolean;
+      my_state:
+        (components["schemas"]["CallPersonStateEnum"] | components["schemas"]["NullEnum"]) | null;
+      /** @description The others. */
+      people: components["schemas"]["CallPerson"][];
+      /** Format: date-time */
+      ring_until: string;
+      /** Format: date-time */
+      answered_at: string | null;
+      /** Format: date-time */
+      ended_at: string | null;
+      /** Format: date-time */
+      ends_by: string | null;
+      /** Format: date-time */
+      created_at: string;
+    };
+    CallAccess: {
+      url: string;
+      room: string;
+      token: string;
+      identity: string;
+      /** Format: date-time */
+      expires_at: string;
+    };
+    CallJoin: {
+      call: components["schemas"]["Call"];
+      access: components["schemas"]["CallAccess"];
+    };
+    /**
+     * @description * `audio` - Audio call
+     *     * `video` - Video call
+     * @enum {string}
+     */
+    CallKindEnum: "audio" | "video";
+    CallLine: {
+      /** Format: uuid */
+      id: string;
+      kind: components["schemas"]["CallKindEnum"];
+      status: components["schemas"]["CallStatusEnum"];
+      duration_seconds: number;
+      /** Format: uuid */
+      caller_id: string | null;
+    };
+    CallPage: {
+      results: components["schemas"]["Call"][];
+      /** @description Older calls: pass as `before`. */
+      next: string | null;
+    };
+    CallPerson: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      photo: components["schemas"]["Media"] | null;
+      is_pro: boolean;
+      pro_slug: string | null;
+      verified: boolean;
+      online?: boolean;
+      /** Format: date-time */
+      last_seen?: string | null;
+      state: components["schemas"]["CallPersonStateEnum"];
+    };
+    /**
+     * @description * `invited` - Called
+     *     * `joined` - In the call
+     *     * `left` - Hung up
+     *     * `declined` - Declined
+     * @enum {string}
+     */
+    CallPersonStateEnum: "invited" | "joined" | "left" | "declined";
+    CallStartRequest: {
+      /** @default false */
+      video: boolean;
+    };
+    CallState: {
+      active: components["schemas"]["Call"] | null;
+      can_call: boolean;
+      /** @description Error code when she cannot call. */
+      reason: string | null;
+    };
+    /**
+     * @description * `ringing` - Ringing
+     *     * `ongoing` - Ongoing
+     *     * `ended` - Ended
+     *     * `missed` - Missed
+     *     * `declined` - Declined
+     *     * `cancelled` - Cancelled
+     * @enum {string}
+     */
+    CallStatusEnum: "ringing" | "ongoing" | "ended" | "missed" | "declined" | "cancelled";
     Campaign: {
       /** Format: uuid */
       id: string;
@@ -4941,6 +5337,11 @@ export interface components {
       bundle_id?: string | null;
       /** @default 1 */
       quantity: number;
+      /**
+       * Format: uuid
+       * @description Added during this sales live.
+       */
+      sale_live_id?: string | null;
     };
     CartLine: {
       /** Format: uuid */
@@ -5724,9 +6125,6 @@ export interface components {
      * @enum {string}
      */
     InstallmentStatusEnum: "due" | "paid" | "cancelled";
-    Join: {
-      url: string;
-    };
     Language: {
       code: string;
       label: string;
@@ -5859,6 +6257,26 @@ export interface components {
       course_title: string | null;
       registered: boolean;
     };
+    LiveHand: {
+      /** Format: uuid */
+      user_id: string;
+      name: string;
+      status: components["schemas"]["LiveHandStatusEnum"];
+      /** Format: date-time */
+      raised_at: string;
+    };
+    /**
+     * @description * `raised` - Hand raised
+     *     * `speaking` - Has the floor
+     *     * `done` - Done
+     * @enum {string}
+     */
+    LiveHandStatusEnum: "raised" | "speaking" | "done";
+    LiveHost: {
+      name: string;
+      slug: string | null;
+      photo: components["schemas"]["Media"] | null;
+    };
     LiveInputRequest: {
       title: string;
       description?: string;
@@ -5873,6 +6291,69 @@ export interface components {
       platform: boolean;
       country?: string;
     };
+    LiveJoin: {
+      url: string;
+      room: string;
+      token: string;
+      identity: string;
+      host: boolean;
+      host_identity: string;
+      /** Format: date-time */
+      expires_at: string;
+    };
+    /**
+     * @description * `training` - Training live
+     *     * `sale` - Sales live
+     * @enum {string}
+     */
+    LiveKindEnum: "training" | "sale";
+    LivePin: {
+      /** Format: uuid */
+      product_id: string;
+      slug: string;
+      name: string;
+      price_minor: number;
+      currency: string;
+      photo: components["schemas"]["Media"] | null;
+      in_stock: boolean;
+      /** @description On screen now (else: shown earlier). */
+      pinned: boolean;
+    };
+    LiveQuestion: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      text: string;
+      at_second: number;
+      answered: boolean;
+      mine: boolean;
+      held: boolean;
+      /** Format: date-time */
+      created_at: string;
+    };
+    LiveQuestionInputRequest: {
+      text: string;
+    };
+    LiveQuota: {
+      used: number;
+      allowed: number;
+    };
+    LiveReplay: {
+      status: components["schemas"]["LiveReplayStatusEnum"];
+      /** Format: date-time */
+      until: string | null;
+      urls: {
+        [key: string]: string;
+      };
+      /** Format: double */
+      duration: number | null;
+    };
+    /**
+     * @description * `processing` - processing
+     *     * `ready` - ready
+     * @enum {string}
+     */
+    LiveReplayStatusEnum: "processing" | "ready";
     LiveRoom: {
       live: components["schemas"]["Live"];
       registered: boolean;
@@ -5884,7 +6365,60 @@ export interface components {
       open: boolean;
       seconds_left: number;
       broadcast_ready: boolean;
+      /** @description The live room (on air, then the replay). */
+      room_link: string;
     };
+    LiveSale: {
+      shop_slug: string;
+      pins: components["schemas"]["LivePin"][];
+      orders_count: number;
+      /** @description Seen by the host only. */
+      revenue_minor: number | null;
+      currency: string;
+    };
+    LiveState: {
+      kind: components["schemas"]["LiveKindEnum"];
+      /** Format: uuid */
+      source_id: string;
+      title: string;
+      status: components["schemas"]["LiveStateStatusEnum"];
+      /** Format: date-time */
+      starts_at: string;
+      /** Format: date-time */
+      ends_at: string;
+      time_zone: string;
+      /** Format: date-time */
+      can_start_at: string;
+      /** Format: date-time */
+      started_at: string | null;
+      /** Format: date-time */
+      ends_by: string | null;
+      host: components["schemas"]["LiveHost"];
+      is_host: boolean;
+      can_watch: boolean;
+      can_ask: boolean;
+      can_raise_hand: boolean;
+      signed_in: boolean;
+      viewers: number;
+      max_viewers: number;
+      speaking: boolean;
+      my_hand:
+        (components["schemas"]["LiveHandStatusEnum"] | components["schemas"]["NullEnum"]) | null;
+      hands: components["schemas"]["LiveHand"][];
+      questions: components["schemas"]["LiveQuestion"][];
+      replay: components["schemas"]["LiveReplay"] | null;
+      link: string;
+      cover_url: string;
+      sale: components["schemas"]["LiveSale"] | null;
+    };
+    /**
+     * @description * `scheduled` - scheduled
+     *     * `on_air` - on_air
+     *     * `ended` - ended
+     *     * `cancelled` - cancelled
+     * @enum {string}
+     */
+    LiveStateStatusEnum: "scheduled" | "on_air" | "ended" | "cancelled";
     /**
      * @description * `scheduled` - Planned
      *     * `live` - On air
@@ -5988,6 +6522,11 @@ export interface components {
       notify_email: boolean;
       /** Push notifications */
       notify_push: boolean;
+      /**
+       * Receives calls
+       * @description Audio and video calls in the app (never her phone number).
+       */
+      accept_calls: boolean;
       /** Format: time */
       quiet_hours_start?: string | null;
       /** Format: time */
@@ -6113,11 +6652,12 @@ export interface components {
       text: string;
       media: components["schemas"]["Media"] | null;
       share: components["schemas"]["ShareCard"] | null;
+      call: components["schemas"]["CallLine"] | null;
       /** Format: uuid */
       client_id: string | null;
       fraud_labels: string[];
       is_automatic: boolean;
-      state: components["schemas"]["StateEnum"];
+      state: components["schemas"]["MessageStateEnum"];
       /** Format: date-time */
       created_at: string;
     };
@@ -6141,9 +6681,10 @@ export interface components {
      *     * `voice` - Voice note
      *     * `share` - Shared card
      *     * `system` - Information
+     *     * `call` - Call
      * @enum {string}
      */
-    MessageKindEnum: "text" | "photo" | "voice" | "share" | "system";
+    MessageKindEnum: "text" | "photo" | "voice" | "share" | "system" | "call";
     MessagePage: {
       results: components["schemas"]["Message"][];
       /** @description Older messages: pass as `before`. */
@@ -6153,6 +6694,14 @@ export interface components {
       reason: components["schemas"]["ReportReasonEnum"];
       comment?: string;
     };
+    /**
+     * @description * `visible` - visible
+     *     * `held` - held
+     *     * `removed` - removed
+     *     * `deleted` - deleted
+     * @enum {string}
+     */
+    MessageStateEnum: "visible" | "held" | "removed" | "deleted";
     MethodInputRequest: {
       method: components["schemas"]["OnSiteMethodEnum"];
     };
@@ -6292,6 +6841,33 @@ export interface components {
      * @enum {string}
      */
     MyProductStatusEnum: "draft" | "in_review" | "published" | "paused" | "blocked" | "archived";
+    MySaleLive: {
+      /** Format: uuid */
+      id: string;
+      title: string;
+      /** Format: date-time */
+      starts_at: string;
+      status: components["schemas"]["LiveStatusEnum"];
+      /** @description A replay can be watched. */
+      replay: boolean;
+      link: string;
+      time_zone: string;
+      description: string;
+      duration_minutes: number;
+      orders_count: number;
+      revenue_minor: number;
+      currency: string;
+      peak_viewers: number;
+      total_viewers: number;
+    };
+    MySaleLives: {
+      results: components["schemas"]["MySaleLive"][];
+      quota: components["schemas"]["LiveQuota"];
+      /** @description Sales lives are open in her country. */
+      open: boolean;
+      /** @description Her shop is verified (needed to go live). */
+      can_sell: boolean;
+    };
     MyShop: {
       shop: components["schemas"]["ShopBrief"];
       delivery: components["schemas"]["Delivery"];
@@ -6677,6 +7253,11 @@ export interface components {
       notify_email?: boolean;
       /** Push notifications */
       notify_push?: boolean;
+      /**
+       * Receives calls
+       * @description Audio and video calls in the app (never her phone number).
+       */
+      accept_calls?: boolean;
       /** Format: time */
       quiet_hours_start?: string | null;
       /** Format: time */
@@ -7530,6 +8111,13 @@ export interface components {
      * @enum {string}
      */
     RolesEnum: "client" | "pro" | "collaborator" | "staff";
+    SaleLiveInputRequest: {
+      title: string;
+      description?: string;
+      /** Format: date-time */
+      starts_at: string;
+      duration_minutes: number;
+    };
     SearchResults: {
       results: components["schemas"]["Card"][];
       next: string | null;
@@ -7900,12 +8488,26 @@ export interface components {
       promo_code?: string;
       note?: string;
     };
+    ShopLive: {
+      /** Format: uuid */
+      id: string;
+      title: string;
+      /** Format: date-time */
+      starts_at: string;
+      status: components["schemas"]["LiveStatusEnum"];
+      /** @description A replay can be watched. */
+      replay: boolean;
+      link: string;
+      time_zone: string;
+    };
     ShopPage: {
       shop: components["schemas"]["ShopBrief"];
       delivery: components["schemas"]["Delivery"];
       categories: components["schemas"]["ProductCategory"][];
       products: components["schemas"]["ProductSummary"][];
       bundles: components["schemas"]["Bundle"][];
+      /** @description Sales lives: on air, coming, replays. */
+      lives: components["schemas"]["ShopLive"][];
     };
     /** @description Public page of a pro (also its preview for herself). */
     Showcase: {
@@ -8053,14 +8655,6 @@ export interface components {
       /** Format: uuid */
       person_id: string;
     };
-    /**
-     * @description * `visible` - visible
-     *     * `held` - held
-     *     * `removed` - removed
-     *     * `deleted` - deleted
-     * @enum {string}
-     */
-    StateEnum: "visible" | "held" | "removed" | "deleted";
     Stats: {
       days: number;
       currency: string;
@@ -8446,6 +9040,20 @@ export interface components {
       channel: components["schemas"]["MarketingChannelEnum"];
       unsubscribed: boolean;
     };
+    UpcomingLive: {
+      kind: components["schemas"]["LiveKindEnum"];
+      /** Format: uuid */
+      source_id: string;
+      title: string;
+      /** Format: date-time */
+      starts_at: string;
+      /** @description Time zone of the country of the live. */
+      time_zone: string;
+      on_air: boolean;
+      host: components["schemas"]["LiveHost"];
+      link: string;
+      cover_url: string;
+    };
     Usage: {
       staff: number;
       staff_limit: number | null;
@@ -8827,27 +9435,6 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["LiveRoom"];
-        };
-      };
-    };
-  };
-  academy_lives_join_create: {
-    parameters: {
-      query?: never;
-      header?: never;
-      path: {
-        live_id: string;
-      };
-      cookie?: never;
-    };
-    requestBody?: never;
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown;
-        };
-        content: {
-          "application/json": components["schemas"]["Join"];
         };
       };
     };
@@ -9970,6 +10557,90 @@ export interface operations {
       };
     };
   };
+  calls_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        call_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Call"];
+        };
+      };
+    };
+  };
+  calls_answer_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        call_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["CallJoin"];
+        };
+      };
+    };
+  };
+  calls_decline_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        call_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Call"];
+        };
+      };
+    };
+  };
+  calls_hang_up_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        call_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Call"];
+        };
+      };
+    };
+  };
   comments_destroy: {
     parameters: {
       query?: never;
@@ -10123,6 +10794,54 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["Conversation"];
+        };
+      };
+    };
+  };
+  conversations_call_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        conversation_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["CallState"];
+        };
+      };
+    };
+  };
+  conversations_call_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        conversation_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["CallStartRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["CallStartRequest"];
+        "multipart/form-data": components["schemas"]["CallStartRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["CallJoin"];
         };
       };
     };
@@ -10384,6 +11103,256 @@ export interface operations {
           [name: string]: unknown;
         };
         content?: never;
+      };
+    };
+  };
+  live_state: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        kind: string;
+        source_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LiveState"];
+        };
+      };
+    };
+  };
+  live_end_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        kind: string;
+        source_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LiveState"];
+        };
+      };
+    };
+  };
+  live_raise_hand: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        kind: string;
+        source_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LiveState"];
+        };
+      };
+    };
+  };
+  live_lower_hand: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        kind: string;
+        source_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LiveState"];
+        };
+      };
+    };
+  };
+  live_give_floor: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        kind: string;
+        source_id: string;
+        user_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LiveState"];
+        };
+      };
+    };
+  };
+  live_take_floor: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        kind: string;
+        source_id: string;
+        user_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LiveState"];
+        };
+      };
+    };
+  };
+  live_join_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        kind: string;
+        source_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LiveJoin"];
+        };
+      };
+    };
+  };
+  live_questions_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        kind: string;
+        source_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["LiveQuestionInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["LiveQuestionInputRequest"];
+        "multipart/form-data": components["schemas"]["LiveQuestionInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LiveState"];
+        };
+      };
+    };
+  };
+  live_questions_answered_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        kind: string;
+        question_id: string;
+        source_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LiveState"];
+        };
+      };
+    };
+  };
+  live_start_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        kind: string;
+        source_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LiveState"];
+        };
+      };
+    };
+  };
+  live_upcoming_list: {
+    parameters: {
+      query?: {
+        country?: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["UpcomingLive"][];
+        };
       };
     };
   };
@@ -11180,6 +12149,27 @@ export interface operations {
       };
     };
   };
+  me_calls_retrieve: {
+    parameters: {
+      query?: {
+        before?: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["CallPage"];
+        };
+      };
+    };
+  };
   me_contact_create: {
     parameters: {
       query?: never;
@@ -11954,6 +12944,25 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["Hours"];
+        };
+      };
+    };
+  };
+  me_pro_lives_quota_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LiveQuota"];
         };
       };
     };
@@ -13386,6 +14395,113 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["Promotions"];
         };
+      };
+    };
+  };
+  me_shop_lives_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MySaleLives"];
+        };
+      };
+    };
+  };
+  me_shop_lives_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["SaleLiveInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["SaleLiveInputRequest"];
+        "multipart/form-data": components["schemas"]["SaleLiveInputRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MySaleLives"];
+        };
+      };
+    };
+  };
+  me_shop_lives_cancel_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        live_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["MySaleLives"];
+        };
+      };
+    };
+  };
+  shop_live_pin: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        live_id: string;
+        product_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  shop_live_unpin: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        live_id: string;
+        product_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
