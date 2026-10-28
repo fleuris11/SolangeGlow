@@ -12,7 +12,7 @@ from django.db import IntegrityError, transaction
 from apps.core.errors import DomainError
 
 from ..models import Payment, PaymentGroup, Payout, Refund, WebhookEvent
-from ..providers import EventKind, get_provider
+from ..providers import INTERNAL, EventKind, ProviderNotConfigured, get_provider
 from . import groups as group_services
 from . import payments as payment_services
 from . import payouts as payout_services
@@ -79,7 +79,9 @@ def _dispatch(provider: str, event) -> str:
 
 
 def handle(provider_name: str, headers, body: bytes) -> list[WebhookEvent]:
-    """Raises ProviderNotConfigured (unknown or off) or InvalidSignature (not from them)."""
+    """Raises ProviderNotConfigured (unknown, off or internal) or InvalidSignature."""
+    if provider_name in INTERNAL:
+        raise ProviderNotConfigured("Internal provider: no webhooks")
     provider = get_provider(provider_name)
     events = provider.parse_webhook(headers, body)
     handled = []

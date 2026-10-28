@@ -151,6 +151,7 @@ class Purpose(models.TextChoices):
     GIFT_CARD = "gift_card", _("Gift card")
     PACKAGE = "package", _("Package of sessions")
     ACADEMY_PASS = "academy_pass", _("Academy pass")
+    GIFT = "gift", _("Gift from abroad")
     OTHER = "other", _("Other")
 
 

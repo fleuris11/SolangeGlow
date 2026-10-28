@@ -29,13 +29,15 @@ def run_payout(payout_id: str) -> str:
 @shared_task(acks_late=True)
 def reconcile_providers() -> list:
     """Once a day: yesterday's statement of each provider that is configured."""
-    from .providers import PROVIDERS, ProviderNotConfigured
+    from .providers import INTERNAL, PROVIDERS, ProviderNotConfigured
     from .services.reconciliation import reconcile
 
     until = timezone.now()
     since = until - datetime.timedelta(days=1)
     runs = []
     for name in PROVIDERS:
+        if name in INTERNAL:
+            continue
         try:
             runs.append(str(reconcile(name, since=since, until=until).pk))
         except ProviderNotConfigured:

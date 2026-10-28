@@ -32,12 +32,13 @@ from apps.notifications.services import notify
 
 from .. import errors, ledger, pricing
 from ..ledger import credit, debit
-from ..models import LedgerAccount, Payment, PricingRule, Refund
+from ..models import LedgerAccount, Payment, PricingRule, Purpose, Refund
 from ..providers import ProviderNotConfigured, get_provider, provider_for
 from . import common
 from .common import S, locked, move
 
 Kind = LedgerAccount.Kind
+GIFT = "gift"  # the internal provider of the gifts (providers/gift.py)
 COURIER_SALT = "payments.courier"
 
 
@@ -107,8 +108,12 @@ def create_payment(
     source_id=None,
     service_at=None,
     prep_days: int = 0,
+    with_buyer_fee: bool = True,
 ) -> Payment:
-    """A payment waiting for the client to pay: amounts, fees and rules fixed now."""
+    """A payment waiting for the client to pay: amounts, fees and rules fixed now.
+
+    `with_buyer_fee=False`: no buyer protection (a gift from abroad already paid its own fee).
+    """
     try:
         Money(0, currency)
     except (UnknownCurrencyError, TypeError) as exc:
@@ -131,8 +136,10 @@ def create_payment(
         "purpose": purpose,
     }
     commission = pricing.charge(PricingRule.Kind.COMMISSION, items_minor, **criteria)
-    protection = pricing.charge(
-        PricingRule.Kind.BUYER_PROTECTION, items_minor + delivery_minor, **criteria
+    protection = (
+        pricing.charge(PricingRule.Kind.BUYER_PROTECTION, items_minor + delivery_minor, **criteria)
+        if with_buyer_fee
+        else pricing.Charge(None, 0)
     )
     try:
         provider = provider_for(country)
@@ -205,8 +212,19 @@ def _escrow_lines(payment: Payment) -> tuple:
 
 
 @transaction.atomic
-def mark_paid(payment: Payment, *, amount_minor, currency: str, fee_minor: int = 0, key: str):
-    """The provider confirmed the payment: money held, receipt code sent."""
+def mark_paid(
+    payment: Payment,
+    *,
+    amount_minor,
+    currency: str,
+    fee_minor: int = 0,
+    key: str,
+    tell_buyer: bool = True,
+):
+    """The provider confirmed the payment: money held, receipt code sent.
+
+    `tell_buyer=False`: the module tells the client itself (a gift: the code is on its page).
+    """
     payment = locked(payment)
     if payment.status not in (S.PENDING_PAYMENT, S.CANCELLED):
         return payment  # already counted (the same news twice)
@@ -250,9 +268,12 @@ def mark_paid(payment: Payment, *, amount_minor, currency: str, fee_minor: int =
     payment.save(update_fields=["receipt_code_hash", "receipt_code_secret", "updated_at"])
     days = ship_days(payment)
     total = money(payment.total_minor, currency, payment.buyer)
+    # A gift from abroad has no receipt code to give: its own module tells the giver.
+    tell_buyer = tell_buyer and payment.purpose != Purpose.GIFT
     transaction.on_commit(
         lambda: (
-            notify(
+            tell_buyer
+            and notify(
                 payment.buyer,
                 "payments.paid",
                 {"reference": payment.reference, "amount": total},
@@ -272,6 +293,25 @@ def mark_paid(payment: Payment, *, amount_minor, currency: str, fee_minor: int =
         )
     )
     return payment
+
+
+@transaction.atomic
+def pay_from_gift(payment: Payment, *, key: str, tell_buyer: bool = True) -> Payment:
+    """Paid with the money of a gift (ADR-014): no provider page, held at once."""
+    payment = locked(payment)
+    if payment.status != S.PENDING_PAYMENT or payment.group_id or payment.currency != "XOF":
+        raise errors.InvalidTransition()
+    payment.provider = GIFT
+    payment.provider_reference = key[:120]
+    payment.checkout_url = ""
+    payment.save(update_fields=["provider", "provider_reference", "checkout_url", "updated_at"])
+    return mark_paid(
+        payment,
+        amount_minor=payment.total_minor,
+        currency=payment.currency,
+        key=key,
+        tell_buyer=tell_buyer,
+    )
 
 
 @transaction.atomic
@@ -369,10 +409,18 @@ def _new_receipt_code(payment: Payment) -> str:
 
 
 def receipt_code_for(payment: Payment, user) -> str | None:
-    """Shown to the client only, while the order waits for its delivery."""
-    if payment.buyer_id != user.pk or payment.status not in (S.HELD, S.SHIPPED):
+    """Shown to the client only, while the order waits for its delivery (a gift from
+    abroad has none: nothing is handed over against it)."""
+    if payment.buyer_id != user.pk or payment.purpose == Purpose.GIFT:
         return None
-    return crypto.decrypt(payment.receipt_code_secret) if payment.receipt_code_secret else None
+    return receipt_code_of(payment)
+
+
+def receipt_code_of(payment: Payment) -> str | None:
+    """The code while the order waits for its delivery (the page of a gift shows it)."""
+    if payment.status not in (S.HELD, S.SHIPPED) or not payment.receipt_code_secret:
+        return None
+    return crypto.decrypt(payment.receipt_code_secret)
 
 
 def _max_attempts(payment: Payment) -> int:
@@ -512,7 +560,8 @@ def release(payment: Payment, *, actor=None, reason: str, _locked: bool = False)
                     },
                     link="/pro/wallet",
                 ),
-                notify(
+                payment.purpose != Purpose.GIFT
+                and notify(
                     payment.buyer,
                     "payments.completed",
                     {"reference": payment.reference},
@@ -667,8 +716,10 @@ __all__ = [
     "mark_delivered",
     "mark_not_paid",
     "mark_paid",
+    "pay_from_gift",
     "payment_for_courier",
     "receipt_code_for",
+    "receipt_code_of",
     "refund_full",
     "refund_partial",
     "release",

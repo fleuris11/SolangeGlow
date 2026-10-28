@@ -110,6 +110,36 @@ def mark_group_paid(
     return group
 
 
+@transaction.atomic
+def pay_group_from_gift(group: PaymentGroup, *, key: str) -> PaymentGroup:
+    """A whole cart paid with the money of a gift (ADR-014), in one go."""
+    group = PaymentGroup.objects.select_for_update().get(pk=group.pk)
+    members = list(group.payments.order_by("created_at", "pk"))
+    if (
+        group.paid_at
+        or group.currency != "XOF"
+        or any(p.status != S.PENDING_PAYMENT for p in members)
+    ):
+        raise errors.InvalidTransition()
+    group.provider = payment_services.GIFT
+    group.provider_reference = key[:120]
+    group.checkout_url = ""
+    group.save(update_fields=["provider", "provider_reference", "checkout_url", "updated_at"])
+    Payment.objects.filter(pk__in=[p.pk for p in members]).update(
+        provider=payment_services.GIFT, provider_reference=key[:120], checkout_url=""
+    )
+    for payment in members:
+        payment_services.mark_paid(
+            payment,
+            amount_minor=payment.total_minor,
+            currency=group.currency,
+            key=f"{key}:{payment.pk}",
+        )
+    group.paid_at = timezone.now()
+    group.save(update_fields=["paid_at", "updated_at"])
+    return group
+
+
 def mark_group_not_paid(group: PaymentGroup, *, reason: str) -> PaymentGroup:
     for payment in group.payments.all():
         payment_services.mark_not_paid(payment, reason=reason)

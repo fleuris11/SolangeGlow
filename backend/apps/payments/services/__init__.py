@@ -7,12 +7,13 @@
 - `request_payout`: the seller takes her money
 - `create_group`, `start_group_checkout`: a cart of several shops paid in one go
 - `buyer_fee`: the buyer protection shown before ordering
+- `pay_from_gift`, `pay_group_from_gift`: paid with the money of a gift (ADR-014)
 - `listen(source_type, callback, may_cancel=)`: hear about every change of status
 """
 
 from .common import can_move, forget, listen, may_cancel
 from .disputes import add_evidence, decide, open_dispute
-from .groups import create_group, group_status, start_group_checkout
+from .groups import create_group, group_status, pay_group_from_gift, start_group_checkout
 from .payments import (
     buyer_fee,
     cancel,
@@ -22,8 +23,10 @@ from .payments import (
     mark_delivered,
     mark_not_paid,
     mark_paid,
+    pay_from_gift,
     payment_for_courier,
     receipt_code_for,
+    receipt_code_of,
     refund_full,
     refund_partial,
     release,
@@ -54,8 +57,11 @@ __all__ = [
     "mark_paid",
     "may_cancel",
     "open_dispute",
+    "pay_from_gift",
+    "pay_group_from_gift",
     "payment_for_courier",
     "receipt_code_for",
+    "receipt_code_of",
     "refund_full",
     "refund_partial",
     "release",

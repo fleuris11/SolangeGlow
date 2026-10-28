@@ -2,7 +2,8 @@
 
 `provider_for(country)` reads the setting `payments.providers` (country → provider). A
 provider without keys raises `ProviderNotConfigured`; the test provider replaces it only
-where `PAYMENTS_FAKE_ENABLED` is on (development, tests, never production).
+where `PAYMENTS_FAKE_ENABLED` is on (development, tests, never production). « gift » is
+internal: never chosen for a country, it pays with the money of a gift (ADR-014).
 """
 
 from __future__ import annotations
@@ -25,15 +26,20 @@ from .base import (
 )
 from .fake import FakeProvider
 from .fedapay import FedaPayProvider
+from .gift import GiftProvider
 from .stripe import StripeConnectProvider
 
 PROVIDERS = {
     "fake": FakeProvider,
     "fedapay": FedaPayProvider,
+    "gift": GiftProvider,
     "stripe": StripeConnectProvider,
 }
+# Paid by the platform itself: no statement to reconcile, no webhook to receive.
+INTERNAL = frozenset({"gift"})
 
 __all__ = [
+    "INTERNAL",
     "PROVIDERS",
     "Checkout",
     "Event",
