@@ -311,13 +311,45 @@ Avec les données de démo (`seed_demo`, qui fabrique une vidéo de leçon de 3 
 5. Espace formatrice : connecte-toi comme Institut Prisca (+2290197000108) puis
    http://localhost:3000/fr/pro/academy (création en 5 étapes, statistiques, lives).
    La revue se fait dans l'admin, Académie, « Formations à vérifier ».
-6. Lives : http://localhost:3000/fr/academie/lives (inscription, salle d'attente ; la
-   vidéo en direct arrivera au prompt 14).
+6. Lives : http://localhost:3000/fr/academie/lives (inscription, salle d'attente, puis
+   la salle du live ; voir « Tester les appels et les lives »).
 
 Réglages : `academy.*` (prix plancher et plafond, prix du pass par pays, délai de
 remboursement, réussite des quiz, durée des leçons, rappels des lives) ; interrupteurs
-« academy » et « lives » par pays. `LIVE_PROVIDER` reste vide tant que la diffusion n'est
-pas branchée.
+« academy » et « lives » par pays.
+
+## Tester les appels et les lives en local
+
+LiveKit (serveur de vidéo) démarre avec le reste (`docker compose up`) ; il partage le
+réseau du conteneur `web` : après `docker compose restart web`, lancer aussi
+`docker compose restart livekit`. Deux navigateurs (ou une fenêtre privée) suffisent ;
+le navigateur demande le micro et la caméra.
+
+1. Appel : connecte-toi comme Awa (+2290197000201), ouvre la vitrine d'Aïcha
+   (http://localhost:3000/fr/aicha), « Écrire », puis « Appeler » ou « Vidéo ». Dans
+   l'autre navigateur, Aïcha (+2290197000101) voit « Awa t'appelle » : « Décrocher ».
+   Après l'appel, la conversation affiche « Appel vidéo, 1 min » ; « Mes appels » est
+   dans « Moi ». « Recevoir des appels » se coupe dans les réglages des notifications.
+2. Appel à trois : dans l'admin, une salle de litige (Messagerie, Conversations), bouton
+   « Appel à trois » ; la cliente et la vendeuse décrochent depuis l'appli.
+3. Live de formation : Institut Prisca (+2290197000108) programme un live dans
+   « Espace formatrice » ; une élève s'inscrit ; à l'heure (15 min avant au plus tôt),
+   « Passer en direct » dans la salle du live. L'élève écrit une question, lève la main ;
+   la formatrice donne la parole (le micro de l'élève s'ouvre) puis la reprend.
+4. Vente en live : Gloria (+2290196000102), « Ma boutique », onglet « Lives » :
+   programmer, ouvrir la salle, « Passer en direct », « Choisir les produits à montrer ».
+   Une visiteuse sans compte regarde depuis la boutique ; une cliente « Acheter » : le
+   paiement s'ouvre dans un nouvel onglet, le compteur « 1 achat » monte dans le live.
+5. Replay : les données de démo en ont deux (Gloria et Prisca). Pour enregistrer un vrai
+   live : `LIVEKIT_EGRESS=true` dans `.env`, puis `docker compose --profile replay up -d
+   egress` (image lourde, environ 1,5 Go).
+6. Faible connexion : avec « Économie de données » dans « Moi », la salle propose tout de
+   suite « Audio seul ».
+
+Réglages : `calls.*` (durée, sonnerie, personnes d'un appel de litige), `live.*` (durée,
+places, lives gratuits par mois, avance pour passer en direct), `academy.live_replay_days`,
+`shop.live_replay_days`, `rtc.token_ttl_seconds` ; limite « lives_per_month » de l'offre
+Premium ; interrupteurs « calls », « lives », « live_sales » par pays.
 
 ## Client de l'API (web)
 
@@ -381,7 +413,10 @@ backend/                Django
   apps/selection_france/ Sélection France : catalogue, moteur de prix, commandes vendues par
                         la plateforme, lots d'envoi, demandes spéciales, précommandes groupées
   apps/messaging/       conversations, messages, temps réel (WebSocket), demandes,
-                        réponses rapides, message d'absence, anti-fraude, appels (préparés)
+                        réponses rapides, message d'absence, anti-fraude, appels audio et
+                        vidéo (LiveKit), appel à trois des litiges, journal des appels
+  apps/live/            salle de live commune (formations et ventes) : diffusion, questions,
+                        mains levées, limites, replay
   assets/fonts/         polices de la marque (OFL) pour les affiches et stickers
   apps/<module>/        un module par grande fonctionnalité
   locale/               traductions (fr, en, sk)
