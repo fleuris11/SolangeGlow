@@ -84,10 +84,6 @@ export const unregisterLive = (liveId: string) =>
       params: { path: { live_id: liveId } },
     }),
   );
-export const joinLive = (liveId: string) =>
-  unwrap(
-    api.POST("/api/v1/academy/lives/{live_id}/join", { params: { path: { live_id: liveId } } }),
-  );
 
 // --- Trainer space -------------------------------------------------------------------------------
 

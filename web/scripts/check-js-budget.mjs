@@ -31,6 +31,7 @@ const DYNAMIC_PAGES = {
   "/[locale]/academie": "[locale]/(app)/academie",
   "/[locale]/academie/<course>": "[locale]/(app)/academie/[slug]",
   "/[locale]/certificat/<code>": "[locale]/(app)/certificat/[code]",
+  "/[locale]/live/<kind>/<live>": "[locale]/(chat)/live/[kind]/[id]",
 };
 const NEXT_DIR = ".next";
 

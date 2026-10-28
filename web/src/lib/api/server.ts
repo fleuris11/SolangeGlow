@@ -245,3 +245,10 @@ export async function tradesOnServer(locale: string) {
   const { data } = await api.GET("/api/v1/trades");
   return data ?? [];
 }
+
+/** Lives on air and coming soon in her country (home page band); empty when unreachable. */
+export async function upcomingLivesOnServer(locale: string) {
+  const api = await serverApi(locale);
+  const { data } = await api.GET("/api/v1/live/upcoming");
+  return data ?? [];
+}

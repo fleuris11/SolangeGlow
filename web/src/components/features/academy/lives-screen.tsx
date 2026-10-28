@@ -10,14 +10,7 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { Skeleton } from "@/components/ui/skeleton";
 import { SpeakButton } from "@/components/ui/speak-button";
 import { useToast } from "@/components/ui/toast";
-import {
-  getLiveRoom,
-  getLives,
-  joinLive,
-  registerLive,
-  unregisterLive,
-  type Live,
-} from "@/lib/api/academy";
+import { getLiveRoom, getLives, registerLive, unregisterLive, type Live } from "@/lib/api/academy";
 import { ApiError, hasSession } from "@/lib/api/client";
 import { rememberReturnPath } from "@/lib/auth/return-path";
 import { Link, usePathname, useRouter } from "@/lib/i18n/navigation";
@@ -186,16 +179,7 @@ export function LiveRoomScreen({ liveId }: { liveId: string }) {
     }
   };
 
-  const join = async () => {
-    setBusy(true);
-    try {
-      const { url } = await joinLive(liveId);
-      window.location.assign(url);
-    } catch (error) {
-      toast(error instanceof ApiError ? error.message : t("error"), "warning");
-      setBusy(false);
-    }
-  };
+  const ended = live.status === "ended";
 
   return (
     <article className="flex flex-col gap-6">
@@ -231,7 +215,9 @@ export function LiveRoomScreen({ liveId }: { liveId: string }) {
           className="bg-poudre flex flex-col items-center gap-3 rounded-2xl p-5 text-center"
         >
           <DoorOpen aria-hidden size={44} weight="duotone" className="text-hibiscus" />
-          {left > 0 ? (
+          {ended ? (
+            <p className="text-title font-bold">{t("over")}</p>
+          ) : left > 0 ? (
             <p className="text-title font-bold">
               {days > 0
                 ? t("countdownDays", { days, hours })
@@ -244,7 +230,8 @@ export function LiveRoomScreen({ liveId }: { liveId: string }) {
           ) : (
             <p className="text-title font-bold">{t("started")}</p>
           )}
-          {open && !room.broadcast_ready && <p>{t("comingSoon")}</p>}
+          {ended && <p>{t("replayHint")}</p>}
+          {open && !ended && !room.broadcast_ready && <p>{t("comingSoon")}</p>}
           {!open && room.registered && <p>{t("opensBefore")}</p>}
         </section>
       )}
@@ -252,16 +239,21 @@ export function LiveRoomScreen({ liveId }: { liveId: string }) {
       {live.status !== "cancelled" &&
         (room.registered ? (
           <div className="flex flex-col gap-3">
-            <Button
-              size="lg"
-              fullWidth
-              disabled={!open || busy || !room.broadcast_ready}
-              onClick={() => void join()}
-            >
-              <DoorOpen aria-hidden size={24} weight="bold" />
-              {t("join")}
-            </Button>
-            {!room.host && (
+            {ended || open || room.host ? (
+              <Link
+                href={room.room_link}
+                className={buttonClasses({ size: "lg", fullWidth: true })}
+              >
+                <DoorOpen aria-hidden size={24} weight="bold" />
+                {ended ? t("replay") : room.host ? t("hostRoom") : t("join")}
+              </Link>
+            ) : (
+              <Button size="lg" fullWidth disabled>
+                <DoorOpen aria-hidden size={24} weight="bold" />
+                {t("join")}
+              </Button>
+            )}
+            {!room.host && !ended && (
               <Button
                 variant="quiet"
                 fullWidth

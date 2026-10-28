@@ -10,6 +10,7 @@ import { cn } from "@/lib/cn";
 import { Link } from "@/lib/i18n/navigation";
 import { mediaSrc } from "@/lib/media";
 
+import { ShopLives } from "../live/shop-lives";
 import { BundleButton } from "./buy-buttons";
 import { DeliveryInfo } from "./delivery-info";
 import { ProductCard } from "./product-card";
@@ -58,6 +59,8 @@ export function ShopView({
           </p>
         )}
       </header>
+
+      <ShopLives lives={page.lives} />
 
       {page.categories.length > 1 && (
         <nav aria-label={t("categories")} className="-mx-4 overflow-x-auto px-4">

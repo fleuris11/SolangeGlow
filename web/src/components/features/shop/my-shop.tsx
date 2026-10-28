@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Broadcast,
   ChartBar,
   Eye,
   Moped,
@@ -51,9 +52,10 @@ import { Link } from "@/lib/i18n/navigation";
 import { mediaSrc } from "@/lib/media";
 import { formatMoney, parseMoney } from "@/lib/money";
 
+import { MySaleLivesTab } from "../live/my-sale-lives";
 import { OrderList } from "./orders";
 
-const TABS = ["products", "orders", "promotions", "delivery", "stats"] as const;
+const TABS = ["products", "orders", "lives", "promotions", "delivery", "stats"] as const;
 type Tab = (typeof TABS)[number];
 
 function useRun() {
@@ -776,6 +778,7 @@ function StatsTab({ currency }: { currency: string }) {
 const TAB_ICONS: Record<Tab, ReactNode> = {
   products: <Package aria-hidden size={20} weight="bold" />,
   orders: <Receipt aria-hidden size={20} weight="bold" />,
+  lives: <Broadcast aria-hidden size={20} weight="bold" />,
   promotions: <Tag aria-hidden size={20} weight="bold" />,
   delivery: <Truck aria-hidden size={20} weight="bold" />,
   stats: <ChartBar aria-hidden size={20} weight="bold" />,
@@ -850,6 +853,7 @@ export function MyShopScreen() {
       <div role="tabpanel">
         {tab === "products" && <ProductsTab />}
         {tab === "orders" && <OrderList role="seller" showTabs={false} />}
+        {tab === "lives" && <MySaleLivesTab />}
         {tab === "promotions" && <PromotionsTab shop={shop} />}
         {tab === "delivery" && <DeliveryTab shop={shop} onChange={setShop} />}
         {tab === "stats" && <StatsTab currency={shop.currency} />}

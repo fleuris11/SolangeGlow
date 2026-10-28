@@ -2,12 +2,18 @@ import { cookies } from "next/headers";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { FranceSelectionBand, GiftBand, JoinBand } from "@/components/features/home/bands";
+import { UpcomingLivesBand } from "@/components/features/live/upcoming-band";
 import { SearchBar } from "@/components/features/search/search-bar";
 import { FeedSection } from "@/components/features/social/feed-section";
 import { StoryStrip } from "@/components/features/social/story-strip";
 import { TradePetals } from "@/components/features/trades/trade-petals";
 import { SpeakButton } from "@/components/ui/speak-button";
-import { feedOnServer, selectionOnServer, storiesOnServer } from "@/lib/api/server";
+import {
+  feedOnServer,
+  selectionOnServer,
+  storiesOnServer,
+  upcomingLivesOnServer,
+} from "@/lib/api/server";
 import type { Locale } from "@/lib/i18n/routing";
 
 type Props = { params: Promise<{ locale: Locale }> };
@@ -22,10 +28,11 @@ export default async function HomePage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: "home" });
   const tFeed = await getTranslations({ locale, namespace: "social.feed" });
   const signedIn = (await cookies()).get("sg_signed_in")?.value === "1";
-  const [stories, feed, selection] = await Promise.all([
+  const [stories, feed, selection, lives] = await Promise.all([
     storiesOnServer(locale),
     feedOnServer(locale),
     selectionOnServer(locale).catch(() => null),
+    upcomingLivesOnServer(locale).catch(() => []),
   ]);
   // One product per aisle for the France Selection band.
   const picks = ["small_prices", "trending", "luxury"]
@@ -50,6 +57,7 @@ export default async function HomePage({ params }: Props) {
       )}
 
       <StoryStrip groups={stories} />
+      <UpcomingLivesBand lives={lives} />
       <FeedSection
         posts={feed.results}
         next={feed.next ?? null}

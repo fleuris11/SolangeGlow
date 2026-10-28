@@ -35,8 +35,12 @@ export const getCategories = () => unwrap(api.GET("/api/v1/shop/categories"));
 
 export const getCart = () => unwrap(api.GET("/api/v1/shop/cart"));
 
-export const addToCart = (body: { variant_id?: string; bundle_id?: string; quantity: number }) =>
-  unwrap(api.POST("/api/v1/shop/cart/items", { body }));
+export const addToCart = (body: {
+  variant_id?: string;
+  bundle_id?: string;
+  quantity: number;
+  sale_live_id?: string;
+}) => unwrap(api.POST("/api/v1/shop/cart/items", { body }));
 
 export const setCartQuantity = (itemId: string, quantity: number) =>
   unwrap(
