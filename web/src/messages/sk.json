@@ -540,7 +540,9 @@
       "quietTo": "Do",
       "quietSave": "Uložiť hodiny",
       "test": "Poslať testovacie upozornenie",
-      "testSent": "Testovacie upozornenie odoslané"
+      "testSent": "Testovacie upozornenie odoslané",
+      "calls": "Prijímať hovory",
+      "callsText": "Hlasové a videohovory v aplikácii, bez tvojho čísla."
     }
   },
   "contact": {
@@ -1292,7 +1294,8 @@
       "agenda": "Môj kalendár",
       "salon": "Môj salón (Glow Pro)",
       "courses": "Moje kurzy (Akadémia)",
-      "trainer": "Priestor lektorky"
+      "trainer": "Priestor lektorky",
+      "calls": "Moje hovory"
     }
   },
   "payments": {
@@ -1765,7 +1768,8 @@
         "orders": "Objednávky",
         "promotions": "Akcie",
         "delivery": "Odovzdanie",
-        "stats": "Čísla"
+        "stats": "Čísla",
+        "lives": "Live"
       },
       "products": {
         "add": "Pridať produkt",
@@ -3018,7 +3022,11 @@
       "unregister": "Odhlásiť sa",
       "full": "Plné",
       "signIn": "Prihlás sa do účtu, aby si sa mohla zapísať na live.",
-      "signInCta": "Prihlásiť sa"
+      "signInCta": "Prihlásiť sa",
+      "replayHint": "Prihlásené si môžu live pozrieť znova.",
+      "over": "Live skončil",
+      "replay": "Pozrieť záznam",
+      "hostRoom": "Otvoriť moju miestnosť live"
     },
     "studio": {
       "title": "Priestor lektorky",
@@ -3185,6 +3193,196 @@
       "issued": "Vydaný",
       "code": "Kód",
       "seeCourse": "Pozrieť kurz"
+    }
+  },
+  "calls": {
+    "pageTitle": "Hovor",
+    "audio": "Zavolať",
+    "video": "Video",
+    "error": "Hovor nefungoval. Skús to o chvíľu znova.",
+    "ringingFrom": "{name} ti volá",
+    "ongoing": "Prebieha hovor",
+    "answer": "Prijať",
+    "rejoin": "Vrátiť sa do hovoru",
+    "decline": "Odmietnuť",
+    "cameraRefused": "Kamera je zablokovaná. Povoľ ju v prehliadači.",
+    "micRefused": "Mikrofón je zablokovaný. Povoľ ho v prehliadači, aby si mohla hovoriť.",
+    "backToMessages": "Späť na správy",
+    "backToChat": "Späť do konverzácie",
+    "disputeCall": "Hovor k sporu",
+    "someone": "Niekto",
+    "endedAfter": "Hovor skončil, {time}",
+    "status": {
+      "ringing": "Zvoní…",
+      "ongoing": "Prebieha",
+      "ended": "Hovor skončil",
+      "missed": "Bez odpovede",
+      "declined": "Hovor odmietnutý",
+      "cancelled": "Hovor zrušený"
+    },
+    "incomingVideo": "Videohovor",
+    "incomingAudio": "Hlasový hovor",
+    "ringing": "Zvoní…",
+    "reconnecting": "Spojenie sa stratilo, obnovujeme…",
+    "connecting": "Pripájanie…",
+    "videoCall": "Videohovor",
+    "audioCall": "Hlasový hovor",
+    "videoOf": "Kamera: {name}",
+    "myCamera": "Moja kamera",
+    "here": "(tu)",
+    "endsSoon": "Hovor skončí o {time}",
+    "weak": "Slabé spojenie. Prepnúť len na zvuk?",
+    "audioOnly": "Len zvuk",
+    "allowSound": "Zapnúť zvuk",
+    "mute": "Stlmiť",
+    "unmute": "Zapnúť mikrofón",
+    "cameraOff": "Vypnúť kameru",
+    "cameraOn": "Zapnúť kameru",
+    "flip": "Otočiť",
+    "cancel": "Zrušiť hovor",
+    "hangUp": "Zavesiť",
+    "callingYou": "{name} ti volá",
+    "line": {
+      "audio": "Hlasový hovor, {minutes} min",
+      "video": "Videohovor, {minutes} min",
+      "missed": "Zmeškaný hovor",
+      "noAnswer": "Bez odpovede"
+    },
+    "log": {
+      "title": "Moje hovory",
+      "empty": "Zatiaľ žiadny hovor. Zavolaj z konverzácie.",
+      "minutes": "{minutes} min",
+      "older": "Staršie hovory"
+    },
+    "back": "Späť"
+  },
+  "live": {
+    "pageTitle": "Live",
+    "error": "Live sa nepodarilo otvoriť. Skús to o chvíľu znova.",
+    "homeLink": "Späť domov",
+    "back": "Späť",
+    "bySale": "Predaj naživo: {name}",
+    "byTraining": "Školenie s {name}",
+    "stage": "Video live",
+    "videoOf": "Kamera: {name}",
+    "replayOf": "Záznam « {title} »",
+    "startsIn": "Začína o {time}",
+    "startsSoon": "Čoskoro začína",
+    "audioOnlyOn": "Len zvuk: počúvaš bez obrazu",
+    "connecting": "Pripájanie…",
+    "waitingVideo": "Kamera sa načítava…",
+    "over": "Live skončil",
+    "replaySoon": "Záznam bude čoskoro.",
+    "noReplay": "Tento live nemá záznam.",
+    "cancelled": "Tento live je zrušený",
+    "onAir": "Naživo",
+    "viewers": "{count, plural, one {# osoba pozerá} few {# osoby pozerajú} other {# osôb pozerá}}",
+    "weak": "Slabé spojenie. Prepnúť len na zvuk?",
+    "audioOnly": "Len zvuk",
+    "backToVideo": "Späť na video",
+    "allowSound": "Zapnúť zvuk",
+    "cameraRefused": "Kamera je zablokovaná. Povoľ ju v prehliadači.",
+    "someone": "Divácka",
+    "hands": {
+      "raise": "Zdvihnúť ruku",
+      "lower": "Spustiť ruku",
+      "youSpeak": "Máš slovo: tvoj mikrofón je zapnutý.",
+      "giveBack": "Vrátiť slovo",
+      "title": "{count, plural, one {# zdvihnutá ruka} few {# zdvihnuté ruky} other {# zdvihnutých rúk}}",
+      "speaking": "má slovo",
+      "give": "Dať slovo",
+      "takeBack": "Vziať slovo späť"
+    },
+    "host": {
+      "start": "Spustiť live",
+      "startFrom": "Live môžeš spustiť od {time}.",
+      "mute": "Stlmiť",
+      "unmute": "Zapnúť mikrofón",
+      "cameraOff": "Vypnúť kameru",
+      "cameraOn": "Zapnúť kameru",
+      "flip": "Otočiť",
+      "end": "Ukončiť live",
+      "keepOn": "Pokračovať",
+      "endConfirm": "Áno, ukončiť"
+    },
+    "sale": {
+      "bought": "Niekto práve kúpil {product}",
+      "orders": "{count, plural, =0 {0 nákupov} one {# nákup} few {# nákupy} other {# nákupov}}",
+      "pinned": "Produkty práve teraz",
+      "shown": "Produkty ukázané počas live",
+      "buy": "Kúpiť",
+      "soldOut": "Vypredané",
+      "pick": "Ukázať moje produkty",
+      "pickHelp": "Zobrazia sa pod videom s tlačidlom « Kúpiť ».",
+      "revenue": "{count, plural, =0 {Zatiaľ žiadny predaj:} one {# predaj:} few {# predaje:} other {# predajov:}}",
+      "noProducts": "Žiadny produkt online. Pridaj ich v Mojom obchode.",
+      "pin": "Pripnúť",
+      "unpin": "Odopnúť",
+      "error": "Nepodarilo sa. Skús znova."
+    },
+    "questions": {
+      "title": "Otázky",
+      "titleSale": "Otázky a komentáre",
+      "label": "Napíš svoju otázku",
+      "send": "Odoslať",
+      "signIn": "Prihlás sa a píš",
+      "at": "v {time}",
+      "held": "Čaká na kontrolu",
+      "answered": "Zodpovedaná",
+      "markAnswered": "Zodpovedaná"
+    },
+    "buy": {
+      "error": "Nepodarilo sa. Skús znova.",
+      "choose": "Vyber",
+      "add": "Pridať do košíka",
+      "added": "Je v tvojom košíku",
+      "keepWatching": "Platba sa otvorí na novej karte: live tu pokračuje.",
+      "pay": "Zaplatiť košík",
+      "backToLive": "Späť na live",
+      "soldOut": "Tento produkt je vypredaný.",
+      "signIn": "Prihlás sa a nakupuj"
+    },
+    "home": {
+      "title": "Nadchádzajúce live",
+      "onAir": "Naživo",
+      "training": "Školenie",
+      "sale": "Predaj"
+    },
+    "shop": {
+      "title": "Live obchodu",
+      "onAir": "Práve naživo",
+      "replay": "Záznam k dispozícii",
+      "watch": "Pozrieť",
+      "open": "Pozrieť"
+    },
+    "mine": {
+      "error": "Tvoje live sa nepodarilo zobraziť. Skús znova.",
+      "planned": "Live naplánovaný",
+      "closed": "Predaj naživo zatiaľ nie je vo tvojej krajine otvorený.",
+      "quota": "Tento mesiac: {used} z {allowed} live (školenia a predaj spolu).",
+      "new": "Naplánovať live",
+      "title": "Názov live",
+      "when": "Dátum a čas",
+      "length": "Dĺžka",
+      "minutes": "{minutes} min",
+      "plan": "Naplánovať live",
+      "full": "Využila si svoje live na tento mesiac.",
+      "premium": "Glow Pro Premium ti dá viac",
+      "verify": "Tvoj obchod musí byť overený, aby si mohla predávať naživo.",
+      "empty": "Zatiaľ žiadny live",
+      "emptyHelp": "Ukáž svoje produkty naživo: klientky nakupujú bez opustenia live.",
+      "status": {
+        "scheduled": "Naplánovaný",
+        "live": "Naživo",
+        "ended": "Skončený",
+        "cancelled": "Zrušený"
+      },
+      "viewers": "Diváčky",
+      "orders": "Objednávky",
+      "sales": "Predaj počas live",
+      "seeReplay": "Pozrieť záznam",
+      "openRoom": "Otvoriť miestnosť live",
+      "cancel": "Zrušiť"
     }
   }
 }

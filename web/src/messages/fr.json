@@ -540,7 +540,9 @@
       "quietTo": "À",
       "quietSave": "Enregistrer les heures",
       "test": "M'envoyer une alerte de test",
-      "testSent": "Alerte de test envoyée"
+      "testSent": "Alerte de test envoyée",
+      "calls": "Recevoir des appels",
+      "callsText": "Appels audio et vidéo dans l'appli, sans ton numéro."
     }
   },
   "contact": {
@@ -1292,7 +1294,8 @@
       "agenda": "Mon agenda",
       "salon": "Mon salon (Glow Pro)",
       "courses": "Mes formations (Académie)",
-      "trainer": "Espace formatrice"
+      "trainer": "Espace formatrice",
+      "calls": "Mes appels"
     }
   },
   "payments": {
@@ -1765,7 +1768,8 @@
         "orders": "Commandes",
         "promotions": "Promotions",
         "delivery": "Remise",
-        "stats": "Chiffres"
+        "stats": "Chiffres",
+        "lives": "Lives"
       },
       "products": {
         "add": "Ajouter un produit",
@@ -3018,7 +3022,11 @@
       "unregister": "Me désinscrire",
       "full": "Complet",
       "signIn": "Connecte-toi pour t'inscrire au live.",
-      "signInCta": "Me connecter"
+      "signInCta": "Me connecter",
+      "replayHint": "Les inscrites peuvent revoir le live.",
+      "over": "Le live est fini",
+      "replay": "Voir le replay",
+      "hostRoom": "Ouvrir ma salle de live"
     },
     "studio": {
       "title": "Espace formatrice",
@@ -3185,6 +3193,196 @@
       "issued": "Délivré le",
       "code": "Code",
       "seeCourse": "Voir la formation"
+    }
+  },
+  "calls": {
+    "pageTitle": "Appel",
+    "audio": "Appeler",
+    "video": "Vidéo",
+    "error": "L'appel n'a pas marché. Réessaie dans un instant.",
+    "ringingFrom": "{name} t'appelle",
+    "ongoing": "Un appel est en cours",
+    "answer": "Décrocher",
+    "rejoin": "Revenir dans l'appel",
+    "decline": "Refuser",
+    "cameraRefused": "La caméra est bloquée. Autorise-la dans ton navigateur.",
+    "micRefused": "Le micro est bloqué. Autorise-le dans ton navigateur pour parler.",
+    "backToMessages": "Retour aux messages",
+    "backToChat": "Retour à la conversation",
+    "disputeCall": "Appel du litige",
+    "someone": "Quelqu'un",
+    "endedAfter": "Appel terminé, {time}",
+    "status": {
+      "ringing": "Ça sonne…",
+      "ongoing": "En cours",
+      "ended": "Appel terminé",
+      "missed": "Pas de réponse",
+      "declined": "Appel refusé",
+      "cancelled": "Appel annulé"
+    },
+    "incomingVideo": "Appel vidéo",
+    "incomingAudio": "Appel audio",
+    "ringing": "Ça sonne…",
+    "reconnecting": "Connexion perdue, on revient…",
+    "connecting": "Connexion…",
+    "videoCall": "Appel vidéo",
+    "audioCall": "Appel audio",
+    "videoOf": "Caméra de {name}",
+    "myCamera": "Ma caméra",
+    "here": "(là)",
+    "endsSoon": "Fin de l'appel dans {time}",
+    "weak": "Connexion faible. Passe en audio seul ?",
+    "audioOnly": "Audio seul",
+    "allowSound": "Activer le son",
+    "mute": "Couper le micro",
+    "unmute": "Remettre le micro",
+    "cameraOff": "Couper la caméra",
+    "cameraOn": "Remettre la caméra",
+    "flip": "Retourner",
+    "cancel": "Annuler l'appel",
+    "hangUp": "Raccrocher",
+    "callingYou": "{name} t'appelle",
+    "line": {
+      "audio": "Appel audio, {minutes} min",
+      "video": "Appel vidéo, {minutes} min",
+      "missed": "Appel manqué",
+      "noAnswer": "Pas de réponse"
+    },
+    "log": {
+      "title": "Mes appels",
+      "empty": "Aucun appel pour l'instant. Appelle depuis une conversation.",
+      "minutes": "{minutes} min",
+      "older": "Appels plus anciens"
+    },
+    "back": "Retour"
+  },
+  "live": {
+    "pageTitle": "Live",
+    "error": "Le live n'a pas pu s'ouvrir. Réessaie dans un instant.",
+    "homeLink": "Retour à l'accueil",
+    "back": "Retour",
+    "bySale": "Vente en live de {name}",
+    "byTraining": "Formation avec {name}",
+    "stage": "Vidéo du live",
+    "videoOf": "Caméra de {name}",
+    "replayOf": "Replay de « {title} »",
+    "startsIn": "Commence dans {time}",
+    "startsSoon": "Ça commence bientôt",
+    "audioOnlyOn": "Audio seul : tu écoutes sans l'image",
+    "connecting": "Connexion…",
+    "waitingVideo": "La caméra arrive…",
+    "over": "Le live est fini",
+    "replaySoon": "Le replay arrive bientôt.",
+    "noReplay": "Pas de replay pour ce live.",
+    "cancelled": "Ce live est annulé",
+    "onAir": "En direct",
+    "viewers": "{count, plural, one {# personne regarde} other {# personnes regardent}}",
+    "weak": "Connexion faible. Passe en audio seul ?",
+    "audioOnly": "Audio seul",
+    "backToVideo": "Revenir à la vidéo",
+    "allowSound": "Activer le son",
+    "cameraRefused": "La caméra est bloquée. Autorise-la dans ton navigateur.",
+    "someone": "Une spectatrice",
+    "hands": {
+      "raise": "Lever la main",
+      "lower": "Baisser la main",
+      "youSpeak": "Tu as la parole : ton micro est ouvert.",
+      "giveBack": "Rendre la parole",
+      "title": "{count, plural, one {# main levée} other {# mains levées}}",
+      "speaking": "a la parole",
+      "give": "Donner la parole",
+      "takeBack": "Reprendre la parole"
+    },
+    "host": {
+      "start": "Passer en direct",
+      "startFrom": "Tu pourras passer en direct à partir de {time}.",
+      "mute": "Couper le micro",
+      "unmute": "Remettre le micro",
+      "cameraOff": "Couper la caméra",
+      "cameraOn": "Remettre la caméra",
+      "flip": "Retourner",
+      "end": "Terminer le live",
+      "keepOn": "Continuer",
+      "endConfirm": "Oui, terminer"
+    },
+    "sale": {
+      "bought": "Quelqu'un vient d'acheter {product}",
+      "orders": "{count, plural, =0 {0 achat} one {# achat} other {# achats}}",
+      "pinned": "Produits du moment",
+      "shown": "Produits montrés pendant le live",
+      "buy": "Acheter",
+      "soldOut": "Épuisé",
+      "pick": "Montrer mes produits",
+      "pickHelp": "Ils s'affichent sous la vidéo, avec « Acheter ».",
+      "revenue": "{count, plural, =0 {Pas encore de vente :} one {# vente :} other {# ventes :}}",
+      "noProducts": "Aucun produit en ligne. Ajoute-en dans Ma boutique.",
+      "pin": "Épingler",
+      "unpin": "Retirer",
+      "error": "Ça n'a pas marché. Réessaie."
+    },
+    "questions": {
+      "title": "Questions",
+      "titleSale": "Questions et commentaires",
+      "label": "Écris ta question",
+      "send": "Envoyer",
+      "signIn": "Connecte-toi pour écrire",
+      "at": "à {time}",
+      "held": "En attente de vérification",
+      "answered": "Répondue",
+      "markAnswered": "Répondue"
+    },
+    "buy": {
+      "error": "Ça n'a pas marché. Réessaie.",
+      "choose": "Choisis",
+      "add": "Ajouter au panier",
+      "added": "C'est dans ton panier",
+      "keepWatching": "Le paiement s'ouvre dans un nouvel onglet : le live continue ici.",
+      "pay": "Payer mon panier",
+      "backToLive": "Revenir au live",
+      "soldOut": "Ce produit est épuisé.",
+      "signIn": "Connecte-toi pour acheter"
+    },
+    "home": {
+      "title": "Lives à venir",
+      "onAir": "En direct",
+      "training": "Formation",
+      "sale": "Vente"
+    },
+    "shop": {
+      "title": "Lives de la boutique",
+      "onAir": "En direct maintenant",
+      "replay": "Replay disponible",
+      "watch": "Revoir",
+      "open": "Voir"
+    },
+    "mine": {
+      "error": "Tes lives n'ont pas pu s'afficher. Réessaie.",
+      "planned": "Live programmé",
+      "closed": "Les ventes en live ne sont pas encore ouvertes dans ton pays.",
+      "quota": "Ce mois-ci : {used} live(s) sur {allowed} (formations et ventes ensemble).",
+      "new": "Programmer un live",
+      "title": "Titre du live",
+      "when": "Date et heure",
+      "length": "Durée",
+      "minutes": "{minutes} min",
+      "plan": "Programmer le live",
+      "full": "Tu as utilisé tes lives du mois.",
+      "premium": "Glow Pro Premium t'en donne plus",
+      "verify": "Ta boutique doit être vérifiée pour vendre en live.",
+      "empty": "Aucun live pour l'instant",
+      "emptyHelp": "Montre tes produits en direct : tes clientes achètent sans quitter le live.",
+      "status": {
+        "scheduled": "Programmé",
+        "live": "En direct",
+        "ended": "Terminé",
+        "cancelled": "Annulé"
+      },
+      "viewers": "Spectatrices",
+      "orders": "Commandes",
+      "sales": "Ventes du live",
+      "seeReplay": "Voir le replay",
+      "openRoom": "Ouvrir la salle du live",
+      "cancel": "Annuler"
     }
   }
 }

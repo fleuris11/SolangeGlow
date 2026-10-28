@@ -540,7 +540,9 @@
       "quietTo": "To",
       "quietSave": "Save the hours",
       "test": "Send me a test alert",
-      "testSent": "Test alert sent"
+      "testSent": "Test alert sent",
+      "calls": "Receive calls",
+      "callsText": "Audio and video calls in the app, without your number."
     }
   },
   "contact": {
@@ -1292,7 +1294,8 @@
       "agenda": "My agenda",
       "salon": "My salon (Glow Pro)",
       "courses": "My courses (Academy)",
-      "trainer": "Trainer space"
+      "trainer": "Trainer space",
+      "calls": "My calls"
     }
   },
   "payments": {
@@ -1765,7 +1768,8 @@
         "orders": "Orders",
         "promotions": "Promotions",
         "delivery": "Hand-over",
-        "stats": "Numbers"
+        "stats": "Numbers",
+        "lives": "Lives"
       },
       "products": {
         "add": "Add a product",
@@ -3018,7 +3022,11 @@
       "unregister": "Unregister",
       "full": "Full",
       "signIn": "Sign in to register for the live.",
-      "signInCta": "Sign in"
+      "signInCta": "Sign in",
+      "replayHint": "Registered students can watch the live again.",
+      "over": "The live is over",
+      "replay": "See the replay",
+      "hostRoom": "Open my live room"
     },
     "studio": {
       "title": "Trainer space",
@@ -3185,6 +3193,196 @@
       "issued": "Issued on",
       "code": "Code",
       "seeCourse": "See the course"
+    }
+  },
+  "calls": {
+    "pageTitle": "Call",
+    "audio": "Call",
+    "video": "Video",
+    "error": "The call did not work. Try again in a moment.",
+    "ringingFrom": "{name} is calling you",
+    "ongoing": "A call is going on",
+    "answer": "Answer",
+    "rejoin": "Go back to the call",
+    "decline": "Decline",
+    "cameraRefused": "The camera is blocked. Allow it in your browser.",
+    "micRefused": "The microphone is blocked. Allow it in your browser to talk.",
+    "backToMessages": "Back to messages",
+    "backToChat": "Back to the conversation",
+    "disputeCall": "Dispute call",
+    "someone": "Someone",
+    "endedAfter": "Call over, {time}",
+    "status": {
+      "ringing": "Ringing…",
+      "ongoing": "Going on",
+      "ended": "Call over",
+      "missed": "No answer",
+      "declined": "Call declined",
+      "cancelled": "Call cancelled"
+    },
+    "incomingVideo": "Video call",
+    "incomingAudio": "Audio call",
+    "ringing": "Ringing…",
+    "reconnecting": "Connection lost, coming back…",
+    "connecting": "Connecting…",
+    "videoCall": "Video call",
+    "audioCall": "Audio call",
+    "videoOf": "Camera of {name}",
+    "myCamera": "My camera",
+    "here": "(here)",
+    "endsSoon": "The call ends in {time}",
+    "weak": "Weak connection. Switch to audio only?",
+    "audioOnly": "Audio only",
+    "allowSound": "Turn the sound on",
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "cameraOff": "Camera off",
+    "cameraOn": "Camera on",
+    "flip": "Flip",
+    "cancel": "Cancel the call",
+    "hangUp": "Hang up",
+    "callingYou": "{name} is calling you",
+    "line": {
+      "audio": "Audio call, {minutes} min",
+      "video": "Video call, {minutes} min",
+      "missed": "Missed call",
+      "noAnswer": "No answer"
+    },
+    "log": {
+      "title": "My calls",
+      "empty": "No call yet. Call from a conversation.",
+      "minutes": "{minutes} min",
+      "older": "Older calls"
+    },
+    "back": "Back"
+  },
+  "live": {
+    "pageTitle": "Live",
+    "error": "The live could not open. Try again in a moment.",
+    "homeLink": "Back home",
+    "back": "Back",
+    "bySale": "Sales live of {name}",
+    "byTraining": "Training with {name}",
+    "stage": "Video of the live",
+    "videoOf": "Camera of {name}",
+    "replayOf": "Replay of « {title} »",
+    "startsIn": "Starts in {time}",
+    "startsSoon": "Starting soon",
+    "audioOnlyOn": "Audio only: you listen without the picture",
+    "connecting": "Connecting…",
+    "waitingVideo": "The camera is coming…",
+    "over": "The live is over",
+    "replaySoon": "The replay is coming soon.",
+    "noReplay": "No replay for this live.",
+    "cancelled": "This live is cancelled",
+    "onAir": "On air",
+    "viewers": "{count, plural, one {# person watching} other {# people watching}}",
+    "weak": "Weak connection. Switch to audio only?",
+    "audioOnly": "Audio only",
+    "backToVideo": "Back to the video",
+    "allowSound": "Turn the sound on",
+    "cameraRefused": "The camera is blocked. Allow it in your browser.",
+    "someone": "A viewer",
+    "hands": {
+      "raise": "Raise my hand",
+      "lower": "Lower my hand",
+      "youSpeak": "You have the floor: your microphone is on.",
+      "giveBack": "Give the floor back",
+      "title": "{count, plural, one {# raised hand} other {# raised hands}}",
+      "speaking": "has the floor",
+      "give": "Give the floor",
+      "takeBack": "Take the floor back"
+    },
+    "host": {
+      "start": "Go on air",
+      "startFrom": "You can go on air from {time}.",
+      "mute": "Mute",
+      "unmute": "Unmute",
+      "cameraOff": "Camera off",
+      "cameraOn": "Camera on",
+      "flip": "Flip",
+      "end": "End the live",
+      "keepOn": "Keep going",
+      "endConfirm": "Yes, end it"
+    },
+    "sale": {
+      "bought": "Someone just bought {product}",
+      "orders": "{count, plural, =0 {0 orders} one {# order} other {# orders}}",
+      "pinned": "Products right now",
+      "shown": "Products shown during the live",
+      "buy": "Buy",
+      "soldOut": "Sold out",
+      "pick": "Show my products",
+      "pickHelp": "They show under the video, with « Buy ».",
+      "revenue": "{count, plural, =0 {No sale yet:} one {# sale:} other {# sales:}}",
+      "noProducts": "No product online. Add some in My shop.",
+      "pin": "Pin",
+      "unpin": "Take off",
+      "error": "That did not work. Try again."
+    },
+    "questions": {
+      "title": "Questions",
+      "titleSale": "Questions and comments",
+      "label": "Write your question",
+      "send": "Send",
+      "signIn": "Sign in to write",
+      "at": "at {time}",
+      "held": "Waiting for a check",
+      "answered": "Answered",
+      "markAnswered": "Answered"
+    },
+    "buy": {
+      "error": "That did not work. Try again.",
+      "choose": "Choose",
+      "add": "Add to cart",
+      "added": "It is in your cart",
+      "keepWatching": "The payment opens in a new tab: the live goes on here.",
+      "pay": "Pay my cart",
+      "backToLive": "Back to the live",
+      "soldOut": "This product is sold out.",
+      "signIn": "Sign in to buy"
+    },
+    "home": {
+      "title": "Coming lives",
+      "onAir": "On air",
+      "training": "Training",
+      "sale": "Sale"
+    },
+    "shop": {
+      "title": "Lives of the shop",
+      "onAir": "On air now",
+      "replay": "Replay available",
+      "watch": "Watch",
+      "open": "See"
+    },
+    "mine": {
+      "error": "Your lives could not show. Try again.",
+      "planned": "Live planned",
+      "closed": "Sales lives are not open in your country yet.",
+      "quota": "This month: {used} of {allowed} lives (trainings and sales together).",
+      "new": "Plan a live",
+      "title": "Title of the live",
+      "when": "Date and time",
+      "length": "Length",
+      "minutes": "{minutes} min",
+      "plan": "Plan the live",
+      "full": "You have used your lives of the month.",
+      "premium": "Glow Pro Premium gives you more",
+      "verify": "Your shop must be verified to sell live.",
+      "empty": "No live yet",
+      "emptyHelp": "Show your products live: your clients buy without leaving the live.",
+      "status": {
+        "scheduled": "Planned",
+        "live": "On air",
+        "ended": "Over",
+        "cancelled": "Cancelled"
+      },
+      "viewers": "Viewers",
+      "orders": "Orders",
+      "sales": "Sales of the live",
+      "seeReplay": "See the replay",
+      "openRoom": "Open the live room",
+      "cancel": "Cancel"
     }
   }
 }
