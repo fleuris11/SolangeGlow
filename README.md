@@ -351,6 +351,38 @@ places, lives gratuits par mois, avance pour passer en direct), `academy.live_re
 `shop.live_replay_days`, `rtc.token_ttl_seconds` ; limite « lives_per_month » de l'offre
 Premium ; interrupteurs « calls », « lives », « live_sales » par pays.
 
+## Tester les cadeaux (diaspora) en local
+
+Les données de démo contiennent trois cadeaux de Grâce (Paris, +33612340204) : une
+prestation chez Aïcha pour Fifamè, une carte cadeau Glow de 30 € pour Awa, et un cadeau
+de fête des mères qui partira dans trois semaines.
+
+1. Offrir : connecte-toi comme Grâce. Choisis un point de départ :
+   - « Moi » puis « Mes cadeaux », puis « Offrir un cadeau » (carte cadeau Glow) ;
+   - la vitrine d'Aïcha (http://localhost:3000/fr/aicha), « Offrir une prestation » ;
+   - une fiche produit, « Offrir ce produit ».
+
+   Le parcours a 4 étapes : quoi, pour qui, message (vocal ou vidéo) et date, paiement en
+   euros. Sur la page de paiement de test, choisis « Paiement réussi ».
+2. Le message de la bénéficiaire arrive dans les journaux du worker
+   (`docker compose logs worker`). La page de suivi propose aussi « Envoyer sur
+   WhatsApp » et « Copier le lien ».
+3. Recevoir : ouvre le lien dans une fenêtre privée (sans compte). L'enveloppe s'ouvre.
+   - Prestation : choisir un créneau, c'est déjà payé.
+   - Produit : donner son adresse.
+   - Carte : le code s'affiche.
+4. Carte cadeau Glow : au paiement d'un panier (étape 3 de la commande) ou d'un
+   paiement en attente, touche « J'ai une carte cadeau Glow ». Pour un acompte de
+   rendez-vous, tape le code dans le champ « carte cadeau ».
+5. Preuve de plaisir : la pro termine le rendez-vous et ajoute une photo du résultat
+   (agenda). La bénéficiaire voit « Envoyer une photo à Grâce ? » sur sa page.
+6. Admin : section « Cadeaux » (liste, utilisations, « Renvoyer le lien »,
+   « Annuler et rembourser en euros », montant en FCFA à couvrir).
+
+Réglages `gifts.*` : taux EUR/XOF, validité, délai d'annulation, montants de la carte,
+durée du message, envoi programmé, rappel, pays, compte vendeur. Les frais de 6 % sont
+une règle de prix « Gifts from abroad ». L'interrupteur « gifts » se règle par pays.
+
 ## Client de l'API (web)
 
 Les types du client web sont générés depuis le schéma de l'API. Après toute
@@ -417,6 +449,8 @@ backend/                Django
                         vidéo (LiveKit), appel à trois des litiges, journal des appels
   apps/live/            salle de live commune (formations et ventes) : diffusion, questions,
                         mains levées, limites, replay
+  apps/gifts/           cadeaux de la diaspora : prestation, produit ou carte cadeau Glow
+                        payés en euros, utilisés en FCFA au Bénin, preuve de plaisir
   assets/fonts/         polices de la marque (OFL) pour les affiches et stickers
   apps/<module>/        un module par grande fonctionnalité
   locale/               traductions (fr, en, sk)
