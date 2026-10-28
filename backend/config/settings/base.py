@@ -68,6 +68,7 @@ LOCAL_APPS = [
     "apps.selection_france",
     "apps.academy",
     "apps.live",
+    "apps.gifts",
     "apps.booking",
     "apps.glowpro",
     "apps.salon",
@@ -255,6 +256,8 @@ SPECTACULAR_SETTINGS = {
     # One name for every language field (the CI fails on schema warnings).
     "ENUM_NAME_OVERRIDES": {
         "LanguageEnum": LANGUAGES,
+        "GiftKindEnum": "apps.gifts.models.Gift.Kind",
+        "GiftStatusEnum": "apps.gifts.models.Gift.Status",
         "MediaKindEnum": "apps.core.media.models.MediaAsset.Kind",
         "MediaStatusEnum": "apps.core.media.models.MediaAsset.Status",
         "ProKindEnum": "apps.pros.models.ProProfile.Kind",
@@ -478,6 +481,11 @@ CELERY_BEAT_SCHEDULE = {
     "messaging.calls_minutely": {
         "task": "apps.messaging.tasks.calls_minutely",
         "schedule": crontab(),
+    },
+    # Diaspora gifts (ADR-014): sent on the chosen day, reminders, past their date.
+    "gifts.run": {
+        "task": "apps.gifts.tasks.run",
+        "schedule": crontab(minute="*/5"),
     },
 }
 
@@ -830,6 +838,22 @@ UNFOLD = {
                         "title": _("Training lives"),
                         "icon": "live_tv",
                         "link": reverse_lazy("admin:academy_livesession_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("Gifts"),
+                "separator": True,
+                "items": [
+                    {
+                        "title": _("Gifts from abroad"),
+                        "icon": "redeem",
+                        "link": reverse_lazy("admin:gifts_gift_changelist"),
+                    },
+                    {
+                        "title": _("Uses of gifts"),
+                        "icon": "receipt_long",
+                        "link": reverse_lazy("admin:gifts_giftuse_changelist"),
                     },
                 ],
             },

@@ -107,6 +107,13 @@ PURPOSES: dict[str, Purpose] = {
         ),
         uploadable=False,
     ),
+    # Diaspora gifts (module 9): a voice or video message, a photo of the result.
+    "gift_message": Purpose(
+        ("audio", "video"),
+        "private",
+        Duration(max_setting="gifts.message_max_seconds", max_default=60),
+    ),
+    "gift_proof": Purpose(("image",), "private"),
     "course_resource": Purpose(
         ("document",),
         "private",

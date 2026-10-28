@@ -27,6 +27,8 @@ DEFAULT_RATES = {
     "live": "240/minute",
     "live_write": "20/minute",
     "calls": "60/minute",
+    "gifts": "60/minute",
+    "gift_code": "20/hour",
 }
 
 
