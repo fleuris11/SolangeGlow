@@ -149,11 +149,15 @@ def book(
     post=None,
     status: str | None = None,
     gift_card_code: str = "",
+    prepaid_minor: int | None = None,
+    prepay=None,
 ) -> Appointment:
     """Books a service: checks again the exact time under a lock (no double booking).
 
     `by_pro`: the pro (or her collaborator) books for a client on the phone: no notice,
     no deposit, confirmed at once. `status`: forced (the waiting list keeps a place).
+    `prepay(appointment) -> Payment`: an offered service (gifts, ADR-014), paid in full at
+    `prepaid_minor` (the price paid by the giver), even by a guest.
     """
     booking_settings = BookingSettings.objects.select_for_update().get_or_create(pro=pro)[0]
     pro._booking_settings = booking_settings
@@ -166,7 +170,7 @@ def book(
     phone = ""
     guest = None
     if user is None:
-        if by_pro is None and not booking_settings.accepts_guests:
+        if by_pro is None and prepay is None and not booking_settings.accepts_guests:
             raise errors.GuestsNotAccepted()
         phone = common.normalize_phone(guest_phone)
         name = (guest_name or "").strip()[:150]
@@ -189,12 +193,14 @@ def book(
     discount = 0 if by_pro is not None else availability._discount(pro, start, timezone.now())
     price = price_of(service, options, discount)
     deposit = 0
-    if by_pro is None:
+    if prepay is not None:
+        discount, price, deposit = 0, prepaid_minor, prepaid_minor
+    elif by_pro is None:
         forced = forced_deposit_percent(pro, user=user, phone=phone)
         deposit = deposit_of(service, price, forced_percent=forced)
         if deposit and not gift_card_code and (user is None or not can_purchase(user)):
             raise errors.DepositNeedsAccount()
-    covered = bool(deposit and gift_card_code)
+    covered = bool(deposit and (gift_card_code or prepay is not None))
 
     if status is None:
         if by_pro is not None:
@@ -232,7 +238,10 @@ def book(
             common.write_steps(appointment, slot)
     except IntegrityError as exc:
         raise errors.SlotTaken() from exc
-    if covered and not common.cover_deposit(appointment, gift_card_code, user):
+    if prepay is not None:
+        appointment.payment = prepay(appointment)
+        appointment.save(update_fields=["payment", "updated_at"])
+    elif covered and not common.cover_deposit(appointment, gift_card_code, user):
         raise errors.GiftCardRefused()
     if status == A.AWAITING_DEPOSIT:
         _start_deposit(appointment, user)

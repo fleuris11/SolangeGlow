@@ -20,7 +20,7 @@ from apps.payments.models import PaymentGroup, Purpose
 
 from .. import errors
 from ..models import CartItem, DeliveryMode, DeliveryZone, FlashSale, Order, OrderLine, Variant
-from ..selectors import shop_enabled
+from ..selectors import on_sale, shop_enabled, shop_of
 from .cart import CartShop, cart_summary
 from .promotions import discount_for, find_promo
 
@@ -270,3 +270,104 @@ def place_orders(
         orders.append(order)
     group = payment_services.create_group(user, payments)
     return group, orders
+
+
+@transaction.atomic
+def place_gift_order(
+    buyer,
+    variant_id,
+    *,
+    quantity: int,
+    items_minor: int,
+    delivery_mode: str,
+    zone_id=None,
+    delivery_minor: int = 0,
+    address: str = "",
+    landmarks: str = "",
+    phone: str = "",
+    note: str = "",
+) -> Order:
+    """An offered product (gifts, ADR-014): one order at the price paid by the person who
+    offers it (she is the client, abroad), delivered to the person who receives it."""
+    variant = (
+        Variant.objects.select_related("product__pro", "product__category")
+        .filter(pk=variant_id, is_active=True)
+        .first()
+    )
+    if variant is None:
+        raise errors.Unavailable(details={"title": ""})
+    product = variant.product
+    pro = product.pro
+    shop = shop_of(pro)
+    title = product.title
+    sellable = on_sale().filter(pk=product.pk).exists()
+    if not sellable or not shop_enabled(pro.country) or not shop.is_open:
+        raise errors.Unavailable(details={"title": title})
+    zone = None
+    if delivery_mode != DeliveryMode.PICKUP:
+        zone = DeliveryZone.objects.filter(
+            pk=zone_id, shop=shop, mode=delivery_mode, is_active=True
+        ).first()
+        if zone is None:
+            raise errors.ZoneNeeded()
+    address = re.sub(r"\s+", " ", address or "").strip()[:255]
+    phone = normalize_phone(phone) if phone else ""
+    delivered = delivery_mode != DeliveryMode.PICKUP
+    if delivered and (not address or not phone):
+        raise errors.AddressNeeded()
+    if not Variant.objects.filter(pk=variant.pk, stock__gte=quantity).update(
+        stock=F("stock") - quantity
+    ):
+        raise errors.OutOfStock(details={"title": title, "left": variant.stock})
+    order_id = uuid.uuid4()
+    category = product.category.key if product.category_id else ""
+    payment = payment_services.create_payment(
+        buyer,
+        pro.user,
+        purpose=Purpose.ORDER,
+        items_minor=items_minor,
+        currency=product.currency,
+        description=f"{pro.display_name} — {title} x{quantity}"[:200],
+        delivery_minor=delivery_minor,
+        delivery_mode=delivery_mode,
+        category=category,
+        source_type="order",
+        source_id=order_id,
+        prep_days=product.prep_days,
+        with_buyer_fee=False,
+    )
+    order = Order.objects.create(
+        id=order_id,
+        reference=payment.reference,
+        buyer=buyer,
+        pro=pro,
+        payment=payment,
+        currency=product.currency,
+        subtotal_minor=items_minor,
+        items_minor=items_minor,
+        delivery_minor=delivery_minor,
+        delivery_mode=delivery_mode,
+        zone=zone,
+        zone_name=zone.name if zone else "",
+        partner_name=shop.partner_name if delivery_mode == DeliveryMode.PARTNER else "",
+        address=address if delivered else "",
+        landmarks=(landmarks or "").strip()[:500] if delivered else "",
+        contact_phone=phone if delivered else "",
+        note=(note or "").strip()[:300],
+        prep_days=product.prep_days,
+    )
+    first = product.photos.first()
+    OrderLine.objects.create(
+        order=order,
+        product=product,
+        variant=variant,
+        title=title[:120],
+        variant_label=variant.label[:140],
+        photo=first.media if first else None,
+        category_key=category,
+        unit_price_minor=items_minor // quantity,
+        quantity=quantity,
+        total_minor=items_minor,
+    )
+    record("shop.order_created", order, actor=buyer, metadata={"gift": True})
+    return order

@@ -228,6 +228,37 @@ def place_order(
     )
 
 
+@transaction.atomic
+def place_gift_order(
+    buyer, product_id, *, pickup_point_id, unit_price: int, option: str = ""
+) -> SelectionOrder:
+    """An offered product (gifts, ADR-014): bought abroad at the price paid by the person
+    who offers it, collected at a pick-up point in Benin by the person who receives it."""
+    product = selectors.on_sale().filter(pk=product_id).first()
+    if product is None:
+        raise errors.ProductNotFound()
+    _check_category(product.category)
+    if product.availability != SelectionProduct.Availability.AVAILABLE:
+        raise errors.OutOfStock()
+    option = (option or "").strip()
+    if (product.options and option not in product.options) or (not product.options and option):
+        raise errors.InvalidChoice()
+    return _create(
+        buyer,
+        title=product.title,
+        category=product.category,
+        option=option,
+        quantity=1,
+        unit_price=unit_price,
+        mode=ShippingMode.GROUPED,
+        point=_pickup(pickup_point_id),
+        merchant_name=product.merchant_name,
+        merchant_url=product.merchant_url,
+        purchase_cents=product.purchase_price_cents,
+        product=product,
+    )
+
+
 def start_payment(order: SelectionOrder, buyer) -> SelectionOrder:
     """The payment page (the test page in development)."""
     payment_services.start_checkout(order.payment, buyer=buyer)
