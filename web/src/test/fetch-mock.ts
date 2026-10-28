@@ -81,6 +81,7 @@ export const ME = {
   notify_whatsapp: true,
   notify_email: true,
   notify_push: true,
+  accept_calls: true,
   roles: ["client"],
   is_pro: false,
   photo: null,

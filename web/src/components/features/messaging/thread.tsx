@@ -36,6 +36,7 @@ import { isConnected, send as sendEvent, subscribe } from "@/lib/messaging/bus";
 import * as outbox from "@/lib/messaging/outbox";
 import { mediaSrc } from "@/lib/media";
 
+import { ActiveCallBanner, CallButtons } from "../calls/call-bar";
 import { Composer, type Attachment } from "./composer";
 import { MessageBubble, type Delivery } from "./message-bubble";
 
@@ -289,7 +290,7 @@ export function Thread({
 
   return (
     <div className="flex min-h-dvh flex-col">
-      <header className="bg-carte border-trait sticky top-0 z-10 flex items-center gap-3 border-b px-2 py-2">
+      <header className="bg-carte border-trait sticky top-0 z-10 flex items-center gap-1 border-b px-2 py-2 sm:gap-3">
         <Link
           href="/messages"
           aria-label={t("back")}
@@ -308,16 +309,20 @@ export function Thread({
                 />
               )}
             </span>
-            <div className="flex min-w-0 flex-1 flex-col">
+            <div className="ml-2 flex min-w-0 flex-1 flex-col">
               <h1 className="truncate font-bold">{data.title}</h1>
               <p className="text-mention text-prune-doux truncate" aria-live="polite">
                 {subtitle}
               </p>
             </div>
+            <CallButtons conversationId={conversationId} />
             {person?.pro_slug && (
               <Link
                 href={`/${person.pro_slug}`}
-                className={buttonClasses({ variant: "quiet", className: "shrink-0" })}
+                className={buttonClasses({
+                  variant: "quiet",
+                  className: "w-12 shrink-0 px-0 sm:w-auto sm:px-5",
+                })}
               >
                 <Storefront aria-hidden size={22} weight="bold" />
                 <span className="sr-only sm:not-sr-only">{t("showcase")}</span>
@@ -328,6 +333,8 @@ export function Thread({
           <Skeleton className="h-10 flex-1" />
         )}
       </header>
+
+      <ActiveCallBanner conversationId={conversationId} />
 
       {data?.payment_warning && (
         <div className="bg-poudre mx-4 mt-3 flex gap-3 rounded-2xl p-4" role="note">
@@ -414,6 +421,7 @@ export function Thread({
                   text: item.body.text ?? "",
                   media: null,
                   share: null,
+                  call: null,
                   client_id: item.clientId,
                   fraud_labels: [],
                   is_automatic: false,

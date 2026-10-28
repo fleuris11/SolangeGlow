@@ -6,7 +6,7 @@ import { routing } from "@/lib/i18n/routing";
 
 type Props = { children: ReactNode; params: Promise<{ locale: string }> };
 
-/** A conversation fills the screen: its own header, the messages, the keyboard. */
+/** Full screen without menu: a conversation, a call, a live room (their own header). */
 export default function ChatLayout({ children, params }: Props) {
   const { locale } = use(params);
   setRequestLocale(hasLocale(routing.locales, locale) ? locale : routing.defaultLocale);

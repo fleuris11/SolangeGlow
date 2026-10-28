@@ -4,6 +4,15 @@
  */
 import type { Message } from "@/lib/api/messaging";
 
+/** A call changed (rings, answered, over): screens read it again. */
+export type CallEvent = {
+  id: string;
+  kind: "audio" | "video";
+  status: string;
+  caller_id: string | null;
+  conversation_id: string;
+};
+
 export type MessagingEvent =
   | { type: "hello"; count: number; requests: number }
   | { type: "unread"; count: number; requests: number }
@@ -18,6 +27,7 @@ export type MessagingEvent =
   | { type: "typing"; conversation: string; user: string }
   | { type: "presence"; user: string; online: boolean; last_seen: string | null }
   | { type: "conversation"; conversation: string; status: string }
+  | { type: "call_incoming" | "call"; call: CallEvent }
   | { type: "connected" }
   | { type: "disconnected" };
 

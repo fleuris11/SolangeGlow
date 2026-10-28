@@ -5,6 +5,7 @@ import {
   EnvelopeSimple,
   MoonStars,
   PaperPlaneTilt,
+  Phone,
   WhatsappLogo,
 } from "@phosphor-icons/react";
 import { useTranslations } from "next-intl";
@@ -97,6 +98,13 @@ export function NotificationSettings({ me }: { me: Me }) {
           checked={me.notify_whatsapp}
           disabled={!me.phone}
           onChange={(value) => void save({ notify_whatsapp: value })}
+        />
+        <SwitchRow
+          icon={<Phone size={28} weight="duotone" />}
+          label={t("calls")}
+          description={t("callsText")}
+          checked={me.accept_calls}
+          onChange={(value) => void save({ accept_calls: value })}
         />
       </div>
 

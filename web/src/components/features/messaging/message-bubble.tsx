@@ -20,6 +20,7 @@ import type { Message } from "@/lib/api/messaging";
 import { cn } from "@/lib/cn";
 import { mediaSrc, voiceSrc } from "@/lib/media";
 
+import { CallLine } from "./call-line";
 import { ShareCardView } from "./share-card";
 
 export type Delivery = "waiting" | "failed" | "sent" | "received" | "read";
@@ -70,6 +71,10 @@ export function MessageBubble({ message, mine, delivery, onDelete, onReport, onR
   const time = new Intl.DateTimeFormat(locale, { timeStyle: "short" }).format(
     new Date(message.created_at),
   );
+
+  if (message.kind === "call" && message.call) {
+    return <CallLine call={message.call} mine={mine} time={time} />;
+  }
 
   if (message.kind === "system") {
     return (

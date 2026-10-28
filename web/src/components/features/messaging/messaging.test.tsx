@@ -35,6 +35,7 @@ const message = (overrides: Partial<Message> = {}): Message => ({
   text: "Bonjour, je suis libre samedi",
   media: null,
   share: null,
+  call: null,
   client_id: null,
   fraud_labels: [],
   is_automatic: false,
