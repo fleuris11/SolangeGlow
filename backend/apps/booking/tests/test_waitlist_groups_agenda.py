@@ -66,6 +66,8 @@ def test_a_freed_place_goes_to_the_first_waiting_client(clock):
     svc = service(pro, ("work", 60))
     taken = full_day(pro, svc)
     first = waitlist.join(pro, svc.pk, MONDAY, guest_name="Inès", guest_phone=GUEST_PHONE)
+    # The order of the list is the time of joining: the second one comes a minute later.
+    clock.set(timezone.now() + datetime.timedelta(minutes=1))
     second = waitlist.join(pro, svc.pk, MONDAY, user=adult("Awa"))
     with pytest.raises(errors.AlreadyInList):
         waitlist.join(pro, svc.pk, MONDAY, user=second.client)
@@ -86,6 +88,7 @@ def test_an_offer_without_answer_goes_to_the_next(clock):
     svc = service(pro, ("work", 60))
     taken = full_day(pro, svc)
     first = waitlist.join(pro, svc.pk, MONDAY, user=adult("Awa"))
+    clock.set(timezone.now() + datetime.timedelta(minutes=1))
     second = waitlist.join(pro, svc.pk, MONDAY, user=adult("Inès"))
     appointments.cancel(taken[0], by=Appointment.CancelledBy.PRO)
     first.refresh_from_db()
