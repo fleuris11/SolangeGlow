@@ -4,7 +4,7 @@ the action that announced the event."""
 from apps.core import events
 
 
-def test_listeners_hear_the_event_once_each():
+def test_listeners_hear_the_event_once_each(db):
     heard = []
 
     def listener(**payload):

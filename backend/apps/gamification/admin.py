@@ -240,6 +240,20 @@ class QuestionInline(StackedInline, TranslationStackedInline):
     model = QuizQuestion
     form = QuestionForm
     extra = 0
+    # Listed here: the translated fields get their tabs, the uploads stay in the form.
+    fields = [
+        "position",
+        "text",
+        "choice_1",
+        "choice_2",
+        "choice_3",
+        "choice_4",
+        "answer",
+        "explanation",
+        "preview",
+        "image_upload",
+        "audio_upload",
+    ]
     readonly_fields = ["preview"]
 
     def get_extra(self, request, obj=None, **kwargs):
