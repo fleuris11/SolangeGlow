@@ -17,6 +17,7 @@ from apps.accounts.models import GuestIdentity, SignupChannel, User
 from apps.booking.demo import seed_booking
 from apps.core.choices import Role
 from apps.core.models import Country
+from apps.gamification.demo import seed_games
 from apps.gifts.demo import seed_gifts
 from apps.glowpro.demo import seed_glowpro
 from apps.live.demo import seed_live
@@ -62,6 +63,7 @@ class Command(BaseCommand):
         academy = seed_academy()
         live = seed_live()
         gifts = seed_gifts()
+        games = seed_games()
         self.stdout.write(
             self.style.SUCCESS(
                 f"seed_demo: {created} new demo accounts, {self.showcases} showcases filled, "
@@ -73,7 +75,8 @@ class Command(BaseCommand):
                 f"{glowpro['premium']} Glow Pro subscriptions, "
                 f"{academy['courses']} academy courses, {academy['lives']} lives, "
                 f"{live['lives']} demo lives and replays, {live['calls']} call, "
-                f"{gifts['gifts']} gifts from abroad."
+                f"{gifts['gifts']} gifts from abroad, {games['quizzes']} quizzes, "
+                f"{games['challenges']} photo challenges, {games['polls']} votes."
             )
         )
 
