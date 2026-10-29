@@ -19,7 +19,7 @@ from .models import (
     Challenge,
     ChallengeEntry,
     ChallengeVote,
-    GlowProfile,
+    PointsEntry,
     Poll,
     PollVote,
     QuizDay,
@@ -270,7 +270,8 @@ def _polls(fifame, awa, others) -> int:
 
 
 def _awa_points(awa) -> None:
-    if GlowProfile.objects.filter(user=awa, earned_total__gt=0).exists():
+    # The other demos (posts, reviews…) already gave her points: look for ours only.
+    if PointsEntry.objects.filter(user=awa, key__startswith="demo:").exists():
         return
     now = timezone.now()
     for days in range(24, 4, -1):

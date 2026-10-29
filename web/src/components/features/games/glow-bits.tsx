@@ -11,6 +11,7 @@ export function Flame({ streak, className }: { streak: number; className?: strin
   const alive = streak > 0;
   return (
     <span
+      role="img"
       className={cn("inline-flex items-center gap-1 font-bold", className)}
       aria-label={t("aria", { count: streak })}
     >
