@@ -41,6 +41,16 @@ PURPOSES: dict[str, Purpose] = {
         Duration(max_setting="social.story_video_max_seconds", max_default=30),
     ),
     "review_photo": Purpose(("image",), "public"),
+    # Games (module 10): « Help me choose » photos, photo challenge, quiz pictures and audio.
+    "poll_photo": Purpose(("image",), "public"),
+    "challenge_photo": Purpose(("image",), "public"),
+    "quiz_image": Purpose(("image",), "public", uploadable=False),
+    "quiz_audio": Purpose(
+        ("audio",),
+        "public",
+        Duration(max_setting="games.quiz_audio_max_seconds", max_default=60),
+        uploadable=False,
+    ),
     "review_voice": Purpose(
         ("audio",), "public", Duration(max_setting="reviews.voice_max_seconds", max_default=120)
     ),

@@ -258,6 +258,14 @@ SPECTACULAR_SETTINGS = {
         "LanguageEnum": LANGUAGES,
         "GiftKindEnum": "apps.gifts.models.Gift.Kind",
         "GiftStatusEnum": "apps.gifts.models.Gift.Status",
+        "GlowLevelEnum": "apps.gamification.models.Level",
+        "GlowActionEnum": "apps.gamification.models.Action",
+        "VoucherKindEnum": "apps.gamification.models.Voucher.Kind",
+        "RewardKindEnum": "apps.gamification.models.Reward.Kind",
+        "WheelPrizeKindEnum": "apps.gamification.models.WheelPrize.Kind",
+        "ProLevelEnum": "apps.pros.models.Level",
+        "PollChoiceEnum": "apps.gamification.models.PollVote.Choice",
+        "PollScopeEnum": "apps.gamification.serializers.PollScope",
         "MediaKindEnum": "apps.core.media.models.MediaAsset.Kind",
         "MediaStatusEnum": "apps.core.media.models.MediaAsset.Status",
         "ProKindEnum": "apps.pros.models.ProProfile.Kind",
@@ -364,6 +372,10 @@ PROVIDERS_HTTP_TIMEOUT = env.float("PROVIDERS_HTTP_TIMEOUT", default=8.0)
 # Automatic moderation by an AI service (module 2). Empty = word lists and rules only.
 MODERATION_AI_URL = env("MODERATION_AI_URL", default="")
 MODERATION_AI_KEY = env("MODERATION_AI_KEY", default="")
+# Quizzes and challenge themes proposed ahead of time by an AI service (module 10).
+# Empty: the team writes them in the admin; approved in one click either way.
+QUIZ_AI_URL = env("QUIZ_AI_URL", default="")
+QUIZ_AI_KEY = env("QUIZ_AI_KEY", default="")
 
 # Audio and video calls, lives (ADR-013). LIVEKIT_URL is the address browsers open
 # (wss://… in production); LIVEKIT_API_URL the one the backend calls (empty: the same in
@@ -486,6 +498,16 @@ CELERY_BEAT_SCHEDULE = {
     "gifts.run": {
         "task": "apps.gifts.tasks.run",
         "schedule": crontab(minute="*/5"),
+    },
+    # Games (ADR-015): routine reminders and results of the votes; every morning the drafts,
+    # the challenge closed, the levels of the pros, the rankings, the celebrations.
+    "gamification.run_quarterly": {
+        "task": "apps.gamification.tasks.run_quarterly",
+        "schedule": crontab(minute="*/15"),
+    },
+    "gamification.run_daily": {
+        "task": "apps.gamification.tasks.run_daily",
+        "schedule": crontab(hour=6, minute=10),
     },
 }
 
@@ -854,6 +876,62 @@ UNFOLD = {
                         "title": _("Uses of gifts"),
                         "icon": "receipt_long",
                         "link": reverse_lazy("admin:gifts_giftuse_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("Games"),
+                "separator": True,
+                "items": [
+                    {
+                        "title": _("Glow profiles"),
+                        "icon": "local_fire_department",
+                        "link": reverse_lazy("admin:gamification_glowprofile_changelist"),
+                    },
+                    {
+                        "title": _("Points ledger"),
+                        "icon": "stars",
+                        "link": reverse_lazy("admin:gamification_pointsentry_changelist"),
+                    },
+                    {
+                        "title": _("Rewards"),
+                        "icon": "card_giftcard",
+                        "link": reverse_lazy("admin:gamification_reward_changelist"),
+                    },
+                    {
+                        "title": _("Glow wheel"),
+                        "icon": "casino",
+                        "link": reverse_lazy("admin:gamification_wheelprize_changelist"),
+                    },
+                    {
+                        "title": _("Quizzes of the day"),
+                        "icon": "quiz",
+                        "link": reverse_lazy("admin:gamification_quizday_changelist"),
+                    },
+                    {
+                        "title": _("Photo challenges"),
+                        "icon": "photo_camera",
+                        "link": reverse_lazy("admin:gamification_challenge_changelist"),
+                    },
+                    {
+                        "title": _("« Help me choose »"),
+                        "icon": "how_to_vote",
+                        "link": reverse_lazy("admin:gamification_poll_changelist"),
+                    },
+                    {
+                        "title": _("Rankings"),
+                        "icon": "leaderboard",
+                        "link": reverse_lazy("admin:gamification_ranking_changelist"),
+                    },
+                    {
+                        "title": _("Referrals"),
+                        "icon": "group_add",
+                        "link": reverse_lazy("admin:gamification_referral_changelist"),
+                    },
+                    {
+                        "title": _("Calendar of celebrations"),
+                        "icon": "celebration",
+                        "link": reverse_lazy("admin:gamification_celebration_changelist"),
                     },
                 ],
             },

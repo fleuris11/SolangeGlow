@@ -128,11 +128,13 @@ def _create(
     product=None,
     special_request=None,
     group_buy=None,
+    order_id=None,
+    discount: int = 0,
 ) -> SelectionOrder:
     after = timezone.localtime(group_buy.ends_at).date() if group_buy else None
     first, last = selectors.estimate(mode, after=after)
-    order_id = uuid.uuid4()
-    total = unit_price * quantity
+    order_id = order_id or uuid.uuid4()
+    total = unit_price * quantity - discount
     payment = payment_services.create_payment(
         buyer,
         selectors.house_account(),
@@ -159,6 +161,7 @@ def _create(
         quantity=quantity,
         unit_price_xof=unit_price,
         total_xof=total,
+        discount_xof=discount,
         shipping_mode=mode,
         pickup_point=point,
         merchant_name=merchant_name,
@@ -181,8 +184,10 @@ def place_order(
     option: str = "",
     quantity: int = 1,
     group: bool = False,
+    voucher: str = "",
 ) -> SelectionOrder:
-    """An order of a catalogue product (or a place in its group pre-order), to pay now."""
+    """An order of a catalogue product (or a place in its group pre-order), to pay now.
+    A Glow voucher (module 10) lowers the price: the platform sells, it pays the discount."""
     _check_buyer(buyer)
     product = selectors.on_sale().filter(pk=product_id).first()
     if product is None:
@@ -211,6 +216,16 @@ def place_order(
         unit_price = product.express_price_xof
     else:
         unit_price = product.price_xof
+    order_id, discount = uuid.uuid4(), 0
+    if voucher:
+        from apps.gamification.services import rewards
+
+        premium = None
+        if shipping_mode == ShippingMode.EXPRESS and not group:
+            premium = (unit_price - product.price_xof) * quantity
+        _, discount = rewards.take(
+            buyer, voucher, order_id=order_id, total=unit_price * quantity, express_premium=premium
+        )
     return _create(
         buyer,
         title=product.title,
@@ -225,6 +240,8 @@ def place_order(
         purchase_cents=product.purchase_price_cents,
         product=product,
         group_buy=group_buy,
+        order_id=order_id,
+        discount=discount,
     )
 
 

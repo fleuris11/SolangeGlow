@@ -111,6 +111,7 @@ class OrdersView(SelectionWriteView):
             option=values.get("option", ""),
             quantity=values["quantity"],
             group=values["group"],
+            voucher=values["voucher"],
         )
         services.start_payment(order, request.user)
         return _answer(request, order.pk, status.HTTP_201_CREATED)

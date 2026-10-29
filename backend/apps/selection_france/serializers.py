@@ -151,6 +151,7 @@ class SelectionOrderInputSerializer(serializers.Serializer):
     option = serializers.CharField(required=False, allow_blank=True, max_length=60)
     quantity = serializers.IntegerField(required=False, default=1)
     group = serializers.BooleanField(required=False, default=False)
+    voucher = serializers.CharField(required=False, allow_blank=True, default="", max_length=16)
 
 
 def order_payload(order: SelectionOrder, viewer, *, with_payment: bool = True) -> dict:
@@ -172,6 +173,7 @@ def order_payload(order: SelectionOrder, viewer, *, with_payment: bool = True) -
         "quantity": order.quantity,
         "unit_price_xof": order.unit_price_xof,
         "total_xof": order.total_xof,
+        "discount_xof": order.discount_xof,
         "shipping_mode": order.shipping_mode,
         "photo": photo,
         "pickup_point": point_payload(order.pickup_point),
@@ -222,6 +224,7 @@ class SelectionOrderSerializer(serializers.Serializer):
     quantity = serializers.IntegerField()
     unit_price_xof = serializers.IntegerField()
     total_xof = serializers.IntegerField()
+    discount_xof = serializers.IntegerField()
     shipping_mode = serializers.ChoiceField(choices=ShippingMode.choices)
     photo = MediaSerializer(allow_null=True)
     pickup_point = SelectionPickupPointSerializer()

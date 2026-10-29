@@ -340,6 +340,8 @@ class SelectionOrder(BaseModel):
     quantity = models.PositiveSmallIntegerField(_("quantity"), default=1)
     unit_price_xof = models.PositiveIntegerField(_("unit price (FCFA)"))
     total_xof = models.PositiveIntegerField(_("total (FCFA)"))
+    # A Glow voucher (module 10): paid by the platform, which sells.
+    discount_xof = models.PositiveIntegerField(_("Glow voucher (FCFA)"), default=0)
     shipping_mode = models.CharField(_("shipping"), max_length=8, choices=ShippingMode.choices)
     pickup_point = models.ForeignKey(
         PickupPoint,

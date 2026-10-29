@@ -29,6 +29,7 @@ DEFAULT_RATES = {
     "calls": "60/minute",
     "gifts": "60/minute",
     "gift_code": "20/hour",
+    "games": "120/minute",
 }
 
 

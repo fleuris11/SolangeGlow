@@ -18,6 +18,8 @@ TARGETS = {
     "story": ("social", "story"),
     "review": ("social", "review"),
     "product": ("shop", "product"),
+    "poll": ("gamification", "poll"),
+    "challenge_entry": ("gamification", "challengeentry"),
     "person": ("accounts", "user"),
 }
 

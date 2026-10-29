@@ -13,6 +13,7 @@ api_v1 = [
     path("livekit/webhook", LiveKitWebhookView.as_view(), name="livekit-webhook"),
     path("", include("apps.live.urls")),
     path("", include("apps.gifts.urls")),
+    path("", include("apps.gamification.urls")),
     path("", include("apps.social.urls")),
     path("", include("apps.moderation.urls")),
     path("", include("apps.messaging.urls")),

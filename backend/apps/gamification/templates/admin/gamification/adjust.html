@@ -1,0 +1,16 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+  <form method="post" class="flex flex-col gap-4" style="max-width:520px">
+    {% csrf_token %}
+    <p>{% blocktranslate %}Balance today: {{ balance }} points. A correction is a new line of the ledger: nothing is erased, the person sees it in her history.{% endblocktranslate %}</p>
+    {{ form.as_div }}
+    <div class="flex gap-3">
+      <button type="submit" class="bg-primary-600 text-white rounded px-4 py-2 font-semibold">{% translate "Write in the ledger" %}</button>
+      <a class="underline" href="{% url 'admin:gamification_glowprofile_change' profile.pk %}">{% translate "Back" %}</a>
+    </div>
+  </form>
+{% endblock %}

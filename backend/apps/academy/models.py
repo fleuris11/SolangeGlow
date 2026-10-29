@@ -215,6 +215,7 @@ class Enrollment(BaseModel):
         PURCHASE = "purchase", _("Bought")
         PASS = "pass", _("With the pass")
         TRAINER = "trainer", _("Trainer")
+        POINTS = "points", _("With Glow Points")
 
     class Status(models.TextChoices):
         WAITING = "waiting", _("Waiting for the payment")

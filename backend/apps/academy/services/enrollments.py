@@ -95,6 +95,17 @@ def get_course(user, course: Course, *, waiver: bool = False, waiver_text: str =
     return enrollment, payment.checkout_url
 
 
+@transaction.atomic
+def give(user, course: Course) -> Enrollment:
+    """A course of the platform exchanged for Glow Points (module 10): open at once."""
+    if course.status != Course.Status.PUBLISHED:
+        raise errors.CourseNotFound()
+    enrollment = Enrollment.objects.select_for_update().filter(user=user, course=course).first()
+    if enrollment is not None and enrollment.status == E.ACTIVE and enrollment.access != A.PASS:
+        raise errors.AlreadyEnrolled()
+    return _active(enrollment, user, course, A.POINTS)
+
+
 def _active(enrollment, user, course: Course, access: str) -> Enrollment:
     new = enrollment is None or enrollment.status != E.ACTIVE
     if enrollment is None:
