@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState, type ReactNode } from "react";
 
 import { Button, buttonClasses } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/toast";
 import { ApiError, hasSession } from "@/lib/api/client";
 import { placeSelectionOrder, type PickupPoint, type SelectionProduct } from "@/lib/api/selection";
@@ -80,6 +81,7 @@ export function SelectionBuy({
   const [option, setOption] = useState(product.options[0] ?? "");
   const [quantity, setQuantity] = useState(1);
   const [point, setPoint] = useState(points[0]?.id ?? "");
+  const [voucher, setVoucher] = useState("");
   const [busy, setBusy] = useState(false);
   const timeLeft = useTimeLeft(group?.ends_at);
   const money = (value: number) => formatMoney(value, "XOF", locale);
@@ -108,6 +110,7 @@ export function SelectionBuy({
         option,
         quantity,
         group: way === "group",
+        voucher: voucher.trim(),
       });
       window.location.assign(order.payment?.checkout_url || `/selection/orders/${order.id}`);
     } catch (failure) {
@@ -251,6 +254,14 @@ export function SelectionBuy({
         ))}
       </fieldset>
 
+      <Input
+        label={t("voucher")}
+        hint={t("voucherHint")}
+        value={voucher}
+        maxLength={16}
+        autoCapitalize="characters"
+        onChange={(event) => setVoucher(event.target.value)}
+      />
       <p className="text-small text-prune-doux">{t("final")}</p>
       <Button size="lg" fullWidth disabled={busy || !point} onClick={() => void pay()}>
         {icons.lock}
