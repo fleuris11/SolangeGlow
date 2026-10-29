@@ -10,6 +10,7 @@ from django.db import IntegrityError, transaction
 from django.db.models import Avg, Count, F
 from django.utils import timezone
 
+from apps.core import events
 from apps.core.media.models import MediaAsset
 from apps.core.media.services import variant_url
 from apps.core.selectors import get_setting
@@ -166,6 +167,8 @@ def create_post(
         for index, (asset, role) in enumerate(chosen)
     )
     screen(post, text=post.caption, image_urls=_image_urls(post), language=_language(author))
+    if post.status == Post.Status.PUBLISHED:
+        events.emit("social.post_published", post=post)
     return post
 
 
@@ -197,6 +200,8 @@ def update_post(post: Post, actor, **changes) -> Post:
     post.save()
     if "caption" in changes:
         screen(post, text=post.caption, language=_language(actor))
+    if "status" in changes and post.status == Post.Status.PUBLISHED:
+        events.emit("social.post_published", post=post)
     return post
 
 
@@ -216,6 +221,8 @@ def publish_due_posts() -> int:
             status=Post.Status.PUBLISHED, published_at=post.publish_at
         )
         notify(post.author, "social.post_published", link=f"/p/{post.pk}")
+        post.status = Post.Status.PUBLISHED
+        events.emit("social.post_published", post=post)
     return len(due)
 
 
@@ -503,6 +510,7 @@ def create_review(
     screen(review, text=review.text, language=_language(author))
     recompute_rating(found.pro_id)
     review.refresh_from_db()
+    events.emit("social.review_created", review=review)
     if review.visibility == Visibility.VISIBLE:
         notify(
             review.pro.user,

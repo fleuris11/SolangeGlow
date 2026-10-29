@@ -8,6 +8,7 @@ from collections.abc import Callable
 from django.db import transaction
 from django.utils import timezone
 
+from apps.core import events
 from apps.core.audit.services import record
 
 from .. import errors
@@ -107,4 +108,6 @@ def move(payment: Payment, target: str, *, actor=None, reason: str = "") -> Paym
     listener = _listeners.get(payment.source_type)
     if listener is not None:
         transaction.on_commit(lambda: listener(payment))
+    # Any module may follow every payment (points for a purchase, module 10).
+    events.emit("payments.moved", payment=payment)
     return payment
