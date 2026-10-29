@@ -53,7 +53,10 @@ function Disk({ wheel, rotation, moving }: { wheel: Wheel; rotation: number; mov
         {wheel.prizes.map((prize, index) => {
           const [x1, y1] = point(index * angle, 96);
           const [x2, y2] = point((index + 1) * angle, 96);
-          const [tx, ty] = point(index * angle + angle / 2, 62);
+          const middle = index * angle + angle / 2;
+          const [tx, ty] = point(middle, 58);
+          // Along the radius (more room than across a slice), never upside down.
+          const turn = middle <= 180 ? middle - 90 : middle + 90;
           const large = angle > 180 ? 1 : 0;
           return (
             <g key={prize.id}>
@@ -66,13 +69,13 @@ function Disk({ wheel, rotation, moving }: { wheel: Wheel; rotation: number; mov
                 x={tx}
                 y={ty}
                 fill={TEXT[index % TEXT.length]}
-                fontSize="9"
+                fontSize="8"
                 fontWeight="700"
                 textAnchor="middle"
                 dominantBaseline="middle"
-                transform={`rotate(${index * angle + angle / 2} ${tx} ${ty})`}
+                transform={`rotate(${turn} ${tx} ${ty})`}
               >
-                {prize.label.length > 16 ? `${prize.label.slice(0, 15)}…` : prize.label}
+                {prize.label.length > 15 ? `${prize.label.slice(0, 14)}…` : prize.label}
               </text>
             </g>
           );

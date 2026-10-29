@@ -183,7 +183,7 @@ export function MyPoints() {
         className="border-trait bg-carte rounded-card flex flex-col gap-3 border p-5"
       >
         <div className="flex items-center gap-3">
-          <Flame streak={glow.streak.streak} className="text-headline" />
+          <Flame streak={glow.streak.streak} bare className="text-headline" />
           <h2 id="streak-title" className="text-title font-bold">
             {glow.streak.streak > 0
               ? t("streak.days", { count: glow.streak.streak })

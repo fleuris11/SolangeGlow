@@ -6,7 +6,16 @@ import type { GlowLevel, ProLevel } from "@/lib/api/games";
 import { cn } from "@/lib/cn";
 
 /** The flame of the streak: days in a row, gone (grey, « 0 ») when a day was missed. */
-export function Flame({ streak, className }: { streak: number; className?: string }) {
+export function Flame({
+  streak,
+  bare = false,
+  className,
+}: {
+  streak: number;
+  /** The icon only: the number is already written next to it. */
+  bare?: boolean;
+  className?: string;
+}) {
   const t = useTranslations("games.streak");
   const alive = streak > 0;
   return (
@@ -21,7 +30,7 @@ export function Flame({ streak, className }: { streak: number; className?: strin
         weight={alive ? "fill" : "regular"}
         className={alive ? "text-hibiscus" : "text-prune-doux"}
       />
-      <span aria-hidden>{streak}</span>
+      {!bare && <span aria-hidden>{streak}</span>}
     </span>
   );
 }
