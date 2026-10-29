@@ -5,14 +5,18 @@ import {
   BookmarkSimple,
   CalendarCheck,
   CalendarDots,
+  CalendarStar,
   CaretRight,
   ChalkboardTeacher,
+  CheckSquare,
+  Fire,
   Gift,
   GraduationCap,
   Heart,
   Images,
   Package,
   Phone,
+  Ranking,
   Receipt,
   ShoppingBag,
   Star,
@@ -26,6 +30,8 @@ import type { ReactNode } from "react";
 import { Link } from "@/lib/i18n/navigation";
 
 const LINKS: { href: string; key: string; icon: ReactNode }[] = [
+  { href: "/points", key: "points", icon: <Fire size={28} weight="duotone" /> },
+  { href: "/routine", key: "routine", icon: <CheckSquare size={28} weight="duotone" /> },
   {
     href: "/appointments",
     key: "appointments",
@@ -46,6 +52,8 @@ const LINKS: { href: string; key: string; icon: ReactNode }[] = [
   },
   { href: "/appels", key: "calls", icon: <Phone size={28} weight="duotone" /> },
   { href: "/cadeaux", key: "gifts", icon: <Gift size={28} weight="duotone" /> },
+  { href: "/fetes", key: "calendar", icon: <CalendarStar size={28} weight="duotone" /> },
+  { href: "/classements", key: "rankings", icon: <Ranking size={28} weight="duotone" /> },
   { href: "/me/posts", key: "posts", icon: <Images size={28} weight="duotone" /> },
   { href: "/saved", key: "saved", icon: <BookmarkSimple size={28} weight="duotone" /> },
   { href: "/following", key: "following", icon: <UsersThree size={28} weight="duotone" /> },

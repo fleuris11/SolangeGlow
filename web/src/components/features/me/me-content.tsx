@@ -18,6 +18,9 @@ const ProfileForm = dynamic(() => import("./profile-form").then((m) => m.Profile
 const AccountSettings = dynamic(() => import("./account-settings").then((m) => m.AccountSettings));
 const ActivityLinks = dynamic(() => import("./activity-links").then((m) => m.ActivityLinks));
 const ProEntry = dynamic(() => import("./pro-entry").then((m) => m.ProEntry));
+const GlowStatus = dynamic(() =>
+  import("@/components/features/games/glow-status").then((m) => m.GlowStatus),
+);
 const GuestCard = dynamic(() => import("./guest-card").then((m) => m.GuestCard));
 const DisplaySettings = dynamic(() =>
   import("@/components/features/settings/display-settings").then((m) => m.DisplaySettings),
@@ -42,6 +45,7 @@ export function MeContent() {
     <div className="flex flex-col gap-10">
       {me ? (
         <>
+          <GlowStatus />
           <ProEntry me={me} />
           <ActivityLinks />
           <ProfileForm me={me} />

@@ -1,4 +1,11 @@
-import { GraduationCap, MapPin, SealCheck, Star, Van } from "@phosphor-icons/react/dist/ssr";
+import {
+  GraduationCap,
+  MapPin,
+  SealCheck,
+  Star,
+  Trophy,
+  Van,
+} from "@phosphor-icons/react/dist/ssr";
 import { useLocale, useTranslations } from "next-intl";
 
 import { TradeLabel } from "@/components/features/trades/trade-label";
@@ -42,6 +49,9 @@ export function ProCard({ pro }: { pro: Card }) {
               className="text-or shrink-0"
               aria-label={t("trained")}
             />
+          )}
+          {pro.level === 2 && (
+            <Trophy weight="fill" size={20} className="text-or shrink-0" aria-label={t("topPro")} />
           )}
         </span>
         <span className="flex flex-wrap gap-x-3">

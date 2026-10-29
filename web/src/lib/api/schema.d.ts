@@ -1415,6 +1415,395 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/glow/celebrations": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["glow_celebrations_list"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/challenge": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["glow_challenge_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/challenge/entries": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["glow_challenge_entries_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/challenge/entries/{entry_id}/vote": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["glow_challenge_entries_vote_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/check-in": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["glow_check_in_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/history": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["glow_history_list"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/invite/{code}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["glow_invite_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/me": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["glow_me_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/polls": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["games_polls_list"];
+    put?: never;
+    post: operations["games_poll_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/polls/{poll_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["games_poll_detail"];
+    put?: never;
+    post?: never;
+    delete: operations["glow_polls_destroy"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/polls/{poll_id}/vote": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["glow_polls_vote_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/quiz": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["glow_quiz_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/quiz/{question_id}/answer": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["glow_quiz_answer_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/rankings": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["glow_rankings_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/referral": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["glow_referral_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/reminders": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put: operations["glow_reminders_update"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/rewards": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["glow_rewards_list"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/rewards/{reward_id}/redeem": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["glow_rewards_redeem_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/routine": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["glow_routine_retrieve"];
+    put: operations["glow_routine_update"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/routine/{step_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["glow_routine_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/today": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["glow_today_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/vouchers": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["glow_vouchers_list"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/wheel": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get: operations["glow_wheel_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/glow/wheel/spin": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["glow_wheel_spin_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/guest": {
     parameters: {
       query?: never;
@@ -5624,6 +6013,7 @@ export interface components {
       travels_to_clients: boolean;
       verified: boolean;
       trained: boolean;
+      level: components["schemas"]["ProLevelEnum"];
     };
     Cart: {
       shops: components["schemas"]["CartShop"][];
@@ -5698,6 +6088,18 @@ export interface components {
       name: string;
       position?: number;
     };
+    Celebration: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      message: string;
+      /** Format: date */
+      date: string;
+      days_left: number;
+      trade: string;
+      search: string;
+      gift_occasion: string;
+    };
     CertificateCheck: {
       code: string;
       valid: boolean;
@@ -5709,6 +6111,46 @@ export interface components {
       issued_at: string;
       /** Format: date-time */
       revoked_at: string | null;
+    };
+    Challenge: {
+      current: components["schemas"]["ChallengeCurrent"] | null;
+      featured: components["schemas"]["ChallengeFeatured"] | null;
+    };
+    ChallengeCurrent: {
+      /** Format: uuid */
+      id: string;
+      theme: string;
+      description: string;
+      /** Format: date */
+      starts_on: string;
+      /** Format: date */
+      ends_on: string;
+      entries: components["schemas"]["ChallengeEntry"][];
+      /** Format: uuid */
+      my_entry: string | null;
+      votes_left: number;
+    };
+    ChallengeEnterRequest: {
+      /** Format: uuid */
+      photo_id: string;
+      /** @default  */
+      caption: string;
+    };
+    ChallengeEntry: {
+      /** Format: uuid */
+      id: string;
+      author: components["schemas"]["Author"];
+      photo: components["schemas"]["Media"] | null;
+      caption: string;
+      votes: number;
+      voted: boolean;
+      mine: boolean;
+    };
+    ChallengeFeatured: {
+      theme: string;
+      /** Format: date */
+      ends_on: string;
+      winner: components["schemas"]["ChallengeEntry"];
     };
     Checkout: {
       checkout_url: string;
@@ -6035,6 +6477,39 @@ export interface components {
     CreditInputRequest: {
       reason: string;
     };
+    DailyQuiz: {
+      /** Format: date */
+      date: string;
+      questions: components["schemas"]["DailyQuizQuestion"][];
+      points_per_answer: number;
+      score: number;
+      answered: number;
+    };
+    DailyQuizAnswer: {
+      correct: boolean;
+      answer: number;
+      explanation: string;
+      gained: number;
+    };
+    DailyQuizAnswerInputRequest: {
+      choice: number;
+    };
+    DailyQuizOfDay: {
+      quiz: components["schemas"]["DailyQuiz"] | null;
+    };
+    DailyQuizQuestion: {
+      /** Format: uuid */
+      id: string;
+      position: number;
+      text: string;
+      choices: string[];
+      image: components["schemas"]["Media"] | null;
+      audio: components["schemas"]["Media"] | null;
+      answered: number | null;
+      correct: boolean | null;
+      answer: number | null;
+      explanation: string;
+    };
     Dashboard: {
       level: components["schemas"]["DashboardLevelEnum"];
       currency: string;
@@ -6168,9 +6643,10 @@ export interface components {
      *     * `purchase` - Bought
      *     * `pass` - With the pass
      *     * `trainer` - Trainer
+     *     * `points` - With Glow Points
      * @enum {string}
      */
-    EnrollmentAccessEnum: "free" | "purchase" | "pass" | "trainer";
+    EnrollmentAccessEnum: "free" | "purchase" | "pass" | "trainer" | "points";
     /**
      * @description * `waiting` - Waiting for the payment
      *     * `active` - Following
@@ -6608,6 +7084,46 @@ export interface components {
       name: string;
       fee: components["schemas"]["GiftAmount"];
     };
+    /**
+     * @description * `checkin` - Daily visit
+     *     * `streak` - Streak bonus
+     *     * `post` - Post
+     *     * `review` - Review
+     *     * `booking` - Appointment
+     *     * `purchase` - Purchase
+     *     * `referral` - Friend invited
+     *     * `referred` - Welcome bonus
+     *     * `quiz` - Quiz
+     *     * `poll` - Help me choose
+     *     * `poll_vote` - Vote
+     *     * `challenge_entry` - Photo challenge
+     *     * `challenge_vote` - Challenge vote
+     *     * `challenge_win` - Challenge won
+     *     * `wheel` - Glow wheel
+     *     * `routine` - Routine
+     *     * `reward` - Reward
+     *     * `adjustment` - Adjustment by the team
+     * @enum {string}
+     */
+    GlowActionEnum:
+      | "checkin"
+      | "streak"
+      | "post"
+      | "review"
+      | "booking"
+      | "purchase"
+      | "referral"
+      | "referred"
+      | "quiz"
+      | "poll"
+      | "poll_vote"
+      | "challenge_entry"
+      | "challenge_vote"
+      | "challenge_win"
+      | "wheel"
+      | "routine"
+      | "reward"
+      | "adjustment";
     GlowCard: {
       balance: components["schemas"]["GiftAmount"];
       /** Format: date */
@@ -6616,6 +7132,30 @@ export interface components {
     };
     GlowCardCheckRequest: {
       code: string;
+    };
+    GlowCheckIn: {
+      streak: number;
+      best: number;
+      today_done: boolean;
+      bonus_every: number;
+      to_bonus: number;
+      already: boolean;
+      gained: number;
+      bonus: number;
+      balance: number;
+    };
+    GlowCourse: {
+      slug: string;
+      title: string;
+    };
+    GlowEntry: {
+      /** Format: uuid */
+      id: string;
+      amount: number;
+      action: components["schemas"]["GlowActionEnum"];
+      note: string;
+      /** Format: date-time */
+      created_at: string;
     };
     /**
      * @description * `extra_staff` - More people in the agenda
@@ -6635,6 +7175,30 @@ export interface components {
       | "campaigns"
       | "widget"
       | "einvoice";
+    /**
+     * @description * `glow` - Glow
+     *     * `star` - Star
+     *     * `icon` - Icon
+     * @enum {string}
+     */
+    GlowLevelEnum: "glow" | "star" | "icon";
+    GlowMe: {
+      balance: number;
+      earned_total: number;
+      level: components["schemas"]["GlowLevelEnum"];
+      next_level:
+        (components["schemas"]["GlowLevelEnum"] | components["schemas"]["NullEnum"]) | null;
+      next_level_at: number | null;
+      /** Format: double */
+      multiplier: number;
+      streak: components["schemas"]["GlowStreak"];
+      referral: components["schemas"]["GlowReferral"];
+      scale: components["schemas"]["GlowScale"][];
+      daily_max: number;
+      earned_today: number;
+      games_open: boolean;
+      wheel_open: boolean;
+    };
     GlowPlan: {
       key: string;
       name: string;
@@ -6645,6 +7209,82 @@ export interface components {
       price_minor: number | null;
       currency: string;
       is_default: boolean;
+    };
+    GlowRedeemed: {
+      balance: number;
+      voucher: components["schemas"]["GlowVoucher"] | null;
+      course: components["schemas"]["GlowCourse"] | null;
+    };
+    GlowReferral: {
+      code: string;
+      path: string;
+      invited: number;
+      rewarded: number;
+      referrer_points: number;
+      referee_points: number;
+    };
+    GlowReward: {
+      /** Format: uuid */
+      id: string;
+      title: string;
+      description: string;
+      kind: components["schemas"]["RewardKindEnum"];
+      cost_points: number;
+      amount_off_minor: number;
+      course: components["schemas"]["GlowCourse"] | null;
+      min_level: components["schemas"]["GlowLevelEnum"];
+      locked: boolean;
+      sold_out: boolean;
+      affordable: boolean;
+    };
+    GlowScale: {
+      action: components["schemas"]["GlowActionEnum"];
+      points: number;
+      per_day: number | null;
+      bonus: boolean;
+    };
+    GlowStreak: {
+      streak: number;
+      best: number;
+      today_done: boolean;
+      bonus_every: number;
+      to_bonus: number;
+    };
+    GlowSummary: {
+      balance: number;
+      earned_total: number;
+      level: components["schemas"]["GlowLevelEnum"];
+      next_level:
+        (components["schemas"]["GlowLevelEnum"] | components["schemas"]["NullEnum"]) | null;
+      next_level_at: number | null;
+      /** Format: double */
+      multiplier: number;
+    };
+    GlowToday: {
+      signed_in: boolean;
+      games_open: boolean;
+      summary: components["schemas"]["GlowSummary"] | null;
+      streak: components["schemas"]["GlowStreak"] | null;
+      quiz: components["schemas"]["TodayQuiz"] | null;
+      wheel: components["schemas"]["TodayWheel"] | null;
+      challenge: components["schemas"]["TodayChallenge"] | null;
+      featured: components["schemas"]["ChallengeFeatured"] | null;
+      poll: components["schemas"]["Poll"] | null;
+      celebration: components["schemas"]["Celebration"] | null;
+    };
+    GlowVoucher: {
+      /** Format: uuid */
+      id: string;
+      code: string;
+      kind: components["schemas"]["VoucherKindEnum"];
+      origin: components["schemas"]["OriginEnum"];
+      label: string;
+      amount_off_minor: number;
+      currency: string;
+      /** Format: date-time */
+      expires_at: string;
+      /** Format: date-time */
+      used_at: string | null;
     };
     Group: {
       /** Format: uuid */
@@ -6748,6 +7388,10 @@ export interface components {
      * @enum {string}
      */
     InstallmentStatusEnum: "due" | "paid" | "cancelled";
+    Invite: {
+      name: string;
+      points: number;
+    };
     /**
      * @description * `paid` - paid
      *     * `sent` - sent
@@ -7208,6 +7852,7 @@ export interface components {
     /**
      * @description * `avatar` - avatar
      *     * `booking_result` - booking_result
+     *     * `challenge_photo` - challenge_photo
      *     * `course_cover` - course_cover
      *     * `course_resource` - course_resource
      *     * `delivery_proof` - delivery_proof
@@ -7218,6 +7863,7 @@ export interface components {
      *     * `itinerary_video` - itinerary_video
      *     * `lesson_video` - lesson_video
      *     * `message_photo` - message_photo
+     *     * `poll_photo` - poll_photo
      *     * `portfolio` - portfolio
      *     * `post` - post
      *     * `pro_cover` - pro_cover
@@ -7238,6 +7884,7 @@ export interface components {
     MediaUploadPurposeEnum:
       | "avatar"
       | "booking_result"
+      | "challenge_photo"
       | "course_cover"
       | "course_resource"
       | "delivery_proof"
@@ -7248,6 +7895,7 @@ export interface components {
       | "itinerary_video"
       | "lesson_video"
       | "message_photo"
+      | "poll_photo"
       | "portfolio"
       | "post"
       | "pro_cover"
@@ -7419,6 +8067,7 @@ export interface components {
       languages: components["schemas"]["Language"][];
       verified: boolean;
       trained: boolean;
+      level: components["schemas"]["ProLevelEnum"];
       /** Format: double */
       rating_average: number | null;
       rating_count: number;
@@ -7746,6 +8395,12 @@ export interface components {
       | "cancelled"
       | "disputed"
       | "refunded";
+    /**
+     * @description * `reward` - Points exchanged
+     *     * `wheel` - Glow wheel
+     * @enum {string}
+     */
+    OriginEnum: "reward" | "wheel";
     /**
      * @description * `succeeded` - succeeded
      *     * `failed` - failed
@@ -8290,6 +8945,53 @@ export interface components {
       currency: string;
       pdf_url: string;
     };
+    Poll: {
+      /** Format: uuid */
+      id: string;
+      caption: string;
+      author: components["schemas"]["Author"];
+      photo_a: components["schemas"]["Media"] | null;
+      photo_b: components["schemas"]["Media"] | null;
+      label_a: string;
+      label_b: string;
+      /** Format: date-time */
+      ends_at: string;
+      ended: boolean;
+      mine: boolean;
+      my_vote: (components["schemas"]["PollChoiceEnum"] | components["schemas"]["NullEnum"]) | null;
+      result: components["schemas"]["PollResult"] | null;
+    };
+    /**
+     * @description * `a` - A
+     *     * `b` - B
+     * @enum {string}
+     */
+    PollChoiceEnum: "a" | "b";
+    PollCreateRequest: {
+      /** @default  */
+      caption: string;
+      /** Format: uuid */
+      photo_a: string;
+      /** Format: uuid */
+      photo_b: string;
+      /** @default  */
+      label_a: string;
+      /** @default  */
+      label_b: string;
+      hours: number;
+    };
+    PollList: {
+      results: components["schemas"]["Poll"][];
+      durations: number[];
+    };
+    PollResult: {
+      total: number;
+      a: number;
+      b: number;
+    };
+    PollVoteRequest: {
+      choice: components["schemas"]["PollChoiceEnum"];
+    };
     PortfolioItem: {
       /** Format: uuid */
       readonly id: string;
@@ -8411,6 +9113,13 @@ export interface components {
      * @enum {string}
      */
     ProKindEnum: "independent" | "business";
+    /**
+     * @description * `0` - New
+     *     * `1` - Confirmed
+     *     * `2` - Top pro
+     * @enum {integer}
+     */
+    ProLevelEnum: 0 | 1 | 2;
     /**
      * @description * `draft` - Draft
      *     * `published` - Published
@@ -8656,6 +9365,31 @@ export interface components {
       total_minor: number;
       prep_days: number;
     };
+    Ranking: {
+      /** Format: date */
+      month: string | null;
+      cities: string[];
+      trades: components["schemas"]["RankingTrade"][];
+      city: string;
+      trade: string;
+      rows: components["schemas"]["RankingRow"][];
+    };
+    RankingRow: {
+      position: number;
+      slug: string;
+      name: string;
+      photo: components["schemas"]["Media"] | null;
+      level: components["schemas"]["ProLevelEnum"];
+      verified: boolean;
+      /** Format: decimal */
+      average: string;
+      reviews: number;
+    };
+    RankingTrade: {
+      key: string;
+      name: string;
+      icon: string;
+    };
     ReasonInputRequest: {
       reason: string;
     };
@@ -8670,6 +9404,17 @@ export interface components {
       amount_minor: number;
       /** Format: uuid */
       appointment_id?: string | null;
+    };
+    ReferralInputRequest: {
+      code: string;
+    };
+    RemindersInputRequest: {
+      routine_reminders: boolean;
+      /** Format: time */
+      morning_at: string;
+      /** Format: time */
+      evening_at: string;
+      celebration_reminders: boolean;
     };
     Reply: {
       /** Format: uuid */
@@ -8756,6 +9501,13 @@ export interface components {
       text: string;
     };
     /**
+     * @description * `amount_off` - Discount on the France Selection
+     *     * `express` - Express shipping for free (France Selection)
+     *     * `course` - A course of the platform
+     * @enum {string}
+     */
+    RewardKindEnum: "amount_off" | "express" | "course";
+    /**
      * @description * `client` - Client
      *     * `pro` - Professional
      *     * `collaborator` - Collaborator of a salon
@@ -8763,6 +9515,30 @@ export interface components {
      * @enum {string}
      */
     RolesEnum: "client" | "pro" | "collaborator" | "staff";
+    Routine: {
+      morning: components["schemas"]["RoutineStep"][];
+      evening: components["schemas"]["RoutineStep"][];
+      routine_reminders: boolean;
+      /** Format: time */
+      morning_at: string;
+      /** Format: time */
+      evening_at: string;
+      celebration_reminders: boolean;
+      max_steps: number;
+    };
+    RoutineCheckInputRequest: {
+      done: boolean;
+    };
+    RoutineStep: {
+      /** Format: uuid */
+      id: string;
+      label: string;
+      done: boolean;
+    };
+    RoutineStepsInputRequest: {
+      morning: string[];
+      evening: string[];
+    };
     SaleLiveInputRequest: {
       title: string;
       description?: string;
@@ -8810,6 +9586,7 @@ export interface components {
       quantity: number;
       unit_price_xof: number;
       total_xof: number;
+      discount_xof: number;
       shipping_mode: components["schemas"]["SelectionShippingModeEnum"];
       photo: components["schemas"]["Media"] | null;
       pickup_point: components["schemas"]["SelectionPickupPoint"];
@@ -8857,6 +9634,8 @@ export interface components {
       quantity: number;
       /** @default false */
       group: boolean;
+      /** @default  */
+      voucher: string;
     };
     SelectionOrderList: {
       results: components["schemas"]["SelectionOrder"][];
@@ -9183,6 +9962,7 @@ export interface components {
       languages: components["schemas"]["Language"][];
       verified: boolean;
       trained: boolean;
+      level: components["schemas"]["ProLevelEnum"];
       /** Format: double */
       rating_average: number | null;
       rating_count: number;
@@ -9552,15 +10332,18 @@ export interface components {
      */
     SubscriptionStatusEnum: "trialing" | "active" | "past_due" | "ended";
     /**
-     * @description * `comment` - comment
+     * @description * `challenge_entry` - challenge_entry
+     *     * `comment` - comment
      *     * `person` - person
+     *     * `poll` - poll
      *     * `post` - post
      *     * `product` - product
      *     * `review` - review
      *     * `story` - story
      * @enum {string}
      */
-    TargetEnum: "comment" | "person" | "post" | "product" | "review" | "story";
+    TargetEnum:
+      "challenge_entry" | "comment" | "person" | "poll" | "post" | "product" | "review" | "story";
     TargetRequest: {
       target: components["schemas"]["TargetEnum"];
       /** Format: uuid */
@@ -9640,6 +10423,21 @@ export interface components {
     TimeOffKindEnum: "absence" | "leave" | "block";
     TitleRequest: {
       title: string;
+    };
+    TodayChallenge: {
+      theme: string;
+      /** Format: date */
+      ends_on: string;
+      entries: number;
+    };
+    TodayQuiz: {
+      total: number;
+      answered: number;
+      score: number;
+    };
+    TodayWheel: {
+      open: boolean;
+      can_spin: boolean;
     };
     TopProduct: {
       /** Format: uuid */
@@ -9761,6 +10559,12 @@ export interface components {
       medium?: string | null;
       poster?: string | null;
     };
+    /**
+     * @description * `amount_off` - Discount on the France Selection
+     *     * `express` - Express shipping for free
+     * @enum {string}
+     */
+    VoucherKindEnum: "amount_off" | "express";
     WaitlistEntry: {
       /** Format: uuid */
       id: string;
@@ -9835,6 +10639,36 @@ export interface components {
      * @enum {integer}
      */
     WeekdayEnum: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+    Wheel: {
+      open: boolean;
+      can_spin: boolean;
+      prizes: components["schemas"]["WheelPrize"][];
+      today: components["schemas"]["WheelSpin"] | null;
+    };
+    WheelPrize: {
+      /** Format: uuid */
+      id: string;
+      label: string;
+      kind: components["schemas"]["WheelPrizeKindEnum"];
+      /** Format: decimal */
+      chance: string;
+    };
+    /**
+     * @description * `points` - Points
+     *     * `amount_off` - Discount on the France Selection
+     *     * `express` - Express shipping for free
+     *     * `nothing` - Try again tomorrow
+     * @enum {string}
+     */
+    WheelPrizeKindEnum: "points" | "amount_off" | "express" | "nothing";
+    WheelSpin: {
+      /** Format: uuid */
+      prize_id: string | null;
+      label: string;
+      kind: components["schemas"]["WheelPrizeKindEnum"];
+      points: number;
+      voucher: components["schemas"]["GlowVoucher"] | null;
+    };
     Widget: {
       color: string;
       allowed_domains: string[];
@@ -12090,6 +12924,593 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["GiftReceived"][];
+        };
+      };
+    };
+  };
+  glow_celebrations_list: {
+    parameters: {
+      query?: {
+        country?: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Celebration"][];
+        };
+      };
+    };
+  };
+  glow_challenge_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Challenge"];
+        };
+      };
+    };
+  };
+  glow_challenge_entries_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ChallengeEnterRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["ChallengeEnterRequest"];
+        "multipart/form-data": components["schemas"]["ChallengeEnterRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Challenge"];
+        };
+      };
+    };
+  };
+  glow_challenge_entries_vote_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        entry_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Challenge"];
+        };
+      };
+    };
+  };
+  glow_check_in_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GlowCheckIn"];
+        };
+      };
+    };
+  };
+  glow_history_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GlowEntry"][];
+        };
+      };
+    };
+  };
+  glow_invite_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Invite"];
+        };
+      };
+    };
+  };
+  glow_me_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GlowMe"];
+        };
+      };
+    };
+  };
+  games_polls_list: {
+    parameters: {
+      query?: {
+        /**
+         * @description * `vote` - vote
+         *     * `mine` - mine
+         */
+        scope?: "vote" | "mine";
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PollList"];
+        };
+      };
+    };
+  };
+  games_poll_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PollCreateRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PollCreateRequest"];
+        "multipart/form-data": components["schemas"]["PollCreateRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Poll"];
+        };
+      };
+    };
+  };
+  games_poll_detail: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        poll_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Poll"];
+        };
+      };
+    };
+  };
+  glow_polls_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        poll_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  glow_polls_vote_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        poll_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PollVoteRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PollVoteRequest"];
+        "multipart/form-data": components["schemas"]["PollVoteRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Poll"];
+        };
+      };
+    };
+  };
+  glow_quiz_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DailyQuizOfDay"];
+        };
+      };
+    };
+  };
+  glow_quiz_answer_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        question_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["DailyQuizAnswerInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["DailyQuizAnswerInputRequest"];
+        "multipart/form-data": components["schemas"]["DailyQuizAnswerInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["DailyQuizAnswer"];
+        };
+      };
+    };
+  };
+  glow_rankings_retrieve: {
+    parameters: {
+      query?: {
+        city?: string;
+        month?: string;
+        trade?: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Ranking"];
+        };
+      };
+    };
+  };
+  glow_referral_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ReferralInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["ReferralInputRequest"];
+        "multipart/form-data": components["schemas"]["ReferralInputRequest"];
+      };
+    };
+    responses: {
+      /** @description No response body */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  glow_reminders_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RemindersInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["RemindersInputRequest"];
+        "multipart/form-data": components["schemas"]["RemindersInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Routine"];
+        };
+      };
+    };
+  };
+  glow_rewards_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GlowReward"][];
+        };
+      };
+    };
+  };
+  glow_rewards_redeem_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        reward_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GlowRedeemed"];
+        };
+      };
+    };
+  };
+  glow_routine_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Routine"];
+        };
+      };
+    };
+  };
+  glow_routine_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RoutineStepsInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["RoutineStepsInputRequest"];
+        "multipart/form-data": components["schemas"]["RoutineStepsInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Routine"];
+        };
+      };
+    };
+  };
+  glow_routine_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        step_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["RoutineCheckInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["RoutineCheckInputRequest"];
+        "multipart/form-data": components["schemas"]["RoutineCheckInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Routine"];
+        };
+      };
+    };
+  };
+  glow_today_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GlowToday"];
+        };
+      };
+    };
+  };
+  glow_vouchers_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["GlowVoucher"][];
+        };
+      };
+    };
+  };
+  glow_wheel_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Wheel"];
+        };
+      };
+    };
+  };
+  glow_wheel_spin_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["WheelSpin"];
         };
       };
     };

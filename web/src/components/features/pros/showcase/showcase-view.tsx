@@ -27,6 +27,7 @@ import dynamic from "next/dynamic";
 import { TradeLabel } from "@/components/features/trades/trade-label";
 import { TRADES, type Trade } from "@/components/features/trades/trade-icon";
 import { Avatar } from "@/components/ui/avatar";
+import { ProLevelBadge } from "@/components/features/games/glow-bits";
 import { Badge } from "@/components/ui/badge";
 import { buttonClasses } from "@/components/ui/button";
 import { PriceTag } from "@/components/ui/price-tag";
@@ -234,6 +235,7 @@ export function ShowcaseView({
           <div className="flex flex-wrap items-center gap-3">
             {showcase.verified && <Badge tone="verified">{t("verified")}</Badge>}
             {showcase.trained && <Badge tone="trained">{t("trained")}</Badge>}
+            <ProLevelBadge level={showcase.level} />
             <span className="text-small inline-flex items-center gap-1">
               <Star aria-hidden size={18} weight="fill" className="text-or" />
               {showcase.rating_count > 0 && showcase.rating_average !== null

@@ -252,3 +252,19 @@ export async function upcomingLivesOnServer(locale: string) {
   const { data } = await api.GET("/api/v1/live/upcoming");
   return data ?? [];
 }
+
+// --- Games (module 10) -----------------------------------------------------------------------
+
+/** The home widget of the games (streak, points, quiz, wheel, challenge, winner). */
+export async function glowTodayOnServer(locale: string): Promise<Schemas["GlowToday"] | null> {
+  const api = await serverApi(locale);
+  const { data } = await api.GET("/api/v1/glow/today");
+  return data ?? null;
+}
+
+/** Who invites, from her personal link (null when the code does not work). */
+export async function inviteOnServer(code: string, locale: string) {
+  const api = await serverApi(locale);
+  const { data } = await api.GET("/api/v1/glow/invite/{code}", { params: { path: { code } } });
+  return data ?? null;
+}
