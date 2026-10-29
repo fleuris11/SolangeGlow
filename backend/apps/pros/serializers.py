@@ -10,6 +10,7 @@ from apps.core.media.services import asset_payload
 from . import hours, selectors
 from .models import (
     Closure,
+    Level,
     OpeningPeriod,
     PortfolioItem,
     ProProfile,
@@ -320,6 +321,7 @@ class ShowcaseSerializer(serializers.Serializer):
     languages = LanguageSerializer(many=True)
     verified = serializers.BooleanField()
     trained = serializers.BooleanField()
+    level = serializers.ChoiceField(choices=Level.choices)
     rating_average = serializers.FloatField(allow_null=True)
     rating_count = serializers.IntegerField()
     currency = serializers.CharField()
@@ -365,6 +367,7 @@ def showcase_payload(pro: ProProfile, *, private: bool = False, viewer=None) -> 
         "languages": [{"code": c, "label": str(labels.get(c, c))} for c in pro.languages],
         "verified": pro.is_verified,
         "trained": pro.is_trained,
+        "level": pro.level,
         "rating_average": float(pro.rating_average) if pro.rating_average is not None else None,
         "rating_count": pro.rating_count,
         "currency": pro.currency,
@@ -537,6 +540,7 @@ class CardSerializer(serializers.Serializer):
     travels_to_clients = serializers.BooleanField()
     verified = serializers.BooleanField()
     trained = serializers.BooleanField()
+    level = serializers.ChoiceField(choices=Level.choices)
 
 
 def card_payload(pro: ProProfile) -> dict:
@@ -567,6 +571,7 @@ def card_payload(pro: ProProfile) -> dict:
         "travels_to_clients": pro.travels_to_clients,
         "verified": pro.is_verified,
         "trained": pro.is_trained,
+        "level": pro.level,
     }
 
 

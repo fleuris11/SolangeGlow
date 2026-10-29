@@ -79,6 +79,14 @@ def _media_field(verbose_name):
     )
 
 
+class Level(models.IntegerChoices):
+    """Levels of the pros (module 10): new, confirmed, top pro."""
+
+    NEW = 0, _("New")
+    CONFIRMED = 1, _("Confirmed")
+    TOP = 2, _("Top pro")
+
+
 class ProProfile(BaseModel):
     """Professional side of an account: her showcase. One account can be client and pro."""
 
@@ -192,6 +200,11 @@ class ProProfile(BaseModel):
     verified_at = models.DateTimeField(_("verified at"), null=True, blank=True)
     # « Trained on Solange Glow »: she finished a course that counts for the badge (module 7).
     trained_at = models.DateTimeField(_("trained on Solange Glow since"), null=True, blank=True)
+    # Level of the playful side (module 10): computed every night from her activity.
+    level = models.PositiveSmallIntegerField(
+        _("level"), choices=Level.choices, default=Level.NEW, db_index=True
+    )
+    level_at = models.DateTimeField(_("level since"), null=True, blank=True)
 
     # Filled by the reviews module.
     rating_average = models.DecimalField(

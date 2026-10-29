@@ -172,19 +172,21 @@ def search(params: SearchParams) -> QuerySet[ProProfile]:
 
 def _ordering(params: SearchParams, has_words: bool) -> list:
     rating = Coalesce("rating_average", Value(0), output_field=FloatField()).desc()
-    # « Trained on Solange Glow »: ahead of the pros equal to her (module 7).
+    # Level (module 10), then « Trained on Solange Glow » (module 7): ahead of the pros
+    # equal to her.
     trained = F("trained_at").desc(nulls_last=True)
+    level = F("level").desc()
     if params.sort == "rating":
-        return [rating, "-rating_count", trained, "pk"]
+        return [rating, "-rating_count", level, trained, "pk"]
     if params.sort == "price":
-        return [F("min_price").asc(nulls_last=True), trained, "pk"]
+        return [F("min_price").asc(nulls_last=True), level, trained, "pk"]
     if params.sort == "distance" and params.near is not None:
-        return ["distance", trained, "pk"]
+        return ["distance", level, trained, "pk"]
     if has_words:
-        return [F("rank").desc(), F("similarity").desc(), rating, trained, "pk"]
+        return [F("rank").desc(), F("similarity").desc(), rating, level, trained, "pk"]
     if params.near is not None:
-        return ["distance", trained, "pk"]
-    return [rating, trained, "-published_at", "pk"]
+        return ["distance", level, trained, "pk"]
+    return [rating, level, trained, "-published_at", "pk"]
 
 
 # --- Cursor: an opaque position in the results ------------------------------------

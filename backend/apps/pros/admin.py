@@ -121,11 +121,13 @@ class ProProfileAdmin(AuditedModelAdmin):
         "verification_badge",
         "kind",
         "rating_average",
+        "level",
         "published_at",
     ]
     list_filter = [
         "status",
         "verification_status",
+        "level",
         "kind",
         "country",
         "trades",
