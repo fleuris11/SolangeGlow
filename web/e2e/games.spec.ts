@@ -126,9 +126,9 @@ test("help me choose, the photo challenge, the routine, the calendar, rankings a
   const friend = await context.newPage();
   await warmUp(friend, `/fr/invite/${me.referral.code}`);
   await openWith(friend, `/fr/invite/${me.referral.code}`, LOOK);
-  await expect(friend.getByRole("heading", { name: "Awa t'invite sur Solange Glow" })).toBeVisible(
-    { timeout: 120_000 },
-  );
+  await expect(friend.getByRole("heading", { name: "Awa t'invite sur Solange Glow" })).toBeVisible({
+    timeout: 120_000,
+  });
   await expect(friend.getByRole("link", { name: "Créer mon compte" })).toBeVisible();
   await expectNoSeriousA11yIssue(friend);
   await friend.screenshot({ path: "e2e/screenshots/games-invite.png", fullPage: true });

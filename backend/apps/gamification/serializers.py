@@ -7,8 +7,6 @@ from apps.social.serializers import AuthorSerializer
 
 from .models import Action, Level, PollVote, Reward, Voucher, WheelPrize
 
-
-
 # --- Points, streak, level --------------------------------------------------------------------
 
 
