@@ -119,7 +119,8 @@
       "closed": "Zatvorené",
       "rating": "{rating} ({count})",
       "from": "od",
-      "trained": "Vyškolená na Solange Glow"
+      "trained": "Vyškolená na Solange Glow",
+      "topPro": "Top Pro"
     },
     "filtersSheet": {
       "title": "Filtre",
@@ -1297,7 +1298,11 @@
       "courses": "Moje kurzy (Akadémia)",
       "trainer": "Priestor lektorky",
       "calls": "Moje hovory",
-      "gifts": "Moje darčeky"
+      "gifts": "Moje darčeky",
+      "points": "Moje body a hry",
+      "routine": "Moja rutina",
+      "calendar": "Kalendár sviatkov",
+      "rankings": "Rebríčky profesionálok"
     }
   },
   "payments": {
@@ -1985,7 +1990,9 @@
       "pickup": "Kde si vyzdvihneš balík",
       "final": "Táto cena je konečná: doprava, clo a poplatky v cene.",
       "pay": "Zaplatiť {amount}",
-      "offer": "Darovať tento produkt"
+      "offer": "Darovať tento produkt",
+      "voucher": "Poukážka Glow (nepovinné)",
+      "voucherHint": "Tvoj kód GLOW-… získaný za body. Zľava sa zobrazí pri platbe."
     },
     "requests": {
       "title": "Špeciálna požiadavka",
@@ -3610,6 +3617,300 @@
       "check": "Pozrieť zostatok",
       "left": "Na karte zostáva {amount}.",
       "pay": "Zaplatiť mojou kartou"
+    }
+  },
+  "games": {
+    "titles": {
+      "points": "Moje body",
+      "quiz": "Kvíz dňa",
+      "wheel": "Koleso Glow",
+      "polls": "Pomôž mi vybrať",
+      "newPoll": "Položiť otázku",
+      "challenge": "Fotovýzva týždňa",
+      "routine": "Moja rutina",
+      "calendar": "Kalendár sviatkov",
+      "rankings": "Rebríčky",
+      "invite": "Pozvánka"
+    },
+    "levels": {
+      "glow": "Glow",
+      "star": "Star",
+      "icon": "Ikona"
+    },
+    "proLevels": {
+      "confirmed": "Overená",
+      "top": "Top Pro"
+    },
+    "streak": {
+      "aria": "{count, plural, =0 {Žiadna séria} one {# deň za sebou} few {# dni za sebou} other {# dní za sebou}}"
+    },
+    "status": {
+      "aria": "{points} bodov, {days} dní za sebou. Otvoriť moje body",
+      "points": "{points} Glow Points",
+      "open": "Moje body a hry"
+    },
+    "hub": {
+      "title": "Hry",
+      "quiz": "Kvíz dňa",
+      "wheel": "Koleso Glow",
+      "challenge": "Fotovýzva",
+      "polls": "Pomôž mi vybrať",
+      "routine": "Moja rutina",
+      "calendar": "Nadchádzajúce sviatky",
+      "rankings": "Rebríčky"
+    },
+    "points": {
+      "error": "Your points cannot be shown. Try again.",
+      "title": "Moje body",
+      "speak": "You have {points} Glow Points. Streak: {days} days.",
+      "balanceTitle": "My balance",
+      "unit": "Glow Points",
+      "toNext": "{points} more points to be {level}",
+      "top": "You are at the top level. Well done!",
+      "perk": "{level} advantage: +{percent} % points for each action.",
+      "streak": {
+        "days": "{count, plural, one {# day in a row} other {# days in a row}}",
+        "none": "No streak going on",
+        "week": "Your streak",
+        "lit": "Day {day}: done",
+        "dark": "Day {day}: to come",
+        "toBonus": "{count, plural, one {# more day} other {# more days}} for {points} bonus points."
+      },
+      "gamesTitle": "Hraj a vyhrávaj",
+      "rewards": {
+        "title": "Vymeniť body",
+        "help": "Discounts are paid by Solange Glow, never by the pros.",
+        "none": "No reward for now.",
+        "soldOut": "Sold out",
+        "locked": "From the {level} level",
+        "exchange": "Exchange ({points} points)"
+      },
+      "vouchers": {
+        "title": "Moje poukážky",
+        "used": "Used on {date}",
+        "until": "Valid until {date}",
+        "use": "Use on the France Selection"
+      },
+      "referral": {
+        "title": "Pozvi kamarátku",
+        "help": "Your friend gets {friend} points, you get {you}, after her first purchase.",
+        "message": "Join me on Solange Glow and get {points} Glow Points: {link}",
+        "copied": "Link copied",
+        "whatsapp": "Poslať cez WhatsApp",
+        "copy": "Kopírovať odkaz",
+        "stats": "{invited, plural, one {# friend invited} other {# friends invited}}, {rewarded} rewarded."
+      },
+      "scale": {
+        "title": "Ako získať body",
+        "perDay": "{count, plural, one {# time a day at most} other {# times a day at most}}",
+        "ceiling": "At most {points} points a day (bonuses on top). Today: {today}."
+      },
+      "history": {
+        "title": "História",
+        "none": "Nothing yet. Start with the quiz!"
+      },
+      "redeemed": {
+        "title": "Exchanged!",
+        "amount": "{amount} off your next France Selection order.",
+        "express": "Express shipping is free on your next order.",
+        "course": "Start « {title} »"
+      }
+    },
+    "quiz": {
+      "none": "No quiz today",
+      "noneHelp": "Come back tomorrow for 3 new questions.",
+      "back": "Back to my points",
+      "error": "Your answer was not sent. Try again.",
+      "listen": "Listen to the question",
+      "right": "Right answer! +{points} points",
+      "wrong": "Missed, that is not it.",
+      "next": "Ďalšia otázka",
+      "finish": "Pozrieť skóre",
+      "doneTitle": "Kvíz dokončený",
+      "score": "{score} right answers out of {total}: +{points} points",
+      "tomorrow": "A new quiz is waiting for you tomorrow."
+    },
+    "wheel": {
+      "closed": "The wheel is not open here yet",
+      "back": "Back to my points",
+      "error": "The wheel did not spin. Try again.",
+      "title": "Koleso Glow",
+      "free": "One free spin a day. Never paid, no purchase needed.",
+      "won": "You win: {prize}",
+      "nothing": "No prize this time. Try again tomorrow!",
+      "voucher": "Your code:",
+      "tomorrow": "Come back tomorrow for a new spin.",
+      "spinning": "The wheel is spinning…",
+      "spin": "Zatočiť kolesom (zadarmo)",
+      "chances": "Tvoje šance",
+      "percent": "{value} %",
+      "rules": "The chances are set by Solange Glow and are the same for everyone."
+    },
+    "polls": {
+      "ended": "Vote over",
+      "leftMinutes": "Ends in {count} min",
+      "leftHours": "{count, plural, one {Ends in # hour} other {Ends in # hours}}",
+      "error": "That did not work. Try again.",
+      "share": "{value} %",
+      "myVote": "Your choice",
+      "voteFor": "Vote for {label}",
+      "votes": "{count, plural, =0 {No vote} one {# vote} other {# votes}}",
+      "tapToVote": "Tap the photo you prefer.",
+      "hidden": "The result is shown at the end.",
+      "title": "Pomôž mi vybrať",
+      "help": "Two outfits, two hairstyles: the community helps you choose.",
+      "ask": "Položiť otázku",
+      "tabVote": "To vote",
+      "tabMine": "My questions",
+      "noneToVote": "No question to vote on",
+      "noneMine": "You have not asked a question yet",
+      "noneHelp": "Ask yours with two photos.",
+      "deleted": "Question deleted",
+      "delete": "Delete my question",
+      "all": "All the questions",
+      "sending": "Sending…",
+      "published": "Published! The votes are coming.",
+      "newTitle": "Položiť otázku",
+      "photoA": "Photo A",
+      "photoB": "Photo B",
+      "labelA": "Name of A",
+      "labelB": "Name of B",
+      "caption": "Your question",
+      "captionHint": "For example: which one for the wedding?",
+      "duration": "Length of the vote",
+      "hours": "{count, plural, one {# hour} other {# hours}}",
+      "publish": "Zverejniť"
+    },
+    "challenge": {
+      "photoOf": "Photo by {name}",
+      "votes": "{count, plural, =0 {No vote} one {# vote} other {# votes}}",
+      "mine": "Your photo",
+      "voted": "Hlasované",
+      "vote": "Hlasovať",
+      "winnerLabel": "Challenge winner",
+      "winnerOf": "« {theme} », {count, plural, one {# vote} other {# votes}}",
+      "error": "That did not work. Try again.",
+      "none": "No challenge this week",
+      "noneHelp": "A new theme comes on Monday.",
+      "ofTheWeek": "Photo challenge of the week",
+      "until": "Until {date}",
+      "joined": "Your photo takes part!",
+      "caption": "A word about your photo (optional)",
+      "sending": "Sending your photo…",
+      "join": "Zapojiť sa s fotkou",
+      "inTheGame": "Your photo takes part. Share the challenge with your friends!",
+      "votesLeft": "{count, plural, =0 {You used your votes} one {# vote left} other {# votes left}}",
+      "first": "No photo yet. Be the first one!"
+    },
+    "routine": {
+      "error": "Your routine was not saved. Try again.",
+      "title": "Moja rutina",
+      "morning": "Ráno",
+      "evening": "Večer",
+      "complete": "Routine done, well done!",
+      "empty": "No steps yet. Create your routine in 1 minute.",
+      "progress": "{done} of {total} steps",
+      "create": "Create my routine",
+      "edit": "Change my routine",
+      "step": "Step {number}",
+      "remove": "Remove step {number}",
+      "addStep": "Add a step",
+      "save": "Uložiť rutinu",
+      "suggestions": {
+        "cleanse": "Cleanse my face",
+        "serum": "Serum",
+        "moisturise": "Moisturiser",
+        "sunscreen": "Sunscreen",
+        "lips": "Lip balm",
+        "removeMakeup": "Remove make-up",
+        "shea": "Shea butter",
+        "scarf": "Silk scarf",
+        "nightCream": "Night cream"
+      },
+      "reminders": "My reminders",
+      "remindMe": "Remind me of my routine",
+      "remindMeHelp": "A notification in the morning and in the evening, at the hour chosen.",
+      "morningAt": "Morning at",
+      "eveningAt": "Evening at",
+      "celebrations": "Celebration reminders",
+      "celebrationsHelp": "A few days before the big days."
+    },
+    "calendar": {
+      "title": "Kalendár sviatkov",
+      "help": "The big days to come. Book before the crowd.",
+      "none": "No celebration to come",
+      "today": "It is today!",
+      "inDays": "{count, plural, one {In # day} other {In # days}}",
+      "findPro": "Nájsť profesionálku",
+      "offer": "Darovať darček"
+    },
+    "rankings": {
+      "title": "Rebríčky",
+      "help": "The best pros of the month, from the verified reviews of the clients.",
+      "none": "No ranking yet",
+      "month": "Ranking of {month}",
+      "city": "Mesto",
+      "trade": "Remeslo",
+      "empty": "Not enough reviews here this month yet.",
+      "position": "Rank {position}",
+      "rating": "{average} out of 5 ({count, plural, one {# review} other {# reviews}})"
+    },
+    "today": {
+      "bonus": "Streak bonus! +{points} points ({days} days)",
+      "gained": "+{points} points for your visit",
+      "streak": "{count, plural, one {# day in a row} other {# days in a row}}",
+      "noStreak": "Start your streak today",
+      "title": "Tvoj deň Glow",
+      "points": "{count} points",
+      "quiz": "Kvíz dňa",
+      "quizDone": "{score} of {total}, done",
+      "quizOpen": "{total} questions",
+      "quizNone": "Tomorrow",
+      "wheel": "Koleso Glow",
+      "wheelOpen": "1 free spin",
+      "wheelDone": "Come back tomorrow",
+      "challenge": "Fotovýzva",
+      "challengeNone": "Monday",
+      "polls": "Pomôž mi vybrať",
+      "pollOpen": "A friend waits for your opinion",
+      "pollNone": "Ask your question",
+      "celebrationToday": "{name} is today",
+      "celebration": "{name} {count, plural, one {in # day} other {in # days}}"
+    },
+    "invite": {
+      "error": "That did not work. Try again.",
+      "linked": "Done! Your points come after your first purchase.",
+      "link": "Prijať pozvánku",
+      "seePoints": "Pozrieť moje body",
+      "join": "Vytvoriť účet",
+      "broken": "This invitation link does not work",
+      "home": "Go to the home page",
+      "title": "{name} invites you to Solange Glow",
+      "titleNoName": "A friend invites you to Solange Glow",
+      "text": "Create your account: you get {points} Glow Points after your first purchase.",
+      "why1": "Find your hairdresser, make-up artist, tailor near you.",
+      "why2": "Book for free and pay safely.",
+      "why3": "Play every day: quiz, wheel, photo challenges."
+    },
+    "actions": {
+      "checkin": "Denná návšteva",
+      "streak": "Bonus za sériu",
+      "post": "Príspevok",
+      "review": "Recenzia",
+      "booking": "Termín absolvovaný",
+      "purchase": "Nákup",
+      "referral": "Pozvaná kamarátka",
+      "referred": "Uvítací bonus",
+      "quiz": "Správna odpoveď v kvíze",
+      "poll": "Otázka « Pomôž mi vybrať »",
+      "poll_vote": "Hlas « Pomôž mi vybrať »",
+      "challenge_entry": "Účasť vo fotovýzve",
+      "challenge_vote": "Hlas vo fotovýzve",
+      "challenge_win": "Výhra vo fotovýzve",
+      "wheel": "Koleso Glow",
+      "routine": "Rutina dokončená",
+      "reward": "Vymenené body",
+      "adjustment": "Úprava od tímu"
     }
   }
 }

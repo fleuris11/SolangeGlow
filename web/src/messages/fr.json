@@ -119,7 +119,8 @@
       "closed": "Fermé",
       "rating": "{rating} ({count})",
       "from": "dès",
-      "trained": "Formée sur Solange Glow"
+      "trained": "Formée sur Solange Glow",
+      "topPro": "Top Pro"
     },
     "filtersSheet": {
       "title": "Filtres",
@@ -1297,7 +1298,11 @@
       "courses": "Mes formations (Académie)",
       "trainer": "Espace formatrice",
       "calls": "Mes appels",
-      "gifts": "Mes cadeaux"
+      "gifts": "Mes cadeaux",
+      "points": "Mes points et mes jeux",
+      "routine": "Ma routine",
+      "calendar": "Calendrier des fêtes",
+      "rankings": "Classements des pros"
     }
   },
   "payments": {
@@ -1985,7 +1990,9 @@
       "pickup": "Où récupérer ton colis",
       "final": "Ce prix est final : transport, douane et frais compris.",
       "pay": "Payer {amount}",
-      "offer": "Offrir ce produit"
+      "offer": "Offrir ce produit",
+      "voucher": "Bon Glow (facultatif)",
+      "voucherHint": "Ton code GLOW-… gagné avec tes points. La réduction s'affiche au paiement."
     },
     "requests": {
       "title": "Demande spéciale",
@@ -3610,6 +3617,300 @@
       "check": "Voir le solde",
       "left": "Il reste {amount} sur la carte.",
       "pay": "Payer avec ma carte"
+    }
+  },
+  "games": {
+    "titles": {
+      "points": "Mes points",
+      "quiz": "Quiz du jour",
+      "wheel": "Roue Glow",
+      "polls": "Aide-moi à choisir",
+      "newPoll": "Poser une question",
+      "challenge": "Défi photo de la semaine",
+      "routine": "Ma routine",
+      "calendar": "Calendrier des fêtes",
+      "rankings": "Classements",
+      "invite": "Invitation"
+    },
+    "levels": {
+      "glow": "Glow",
+      "star": "Star",
+      "icon": "Icône"
+    },
+    "proLevels": {
+      "confirmed": "Confirmée",
+      "top": "Top Pro"
+    },
+    "streak": {
+      "aria": "{count, plural, =0 {Aucune série} one {# jour d'affilée} other {# jours d'affilée}}"
+    },
+    "status": {
+      "aria": "{points} points, {days} jours d'affilée. Ouvrir mes points",
+      "points": "{points} Glow Points",
+      "open": "Mes points et mes jeux"
+    },
+    "hub": {
+      "title": "Les jeux",
+      "quiz": "Quiz du jour",
+      "wheel": "Roue Glow",
+      "challenge": "Défi photo",
+      "polls": "Aide-moi à choisir",
+      "routine": "Ma routine",
+      "calendar": "Fêtes à venir",
+      "rankings": "Classements"
+    },
+    "points": {
+      "error": "Impossible d'afficher tes points. Réessaie.",
+      "title": "Mes points",
+      "speak": "Tu as {points} Glow Points. Série : {days} jours.",
+      "balanceTitle": "Mon solde",
+      "unit": "Glow Points",
+      "toNext": "Encore {points} points pour être {level}",
+      "top": "Tu es au plus haut niveau. Bravo !",
+      "perk": "Avantage {level} : +{percent} % de points à chaque action.",
+      "streak": {
+        "days": "{count, plural, one {# jour d'affilée} other {# jours d'affilée}}",
+        "none": "Pas de série en cours",
+        "week": "Ta série",
+        "lit": "Jour {day} : fait",
+        "dark": "Jour {day} : à venir",
+        "toBonus": "{count, plural, one {Encore # jour} other {Encore # jours}} pour {points} points bonus."
+      },
+      "gamesTitle": "Joue et gagne",
+      "rewards": {
+        "title": "Échanger mes points",
+        "help": "Les réductions sont offertes par Solange Glow, jamais par les pros.",
+        "none": "Aucune récompense pour l'instant.",
+        "soldOut": "Épuisé",
+        "locked": "Dès le niveau {level}",
+        "exchange": "Échanger ({points} points)"
+      },
+      "vouchers": {
+        "title": "Mes bons",
+        "used": "Utilisé le {date}",
+        "until": "Valable jusqu'au {date}",
+        "use": "Utiliser sur la Sélection France"
+      },
+      "referral": {
+        "title": "Parraine une amie",
+        "help": "Ton amie gagne {friend} points, toi {you}, après son premier achat.",
+        "message": "Rejoins-moi sur Solange Glow et gagne {points} Glow Points : {link}",
+        "copied": "Lien copié",
+        "whatsapp": "Envoyer sur WhatsApp",
+        "copy": "Copier le lien",
+        "stats": "{invited, plural, one {# amie invitée} other {# amies invitées}}, {rewarded} récompensées."
+      },
+      "scale": {
+        "title": "Comment gagner des points",
+        "perDay": "{count, plural, one {# fois par jour au plus} other {# fois par jour au plus}}",
+        "ceiling": "Au plus {points} points par jour (bonus en plus). Aujourd'hui : {today}."
+      },
+      "history": {
+        "title": "Historique",
+        "none": "Rien pour l'instant. Commence par le quiz !"
+      },
+      "redeemed": {
+        "title": "Échangé !",
+        "amount": "{amount} de réduction sur ta prochaine commande Sélection France.",
+        "express": "La livraison express est offerte sur ta prochaine commande.",
+        "course": "Commencer « {title} »"
+      }
+    },
+    "quiz": {
+      "none": "Pas de quiz aujourd'hui",
+      "noneHelp": "Reviens demain pour 3 nouvelles questions.",
+      "back": "Retour à mes points",
+      "error": "Ta réponse n'est pas partie. Réessaie.",
+      "listen": "Écouter la question",
+      "right": "Bonne réponse ! +{points} points",
+      "wrong": "Raté, ce n'est pas ça.",
+      "next": "Question suivante",
+      "finish": "Voir mon score",
+      "doneTitle": "Quiz terminé",
+      "score": "{score} bonnes réponses sur {total} : +{points} points",
+      "tomorrow": "Un nouveau quiz t'attend demain."
+    },
+    "wheel": {
+      "closed": "La roue n'est pas ouverte ici pour l'instant",
+      "back": "Retour à mes points",
+      "error": "La roue n'a pas tourné. Réessaie.",
+      "title": "Roue Glow",
+      "free": "Un tour gratuit par jour. Jamais payant, aucun achat demandé.",
+      "won": "Tu gagnes : {prize}",
+      "nothing": "Pas de lot cette fois. Retente demain !",
+      "voucher": "Ton code :",
+      "tomorrow": "Reviens demain pour un nouveau tour.",
+      "spinning": "La roue tourne…",
+      "spin": "Tourner la roue (gratuit)",
+      "chances": "Tes chances",
+      "percent": "{value} %",
+      "rules": "Les chances sont fixées par Solange Glow et sont les mêmes pour tout le monde."
+    },
+    "polls": {
+      "ended": "Vote terminé",
+      "leftMinutes": "Fin dans {count} min",
+      "leftHours": "{count, plural, one {Fin dans # heure} other {Fin dans # heures}}",
+      "error": "Ça n'a pas marché. Réessaie.",
+      "share": "{value} %",
+      "myVote": "Ton choix",
+      "voteFor": "Voter pour {label}",
+      "votes": "{count, plural, =0 {Aucun vote} one {# vote} other {# votes}}",
+      "tapToVote": "Touche la photo que tu préfères.",
+      "hidden": "Le résultat s'affiche à la fin.",
+      "title": "Aide-moi à choisir",
+      "help": "Deux tenues, deux coiffures : la communauté t'aide à choisir.",
+      "ask": "Poser une question",
+      "tabVote": "À voter",
+      "tabMine": "Mes questions",
+      "noneToVote": "Aucune question à voter",
+      "noneMine": "Tu n'as pas encore posé de question",
+      "noneHelp": "Pose la tienne avec deux photos.",
+      "deleted": "Question supprimée",
+      "delete": "Supprimer ma question",
+      "all": "Toutes les questions",
+      "sending": "Envoi…",
+      "published": "Publié ! Les votes arrivent.",
+      "newTitle": "Poser une question",
+      "photoA": "Photo A",
+      "photoB": "Photo B",
+      "labelA": "Nom de A",
+      "labelB": "Nom de B",
+      "caption": "Ta question",
+      "captionHint": "Par exemple : laquelle pour le mariage ?",
+      "duration": "Durée du vote",
+      "hours": "{count, plural, one {# heure} other {# heures}}",
+      "publish": "Publier"
+    },
+    "challenge": {
+      "photoOf": "Photo de {name}",
+      "votes": "{count, plural, =0 {Aucun vote} one {# vote} other {# votes}}",
+      "mine": "Ta photo",
+      "voted": "Voté",
+      "vote": "Voter",
+      "winnerLabel": "Gagnante du défi",
+      "winnerOf": "« {theme} », {count, plural, one {# vote} other {# votes}}",
+      "error": "Ça n'a pas marché. Réessaie.",
+      "none": "Pas de défi cette semaine",
+      "noneHelp": "Un nouveau thème arrive lundi.",
+      "ofTheWeek": "Défi photo de la semaine",
+      "until": "Jusqu'à {date}",
+      "joined": "Ta photo participe !",
+      "caption": "Un mot sur ta photo (facultatif)",
+      "sending": "Envoi de ta photo…",
+      "join": "Participer avec une photo",
+      "inTheGame": "Ta photo participe. Partage le défi à tes amies !",
+      "votesLeft": "{count, plural, =0 {Tu as utilisé tes votes} one {Il te reste # vote} other {Il te reste # votes}}",
+      "first": "Aucune photo pour l'instant. Sois la première !"
+    },
+    "routine": {
+      "error": "Ta routine n'a pas été enregistrée. Réessaie.",
+      "title": "Ma routine",
+      "morning": "Matin",
+      "evening": "Soir",
+      "complete": "Routine terminée, bravo !",
+      "empty": "Pas encore d'étapes. Crée ta routine en 1 minute.",
+      "progress": "{done} sur {total} étapes",
+      "create": "Créer ma routine",
+      "edit": "Modifier ma routine",
+      "step": "Étape {number}",
+      "remove": "Retirer l'étape {number}",
+      "addStep": "Ajouter une étape",
+      "save": "Enregistrer ma routine",
+      "suggestions": {
+        "cleanse": "Nettoyer mon visage",
+        "serum": "Sérum",
+        "moisturise": "Crème hydratante",
+        "sunscreen": "Crème solaire",
+        "lips": "Baume à lèvres",
+        "removeMakeup": "Démaquiller",
+        "shea": "Beurre de karité",
+        "scarf": "Foulard en soie",
+        "nightCream": "Crème de nuit"
+      },
+      "reminders": "Mes rappels",
+      "remindMe": "Me rappeler ma routine",
+      "remindMeHelp": "Une notification le matin et le soir, à l'heure choisie.",
+      "morningAt": "Le matin à",
+      "eveningAt": "Le soir à",
+      "celebrations": "Rappels des fêtes",
+      "celebrationsHelp": "Quelques jours avant les grandes occasions."
+    },
+    "calendar": {
+      "title": "Calendrier des fêtes",
+      "help": "Les grandes occasions à venir. Prends rendez-vous avant la foule.",
+      "none": "Aucune fête à venir",
+      "today": "C'est aujourd'hui !",
+      "inDays": "{count, plural, one {Dans # jour} other {Dans # jours}}",
+      "findPro": "Trouver une pro",
+      "offer": "Offrir un cadeau"
+    },
+    "rankings": {
+      "title": "Classements",
+      "help": "Les meilleures pros du mois, d'après les avis vérifiés des clientes.",
+      "none": "Pas encore de classement",
+      "month": "Classement de {month}",
+      "city": "Ville",
+      "trade": "Métier",
+      "empty": "Pas encore assez d'avis ici ce mois-ci.",
+      "position": "Place {position}",
+      "rating": "{average} sur 5 ({count, plural, one {# avis} other {# avis}})"
+    },
+    "today": {
+      "bonus": "Bonus de série ! +{points} points ({days} jours)",
+      "gained": "+{points} points pour ta visite",
+      "streak": "{count, plural, one {# jour d'affilée} other {# jours d'affilée}}",
+      "noStreak": "Commence ta série aujourd'hui",
+      "title": "Ton jour Glow",
+      "points": "{count} points",
+      "quiz": "Quiz du jour",
+      "quizDone": "{score} sur {total}, fait",
+      "quizOpen": "{total} questions",
+      "quizNone": "Demain",
+      "wheel": "Roue Glow",
+      "wheelOpen": "1 tour gratuit",
+      "wheelDone": "Reviens demain",
+      "challenge": "Défi photo",
+      "challengeNone": "Lundi",
+      "polls": "Aide-moi à choisir",
+      "pollOpen": "Une amie attend ton avis",
+      "pollNone": "Pose ta question",
+      "celebrationToday": "{name}, c'est aujourd'hui",
+      "celebration": "{name} {count, plural, one {dans # jour} other {dans # jours}}"
+    },
+    "invite": {
+      "error": "Ça n'a pas marché. Réessaie.",
+      "linked": "C'est fait ! Tes points arriveront après ton premier achat.",
+      "link": "Accepter l'invitation",
+      "seePoints": "Voir mes points",
+      "join": "Créer mon compte",
+      "broken": "Ce lien d'invitation ne marche pas",
+      "home": "Aller à l'accueil",
+      "title": "{name} t'invite sur Solange Glow",
+      "titleNoName": "Une amie t'invite sur Solange Glow",
+      "text": "Crée ton compte : tu gagnes {points} Glow Points après ton premier achat.",
+      "why1": "Trouve ta coiffeuse, ta maquilleuse, ta couturière près de toi.",
+      "why2": "Réserve gratuitement et paie en sécurité.",
+      "why3": "Joue chaque jour : quiz, roue, défis photo."
+    },
+    "actions": {
+      "checkin": "Visite du jour",
+      "streak": "Bonus de série",
+      "post": "Publication",
+      "review": "Avis laissé",
+      "booking": "Rendez-vous fait",
+      "purchase": "Achat",
+      "referral": "Amie parrainée",
+      "referred": "Bonus de bienvenue",
+      "quiz": "Bonne réponse au quiz",
+      "poll": "Question « Aide-moi à choisir »",
+      "poll_vote": "Vote « Aide-moi à choisir »",
+      "challenge_entry": "Participation au défi photo",
+      "challenge_vote": "Vote au défi photo",
+      "challenge_win": "Défi photo gagné",
+      "wheel": "Roue Glow",
+      "routine": "Routine terminée",
+      "reward": "Points échangés",
+      "adjustment": "Ajustement de l'équipe"
     }
   }
 }

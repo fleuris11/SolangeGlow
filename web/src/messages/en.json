@@ -119,7 +119,8 @@
       "closed": "Closed",
       "rating": "{rating} ({count})",
       "from": "from",
-      "trained": "Trained on Solange Glow"
+      "trained": "Trained on Solange Glow",
+      "topPro": "Top Pro"
     },
     "filtersSheet": {
       "title": "Filters",
@@ -1297,7 +1298,11 @@
       "courses": "My courses (Academy)",
       "trainer": "Trainer space",
       "calls": "My calls",
-      "gifts": "My gifts"
+      "gifts": "My gifts",
+      "points": "My points and games",
+      "routine": "My routine",
+      "calendar": "Calendar of celebrations",
+      "rankings": "Rankings of the pros"
     }
   },
   "payments": {
@@ -1985,7 +1990,9 @@
       "pickup": "Where to pick up your parcel",
       "final": "This price is final: transport, customs and fees included.",
       "pay": "Pay {amount}",
-      "offer": "Offer this product"
+      "offer": "Offer this product",
+      "voucher": "Glow voucher (optional)",
+      "voucherHint": "Your GLOW-… code won with your points. The discount shows at payment."
     },
     "requests": {
       "title": "Special request",
@@ -3610,6 +3617,300 @@
       "check": "See the balance",
       "left": "{amount} left on the card.",
       "pay": "Pay with my card"
+    }
+  },
+  "games": {
+    "titles": {
+      "points": "My points",
+      "quiz": "Quiz of the day",
+      "wheel": "Glow wheel",
+      "polls": "Help me choose",
+      "newPoll": "Ask a question",
+      "challenge": "Photo challenge of the week",
+      "routine": "My routine",
+      "calendar": "Calendar of celebrations",
+      "rankings": "Rankings",
+      "invite": "Invitation"
+    },
+    "levels": {
+      "glow": "Glow",
+      "star": "Star",
+      "icon": "Icon"
+    },
+    "proLevels": {
+      "confirmed": "Confirmed",
+      "top": "Top Pro"
+    },
+    "streak": {
+      "aria": "{count, plural, =0 {No streak} one {# day in a row} other {# days in a row}}"
+    },
+    "status": {
+      "aria": "{points} points, {days} days in a row. Open my points",
+      "points": "{points} Glow Points",
+      "open": "My points and my games"
+    },
+    "hub": {
+      "title": "The games",
+      "quiz": "Quiz of the day",
+      "wheel": "Glow wheel",
+      "challenge": "Photo challenge",
+      "polls": "Help me choose",
+      "routine": "My routine",
+      "calendar": "Coming celebrations",
+      "rankings": "Rankings"
+    },
+    "points": {
+      "error": "Your points cannot be shown. Try again.",
+      "title": "My points",
+      "speak": "You have {points} Glow Points. Streak: {days} days.",
+      "balanceTitle": "My balance",
+      "unit": "Glow Points",
+      "toNext": "{points} more points to be {level}",
+      "top": "You are at the top level. Well done!",
+      "perk": "{level} advantage: +{percent} % points for each action.",
+      "streak": {
+        "days": "{count, plural, one {# day in a row} other {# days in a row}}",
+        "none": "No streak going on",
+        "week": "Your streak",
+        "lit": "Day {day}: done",
+        "dark": "Day {day}: to come",
+        "toBonus": "{count, plural, one {# more day} other {# more days}} for {points} bonus points."
+      },
+      "gamesTitle": "Play and win",
+      "rewards": {
+        "title": "Exchange my points",
+        "help": "Discounts are paid by Solange Glow, never by the pros.",
+        "none": "No reward for now.",
+        "soldOut": "Sold out",
+        "locked": "From the {level} level",
+        "exchange": "Exchange ({points} points)"
+      },
+      "vouchers": {
+        "title": "My vouchers",
+        "used": "Used on {date}",
+        "until": "Valid until {date}",
+        "use": "Use on the France Selection"
+      },
+      "referral": {
+        "title": "Invite a friend",
+        "help": "Your friend gets {friend} points, you get {you}, after her first purchase.",
+        "message": "Join me on Solange Glow and get {points} Glow Points: {link}",
+        "copied": "Link copied",
+        "whatsapp": "Send on WhatsApp",
+        "copy": "Copy the link",
+        "stats": "{invited, plural, one {# friend invited} other {# friends invited}}, {rewarded} rewarded."
+      },
+      "scale": {
+        "title": "How to earn points",
+        "perDay": "{count, plural, one {# time a day at most} other {# times a day at most}}",
+        "ceiling": "At most {points} points a day (bonuses on top). Today: {today}."
+      },
+      "history": {
+        "title": "History",
+        "none": "Nothing yet. Start with the quiz!"
+      },
+      "redeemed": {
+        "title": "Exchanged!",
+        "amount": "{amount} off your next France Selection order.",
+        "express": "Express shipping is free on your next order.",
+        "course": "Start « {title} »"
+      }
+    },
+    "quiz": {
+      "none": "No quiz today",
+      "noneHelp": "Come back tomorrow for 3 new questions.",
+      "back": "Back to my points",
+      "error": "Your answer was not sent. Try again.",
+      "listen": "Listen to the question",
+      "right": "Right answer! +{points} points",
+      "wrong": "Missed, that is not it.",
+      "next": "Next question",
+      "finish": "See my score",
+      "doneTitle": "Quiz finished",
+      "score": "{score} right answers out of {total}: +{points} points",
+      "tomorrow": "A new quiz is waiting for you tomorrow."
+    },
+    "wheel": {
+      "closed": "The wheel is not open here yet",
+      "back": "Back to my points",
+      "error": "The wheel did not spin. Try again.",
+      "title": "Glow wheel",
+      "free": "One free spin a day. Never paid, no purchase needed.",
+      "won": "You win: {prize}",
+      "nothing": "No prize this time. Try again tomorrow!",
+      "voucher": "Your code:",
+      "tomorrow": "Come back tomorrow for a new spin.",
+      "spinning": "The wheel is spinning…",
+      "spin": "Spin the wheel (free)",
+      "chances": "Your chances",
+      "percent": "{value} %",
+      "rules": "The chances are set by Solange Glow and are the same for everyone."
+    },
+    "polls": {
+      "ended": "Vote over",
+      "leftMinutes": "Ends in {count} min",
+      "leftHours": "{count, plural, one {Ends in # hour} other {Ends in # hours}}",
+      "error": "That did not work. Try again.",
+      "share": "{value} %",
+      "myVote": "Your choice",
+      "voteFor": "Vote for {label}",
+      "votes": "{count, plural, =0 {No vote} one {# vote} other {# votes}}",
+      "tapToVote": "Tap the photo you prefer.",
+      "hidden": "The result is shown at the end.",
+      "title": "Help me choose",
+      "help": "Two outfits, two hairstyles: the community helps you choose.",
+      "ask": "Ask a question",
+      "tabVote": "To vote",
+      "tabMine": "My questions",
+      "noneToVote": "No question to vote on",
+      "noneMine": "You have not asked a question yet",
+      "noneHelp": "Ask yours with two photos.",
+      "deleted": "Question deleted",
+      "delete": "Delete my question",
+      "all": "All the questions",
+      "sending": "Sending…",
+      "published": "Published! The votes are coming.",
+      "newTitle": "Ask a question",
+      "photoA": "Photo A",
+      "photoB": "Photo B",
+      "labelA": "Name of A",
+      "labelB": "Name of B",
+      "caption": "Your question",
+      "captionHint": "For example: which one for the wedding?",
+      "duration": "Length of the vote",
+      "hours": "{count, plural, one {# hour} other {# hours}}",
+      "publish": "Publish"
+    },
+    "challenge": {
+      "photoOf": "Photo by {name}",
+      "votes": "{count, plural, =0 {No vote} one {# vote} other {# votes}}",
+      "mine": "Your photo",
+      "voted": "Voted",
+      "vote": "Vote",
+      "winnerLabel": "Challenge winner",
+      "winnerOf": "« {theme} », {count, plural, one {# vote} other {# votes}}",
+      "error": "That did not work. Try again.",
+      "none": "No challenge this week",
+      "noneHelp": "A new theme comes on Monday.",
+      "ofTheWeek": "Photo challenge of the week",
+      "until": "Until {date}",
+      "joined": "Your photo takes part!",
+      "caption": "A word about your photo (optional)",
+      "sending": "Sending your photo…",
+      "join": "Take part with a photo",
+      "inTheGame": "Your photo takes part. Share the challenge with your friends!",
+      "votesLeft": "{count, plural, =0 {You used your votes} one {# vote left} other {# votes left}}",
+      "first": "No photo yet. Be the first one!"
+    },
+    "routine": {
+      "error": "Your routine was not saved. Try again.",
+      "title": "My routine",
+      "morning": "Morning",
+      "evening": "Evening",
+      "complete": "Routine done, well done!",
+      "empty": "No steps yet. Create your routine in 1 minute.",
+      "progress": "{done} of {total} steps",
+      "create": "Create my routine",
+      "edit": "Change my routine",
+      "step": "Step {number}",
+      "remove": "Remove step {number}",
+      "addStep": "Add a step",
+      "save": "Save my routine",
+      "suggestions": {
+        "cleanse": "Cleanse my face",
+        "serum": "Serum",
+        "moisturise": "Moisturiser",
+        "sunscreen": "Sunscreen",
+        "lips": "Lip balm",
+        "removeMakeup": "Remove make-up",
+        "shea": "Shea butter",
+        "scarf": "Silk scarf",
+        "nightCream": "Night cream"
+      },
+      "reminders": "My reminders",
+      "remindMe": "Remind me of my routine",
+      "remindMeHelp": "A notification in the morning and in the evening, at the hour chosen.",
+      "morningAt": "Morning at",
+      "eveningAt": "Evening at",
+      "celebrations": "Celebration reminders",
+      "celebrationsHelp": "A few days before the big days."
+    },
+    "calendar": {
+      "title": "Calendar of celebrations",
+      "help": "The big days to come. Book before the crowd.",
+      "none": "No celebration to come",
+      "today": "It is today!",
+      "inDays": "{count, plural, one {In # day} other {In # days}}",
+      "findPro": "Find a pro",
+      "offer": "Offer a gift"
+    },
+    "rankings": {
+      "title": "Rankings",
+      "help": "The best pros of the month, from the verified reviews of the clients.",
+      "none": "No ranking yet",
+      "month": "Ranking of {month}",
+      "city": "City",
+      "trade": "Trade",
+      "empty": "Not enough reviews here this month yet.",
+      "position": "Rank {position}",
+      "rating": "{average} out of 5 ({count, plural, one {# review} other {# reviews}})"
+    },
+    "today": {
+      "bonus": "Streak bonus! +{points} points ({days} days)",
+      "gained": "+{points} points for your visit",
+      "streak": "{count, plural, one {# day in a row} other {# days in a row}}",
+      "noStreak": "Start your streak today",
+      "title": "Your Glow day",
+      "points": "{count} points",
+      "quiz": "Quiz of the day",
+      "quizDone": "{score} of {total}, done",
+      "quizOpen": "{total} questions",
+      "quizNone": "Tomorrow",
+      "wheel": "Glow wheel",
+      "wheelOpen": "1 free spin",
+      "wheelDone": "Come back tomorrow",
+      "challenge": "Photo challenge",
+      "challengeNone": "Monday",
+      "polls": "Help me choose",
+      "pollOpen": "A friend waits for your opinion",
+      "pollNone": "Ask your question",
+      "celebrationToday": "{name} is today",
+      "celebration": "{name} {count, plural, one {in # day} other {in # days}}"
+    },
+    "invite": {
+      "error": "That did not work. Try again.",
+      "linked": "Done! Your points come after your first purchase.",
+      "link": "Accept the invitation",
+      "seePoints": "See my points",
+      "join": "Create my account",
+      "broken": "This invitation link does not work",
+      "home": "Go to the home page",
+      "title": "{name} invites you to Solange Glow",
+      "titleNoName": "A friend invites you to Solange Glow",
+      "text": "Create your account: you get {points} Glow Points after your first purchase.",
+      "why1": "Find your hairdresser, make-up artist, tailor near you.",
+      "why2": "Book for free and pay safely.",
+      "why3": "Play every day: quiz, wheel, photo challenges."
+    },
+    "actions": {
+      "checkin": "Daily visit",
+      "streak": "Streak bonus",
+      "post": "Post",
+      "review": "Review left",
+      "booking": "Appointment done",
+      "purchase": "Purchase",
+      "referral": "Friend invited",
+      "referred": "Welcome bonus",
+      "quiz": "Right quiz answer",
+      "poll": "« Help me choose » question",
+      "poll_vote": "« Help me choose » vote",
+      "challenge_entry": "Photo challenge entry",
+      "challenge_vote": "Photo challenge vote",
+      "challenge_win": "Photo challenge won",
+      "wheel": "Glow wheel",
+      "routine": "Routine done",
+      "reward": "Points exchanged",
+      "adjustment": "Adjustment by the team"
     }
   }
 }
