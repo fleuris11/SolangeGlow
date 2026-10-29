@@ -383,6 +383,47 @@ Réglages `gifts.*` : taux EUR/XOF, validité, délai d'annulation, montants de 
 durée du message, envoi programmé, rappel, pays, compte vendeur. Les frais de 6 % sont
 une règle de prix « Gifts from abroad ». L'interrupteur « gifts » se règle par pays.
 
+## Tester le côté ludique en local
+
+Les données de démo donnent à Awa (+2290197000201, Cotonou) 1 458 points (niveau Star),
+une série de 4 jours, une routine, une filleule (Fifamè), des quiz validés pour la
+semaine, le défi « Look pagne du dimanche » et la gagnante de la semaine dernière.
+
+1. Connecte-toi comme Awa et ouvre l'accueil : le bloc « Ton jour Glow » compte la
+   visite du jour (la flamme passe à 5 jours, +5 points).
+2. « Moi », puis « Mes points et mes jeux » (http://localhost:3000/fr/points) :
+   - solde et niveau ;
+   - série ;
+   - jeux ;
+   - échanger des points contre un bon ;
+   - lien de parrainage ;
+   - barème et historique.
+3. Jeux :
+   - quiz du jour (`/fr/quiz`) ;
+   - roue gratuite (`/fr/roue`, un tour par jour) ;
+   - défi photo (`/fr/defi`) ;
+   - « Aide-moi à choisir » (`/fr/choisir`, vote pour la question de Fifamè) ;
+   - routine (`/fr/routine`) ;
+   - fêtes (`/fr/fetes`) ;
+   - classements (`/fr/classements`).
+4. Bon Glow : sur une fiche Sélection France, tape le code `GLOW-…` dans « Bon Glow ».
+   La réduction s'affiche à la page de paiement.
+5. Parrainage : ouvre le lien de « Parraine une amie » dans une fenêtre privée, puis
+   crée un compte. Les points arrivent après son premier achat (argent versé).
+6. Admin, section « Ludique » :
+   - profils Glow (« Donner ou reprendre des points ») ;
+   - grand livre ;
+   - récompenses ;
+   - roue (poids et chances) ;
+   - quiz et défis à valider en un clic ;
+   - « Aide-moi à choisir » ;
+   - classements, parrainages, calendrier des fêtes.
+
+Réglages `glow.*` (barème, plafonds, niveaux, parrainage, bons) et `games.*` (quiz,
+votes, défis, niveaux des pros, classements, routine). Les interrupteurs « games » et
+« wheel » se règlent par pays. `QUIZ_AI_URL` (vide : l'équipe écrit les quiz) est dans
+`.env.example`.
+
 ## Client de l'API (web)
 
 Les types du client web sont générés depuis le schéma de l'API. Après toute
@@ -451,6 +492,9 @@ backend/                Django
                         mains levées, limites, replay
   apps/gifts/           cadeaux de la diaspora : prestation, produit ou carte cadeau Glow
                         payés en euros, utilisés en FCFA au Bénin, preuve de plaisir
+  apps/gamification/     côté ludique : Glow Points (grand livre), série, quiz, roue, défi
+                        photo, « Aide-moi à choisir », niveaux, classements, parrainage,
+                        routine, calendrier des fêtes
   assets/fonts/         polices de la marque (OFL) pour les affiches et stickers
   apps/<module>/        un module par grande fonctionnalité
   locale/               traductions (fr, en, sk)
