@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-28 13:26+0100\n"
+"POT-Creation-Date: 2026-10-29 08:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -355,6 +355,9 @@ msgstr "Avec le pass"
 
 msgid "Trainer"
 msgstr "Formatrice"
+
+msgid "With Glow Points"
+msgstr "Avec les Glow Points"
 
 msgid "Waiting for the payment"
 msgstr "En attente du paiement"
@@ -1609,11 +1612,633 @@ msgstr "module activable"
 msgid "feature flags"
 msgstr "modules activables"
 
-msgid "Gamification"
-msgstr "Côté ludique"
+msgid "Points"
+msgstr "Points"
+
+msgid "Positive to give, negative to take back."
+msgstr "Positif pour donner, négatif pour reprendre."
+
+msgid "Reason"
+msgstr "Motif"
+
+msgid "balance"
+msgstr "solde"
+
+msgid "Give or take back points"
+msgstr "Donner ou reprendre des points"
+
+msgid "Points written in the ledger."
+msgstr "Points écrits dans le grand livre."
+
+#, python-format
+msgid "Points of %(person)s"
+msgstr "Points de %(person)s"
+
+msgid "One free spin a day, never paid, no purchase needed. Chance of a prize = its weight divided by the weights of the prizes available to the person."
+msgstr "Un tour gratuit par jour, jamais payant, sans achat. Chance d'un lot = son poids divisé par les poids des lots disponibles pour la personne."
+
+msgid "discount"
+msgstr "remise"
+
+msgid "chance (everywhere)"
+msgstr "chance (partout)"
+
+msgid "new picture"
+msgstr "nouvelle image"
+
+msgid "new audio"
+msgstr "nouvel audio"
+
+msgid "picture"
+msgstr "photo"
+
+msgid "questions"
+msgstr "questions"
+
+msgid "Approve"
+msgstr "Valider"
+
+#, python-format
+msgid "%(count)s quizzes approved."
+msgstr "%(count)s quiz validés."
+
+msgid "Quiz approved: it goes online on its day."
+msgstr "Quiz validé : il sera en ligne le jour prévu."
+
+msgid "photos"
+msgstr "photos"
+
+#, python-format
+msgid "%(count)s challenges approved."
+msgstr "%(count)s défis validés."
+
+msgid "Challenge approved: it opens on its Monday."
+msgstr "Défi validé : il s'ouvre son lundi."
+
+msgid "Remove from the app"
+msgstr "Retirer de l'appli"
+
+msgid "Removed."
+msgstr "Retiré."
+
+msgid "Compute again the months selected"
+msgstr "Recalculer les mois choisis"
+
+#, python-format
+msgid "%(count)s months computed."
+msgstr "%(count)s mois calculés."
+
+msgid "Games"
+msgstr "Ludique"
+
+msgid "The games are not open in your country yet."
+msgstr "Les jeux ne sont pas encore ouverts dans ton pays."
+
+msgid "The Glow wheel is not open in your country yet."
+msgstr "La roue Glow n'est pas encore ouverte dans ton pays."
+
+#, python-format
+msgid "You have %(balance)s points. This needs %(cost)s."
+msgstr "Tu as %(balance)s points. Il en faut %(cost)s."
+
+msgid "This reward does not exist or is no longer offered."
+msgstr "Cette récompense n'existe pas ou n'est plus proposée."
+
+#, python-format
+msgid "This reward opens at the %(level)s level."
+msgstr "Cette récompense s'ouvre au niveau %(level)s."
+
+msgid "This reward is sold out. Come back soon."
+msgstr "Cette récompense est épuisée. Reviens bientôt."
+
+msgid "This reward is not offered in your country."
+msgstr "Cette récompense n'est pas proposée dans ton pays."
+
+msgid "You must be an adult to use a discount."
+msgstr "Il faut être majeure pour utiliser une réduction."
+
+msgid "This voucher does not exist, was used or is over."
+msgstr "Ce bon n'existe pas, a déjà servi ou a expiré."
+
+msgid "This voucher cannot be used on this order."
+msgstr "Ce bon ne s'utilise pas sur cette commande."
+
+msgid "You already answered this question."
+msgstr "Tu as déjà répondu à cette question."
+
+msgid "This question is not in today's quiz."
+msgstr "Cette question n'est pas dans le quiz du jour."
+
+msgid "Choose one of the answers shown."
+msgstr "Choisis une des réponses proposées."
+
+#, python-format
+msgid "The quiz needs %(count)s complete questions before it is approved."
+msgstr "Le quiz doit avoir %(count)s questions complètes avant d'être validé."
+
+msgid "You already spun the wheel today. Come back tomorrow!"
+msgstr "Tu as déjà tourné la roue aujourd'hui. Reviens demain !"
+
+msgid "The wheel is being prepared. Come back later."
+msgstr "La roue est en préparation. Reviens plus tard."
+
+msgid "This vote does not exist or is over."
+msgstr "Ce vote n'existe pas ou est terminé."
+
+msgid "This vote is over. See the result."
+msgstr "Ce vote est terminé. Regarde le résultat."
+
+msgid "You cannot vote on your own question."
+msgstr "Tu ne peux pas voter pour ta propre question."
+
+msgid "You already voted."
+msgstr "Tu as déjà voté."
+
+msgid "Add two photos that you took."
+msgstr "Ajoute deux photos prises par toi."
+
+msgid "Choose one of the durations shown."
+msgstr "Choisis une des durées proposées."
+
+#, python-format
+msgid "You already have %(count)s open questions. Wait for a result."
+msgstr "Tu as déjà %(count)s questions ouvertes. Attends un résultat."
+
+msgid "You cannot publish for now."
+msgstr "Tu ne peux pas publier pour l'instant."
+
+msgid "No photo challenge this week. Come back on Monday!"
+msgstr "Pas de défi photo cette semaine. Reviens lundi !"
+
+msgid "You already take part in this challenge."
+msgstr "Tu participes déjà à ce défi."
+
+msgid "This photo is not in the challenge."
+msgstr "Cette photo n'est pas dans le défi."
+
+msgid "You cannot vote for your own photo."
+msgstr "Tu ne peux pas voter pour ta propre photo."
+
+#, python-format
+msgid "You used your %(count)s votes for this challenge."
+msgstr "Tu as utilisé tes %(count)s votes pour ce défi."
+
+msgid "Write the theme before approving the challenge."
+msgstr "Écris le thème avant de valider le défi."
+
+msgid "This invitation link does not work."
+msgstr "Ce lien d'invitation ne marche pas."
+
+#, python-format
+msgid "An invitation is accepted only in the first %(days)s days of an account."
+msgstr "Une invitation s'accepte seulement dans les %(days)s premiers jours d'un compte."
+
+msgid "Your account is already linked to a godmother."
+msgstr "Ton compte est déjà lié à une marraine."
+
+msgid "You cannot invite yourself."
+msgstr "Tu ne peux pas t'inviter toi-même."
+
+msgid "This step is not in your routine."
+msgstr "Cette étape n'est pas dans ta routine."
+
+#, python-format
+msgid "At most %(count)s steps per moment."
+msgstr "Au plus %(count)s étapes par moment."
+
+msgid "Glow"
+msgstr "Glow"
+
+msgid "Star"
+msgstr "Star"
+
+msgid "Icon"
+msgstr "Icône"
+
+msgid "Daily visit"
+msgstr "Visite du jour"
+
+msgid "Streak bonus"
+msgstr "Bonus de série"
+
+msgid "Post"
+msgstr "Publication"
+
+msgid "Review"
+msgstr "Avis"
+
+msgid "Appointment"
+msgstr "Rendez-vous"
+
+msgid "Purchase"
+msgstr "Achat"
+
+msgid "Friend invited"
+msgstr "Amie parrainée"
+
+msgid "Welcome bonus"
+msgstr "Bonus de bienvenue"
+
+msgid "Quiz"
+msgstr "Quiz"
+
+msgid "Help me choose"
+msgstr "Aide-moi à choisir"
+
+msgid "Vote"
+msgstr "Vote"
+
+msgid "Photo challenge"
+msgstr "Défi photo"
+
+msgid "Challenge vote"
+msgstr "Vote au défi"
+
+msgid "Challenge won"
+msgstr "Défi gagné"
+
+msgid "Glow wheel"
+msgstr "Roue Glow"
+
+msgid "Routine"
+msgstr "Routine"
+
+msgid "Reward"
+msgstr "Récompense"
+
+msgid "Adjustment by the team"
+msgstr "Ajustement de l'équipe"
+
+msgid "days in a row"
+msgstr "jours d'affilée"
+
+msgid "best streak"
+msgstr "meilleure série"
+
+msgid "last visit"
+msgstr "dernière visite"
+
+msgid "points earned in total"
+msgstr "points gagnés au total"
+
+msgid "referral code"
+msgstr "code de parrainage"
+
+msgid "routine reminders"
+msgstr "rappels de routine"
+
+msgid "morning reminder"
+msgstr "rappel du matin"
+
+msgid "evening reminder"
+msgstr "rappel du soir"
+
+msgid "celebration reminders"
+msgstr "rappels des fêtes"
+
+msgid "Glow profile"
+msgstr "Profil Glow"
+
+msgid "Glow profiles"
+msgstr "Profils Glow"
+
+msgid "points"
+msgstr "points"
+
+msgid "for"
+msgstr "pour"
+
+msgid "unique key"
+msgstr "clé unique"
+
+msgid "source"
+msgstr "origine"
+
+msgid "source id"
+msgstr "identifiant d'origine"
+
+msgid "points entry"
+msgstr "ligne de points"
+
+msgid "points ledger"
+msgstr "grand livre des points"
+
+msgid "Discount on the France Selection"
+msgstr "Réduction sur la Sélection France"
+
+msgid "Express shipping for free"
+msgstr "Livraison express offerte"
+
+msgid "Points exchanged"
+msgstr "Points échangés"
+
+msgid "kind"
+msgstr "type"
+
+msgid "origin"
+msgstr "origine"
+
+msgid "discount (FCFA)"
+msgstr "réduction (FCFA)"
+
+msgid "valid until"
+msgstr "valable jusqu'au"
+
+msgid "used at"
+msgstr "utilisé le"
+
+msgid "used for"
+msgstr "utilisé pour"
+
+msgid "used for (id)"
+msgstr "utilisé pour (id)"
+
+msgid "voucher"
+msgstr "bon"
+
+msgid "vouchers"
+msgstr "bons"
+
+msgid "Express shipping for free (France Selection)"
+msgstr "Livraison express offerte (Sélection France)"
+
+msgid "A course of the platform"
+msgstr "Une formation de la plateforme"
+
+msgid "cost (points)"
+msgstr "coût (points)"
+
+msgid "For a discount only."
+msgstr "Pour une réduction seulement."
+
+msgid "A course of the platform (not of a pro)."
+msgstr "Une formation de la plateforme (pas d'une pro)."
+
+msgid "from the level"
+msgstr "dès le niveau"
+
+msgid "Country codes, e.g. [\"BJ\"]. Empty: everywhere."
+msgstr "Codes pays, par exemple [\"BJ\"]. Vide : partout."
 
 msgid "left"
 msgstr "partie à"
+
+msgid "Empty: no limit."
+msgstr "Vide : sans limite."
+
+msgid "voucher valid (days)"
+msgstr "bon valable (jours)"
+
+msgid "reward"
+msgstr "récompense"
+
+msgid "rewards"
+msgstr "récompenses"
+
+msgid "Approved"
+msgstr "Validée"
+
+msgid "prepared by"
+msgstr "préparé par"
+
+msgid "approved at"
+msgstr "validé le"
+
+msgid "approved by"
+msgstr "validé par"
+
+msgid "quiz of the day"
+msgstr "quiz du jour"
+
+msgid "quizzes of the day"
+msgstr "quiz du jour"
+
+msgid "quiz"
+msgstr "quiz"
+
+msgid "answer 1"
+msgstr "réponse 1"
+
+msgid "answer 2"
+msgstr "réponse 2"
+
+msgid "answer 3"
+msgstr "réponse 3"
+
+msgid "answer 4"
+msgstr "réponse 4"
+
+msgid "right answer (1 to 4)"
+msgstr "bonne réponse (1 à 4)"
+
+msgid "explanation"
+msgstr "explication"
+
+msgid "audio"
+msgstr "audio"
+
+msgid "answer"
+msgstr "réponse"
+
+msgid "right"
+msgstr "juste"
+
+msgid "quiz answer"
+msgstr "réponse au quiz"
+
+msgid "quiz answers"
+msgstr "réponses au quiz"
+
+msgid "author"
+msgstr "autrice"
+
+msgid "photo A"
+msgstr "photo A"
+
+msgid "photo B"
+msgstr "photo B"
+
+msgid "name of A"
+msgstr "nom de A"
+
+msgid "name of B"
+msgstr "nom de B"
+
+msgid "votes A"
+msgstr "votes A"
+
+msgid "votes B"
+msgstr "votes B"
+
+msgid "result sent at"
+msgstr "résultat envoyé le"
+
+msgid "« Help me choose »"
+msgstr "« Aide-moi à choisir »"
+
+msgid "Closed"
+msgstr "Terminé"
+
+msgid "from (Monday)"
+msgstr "du (lundi)"
+
+msgid "until (Sunday)"
+msgstr "au (dimanche)"
+
+msgid "winner"
+msgstr "gagnante"
+
+msgid "closed at"
+msgstr "fermée le"
+
+msgid "photo challenge"
+msgstr "défi photo"
+
+msgid "photo challenges"
+msgstr "défis photo"
+
+msgid "challenge"
+msgstr "défi"
+
+msgid "caption"
+msgstr "légende"
+
+msgid "votes"
+msgstr "votes"
+
+msgid "challenge entry"
+msgstr "participation au défi"
+
+msgid "challenge entries"
+msgstr "participations au défi"
+
+msgid "Try again tomorrow"
+msgstr "Retente demain"
+
+msgid "weight"
+msgstr "poids"
+
+msgid "The higher, the more often. 0: never."
+msgstr "Plus il est haut, plus souvent. 0 : jamais."
+
+msgid "per day"
+msgstr "par jour"
+
+msgid "Empty: everywhere."
+msgstr "Vide : partout."
+
+msgid "wheel prize"
+msgstr "lot de la roue"
+
+msgid "prize"
+msgstr "lot"
+
+msgid "spin"
+msgstr "tour"
+
+msgid "spins"
+msgstr "tours"
+
+msgid "month"
+msgstr "mois"
+
+msgid "score"
+msgstr "score"
+
+msgid "average"
+msgstr "moyenne"
+
+msgid "reviews of the month"
+msgstr "avis du mois"
+
+msgid "ranking"
+msgstr "classement"
+
+msgid "rankings"
+msgstr "classements"
+
+msgid "godmother"
+msgstr "marraine"
+
+msgid "goddaughter"
+msgstr "filleule"
+
+msgid "points given at"
+msgstr "points donnés le"
+
+msgid "first purchase"
+msgstr "premier achat"
+
+msgid "over the monthly limit"
+msgstr "au-delà de la limite du mois"
+
+msgid "referral"
+msgstr "parrainage"
+
+msgid "referrals"
+msgstr "parrainages"
+
+msgid "Morning"
+msgstr "Matin"
+
+msgid "Evening"
+msgstr "Soir"
+
+msgid "moment"
+msgstr "moment"
+
+msgid "routine step"
+msgstr "étape de routine"
+
+msgid "routine steps"
+msgstr "étapes de routine"
+
+msgid "reminder"
+msgstr "rappel"
+
+msgid "date"
+msgstr "date"
+
+msgid "For a moving day (Tabaski, Easter…), write each year's date."
+msgstr "Pour une fête mobile (Tabaski, Pâques…), écris la date de chaque année."
+
+msgid "same date every year"
+msgstr "même date chaque année"
+
+msgid "reminder (days before)"
+msgstr "rappel (jours avant)"
+
+msgid "pros of the moment"
+msgstr "pros du moment"
+
+msgid "products of the moment"
+msgstr "produits du moment"
+
+msgid "Words searched."
+msgstr "Mots recherchés."
+
+msgid "gift occasion"
+msgstr "occasion de cadeau"
+
+msgid "last reminder for"
+msgstr "dernier rappel pour"
+
+msgid "celebration"
+msgstr "fête"
+
+msgid "calendar of celebrations"
+msgstr "calendrier des fêtes"
+
+#, python-format
+msgid "%(amount)s off the France Selection"
+msgstr "%(amount)s de réduction sur la Sélection France"
+
+#, python-format
+msgid "Balance today: %(balance)s points. A correction is a new line of the ledger: nothing is erased, the person sees it in her history."
+msgstr "Solde aujourd'hui : %(balance)s points. Une correction est une nouvelle ligne du grand livre : rien n'est effacé, la personne la voit dans son historique."
+
+msgid "Write in the ledger"
+msgstr "Écrire dans le grand livre"
 
 #, python-format
 msgid "Paid by gifts in FCFA this month: %(month)s (%(count)s uses). Since the start: %(total)s. To cover with the euros received."
@@ -1751,9 +2376,6 @@ msgstr "Pas envoyée"
 msgid "offered by"
 msgstr "offert par"
 
-msgid "for"
-msgstr "pour"
-
 msgid "phone of the person"
 msgstr "téléphone de la personne"
 
@@ -1810,9 +2432,6 @@ msgstr "choix"
 
 msgid "what"
 msgstr "quoi"
-
-msgid "valid until"
-msgstr "valable jusqu'au"
 
 msgid "can be cancelled until"
 msgstr "annulable jusqu'au"
@@ -2313,9 +2932,6 @@ msgstr "Retenu pour examen"
 msgid "Removed"
 msgstr "Retiré"
 
-msgid "author"
-msgstr "autrice"
-
 msgid "second of the live"
 msgstr "seconde du live"
 
@@ -2551,9 +3167,6 @@ msgstr "Information"
 
 msgid "Call"
 msgstr "Appel"
-
-msgid "Post"
-msgstr "Publication"
 
 msgid "Product"
 msgstr "Produit"
@@ -2894,9 +3507,6 @@ msgstr "messages aux invitées"
 msgid "(hidden once sent)"
 msgstr "(masqué après l'envoi)"
 
-msgid "balance"
-msgstr "solde"
-
 msgid "total paid"
 msgstr "total payé"
 
@@ -2962,9 +3572,6 @@ msgstr "Frais de paiement"
 
 msgid "Finance"
 msgstr "Finance"
-
-msgid "picture"
-msgstr "photo"
 
 msgid "Amount to refund"
 msgstr "Montant à rembourser"
@@ -3088,9 +3695,6 @@ msgstr "compte du grand livre"
 
 msgid "ledger accounts"
 msgstr "comptes du grand livre"
-
-msgid "unique key"
-msgstr "clé unique"
 
 msgid "ledger entry"
 msgstr "écriture"
@@ -3710,6 +4314,12 @@ msgstr "Portugais"
 msgid "Website"
 msgstr "Site web"
 
+msgid "New"
+msgstr "Nouvelle"
+
+msgid "Top pro"
+msgstr "Top Pro"
+
 msgid "Independent"
 msgstr "Indépendante"
 
@@ -3790,6 +4400,9 @@ msgstr "raison de la suspension"
 
 msgid "trained on Solange Glow since"
 msgstr "formée sur Solange Glow depuis"
+
+msgid "level since"
+msgstr "niveau depuis"
 
 msgid "average rating"
 msgstr "note moyenne"
@@ -3911,17 +4524,11 @@ msgstr "fermetures"
 msgid "result"
 msgstr "résultat"
 
-msgid "caption"
-msgstr "légende"
-
 msgid "portfolio item"
 msgstr "réalisation"
 
 msgid "portfolio"
 msgstr "réalisations"
-
-msgid "Approved"
-msgstr "Validée"
 
 msgid "Identity card"
 msgstr "Carte d'identité"
@@ -4611,9 +5218,6 @@ msgstr "produit Sélection"
 msgid "Selection products"
 msgstr "produits Sélection"
 
-msgid "photos"
-msgstr "photos"
-
 msgid "pick-up point"
 msgstr "point de retrait"
 
@@ -4649,9 +5253,6 @@ msgstr "objectif (articles)"
 
 msgid "group price (FCFA)"
 msgstr "prix groupé (FCFA)"
-
-msgid "closed at"
-msgstr "fermée le"
 
 msgid "group pre-order"
 msgstr "précommande groupée"
@@ -4712,6 +5313,9 @@ msgstr "prix unitaire (FCFA)"
 
 msgid "total (FCFA)"
 msgstr "total (FCFA)"
+
+msgid "Glow voucher (FCFA)"
+msgstr "Bon Glow (FCFA)"
 
 msgid "shipping"
 msgstr "envoi"
@@ -5083,17 +5687,11 @@ msgstr "alerte de retour en stock"
 msgid "back-in-stock alerts"
 msgstr "alertes de retour en stock"
 
-msgid "New"
-msgstr "Nouvelle"
-
 msgid "Ready to pick up"
 msgstr "Prête à retirer"
 
 msgid "items before discount"
 msgstr "articles avant remise"
-
-msgid "discount"
-msgstr "remise"
 
 msgid "code used"
 msgstr "code utilisé"
@@ -5152,9 +5750,6 @@ msgstr "Le produit quitte la boutique de %(shop)s et tous les paniers. La pro re
 
 msgid "Remove the selected items"
 msgstr "Retirer les éléments choisis"
-
-msgid "Removed."
-msgstr "Retiré."
 
 msgid "Show the selected items again"
 msgstr "Afficher de nouveau les éléments choisis"
@@ -5504,6 +6099,27 @@ msgstr "Cadeaux de l'étranger"
 msgid "Uses of gifts"
 msgstr "Utilisations des cadeaux"
 
+msgid "Points ledger"
+msgstr "Grand livre des points"
+
+msgid "Rewards"
+msgstr "Récompenses"
+
+msgid "Quizzes of the day"
+msgstr "Quiz du jour"
+
+msgid "Photo challenges"
+msgstr "Défis photo"
+
+msgid "Rankings"
+msgstr "Classements"
+
+msgid "Referrals"
+msgstr "Parrainages"
+
+msgid "Calendar of celebrations"
+msgstr "Calendrier des fêtes"
+
 msgid "Lives and calls"
 msgstr "Lives et appels"
 
@@ -5581,6 +6197,9 @@ msgstr "Invitées"
 
 msgid "Groups"
 msgstr "Groupes"
+
+#~ msgid "Gamification"
+#~ msgstr "Côté ludique"
 
 #~ msgid "The live video is not available yet: it is coming soon."
 #~ msgstr "La vidéo en direct n'est pas encore disponible : elle arrive bientôt."

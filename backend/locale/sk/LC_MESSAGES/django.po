@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-28 13:26+0100\n"
+"POT-Creation-Date: 2026-10-29 08:01+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -355,6 +355,9 @@ msgstr "S pasom"
 
 msgid "Trainer"
 msgstr "Lektorka"
+
+msgid "With Glow Points"
+msgstr "S bodmi Glow"
 
 msgid "Waiting for the payment"
 msgstr "Čaká sa na platbu"
@@ -1613,11 +1616,633 @@ msgstr "prepínač funkcie"
 msgid "feature flags"
 msgstr "prepínače funkcií"
 
-msgid "Gamification"
-msgstr "Gamifikácia"
+msgid "Points"
+msgstr "Body"
+
+msgid "Positive to give, negative to take back."
+msgstr "Kladné na pridanie, záporné na odobratie."
+
+msgid "Reason"
+msgstr "Dôvod"
+
+msgid "balance"
+msgstr "zostatok"
+
+msgid "Give or take back points"
+msgstr "Pridať alebo odobrať body"
+
+msgid "Points written in the ledger."
+msgstr "Body zapísané do knihy."
+
+#, python-format
+msgid "Points of %(person)s"
+msgstr "Body: %(person)s"
+
+msgid "One free spin a day, never paid, no purchase needed. Chance of a prize = its weight divided by the weights of the prizes available to the person."
+msgstr "Jedno otočenie denne zadarmo, nikdy platené, bez nákupu. Šanca výhry = jej váha delená váhami výhier dostupných pre osobu."
+
+msgid "discount"
+msgstr "zľava"
+
+msgid "chance (everywhere)"
+msgstr "šanca (všade)"
+
+msgid "new picture"
+msgstr "nový obrázok"
+
+msgid "new audio"
+msgstr "nové audio"
+
+msgid "picture"
+msgstr "fotka"
+
+msgid "questions"
+msgstr "otázky"
+
+msgid "Approve"
+msgstr "Schváliť"
+
+#, python-format
+msgid "%(count)s quizzes approved."
+msgstr "%(count)s kvízov schválených."
+
+msgid "Quiz approved: it goes online on its day."
+msgstr "Kvíz schválený: zverejní sa v jeho deň."
+
+msgid "photos"
+msgstr "fotky"
+
+#, python-format
+msgid "%(count)s challenges approved."
+msgstr "%(count)s výziev schválených."
+
+msgid "Challenge approved: it opens on its Monday."
+msgstr "Výzva schválená: otvorí sa v jej pondelok."
+
+msgid "Remove from the app"
+msgstr "Odstrániť z aplikácie"
+
+msgid "Removed."
+msgstr "Odstránené."
+
+msgid "Compute again the months selected"
+msgstr "Znova prepočítať vybrané mesiace"
+
+#, python-format
+msgid "%(count)s months computed."
+msgstr "%(count)s mesiacov prepočítaných."
+
+msgid "Games"
+msgstr "Hry"
+
+msgid "The games are not open in your country yet."
+msgstr "Hry ešte nie sú vo tvojej krajine otvorené."
+
+msgid "The Glow wheel is not open in your country yet."
+msgstr "Koleso Glow ešte nie je vo tvojej krajine otvorené."
+
+#, python-format
+msgid "You have %(balance)s points. This needs %(cost)s."
+msgstr "Máš %(balance)s bodov. Treba %(cost)s."
+
+msgid "This reward does not exist or is no longer offered."
+msgstr "Táto odmena neexistuje alebo sa už neponúka."
+
+#, python-format
+msgid "This reward opens at the %(level)s level."
+msgstr "Táto odmena sa otvorí na úrovni %(level)s."
+
+msgid "This reward is sold out. Come back soon."
+msgstr "Táto odmena je vypredaná. Vráť sa čoskoro."
+
+msgid "This reward is not offered in your country."
+msgstr "Táto odmena sa vo tvojej krajine neponúka."
+
+msgid "You must be an adult to use a discount."
+msgstr "Na použitie zľavy musíš byť plnoletá."
+
+msgid "This voucher does not exist, was used or is over."
+msgstr "Táto poukážka neexistuje, bola použitá alebo vypršala."
+
+msgid "This voucher cannot be used on this order."
+msgstr "Túto poukážku nemožno použiť na túto objednávku."
+
+msgid "You already answered this question."
+msgstr "Na túto otázku si už odpovedala."
+
+msgid "This question is not in today's quiz."
+msgstr "Táto otázka nie je v dnešnom kvíze."
+
+msgid "Choose one of the answers shown."
+msgstr "Vyber jednu z ponúknutých odpovedí."
+
+#, python-format
+msgid "The quiz needs %(count)s complete questions before it is approved."
+msgstr "Kvíz potrebuje %(count)s úplné otázky pred schválením."
+
+msgid "You already spun the wheel today. Come back tomorrow!"
+msgstr "Dnes si už kolesom točila. Vráť sa zajtra!"
+
+msgid "The wheel is being prepared. Come back later."
+msgstr "Koleso sa pripravuje. Vráť sa neskôr."
+
+msgid "This vote does not exist or is over."
+msgstr "Toto hlasovanie neexistuje alebo skončilo."
+
+msgid "This vote is over. See the result."
+msgstr "Hlasovanie skončilo. Pozri si výsledok."
+
+msgid "You cannot vote on your own question."
+msgstr "Nemôžeš hlasovať o vlastnej otázke."
+
+msgid "You already voted."
+msgstr "Už si hlasovala."
+
+msgid "Add two photos that you took."
+msgstr "Pridaj dve fotky, ktoré si odfotila."
+
+msgid "Choose one of the durations shown."
+msgstr "Vyber jedno z ponúknutých trvaní."
+
+#, python-format
+msgid "You already have %(count)s open questions. Wait for a result."
+msgstr "Už máš %(count)s otvorené otázky. Počkaj na výsledok."
+
+msgid "You cannot publish for now."
+msgstr "Zatiaľ nemôžeš zverejňovať."
+
+msgid "No photo challenge this week. Come back on Monday!"
+msgstr "Tento týždeň nie je fotovýzva. Vráť sa v pondelok!"
+
+msgid "You already take part in this challenge."
+msgstr "V tejto výzve už súťažíš."
+
+msgid "This photo is not in the challenge."
+msgstr "Táto fotka nie je vo výzve."
+
+msgid "You cannot vote for your own photo."
+msgstr "Nemôžeš hlasovať za vlastnú fotku."
+
+#, python-format
+msgid "You used your %(count)s votes for this challenge."
+msgstr "Využila si svoje %(count)s hlasy v tejto výzve."
+
+msgid "Write the theme before approving the challenge."
+msgstr "Pred schválením výzvy napíš tému."
+
+msgid "This invitation link does not work."
+msgstr "Tento pozývací odkaz nefunguje."
+
+#, python-format
+msgid "An invitation is accepted only in the first %(days)s days of an account."
+msgstr "Pozvánku možno prijať len počas prvých %(days)s dní účtu."
+
+msgid "Your account is already linked to a godmother."
+msgstr "Tvoj účet je už spojený s krstnou mamou."
+
+msgid "You cannot invite yourself."
+msgstr "Nemôžeš pozvať samu seba."
+
+msgid "This step is not in your routine."
+msgstr "Tento krok nie je v tvojej rutine."
+
+#, python-format
+msgid "At most %(count)s steps per moment."
+msgstr "Najviac %(count)s krokov na chvíľu dňa."
+
+msgid "Glow"
+msgstr "Glow"
+
+msgid "Star"
+msgstr "Star"
+
+msgid "Icon"
+msgstr "Ikona"
+
+msgid "Daily visit"
+msgstr "Denná návšteva"
+
+msgid "Streak bonus"
+msgstr "Bonus za sériu"
+
+msgid "Post"
+msgstr "Príspevok"
+
+msgid "Review"
+msgstr "Recenzia"
+
+msgid "Appointment"
+msgstr "Termín"
+
+msgid "Purchase"
+msgstr "Nákup"
+
+msgid "Friend invited"
+msgstr "Pozvaná kamarátka"
+
+msgid "Welcome bonus"
+msgstr "Uvítací bonus"
+
+msgid "Quiz"
+msgstr "Kvíz"
+
+msgid "Help me choose"
+msgstr "Pomôž mi vybrať"
+
+msgid "Vote"
+msgstr "Hlas"
+
+msgid "Photo challenge"
+msgstr "Fotovýzva"
+
+msgid "Challenge vote"
+msgstr "Hlas vo výzve"
+
+msgid "Challenge won"
+msgstr "Vyhraná výzva"
+
+msgid "Glow wheel"
+msgstr "Koleso Glow"
+
+msgid "Routine"
+msgstr "Rutina"
+
+msgid "Reward"
+msgstr "Odmena"
+
+msgid "Adjustment by the team"
+msgstr "Úprava od tímu"
+
+msgid "days in a row"
+msgstr "dní za sebou"
+
+msgid "best streak"
+msgstr "najlepšia séria"
+
+msgid "last visit"
+msgstr "posledná návšteva"
+
+msgid "points earned in total"
+msgstr "celkovo získané body"
+
+msgid "referral code"
+msgstr "pozývací kód"
+
+msgid "routine reminders"
+msgstr "pripomienky rutiny"
+
+msgid "morning reminder"
+msgstr "ranná pripomienka"
+
+msgid "evening reminder"
+msgstr "večerná pripomienka"
+
+msgid "celebration reminders"
+msgstr "pripomienky sviatkov"
+
+msgid "Glow profile"
+msgstr "Profil Glow"
+
+msgid "Glow profiles"
+msgstr "Profily Glow"
+
+msgid "points"
+msgstr "body"
+
+msgid "for"
+msgstr "pre"
+
+msgid "unique key"
+msgstr "jedinečný kľúč"
+
+msgid "source"
+msgstr "zdroj"
+
+msgid "source id"
+msgstr "id zdroja"
+
+msgid "points entry"
+msgstr "záznam bodov"
+
+msgid "points ledger"
+msgstr "kniha bodov"
+
+msgid "Discount on the France Selection"
+msgstr "Zľava na France Selection"
+
+msgid "Express shipping for free"
+msgstr "Expresné doručenie zadarmo"
+
+msgid "Points exchanged"
+msgstr "Vymenené body"
+
+msgid "kind"
+msgstr "druh"
+
+msgid "origin"
+msgstr "pôvod"
+
+msgid "discount (FCFA)"
+msgstr "zľava (FCFA)"
+
+msgid "valid until"
+msgstr "platí do"
+
+msgid "used at"
+msgstr "použité dňa"
+
+msgid "used for"
+msgstr "použité na"
+
+msgid "used for (id)"
+msgstr "použité na (id)"
+
+msgid "voucher"
+msgstr "poukážka"
+
+msgid "vouchers"
+msgstr "poukážky"
+
+msgid "Express shipping for free (France Selection)"
+msgstr "Expresné doručenie zadarmo (France Selection)"
+
+msgid "A course of the platform"
+msgstr "Kurz platformy"
+
+msgid "cost (points)"
+msgstr "cena (body)"
+
+msgid "For a discount only."
+msgstr "Len pre zľavu."
+
+msgid "A course of the platform (not of a pro)."
+msgstr "Kurz platformy (nie profesionálky)."
+
+msgid "from the level"
+msgstr "od úrovne"
+
+msgid "Country codes, e.g. [\"BJ\"]. Empty: everywhere."
+msgstr "Kódy krajín, napr. [\"BJ\"]. Prázdne: všade."
 
 msgid "left"
 msgstr "odišla o"
+
+msgid "Empty: no limit."
+msgstr "Prázdne: bez limitu."
+
+msgid "voucher valid (days)"
+msgstr "platnosť poukážky (dni)"
+
+msgid "reward"
+msgstr "odmena"
+
+msgid "rewards"
+msgstr "odmeny"
+
+msgid "Approved"
+msgstr "Schválené"
+
+msgid "prepared by"
+msgstr "pripravil"
+
+msgid "approved at"
+msgstr "schválené dňa"
+
+msgid "approved by"
+msgstr "schválil"
+
+msgid "quiz of the day"
+msgstr "kvíz dňa"
+
+msgid "quizzes of the day"
+msgstr "kvízy dňa"
+
+msgid "quiz"
+msgstr "kvíz"
+
+msgid "answer 1"
+msgstr "odpoveď 1"
+
+msgid "answer 2"
+msgstr "odpoveď 2"
+
+msgid "answer 3"
+msgstr "odpoveď 3"
+
+msgid "answer 4"
+msgstr "odpoveď 4"
+
+msgid "right answer (1 to 4)"
+msgstr "správna odpoveď (1 až 4)"
+
+msgid "explanation"
+msgstr "vysvetlenie"
+
+msgid "audio"
+msgstr "audio"
+
+msgid "answer"
+msgstr "odpoveď"
+
+msgid "right"
+msgstr "správne"
+
+msgid "quiz answer"
+msgstr "odpoveď v kvíze"
+
+msgid "quiz answers"
+msgstr "odpovede v kvíze"
+
+msgid "author"
+msgstr "autorka"
+
+msgid "photo A"
+msgstr "fotka A"
+
+msgid "photo B"
+msgstr "fotka B"
+
+msgid "name of A"
+msgstr "názov A"
+
+msgid "name of B"
+msgstr "názov B"
+
+msgid "votes A"
+msgstr "hlasy A"
+
+msgid "votes B"
+msgstr "hlasy B"
+
+msgid "result sent at"
+msgstr "výsledok odoslaný dňa"
+
+msgid "« Help me choose »"
+msgstr "« Pomôž mi vybrať »"
+
+msgid "Closed"
+msgstr "Uzavreté"
+
+msgid "from (Monday)"
+msgstr "od (pondelok)"
+
+msgid "until (Sunday)"
+msgstr "do (nedeľa)"
+
+msgid "winner"
+msgstr "víťazka"
+
+msgid "closed at"
+msgstr "uzavreté"
+
+msgid "photo challenge"
+msgstr "fotovýzva"
+
+msgid "photo challenges"
+msgstr "fotovýzvy"
+
+msgid "challenge"
+msgstr "výzva"
+
+msgid "caption"
+msgstr "popis"
+
+msgid "votes"
+msgstr "hlasy"
+
+msgid "challenge entry"
+msgstr "účasť vo výzve"
+
+msgid "challenge entries"
+msgstr "účasti vo výzve"
+
+msgid "Try again tomorrow"
+msgstr "Skús zajtra"
+
+msgid "weight"
+msgstr "váha"
+
+msgid "The higher, the more often. 0: never."
+msgstr "Čím vyššia, tým častejšie. 0: nikdy."
+
+msgid "per day"
+msgstr "denne"
+
+msgid "Empty: everywhere."
+msgstr "Prázdne: všade."
+
+msgid "wheel prize"
+msgstr "výhra kolesa"
+
+msgid "prize"
+msgstr "výhra"
+
+msgid "spin"
+msgstr "otočenie"
+
+msgid "spins"
+msgstr "otočenia"
+
+msgid "month"
+msgstr "mesiac"
+
+msgid "score"
+msgstr "skóre"
+
+msgid "average"
+msgstr "priemer"
+
+msgid "reviews of the month"
+msgstr "recenzie mesiaca"
+
+msgid "ranking"
+msgstr "rebríček"
+
+msgid "rankings"
+msgstr "rebríčky"
+
+msgid "godmother"
+msgstr "krstná mama"
+
+msgid "goddaughter"
+msgstr "krstná dcéra"
+
+msgid "points given at"
+msgstr "body pridelené dňa"
+
+msgid "first purchase"
+msgstr "prvý nákup"
+
+msgid "over the monthly limit"
+msgstr "nad mesačný limit"
+
+msgid "referral"
+msgstr "pozvanie"
+
+msgid "referrals"
+msgstr "pozvania"
+
+msgid "Morning"
+msgstr "Ráno"
+
+msgid "Evening"
+msgstr "Večer"
+
+msgid "moment"
+msgstr "chvíľa"
+
+msgid "routine step"
+msgstr "krok rutiny"
+
+msgid "routine steps"
+msgstr "kroky rutiny"
+
+msgid "reminder"
+msgstr "pripomienka"
+
+msgid "date"
+msgstr "dátum"
+
+msgid "For a moving day (Tabaski, Easter…), write each year's date."
+msgstr "Pri pohyblivom sviatku (Kurban bajram, Veľká noc…) napíš dátum každý rok."
+
+msgid "same date every year"
+msgstr "rovnaký dátum každý rok"
+
+msgid "reminder (days before)"
+msgstr "pripomienka (dní vopred)"
+
+msgid "pros of the moment"
+msgstr "profesionálky chvíle"
+
+msgid "products of the moment"
+msgstr "produkty chvíle"
+
+msgid "Words searched."
+msgstr "Hľadané slová."
+
+msgid "gift occasion"
+msgstr "príležitosť darčeka"
+
+msgid "last reminder for"
+msgstr "posledná pripomienka pre"
+
+msgid "celebration"
+msgstr "sviatok"
+
+msgid "calendar of celebrations"
+msgstr "kalendár sviatkov"
+
+#, python-format
+msgid "%(amount)s off the France Selection"
+msgstr "Zľava %(amount)s na France Selection"
+
+#, python-format
+msgid "Balance today: %(balance)s points. A correction is a new line of the ledger: nothing is erased, the person sees it in her history."
+msgstr "Zostatok dnes: %(balance)s bodov. Oprava je nový riadok knihy: nič sa nemaže, osoba ju vidí vo svojej histórii."
+
+msgid "Write in the ledger"
+msgstr "Zapísať do knihy"
 
 #, python-format
 msgid "Paid by gifts in FCFA this month: %(month)s (%(count)s uses). Since the start: %(total)s. To cover with the euros received."
@@ -1755,9 +2380,6 @@ msgstr "Neodoslané"
 msgid "offered by"
 msgstr "daroval(a)"
 
-msgid "for"
-msgstr "pre"
-
 msgid "phone of the person"
 msgstr "telefón osoby"
 
@@ -1814,9 +2436,6 @@ msgstr "variant"
 
 msgid "what"
 msgstr "čo"
-
-msgid "valid until"
-msgstr "platí do"
 
 msgid "can be cancelled until"
 msgstr "zrušiteľné do"
@@ -2317,9 +2936,6 @@ msgstr "Zadržané na posúdenie"
 msgid "Removed"
 msgstr "Odstránené"
 
-msgid "author"
-msgstr "autorka"
-
 msgid "second of the live"
 msgstr "sekunda live"
 
@@ -2555,9 +3171,6 @@ msgstr "Informácia"
 
 msgid "Call"
 msgstr "Hovor"
-
-msgid "Post"
-msgstr "Príspevok"
 
 msgid "Product"
 msgstr "Produkt"
@@ -2898,9 +3511,6 @@ msgstr "správy hosťom"
 msgid "(hidden once sent)"
 msgstr "(skryté po odoslaní)"
 
-msgid "balance"
-msgstr "zostatok"
-
 msgid "total paid"
 msgstr "zaplatené spolu"
 
@@ -2966,9 +3576,6 @@ msgstr "Poplatky za platby"
 
 msgid "Finance"
 msgstr "Financie"
-
-msgid "picture"
-msgstr "fotka"
 
 msgid "Amount to refund"
 msgstr "Suma na vrátenie"
@@ -3092,9 +3699,6 @@ msgstr "účet hlavnej knihy"
 
 msgid "ledger accounts"
 msgstr "účty hlavnej knihy"
-
-msgid "unique key"
-msgstr "jedinečný kľúč"
 
 msgid "ledger entry"
 msgstr "účtovný zápis"
@@ -3724,6 +4328,12 @@ msgstr "Portugalčina"
 msgid "Website"
 msgstr "Webová stránka"
 
+msgid "New"
+msgstr "Nová"
+
+msgid "Top pro"
+msgstr "Top Pro"
+
 msgid "Independent"
 msgstr "Samostatná"
 
@@ -3804,6 +4414,9 @@ msgstr "dôvod pozastavenia"
 
 msgid "trained on Solange Glow since"
 msgstr "vyškolená na Solange Glow od"
+
+msgid "level since"
+msgstr "úroveň od"
 
 msgid "average rating"
 msgstr "priemerné hodnotenie"
@@ -3925,17 +4538,11 @@ msgstr "zatvorenia"
 msgid "result"
 msgstr "výsledok"
 
-msgid "caption"
-msgstr "popis"
-
 msgid "portfolio item"
 msgstr "práca"
 
 msgid "portfolio"
 msgstr "práce"
-
-msgid "Approved"
-msgstr "Schválené"
 
 msgid "Identity card"
 msgstr "Občiansky preukaz"
@@ -4627,9 +5234,6 @@ msgstr "produkt výberu"
 msgid "Selection products"
 msgstr "produkty výberu"
 
-msgid "photos"
-msgstr "fotky"
-
 msgid "pick-up point"
 msgstr "výdajné miesto"
 
@@ -4665,9 +5269,6 @@ msgstr "cieľ (kusy)"
 
 msgid "group price (FCFA)"
 msgstr "skupinová cena (FCFA)"
-
-msgid "closed at"
-msgstr "uzavreté"
 
 msgid "group pre-order"
 msgstr "skupinová predobjednávka"
@@ -4728,6 +5329,9 @@ msgstr "jednotková cena (FCFA)"
 
 msgid "total (FCFA)"
 msgstr "spolu (FCFA)"
+
+msgid "Glow voucher (FCFA)"
+msgstr "Poukážka Glow (FCFA)"
 
 msgid "shipping"
 msgstr "odoslanie"
@@ -5099,17 +5703,11 @@ msgstr "upozornenie na naskladnenie"
 msgid "back-in-stock alerts"
 msgstr "upozornenia na naskladnenie"
 
-msgid "New"
-msgstr "Nová"
-
 msgid "Ready to pick up"
 msgstr "Pripravená na vyzdvihnutie"
 
 msgid "items before discount"
 msgstr "položky pred zľavou"
-
-msgid "discount"
-msgstr "zľava"
 
 msgid "code used"
 msgstr "použitý kód"
@@ -5168,9 +5766,6 @@ msgstr "Produkt zmizne z obchodu %(shop)s a zo všetkých košíkov. Profesioná
 
 msgid "Remove the selected items"
 msgstr "Odstrániť vybrané položky"
-
-msgid "Removed."
-msgstr "Odstránené."
 
 msgid "Show the selected items again"
 msgstr "Znova zobraziť vybrané položky"
@@ -5520,6 +6115,27 @@ msgstr "Darčeky zo zahraničia"
 msgid "Uses of gifts"
 msgstr "Použitia darčekov"
 
+msgid "Points ledger"
+msgstr "Kniha bodov"
+
+msgid "Rewards"
+msgstr "Odmeny"
+
+msgid "Quizzes of the day"
+msgstr "Kvízy dňa"
+
+msgid "Photo challenges"
+msgstr "Fotovýzvy"
+
+msgid "Rankings"
+msgstr "Rebríčky"
+
+msgid "Referrals"
+msgstr "Pozvania"
+
+msgid "Calendar of celebrations"
+msgstr "Kalendár sviatkov"
+
 msgid "Lives and calls"
 msgstr "Live a hovory"
 
@@ -5597,6 +6213,9 @@ msgstr "Hostia"
 
 msgid "Groups"
 msgstr "Skupiny"
+
+#~ msgid "Gamification"
+#~ msgstr "Gamifikácia"
 
 #~ msgid "The live video is not available yet: it is coming soon."
 #~ msgstr "Živé video zatiaľ nie je dostupné: čoskoro príde."
