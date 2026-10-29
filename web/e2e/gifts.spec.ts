@@ -133,7 +133,14 @@ test("a service offered from Paris, booked in Cotonou by the person herself", as
   await expectNoSeriousA11yIssue(aunt);
   await aunt.screenshot({ path: "e2e/screenshots/gift-book.png", fullPage: true });
   await aunt.getByRole("button", { name: /^Réserver/ }).click();
-  await expect(aunt.getByText("Rendez-vous réservé").first()).toBeVisible({ timeout: 60_000 });
+  try {
+    await expect(aunt.getByText("Rendez-vous réservé").first()).toBeVisible({ timeout: 60_000 });
+  } catch (error) {
+    // Keep what the person saw (message of the app) to understand a refusal.
+    await aunt.screenshot({ path: "e2e/screenshots/gift-book-error.png", fullPage: true });
+    const said = await aunt.getByRole("status").allInnerTexts();
+    throw new Error(`Not booked. Messages: ${said.join(" | ")}`, { cause: error });
+  }
   await expect(aunt.getByRole("link", { name: /Voir mon rendez-vous/ })).toBeVisible();
   await aunt.screenshot({ path: "e2e/screenshots/gift-booked.png", fullPage: true });
 
