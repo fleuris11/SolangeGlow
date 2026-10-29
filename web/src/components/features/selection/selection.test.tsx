@@ -68,6 +68,7 @@ describe("SelectionBuy", () => {
         option: "385",
         quantity: 2,
         group: false,
+        voucher: "",
       }),
     );
   });

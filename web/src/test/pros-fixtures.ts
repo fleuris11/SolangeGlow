@@ -42,6 +42,7 @@ export const SHOWCASE: Showcase = {
   languages: [{ code: "fr", label: "Français" }],
   verified: true,
   trained: false,
+  level: 0,
   rating_average: 4.9,
   rating_count: 128,
   currency: "XOF",
@@ -117,4 +118,5 @@ export const CARD: ProCard = {
   travels_to_clients: true,
   verified: true,
   trained: false,
+  level: 0,
 };
