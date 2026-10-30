@@ -3,7 +3,7 @@
 import { CheckCircle, Camera, Crosshair, SignIn, Storefront, Van } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { LocationPicker } from "@/components/features/map/lazy";
 import { TradeIcon, TRADES, type Trade } from "@/components/features/trades/trade-icon";
@@ -16,18 +16,23 @@ import { Stepper } from "@/components/ui/stepper";
 import { SwitchRow } from "@/components/ui/switch-row";
 import { getTrades } from "@/lib/api/accounts";
 import { ApiError } from "@/lib/api/client";
+import { claimInvitation } from "@/lib/api/help";
 import { becomePro, setMyLocation, setMyTravel, updateMyPro, uploadProMedia } from "@/lib/api/pros";
 import { useMe } from "@/lib/auth/use-me";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useMapConfig } from "@/lib/pros/use-map-config";
 import { useMyPro } from "@/lib/pros/use-my-pro";
+import { rememberInvite, takeInvite } from "@/lib/prospects/invite";
 
 const TOTAL = 4;
 type Position = { latitude: number; longitude: number };
 
 /** « Become a pro »: name, trades, place, photo. Then « Ma vitrine » to finish. */
-export function BecomeProFlow() {
+export function BecomeProFlow({ invite }: { invite?: string }) {
   const t = useTranslations("pros.become");
+  useEffect(() => {
+    if (invite) rememberInvite(invite);
+  }, [invite]);
   const tTrades = useTranslations("trades");
   const router = useRouter();
   const me = useMe();
@@ -101,6 +106,8 @@ export function BecomeProFlow() {
       if (!receives) await updateMyPro({ receives_clients: false });
       if (travels) await setMyTravel({ travels_to_clients: true, radius_km: 10 });
       if (photo) await uploadProMedia("photo", photo);
+      const code = takeInvite();
+      if (code) await claimInvitation(code).catch(() => undefined);
       await existing.refetch();
       router.push("/pro");
     } catch (failure) {
