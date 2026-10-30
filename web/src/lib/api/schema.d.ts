@@ -672,6 +672,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/backoffice/impersonation/stop": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Ends « sign in as »: the session of the member is closed on this browser. */
+    post: operations["backoffice_impersonation_stop_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/booking/appointments": {
     parameters: {
       query?: never;
@@ -997,6 +1014,57 @@ export interface paths {
     };
     /** @description Map tiles (style URL and attribution set in the admin) and the starting view. */
     get: operations["config_map_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/content/banners": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["content_banners_list"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/content/pages": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["content_pages_list"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/content/pages/{slug}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["content_pages_retrieve"];
     put?: never;
     post?: never;
     delete?: never;
@@ -1889,6 +1957,57 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/help/faq": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    get: operations["help_faq_list"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/help/suggest": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description The answers that may help before sending a question to the team. */
+    post: operations["help_suggest_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/help/tickets": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Open to everyone; a signed-in visitor is recognised (an expired session is ignored). */
+    post: operations["help_tickets_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/hides": {
     parameters: {
       query?: never;
@@ -1902,6 +2021,23 @@ export interface paths {
     post: operations["hides_create"];
     /** @description « Hide »: a post, a story, a comment, or every post of a person. */
     delete: operations["hides_destroy"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/i18n/overrides": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description The texts of the app corrected in the admin (the app keeps them one minute). */
+    get: operations["i18n_overrides_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
     options?: never;
     head?: never;
     patch?: never;
@@ -4860,6 +4996,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/prospects/claim": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description A pro signed up with the link of her invitation (prospecting). */
+    post: operations["prospects_claim_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/reports": {
     parameters: {
       query?: never;
@@ -5797,6 +5950,15 @@ export interface components {
      * @enum {string}
      */
     BackgroundEnum: "hibiscus" | "prune" | "or" | "feuille" | "poudre";
+    Banner: {
+      /** Format: uuid */
+      id: string;
+      title: string;
+      text: string;
+      cta: string;
+      link: string;
+      image: components["schemas"]["Media"] | null;
+    };
     BasicStats: {
       /** Format: date */
       start: string;
@@ -6338,6 +6500,9 @@ export interface components {
       pros: number;
       districts: string[];
     };
+    ClaimRequest: {
+      code: string;
+    };
     ClientFile: {
       /** Format: uuid */
       id: string;
@@ -6831,6 +6996,31 @@ export interface components {
       /** Format: uuid */
       media_id?: string | null;
     };
+    FaqItem: {
+      /** Format: uuid */
+      id: string;
+      topic: components["schemas"]["FaqTopicEnum"];
+      question: string;
+      answer: string;
+    };
+    FaqTopic: {
+      key: components["schemas"]["FaqTopicEnum"];
+      label: string;
+      items: components["schemas"]["FaqItem"][];
+    };
+    /**
+     * @description * `account` - My account
+     *     * `booking` - Appointments
+     *     * `payment` - Payments and refunds
+     *     * `shop` - Shops and orders
+     *     * `selection` - France Selection
+     *     * `gifts` - Gifts
+     *     * `pros` - For the pros
+     *     * `games` - Glow Points and games
+     * @enum {string}
+     */
+    FaqTopicEnum:
+      "account" | "booking" | "payment" | "shop" | "selection" | "gifts" | "pros" | "games";
     FileUploadRequest: {
       /** Format: binary */
       file: string;
@@ -7209,10 +7399,19 @@ export interface components {
       | "cancelled"
       | "refunded";
     GiftStep: {
-      key: components["schemas"]["KeyEnum"];
+      key: components["schemas"]["GiftStepKeyEnum"];
       /** Format: date-time */
       at: string | null;
     };
+    /**
+     * @description * `paid` - paid
+     *     * `sent` - sent
+     *     * `opened` - opened
+     *     * `used` - used
+     *     * `photo` - photo
+     * @enum {string}
+     */
+    GiftStepKeyEnum: "paid" | "sent" | "opened" | "used" | "photo";
     GiftThing: {
       name: string;
       photo: components["schemas"]["Media"] | null;
@@ -7554,15 +7753,6 @@ export interface components {
       name: string;
       points: number;
     };
-    /**
-     * @description * `paid` - paid
-     *     * `sent` - sent
-     *     * `opened` - opened
-     *     * `used` - used
-     *     * `photo` - photo
-     * @enum {string}
-     */
-    KeyEnum: "paid" | "sent" | "opened" | "used" | "photo";
     Language: {
       code: string;
       label: string;
@@ -8570,6 +8760,12 @@ export interface components {
      * @enum {string}
      */
     OutcomeEnum: "succeeded" | "failed" | "abandoned";
+    Overrides: {
+      version: number;
+      messages: {
+        [key: string]: string;
+      };
+    };
     Package: {
       /** Format: uuid */
       id: string;
@@ -8593,6 +8789,33 @@ export interface components {
       validity_days?: number;
       max_installments?: number;
       is_active?: boolean;
+    };
+    Page: {
+      slug: string;
+      kind: components["schemas"]["PageKindEnum"];
+      title: string;
+      summary: string;
+      body: string;
+      /** Format: date-time */
+      updated_at: string;
+      version: number;
+    };
+    /**
+     * @description * `help` - Help
+     *     * `terms` - Terms and conditions
+     *     * `privacy` - Privacy
+     *     * `legal` - Legal notice
+     *     * `game_rules` - Rules of the games
+     *     * `returns` - Returns and refunds
+     *     * `other` - Other
+     * @enum {string}
+     */
+    PageKindEnum: "help" | "terms" | "privacy" | "legal" | "game_rules" | "returns" | "other";
+    PageSummary: {
+      slug: string;
+      kind: components["schemas"]["PageKindEnum"];
+      title: string;
+      summary: string;
     };
     PaginatedNotificationList: {
       /**
@@ -10493,6 +10716,13 @@ export interface components {
      * @enum {string}
      */
     SubscriptionStatusEnum: "trialing" | "active" | "past_due" | "ended";
+    Suggest: {
+      answer: string | null;
+      faq: components["schemas"]["FaqItem"][];
+    };
+    SuggestInputRequest: {
+      question: string;
+    };
     /**
      * @description * `challenge_entry` - challenge_entry
      *     * `comment` - comment
@@ -10554,6 +10784,27 @@ export interface components {
      * @enum {string}
      */
     ThemeEnum: "system" | "light" | "dark";
+    Ticket: {
+      reference: string;
+      status: components["schemas"]["TicketStatusEnum"];
+    };
+    TicketInputRequest: {
+      /** @default  */
+      name: string;
+      email?: string;
+      /** @default  */
+      phone: string;
+      /** @default  */
+      topic: components["schemas"]["FaqTopicEnum"] | components["schemas"]["BlankEnum"];
+      message: string;
+    };
+    /**
+     * @description * `new` - New
+     *     * `answered` - Answered
+     *     * `closed` - Closed
+     * @enum {string}
+     */
+    TicketStatusEnum: "new" | "answered" | "closed";
     TimeOff: {
       /** Format: uuid */
       id: string;
@@ -11982,6 +12233,24 @@ export interface operations {
       };
     };
   };
+  backoffice_impersonation_stop_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
   booking_my_appointments: {
     parameters: {
       query?: never;
@@ -12422,6 +12691,67 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["MapConfig"];
+        };
+      };
+    };
+  };
+  content_banners_list: {
+    parameters: {
+      query?: {
+        country?: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Banner"][];
+        };
+      };
+    };
+  };
+  content_pages_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PageSummary"][];
+        };
+      };
+    };
+  };
+  content_pages_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        slug: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Page"];
         };
       };
     };
@@ -13836,6 +14166,75 @@ export interface operations {
       };
     };
   };
+  help_faq_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["FaqTopic"][];
+        };
+      };
+    };
+  };
+  help_suggest_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["SuggestInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["SuggestInputRequest"];
+        "multipart/form-data": components["schemas"]["SuggestInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Suggest"];
+        };
+      };
+    };
+  };
+  help_tickets_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["TicketInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["TicketInputRequest"];
+        "multipart/form-data": components["schemas"]["TicketInputRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Ticket"];
+        };
+      };
+    };
+  };
   hides_create: {
     parameters: {
       query?: never;
@@ -13875,6 +14274,32 @@ export interface operations {
           [name: string]: unknown;
         };
         content?: never;
+      };
+    };
+  };
+  i18n_overrides_retrieve: {
+    parameters: {
+      query: {
+        /**
+         * @description * `fr` - French
+         *     * `en` - English
+         *     * `sk` - Slovak
+         */
+        lang: "fr" | "en" | "sk";
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Overrides"];
+        };
       };
     };
   };
@@ -19214,6 +19639,30 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["City"][];
         };
+      };
+    };
+  };
+  prospects_claim_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ClaimRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["ClaimRequest"];
+        "multipart/form-data": components["schemas"]["ClaimRequest"];
+      };
+    };
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
