@@ -106,6 +106,12 @@ test("a guest books, the pro confirms, reminder, done, then a verified review", 
   });
   expect(started.ok()).toBe(true);
   await openWith(pro, "/fr/pro/agenda", LOOK);
+  // Just after midnight in Cotonou (UTC+1, no summer time), « 30 minutes ago » is still
+  // yesterday, while the agenda opens on today.
+  const cotonou = new Date(Date.now() + 60 * 60_000);
+  if (cotonou.getUTCHours() * 60 + cotonou.getUTCMinutes() < 30) {
+    await pro.getByRole("button", { name: "Précédent", exact: true }).click();
+  }
   const block = pro.getByRole("button", { name: new RegExp(`^${name}, Brushing`) }).first();
   await expect(block).toBeVisible({ timeout: 30_000 });
   await expectNoSeriousA11yIssue(pro);
