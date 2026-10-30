@@ -46,7 +46,7 @@ async function signInToAdmin(page: Page) {
   await expect(page).toHaveURL(/\/admin\/(\?.*)?$/);
 }
 
-test.use({ viewport: VIEWPORTS.desktop });
+test.use({ viewport: VIEWPORTS.desktop, locale: "fr-FR" });
 
 test("the owner signs in with two-factor and steers everything from the admin", async ({
   page,
@@ -95,6 +95,22 @@ test.describe("help center of the app", () => {
     await page.getByRole("button", { name: "Envoyer ma question" }).click();
     await expect(page.getByRole("heading", { name: "Question envoyée" })).toBeVisible();
     await page.screenshot({ path: "e2e/screenshots/help-sent.png" });
+  });
+
+  test("the red banner shows while signed in as a member", async ({ page, baseURL }) => {
+    await page
+      .context()
+      .addCookies([
+        { name: "sg_impersonation", value: "demo|Awa", url: baseURL ?? "http://localhost:3000" },
+      ]);
+    await openWith(page, "/fr/aide", LOOK);
+    const banner = page
+      .getByRole("alert")
+      .filter({ hasText: "Tu es connectée à la place de Awa." });
+    await expect(banner).toBeVisible();
+    await expect(banner.getByRole("button", { name: "Arrêter" })).toBeVisible();
+    await expectNoSeriousA11yIssue(page);
+    await page.screenshot({ path: "e2e/screenshots/impersonation-banner.png" });
   });
 
   test("a legal page is readable", async ({ page }) => {
