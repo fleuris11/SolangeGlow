@@ -10,6 +10,7 @@ from django.template.response import TemplateResponse
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TabbedTranslationAdmin
+from unfold import widgets
 from unfold.decorators import action
 
 from apps.core.audit.admin import AuditedModelAdmin
@@ -117,7 +118,9 @@ class FaqItemAdmin(VersionedAdmin, TabbedTranslationAdmin):
 
 
 class AnswerForm(forms.Form):
-    answer = forms.CharField(label=_("Answer"), widget=forms.Textarea(attrs={"rows": 8}))
+    answer = forms.CharField(
+        label=_("Answer"), widget=widgets.UnfoldAdminTextareaWidget(attrs={"rows": 8})
+    )
 
 
 @admin.register(Ticket)

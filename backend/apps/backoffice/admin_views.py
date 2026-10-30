@@ -18,6 +18,7 @@ from django.urls import path, reverse
 from django.utils import timezone
 from django.utils.http import url_has_allowed_host_and_scheme, urlencode
 from django.utils.translation import gettext_lazy as _
+from unfold import widgets
 
 from apps.accounts.cookies import set_auth_cookies
 from apps.core.audit.services import record
@@ -94,19 +95,21 @@ def two_factor_view(site):
 
 
 class MemberForm(forms.Form):
-    email = forms.EmailField(label=_("E-mail"))
-    first_name = forms.CharField(label=_("First name"), max_length=150)
+    email = forms.EmailField(label=_("E-mail"), widget=widgets.UnfoldAdminEmailInputWidget)
+    first_name = forms.CharField(
+        label=_("First name"), max_length=150, widget=widgets.UnfoldAdminTextInputWidget
+    )
     password = forms.CharField(
         label=_("Temporary password"),
         required=False,
-        widget=forms.PasswordInput(render_value=False),
+        widget=widgets.UnfoldAdminPasswordWidget(render_value=False),
         help_text=_("Empty: unchanged. She sets up two-factor at her first sign-in."),
     )
     roles = forms.MultipleChoiceField(
         label=_("Roles"),
         required=False,
         choices=[(key, label) for key, (_name, label, _perms) in team.ROLES.items()],
-        widget=forms.CheckboxSelectMultiple,
+        widget=widgets.UnfoldAdminCheckboxSelectMultipleWidget,
     )
 
 
@@ -316,8 +319,13 @@ def selection_console(site):
 
 
 class ImportForm(forms.Form):
-    file = forms.FileField(label=_("CSV file"))
-    source = forms.CharField(label=_("Source"), required=False, max_length=80)
+    file = forms.FileField(label=_("CSV file"), widget=widgets.UnfoldAdminFileFieldWidget)
+    source = forms.CharField(
+        label=_("Source"),
+        required=False,
+        max_length=80,
+        widget=widgets.UnfoldAdminTextInputWidget,
+    )
 
 
 def prospects_import(site):
@@ -355,7 +363,11 @@ def prospects_import(site):
 
 
 class ImpersonateForm(forms.Form):
-    reason = forms.CharField(label=_("Why (written in the journal)"), max_length=200)
+    reason = forms.CharField(
+        label=_("Why (written in the journal)"),
+        max_length=200,
+        widget=widgets.UnfoldAdminTextInputWidget,
+    )
 
 
 def impersonate_view(site):
