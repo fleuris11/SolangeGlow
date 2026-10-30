@@ -32,14 +32,14 @@ def test_flag_limited_by_country_and_role():
 
 
 def test_flag_cache_follows_changes():
-    flag = FeatureFlagFactory(key="ads")
-    assert is_feature_enabled("ads") is True
+    flag = FeatureFlagFactory(key="test-cache")
+    assert is_feature_enabled("test-cache") is True
 
     flag.is_enabled = False
     flag.save()
-    assert is_feature_enabled("ads") is False
+    assert is_feature_enabled("test-cache") is False
 
     flag.is_enabled = True
     flag.save()
     flag.countries.add(CountryFactory(code="BJ"))
-    assert is_feature_enabled("ads", country="FR") is False
+    assert is_feature_enabled("test-cache", country="FR") is False
