@@ -96,8 +96,31 @@ function GiftMessage({ gift }: { gift: Reception }) {
   );
 }
 
+/** After the booking: kept by the page, so the refresh of the gift never hides it. */
+function BookedPanel({ link }: { link: string }) {
+  const t = useTranslations("gifts.reception");
+  return (
+    <div className="flex flex-col items-center gap-4 text-center">
+      <Bloom label={t("booked")} />
+      <p className="text-title font-bold">{t("booked")}</p>
+      <Link href={link} className={buttonClasses({ size: "lg" })}>
+        <CalendarCheck aria-hidden size={24} />
+        {t("seeAppointment")}
+      </Link>
+    </div>
+  );
+}
+
 /** The offered service: choose a time, it is already paid. */
-function BookPanel({ gift, token }: { gift: Reception; token: string }) {
+function BookPanel({
+  gift,
+  token,
+  onBooked,
+}: {
+  gift: Reception;
+  token: string;
+  onBooked: (link: string) => void;
+}) {
   const t = useTranslations("gifts.reception");
   const locale = useLocale();
   const client = useQueryClient();
@@ -106,7 +129,6 @@ function BookPanel({ gift, token }: { gift: Reception; token: string }) {
   const [start, setStart] = useState<string | null>(null);
   const [name, setName] = useState(gift.recipient_name);
   const [phone, setPhone] = useState(gift.recipient_phone ?? "");
-  const [done, setDone] = useState<string | null>(null);
   const slug = gift.pro?.slug ?? "";
   const zone = gift.time_zone ?? "Africa/Porto-Novo";
   const slots = useQuery({
@@ -119,19 +141,6 @@ function BookPanel({ gift, token }: { gift: Reception; token: string }) {
   const times = days.find((d) => d.day === chosenDay)?.slots ?? [];
   const signedIn = hasSession();
 
-  if (done) {
-    return (
-      <div className="flex flex-col items-center gap-4 text-center">
-        <Bloom label={t("booked")} />
-        <p className="text-title font-bold">{t("booked")}</p>
-        <Link href={done} className={buttonClasses({ size: "lg" })}>
-          <CalendarCheck aria-hidden size={24} />
-          {t("seeAppointment")}
-        </Link>
-      </div>
-    );
-  }
-
   const book = () =>
     run(async () => {
       if (!start) return;
@@ -141,7 +150,7 @@ function BookPanel({ gift, token }: { gift: Reception; token: string }) {
         guest_phone: signedIn ? "" : phone.trim(),
         note: "",
       });
-      setDone(result.manage_url ?? `/appointments/${result.appointment.id}`);
+      onBooked(result.manage_url ?? `/appointments/${result.appointment.id}`);
       await client.invalidateQueries({ queryKey: key(token) });
     });
 
@@ -538,6 +547,7 @@ export function GiftReception({ token }: { token: string }) {
   const { busy, run } = useRun();
   const client = useQueryClient();
   const [opened, setOpened] = useState(false);
+  const [booked, setBooked] = useState<string | null>(null);
   const query = useQuery({ queryKey: key(token), queryFn: () => openGift(token), retry: false });
 
   if (query.isPending) return <Skeleton className="rounded-card h-96" />;
@@ -573,7 +583,9 @@ export function GiftReception({ token }: { token: string }) {
   const zone = gift.time_zone ?? "Africa/Porto-Novo";
   const title = t("giftFrom", { name: gift.from_name });
   let panel: ReactNode = null;
-  if (gift.expired) panel = <p className="bg-poudre rounded-2xl p-4 font-bold">{t("expired")}</p>;
+  if (booked) panel = <BookedPanel link={booked} />;
+  else if (gift.expired)
+    panel = <p className="bg-poudre rounded-2xl p-4 font-bold">{t("expired")}</p>;
   else if (gift.cancelled)
     panel = <p className="bg-poudre rounded-2xl p-4 font-bold">{t("cancelled")}</p>;
   else if (gift.kind === "card") panel = <CardPanel gift={gift} token={token} />;
@@ -597,7 +609,7 @@ export function GiftReception({ token }: { token: string }) {
       </div>
     );
   } else if (gift.unused && gift.kind === "service")
-    panel = <BookPanel gift={gift} token={token} />;
+    panel = <BookPanel gift={gift} token={token} onBooked={setBooked} />;
   else if (gift.unused) panel = <ReceivePanel gift={gift} token={token} />;
 
   return (
