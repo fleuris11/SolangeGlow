@@ -31,6 +31,8 @@ async function allowedDomains(slug: string): Promise<string[]> {
   return domains;
 }
 
+const VISITOR_COOKIE = "sg_visitor";
+
 export default async function proxy(request: NextRequest) {
   const response = intl(request);
   const embed = request.nextUrl.pathname.match(EMBED);
@@ -41,6 +43,16 @@ export default async function proxy(request: NextRequest) {
     "Content-Security-Policy",
     ["frame-ancestors 'self'", ...ancestors].join(" "),
   );
+  // A random visitor id (no personal data): an ad is not shown too often to the same
+  // person without an account (module 12).
+  if (!request.cookies.get(VISITOR_COOKIE)) {
+    response.cookies.set(VISITOR_COOKIE, crypto.randomUUID(), {
+      maxAge: 60 * 60 * 24 * 365,
+      sameSite: "lax",
+      httpOnly: true,
+      path: "/",
+    });
+  }
   return response;
 }
 

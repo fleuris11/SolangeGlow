@@ -1,6 +1,8 @@
 import { cookies } from "next/headers";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
+import { AdSlot } from "@/components/features/ads/ad-cards";
+import { SplashLoader } from "@/components/features/ads/splash-loader";
 import { GlowTodayBand, WinnerBand } from "@/components/features/games/home-band";
 import { FranceSelectionBand, GiftBand, JoinBand } from "@/components/features/home/bands";
 import { UpcomingLivesBand } from "@/components/features/live/upcoming-band";
@@ -10,6 +12,7 @@ import { StoryStrip } from "@/components/features/social/story-strip";
 import { TradePetals } from "@/components/features/trades/trade-petals";
 import { SpeakButton } from "@/components/ui/speak-button";
 import {
+  adsOnServer,
   feedOnServer,
   glowTodayOnServer,
   selectionOnServer,
@@ -30,12 +33,14 @@ export default async function HomePage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: "home" });
   const tFeed = await getTranslations({ locale, namespace: "social.feed" });
   const signedIn = (await cookies()).get("sg_signed_in")?.value === "1";
-  const [stories, feed, selection, lives, glow] = await Promise.all([
+  const [stories, feed, selection, lives, glow, banner, sponsored] = await Promise.all([
     storiesOnServer(locale),
     feedOnServer(locale),
     selectionOnServer(locale).catch(() => null),
     upcomingLivesOnServer(locale).catch(() => []),
     glowTodayOnServer(locale).catch(() => null),
+    adsOnServer(locale, { placement: "home_banner" }).catch(() => null),
+    adsOnServer(locale, { placement: "feed", count: 2 }).catch(() => null),
   ]);
   // One product per aisle for the France Selection band.
   const picks = ["small_prices", "trending", "luxury"]
@@ -44,6 +49,7 @@ export default async function HomePage({ params }: Props) {
 
   return (
     <div className="flex flex-col gap-10">
+      <SplashLoader />
       {signedIn ? (
         <h1 className="sr-only">{t("question")}</h1>
       ) : (
@@ -59,6 +65,7 @@ export default async function HomePage({ params }: Props) {
         </section>
       )}
 
+      <AdSlot list={banner} />
       <StoryStrip groups={stories} />
       {glow && <GlowTodayBand today={glow} />}
       <UpcomingLivesBand lives={lives} />
@@ -67,6 +74,7 @@ export default async function HomePage({ params }: Props) {
         posts={feed.results}
         next={feed.next ?? null}
         title={signedIn ? tFeed("titleSignedIn") : tFeed("title")}
+        sponsored={sponsored}
       />
 
       <FranceSelectionBand products={picks} />

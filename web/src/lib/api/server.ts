@@ -268,3 +268,15 @@ export async function inviteOnServer(code: string, locale: string) {
   const { data } = await api.GET("/api/v1/glow/invite/{code}", { params: { path: { code } } });
   return data ?? null;
 }
+
+// --- Ads (module 12) ------------------------------------------------------------------------
+
+/** The ads of a placement, counted as shown (null when ads cannot be reached). */
+export async function adsOnServer(
+  locale: string,
+  query: { placement: Schemas["AdPlacementEnum"]; count?: number; city?: string; trade?: string },
+): Promise<Schemas["AdList"] | null> {
+  const api = await serverApi(locale);
+  const { data } = await api.GET("/api/v1/ads", { params: { query } });
+  return data ?? null;
+}

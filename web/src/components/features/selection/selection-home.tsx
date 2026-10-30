@@ -31,9 +31,12 @@ const AISLES: { key: Aisle; icon: ReactNode }[] = [
 export function SelectionHome({
   page,
   aisle,
+  sponsored,
 }: {
   page: Schemas["SelectionProductList"];
   aisle?: Aisle;
+  /** A sponsored product above the shelves (module 12). */
+  sponsored?: ReactNode;
 }) {
   const t = useTranslations("selection.home");
   const tAisles = useTranslations("selection.aisles");
@@ -95,6 +98,8 @@ export function SelectionHome({
           ))}
         </ul>
       </nav>
+
+      {sponsored}
 
       {page.results.length === 0 ? (
         <EmptyState

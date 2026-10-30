@@ -505,6 +505,58 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/ads": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description The ads of a place of a screen (already counted as shown), or the filler. */
+    get: operations["ads_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/ads/boosts": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description « Boost my showcase »: prices, the running boost, past boosts and their figures. */
+    get: operations["ads_boosts_retrieve"];
+    put?: never;
+    /** @description « Boost my showcase »: prices, the running boost, past boosts and their figures. */
+    post: operations["ads_boosts_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/ads/click/{token}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Counts a click, then opens the page of the advertiser. */
+    get: operations["ads_click_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/agenda/{token}.ics": {
     parameters: {
       query?: never;
@@ -5486,6 +5538,70 @@ export interface components {
      * @enum {string}
      */
     AccountEnum: "pending" | "available";
+    Ad: {
+      /** Format: uuid */
+      id: string;
+      placement: components["schemas"]["AdPlacementEnum"];
+      format: components["schemas"]["AdFormatEnum"];
+      sponsor: string;
+      house: boolean;
+      title: string;
+      text: string;
+      cta: string;
+      click_url: string;
+      media: components["schemas"]["Media"][];
+      pro: components["schemas"]["AdPro"] | null;
+      product: components["schemas"]["AdProduct"] | null;
+    };
+    /**
+     * @description * `image` - Image
+     *     * `video` - Short video
+     *     * `carousel` - Carousel
+     *     * `native` - Native post
+     * @enum {string}
+     */
+    AdFormatEnum: "image" | "video" | "carousel" | "native";
+    AdList: {
+      results: components["schemas"]["Ad"][];
+      adsense: components["schemas"]["AdSense"] | null;
+      feed_every: number;
+      splash_seconds: number;
+    };
+    /**
+     * @description * `home_banner` - Banner at the top of the home page
+     *     * `feed` - Sponsored post in the feed
+     *     * `product` - Sponsored product
+     *     * `search` - Pro shown first in the search
+     *     * `splash` - Screen when the app opens
+     * @enum {string}
+     */
+    AdPlacementEnum: "home_banner" | "feed" | "product" | "search" | "splash";
+    AdPro: {
+      slug: string;
+      name: string;
+      photo: components["schemas"]["Media"] | null;
+      city: string;
+      trades: components["schemas"]["AdTrade"][];
+      /** Format: double */
+      rating_average: number | null;
+      rating_count: number;
+      verified: boolean;
+    };
+    AdProduct: {
+      title: string;
+      price_minor: number;
+      currency: string;
+      photo: components["schemas"]["Media"] | null;
+      seller: string;
+    };
+    AdSense: {
+      client: string;
+      slot: string;
+    };
+    AdTrade: {
+      key: string;
+      name: string;
+    };
     Advice: {
       /** Format: uuid */
       product_id: string;
@@ -5793,6 +5909,52 @@ export interface components {
       rating_count: number;
       timezone: string;
     };
+    BoostBuyRequest: {
+      duration: components["schemas"]["BoostDurationEnum"];
+    };
+    BoostCheckout: {
+      checkout_url: string;
+    };
+    /**
+     * @description * `day` - One day
+     *     * `week` - One week
+     * @enum {string}
+     */
+    BoostDurationEnum: "day" | "week";
+    BoostPage: {
+      open: boolean;
+      prices: components["schemas"]["BoostPrices"] | null;
+      /** Format: date-time */
+      running_until: string | null;
+      boosts: components["schemas"]["BoostRow"][];
+    };
+    BoostPrices: {
+      currency: string;
+      day: number;
+      week: number;
+    };
+    BoostRow: {
+      /** Format: uuid */
+      id: string;
+      duration: components["schemas"]["BoostDurationEnum"];
+      status: components["schemas"]["BoostStatusEnum"];
+      amount_minor: number;
+      currency: string;
+      /** Format: date-time */
+      starts_at: string | null;
+      /** Format: date-time */
+      ends_at: string | null;
+      impressions: number;
+      clicks: number;
+    };
+    /**
+     * @description * `waiting_payment` - Waiting for the payment
+     *     * `active` - Running
+     *     * `ended` - Ended
+     *     * `cancelled` - Not paid
+     * @enum {string}
+     */
+    BoostStatusEnum: "waiting_payment" | "active" | "ended" | "cancelled";
     Bundle: {
       /** Format: uuid */
       id: string;
@@ -11560,6 +11722,102 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["StudioCourse"];
         };
+      };
+    };
+  };
+  ads_retrieve: {
+    parameters: {
+      query: {
+        city?: string;
+        count?: number;
+        country?: string;
+        /**
+         * @description * `home_banner` - Banner at the top of the home page
+         *     * `feed` - Sponsored post in the feed
+         *     * `product` - Sponsored product
+         *     * `search` - Pro shown first in the search
+         *     * `splash` - Screen when the app opens
+         */
+        placement: "home_banner" | "feed" | "product" | "search" | "splash";
+        trade?: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AdList"];
+        };
+      };
+    };
+  };
+  ads_boosts_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["BoostPage"];
+        };
+      };
+    };
+  };
+  ads_boosts_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["BoostBuyRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["BoostBuyRequest"];
+        "multipart/form-data": components["schemas"]["BoostBuyRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["BoostCheckout"];
+        };
+      };
+    };
+  };
+  ads_click_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      302: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };

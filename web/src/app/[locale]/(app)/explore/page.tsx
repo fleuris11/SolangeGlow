@@ -14,12 +14,13 @@ import { ExploreControls } from "@/components/features/pros/explore/explore-cont
 import { paramsOf, readFilters, toApiQuery } from "@/components/features/pros/explore/filters";
 import { LoadMore } from "@/components/features/pros/explore/load-more";
 import { TradeNav } from "@/components/features/pros/explore/trade-nav";
+import { AdSlot } from "@/components/features/ads/ad-cards";
 import { ProCard } from "@/components/features/pros/pro-card";
 import { SearchBar } from "@/components/features/search/search-bar";
 import { buttonClasses } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import { SpeakButton } from "@/components/ui/speak-button";
-import { placesOnServer, searchProsOnServer } from "@/lib/api/server";
+import { adsOnServer, placesOnServer, searchProsOnServer } from "@/lib/api/server";
 import { Link } from "@/lib/i18n/navigation";
 import type { Locale } from "@/lib/i18n/routing";
 
@@ -50,7 +51,16 @@ export default async function ExplorePage({ params, searchParams }: Props) {
   const filters = readFilters(paramsOf(await searchParams));
   const query = toApiQuery(filters);
   const isMap = filters.view === "map";
-  const results = isMap ? null : await searchProsOnServer(query, locale);
+  const [results, sponsored] = isMap
+    ? [null, null]
+    : await Promise.all([
+        searchProsOnServer(query, locale),
+        adsOnServer(locale, {
+          placement: "search",
+          city: filters.city || undefined,
+          trade: filters.trade || undefined,
+        }).catch(() => null),
+      ]);
   const country = isMap
     ? (await placesOnServer(locale)).find((place) => place.city === filters.city)?.country
     : undefined;
@@ -89,6 +99,7 @@ export default async function ExplorePage({ params, searchParams }: Props) {
           <h2 id="results-title" className="text-lead font-bold">
             {t("results", { count: results.count })}
           </h2>
+          <AdSlot list={sponsored} />
           <ul className="flex flex-col gap-3">
             {results.results.map((pro) => (
               <li key={pro.slug}>

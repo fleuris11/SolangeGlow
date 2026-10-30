@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
+import { AdSlot } from "@/components/features/ads/ad-cards";
 import { SelectionHome } from "@/components/features/selection/selection-home";
 import type { Schemas } from "@/lib/api/client";
-import { SITE_URL, selectionOnServer } from "@/lib/api/server";
+import { SITE_URL, adsOnServer, selectionOnServer } from "@/lib/api/server";
 import type { Locale } from "@/lib/i18n/routing";
 
 type Props = {
@@ -33,6 +34,9 @@ export default async function SelectionPage({ params, searchParams }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const aisle = asAisle((await searchParams).aisle);
-  const page = await selectionOnServer(locale, aisle);
-  return <SelectionHome page={page} aisle={aisle} />;
+  const [page, sponsored] = await Promise.all([
+    selectionOnServer(locale, aisle),
+    adsOnServer(locale, { placement: "product" }).catch(() => null),
+  ]);
+  return <SelectionHome page={page} aisle={aisle} sponsored={<AdSlot list={sponsored} />} />;
 }
