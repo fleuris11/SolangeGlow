@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-30 17:22+0100\n"
+"POT-Creation-Date: 2026-10-30 20:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -555,6 +555,9 @@ msgstr "Pozastavený"
 msgid "Deleted"
 msgstr "Zmazaný"
 
+msgid "Sign in as this person"
+msgstr "Prihlásiť sa namiesto nej"
+
 msgid "Profile"
 msgstr "Profil"
 
@@ -594,6 +597,9 @@ msgstr[3] "%(count)d účtov znovu aktivovaných."
 
 msgid "Accounts"
 msgstr "Účty"
+
+msgid "This session as a member is over."
+msgstr "Toto prihlásenie namiesto členky sa skončilo."
 
 msgid "Request refused. Reload the page and try again."
 msgstr "Požiadavka zamietnutá. Obnov stránku a skús znova."
@@ -1213,6 +1219,467 @@ msgstr "Sponzorované"
 msgid "No active creative with a placement yet."
 msgstr "Zatiaľ žiadna aktívna kreatíva s umiestnením."
 
+msgid "sign-up link"
+msgstr "odkaz na registráciu"
+
+msgid "Send the invitation (WhatsApp, else SMS)"
+msgstr "Poslať pozvánku (WhatsApp, inak SMS)"
+
+#, python-format
+msgid "%(count)s invitations sent (a prospect without a phone is skipped)."
+msgstr "Odoslaných pozvánok: %(count)s (kontakt bez čísla sa preskočí)."
+
+msgid "Import a CSV file"
+msgstr "Importovať súbor CSV"
+
+msgid "Search a text"
+msgstr "Hľadať text"
+
+msgid "Your backup codes"
+msgstr "Tvoje záložné kódy"
+
+msgid "The code does not match. Check the 6 digits of your app and try again."
+msgstr "Kód nesedí. Skontroluj 6 číslic v aplikácii a skús znova."
+
+msgid "Two-factor sign-in"
+msgstr "Dvojstupňové prihlásenie"
+
+msgid "First name"
+msgstr "Meno"
+
+msgid "Temporary password"
+msgstr "Dočasné heslo"
+
+msgid "Empty: unchanged. She sets up two-factor at her first sign-in."
+msgstr "Prázdne: bez zmeny. Dvojstupňové prihlásenie si nastaví pri prvom prihlásení."
+
+msgid "Roles"
+msgstr "Roly"
+
+msgid "Two-factor reset: she sets it up again."
+msgstr "Dvojstupňové prihlásenie zrušené: nastaví si ho znova."
+
+msgid "She is no longer in the team."
+msgstr "Už nie je v tíme."
+
+msgid "Team member saved."
+msgstr "Členka tímu uložená."
+
+msgid "Team"
+msgstr "Tím"
+
+msgid "Features by country and role"
+msgstr "Funkcie podľa krajiny a roly"
+
+msgid "Saved: the app uses it within a minute."
+msgstr "Uložené: aplikácia to použije do minúty."
+
+msgid "Texts of the interface"
+msgstr "Texty rozhrania"
+
+msgid "Moderation console"
+msgstr "Konzola moderovania"
+
+msgid "Disputes console"
+msgstr "Konzola sporov"
+
+msgid "France Selection console"
+msgstr "Konzola Výber Francúzsko"
+
+msgid "CSV file"
+msgstr "Súbor CSV"
+
+msgid "Source"
+msgstr "Zdroj"
+
+msgid "A « name » column is needed."
+msgstr "Je potrebný stĺpec « name »."
+
+#, python-format
+msgid "%(added)s added, %(skipped)s already known or empty."
+msgstr "Pridané: %(added)s, už známe alebo prázdne: %(skipped)s."
+
+msgid "Import prospects"
+msgstr "Importovať kontakty"
+
+msgid "Why (written in the journal)"
+msgstr "Prečo (zapíše sa do denníka)"
+
+#, python-format
+msgid "Sign in as %(name)s"
+msgstr "Prihlásiť sa namiesto %(name)s"
+
+msgid "Back office"
+msgstr "Administrácia"
+
+msgid "Sign-ups"
+msgstr "Registrácie"
+
+#, python-format
+msgid "Sales paid (%(currency)s)"
+msgstr "Zaplatené predaje (%(currency)s)"
+
+msgid "Active people"
+msgstr "Aktívne osoby"
+
+msgid "Orders"
+msgstr "Objednávky"
+
+msgid "Appointments"
+msgstr "Termíny"
+
+msgid "Open disputes"
+msgstr "Otvorené spory"
+
+msgid "Moderation queue"
+msgstr "Moderačný rad"
+
+msgid "team member"
+msgstr "členka tímu"
+
+msgid "secret (encrypted)"
+msgstr "tajomstvo (šifrované)"
+
+msgid "activated at"
+msgstr "aktivované"
+
+msgid "two-factor device"
+msgstr "zariadenie dvojstupňového prihlásenia"
+
+msgid "two-factor devices"
+msgstr "zariadenia dvojstupňového prihlásenia"
+
+msgid "See the dashboard"
+msgstr "Zobraziť prehľad"
+
+msgid "Use the moderation console"
+msgstr "Používať konzolu moderovania"
+
+msgid "Use the disputes console"
+msgstr "Používať konzolu sporov"
+
+msgid "Use the France Selection console"
+msgstr "Používať konzolu Výber Francúzsko"
+
+msgid "Manage the team"
+msgstr "Spravovať tím"
+
+msgid "Turn features on and off"
+msgstr "Zapínať a vypínať funkcie"
+
+msgid "Correct the translations"
+msgstr "Opravovať preklady"
+
+msgid "Sign in as a member"
+msgstr "Prihlásiť sa namiesto členky"
+
+msgid "Export lists"
+msgstr "Exportovať zoznamy"
+
+msgid "member"
+msgstr "členka"
+
+msgid "ended at"
+msgstr "skončil o"
+
+msgid "actions done"
+msgstr "vykonané akcie"
+
+msgid "sign-in as a member"
+msgstr "prihlásenie namiesto členky"
+
+msgid "sign-ins as a member"
+msgstr "prihlásenia namiesto členky"
+
+msgid "App (web)"
+msgstr "Aplikácia (web)"
+
+msgid "Server (e-mails, errors, admin)"
+msgstr "Server (e-maily, chyby, admin)"
+
+msgid "where"
+msgstr "kde"
+
+msgid "key"
+msgstr "kľúč"
+
+msgid "Web: the key (home.question). Server: the original English text."
+msgstr "Web: kľúč (home.question). Server: pôvodný anglický text."
+
+msgid "by"
+msgstr "kto"
+
+msgid "corrected translation"
+msgstr "opravený preklad"
+
+msgid "corrected translations"
+msgstr "opravené preklady"
+
+msgid "To contact"
+msgstr "Na kontaktovanie"
+
+msgid "Contacted"
+msgstr "Kontaktovaná"
+
+msgid "Signed up"
+msgstr "Zaregistrovaná"
+
+msgid "Not interested"
+msgstr "Nemá záujem"
+
+msgid "business"
+msgstr "podnik"
+
+msgid "source"
+msgstr "zdroj"
+
+msgid "invitation code"
+msgstr "kód pozvánky"
+
+msgid "invited at"
+msgstr "pozvaná"
+
+msgid "followed by"
+msgstr "sleduje"
+
+msgid "prospect"
+msgstr "kontakt"
+
+msgid "prospects"
+msgstr "kontakty"
+
+msgid "Export as CSV"
+msgstr "Exportovať do CSV"
+
+msgid "Signing in as this person is not allowed (team account or inactive account)."
+msgstr "Prihlásiť sa namiesto tejto osoby nie je možné (účet tímu alebo neaktívny účet)."
+
+msgid "Not possible while signed in as a member (payments, codes, account)."
+msgstr "Nie je možné počas prihlásenia namiesto členky (platby, kódy, účet)."
+
+msgid "Moderation"
+msgstr "Moderovanie"
+
+msgid "Support"
+msgstr "Podpora"
+
+msgid "Disputes"
+msgstr "Spory"
+
+msgid "Finance"
+msgstr "Financie"
+
+msgid "Pro verification"
+msgstr "Overenie profesionálok"
+
+msgid "Open disputes, late answers first. « Decide » shows the timeline, the evidence and the decisions in one click."
+msgstr "Otvorené spory, oneskorené odpovede najprv. « Rozhodnúť » ukáže priebeh, dôkazy a rozhodnutia na jedno kliknutie."
+
+msgid "Payment"
+msgstr "Platba"
+
+msgid "Reason"
+msgstr "Dôvod"
+
+msgid "Client"
+msgstr "Klientka"
+
+msgid "Seller"
+msgstr "Predajkyňa"
+
+msgid "Answer due"
+msgstr "Odpoveď do"
+
+msgid "late"
+msgstr "oneskorené"
+
+msgid "Decide"
+msgstr "Rozhodnúť"
+
+msgid "Dispute room"
+msgstr "Miestnosť sporu"
+
+msgid "Three-way call"
+msgstr "Hovor vo troch"
+
+msgid "No open dispute."
+msgstr "Žiadny otvorený spor."
+
+msgid "A feature works when it is on. No country ticked: every country. No role ticked: everyone. Each change is in the journal."
+msgstr "Funkcia funguje, keď je zapnutá. Bez krajiny: všetky krajiny. Bez roly: všetci. Každá zmena je v denníku."
+
+msgid "Feature"
+msgstr "Funkcia"
+
+msgid "On"
+msgstr "Zapnutá"
+
+msgid "Off"
+msgstr "Vypnutá"
+
+#, python-format
+msgid "You will see the app as %(name)s sees it, for %(minutes)s minutes at most. A red banner reminds it on every page."
+msgstr "Uvidíš aplikáciu tak, ako ju vidí %(name)s, najviac %(minutes)s minút. Červený pruh to pripomína na každej stránke."
+
+msgid "The start, the end and every change you make are written in the audit journal."
+msgstr "Začiatok, koniec a každá tvoja zmena sa zapíšu do denníka auditu."
+
+msgid "Payments, receipt codes and account settings are blocked."
+msgstr "Platby, kódy prevzatia a nastavenia účtu sú zablokované."
+
+msgid "Your own session on the app is replaced: sign in again afterwards."
+msgstr "Tvoja vlastná relácia v aplikácii sa nahradí: potom sa prihlás znova."
+
+msgid "Contents to review: hidden ones first, then the most reported. One click decides; each decision is in the journal."
+msgstr "Obsah na kontrolu: najprv skrytý, potom najviac nahlásený. Jedno kliknutie rozhodne; každé rozhodnutie je v denníku."
+
+#, python-format
+msgid "%(count)s reports"
+msgstr "Nahlásenia: %(count)s"
+
+msgid "hidden until review"
+msgstr "skryté do posúdenia"
+
+msgid "Author:"
+msgstr "Autorka:"
+
+msgid "Keep"
+msgstr "Ponechať"
+
+msgid "Remove"
+msgstr "Odstrániť"
+
+msgid "Remove and sanction the author"
+msgstr "Odstrániť a potrestať autorku"
+
+msgid "Details"
+msgstr "Podrobnosti"
+
+msgid "Nothing to review. Well done!"
+msgstr "Nič na kontrolu. Výborne!"
+
+msgid "A CSV file (commas or semicolons) with a first line of titles: name, business, phone, e-mail, city, country, trade, source. Only the name is needed. A phone or e-mail already known is skipped."
+msgstr "Súbor CSV (čiarky alebo bodkočiarky) s prvým riadkom nadpisov: name, business, phone, e-mail, city, country, trade, source. Povinné je len meno. Už známe číslo alebo e-mail sa preskočí."
+
+#, python-format
+msgid "Prospects now: %(count)s."
+msgstr "Kontakty teraz: %(count)s."
+
+msgid "Import"
+msgstr "Importovať"
+
+msgid "Two-factor is on. Keep these backup codes in a safe place: each one opens the admin once if you lose your phone. They are shown only now."
+msgstr "Dvojstupňové prihlásenie je zapnuté. Uchovaj tieto záložné kódy na bezpečnom mieste: každý raz otvorí admin, ak stratíš telefón. Zobrazia sa iba teraz."
+
+msgid "I kept them, continue"
+msgstr "Uložila som si ich, pokračovať"
+
+#, python-format
+msgid "To order at the merchant (%(count)s)"
+msgstr "Objednať u obchodníka (%(count)s)"
+
+msgid "Nothing to order."
+msgstr "Nič na objednanie."
+
+#, python-format
+msgid "Ordered or received in France (%(count)s)"
+msgstr "Objednané alebo prijaté vo Francúzsku (%(count)s)"
+
+msgid "Nothing waiting in France."
+msgstr "Vo Francúzsku nič nečaká."
+
+msgid "Shipments"
+msgstr "Zásielky"
+
+msgid "No shipment on its way."
+msgstr "Žiadna zásielka na ceste."
+
+#, python-format
+msgid "Parcels at the pick-up points (%(count)s)"
+msgstr "Balíky na výdajných miestach (%(count)s)"
+
+msgid "No parcel waiting."
+msgstr "Žiadny balík nečaká."
+
+msgid "Each role sees only its consoles and lists. Two-factor sign-in is required for everyone."
+msgstr "Každá rola vidí len svoje konzoly a zoznamy. Dvojstupňové prihlásenie je povinné pre všetkých."
+
+msgid "Name"
+msgstr "Meno"
+
+msgid "Two-factor"
+msgstr "Dvojstupňové prihlásenie"
+
+msgid "Last sign-in"
+msgstr "Posledné prihlásenie"
+
+msgid "owner"
+msgstr "vlastník"
+
+msgid "Not set up yet"
+msgstr "Ešte nenastavené"
+
+msgid "Reset two-factor"
+msgstr "Zrušiť dvojstupňové prihlásenie"
+
+msgid "Remove from the team"
+msgstr "Odstrániť z tímu"
+
+msgid "Add or change a team member"
+msgstr "Pridať alebo zmeniť členku tímu"
+
+msgid "Save"
+msgstr "Uložiť"
+
+#, python-format
+msgid "Search a text of the app or of the server by its key or by its words, then write the correction. An empty correction goes back to the original. Corrections now: %(count)s."
+msgstr "Vyhľadaj text aplikácie alebo servera podľa kľúča alebo slov a napíš opravu. Prázdna oprava vráti pôvodný text. Opravy teraz: %(count)s."
+
+msgid "Words or key"
+msgstr "Slová alebo kľúč"
+
+msgid "Language"
+msgstr "Jazyk"
+
+msgid "Search"
+msgstr "Hľadať"
+
+msgid "App"
+msgstr "Aplikácia"
+
+msgid "Server"
+msgstr "Server"
+
+msgid "Correction"
+msgstr "Oprava"
+
+msgid "Correction (empty: the original)"
+msgstr "Oprava (prázdne: pôvodný text)"
+
+msgid "Nothing found. Try other words."
+msgstr "Nič sa nenašlo. Skús iné slová."
+
+msgid "Every team account signs in with a second code. Scan this square with an authenticator app (Google Authenticator, Microsoft Authenticator, Authy), then type the 6 digits it shows."
+msgstr "Každý účet tímu sa prihlasuje druhým kódom. Naskenuj tento štvorec overovacou aplikáciou (Google Authenticator, Microsoft Authenticator, Authy) a zadaj 6 zobrazených číslic."
+
+msgid "No camera? Type this key in the app:"
+msgstr "Nemáš kameru? Zadaj tento kľúč do aplikácie:"
+
+msgid "Type the 6 digits shown by your authenticator app."
+msgstr "Zadaj 6 číslic z overovacej aplikácie."
+
+msgid "Code of the app"
+msgstr "Kód z aplikácie"
+
+msgid "Lost phone? Use a backup code"
+msgstr "Stratený telefón? Použi záložný kód"
+
+msgid "Backup code"
+msgstr "Záložný kód"
+
+msgid "Continue"
+msgstr "Pokračovať"
+
 msgid "deposit"
 msgstr "záloha"
 
@@ -1366,9 +1833,6 @@ msgstr "samotná profesionálka"
 
 msgid "phone (invitation)"
 msgstr "telefón (pozvánka)"
-
-msgid "invited at"
-msgstr "pozvaná"
 
 msgid "services allowed"
 msgstr "povolené služby"
@@ -1640,6 +2104,173 @@ msgstr "ponuka na poslednú chvíľu"
 msgid "last-minute offers"
 msgstr "ponuky na poslednú chvíľu"
 
+msgid "Versions"
+msgstr "Verzie"
+
+#, python-format
+msgid "Version %(number)s brought back."
+msgstr "Verzia %(number)s obnovená."
+
+#, python-format
+msgid "Versions of %(name)s"
+msgstr "Verzie: %(name)s"
+
+msgid "new picture"
+msgstr "nový obrázok"
+
+msgid "Answer"
+msgstr "Odpovedať"
+
+msgid "Answer sent."
+msgstr "Odpoveď odoslaná."
+
+#, python-format
+msgid "Answer %(reference)s"
+msgstr "Odpovedať na %(reference)s"
+
+msgid "Contents and help"
+msgstr "Obsah a pomoc"
+
+msgid "Write your name and an e-mail or a phone number so we can answer you."
+msgstr "Napíš meno a e-mail alebo číslo, aby sme ti mohli odpovedať."
+
+msgid "This page does not exist."
+msgstr "Táto stránka neexistuje."
+
+msgid "Help"
+msgstr "Pomoc"
+
+msgid "Terms and conditions"
+msgstr "Obchodné podmienky"
+
+msgid "Privacy"
+msgstr "Súkromie"
+
+msgid "Legal notice"
+msgstr "Právne informácie"
+
+msgid "Rules of the games"
+msgstr "Pravidlá hier"
+
+msgid "Returns and refunds"
+msgstr "Vrátenie tovaru a peňazí"
+
+msgid "Other"
+msgstr "Iné"
+
+msgid "summary"
+msgstr "zhrnutie"
+
+msgid "Paragraphs separated by an empty line; a line starting with # is a title."
+msgstr "Odseky oddelené prázdnym riadkom; riadok začínajúci # je nadpis."
+
+msgid "published"
+msgstr "zverejnené"
+
+msgid "version"
+msgstr "verzia"
+
+msgid "page"
+msgstr "stránka"
+
+msgid "pages"
+msgstr "stránky"
+
+msgid "home banner"
+msgstr "banner na úvode"
+
+msgid "home banners"
+msgstr "bannery na úvode"
+
+msgid "My account"
+msgstr "Môj účet"
+
+msgid "Payments and refunds"
+msgstr "Platby a vrátenie peňazí"
+
+msgid "Shops and orders"
+msgstr "Obchody a objednávky"
+
+msgid "Gifts"
+msgstr "Darčeky"
+
+msgid "For the pros"
+msgstr "Pre profesionálky"
+
+msgid "Glow Points and games"
+msgstr "Glow Points a hry"
+
+msgid "topic"
+msgstr "téma"
+
+msgid "answer"
+msgstr "odpoveď"
+
+msgid "question of the FAQ"
+msgstr "otázka FAQ"
+
+msgid "FAQ"
+msgstr "FAQ"
+
+msgid "content"
+msgstr "obsah"
+
+msgid "versions"
+msgstr "verzie"
+
+msgid "New"
+msgstr "Nová"
+
+msgid "Answered"
+msgstr "Zodpovedané"
+
+msgid "Closed"
+msgstr "Uzavreté"
+
+msgid "message"
+msgstr "správa"
+
+msgid "answered at"
+msgstr "prijatý o"
+
+msgid "answered by"
+msgstr "odpovedala"
+
+msgid "help ticket"
+msgstr "žiadosť o pomoc"
+
+msgid "help tickets"
+msgstr "žiadosti o pomoc"
+
+#, python-format
+msgid "Your question %(reference)s"
+msgstr "Tvoja otázka %(reference)s"
+
+msgid "The answer goes to her account (notification)."
+msgstr "Odpoveď príde do jej účtu (upozornenie)."
+
+msgid "The answer goes to her e-mail address."
+msgstr "Odpoveď príde na jej e-mail."
+
+msgid "Send the answer"
+msgstr "Odoslať odpoveď"
+
+msgid "Each save is a version. Bringing one back writes a new version: nothing is lost."
+msgstr "Každé uloženie je verzia. Obnovenie vytvorí novú verziu: nič sa nestratí."
+
+#, python-format
+msgid "Version %(number)s, %(date)s"
+msgstr "Verzia %(number)s, %(date)s"
+
+msgid "Bring back"
+msgstr "Obnoviť"
+
+msgid "Current"
+msgstr "Aktuálna"
+
+msgid "No version yet: it is written at the next save."
+msgstr "Zatiaľ žiadna verzia: zapíše sa pri ďalšom uložení."
+
 msgid "scope"
 msgstr "rozsah"
 
@@ -1660,9 +2291,6 @@ msgstr "Objekt"
 
 msgid "Changes"
 msgstr "Zmeny"
-
-msgid "by"
-msgstr "kto"
 
 msgid "action"
 msgstr "akcia"
@@ -1690,9 +2318,6 @@ msgstr "záznam denníka"
 
 msgid "audit journal"
 msgstr "denník auditu"
-
-msgid "Client"
-msgstr "Klientka"
 
 msgid "Professional"
 msgstr "Profesionálka"
@@ -1754,9 +2379,6 @@ msgstr "Odmietnuté"
 
 msgid "Failed"
 msgstr "Zlyhalo"
-
-msgid "owner"
-msgstr "vlastník"
 
 msgid "use"
 msgstr "použitie"
@@ -1861,9 +2483,6 @@ msgstr "Áno / nie"
 msgid "JSON"
 msgstr "JSON"
 
-msgid "key"
-msgstr "kľúč"
-
 msgid "Use lowercase words separated by dots, e.g. escrow.ship_deadline_days."
 msgstr "Použi malé písmená oddelené bodkami, napríklad escrow.ship_deadline_days."
 
@@ -1918,9 +2537,6 @@ msgstr "Body"
 msgid "Positive to give, negative to take back."
 msgstr "Kladné na pridanie, záporné na odobratie."
 
-msgid "Reason"
-msgstr "Dôvod"
-
 msgid "balance"
 msgstr "zostatok"
 
@@ -1942,9 +2558,6 @@ msgstr "zľava"
 
 msgid "chance (everywhere)"
 msgstr "šanca (všade)"
-
-msgid "new picture"
-msgstr "nový obrázok"
 
 msgid "new audio"
 msgstr "nové audio"
@@ -2208,9 +2821,6 @@ msgstr "pre"
 msgid "unique key"
 msgstr "jedinečný kľúč"
 
-msgid "source"
-msgstr "zdroj"
-
 msgid "source id"
 msgstr "id zdroja"
 
@@ -2331,9 +2941,6 @@ msgstr "vysvetlenie"
 msgid "audio"
 msgstr "audio"
 
-msgid "answer"
-msgstr "odpoveď"
-
 msgid "right"
 msgstr "správne"
 
@@ -2369,9 +2976,6 @@ msgstr "výsledok odoslaný dňa"
 
 msgid "« Help me choose »"
 msgstr "« Pomôž mi vybrať »"
-
-msgid "Closed"
-msgstr "Uzavreté"
 
 msgid "from (Monday)"
 msgstr "od (pondelok)"
@@ -2558,9 +3162,6 @@ msgstr "suma"
 msgid "given back"
 msgstr "vrátené"
 
-msgid "Gifts"
-msgstr "Darčeky"
-
 msgid "This gift does not exist or can no longer be used."
 msgstr "Tento darček neexistuje alebo sa už nedá použiť."
 
@@ -2681,9 +3282,6 @@ msgstr "jazyk osoby"
 
 msgid "occasion"
 msgstr "príležitosť"
-
-msgid "message"
-msgstr "správa"
 
 msgid "voice or video message"
 msgstr "hlasová alebo video správa"
@@ -3175,9 +3773,6 @@ msgstr "miestnosť v LiveKit"
 msgid "started at"
 msgstr "začal o"
 
-msgid "ended at"
-msgstr "skončil o"
-
 msgid "cut at the latest"
 msgstr "ukončí sa najneskôr"
 
@@ -3265,9 +3860,6 @@ msgstr "prítomnosť"
 msgid "presences"
 msgstr "prítomnosti"
 
-msgid "Three-way call"
-msgstr "Hovor vo troch"
-
 msgid "Calls are only for dispute rooms."
 msgstr "Hovory sú len pre miestnosti sporov."
 
@@ -3276,9 +3868,6 @@ msgstr "upozornenie na platbu"
 
 msgid "why it can be read"
 msgstr "prečo ho možno čítať"
-
-msgid "Dispute room"
-msgstr "Miestnosť sporu"
 
 #, python-format
 msgid "Report of %(date)s"
@@ -3390,9 +3979,6 @@ msgstr "Medzi dvoma osobami"
 msgid "Discussion"
 msgstr "Rozhovor"
 
-msgid "Support"
-msgstr "Podpora"
-
 msgid "For example a dispute, an order or a booking."
 msgstr "Napríklad spor, objednávka alebo rezervácia."
 
@@ -3440,9 +4026,6 @@ msgstr "archivovaný"
 
 msgid "muted"
 msgstr "stlmený"
-
-msgid "member"
-msgstr "členka"
 
 msgid "members"
 msgstr "členky"
@@ -3516,9 +4099,6 @@ msgstr "volajúca"
 msgid "rings until"
 msgstr "zvoní do"
 
-msgid "answered at"
-msgstr "prijatý o"
-
 msgid "people at most"
 msgstr "najviac osôb"
 
@@ -3555,9 +4135,6 @@ msgstr "Rozhovor"
 msgid "Thank you for your message. I am not available right now: I will answer as soon as I am back."
 msgstr "Ďakujem za správu. Momentálne nie som k dispozícii: odpoviem hneď, ako sa vrátim."
 
-msgid "content"
-msgstr "obsah"
-
 msgid "detected"
 msgstr "zistené"
 
@@ -3579,23 +4156,11 @@ msgstr "Ponechané."
 msgid "Removed. The author was told."
 msgstr "Odstránené. Autorka bola upozornená."
 
-msgid "Keep"
-msgstr "Ponechať"
-
-msgid "Remove"
-msgstr "Odstrániť"
-
-msgid "Remove and sanction the author"
-msgstr "Odstrániť a potrestať autorku"
-
 msgid "Keep the selected contents"
 msgstr "Ponechať vybrané obsahy"
 
 msgid "Remove the selected contents"
 msgstr "Odstrániť vybrané obsahy"
-
-msgid "Moderation"
-msgstr "Moderovanie"
 
 msgid "You cannot report your own content."
 msgstr "Nemôžeš nahlásiť vlastný obsah."
@@ -3677,9 +4242,6 @@ msgstr "úryvok"
 
 msgid "checked by"
 msgstr "skontroloval(a)"
-
-msgid "hidden until review"
-msgstr "skryté do posúdenia"
 
 msgid "decided by"
 msgstr "rozhodol/rozhodla"
@@ -3852,14 +4414,27 @@ msgstr "Provízie"
 msgid "Payment fees"
 msgstr "Poplatky za platby"
 
-msgid "Finance"
-msgstr "Financie"
-
 msgid "Amount to refund"
 msgstr "Suma na vrátenie"
 
 msgid "Note for both parties"
 msgstr "Poznámka pre obe strany"
+
+msgid "timeline"
+msgstr "priebeh"
+
+msgid "Payment created"
+msgstr "Platba vytvorená"
+
+msgid "Paid, money held"
+msgstr "Zaplatené, peniaze blokované"
+
+msgid "Dispute opened"
+msgstr "Spor otvorený"
+
+#, python-format
+msgid "Evidence from %(name)s"
+msgstr "Dôkaz od %(name)s"
 
 msgid "dispute room"
 msgstr "miestnosť sporu"
@@ -4023,9 +4598,6 @@ msgstr "Darček zo zahraničia"
 msgid "Boost of a pro"
 msgstr "Zviditeľnenie profesionálky"
 
-msgid "Other"
-msgstr "Iné"
-
 msgid "category"
 msgstr "kategória"
 
@@ -4076,9 +4648,6 @@ msgstr "zoskupené platby"
 
 msgid "Waiting for payment"
 msgstr "Čaká na platbu"
-
-msgid "Paid, money held"
-msgstr "Zaplatené, peniaze blokované"
 
 msgid "Partly refunded"
 msgstr "Čiastočne vrátené"
@@ -4596,9 +5165,6 @@ msgstr "Portugalčina"
 
 msgid "Website"
 msgstr "Webová stránka"
-
-msgid "New"
-msgstr "Nová"
 
 msgid "Top pro"
 msgstr "Top Pro"
@@ -5620,9 +6186,6 @@ msgstr "objednávka výberu"
 msgid "Selection orders"
 msgstr "objednávky výberu"
 
-msgid "Save"
-msgstr "Uložiť"
-
 msgid "Reason shown to the pro"
 msgstr "Dôvod zobrazený profesionálke"
 
@@ -6240,8 +6803,41 @@ msgstr "hodnotenia klientok"
 msgid "Solange Glow member"
 msgstr "Členka Solange Glow"
 
-msgid "Back office"
-msgstr "Administrácia"
+msgid "Steering"
+msgstr "Riadenie"
+
+msgid "Dashboard"
+msgstr "Prehľad"
+
+msgid "Finance console"
+msgstr "Konzola financií"
+
+msgid "Team and settings"
+msgstr "Tím a nastavenia"
+
+msgid "Features by country"
+msgstr "Funkcie podľa krajiny"
+
+msgid "Audit journal"
+msgstr "Denník auditu"
+
+msgid "Sign-ins as a member"
+msgstr "Prihlásenia namiesto členky"
+
+msgid "Pages"
+msgstr "Stránky"
+
+msgid "Home banners"
+msgstr "Bannery na úvode"
+
+msgid "Help tickets"
+msgstr "Žiadosti o pomoc"
+
+msgid "Messages and e-mails"
+msgstr "Správy a e-maily"
+
+msgid "Prospects"
+msgstr "Kontakty"
 
 msgid "Countries"
 msgstr "Krajiny"
@@ -6255,9 +6851,6 @@ msgstr "Nastavenia"
 msgid "Feature flags"
 msgstr "Prepínače funkcií"
 
-msgid "Audit journal"
-msgstr "Denník auditu"
-
 msgid "Showcases"
 msgstr "Vitríny"
 
@@ -6266,9 +6859,6 @@ msgstr "Overenia totožnosti"
 
 msgid "Trades"
 msgstr "Odbory"
-
-msgid "Moderation queue"
-msgstr "Moderačný rad"
 
 msgid "Sanctions"
 msgstr "Sankcie"
@@ -6285,9 +6875,6 @@ msgstr "Produkty na kontrolu"
 msgid "Products"
 msgstr "Produkty"
 
-msgid "Orders"
-msgstr "Objednávky"
-
 msgid "Forbidden words"
 msgstr "Zakázané slová"
 
@@ -6299,9 +6886,6 @@ msgstr "Akcie"
 
 msgid "Orders to place"
 msgstr "Objednávky na zadanie"
-
-msgid "Shipments"
-msgstr "Zásielky"
 
 msgid "Special requests"
 msgstr "Špeciálne požiadavky"
@@ -6317,9 +6901,6 @@ msgstr "Výdajné miesta"
 
 msgid "Glow Pro"
 msgstr "Glow Pro"
-
-msgid "Appointments"
-msgstr "Termíny"
 
 msgid "Agenda people"
 msgstr "Tímy kalendárov"
@@ -6417,9 +6998,6 @@ msgstr "Hovory"
 msgid "Finance dashboard"
 msgstr "Finančný prehľad"
 
-msgid "Disputes"
-msgstr "Spory"
-
 msgid "Refunds"
 msgstr "Vrátenia"
 
@@ -6476,6 +7054,71 @@ msgstr "Hostia"
 
 msgid "Groups"
 msgstr "Skupiny"
+
+msgid "Django site admin"
+msgstr "Administrácia Solange Glow"
+
+msgid "Period"
+msgstr "Obdobie"
+
+msgid "7 days"
+msgstr "7 dní"
+
+msgid "30 days"
+msgstr "30 dní"
+
+msgid "90 days"
+msgstr "90 dní"
+
+msgid "This month"
+msgstr "Tento mesiac"
+
+msgid "Country"
+msgstr "Krajina"
+
+msgid "All"
+msgstr "Všetky"
+
+msgid "Show"
+msgstr "Zobraziť"
+
+#, python-format
+msgid "Before: %(before)s"
+msgstr "Predtým: %(before)s"
+
+#, python-format
+msgid "%(change)s %% compared with before (%(before)s)"
+msgstr "%(change)s %% oproti predchádzajúcemu obdobiu (%(before)s)"
+
+msgid "Open the console"
+msgstr "Otvoriť konzolu"
+
+msgid "Sales paid"
+msgstr "Zaplatené predaje"
+
+#, python-format
+msgid "%(count)s payments, %(earned)s for the platform (commissions and fees)"
+msgstr "Platby: %(count)s, pre platformu %(earned)s (provízie a poplatky)"
+
+msgid "No payment in this period."
+msgstr "V tomto období žiadna platba."
+
+msgid "Money held (secure payment)"
+msgstr "Zablokované peniaze (bezpečná platba)"
+
+#, python-format
+msgid "%(count)s payments waiting for the receipt code"
+msgstr "Platby čakajúce na kód prevzatia: %(count)s"
+
+msgid "No money held now."
+msgstr "Momentálne nie sú zablokované žiadne peniaze."
+
+msgid "Sign-ups per day"
+msgstr "Registrácie za deň"
+
+#, python-format
+msgid "Sales paid per day (%(currency)s)"
+msgstr "Zaplatené predaje za deň (%(currency)s)"
 
 #~ msgid "Ads"
 #~ msgstr "Reklama"

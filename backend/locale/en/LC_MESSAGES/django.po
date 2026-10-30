@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-30 17:22+0100\n"
+"POT-Creation-Date: 2026-10-30 20:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -555,6 +555,9 @@ msgstr ""
 msgid "Deleted"
 msgstr ""
 
+msgid "Sign in as this person"
+msgstr ""
+
 msgid "Profile"
 msgstr ""
 
@@ -589,6 +592,9 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "Accounts"
+msgstr ""
+
+msgid "This session as a member is over."
 msgstr ""
 
 msgid "Request refused. Reload the page and try again."
@@ -1209,6 +1215,467 @@ msgstr ""
 msgid "No active creative with a placement yet."
 msgstr ""
 
+msgid "sign-up link"
+msgstr ""
+
+msgid "Send the invitation (WhatsApp, else SMS)"
+msgstr ""
+
+#, python-format
+msgid "%(count)s invitations sent (a prospect without a phone is skipped)."
+msgstr ""
+
+msgid "Import a CSV file"
+msgstr ""
+
+msgid "Search a text"
+msgstr ""
+
+msgid "Your backup codes"
+msgstr ""
+
+msgid "The code does not match. Check the 6 digits of your app and try again."
+msgstr ""
+
+msgid "Two-factor sign-in"
+msgstr ""
+
+msgid "First name"
+msgstr ""
+
+msgid "Temporary password"
+msgstr ""
+
+msgid "Empty: unchanged. She sets up two-factor at her first sign-in."
+msgstr ""
+
+msgid "Roles"
+msgstr ""
+
+msgid "Two-factor reset: she sets it up again."
+msgstr ""
+
+msgid "She is no longer in the team."
+msgstr ""
+
+msgid "Team member saved."
+msgstr ""
+
+msgid "Team"
+msgstr ""
+
+msgid "Features by country and role"
+msgstr ""
+
+msgid "Saved: the app uses it within a minute."
+msgstr ""
+
+msgid "Texts of the interface"
+msgstr ""
+
+msgid "Moderation console"
+msgstr ""
+
+msgid "Disputes console"
+msgstr ""
+
+msgid "France Selection console"
+msgstr ""
+
+msgid "CSV file"
+msgstr ""
+
+msgid "Source"
+msgstr ""
+
+msgid "A « name » column is needed."
+msgstr ""
+
+#, python-format
+msgid "%(added)s added, %(skipped)s already known or empty."
+msgstr ""
+
+msgid "Import prospects"
+msgstr ""
+
+msgid "Why (written in the journal)"
+msgstr ""
+
+#, python-format
+msgid "Sign in as %(name)s"
+msgstr ""
+
+msgid "Back office"
+msgstr ""
+
+msgid "Sign-ups"
+msgstr ""
+
+#, python-format
+msgid "Sales paid (%(currency)s)"
+msgstr ""
+
+msgid "Active people"
+msgstr ""
+
+msgid "Orders"
+msgstr ""
+
+msgid "Appointments"
+msgstr ""
+
+msgid "Open disputes"
+msgstr ""
+
+msgid "Moderation queue"
+msgstr ""
+
+msgid "team member"
+msgstr ""
+
+msgid "secret (encrypted)"
+msgstr ""
+
+msgid "activated at"
+msgstr ""
+
+msgid "two-factor device"
+msgstr ""
+
+msgid "two-factor devices"
+msgstr ""
+
+msgid "See the dashboard"
+msgstr ""
+
+msgid "Use the moderation console"
+msgstr ""
+
+msgid "Use the disputes console"
+msgstr ""
+
+msgid "Use the France Selection console"
+msgstr ""
+
+msgid "Manage the team"
+msgstr ""
+
+msgid "Turn features on and off"
+msgstr ""
+
+msgid "Correct the translations"
+msgstr ""
+
+msgid "Sign in as a member"
+msgstr ""
+
+msgid "Export lists"
+msgstr ""
+
+msgid "member"
+msgstr ""
+
+msgid "ended at"
+msgstr ""
+
+msgid "actions done"
+msgstr ""
+
+msgid "sign-in as a member"
+msgstr ""
+
+msgid "sign-ins as a member"
+msgstr ""
+
+msgid "App (web)"
+msgstr ""
+
+msgid "Server (e-mails, errors, admin)"
+msgstr ""
+
+msgid "where"
+msgstr ""
+
+msgid "key"
+msgstr ""
+
+msgid "Web: the key (home.question). Server: the original English text."
+msgstr ""
+
+msgid "by"
+msgstr ""
+
+msgid "corrected translation"
+msgstr ""
+
+msgid "corrected translations"
+msgstr ""
+
+msgid "To contact"
+msgstr ""
+
+msgid "Contacted"
+msgstr ""
+
+msgid "Signed up"
+msgstr ""
+
+msgid "Not interested"
+msgstr ""
+
+msgid "business"
+msgstr ""
+
+msgid "source"
+msgstr ""
+
+msgid "invitation code"
+msgstr ""
+
+msgid "invited at"
+msgstr ""
+
+msgid "followed by"
+msgstr ""
+
+msgid "prospect"
+msgstr ""
+
+msgid "prospects"
+msgstr ""
+
+msgid "Export as CSV"
+msgstr ""
+
+msgid "Signing in as this person is not allowed (team account or inactive account)."
+msgstr ""
+
+msgid "Not possible while signed in as a member (payments, codes, account)."
+msgstr ""
+
+msgid "Moderation"
+msgstr ""
+
+msgid "Support"
+msgstr ""
+
+msgid "Disputes"
+msgstr ""
+
+msgid "Finance"
+msgstr ""
+
+msgid "Pro verification"
+msgstr ""
+
+msgid "Open disputes, late answers first. « Decide » shows the timeline, the evidence and the decisions in one click."
+msgstr ""
+
+msgid "Payment"
+msgstr ""
+
+msgid "Reason"
+msgstr ""
+
+msgid "Client"
+msgstr ""
+
+msgid "Seller"
+msgstr ""
+
+msgid "Answer due"
+msgstr ""
+
+msgid "late"
+msgstr ""
+
+msgid "Decide"
+msgstr ""
+
+msgid "Dispute room"
+msgstr ""
+
+msgid "Three-way call"
+msgstr ""
+
+msgid "No open dispute."
+msgstr ""
+
+msgid "A feature works when it is on. No country ticked: every country. No role ticked: everyone. Each change is in the journal."
+msgstr ""
+
+msgid "Feature"
+msgstr ""
+
+msgid "On"
+msgstr ""
+
+msgid "Off"
+msgstr ""
+
+#, python-format
+msgid "You will see the app as %(name)s sees it, for %(minutes)s minutes at most. A red banner reminds it on every page."
+msgstr ""
+
+msgid "The start, the end and every change you make are written in the audit journal."
+msgstr ""
+
+msgid "Payments, receipt codes and account settings are blocked."
+msgstr ""
+
+msgid "Your own session on the app is replaced: sign in again afterwards."
+msgstr ""
+
+msgid "Contents to review: hidden ones first, then the most reported. One click decides; each decision is in the journal."
+msgstr ""
+
+#, python-format
+msgid "%(count)s reports"
+msgstr ""
+
+msgid "hidden until review"
+msgstr ""
+
+msgid "Author:"
+msgstr ""
+
+msgid "Keep"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+msgid "Remove and sanction the author"
+msgstr ""
+
+msgid "Details"
+msgstr ""
+
+msgid "Nothing to review. Well done!"
+msgstr ""
+
+msgid "A CSV file (commas or semicolons) with a first line of titles: name, business, phone, e-mail, city, country, trade, source. Only the name is needed. A phone or e-mail already known is skipped."
+msgstr ""
+
+#, python-format
+msgid "Prospects now: %(count)s."
+msgstr ""
+
+msgid "Import"
+msgstr ""
+
+msgid "Two-factor is on. Keep these backup codes in a safe place: each one opens the admin once if you lose your phone. They are shown only now."
+msgstr ""
+
+msgid "I kept them, continue"
+msgstr ""
+
+#, python-format
+msgid "To order at the merchant (%(count)s)"
+msgstr ""
+
+msgid "Nothing to order."
+msgstr ""
+
+#, python-format
+msgid "Ordered or received in France (%(count)s)"
+msgstr ""
+
+msgid "Nothing waiting in France."
+msgstr ""
+
+msgid "Shipments"
+msgstr ""
+
+msgid "No shipment on its way."
+msgstr ""
+
+#, python-format
+msgid "Parcels at the pick-up points (%(count)s)"
+msgstr ""
+
+msgid "No parcel waiting."
+msgstr ""
+
+msgid "Each role sees only its consoles and lists. Two-factor sign-in is required for everyone."
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Two-factor"
+msgstr ""
+
+msgid "Last sign-in"
+msgstr ""
+
+msgid "owner"
+msgstr ""
+
+msgid "Not set up yet"
+msgstr ""
+
+msgid "Reset two-factor"
+msgstr ""
+
+msgid "Remove from the team"
+msgstr ""
+
+msgid "Add or change a team member"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+#, python-format
+msgid "Search a text of the app or of the server by its key or by its words, then write the correction. An empty correction goes back to the original. Corrections now: %(count)s."
+msgstr ""
+
+msgid "Words or key"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "App"
+msgstr ""
+
+msgid "Server"
+msgstr ""
+
+msgid "Correction"
+msgstr ""
+
+msgid "Correction (empty: the original)"
+msgstr ""
+
+msgid "Nothing found. Try other words."
+msgstr ""
+
+msgid "Every team account signs in with a second code. Scan this square with an authenticator app (Google Authenticator, Microsoft Authenticator, Authy), then type the 6 digits it shows."
+msgstr ""
+
+msgid "No camera? Type this key in the app:"
+msgstr ""
+
+msgid "Type the 6 digits shown by your authenticator app."
+msgstr ""
+
+msgid "Code of the app"
+msgstr ""
+
+msgid "Lost phone? Use a backup code"
+msgstr ""
+
+msgid "Backup code"
+msgstr ""
+
+msgid "Continue"
+msgstr ""
+
 msgid "deposit"
 msgstr ""
 
@@ -1361,9 +1828,6 @@ msgid "the pro herself"
 msgstr ""
 
 msgid "phone (invitation)"
-msgstr ""
-
-msgid "invited at"
 msgstr ""
 
 msgid "services allowed"
@@ -1636,6 +2100,173 @@ msgstr ""
 msgid "last-minute offers"
 msgstr ""
 
+msgid "Versions"
+msgstr ""
+
+#, python-format
+msgid "Version %(number)s brought back."
+msgstr ""
+
+#, python-format
+msgid "Versions of %(name)s"
+msgstr ""
+
+msgid "new picture"
+msgstr ""
+
+msgid "Answer"
+msgstr ""
+
+msgid "Answer sent."
+msgstr ""
+
+#, python-format
+msgid "Answer %(reference)s"
+msgstr ""
+
+msgid "Contents and help"
+msgstr ""
+
+msgid "Write your name and an e-mail or a phone number so we can answer you."
+msgstr ""
+
+msgid "This page does not exist."
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+msgid "Terms and conditions"
+msgstr ""
+
+msgid "Privacy"
+msgstr ""
+
+msgid "Legal notice"
+msgstr ""
+
+msgid "Rules of the games"
+msgstr ""
+
+msgid "Returns and refunds"
+msgstr ""
+
+msgid "Other"
+msgstr ""
+
+msgid "summary"
+msgstr ""
+
+msgid "Paragraphs separated by an empty line; a line starting with # is a title."
+msgstr ""
+
+msgid "published"
+msgstr ""
+
+msgid "version"
+msgstr ""
+
+msgid "page"
+msgstr ""
+
+msgid "pages"
+msgstr ""
+
+msgid "home banner"
+msgstr ""
+
+msgid "home banners"
+msgstr ""
+
+msgid "My account"
+msgstr ""
+
+msgid "Payments and refunds"
+msgstr ""
+
+msgid "Shops and orders"
+msgstr ""
+
+msgid "Gifts"
+msgstr ""
+
+msgid "For the pros"
+msgstr ""
+
+msgid "Glow Points and games"
+msgstr ""
+
+msgid "topic"
+msgstr ""
+
+msgid "answer"
+msgstr ""
+
+msgid "question of the FAQ"
+msgstr ""
+
+msgid "FAQ"
+msgstr ""
+
+msgid "content"
+msgstr ""
+
+msgid "versions"
+msgstr ""
+
+msgid "New"
+msgstr ""
+
+msgid "Answered"
+msgstr ""
+
+msgid "Closed"
+msgstr ""
+
+msgid "message"
+msgstr ""
+
+msgid "answered at"
+msgstr ""
+
+msgid "answered by"
+msgstr ""
+
+msgid "help ticket"
+msgstr ""
+
+msgid "help tickets"
+msgstr ""
+
+#, python-format
+msgid "Your question %(reference)s"
+msgstr ""
+
+msgid "The answer goes to her account (notification)."
+msgstr ""
+
+msgid "The answer goes to her e-mail address."
+msgstr ""
+
+msgid "Send the answer"
+msgstr ""
+
+msgid "Each save is a version. Bringing one back writes a new version: nothing is lost."
+msgstr ""
+
+#, python-format
+msgid "Version %(number)s, %(date)s"
+msgstr ""
+
+msgid "Bring back"
+msgstr ""
+
+msgid "Current"
+msgstr ""
+
+msgid "No version yet: it is written at the next save."
+msgstr ""
+
 msgid "scope"
 msgstr ""
 
@@ -1655,9 +2286,6 @@ msgid "Object"
 msgstr ""
 
 msgid "Changes"
-msgstr ""
-
-msgid "by"
 msgstr ""
 
 msgid "action"
@@ -1685,9 +2313,6 @@ msgid "audit event"
 msgstr ""
 
 msgid "audit journal"
-msgstr ""
-
-msgid "Client"
 msgstr ""
 
 msgid "Professional"
@@ -1749,9 +2374,6 @@ msgid "Refused"
 msgstr ""
 
 msgid "Failed"
-msgstr ""
-
-msgid "owner"
 msgstr ""
 
 msgid "use"
@@ -1857,9 +2479,6 @@ msgstr ""
 msgid "JSON"
 msgstr ""
 
-msgid "key"
-msgstr ""
-
 msgid "Use lowercase words separated by dots, e.g. escrow.ship_deadline_days."
 msgstr ""
 
@@ -1914,9 +2533,6 @@ msgstr ""
 msgid "Positive to give, negative to take back."
 msgstr ""
 
-msgid "Reason"
-msgstr ""
-
 msgid "balance"
 msgstr ""
 
@@ -1937,9 +2553,6 @@ msgid "discount"
 msgstr ""
 
 msgid "chance (everywhere)"
-msgstr ""
-
-msgid "new picture"
 msgstr ""
 
 msgid "new audio"
@@ -2204,9 +2817,6 @@ msgstr ""
 msgid "unique key"
 msgstr ""
 
-msgid "source"
-msgstr ""
-
 msgid "source id"
 msgstr ""
 
@@ -2327,9 +2937,6 @@ msgstr ""
 msgid "audio"
 msgstr ""
 
-msgid "answer"
-msgstr ""
-
 msgid "right"
 msgstr ""
 
@@ -2364,9 +2971,6 @@ msgid "result sent at"
 msgstr ""
 
 msgid "« Help me choose »"
-msgstr ""
-
-msgid "Closed"
 msgstr ""
 
 msgid "from (Monday)"
@@ -2554,9 +3158,6 @@ msgstr ""
 msgid "given back"
 msgstr ""
 
-msgid "Gifts"
-msgstr ""
-
 msgid "This gift does not exist or can no longer be used."
 msgstr ""
 
@@ -2676,9 +3277,6 @@ msgid "language of the person"
 msgstr ""
 
 msgid "occasion"
-msgstr ""
-
-msgid "message"
 msgstr ""
 
 msgid "voice or video message"
@@ -3171,9 +3769,6 @@ msgstr ""
 msgid "started at"
 msgstr ""
 
-msgid "ended at"
-msgstr ""
-
 msgid "cut at the latest"
 msgstr ""
 
@@ -3261,9 +3856,6 @@ msgstr ""
 msgid "presences"
 msgstr ""
 
-msgid "Three-way call"
-msgstr ""
-
 msgid "Calls are only for dispute rooms."
 msgstr ""
 
@@ -3271,9 +3863,6 @@ msgid "payment warning"
 msgstr ""
 
 msgid "why it can be read"
-msgstr ""
-
-msgid "Dispute room"
 msgstr ""
 
 #, python-format
@@ -3386,9 +3975,6 @@ msgstr ""
 msgid "Discussion"
 msgstr ""
 
-msgid "Support"
-msgstr ""
-
 msgid "For example a dispute, an order or a booking."
 msgstr ""
 
@@ -3435,9 +4021,6 @@ msgid "archived"
 msgstr ""
 
 msgid "muted"
-msgstr ""
-
-msgid "member"
 msgstr ""
 
 msgid "members"
@@ -3512,9 +4095,6 @@ msgstr ""
 msgid "rings until"
 msgstr ""
 
-msgid "answered at"
-msgstr ""
-
 msgid "people at most"
 msgstr ""
 
@@ -3551,9 +4131,6 @@ msgstr ""
 msgid "Thank you for your message. I am not available right now: I will answer as soon as I am back."
 msgstr ""
 
-msgid "content"
-msgstr ""
-
 msgid "detected"
 msgstr ""
 
@@ -3575,22 +4152,10 @@ msgstr ""
 msgid "Removed. The author was told."
 msgstr ""
 
-msgid "Keep"
-msgstr ""
-
-msgid "Remove"
-msgstr ""
-
-msgid "Remove and sanction the author"
-msgstr ""
-
 msgid "Keep the selected contents"
 msgstr ""
 
 msgid "Remove the selected contents"
-msgstr ""
-
-msgid "Moderation"
 msgstr ""
 
 msgid "You cannot report your own content."
@@ -3672,9 +4237,6 @@ msgid "excerpt"
 msgstr ""
 
 msgid "checked by"
-msgstr ""
-
-msgid "hidden until review"
 msgstr ""
 
 msgid "decided by"
@@ -3848,13 +4410,26 @@ msgstr ""
 msgid "Payment fees"
 msgstr ""
 
-msgid "Finance"
-msgstr ""
-
 msgid "Amount to refund"
 msgstr ""
 
 msgid "Note for both parties"
+msgstr ""
+
+msgid "timeline"
+msgstr ""
+
+msgid "Payment created"
+msgstr ""
+
+msgid "Paid, money held"
+msgstr ""
+
+msgid "Dispute opened"
+msgstr ""
+
+#, python-format
+msgid "Evidence from %(name)s"
 msgstr ""
 
 msgid "dispute room"
@@ -4019,9 +4594,6 @@ msgstr ""
 msgid "Boost of a pro"
 msgstr ""
 
-msgid "Other"
-msgstr ""
-
 msgid "category"
 msgstr ""
 
@@ -4071,9 +4643,6 @@ msgid "grouped payments"
 msgstr ""
 
 msgid "Waiting for payment"
-msgstr ""
-
-msgid "Paid, money held"
 msgstr ""
 
 msgid "Partly refunded"
@@ -4581,9 +5150,6 @@ msgid "Portuguese"
 msgstr ""
 
 msgid "Website"
-msgstr ""
-
-msgid "New"
 msgstr ""
 
 msgid "Top pro"
@@ -5604,9 +6170,6 @@ msgstr ""
 msgid "Selection orders"
 msgstr ""
 
-msgid "Save"
-msgstr ""
-
 msgid "Reason shown to the pro"
 msgstr ""
 
@@ -6224,7 +6787,40 @@ msgstr ""
 msgid "Solange Glow member"
 msgstr ""
 
-msgid "Back office"
+msgid "Steering"
+msgstr ""
+
+msgid "Dashboard"
+msgstr ""
+
+msgid "Finance console"
+msgstr ""
+
+msgid "Team and settings"
+msgstr ""
+
+msgid "Features by country"
+msgstr ""
+
+msgid "Audit journal"
+msgstr ""
+
+msgid "Sign-ins as a member"
+msgstr ""
+
+msgid "Pages"
+msgstr ""
+
+msgid "Home banners"
+msgstr ""
+
+msgid "Help tickets"
+msgstr ""
+
+msgid "Messages and e-mails"
+msgstr ""
+
+msgid "Prospects"
 msgstr ""
 
 msgid "Countries"
@@ -6239,9 +6835,6 @@ msgstr ""
 msgid "Feature flags"
 msgstr ""
 
-msgid "Audit journal"
-msgstr ""
-
 msgid "Showcases"
 msgstr ""
 
@@ -6249,9 +6842,6 @@ msgid "Identity checks"
 msgstr ""
 
 msgid "Trades"
-msgstr ""
-
-msgid "Moderation queue"
 msgstr ""
 
 msgid "Sanctions"
@@ -6269,9 +6859,6 @@ msgstr ""
 msgid "Products"
 msgstr ""
 
-msgid "Orders"
-msgstr ""
-
 msgid "Forbidden words"
 msgstr ""
 
@@ -6282,9 +6869,6 @@ msgid "Promotions"
 msgstr ""
 
 msgid "Orders to place"
-msgstr ""
-
-msgid "Shipments"
 msgstr ""
 
 msgid "Special requests"
@@ -6300,9 +6884,6 @@ msgid "Pick-up points"
 msgstr ""
 
 msgid "Glow Pro"
-msgstr ""
-
-msgid "Appointments"
 msgstr ""
 
 msgid "Agenda people"
@@ -6401,9 +6982,6 @@ msgstr ""
 msgid "Finance dashboard"
 msgstr ""
 
-msgid "Disputes"
-msgstr ""
-
 msgid "Refunds"
 msgstr ""
 
@@ -6459,4 +7037,69 @@ msgid "Guests"
 msgstr ""
 
 msgid "Groups"
+msgstr ""
+
+msgid "Django site admin"
+msgstr ""
+
+msgid "Period"
+msgstr ""
+
+msgid "7 days"
+msgstr ""
+
+msgid "30 days"
+msgstr ""
+
+msgid "90 days"
+msgstr ""
+
+msgid "This month"
+msgstr ""
+
+msgid "Country"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Show"
+msgstr ""
+
+#, python-format
+msgid "Before: %(before)s"
+msgstr ""
+
+#, python-format
+msgid "%(change)s %% compared with before (%(before)s)"
+msgstr ""
+
+msgid "Open the console"
+msgstr ""
+
+msgid "Sales paid"
+msgstr ""
+
+#, python-format
+msgid "%(count)s payments, %(earned)s for the platform (commissions and fees)"
+msgstr ""
+
+msgid "No payment in this period."
+msgstr ""
+
+msgid "Money held (secure payment)"
+msgstr ""
+
+#, python-format
+msgid "%(count)s payments waiting for the receipt code"
+msgstr ""
+
+msgid "No money held now."
+msgstr ""
+
+msgid "Sign-ups per day"
+msgstr ""
+
+#, python-format
+msgid "Sales paid per day (%(currency)s)"
 msgstr ""

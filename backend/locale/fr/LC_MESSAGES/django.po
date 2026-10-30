@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-30 17:22+0100\n"
+"POT-Creation-Date: 2026-10-30 20:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -555,6 +555,9 @@ msgstr "Suspendu"
 msgid "Deleted"
 msgstr "Supprimé"
 
+msgid "Sign in as this person"
+msgstr "Se connecter à sa place"
+
 msgid "Profile"
 msgstr "Profil"
 
@@ -590,6 +593,9 @@ msgstr[1] "%(count)d comptes réactivés."
 
 msgid "Accounts"
 msgstr "Comptes"
+
+msgid "This session as a member is over."
+msgstr "Cette connexion à la place d'un membre est terminée."
 
 msgid "Request refused. Reload the page and try again."
 msgstr "Demande refusée. Recharge la page et réessaie."
@@ -1209,6 +1215,467 @@ msgstr "Sponsorisé"
 msgid "No active creative with a placement yet."
 msgstr "Aucun visuel actif avec un emplacement pour l'instant."
 
+msgid "sign-up link"
+msgstr "lien d'inscription"
+
+msgid "Send the invitation (WhatsApp, else SMS)"
+msgstr "Envoyer l'invitation (WhatsApp, sinon SMS)"
+
+#, python-format
+msgid "%(count)s invitations sent (a prospect without a phone is skipped)."
+msgstr "%(count)s invitations envoyées (un prospect sans numéro est ignoré)."
+
+msgid "Import a CSV file"
+msgstr "Importer un CSV"
+
+msgid "Search a text"
+msgstr "Chercher un texte"
+
+msgid "Your backup codes"
+msgstr "Tes codes de secours"
+
+msgid "The code does not match. Check the 6 digits of your app and try again."
+msgstr "Le code ne correspond pas. Vérifie les 6 chiffres de ton appli et réessaie."
+
+msgid "Two-factor sign-in"
+msgstr "Double authentification"
+
+msgid "First name"
+msgstr "Prénom"
+
+msgid "Temporary password"
+msgstr "Mot de passe provisoire"
+
+msgid "Empty: unchanged. She sets up two-factor at her first sign-in."
+msgstr "Vide : inchangé. Elle règle la double authentification à sa première connexion."
+
+msgid "Roles"
+msgstr "Rôles"
+
+msgid "Two-factor reset: she sets it up again."
+msgstr "Double authentification remise à zéro : elle la règle à nouveau."
+
+msgid "She is no longer in the team."
+msgstr "Elle ne fait plus partie de l'équipe."
+
+msgid "Team member saved."
+msgstr "Membre de l'équipe enregistré."
+
+msgid "Team"
+msgstr "Équipe"
+
+msgid "Features by country and role"
+msgstr "Fonctionnalités par pays et par rôle"
+
+msgid "Saved: the app uses it within a minute."
+msgstr "Enregistré : l'appli l'utilise d'ici une minute."
+
+msgid "Texts of the interface"
+msgstr "Textes de l'interface"
+
+msgid "Moderation console"
+msgstr "Console de modération"
+
+msgid "Disputes console"
+msgstr "Console des litiges"
+
+msgid "France Selection console"
+msgstr "Console Sélection France"
+
+msgid "CSV file"
+msgstr "Fichier CSV"
+
+msgid "Source"
+msgstr "Source"
+
+msgid "A « name » column is needed."
+msgstr "Une colonne « name » (ou « nom ») est nécessaire."
+
+#, python-format
+msgid "%(added)s added, %(skipped)s already known or empty."
+msgstr "%(added)s ajoutés, %(skipped)s déjà connus ou vides."
+
+msgid "Import prospects"
+msgstr "Importer des prospects"
+
+msgid "Why (written in the journal)"
+msgstr "Pourquoi (noté dans le journal)"
+
+#, python-format
+msgid "Sign in as %(name)s"
+msgstr "Se connecter à la place de %(name)s"
+
+msgid "Back office"
+msgstr "Back-office"
+
+msgid "Sign-ups"
+msgstr "Inscriptions"
+
+#, python-format
+msgid "Sales paid (%(currency)s)"
+msgstr "Ventes payées (%(currency)s)"
+
+msgid "Active people"
+msgstr "Personnes actives"
+
+msgid "Orders"
+msgstr "Commandes"
+
+msgid "Appointments"
+msgstr "Rendez-vous"
+
+msgid "Open disputes"
+msgstr "Litiges ouverts"
+
+msgid "Moderation queue"
+msgstr "File de modération"
+
+msgid "team member"
+msgstr "membre de l'équipe"
+
+msgid "secret (encrypted)"
+msgstr "secret (chiffré)"
+
+msgid "activated at"
+msgstr "activée le"
+
+msgid "two-factor device"
+msgstr "appareil de double authentification"
+
+msgid "two-factor devices"
+msgstr "appareils de double authentification"
+
+msgid "See the dashboard"
+msgstr "Voir le tableau de bord"
+
+msgid "Use the moderation console"
+msgstr "Utiliser la console de modération"
+
+msgid "Use the disputes console"
+msgstr "Utiliser la console des litiges"
+
+msgid "Use the France Selection console"
+msgstr "Utiliser la console Sélection France"
+
+msgid "Manage the team"
+msgstr "Gérer l'équipe"
+
+msgid "Turn features on and off"
+msgstr "Allumer et éteindre les fonctionnalités"
+
+msgid "Correct the translations"
+msgstr "Corriger les traductions"
+
+msgid "Sign in as a member"
+msgstr "Se connecter à la place d'un membre"
+
+msgid "Export lists"
+msgstr "Exporter les listes"
+
+msgid "member"
+msgstr "membre"
+
+msgid "ended at"
+msgstr "terminé à"
+
+msgid "actions done"
+msgstr "actions faites"
+
+msgid "sign-in as a member"
+msgstr "connexion à la place d'un membre"
+
+msgid "sign-ins as a member"
+msgstr "connexions à la place d'un membre"
+
+msgid "App (web)"
+msgstr "Appli (web)"
+
+msgid "Server (e-mails, errors, admin)"
+msgstr "Serveur (e-mails, erreurs, admin)"
+
+msgid "where"
+msgstr "où"
+
+msgid "key"
+msgstr "clé"
+
+msgid "Web: the key (home.question). Server: the original English text."
+msgstr "Web : la clé (home.question). Serveur : le texte anglais d'origine."
+
+msgid "by"
+msgstr "par"
+
+msgid "corrected translation"
+msgstr "traduction corrigée"
+
+msgid "corrected translations"
+msgstr "traductions corrigées"
+
+msgid "To contact"
+msgstr "À contacter"
+
+msgid "Contacted"
+msgstr "Contactée"
+
+msgid "Signed up"
+msgstr "Inscrite"
+
+msgid "Not interested"
+msgstr "Pas intéressée"
+
+msgid "business"
+msgstr "activité"
+
+msgid "source"
+msgstr "origine"
+
+msgid "invitation code"
+msgstr "code d'invitation"
+
+msgid "invited at"
+msgstr "invitée le"
+
+msgid "followed by"
+msgstr "suivie par"
+
+msgid "prospect"
+msgstr "prospect"
+
+msgid "prospects"
+msgstr "prospects"
+
+msgid "Export as CSV"
+msgstr "Exporter en CSV"
+
+msgid "Signing in as this person is not allowed (team account or inactive account)."
+msgstr "Impossible de se connecter à la place de cette personne (compte de l'équipe ou compte inactif)."
+
+msgid "Not possible while signed in as a member (payments, codes, account)."
+msgstr "Impossible pendant une connexion à la place d'un membre (paiements, codes, compte)."
+
+msgid "Moderation"
+msgstr "Modération"
+
+msgid "Support"
+msgstr "Assistance"
+
+msgid "Disputes"
+msgstr "Litiges"
+
+msgid "Finance"
+msgstr "Finance"
+
+msgid "Pro verification"
+msgstr "Vérification des pros"
+
+msgid "Open disputes, late answers first. « Decide » shows the timeline, the evidence and the decisions in one click."
+msgstr "Litiges ouverts, réponses en retard d'abord. « Décider » montre la chronologie, les preuves et les décisions en un clic."
+
+msgid "Payment"
+msgstr "Paiement"
+
+msgid "Reason"
+msgstr "Motif"
+
+msgid "Client"
+msgstr "Cliente"
+
+msgid "Seller"
+msgstr "Vendeuse"
+
+msgid "Answer due"
+msgstr "Réponse attendue"
+
+msgid "late"
+msgstr "en retard"
+
+msgid "Decide"
+msgstr "Décider"
+
+msgid "Dispute room"
+msgstr "Salle de litige"
+
+msgid "Three-way call"
+msgstr "Appel à trois"
+
+msgid "No open dispute."
+msgstr "Aucun litige ouvert."
+
+msgid "A feature works when it is on. No country ticked: every country. No role ticked: everyone. Each change is in the journal."
+msgstr "Une fonctionnalité marche quand elle est allumée. Aucun pays coché : tous les pays. Aucun rôle coché : tout le monde. Chaque changement est dans le journal."
+
+msgid "Feature"
+msgstr "Fonctionnalité"
+
+msgid "On"
+msgstr "Allumée"
+
+msgid "Off"
+msgstr "Éteinte"
+
+#, python-format
+msgid "You will see the app as %(name)s sees it, for %(minutes)s minutes at most. A red banner reminds it on every page."
+msgstr "Tu verras l'appli comme %(name)s la voit, pendant %(minutes)s minutes au plus. Une bannière rouge le rappelle sur chaque page."
+
+msgid "The start, the end and every change you make are written in the audit journal."
+msgstr "Le début, la fin et chaque changement que tu fais sont notés dans le journal d'audit."
+
+msgid "Payments, receipt codes and account settings are blocked."
+msgstr "Les paiements, les codes de réception et les réglages du compte sont bloqués."
+
+msgid "Your own session on the app is replaced: sign in again afterwards."
+msgstr "Ta propre session sur l'appli est remplacée : reconnecte-toi ensuite."
+
+msgid "Contents to review: hidden ones first, then the most reported. One click decides; each decision is in the journal."
+msgstr "Contenus à vérifier : les masqués d'abord, puis les plus signalés. Un clic décide ; chaque décision est dans le journal."
+
+#, python-format
+msgid "%(count)s reports"
+msgstr "%(count)s signalements"
+
+msgid "hidden until review"
+msgstr "masqué en attendant l'examen"
+
+msgid "Author:"
+msgstr "Autrice :"
+
+msgid "Keep"
+msgstr "Garder"
+
+msgid "Remove"
+msgstr "Retirer"
+
+msgid "Remove and sanction the author"
+msgstr "Retirer et sanctionner l'autrice"
+
+msgid "Details"
+msgstr "Détails"
+
+msgid "Nothing to review. Well done!"
+msgstr "Rien à vérifier. Bravo !"
+
+msgid "A CSV file (commas or semicolons) with a first line of titles: name, business, phone, e-mail, city, country, trade, source. Only the name is needed. A phone or e-mail already known is skipped."
+msgstr "Un fichier CSV (virgules ou points-virgules) avec une première ligne de titres : nom, activité, téléphone, e-mail, ville, pays, métier, source. Seul le nom est obligatoire. Un numéro ou un e-mail déjà connu est ignoré."
+
+#, python-format
+msgid "Prospects now: %(count)s."
+msgstr "Prospects aujourd'hui : %(count)s."
+
+msgid "Import"
+msgstr "Importer"
+
+msgid "Two-factor is on. Keep these backup codes in a safe place: each one opens the admin once if you lose your phone. They are shown only now."
+msgstr "La double authentification est active. Garde ces codes de secours en lieu sûr : chacun ouvre l'admin une fois si tu perds ton téléphone. Ils ne sont montrés que maintenant."
+
+msgid "I kept them, continue"
+msgstr "Je les ai gardés, continuer"
+
+#, python-format
+msgid "To order at the merchant (%(count)s)"
+msgstr "À commander chez le marchand (%(count)s)"
+
+msgid "Nothing to order."
+msgstr "Rien à commander."
+
+#, python-format
+msgid "Ordered or received in France (%(count)s)"
+msgstr "Commandé ou reçu en France (%(count)s)"
+
+msgid "Nothing waiting in France."
+msgstr "Rien en attente en France."
+
+msgid "Shipments"
+msgstr "Lots d'envoi"
+
+msgid "No shipment on its way."
+msgstr "Aucun lot en route."
+
+#, python-format
+msgid "Parcels at the pick-up points (%(count)s)"
+msgstr "Colis aux points de retrait (%(count)s)"
+
+msgid "No parcel waiting."
+msgstr "Aucun colis en attente."
+
+msgid "Each role sees only its consoles and lists. Two-factor sign-in is required for everyone."
+msgstr "Chaque rôle ne voit que ses consoles et ses listes. La double authentification est obligatoire pour tout le monde."
+
+msgid "Name"
+msgstr "Nom"
+
+msgid "Two-factor"
+msgstr "Double authentification"
+
+msgid "Last sign-in"
+msgstr "Dernière connexion"
+
+msgid "owner"
+msgstr "propriétaire"
+
+msgid "Not set up yet"
+msgstr "Pas encore réglée"
+
+msgid "Reset two-factor"
+msgstr "Remettre à zéro la double authentification"
+
+msgid "Remove from the team"
+msgstr "Retirer de l'équipe"
+
+msgid "Add or change a team member"
+msgstr "Ajouter ou modifier un membre de l'équipe"
+
+msgid "Save"
+msgstr "Enregistrer"
+
+#, python-format
+msgid "Search a text of the app or of the server by its key or by its words, then write the correction. An empty correction goes back to the original. Corrections now: %(count)s."
+msgstr "Cherche un texte de l'appli ou du serveur par sa clé ou par ses mots, puis écris la correction. Une correction vide revient au texte d'origine. Corrections aujourd'hui : %(count)s."
+
+msgid "Words or key"
+msgstr "Mots ou clé"
+
+msgid "Language"
+msgstr "Langue"
+
+msgid "Search"
+msgstr "Chercher"
+
+msgid "App"
+msgstr "Appli"
+
+msgid "Server"
+msgstr "Serveur"
+
+msgid "Correction"
+msgstr "Correction"
+
+msgid "Correction (empty: the original)"
+msgstr "Correction (vide : le texte d'origine)"
+
+msgid "Nothing found. Try other words."
+msgstr "Rien trouvé. Essaie d'autres mots."
+
+msgid "Every team account signs in with a second code. Scan this square with an authenticator app (Google Authenticator, Microsoft Authenticator, Authy), then type the 6 digits it shows."
+msgstr "Tout compte de l'équipe se connecte avec un deuxième code. Scanne ce carré avec une appli d'authentification (Google Authenticator, Microsoft Authenticator, Authy), puis tape les 6 chiffres affichés."
+
+msgid "No camera? Type this key in the app:"
+msgstr "Pas de caméra ? Tape cette clé dans l'appli :"
+
+msgid "Type the 6 digits shown by your authenticator app."
+msgstr "Tape les 6 chiffres affichés par ton appli d'authentification."
+
+msgid "Code of the app"
+msgstr "Code de l'appli"
+
+msgid "Lost phone? Use a backup code"
+msgstr "Téléphone perdu ? Utilise un code de secours"
+
+msgid "Backup code"
+msgstr "Code de secours"
+
+msgid "Continue"
+msgstr "Continuer"
+
 msgid "deposit"
 msgstr "acompte"
 
@@ -1362,9 +1829,6 @@ msgstr "la pro elle-même"
 
 msgid "phone (invitation)"
 msgstr "téléphone (invitation)"
-
-msgid "invited at"
-msgstr "invitée le"
 
 msgid "services allowed"
 msgstr "prestations autorisées"
@@ -1636,6 +2100,173 @@ msgstr "offre dernière minute"
 msgid "last-minute offers"
 msgstr "offres dernière minute"
 
+msgid "Versions"
+msgstr "Versions"
+
+#, python-format
+msgid "Version %(number)s brought back."
+msgstr "Version %(number)s remise."
+
+#, python-format
+msgid "Versions of %(name)s"
+msgstr "Versions de %(name)s"
+
+msgid "new picture"
+msgstr "nouvelle image"
+
+msgid "Answer"
+msgstr "Répondre"
+
+msgid "Answer sent."
+msgstr "Réponse envoyée."
+
+#, python-format
+msgid "Answer %(reference)s"
+msgstr "Répondre à %(reference)s"
+
+msgid "Contents and help"
+msgstr "Contenus et aide"
+
+msgid "Write your name and an e-mail or a phone number so we can answer you."
+msgstr "Écris ton prénom et un e-mail ou un numéro, pour qu'on puisse te répondre."
+
+msgid "This page does not exist."
+msgstr "Cette page n'existe pas."
+
+msgid "Help"
+msgstr "Aide"
+
+msgid "Terms and conditions"
+msgstr "Conditions générales"
+
+msgid "Privacy"
+msgstr "Confidentialité"
+
+msgid "Legal notice"
+msgstr "Mentions légales"
+
+msgid "Rules of the games"
+msgstr "Règles des jeux"
+
+msgid "Returns and refunds"
+msgstr "Retours et remboursements"
+
+msgid "Other"
+msgstr "Autre"
+
+msgid "summary"
+msgstr "résumé"
+
+msgid "Paragraphs separated by an empty line; a line starting with # is a title."
+msgstr "Paragraphes séparés par une ligne vide ; une ligne qui commence par # est un titre."
+
+msgid "published"
+msgstr "publiée"
+
+msgid "version"
+msgstr "version"
+
+msgid "page"
+msgstr "page"
+
+msgid "pages"
+msgstr "pages"
+
+msgid "home banner"
+msgstr "bannière d'accueil"
+
+msgid "home banners"
+msgstr "bannières d'accueil"
+
+msgid "My account"
+msgstr "Mon compte"
+
+msgid "Payments and refunds"
+msgstr "Paiements et remboursements"
+
+msgid "Shops and orders"
+msgstr "Boutiques et commandes"
+
+msgid "Gifts"
+msgstr "Cadeaux"
+
+msgid "For the pros"
+msgstr "Pour les pros"
+
+msgid "Glow Points and games"
+msgstr "Glow Points et jeux"
+
+msgid "topic"
+msgstr "thème"
+
+msgid "answer"
+msgstr "réponse"
+
+msgid "question of the FAQ"
+msgstr "question de la FAQ"
+
+msgid "FAQ"
+msgstr "FAQ"
+
+msgid "content"
+msgstr "contenu"
+
+msgid "versions"
+msgstr "versions"
+
+msgid "New"
+msgstr "Nouvelle"
+
+msgid "Answered"
+msgstr "Répondue"
+
+msgid "Closed"
+msgstr "Terminé"
+
+msgid "message"
+msgstr "message"
+
+msgid "answered at"
+msgstr "décroché à"
+
+msgid "answered by"
+msgstr "répondue par"
+
+msgid "help ticket"
+msgstr "demande d'aide"
+
+msgid "help tickets"
+msgstr "demandes d'aide"
+
+#, python-format
+msgid "Your question %(reference)s"
+msgstr "Ta question %(reference)s"
+
+msgid "The answer goes to her account (notification)."
+msgstr "La réponse part sur son compte (notification)."
+
+msgid "The answer goes to her e-mail address."
+msgstr "La réponse part à son adresse e-mail."
+
+msgid "Send the answer"
+msgstr "Envoyer la réponse"
+
+msgid "Each save is a version. Bringing one back writes a new version: nothing is lost."
+msgstr "Chaque enregistrement est une version. En remettre une crée une nouvelle version : rien n'est perdu."
+
+#, python-format
+msgid "Version %(number)s, %(date)s"
+msgstr "Version %(number)s, %(date)s"
+
+msgid "Bring back"
+msgstr "Remettre"
+
+msgid "Current"
+msgstr "Actuelle"
+
+msgid "No version yet: it is written at the next save."
+msgstr "Pas encore de version : elle sera écrite au prochain enregistrement."
+
 msgid "scope"
 msgstr "portée"
 
@@ -1656,9 +2287,6 @@ msgstr "Objet"
 
 msgid "Changes"
 msgstr "Modifications"
-
-msgid "by"
-msgstr "par"
 
 msgid "action"
 msgstr "action"
@@ -1686,9 +2314,6 @@ msgstr "ligne du journal"
 
 msgid "audit journal"
 msgstr "journal d'audit"
-
-msgid "Client"
-msgstr "Cliente"
 
 msgid "Professional"
 msgstr "Pro"
@@ -1750,9 +2375,6 @@ msgstr "Refusé"
 
 msgid "Failed"
 msgstr "Échec"
-
-msgid "owner"
-msgstr "propriétaire"
 
 msgid "use"
 msgstr "usage"
@@ -1857,9 +2479,6 @@ msgstr "Oui / non"
 msgid "JSON"
 msgstr "JSON"
 
-msgid "key"
-msgstr "clé"
-
 msgid "Use lowercase words separated by dots, e.g. escrow.ship_deadline_days."
 msgstr "Utilise des mots en minuscules séparés par des points, par exemple escrow.ship_deadline_days."
 
@@ -1914,9 +2533,6 @@ msgstr "Points"
 msgid "Positive to give, negative to take back."
 msgstr "Positif pour donner, négatif pour reprendre."
 
-msgid "Reason"
-msgstr "Motif"
-
 msgid "balance"
 msgstr "solde"
 
@@ -1938,9 +2554,6 @@ msgstr "remise"
 
 msgid "chance (everywhere)"
 msgstr "chance (partout)"
-
-msgid "new picture"
-msgstr "nouvelle image"
 
 msgid "new audio"
 msgstr "nouvel audio"
@@ -2204,9 +2817,6 @@ msgstr "pour"
 msgid "unique key"
 msgstr "clé unique"
 
-msgid "source"
-msgstr "origine"
-
 msgid "source id"
 msgstr "identifiant d'origine"
 
@@ -2327,9 +2937,6 @@ msgstr "explication"
 msgid "audio"
 msgstr "audio"
 
-msgid "answer"
-msgstr "réponse"
-
 msgid "right"
 msgstr "juste"
 
@@ -2365,9 +2972,6 @@ msgstr "résultat envoyé le"
 
 msgid "« Help me choose »"
 msgstr "« Aide-moi à choisir »"
-
-msgid "Closed"
-msgstr "Terminé"
 
 msgid "from (Monday)"
 msgstr "du (lundi)"
@@ -2554,9 +3158,6 @@ msgstr "montant"
 msgid "given back"
 msgstr "rendu"
 
-msgid "Gifts"
-msgstr "Cadeaux"
-
 msgid "This gift does not exist or can no longer be used."
 msgstr "Ce cadeau n'existe pas ou ne peut plus être utilisé."
 
@@ -2677,9 +3278,6 @@ msgstr "langue de la personne"
 
 msgid "occasion"
 msgstr "occasion"
-
-msgid "message"
-msgstr "message"
 
 msgid "voice or video message"
 msgstr "message vocal ou vidéo"
@@ -3171,9 +3769,6 @@ msgstr "salle chez LiveKit"
 msgid "started at"
 msgstr "commencé à"
 
-msgid "ended at"
-msgstr "terminé à"
-
 msgid "cut at the latest"
 msgstr "coupé au plus tard"
 
@@ -3261,9 +3856,6 @@ msgstr "présence"
 msgid "presences"
 msgstr "présences"
 
-msgid "Three-way call"
-msgstr "Appel à trois"
-
 msgid "Calls are only for dispute rooms."
 msgstr "Les appels sont réservés aux salles de litige."
 
@@ -3272,9 +3864,6 @@ msgstr "avertissement de paiement"
 
 msgid "why it can be read"
 msgstr "pourquoi elle peut être lue"
-
-msgid "Dispute room"
-msgstr "Salle de litige"
 
 #, python-format
 msgid "Report of %(date)s"
@@ -3386,9 +3975,6 @@ msgstr "À deux"
 msgid "Discussion"
 msgstr "Discussion"
 
-msgid "Support"
-msgstr "Assistance"
-
 msgid "For example a dispute, an order or a booking."
 msgstr "Par exemple un litige, une commande ou un rendez-vous."
 
@@ -3436,9 +4022,6 @@ msgstr "archivée"
 
 msgid "muted"
 msgstr "en sourdine"
-
-msgid "member"
-msgstr "membre"
 
 msgid "members"
 msgstr "membres"
@@ -3512,9 +4095,6 @@ msgstr "appelante"
 msgid "rings until"
 msgstr "sonne jusqu'à"
 
-msgid "answered at"
-msgstr "décroché à"
-
 msgid "people at most"
 msgstr "personnes au plus"
 
@@ -3551,9 +4131,6 @@ msgstr "Conversation"
 msgid "Thank you for your message. I am not available right now: I will answer as soon as I am back."
 msgstr "Merci pour ton message. Je ne suis pas disponible pour le moment : je te réponds dès mon retour."
 
-msgid "content"
-msgstr "contenu"
-
 msgid "detected"
 msgstr "détecté"
 
@@ -3575,23 +4152,11 @@ msgstr "Gardé."
 msgid "Removed. The author was told."
 msgstr "Retiré. L'autrice a été prévenue."
 
-msgid "Keep"
-msgstr "Garder"
-
-msgid "Remove"
-msgstr "Retirer"
-
-msgid "Remove and sanction the author"
-msgstr "Retirer et sanctionner l'autrice"
-
 msgid "Keep the selected contents"
 msgstr "Garder les contenus choisis"
 
 msgid "Remove the selected contents"
 msgstr "Retirer les contenus choisis"
-
-msgid "Moderation"
-msgstr "Modération"
 
 msgid "You cannot report your own content."
 msgstr "Tu ne peux pas signaler ton propre contenu."
@@ -3673,9 +4238,6 @@ msgstr "extrait"
 
 msgid "checked by"
 msgstr "vérifié par"
-
-msgid "hidden until review"
-msgstr "masqué en attendant l'examen"
 
 msgid "decided by"
 msgstr "décidé par"
@@ -3848,14 +4410,27 @@ msgstr "Commissions"
 msgid "Payment fees"
 msgstr "Frais de paiement"
 
-msgid "Finance"
-msgstr "Finance"
-
 msgid "Amount to refund"
 msgstr "Montant à rembourser"
 
 msgid "Note for both parties"
 msgstr "Note pour les deux parties"
+
+msgid "timeline"
+msgstr "chronologie"
+
+msgid "Payment created"
+msgstr "Paiement créé"
+
+msgid "Paid, money held"
+msgstr "Payé, argent bloqué"
+
+msgid "Dispute opened"
+msgstr "Litige ouvert"
+
+#, python-format
+msgid "Evidence from %(name)s"
+msgstr "Preuve de %(name)s"
 
 msgid "dispute room"
 msgstr "salle de litige"
@@ -4019,9 +4594,6 @@ msgstr "Cadeau de l'étranger"
 msgid "Boost of a pro"
 msgstr "Boost d'une pro"
 
-msgid "Other"
-msgstr "Autre"
-
 msgid "category"
 msgstr "catégorie"
 
@@ -4072,9 +4644,6 @@ msgstr "paiements groupés"
 
 msgid "Waiting for payment"
 msgstr "En attente de paiement"
-
-msgid "Paid, money held"
-msgstr "Payé, argent bloqué"
 
 msgid "Partly refunded"
 msgstr "Remboursé en partie"
@@ -4582,9 +5151,6 @@ msgstr "Portugais"
 
 msgid "Website"
 msgstr "Site web"
-
-msgid "New"
-msgstr "Nouvelle"
 
 msgid "Top pro"
 msgstr "Top Pro"
@@ -5604,9 +6170,6 @@ msgstr "commande Sélection"
 msgid "Selection orders"
 msgstr "commandes Sélection"
 
-msgid "Save"
-msgstr "Enregistrer"
-
 msgid "Reason shown to the pro"
 msgstr "Raison montrée à la pro"
 
@@ -6224,8 +6787,41 @@ msgstr "notes de clientes"
 msgid "Solange Glow member"
 msgstr "Membre Solange Glow"
 
-msgid "Back office"
-msgstr "Back-office"
+msgid "Steering"
+msgstr "Pilotage"
+
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+msgid "Finance console"
+msgstr "Console finance"
+
+msgid "Team and settings"
+msgstr "Équipe et réglages"
+
+msgid "Features by country"
+msgstr "Fonctionnalités par pays"
+
+msgid "Audit journal"
+msgstr "Journal d'audit"
+
+msgid "Sign-ins as a member"
+msgstr "Connexions à la place d'un membre"
+
+msgid "Pages"
+msgstr "Pages"
+
+msgid "Home banners"
+msgstr "Bannières d'accueil"
+
+msgid "Help tickets"
+msgstr "Demandes d'aide"
+
+msgid "Messages and e-mails"
+msgstr "Messages et e-mails"
+
+msgid "Prospects"
+msgstr "Prospects"
 
 msgid "Countries"
 msgstr "Pays"
@@ -6239,9 +6835,6 @@ msgstr "Réglages"
 msgid "Feature flags"
 msgstr "Modules activables"
 
-msgid "Audit journal"
-msgstr "Journal d'audit"
-
 msgid "Showcases"
 msgstr "Vitrines"
 
@@ -6250,9 +6843,6 @@ msgstr "Vérifications d'identité"
 
 msgid "Trades"
 msgstr "Métiers"
-
-msgid "Moderation queue"
-msgstr "File de modération"
 
 msgid "Sanctions"
 msgstr "Sanctions"
@@ -6269,9 +6859,6 @@ msgstr "Produits à vérifier"
 msgid "Products"
 msgstr "Produits"
 
-msgid "Orders"
-msgstr "Commandes"
-
 msgid "Forbidden words"
 msgstr "Mots interdits"
 
@@ -6283,9 +6870,6 @@ msgstr "Promotions"
 
 msgid "Orders to place"
 msgstr "Commandes à passer"
-
-msgid "Shipments"
-msgstr "Lots d'envoi"
 
 msgid "Special requests"
 msgstr "Demandes spéciales"
@@ -6301,9 +6885,6 @@ msgstr "Points de retrait"
 
 msgid "Glow Pro"
 msgstr "Glow Pro"
-
-msgid "Appointments"
-msgstr "Rendez-vous"
 
 msgid "Agenda people"
 msgstr "Équipes des agendas"
@@ -6401,9 +6982,6 @@ msgstr "Appels"
 msgid "Finance dashboard"
 msgstr "Tableau de bord finance"
 
-msgid "Disputes"
-msgstr "Litiges"
-
 msgid "Refunds"
 msgstr "Remboursements"
 
@@ -6460,6 +7038,71 @@ msgstr "Invitées"
 
 msgid "Groups"
 msgstr "Groupes"
+
+msgid "Django site admin"
+msgstr "Administration Solange Glow"
+
+msgid "Period"
+msgstr "Période"
+
+msgid "7 days"
+msgstr "7 jours"
+
+msgid "30 days"
+msgstr "30 jours"
+
+msgid "90 days"
+msgstr "90 jours"
+
+msgid "This month"
+msgstr "Ce mois-ci"
+
+msgid "Country"
+msgstr "Pays"
+
+msgid "All"
+msgstr "Tous"
+
+msgid "Show"
+msgstr "Afficher"
+
+#, python-format
+msgid "Before: %(before)s"
+msgstr "Avant : %(before)s"
+
+#, python-format
+msgid "%(change)s %% compared with before (%(before)s)"
+msgstr "%(change)s %% par rapport à avant (%(before)s)"
+
+msgid "Open the console"
+msgstr "Ouvrir la console"
+
+msgid "Sales paid"
+msgstr "Ventes payées"
+
+#, python-format
+msgid "%(count)s payments, %(earned)s for the platform (commissions and fees)"
+msgstr "%(count)s paiements, %(earned)s pour la plateforme (commissions et frais)"
+
+msgid "No payment in this period."
+msgstr "Aucun paiement sur cette période."
+
+msgid "Money held (secure payment)"
+msgstr "Argent bloqué (paiement sécurisé)"
+
+#, python-format
+msgid "%(count)s payments waiting for the receipt code"
+msgstr "%(count)s paiements en attente du code de réception"
+
+msgid "No money held now."
+msgstr "Aucun argent bloqué en ce moment."
+
+msgid "Sign-ups per day"
+msgstr "Inscriptions par jour"
+
+#, python-format
+msgid "Sales paid per day (%(currency)s)"
+msgstr "Ventes payées par jour (%(currency)s)"
 
 #~ msgid "Ads"
 #~ msgstr "Publicité"
