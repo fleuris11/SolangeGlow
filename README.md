@@ -424,6 +424,44 @@ votes, défis, niveaux des pros, classements, routine). Les interrupteurs « gam
 « wheel » se règlent par pays. `QUIZ_AI_URL` (vide : l'équipe écrit les quiz) est dans
 `.env.example`.
 
+## Tester la publicité en local
+
+Les données de démo contiennent :
+- une campagne du commerce « Karité Doux Cotonou » (bannière d'accueil et fil, au Bénin) ;
+- un produit Sélection France sponsorisé ;
+- trois promos internes (Offrir au pays, Sélection France, Académie), utilisées quand
+  rien n'est vendu ;
+- un boost d'Aïcha d'une semaine, déjà payé ;
+- un exemple d'écran de lancement, en brouillon.
+
+1. Ouvre l'accueil dans une fenêtre privée. La bannière porte « Sponsorisé par Karité
+   Doux Cotonou ». Elle compte un affichage, et le bouton passe par un lien qui compte
+   le clic.
+2. Ouvre l'Explorer avec « Tresses » à Cotonou
+   (http://localhost:3000/fr/explore?trade=braids&city=Cotonou) : Aïcha est en tête,
+   marquée « Sponsorisé ».
+3. Ouvre la Sélection France : un produit sponsorisé s'affiche au-dessus des rayons.
+4. Connecte-toi comme Aïcha (+2290197000101). Dans « Ma vitrine », ouvre « Booster ma
+   vitrine » : le boost est en cours, avec ses affichages et ses clics.
+5. Dans l'admin, section « Publicité » :
+   - campagnes : « Démarrer », « Pause », « Aperçu » de chaque emplacement, « Exporter
+     pour l'annonceur » (CSV) ;
+   - visuels, avec envoi d'images ou de vidéos ;
+   - annonceurs, boosts, statistiques.
+
+   Démarre l'exemple d'écran de lancement pour le voir à l'ouverture de l'accueil (une
+   fois par jour).
+
+Réglages `ads.*` :
+- plafond par écran, une publication sponsorisée toutes les N, pas de pub pour les
+  mineures ;
+- bouche-trou par emplacement ;
+- AdSense (identifiant et blocs, vide donc coupé) ;
+- délai des conversions, cache, écran de lancement ;
+- prix et emplacements des boosts.
+
+Les interrupteurs « ads » et « boosts » se règlent par pays.
+
 ## Client de l'API (web)
 
 Les types du client web sont générés depuis le schéma de l'API. Après toute
@@ -492,6 +530,8 @@ backend/                Django
                         mains levées, limites, replay
   apps/gifts/           cadeaux de la diaspora : prestation, produit ou carte cadeau Glow
                         payés en euros, utilisés en FCFA au Bénin, preuve de plaisir
+  apps/ads/             régie publicitaire : campagnes, visuels, emplacements, ciblage,
+                        statistiques, promos internes, AdSense (coupé), boosts des pros
   apps/gamification/     côté ludique : Glow Points (grand livre), série, quiz, roue, défi
                         photo, « Aide-moi à choisir », niveaux, classements, parrainage,
                         routine, calendrier des fêtes
