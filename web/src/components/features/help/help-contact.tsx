@@ -81,7 +81,14 @@ export function HelpContact({
   if (step === "sent") {
     return (
       <section aria-live="polite" className="bg-poudre rounded-card flex flex-col gap-3 p-4">
-        <h2 className="text-title font-bold">{t("sentTitle")}</h2>
+        {/* Focused when shown: the confirmation comes into view and is read aloud. */}
+        <h2
+          ref={(node) => node?.focus()}
+          tabIndex={-1}
+          className="text-title font-bold focus:outline-none"
+        >
+          {t("sentTitle")}
+        </h2>
         <p>{t("sentText", { reference })}</p>
         <Button variant="secondary" onClick={restart} className="self-start">
           {t("another")}

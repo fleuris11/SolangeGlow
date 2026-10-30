@@ -86,7 +86,9 @@ test.describe("help center of the app", () => {
     await expectNoSeriousA11yIssue(page);
     await page.screenshot({ path: "e2e/screenshots/help-center.png", fullPage: true });
 
-    await page.getByLabel("Ta question").fill("Comment annuler un rendez-vous ?");
+    await page
+      .getByRole("textbox", { name: "Ta question" })
+      .fill("Comment annuler un rendez-vous ?");
     await page.getByRole("button", { name: "Chercher une réponse" }).click();
     await expect(page.getByText("Ces réponses peuvent t'aider :")).toBeVisible();
     await page.getByRole("button", { name: "Non, écrire à l'équipe" }).click();
