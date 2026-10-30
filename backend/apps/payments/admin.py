@@ -416,6 +416,7 @@ class DisputeAdmin(ReadOnlyAdmin):
         "response_due_at",
         "overdue",
         "room",
+        "timeline",
         "status",
         "decision",
         "refund_minor",
@@ -438,6 +439,50 @@ class DisputeAdmin(ReadOnlyAdmin):
             url,
             payment.reference,
             amount(payment.total_minor, payment.currency),
+        )
+
+    @display(description=_("timeline"))
+    def timeline(self, dispute):
+        """Payment, delivery, evidence, decisions: what happened, in order (ADR-017)."""
+        from django.contrib.contenttypes.models import ContentType
+
+        from apps.core.audit.models import AuditEvent
+
+        payment = dispute.payment
+        events = [
+            (moment, label)
+            for moment, label in (
+                (payment.created_at, _("Payment created")),
+                (payment.paid_at, _("Paid, money held")),
+                (payment.shipped_at, _("Shipped")),
+                (payment.disputed_at, _("Dispute opened")),
+                (dispute.response_due_at, _("Answer due")),
+            )
+            if moment
+        ]
+        events += [
+            (item.created_at, _("Evidence from %(name)s") % {"name": item.author})
+            for item in dispute.evidence.select_related("author")
+        ]
+        audit = AuditEvent.objects.filter(
+            target_type__in=[
+                ContentType.objects.get_for_model(payment),
+                ContentType.objects.get_for_model(dispute),
+            ],
+            target_id__in=[str(payment.pk), str(dispute.pk)],
+        ).select_related("actor")[:50]
+        events += [(row.created_at, f"{row.action} — {row.actor or '—'}") for row in audit]
+        events.sort(key=lambda item: item[0])
+        return format_html(
+            "<ol>{}</ol>",
+            format_html_join(
+                "",
+                "<li>{} — {}</li>",
+                (
+                    (timezone.localtime(moment).strftime("%d/%m/%Y %H:%M"), label)
+                    for moment, label in events
+                ),
+            ),
         )
 
     @display(description=_("dispute room"))

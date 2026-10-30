@@ -1861,6 +1861,71 @@ SETTINGS += [
         "Limite des demandes de pubs par adresse IP.",
         "Ad requests limit per IP address.",
     ),
+    # Back office (module 12, ADR-017).
+    _s(
+        "backoffice.two_factor_hours",
+        INT,
+        "12",
+        "Équipe : durée de validité de la double authentification (heures).",
+        "Team: how long the two-step check lasts (hours).",
+    ),
+    _s(
+        "backoffice.two_factor_attempts",
+        INT,
+        "5",
+        "Équipe : essais de code permis avant blocage.",
+        "Team: code attempts allowed before the lock.",
+    ),
+    _s(
+        "backoffice.two_factor_lock_minutes",
+        INT,
+        "15",
+        "Équipe : durée du blocage après trop d'essais (minutes).",
+        "Team: how long the lock lasts after too many attempts (minutes).",
+    ),
+    _s(
+        "backoffice.impersonation_minutes",
+        INT,
+        "30",
+        "« Se connecter à la place de » : durée maximale (minutes).",
+        "« Sign in as »: longest duration (minutes).",
+    ),
+    _s(
+        "backoffice.impersonation_blocked",
+        JSON,
+        '["^/api/v1/payments", "/checkout", "/pay$", "/pay/", "/receipt", '
+        '"/confirm-receipt", "/wallet", "/payout", "^/api/v1/me/(delete|contact)"]',
+        "« Se connecter à la place de » : adresses interdites (paiements, codes de réception…).",
+        "« Sign in as »: addresses refused (payments, receipt codes…).",
+    ),
+    _s(
+        "backoffice.export_max_rows",
+        INT,
+        "50000",
+        "Exports CSV : nombre maximum de lignes.",
+        "CSV exports: most rows.",
+    ),
+    _s(
+        "content.banners_max",
+        INT,
+        "1",
+        "Bannières d'accueil montrées en même temps.",
+        "Home banners shown at the same time.",
+    ),
+    _s(
+        "throttle.content",
+        STR,
+        "240/minute",
+        "Limite des lectures de pages et de l'aide par adresse IP.",
+        "Pages and help reads limit per IP address.",
+    ),
+    _s(
+        "throttle.help_ticket",
+        STR,
+        "10/hour",
+        "Limite des demandes d'aide envoyées par adresse IP.",
+        "Help requests limit per IP address.",
+    ),
 ]
 
 # Monthly price of Premium (created with the countries; edited in the admin afterwards).

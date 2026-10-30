@@ -1,0 +1,36 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+  <p class="mb-4">{% translate "Each role sees only its consoles and lists. Two-factor sign-in is required for everyone." %}</p>
+  <table style="width:100%;border-collapse:collapse;margin-bottom:32px">
+    <thead><tr style="text-align:left">
+      <th class="py-2">{% translate "Name" %}</th><th>{% translate "E-mail" %}</th><th>{% translate "Roles" %}</th><th>{% translate "Two-factor" %}</th><th>{% translate "Last sign-in" %}</th><th></th>
+    </tr></thead>
+    <tbody>
+      {% for row in members %}
+        <tr class="border-t border-base-200 dark:border-base-800">
+          <td class="py-2">{{ row.user.first_name }}{% if row.user.is_superuser %} ({% translate "owner" %}){% endif %}</td>
+          <td>{{ row.user.email }}</td>
+          <td>{{ row.roles|join:", "|default:"—" }}</td>
+          <td>{% if row.two_factor %}{% translate "On" %}{% else %}{% translate "Not set up yet" %}{% endif %}</td>
+          <td>{{ row.user.last_login|date:"SHORT_DATETIME_FORMAT"|default:"—" }}</td>
+          <td style="display:flex;gap:8px;padding:6px 0">
+            <form method="post">{% csrf_token %}<input type="hidden" name="user" value="{{ row.user.pk }}"><button name="action" value="reset" class="underline">{% translate "Reset two-factor" %}</button></form>
+            {% if row.user != request.user and not row.user.is_superuser %}
+              <form method="post">{% csrf_token %}<input type="hidden" name="user" value="{{ row.user.pk }}"><button name="action" value="remove" class="underline">{% translate "Remove from the team" %}</button></form>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <h2 class="font-semibold" style="font-size:18px;margin-bottom:12px">{% translate "Add or change a team member" %}</h2>
+  <form method="post" style="max-width:560px;display:flex;flex-direction:column;gap:12px">
+    {% csrf_token %}
+    {{ form.as_div }}
+    <button type="submit" name="action" value="save" class="bg-primary-600 text-white rounded-default px-4 py-2 font-semibold" style="align-self:flex-start">{% translate "Save" %}</button>
+  </form>
+{% endblock %}

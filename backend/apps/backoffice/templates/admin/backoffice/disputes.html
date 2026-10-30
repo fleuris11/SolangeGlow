@@ -1,0 +1,33 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+  <p class="mb-4">{% translate "Open disputes, late answers first. « Decide » shows the timeline, the evidence and the decisions in one click." %}</p>
+  <table style="width:100%;border-collapse:collapse">
+    <thead><tr style="text-align:left">
+      <th class="py-2">{% translate "Payment" %}</th><th>{% translate "Reason" %}</th><th>{% translate "Client" %}</th><th>{% translate "Seller" %}</th><th>{% translate "Answer due" %}</th><th></th>
+    </tr></thead>
+    <tbody>
+      {% for dispute in disputes %}
+        <tr class="border-t border-base-200 dark:border-base-800">
+          <td class="py-2"><strong>{{ dispute.payment.reference }}</strong></td>
+          <td>{{ dispute.get_reason_display }}</td>
+          <td>{{ dispute.payment.buyer }}</td>
+          <td>{{ dispute.payment.seller }}</td>
+          <td>{{ dispute.response_due_at|date:"SHORT_DATETIME_FORMAT" }}{% if dispute.overdue %} — <strong style="color:#B54708">{% translate "late" %}</strong>{% endif %}</td>
+          <td style="display:flex;gap:10px;padding:6px 0">
+            <a class="bg-primary-600 text-white rounded-default px-3 py-1 font-semibold" href="{% url 'admin:payments_dispute_change' dispute.pk %}">{% translate "Decide" %}</a>
+            {% if dispute.conversation_id %}
+              <a class="underline" href="{% url 'admin:messaging_conversation_change' dispute.conversation_id %}">{% translate "Dispute room" %}</a>
+              <a class="underline" href="{% url 'admin:messaging_conversation_call_detail' dispute.conversation_id %}">{% translate "Three-way call" %}</a>
+            {% endif %}
+          </td>
+        </tr>
+      {% empty %}
+        <tr><td class="py-2" colspan="6">{% translate "No open dispute." %}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

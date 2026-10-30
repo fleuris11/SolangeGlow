@@ -11,6 +11,8 @@ class AuditContext:
     actor_id: object | None = None
     ip: str | None = None
     user_agent: str = ""
+    # A team member signed in as the actor (« sign in as », ADR-017).
+    impersonator_id: object | None = None
 
 
 _EMPTY = AuditContext()

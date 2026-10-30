@@ -1,0 +1,79 @@
+{% extends 'admin/base.html' %}
+{% load i18n %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+  {% include "unfold/helpers/site_branding.html" %}
+{% endblock %}
+
+{% block content %}
+  {% if show_dashboard %}
+    <form method="get" style="display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin-bottom:24px">
+      <label style="display:flex;flex-direction:column;gap:4px">
+        <span class="font-semibold">{% translate "Period" %}</span>
+        <select name="period" class="border border-base-200 rounded-default px-3 py-2 dark:border-base-700 dark:bg-base-900">
+          <option value="7" {% if period == "7" %}selected{% endif %}>{% translate "7 days" %}</option>
+          <option value="30" {% if period == "30" %}selected{% endif %}>{% translate "30 days" %}</option>
+          <option value="90" {% if period == "90" %}selected{% endif %}>{% translate "90 days" %}</option>
+          <option value="month" {% if period == "month" %}selected{% endif %}>{% translate "This month" %}</option>
+        </select>
+      </label>
+      <label style="display:flex;flex-direction:column;gap:4px">
+        <span class="font-semibold">{% translate "Country" %}</span>
+        <select name="country" class="border border-base-200 rounded-default px-3 py-2 dark:border-base-700 dark:bg-base-900">
+          <option value="">{% translate "All" %}</option>
+          {% for code, name in countries %}<option value="{{ code }}" {% if country == code %}selected{% endif %}>{{ name }}</option>{% endfor %}
+        </select>
+      </label>
+      <button type="submit" class="bg-primary-600 text-white rounded-default px-4 py-2 font-semibold">{% translate "Show" %}</button>
+    </form>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:24px">
+      {% for kpi in kpis %}
+        <div class="bg-white border border-base-200 rounded-default p-4 dark:bg-base-900 dark:border-base-800">
+          <p class="text-subtle" style="display:flex;align-items:center;gap:6px"><span class="material-symbols-outlined">{{ kpi.icon }}</span>{{ kpi.title }}</p>
+          <p class="font-semibold" style="font-size:28px;margin-top:6px">{{ kpi.value }}</p>
+          <p class="text-subtle" style="font-size:13px">
+            {% if kpi.change is None %}{% blocktranslate with before=kpi.before %}Before: {{ before }}{% endblocktranslate %}
+            {% else %}{% blocktranslate with change=kpi.change before=kpi.before %}{{ change }} % compared with before ({{ before }}){% endblocktranslate %}{% endif %}
+          </p>
+        </div>
+      {% endfor %}
+      {% for queue in queues %}
+        <a href="{{ queue.link }}" class="bg-white border border-base-200 rounded-default p-4 dark:bg-base-900 dark:border-base-800" style="display:block">
+          <p class="text-subtle" style="display:flex;align-items:center;gap:6px"><span class="material-symbols-outlined">{{ queue.icon }}</span>{{ queue.title }}</p>
+          <p class="font-semibold" style="font-size:28px;margin-top:6px">{{ queue.value }}</p>
+          <p class="text-subtle" style="font-size:13px">{% translate "Open the console" %}</p>
+        </a>
+      {% endfor %}
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;margin-bottom:24px">
+      <div class="bg-white border border-base-200 rounded-default p-4 dark:bg-base-900 dark:border-base-800">
+        <h2 class="font-semibold" style="margin-bottom:8px">{% translate "Sales paid" %}</h2>
+        {% for row in sales %}
+          <p><strong>{{ row.total }}</strong> — {% blocktranslate with count=row.count earned=row.earned %}{{ count }} payments, {{ earned }} for the platform (commissions and fees){% endblocktranslate %}</p>
+        {% empty %}<p class="text-subtle">{% translate "No payment in this period." %}</p>{% endfor %}
+      </div>
+      <div class="bg-white border border-base-200 rounded-default p-4 dark:bg-base-900 dark:border-base-800">
+        <h2 class="font-semibold" style="margin-bottom:8px">{% translate "Money held (secure payment)" %}</h2>
+        {% for row in held %}
+          <p><strong>{{ row.total }}</strong> — {% blocktranslate with count=row.count %}{{ count }} payments waiting for the receipt code{% endblocktranslate %}</p>
+        {% empty %}<p class="text-subtle">{% translate "No money held now." %}</p>{% endfor %}
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:16px;margin-bottom:32px">
+      <div class="bg-white border border-base-200 rounded-default p-4 dark:bg-base-900 dark:border-base-800">
+        <h2 class="font-semibold" style="margin-bottom:8px">{% translate "Sign-ups per day" %}</h2>
+        {% include "unfold/components/chart/line.html" with data=charts.signups height=260 %}
+      </div>
+      <div class="bg-white border border-base-200 rounded-default p-4 dark:bg-base-900 dark:border-base-800">
+        <h2 class="font-semibold" style="margin-bottom:8px">{% blocktranslate with currency=charts.currency %}Sales paid per day ({{ currency }}){% endblocktranslate %}</h2>
+        {% include "unfold/components/chart/bar.html" with data=charts.sales height=260 %}
+      </div>
+    </div>
+  {% endif %}
+  {% include "unfold/helpers/dashboard_default.html" %}
+{% endblock %}

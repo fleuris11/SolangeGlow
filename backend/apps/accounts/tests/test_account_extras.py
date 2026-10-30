@@ -195,6 +195,8 @@ def test_seed_demo_creates_realistic_people_once():
     assert aicha.country.code == "BJ"
     assert User.objects.filter(country__code="FR").exists()
     # Every demo person is welcomed (not the house accounts of the platform: France
-    # Selection, academy).
-    people = User.objects.exclude(email__endswith="@solangeglow.com").count()
+    # Selection, academy; nor the team of the back office).
+    people = (
+        User.objects.exclude(email__endswith="@solangeglow.com").exclude(is_staff=True).count()
+    )
     assert Notification.objects.filter(event_key="account.welcome").count() == people

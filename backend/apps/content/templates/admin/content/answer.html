@@ -1,0 +1,22 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+  <div class="flex flex-col gap-4" style="max-width:720px">
+    <div class="border border-base-200 rounded-default p-4 dark:border-base-800">
+      <p class="font-semibold">{{ ticket.name }}{% if ticket.email %} — {{ ticket.email }}{% endif %}{% if ticket.phone %} — {{ ticket.phone }}{% endif %}</p>
+      <p class="mt-2" style="white-space:pre-wrap">{{ ticket.message }}</p>
+    </div>
+    <p>{% if ticket.user %}{% translate "The answer goes to her account (notification)." %}{% else %}{% translate "The answer goes to her e-mail address." %}{% endif %}</p>
+    <form method="post" class="flex flex-col gap-4">
+      {% csrf_token %}
+      {{ form.as_div }}
+      <div class="flex gap-3">
+        <button type="submit" class="bg-primary-600 text-white rounded px-4 py-2 font-semibold">{% translate "Send the answer" %}</button>
+        <a class="underline" href="{% url 'admin:content_ticket_change' ticket.pk %}">{% translate "Back" %}</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

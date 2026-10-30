@@ -15,6 +15,8 @@ api_v1 = [
     path("", include("apps.gifts.urls")),
     path("", include("apps.gamification.urls")),
     path("", include("apps.ads.urls")),
+    path("", include("apps.content.urls")),
+    path("", include("apps.backoffice.urls")),
     path("", include("apps.social.urls")),
     path("", include("apps.moderation.urls")),
     path("", include("apps.messaging.urls")),

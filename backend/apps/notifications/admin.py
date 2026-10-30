@@ -4,19 +4,22 @@ from modeltranslation.admin import TabbedTranslationAdmin
 from unfold.admin import ModelAdmin, TabularInline
 from unfold.contrib.filters.admin import RangeDateFilter
 
-from apps.core.audit.admin import AuditedModelAdmin
+from apps.content.admin import VersionedAdmin
 
 from . import services
 from .models import Notification, NotificationDelivery, NotificationTemplate, PushSubscription
 
 
 @admin.register(NotificationTemplate)
-class NotificationTemplateAdmin(AuditedModelAdmin, TabbedTranslationAdmin):
+class NotificationTemplateAdmin(VersionedAdmin, TabbedTranslationAdmin):
+    """E-mail, WhatsApp, SMS and app texts: translated, every save is a version (ADR-017)."""
+
     list_display = ["event_key", "channel", "title", "is_active", "updated_at"]
     list_filter = ["channel", "is_active", "event_key"]
     list_editable = ["is_active"]
     search_fields = ["event_key", "title", "body"]
     actions = ["send_test_to_me"]
+    actions_detail = ["versions_detail"]
     fields = ["event_key", "channel", "description", "title", "body", "link", "is_active"]
 
     @admin.action(description=_("Send this event to me (test)"))

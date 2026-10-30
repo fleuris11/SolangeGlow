@@ -1,0 +1,32 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+  <p class="mb-4">{% translate "Each save is a version. Bringing one back writes a new version: nothing is lost." %}</p>
+  <div class="flex flex-col gap-4">
+    {% for row in rows %}
+      <div class="border border-base-200 rounded-default p-4 dark:border-base-800">
+        <div class="flex items-center justify-between gap-4">
+          <p class="font-semibold">{% blocktranslate with number=row.version.number date=row.version.created_at|date:"DATETIME_FORMAT" %}Version {{ number }}, {{ date }}{% endblocktranslate %}{% if row.version.author %} — {{ row.version.author }}{% endif %}</p>
+          {% if not forloop.first %}
+            <form method="post">
+              {% csrf_token %}
+              <input type="hidden" name="version" value="{{ row.version.pk }}">
+              <button type="submit" class="bg-primary-600 text-white rounded px-3 py-2 font-semibold">{% translate "Bring back" %}</button>
+            </form>
+          {% else %}
+            <span class="text-subtle">{% translate "Current" %}</span>
+          {% endif %}
+        </div>
+        <dl class="mt-2 text-sm">
+          {% for name, value in row.lines %}<div><dt class="inline font-semibold">{{ name }}</dt> <dd class="inline">{{ value }}</dd></div>{% endfor %}
+        </dl>
+      </div>
+    {% empty %}
+      <p>{% translate "No version yet: it is written at the next save." %}</p>
+    {% endfor %}
+  </div>
+  <p class="mt-6"><a class="underline" href="{{ back }}">{% translate "Back" %}</a></p>
+{% endblock %}

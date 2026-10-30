@@ -75,6 +75,8 @@ LOCAL_APPS = [
     "apps.invoicing",
     "apps.gamification",
     "apps.ads",
+    "apps.content",
+    "apps.backoffice",
     "apps.moderation",
     "apps.notifications",
 ]
@@ -84,10 +86,12 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "apps.backoffice.services.translations.TranslationOverrideMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "apps.backoffice.middleware.StaffTwoFactorMiddleware",
     "apps.core.audit.context.AuditContextMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -265,6 +269,9 @@ SPECTACULAR_SETTINGS = {
         "WheelPrizeKindEnum": "apps.gamification.models.WheelPrize.Kind",
         "ProLevelEnum": "apps.pros.models.Level",
         "AdPlacementEnum": "apps.ads.models.Placement",
+        "PageKindEnum": "apps.content.models.Page.Kind",
+        "FaqTopicEnum": "apps.content.models.FaqItem.Topic",
+        "TicketStatusEnum": "apps.content.models.Ticket.Status",
         "AdFormatEnum": "apps.ads.models.Creative.Format",
         "BoostDurationEnum": "apps.ads.models.Boost.Duration",
         "BoostStatusEnum": "apps.ads.models.Boost.Status",
@@ -380,6 +387,14 @@ MODERATION_AI_KEY = env("MODERATION_AI_KEY", default="")
 # Empty: the team writes them in the admin; approved in one click either way.
 QUIZ_AI_URL = env("QUIZ_AI_URL", default="")
 QUIZ_AI_KEY = env("QUIZ_AI_KEY", default="")
+# Help center (ADR-017): an AI service answering simple questions, later. Empty: the
+# help center suggests the answers of the FAQ only.
+HELP_AI_URL = env("HELP_AI_URL", default="")
+HELP_AI_KEY = env("HELP_AI_KEY", default="")
+# Back office (ADR-017): two-factor sign-in of every team account; where the backend
+# reads the texts of the web app (search of the translations).
+BACKOFFICE_REQUIRE_2FA = env.bool("BACKOFFICE_REQUIRE_2FA", default=True)
+WEB_INTERNAL_URL = env("WEB_INTERNAL_URL", default="http://web:3000")
 
 # Audio and video calls, lives (ADR-013). LIVEKIT_URL is the address browsers open
 # (wss://… in production); LIVEKIT_API_URL the one the backend calls (empty: the same in
@@ -518,6 +533,11 @@ CELERY_BEAT_SCHEDULE = {
         "task": "apps.ads.tasks.run",
         "schedule": crontab(minute="*/5"),
     },
+    # Back office (ADR-017): prospects whose showcase is published become active.
+    "backoffice.run_daily": {
+        "task": "apps.backoffice.tasks.run_daily",
+        "schedule": crontab(hour=5, minute=40),
+    },
 }
 
 # Approved e-invoicing platform and card terminal: empty until a partner is chosen.
@@ -547,6 +567,7 @@ LOGGING = {
 
 UNFOLD = {
     "SITE_TITLE": "Solange Glow",
+    "DASHBOARD_CALLBACK": "apps.backoffice.dashboard.dashboard_callback",
     "SITE_HEADER": "Solange Glow",
     "SITE_SUBHEADER": _("Back office"),
     "SITE_SYMBOL": "spa",
@@ -604,6 +625,109 @@ UNFOLD = {
         "show_search": True,
         "show_all_applications": True,
         "navigation": [
+            {
+                "title": _("Steering"),
+                "separator": True,
+                "items": [
+                    {
+                        "title": _("Dashboard"),
+                        "icon": "dashboard",
+                        "link": reverse_lazy("admin:index"),
+                    },
+                    {
+                        "title": _("Moderation console"),
+                        "icon": "shield",
+                        "link": reverse_lazy("admin:backoffice_moderation_console"),
+                    },
+                    {
+                        "title": _("Disputes console"),
+                        "icon": "gavel",
+                        "link": reverse_lazy("admin:backoffice_disputes_console"),
+                    },
+                    {
+                        "title": _("Finance console"),
+                        "icon": "account_balance",
+                        "link": reverse_lazy("admin:payments_finance"),
+                    },
+                    {
+                        "title": _("France Selection console"),
+                        "icon": "flight",
+                        "link": reverse_lazy("admin:backoffice_selection_console"),
+                    },
+                    {
+                        "title": _("Pro verification"),
+                        "icon": "verified_user",
+                        "link": reverse_lazy("admin:pros_proverification_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("Team and settings"),
+                "separator": True,
+                "items": [
+                    {
+                        "title": _("Team"),
+                        "icon": "badge",
+                        "link": reverse_lazy("admin:backoffice_team"),
+                    },
+                    {
+                        "title": _("Features by country"),
+                        "icon": "toggle_on",
+                        "link": reverse_lazy("admin:backoffice_flags"),
+                    },
+                    {
+                        "title": _("Texts of the interface"),
+                        "icon": "translate",
+                        "link": reverse_lazy("admin:backoffice_translations"),
+                    },
+                    {
+                        "title": _("Audit journal"),
+                        "icon": "history",
+                        "link": reverse_lazy("admin:core_auditevent_changelist"),
+                    },
+                    {
+                        "title": _("Sign-ins as a member"),
+                        "icon": "supervisor_account",
+                        "link": reverse_lazy("admin:backoffice_impersonation_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("Contents and help"),
+                "separator": True,
+                "items": [
+                    {
+                        "title": _("Pages"),
+                        "icon": "article",
+                        "link": reverse_lazy("admin:content_page_changelist"),
+                    },
+                    {
+                        "title": _("Home banners"),
+                        "icon": "view_carousel",
+                        "link": reverse_lazy("admin:content_banner_changelist"),
+                    },
+                    {
+                        "title": _("FAQ"),
+                        "icon": "help",
+                        "link": reverse_lazy("admin:content_faqitem_changelist"),
+                    },
+                    {
+                        "title": _("Help tickets"),
+                        "icon": "support_agent",
+                        "link": reverse_lazy("admin:content_ticket_changelist"),
+                    },
+                    {
+                        "title": _("Messages and e-mails"),
+                        "icon": "mail",
+                        "link": reverse_lazy("admin:notifications_notificationtemplate_changelist"),
+                    },
+                    {
+                        "title": _("Prospects"),
+                        "icon": "person_search",
+                        "link": reverse_lazy("admin:backoffice_prospect_changelist"),
+                    },
+                ],
+            },
             {
                 "title": _("Platform"),
                 "separator": True,

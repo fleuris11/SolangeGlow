@@ -48,7 +48,13 @@ class AuditedModelAdmin(ModelAdmin):
 @admin.register(AuditEvent)
 class AuditEventAdmin(ModelAdmin):
     list_display = ["created_at", "actor", "action", "target_type", "target_repr", "ip_address"]
-    list_filter = ["action", "target_type", ("created_at", RangeDateFilter)]
+    list_filter = [
+        "action",
+        "target_type",
+        ("created_at", RangeDateFilter),
+        "actor__country",
+        "actor__is_staff",
+    ]
     list_filter_submit = True
     search_fields = ["action", "target_repr", "target_id", "actor__email", "actor__phone"]
     readonly_fields = [f.name for f in AuditEvent._meta.fields]

@@ -3,10 +3,13 @@ from django.contrib import admin, messages
 from django.contrib.auth.admin import GroupAdmin as BaseGroupAdmin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import Group
+from django.shortcuts import redirect
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.utils.translation import ngettext
 from unfold.admin import ModelAdmin, TabularInline
 from unfold.contrib.filters.admin import RangeDateFilter
+from unfold.decorators import action
 from unfold.forms import AdminPasswordChangeForm, UserChangeForm, UserCreationForm
 from unfold.widgets import UnfoldAdminCheckboxSelectMultipleWidget
 
@@ -135,6 +138,16 @@ class UserAdmin(BaseUserAdmin, AuditedModelAdmin):
     ]
     autocomplete_fields = ["country", "preferred_currency"]
     actions = ["suspend_users", "reactivate_users"]
+    actions_detail = ["impersonate_detail"]
+
+    @action(
+        description=_("Sign in as this person"),
+        url_path="impersonate",
+        icon="supervisor_account",
+    )
+    def impersonate_detail(self, request, object_id):
+        # Rules, journal and banner: apps.backoffice (ADR-017).
+        return redirect(reverse("admin:backoffice_impersonate", args=[object_id]))
 
     fieldsets = (
         (None, {"fields": ("email", "phone", "password")}),

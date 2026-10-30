@@ -1,0 +1,30 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+  <p class="mb-4">{% blocktranslate %}Search a text of the app or of the server by its key or by its words, then write the correction. An empty correction goes back to the original. Corrections now: {{ count }}.{% endblocktranslate %}</p>
+  <form method="get" style="display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin-bottom:24px">
+    <label style="display:flex;flex-direction:column;gap:4px"><span class="font-semibold">{% translate "Words or key" %}</span>
+      <input name="q" value="{{ query }}" class="border border-base-200 rounded-default px-3 py-2 dark:border-base-700 dark:bg-base-900" style="min-width:320px"></label>
+    <label style="display:flex;flex-direction:column;gap:4px"><span class="font-semibold">{% translate "Language" %}</span>
+      <select name="lang" class="border border-base-200 rounded-default px-3 py-2 dark:border-base-700 dark:bg-base-900">
+        {% for code, name in languages %}<option value="{{ code }}" {% if code == language %}selected{% endif %}>{{ name }}</option>{% endfor %}
+      </select></label>
+    <button type="submit" class="bg-primary-600 text-white rounded-default px-4 py-2 font-semibold">{% translate "Search" %}</button>
+  </form>
+  {% for row in rows %}
+    <form method="post" class="border border-base-200 rounded-default p-4 dark:border-base-800" style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px">
+      {% csrf_token %}
+      <input type="hidden" name="domain" value="{{ row.domain }}"><input type="hidden" name="key" value="{{ row.key }}">
+      <input type="hidden" name="lang" value="{{ language }}"><input type="hidden" name="q" value="{{ query }}">
+      <p class="text-subtle" style="font-size:13px">{% if row.domain == "web" %}{% translate "App" %}{% else %}{% translate "Server" %}{% endif %} — <code>{{ row.key|truncatechars:120 }}</code></p>
+      <p>{{ row.text }}</p>
+      <textarea name="text" rows="2" aria-label="{% translate 'Correction' %}" placeholder="{% translate 'Correction (empty: the original)' %}" class="border border-base-200 rounded-default px-3 py-2 dark:border-base-700 dark:bg-base-900">{{ row.override }}</textarea>
+      <button type="submit" class="bg-primary-600 text-white rounded-default px-3 py-1 font-semibold" style="align-self:flex-start">{% translate "Save" %}</button>
+    </form>
+  {% empty %}
+    {% if query %}<p>{% translate "Nothing found. Try other words." %}</p>{% endif %}
+  {% endfor %}
+{% endblock %}

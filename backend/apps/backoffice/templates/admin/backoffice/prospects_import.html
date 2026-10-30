@@ -1,0 +1,16 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+  <div style="max-width:640px;display:flex;flex-direction:column;gap:12px">
+    <p>{% translate "A CSV file (commas or semicolons) with a first line of titles: name, business, phone, e-mail, city, country, trade, source. Only the name is needed. A phone or e-mail already known is skipped." %}</p>
+    <p class="text-subtle">{% blocktranslate %}Prospects now: {{ count }}.{% endblocktranslate %}</p>
+    <form method="post" enctype="multipart/form-data" style="display:flex;flex-direction:column;gap:12px">
+      {% csrf_token %}
+      {{ form.as_div }}
+      <button type="submit" class="bg-primary-600 text-white rounded-default px-4 py-2 font-semibold" style="align-self:flex-start">{% translate "Import" %}</button>
+    </form>
+  </div>
+{% endblock %}

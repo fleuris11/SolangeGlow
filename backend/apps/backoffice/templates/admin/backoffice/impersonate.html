@@ -1,0 +1,20 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+  <div style="max-width:640px;display:flex;flex-direction:column;gap:12px">
+    <p>{% blocktranslate with name=target %}You will see the app as {{ name }} sees it, for {{ minutes }} minutes at most. A red banner reminds it on every page.{% endblocktranslate %}</p>
+    <ul style="list-style:disc;padding-left:20px">
+      <li>{% translate "The start, the end and every change you make are written in the audit journal." %}</li>
+      <li>{% translate "Payments, receipt codes and account settings are blocked." %}</li>
+      <li>{% translate "Your own session on the app is replaced: sign in again afterwards." %}</li>
+    </ul>
+    <form method="post" style="display:flex;flex-direction:column;gap:12px">
+      {% csrf_token %}
+      {{ form.as_div }}
+      <button type="submit" class="bg-primary-600 text-white rounded-default px-4 py-2 font-semibold" style="align-self:flex-start">{% translate "Sign in as this person" %}</button>
+    </form>
+  </div>
+{% endblock %}

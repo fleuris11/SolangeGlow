@@ -1,0 +1,41 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+  <p class="mb-4">{% translate "A feature works when it is on. No country ticked: every country. No role ticked: everyone. Each change is in the journal." %}</p>
+  <table style="width:100%;border-collapse:collapse">
+    <thead><tr style="text-align:left">
+      <th class="py-2">{% translate "Feature" %}</th><th>{% translate "On" %}</th>
+      {% for country in countries %}<th>{{ country.code }}</th>{% endfor %}
+      <th>{% translate "Roles" %}</th>
+    </tr></thead>
+    <tbody>
+      {% for row in rows %}
+        <tr class="border-t border-base-200 dark:border-base-800">
+          <td class="py-2"><strong>{{ row.flag.name }}</strong><br><span class="text-subtle" style="font-size:13px">{{ row.flag.key }}</span></td>
+          <td>
+            <form method="post">{% csrf_token %}<input type="hidden" name="flag" value="{{ row.flag.pk }}">
+              <button name="what" value="enabled" aria-pressed="{{ row.flag.is_enabled|yesno:'true,false' }}" style="font-weight:700;color:{% if row.flag.is_enabled %}#1F7A5A{% else %}#B54708{% endif %}">{% if row.flag.is_enabled %}✓ {% translate "On" %}{% else %}✗ {% translate "Off" %}{% endif %}</button>
+            </form>
+          </td>
+          {% for code, on in row.countries %}
+            <td>
+              <form method="post">{% csrf_token %}<input type="hidden" name="flag" value="{{ row.flag.pk }}">
+                <button name="what" value="country:{{ code }}" aria-pressed="{{ on|yesno:'true,false' }}" aria-label="{{ row.flag.name }} {{ code }}">{% if on %}✓{% else %}—{% endif %}</button>
+              </form>
+            </td>
+          {% endfor %}
+          <td style="display:flex;flex-wrap:wrap;gap:6px;padding:6px 0">
+            {% for value, label, on in row.roles %}
+              <form method="post">{% csrf_token %}<input type="hidden" name="flag" value="{{ row.flag.pk }}">
+                <button name="what" value="role:{{ value }}" aria-pressed="{{ on|yesno:'true,false' }}" class="border border-base-200 rounded-default px-2 dark:border-base-700" {% if on %}style="font-weight:700"{% endif %}>{% if on %}✓ {% endif %}{{ label }}</button>
+              </form>
+            {% endfor %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

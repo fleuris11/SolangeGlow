@@ -1,0 +1,23 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+  <p class="mb-4">{% translate "Contents to review: hidden ones first, then the most reported. One click decides; each decision is in the journal." %}</p>
+  {% for case in cases %}
+    <div class="border border-base-200 rounded-default p-4 dark:border-base-800" style="margin-bottom:12px;display:flex;flex-direction:column;gap:8px">
+      <p class="text-subtle" style="font-size:13px">{{ case.target_type.name }} — {{ case.get_source_display }} — {% blocktranslate with count=case.report_count %}{{ count }} reports{% endblocktranslate %}{% if case.hidden_until_review %} — <strong>{% translate "hidden until review" %}</strong>{% endif %}{% if case.labels %} — {{ case.labels|join:", " }}{% endif %}</p>
+      <p style="white-space:pre-wrap">{{ case.excerpt|default:"—" }}</p>
+      <p class="text-subtle" style="font-size:13px">{% translate "Author:" %} {{ case.author|default:"—" }}</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="bg-primary-600 text-white rounded-default px-3 py-1 font-semibold" href="{% url 'admin:moderation_moderationcase_keep_row' case.pk %}">{% translate "Keep" %}</a>
+        <a class="border border-base-200 rounded-default px-3 py-1 font-semibold dark:border-base-700" href="{% url 'admin:moderation_moderationcase_remove_row' case.pk %}">{% translate "Remove" %}</a>
+        <a class="border border-base-200 rounded-default px-3 py-1 font-semibold dark:border-base-700" href="{% url 'admin:moderation_moderationcase_remove_and_sanction_row' case.pk %}">{% translate "Remove and sanction the author" %}</a>
+        <a class="underline" href="{% url 'admin:moderation_moderationcase_change' case.pk %}">{% translate "Details" %}</a>
+      </div>
+    </div>
+  {% empty %}
+    <p>{% translate "Nothing to review. Well done!" %}</p>
+  {% endfor %}
+{% endblock %}

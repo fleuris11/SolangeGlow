@@ -15,6 +15,7 @@ from django.utils import timezone
 from apps.academy.demo import seed_academy
 from apps.accounts.models import GuestIdentity, SignupChannel, User
 from apps.ads.demo import seed_ads
+from apps.backoffice.demo import seed_backoffice
 from apps.booking.demo import seed_booking
 from apps.core.choices import Role
 from apps.core.models import Country
@@ -66,6 +67,7 @@ class Command(BaseCommand):
         gifts = seed_gifts()
         games = seed_games()
         ads = seed_ads()
+        backoffice = seed_backoffice()
         self.stdout.write(
             self.style.SUCCESS(
                 f"seed_demo: {created} new demo accounts, {self.showcases} showcases filled, "
@@ -79,7 +81,7 @@ class Command(BaseCommand):
                 f"{live['lives']} demo lives and replays, {live['calls']} call, "
                 f"{gifts['gifts']} gifts from abroad, {games['quizzes']} quizzes, "
                 f"{games['challenges']} photo challenges, {games['polls']} votes, "
-                f"{ads['campaigns']} ad campaigns."
+                f"{ads['campaigns']} ad campaigns, {backoffice['prospects']} prospects."
             )
         )
 

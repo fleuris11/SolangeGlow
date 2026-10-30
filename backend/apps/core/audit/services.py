@@ -86,6 +86,8 @@ def record(
     """Add a line to the audit journal. Actor and IP default to the current request."""
     current = context.current()
     actor_id = actor.pk if actor is not None else current.actor_id
+    if current.impersonator_id is not None:
+        metadata = {**(metadata or {}), "impersonated_by": str(current.impersonator_id)}
     return AuditEvent.objects.create(
         actor_id=actor_id,
         action=action,

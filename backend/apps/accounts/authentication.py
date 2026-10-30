@@ -16,6 +16,28 @@ def token_is_revoked(user, issued_at: int | None) -> bool:
     return int(issued_at) < int(revoked_at.timestamp())
 
 
+def _check_impersonation(request, user, impersonation_id) -> None:
+    """A team member signed in as this person (ADR-017): still allowed, never a payment,
+    every change in the audit journal."""
+    from dataclasses import replace
+
+    from apps.backoffice.services import impersonation
+    from apps.core.audit import context
+
+    found = impersonation.alive(impersonation_id, user.pk)
+    if found is None:
+        raise exceptions.AuthenticationFailed(
+            _("This session as a member is over."), code="impersonation_over"
+        )
+    context.set_current(
+        replace(context.current(), actor_id=user.pk, impersonator_id=found.staff_id)
+    )
+    if request.method not in SAFE_METHODS:
+        if impersonation.blocked(request.path):
+            raise exceptions.PermissionDenied(str(impersonation.BlockedDuringImpersonation.message))
+        impersonation.note_action(found, request.method, request.path)
+
+
 class CookieJWTAuthentication(JWTAuthentication):
     def authenticate(self, request):
         header = self.get_header(request)
@@ -39,6 +61,8 @@ class CookieJWTAuthentication(JWTAuthentication):
             raise exceptions.AuthenticationFailed(
                 _("You were signed out. Sign in again."), code="token_revoked"
             )
+        if validated.get("imp"):
+            _check_impersonation(request, user, validated["imp"])
         return user, validated
 
 

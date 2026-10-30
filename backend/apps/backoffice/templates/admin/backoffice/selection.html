@@ -1,0 +1,25 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:16px">
+    <section class="border border-base-200 rounded-default p-4 dark:border-base-800">
+      <h2 class="font-semibold" style="margin-bottom:8px">{% blocktranslate with count=to_order|length %}To order at the merchant ({{ count }}){% endblocktranslate %}</h2>
+      {% for order in to_order %}<p><a class="underline" href="{% url 'admin:selection_france_selectionorder_change' order.pk %}">{{ order.reference }}</a> — {{ order.title }} x{{ order.quantity }} — {{ order.buyer }}</p>{% empty %}<p class="text-subtle">{% translate "Nothing to order." %}</p>{% endfor %}
+    </section>
+    <section class="border border-base-200 rounded-default p-4 dark:border-base-800">
+      <h2 class="font-semibold" style="margin-bottom:8px">{% blocktranslate with count=in_france|length %}Ordered or received in France ({{ count }}){% endblocktranslate %}</h2>
+      {% for order in in_france %}<p><a class="underline" href="{% url 'admin:selection_france_selectionorder_change' order.pk %}">{{ order.reference }}</a> — {{ order.title }} — {{ order.get_status_display }}</p>{% empty %}<p class="text-subtle">{% translate "Nothing waiting in France." %}</p>{% endfor %}
+    </section>
+    <section class="border border-base-200 rounded-default p-4 dark:border-base-800">
+      <h2 class="font-semibold" style="margin-bottom:8px">{% translate "Shipments" %}</h2>
+      {% for shipment in shipments %}<p><a class="underline" href="{% url 'admin:selection_france_shipment_change' shipment.pk %}">{{ shipment }}</a> — {{ shipment.get_status_display }}</p>{% empty %}<p class="text-subtle">{% translate "No shipment on its way." %}</p>{% endfor %}
+    </section>
+    <section class="border border-base-200 rounded-default p-4 dark:border-base-800">
+      <h2 class="font-semibold" style="margin-bottom:8px">{% blocktranslate with count=at_points|length %}Parcels at the pick-up points ({{ count }}){% endblocktranslate %}</h2>
+      {% for order in at_points %}<p><a class="underline" href="{% url 'admin:selection_france_selectionorder_change' order.pk %}">{{ order.reference }}</a> — {{ order.pickup_point }} — {{ order.buyer }}</p>{% empty %}<p class="text-subtle">{% translate "No parcel waiting." %}</p>{% endfor %}
+    </section>
+  </div>
+{% endblock %}

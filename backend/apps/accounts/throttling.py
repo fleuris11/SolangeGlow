@@ -31,6 +31,8 @@ DEFAULT_RATES = {
     "gift_code": "20/hour",
     "games": "120/minute",
     "ads": "240/minute",
+    "content": "240/minute",
+    "help_ticket": "10/hour",
 }
 
 

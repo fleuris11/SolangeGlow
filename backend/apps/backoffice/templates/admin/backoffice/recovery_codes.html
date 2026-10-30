@@ -1,0 +1,14 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+  <div style="max-width:560px;display:flex;flex-direction:column;gap:16px">
+    <p>{% translate "Two-factor is on. Keep these backup codes in a safe place: each one opens the admin once if you lose your phone. They are shown only now." %}</p>
+    <ul style="font-family:monospace;font-size:18px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      {% for code in codes %}<li>{{ code }}</li>{% endfor %}
+    </ul>
+    <a href="{{ target }}" class="bg-primary-600 text-white rounded-default px-4 py-2 font-semibold" style="align-self:flex-start">{% translate "I kept them, continue" %}</a>
+  </div>
+{% endblock %}
