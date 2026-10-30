@@ -64,8 +64,9 @@ personnalisées.
   - les paiements, les codes de réception, les versements et la suppression du compte sont
     refusés (`backoffice.impersonation_blocked`) ;
   - chaque écriture est notée dans le journal, avec `impersonated_by` ;
-  - le web affiche une bannière rouge « Arrêter », lue dans un cookie sans secret et chargée à
-    la demande.
+  - le web affiche une bannière rouge avec « Arrêter ». Elle est dessinée par le serveur,
+    masquée, puis montrée par un petit script intégré à la page quand le cookie (sans secret)
+    existe : aucun fichier JavaScript en plus pour les autres (ADR-004).
 - **Journal et exports** :
   - le journal d'audit se filtre par action, personne, pays et staff ;
   - l'action « Exporter en CSV » est ajoutée à toutes les listes de l'admin : colonnes de la

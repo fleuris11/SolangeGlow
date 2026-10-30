@@ -6,7 +6,7 @@ import type { ReactNode } from "react";
 
 import { Providers } from "@/components/providers";
 import { ServiceWorkerRegistration } from "@/components/pwa/service-worker-registration";
-import { ImpersonationGate } from "@/components/shell/impersonation-gate";
+import { ImpersonationBanner } from "@/components/shell/impersonation-banner";
 import { brand } from "@/lib/brand";
 import { routing } from "@/lib/i18n/routing";
 import { preferencesInitScript } from "@/lib/preferences/preferences";
@@ -71,11 +71,9 @@ export default async function LocaleLayout({ children, params }: Props) {
         <script dangerouslySetInnerHTML={{ __html: preferencesInitScript }} />
       </head>
       <body className="antialiased">
+        <ImpersonationBanner />
         <NextIntlClientProvider>
-          <Providers>
-            <ImpersonationGate />
-            {children}
-          </Providers>
+          <Providers>{children}</Providers>
         </NextIntlClientProvider>
         <ServiceWorkerRegistration />
       </body>
