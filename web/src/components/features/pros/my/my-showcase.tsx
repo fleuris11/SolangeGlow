@@ -8,6 +8,7 @@ import {
   IdentificationCard,
   Images,
   MapPin,
+  Megaphone,
   QrCode,
   Rocket,
   Scissors,
@@ -198,6 +199,20 @@ export function MyShowcase() {
             {t("publish")}
           </Button>
         </section>
+      )}
+
+      {published && (
+        <Link
+          href="/pro/boost"
+          className="border-or bg-carte rounded-card flex min-h-16 items-center gap-4 border-2 p-4"
+        >
+          <Megaphone aria-hidden size={28} weight="duotone" className="text-hibiscus" />
+          <span className="flex min-w-0 flex-1 flex-col">
+            <span className="font-bold">{t("boost")}</span>
+            <span className="text-small text-prune-doux">{t("boostHelp")}</span>
+          </span>
+          <CaretRight aria-hidden size={20} />
+        </Link>
       )}
 
       <nav aria-label={t("sectionsLabel")}>

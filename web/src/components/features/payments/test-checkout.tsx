@@ -31,10 +31,13 @@ export function TestCheckout({ paymentId }: { paymentId: string }) {
       await testOutcome(paymentId, outcome);
       const paid = query.data;
       // A gift from abroad goes back to its follow-up (« Paid, it will leave… »).
+      // A boost goes back to « Boost my showcase » (« Your showcase comes first… »).
       router.push(
         paid?.source_type === "gift" && paid.source_id
           ? `/cadeaux/${paid.source_id}?paid=1`
-          : `/payments/${paymentId}`,
+          : paid?.source_type === "boost"
+            ? "/pro/boost?paid=1"
+            : `/payments/${paymentId}`,
       );
     } catch (failure) {
       toast(failure instanceof ApiError ? failure.message : t("error"), "warning");

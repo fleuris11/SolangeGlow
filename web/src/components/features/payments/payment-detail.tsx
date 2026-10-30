@@ -187,6 +187,14 @@ export function PaymentDetail({ paymentId }: { paymentId: string }) {
             {t("seeGift")}
           </Link>
         )}
+        {payment.source_type === "boost" && payment.role === "buyer" && (
+          <Link
+            href="/pro/boost"
+            className={buttonClasses({ variant: "secondary", className: "self-start" })}
+          >
+            {t("seeBoost")}
+          </Link>
+        )}
         {(payment.source_type === "academy" || payment.source_type === "academy_pass") &&
           payment.role === "buyer" && (
             <Link
