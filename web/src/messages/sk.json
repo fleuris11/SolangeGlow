@@ -273,7 +273,9 @@
     "guestTitle": "Nie si prihlásená",
     "guestText": "Prihlás sa alebo si vytvor účet s číslom: rezervuj, nakupuj a zbieraj Glow body.",
     "cta": "Prihlásiť sa alebo zaregistrovať",
-    "language": "Jazyk"
+    "language": "Jazyk",
+    "helpTitle": "Pomoc a informácie",
+    "help": "Centrum pomoci"
   },
   "settings": {
     "title": "Zobrazenie",
@@ -3952,6 +3954,43 @@
         "ended": "Skončené",
         "cancelled": "Nezaplatené"
       }
+    }
+  },
+  "impersonation": {
+    "asNamed": "Si prihlásená namiesto {name}.",
+    "asMember": "Si prihlásená namiesto členky.",
+    "traced": "Každá akcia sa zapisuje do denníka.",
+    "stop": "Ukončiť"
+  },
+  "help": {
+    "title": "Pomoc",
+    "faq": "Časté otázky",
+    "pages": "Informácie",
+    "banner": {
+      "aria": "Novinka Solange Glow",
+      "discover": "Objaviť"
+    },
+    "page": {
+      "updated": "Aktualizované {date}"
+    },
+    "contact": {
+      "title": "Polož otázku",
+      "question": "Tvoja otázka",
+      "placeholder": "Napríklad: ako zruším termín?",
+      "search": "Hľadať odpoveď",
+      "found": "Tieto odpovede ti môžu pomôcť:",
+      "solved": "Áno, je to vyriešené",
+      "notSolved": "Nie, napísať tímu",
+      "writeIntro": "Tím si prečíta tvoju otázku a rýchlo ti odpovie.",
+      "name": "Tvoje meno",
+      "email": "Tvoj e-mail",
+      "reachHint": "E-mail alebo číslo, aby sme ti mohli odpovedať.",
+      "phone": "Tvoje číslo WhatsApp",
+      "error": "Odoslanie nefungovalo. Skontroluj pripojenie a skús znova.",
+      "send": "Odoslať otázku",
+      "sentTitle": "Otázka odoslaná",
+      "sentText": "Tvoja referencia: {reference}. Rýchlo ti odpovieme.",
+      "another": "Položiť ďalšiu otázku"
     }
   }
 }

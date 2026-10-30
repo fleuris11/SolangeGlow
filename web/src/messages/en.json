@@ -273,7 +273,9 @@
     "guestTitle": "You are not signed in",
     "guestText": "Sign in or create your account with your number: book, shop and earn Glow Points.",
     "cta": "Sign in or sign up",
-    "language": "Language"
+    "language": "Language",
+    "helpTitle": "Help and information",
+    "help": "Help center"
   },
   "settings": {
     "title": "Display",
@@ -3952,6 +3954,43 @@
         "ended": "Ended",
         "cancelled": "Not paid"
       }
+    }
+  },
+  "impersonation": {
+    "asNamed": "You are signed in as {name}.",
+    "asMember": "You are signed in as a member.",
+    "traced": "Every action is written in the journal.",
+    "stop": "Stop"
+  },
+  "help": {
+    "title": "Help",
+    "faq": "Frequent questions",
+    "pages": "Information",
+    "banner": {
+      "aria": "Solange Glow news",
+      "discover": "Discover"
+    },
+    "page": {
+      "updated": "Updated on {date}"
+    },
+    "contact": {
+      "title": "Ask your question",
+      "question": "Your question",
+      "placeholder": "For example: how do I cancel an appointment?",
+      "search": "Look for an answer",
+      "found": "These answers may help:",
+      "solved": "Yes, it's solved",
+      "notSolved": "No, write to the team",
+      "writeIntro": "The team reads your question and answers you quickly.",
+      "name": "Your first name",
+      "email": "Your e-mail",
+      "reachHint": "An e-mail or a number, so we can answer you.",
+      "phone": "Your WhatsApp number",
+      "error": "Sending did not work. Check your connection and try again.",
+      "send": "Send my question",
+      "sentTitle": "Question sent",
+      "sentText": "Your reference: {reference}. We will answer you quickly.",
+      "another": "Ask another question"
     }
   }
 }

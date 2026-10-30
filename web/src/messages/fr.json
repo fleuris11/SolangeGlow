@@ -273,7 +273,9 @@
     "guestTitle": "Tu n'es pas connectée",
     "guestText": "Connecte-toi ou crée ton compte avec ton numéro : tu réserves, tu achètes et tu gagnes des Glow Points.",
     "cta": "Me connecter ou m'inscrire",
-    "language": "Langue"
+    "language": "Langue",
+    "helpTitle": "Aide et informations",
+    "help": "Centre d'aide"
   },
   "settings": {
     "title": "Affichage",
@@ -3952,6 +3954,43 @@
         "ended": "Terminé",
         "cancelled": "Non payé"
       }
+    }
+  },
+  "impersonation": {
+    "asNamed": "Tu es connectée à la place de {name}.",
+    "asMember": "Tu es connectée à la place d'un membre.",
+    "traced": "Chaque action est notée dans le journal.",
+    "stop": "Arrêter"
+  },
+  "help": {
+    "title": "Aide",
+    "faq": "Questions fréquentes",
+    "pages": "Informations",
+    "banner": {
+      "aria": "Nouveauté Solange Glow",
+      "discover": "Découvrir"
+    },
+    "page": {
+      "updated": "Mis à jour le {date}"
+    },
+    "contact": {
+      "title": "Pose ta question",
+      "question": "Ta question",
+      "placeholder": "Par exemple : comment annuler un rendez-vous ?",
+      "search": "Chercher une réponse",
+      "found": "Ces réponses peuvent t'aider :",
+      "solved": "Oui, c'est réglé",
+      "notSolved": "Non, écrire à l'équipe",
+      "writeIntro": "L'équipe lit ta question et te répond vite.",
+      "name": "Ton prénom",
+      "email": "Ton e-mail",
+      "reachHint": "Un e-mail ou un numéro, pour qu'on te réponde.",
+      "phone": "Ton numéro WhatsApp",
+      "error": "L'envoi n'a pas marché. Vérifie ta connexion et réessaie.",
+      "send": "Envoyer ma question",
+      "sentTitle": "Question envoyée",
+      "sentText": "Ta référence : {reference}. On te répond vite.",
+      "another": "Poser une autre question"
     }
   }
 }
