@@ -462,6 +462,52 @@ Réglages `ads.*` :
 
 Les interrupteurs « ads » et « boosts » se règlent par pays.
 
+## Tester le back-office en local
+
+Les données de démo contiennent :
+- la propriétaire `proprio@solangeglow.test` et une modératrice
+  `moderation@solangeglow.test`, avec le mot de passe `demo-Glow-2026` ;
+- pour ces deux comptes, une double authentification déjà réglée sur le secret
+  `JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP` (à ajouter à la main dans une appli comme Google
+  Authenticator) ;
+- trois prospects, deux demandes d'aide et une bannière d'accueil.
+
+1. Ouvre http://localhost:8000/admin/ et connecte-toi comme propriétaire. L'admin demande
+   ensuite le code à 6 chiffres de l'appli.
+2. L'accueil de l'admin est le tableau de bord. Les filtres en haut choisissent la période
+   et le pays.
+3. Menu « Pilotage » : consoles de modération, des litiges et de la Sélection France.
+4. Menu « Équipe et réglages » :
+   - « Équipe » : ajouter une personne et ses rôles, remettre à zéro sa double
+     authentification ;
+   - « Fonctionnalités par pays » : interrupteurs par pays et par rôle ;
+   - « Textes de l'interface » : cherche « cherches », corrige le texte, puis recharge
+     l'accueil du web (moins d'une minute) ;
+   - « Journal d'audit ».
+5. Toute liste a l'action « Exporter en CSV » : coche des lignes (ou « tout
+   sélectionner »), choisis l'action, puis « Exécuter ».
+6. Sur la fiche d'une cliente, « Se connecter à sa place » : écris le motif. Le web
+   s'ouvre avec une bannière rouge et le bouton « Arrêter ». Les paiements sont refusés et
+   chaque action est notée dans le journal.
+7. Menu « Contenus et aide » :
+   - pages, bannières et FAQ : bouton « Versions » pour remettre une version ;
+   - demandes d'aide : bouton « Répondre » ;
+   - prospects : « Importer un CSV », puis l'action « Envoyer l'invitation ».
+8. Sur le web, « Moi » mène à l'aide (http://localhost:3000/fr/aide) et aux pages
+   légales. Pose une question : les réponses de la FAQ s'affichent d'abord, puis « Non,
+   écrire à l'équipe » crée une demande dans l'admin.
+
+Réglages `backoffice.*` et `content.*` :
+- durée et essais de la double authentification ;
+- durée et adresses interdites de « se connecter à la place de » ;
+- lignes maximum d'un export ;
+- nombre de bannières d'accueil.
+
+Variables d'environnement :
+- `BACKOFFICE_REQUIRE_2FA=true`, à garder en production ;
+- `HELP_AI_URL` et `HELP_AI_KEY` : vides, donc l'assistant IA est coupé ;
+- `WEB_INTERNAL_URL` : adresse du web vue par Django, pour chercher ses textes.
+
 ## Client de l'API (web)
 
 Les types du client web sont générés depuis le schéma de l'API. Après toute
