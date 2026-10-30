@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-29 08:01+0100\n"
+"POT-Creation-Date: 2026-10-30 17:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -893,8 +893,325 @@ msgstr "Vyber aspoň jeden odbor."
 msgid "Confirm that you want to delete your account."
 msgstr "Potvrď, že chceš zmazať svoj účet."
 
-msgid "Ads"
+msgid "creative"
+msgstr "kreatíva"
+
+msgid "Open"
+msgstr "Otvorený"
+
+msgid "When and how much"
+msgstr "Kedy a koľko"
+
+msgid "Who sees it"
+msgstr "Kto ju vidí"
+
+msgid "Notes"
+msgstr "Poznámky"
+
+#, python-format
+msgid "%(price)s per 1,000"
+msgstr "%(price)s za 1 000"
+
+msgid "impressions, clicks, conversions"
+msgstr "zobrazenia, kliknutia, konverzie"
+
+msgid "Start the campaigns"
+msgstr "Spustiť kampane"
+
+#, python-format
+msgid "%(count)s campaigns running."
+msgstr "%(count)s kampaní beží."
+
+msgid "Pause the campaigns"
+msgstr "Pozastaviť kampane"
+
+#, python-format
+msgid "%(count)s campaigns paused."
+msgstr "%(count)s kampaní pozastavených."
+
+msgid "Start"
+msgstr "Spustiť"
+
+msgid "The campaign is running."
+msgstr "Kampaň beží."
+
+msgid "Pause"
+msgstr "Pozastaviť"
+
+msgid "The campaign is paused."
+msgstr "Kampaň je pozastavená."
+
+msgid "Preview"
+msgstr "Náhľad"
+
+#, python-format
+msgid "Preview of %(name)s"
+msgstr "Náhľad: %(name)s"
+
+msgid "Export for the advertiser"
+msgstr "Export pre inzerenta"
+
+msgid "day"
+msgstr "deň"
+
+msgid "placement"
+msgstr "umiestnenie"
+
+msgid "impressions"
+msgstr "zobrazenia"
+
+msgid "clicks"
+msgstr "kliknutia"
+
+msgid "conversions"
+msgstr "konverzie"
+
+msgid "placements"
+msgstr "umiestnenia"
+
+msgid "Write a page of the app (/…) or an https:// address."
+msgstr "Napíš stránku aplikácie (/…) alebo adresu https://."
+
+msgid "picture or short video"
+msgstr "obrázok alebo krátke video"
+
+msgid "picture"
+msgstr "fotka"
+
+msgid "Advertising"
 msgstr "Reklama"
+
+msgid "This ad does not exist any more."
+msgstr "Táto reklama už neexistuje."
+
+msgid "This place does not show ads."
+msgstr "Toto miesto nezobrazuje reklamy."
+
+msgid "Boosts are not open in your country yet."
+msgstr "Zviditeľnenie ešte nie je vo tvojej krajine otvorené."
+
+msgid "Only a published pro can boost her showcase."
+msgstr "Zviditeľniť stránku môže len zverejnená profesionálka."
+
+msgid "No price is set for a boost in your country yet."
+msgstr "Vo tvojej krajine ešte nie je nastavená cena zviditeľnenia."
+
+#, python-format
+msgid "A boost is already running until %(until)s."
+msgstr "Zviditeľnenie už beží do %(until)s."
+
+msgid "Check the dates and add at least one active creative with a placement."
+msgstr "Skontroluj dátumy a pridaj aspoň jednu aktívnu kreatívu s umiestnením."
+
+msgid "Banner at the top of the home page"
+msgstr "Banner hore na úvodnej stránke"
+
+msgid "Sponsored post in the feed"
+msgstr "Sponzorovaný príspevok v kanáli"
+
+msgid "Sponsored product"
+msgstr "Sponzorovaný produkt"
+
+msgid "Pro shown first in the search"
+msgstr "Profesionálka prvá vo vyhľadávaní"
+
+msgid "Screen when the app opens"
+msgstr "Obrazovka pri otvorení aplikácie"
+
+msgid "Brand"
+msgstr "Značka"
+
+msgid "Local business"
+msgstr "Miestna firma"
+
+msgid "Pro of Solange Glow"
+msgstr "Profesionálka Solange Glow"
+
+msgid "Solange Glow (own promotions)"
+msgstr "Solange Glow (vlastné akcie)"
+
+msgid "name"
+msgstr "názov"
+
+msgid "kind"
+msgstr "druh"
+
+msgid "contact"
+msgstr "kontakt"
+
+msgid "phone"
+msgstr "telefón"
+
+msgid "e-mail"
+msgstr "e-mail"
+
+msgid "pro"
+msgstr "profesionálka"
+
+msgid "notes"
+msgstr "poznámky"
+
+msgid "advertiser"
+msgstr "inzerent"
+
+msgid "advertisers"
+msgstr "inzerenti"
+
+msgid "Paused"
+msgstr "Pozastavené"
+
+msgid "Sold to an advertiser"
+msgstr "Predaná inzerentovi"
+
+msgid "Boost paid by a pro"
+msgstr "Zviditeľnenie platené profesionálkou"
+
+msgid "House promotion (when nothing is sold)"
+msgstr "Vlastná akcia (keď nič nie je predané)"
+
+msgid "Flat price"
+msgstr "Paušálna cena"
+
+msgid "Per thousand impressions"
+msgstr "Za tisíc zobrazení"
+
+msgid "priority"
+msgstr "priorita"
+
+msgid "1 to 10: the higher, the more often it is chosen."
+msgstr "1 až 10: čím vyššia, tým častejšie sa vyberie."
+
+msgid "impressions bought"
+msgstr "kúpené zobrazenia"
+
+msgid "Empty: no limit. Reached: the campaign stops."
+msgstr "Prázdne: bez limitu. Dosiahnuté: kampaň sa zastaví."
+
+msgid "times a day per person"
+msgstr "krát denne na osobu"
+
+msgid "countries"
+msgstr "krajiny"
+
+msgid "e.g. [\"BJ\"]. Empty: everywhere."
+msgstr "napr. [\"BJ\"]. Prázdne: všade."
+
+msgid "cities"
+msgstr "mestá"
+
+msgid "e.g. [\"Cotonou\"]. Empty: everywhere."
+msgstr "napr. [\"Cotonou\"]. Prázdne: všade."
+
+msgid "languages"
+msgstr "jazyky"
+
+msgid "e.g. [\"fr\"]. Empty: every language."
+msgstr "napr. [\"fr\"]. Prázdne: všetky jazyky."
+
+msgid "people"
+msgstr "osoby"
+
+msgid "\"client\" and/or \"pro\". Empty: everyone."
+msgstr "\"client\" a/alebo \"pro\". Prázdne: všetci."
+
+msgid "trades"
+msgstr "odbory"
+
+msgid "Trade keys, e.g. [\"braids\"]. Empty: every trade."
+msgstr "Kľúče remesiel, napr. [\"braids\"]. Prázdne: všetky remeslá."
+
+msgid "campaign"
+msgstr "kampaň"
+
+msgid "campaigns"
+msgstr "kampane"
+
+msgid "Image"
+msgstr "Obrázok"
+
+msgid "Short video"
+msgstr "Krátke video"
+
+msgid "Carousel"
+msgstr "Karusel"
+
+msgid "Native post"
+msgstr "Natívny príspevok"
+
+msgid "format"
+msgstr "formát"
+
+msgid "text"
+msgstr "text"
+
+msgid "button"
+msgstr "tlačidlo"
+
+msgid "link"
+msgstr "odkaz"
+
+msgid "A page of the app (/aicha, /selection…) or a full https:// address."
+msgstr "Stránka aplikácie (/aicha, /selection…) alebo úplná adresa https://."
+
+msgid "pro shown"
+msgstr "zobrazená profesionálka"
+
+msgid "product shown"
+msgstr "zobrazený produkt"
+
+msgid "France Selection product shown"
+msgstr "zobrazený produkt France Selection"
+
+msgid "creatives"
+msgstr "kreatívy"
+
+msgid "media"
+msgstr "médiá"
+
+msgid "picture or video"
+msgstr "obrázok alebo video"
+
+msgid "pictures and videos"
+msgstr "obrázky a videá"
+
+msgid "statistics of a day"
+msgstr "štatistiky dňa"
+
+msgid "statistics"
+msgstr "štatistiky"
+
+msgid "One day"
+msgstr "Jeden deň"
+
+msgid "One week"
+msgstr "Jeden týždeň"
+
+msgid "Running"
+msgstr "Prebieha"
+
+msgid "Not paid"
+msgstr "Nezaplatené"
+
+msgid "duration"
+msgstr "trvanie"
+
+msgid "boost"
+msgstr "zviditeľnenie"
+
+msgid "boosts"
+msgstr "zviditeľnenia"
+
+msgid "France Selection"
+msgstr "Výber z Francúzska"
+
+msgid "Each creative in each of its placements, as on a phone (360 px). The word « Sponsored » is always shown."
+msgstr "Každá kreatíva v každom svojom umiestnení, ako na telefóne (360 px). Označenie « Sponzorované » je vždy viditeľné."
+
+msgid "Sponsored"
+msgstr "Sponzorované"
+
+msgid "No active creative with a placement yet."
+msgstr "Zatiaľ žiadna aktívna kreatíva s umiestnením."
 
 msgid "deposit"
 msgstr "záloha"
@@ -1014,9 +1331,6 @@ msgstr "Sobota"
 msgid "Sunday"
 msgstr "Nedeľa"
 
-msgid "pro"
-msgstr "profesionálka"
-
 msgid "confirm by itself"
 msgstr "potvrdzovať automaticky"
 
@@ -1043,9 +1357,6 @@ msgstr "rezervácia bez účtu"
 
 msgid "booking settings"
 msgstr "nastavenia rezervácií"
-
-msgid "name"
-msgstr "názov"
 
 msgid "agenda colour"
 msgstr "farba v kalendári"
@@ -1082,9 +1393,6 @@ msgstr "tím"
 
 msgid "person"
 msgstr "osoba"
-
-msgid "day"
-msgstr "deň"
 
 msgid "to"
 msgstr "posledný deň"
@@ -1302,17 +1610,11 @@ msgstr "záznam na čakacej listine"
 msgid "waiting list"
 msgstr "čakacia listina"
 
-msgid "phone"
-msgstr "telefón"
-
 msgid "private notes"
 msgstr "súkromné poznámky"
 
 msgid "preferences"
 msgstr "preferencie"
-
-msgid "e-mail"
-msgstr "e-mail"
 
 msgid "birthday (day)"
 msgstr "narodeniny (deň)"
@@ -1495,9 +1797,6 @@ msgstr "chyba"
 msgid "processed at"
 msgstr "spracované"
 
-msgid "media"
-msgstr "médiá"
-
 msgid "created at"
 msgstr "vytvorené"
 
@@ -1546,9 +1845,6 @@ msgstr "predvolený jazyk"
 
 msgid "time zone"
 msgstr "časové pásmo"
-
-msgid "countries"
-msgstr "krajiny"
 
 msgid "Text"
 msgstr "Text"
@@ -1652,9 +1948,6 @@ msgstr "nový obrázok"
 
 msgid "new audio"
 msgstr "nové audio"
-
-msgid "picture"
-msgstr "fotka"
 
 msgid "questions"
 msgstr "otázky"
@@ -1935,9 +2228,6 @@ msgstr "Expresné doručenie zadarmo"
 
 msgid "Points exchanged"
 msgstr "Vymenené body"
-
-msgid "kind"
-msgstr "druh"
 
 msgid "origin"
 msgstr "pôvod"
@@ -2361,9 +2651,6 @@ msgstr "Otvorené"
 
 msgid "Used"
 msgstr "Použité"
-
-msgid "Not paid"
-msgstr "Nezaplatené"
 
 msgid "Cancelled and refunded"
 msgstr "Zrušené a vrátené"
@@ -2984,9 +3271,6 @@ msgstr "Hovor vo troch"
 msgid "Calls are only for dispute rooms."
 msgstr "Hovory sú len pre miestnosti sporov."
 
-msgid "people"
-msgstr "osoby"
-
 msgid "payment warning"
 msgstr "upozornenie na platbu"
 
@@ -3183,9 +3467,6 @@ msgstr "Voľný termín"
 
 msgid "sender"
 msgstr "odosielateľka"
-
-msgid "text"
-msgstr "text"
 
 msgid "file"
 msgstr "súbor"
@@ -3447,9 +3728,6 @@ msgstr "udalosť"
 
 msgid "e.g. booking.confirmed"
 msgstr "napr. booking.confirmed"
-
-msgid "link"
-msgstr "odkaz"
 
 msgid "Page opened on tap, e.g. /me"
 msgstr "Stránka otvorená po dotyku, napr. /me"
@@ -3727,9 +4005,6 @@ msgstr "Záloha na rezerváciu"
 msgid "Training"
 msgstr "Školenie"
 
-msgid "France Selection"
-msgstr "Výber z Francúzska"
-
 msgid "Glow Pro subscription"
 msgstr "Predplatné Glow Pro"
 
@@ -3744,6 +4019,9 @@ msgstr "Pas Akadémie"
 
 msgid "Gift from abroad"
 msgstr "Darček zo zahraničia"
+
+msgid "Boost of a pro"
+msgstr "Zviditeľnenie profesionálky"
 
 msgid "Other"
 msgstr "Iné"
@@ -3771,9 +4049,6 @@ msgstr "minimum"
 
 msgid "maximum"
 msgstr "maximum"
-
-msgid "priority"
-msgstr "priorita"
 
 msgid "pricing rule"
 msgstr "pravidlo poplatkov"
@@ -3942,9 +4217,6 @@ msgstr "Poškodené"
 
 msgid "No code and no proof of delivery"
 msgstr "Bez kódu a bez dôkazu doručenia"
-
-msgid "Open"
-msgstr "Otvorený"
 
 msgid "Decided"
 msgstr "Rozhodnutý"
@@ -4282,9 +4554,6 @@ msgstr "Téglik krému"
 
 msgid "pictogram"
 msgstr "piktogram"
-
-msgid "trades"
-msgstr "odbory"
 
 msgid "Fon"
 msgstr "Fon"
@@ -4702,9 +4971,6 @@ msgstr "balíky klientok"
 msgid "session used"
 msgstr "využité sedenie"
 
-msgid "Running"
-msgstr "Prebieha"
-
 msgid "payment in several times"
 msgstr "platba na splátky"
 
@@ -4899,12 +5165,6 @@ msgstr "v segmente"
 
 msgid "left out (no consent)"
 msgstr "vynechané (bez súhlasu)"
-
-msgid "campaign"
-msgstr "kampaň"
-
-msgid "campaigns"
-msgstr "kampane"
 
 #, python-format
 msgid "Online deposit %(reference)s"
@@ -5583,9 +5843,6 @@ msgstr "zóny doručenia"
 msgid "Being checked"
 msgstr "Kontroluje sa"
 
-msgid "Paused"
-msgstr "Pozastavené"
-
 msgid "Blocked"
 msgstr "Zablokované"
 
@@ -5838,12 +6095,6 @@ msgstr "Na toto hodnotenie si už odpovedala."
 
 msgid "This review does not exist any more."
 msgstr "Toto hodnotenie už neexistuje."
-
-msgid "Carousel"
-msgstr "Karusel"
-
-msgid "Short video"
-msgstr "Krátke video"
 
 msgid "Before / after"
 msgstr "Pred / po"
@@ -6136,6 +6387,18 @@ msgstr "Pozvania"
 msgid "Calendar of celebrations"
 msgstr "Kalendár sviatkov"
 
+msgid "Creatives"
+msgstr "Kreatívy"
+
+msgid "Advertisers"
+msgstr "Inzerenti"
+
+msgid "Boosts of the pros"
+msgstr "Zviditeľnenia profesionálok"
+
+msgid "Ad statistics"
+msgstr "Štatistiky reklám"
+
 msgid "Lives and calls"
 msgstr "Live a hovory"
 
@@ -6213,6 +6476,9 @@ msgstr "Hostia"
 
 msgid "Groups"
 msgstr "Skupiny"
+
+#~ msgid "Ads"
+#~ msgstr "Reklama"
 
 #~ msgid "Gamification"
 #~ msgstr "Gamifikácia"

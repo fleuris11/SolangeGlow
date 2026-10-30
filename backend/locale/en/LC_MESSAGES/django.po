@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-29 08:01+0100\n"
+"POT-Creation-Date: 2026-10-30 17:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -889,7 +889,324 @@ msgstr ""
 msgid "Confirm that you want to delete your account."
 msgstr ""
 
-msgid "Ads"
+msgid "creative"
+msgstr ""
+
+msgid "Open"
+msgstr ""
+
+msgid "When and how much"
+msgstr ""
+
+msgid "Who sees it"
+msgstr ""
+
+msgid "Notes"
+msgstr ""
+
+#, python-format
+msgid "%(price)s per 1,000"
+msgstr ""
+
+msgid "impressions, clicks, conversions"
+msgstr ""
+
+msgid "Start the campaigns"
+msgstr ""
+
+#, python-format
+msgid "%(count)s campaigns running."
+msgstr ""
+
+msgid "Pause the campaigns"
+msgstr ""
+
+#, python-format
+msgid "%(count)s campaigns paused."
+msgstr ""
+
+msgid "Start"
+msgstr ""
+
+msgid "The campaign is running."
+msgstr ""
+
+msgid "Pause"
+msgstr ""
+
+msgid "The campaign is paused."
+msgstr ""
+
+msgid "Preview"
+msgstr ""
+
+#, python-format
+msgid "Preview of %(name)s"
+msgstr ""
+
+msgid "Export for the advertiser"
+msgstr ""
+
+msgid "day"
+msgstr ""
+
+msgid "placement"
+msgstr ""
+
+msgid "impressions"
+msgstr ""
+
+msgid "clicks"
+msgstr ""
+
+msgid "conversions"
+msgstr ""
+
+msgid "placements"
+msgstr ""
+
+msgid "Write a page of the app (/…) or an https:// address."
+msgstr ""
+
+msgid "picture or short video"
+msgstr ""
+
+msgid "picture"
+msgstr ""
+
+msgid "Advertising"
+msgstr ""
+
+msgid "This ad does not exist any more."
+msgstr ""
+
+msgid "This place does not show ads."
+msgstr ""
+
+msgid "Boosts are not open in your country yet."
+msgstr ""
+
+msgid "Only a published pro can boost her showcase."
+msgstr ""
+
+msgid "No price is set for a boost in your country yet."
+msgstr ""
+
+#, python-format
+msgid "A boost is already running until %(until)s."
+msgstr ""
+
+msgid "Check the dates and add at least one active creative with a placement."
+msgstr ""
+
+msgid "Banner at the top of the home page"
+msgstr ""
+
+msgid "Sponsored post in the feed"
+msgstr ""
+
+msgid "Sponsored product"
+msgstr ""
+
+msgid "Pro shown first in the search"
+msgstr ""
+
+msgid "Screen when the app opens"
+msgstr ""
+
+msgid "Brand"
+msgstr ""
+
+msgid "Local business"
+msgstr ""
+
+msgid "Pro of Solange Glow"
+msgstr ""
+
+msgid "Solange Glow (own promotions)"
+msgstr ""
+
+msgid "name"
+msgstr ""
+
+msgid "kind"
+msgstr ""
+
+msgid "contact"
+msgstr ""
+
+msgid "phone"
+msgstr ""
+
+msgid "e-mail"
+msgstr ""
+
+msgid "pro"
+msgstr ""
+
+msgid "notes"
+msgstr ""
+
+msgid "advertiser"
+msgstr ""
+
+msgid "advertisers"
+msgstr ""
+
+msgid "Paused"
+msgstr ""
+
+msgid "Sold to an advertiser"
+msgstr ""
+
+msgid "Boost paid by a pro"
+msgstr ""
+
+msgid "House promotion (when nothing is sold)"
+msgstr ""
+
+msgid "Flat price"
+msgstr ""
+
+msgid "Per thousand impressions"
+msgstr ""
+
+msgid "priority"
+msgstr ""
+
+msgid "1 to 10: the higher, the more often it is chosen."
+msgstr ""
+
+msgid "impressions bought"
+msgstr ""
+
+msgid "Empty: no limit. Reached: the campaign stops."
+msgstr ""
+
+msgid "times a day per person"
+msgstr ""
+
+msgid "countries"
+msgstr ""
+
+msgid "e.g. [\"BJ\"]. Empty: everywhere."
+msgstr ""
+
+msgid "cities"
+msgstr ""
+
+msgid "e.g. [\"Cotonou\"]. Empty: everywhere."
+msgstr ""
+
+msgid "languages"
+msgstr ""
+
+msgid "e.g. [\"fr\"]. Empty: every language."
+msgstr ""
+
+msgid "people"
+msgstr ""
+
+msgid "\"client\" and/or \"pro\". Empty: everyone."
+msgstr ""
+
+msgid "trades"
+msgstr ""
+
+msgid "Trade keys, e.g. [\"braids\"]. Empty: every trade."
+msgstr ""
+
+msgid "campaign"
+msgstr ""
+
+msgid "campaigns"
+msgstr ""
+
+msgid "Image"
+msgstr ""
+
+msgid "Short video"
+msgstr ""
+
+msgid "Carousel"
+msgstr ""
+
+msgid "Native post"
+msgstr ""
+
+msgid "format"
+msgstr ""
+
+msgid "text"
+msgstr ""
+
+msgid "button"
+msgstr ""
+
+msgid "link"
+msgstr ""
+
+msgid "A page of the app (/aicha, /selection…) or a full https:// address."
+msgstr ""
+
+msgid "pro shown"
+msgstr ""
+
+msgid "product shown"
+msgstr ""
+
+msgid "France Selection product shown"
+msgstr ""
+
+msgid "creatives"
+msgstr ""
+
+msgid "media"
+msgstr ""
+
+msgid "picture or video"
+msgstr ""
+
+msgid "pictures and videos"
+msgstr ""
+
+msgid "statistics of a day"
+msgstr ""
+
+msgid "statistics"
+msgstr ""
+
+msgid "One day"
+msgstr ""
+
+msgid "One week"
+msgstr ""
+
+msgid "Running"
+msgstr ""
+
+msgid "Not paid"
+msgstr ""
+
+msgid "duration"
+msgstr ""
+
+msgid "boost"
+msgstr ""
+
+msgid "boosts"
+msgstr ""
+
+msgid "France Selection"
+msgstr ""
+
+msgid "Each creative in each of its placements, as on a phone (360 px). The word « Sponsored » is always shown."
+msgstr ""
+
+msgid "Sponsored"
+msgstr ""
+
+msgid "No active creative with a placement yet."
 msgstr ""
 
 msgid "deposit"
@@ -1010,9 +1327,6 @@ msgstr ""
 msgid "Sunday"
 msgstr ""
 
-msgid "pro"
-msgstr ""
-
 msgid "confirm by itself"
 msgstr ""
 
@@ -1038,9 +1352,6 @@ msgid "guests can book"
 msgstr ""
 
 msgid "booking settings"
-msgstr ""
-
-msgid "name"
 msgstr ""
 
 msgid "agenda colour"
@@ -1077,9 +1388,6 @@ msgid "staff members"
 msgstr ""
 
 msgid "person"
-msgstr ""
-
-msgid "day"
 msgstr ""
 
 msgid "to"
@@ -1298,16 +1606,10 @@ msgstr ""
 msgid "waiting list"
 msgstr ""
 
-msgid "phone"
-msgstr ""
-
 msgid "private notes"
 msgstr ""
 
 msgid "preferences"
-msgstr ""
-
-msgid "e-mail"
 msgstr ""
 
 msgid "birthday (day)"
@@ -1491,9 +1793,6 @@ msgstr ""
 msgid "processed at"
 msgstr ""
 
-msgid "media"
-msgstr ""
-
 msgid "created at"
 msgstr ""
 
@@ -1541,9 +1840,6 @@ msgid "default language"
 msgstr ""
 
 msgid "time zone"
-msgstr ""
-
-msgid "countries"
 msgstr ""
 
 msgid "Text"
@@ -1647,9 +1943,6 @@ msgid "new picture"
 msgstr ""
 
 msgid "new audio"
-msgstr ""
-
-msgid "picture"
 msgstr ""
 
 msgid "questions"
@@ -1930,9 +2223,6 @@ msgid "Express shipping for free"
 msgstr ""
 
 msgid "Points exchanged"
-msgstr ""
-
-msgid "kind"
 msgstr ""
 
 msgid "origin"
@@ -2356,9 +2646,6 @@ msgid "Opened"
 msgstr ""
 
 msgid "Used"
-msgstr ""
-
-msgid "Not paid"
 msgstr ""
 
 msgid "Cancelled and refunded"
@@ -2980,9 +3267,6 @@ msgstr ""
 msgid "Calls are only for dispute rooms."
 msgstr ""
 
-msgid "people"
-msgstr ""
-
 msgid "payment warning"
 msgstr ""
 
@@ -3178,9 +3462,6 @@ msgid "Free slot"
 msgstr ""
 
 msgid "sender"
-msgstr ""
-
-msgid "text"
 msgstr ""
 
 msgid "file"
@@ -3442,9 +3723,6 @@ msgid "event"
 msgstr ""
 
 msgid "e.g. booking.confirmed"
-msgstr ""
-
-msgid "link"
 msgstr ""
 
 msgid "Page opened on tap, e.g. /me"
@@ -3723,9 +4001,6 @@ msgstr ""
 msgid "Training"
 msgstr ""
 
-msgid "France Selection"
-msgstr ""
-
 msgid "Glow Pro subscription"
 msgstr ""
 
@@ -3739,6 +4014,9 @@ msgid "Academy pass"
 msgstr ""
 
 msgid "Gift from abroad"
+msgstr ""
+
+msgid "Boost of a pro"
 msgstr ""
 
 msgid "Other"
@@ -3766,9 +4044,6 @@ msgid "minimum"
 msgstr ""
 
 msgid "maximum"
-msgstr ""
-
-msgid "priority"
 msgstr ""
 
 msgid "pricing rule"
@@ -3937,9 +4212,6 @@ msgid "Damaged"
 msgstr ""
 
 msgid "No code and no proof of delivery"
-msgstr ""
-
-msgid "Open"
 msgstr ""
 
 msgid "Decided"
@@ -4267,9 +4539,6 @@ msgid "Cream jar"
 msgstr ""
 
 msgid "pictogram"
-msgstr ""
-
-msgid "trades"
 msgstr ""
 
 msgid "Fon"
@@ -4686,9 +4955,6 @@ msgstr ""
 msgid "session used"
 msgstr ""
 
-msgid "Running"
-msgstr ""
-
 msgid "payment in several times"
 msgstr ""
 
@@ -4882,12 +5148,6 @@ msgid "in the segment"
 msgstr ""
 
 msgid "left out (no consent)"
-msgstr ""
-
-msgid "campaign"
-msgstr ""
-
-msgid "campaigns"
 msgstr ""
 
 #, python-format
@@ -5567,9 +5827,6 @@ msgstr ""
 msgid "Being checked"
 msgstr ""
 
-msgid "Paused"
-msgstr ""
-
 msgid "Blocked"
 msgstr ""
 
@@ -5821,12 +6078,6 @@ msgid "You already replied to this review."
 msgstr ""
 
 msgid "This review does not exist any more."
-msgstr ""
-
-msgid "Carousel"
-msgstr ""
-
-msgid "Short video"
 msgstr ""
 
 msgid "Before / after"
@@ -6118,6 +6369,18 @@ msgid "Referrals"
 msgstr ""
 
 msgid "Calendar of celebrations"
+msgstr ""
+
+msgid "Creatives"
+msgstr ""
+
+msgid "Advertisers"
+msgstr ""
+
+msgid "Boosts of the pros"
+msgstr ""
+
+msgid "Ad statistics"
 msgstr ""
 
 msgid "Lives and calls"
