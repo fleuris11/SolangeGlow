@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { AdSlot } from "@/components/features/ads/ad-cards";
 import { SplashLoader } from "@/components/features/ads/splash-loader";
 import { GlowTodayBand, WinnerBand } from "@/components/features/games/home-band";
+import { HomeBanners } from "@/components/features/help/home-banner";
 import { FranceSelectionBand, GiftBand, JoinBand } from "@/components/features/home/bands";
 import { UpcomingLivesBand } from "@/components/features/live/upcoming-band";
 import { SearchBar } from "@/components/features/search/search-bar";
@@ -15,6 +16,7 @@ import {
   adsOnServer,
   feedOnServer,
   glowTodayOnServer,
+  homeBannersOnServer,
   selectionOnServer,
   storiesOnServer,
   upcomingLivesOnServer,
@@ -33,7 +35,7 @@ export default async function HomePage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: "home" });
   const tFeed = await getTranslations({ locale, namespace: "social.feed" });
   const signedIn = (await cookies()).get("sg_signed_in")?.value === "1";
-  const [stories, feed, selection, lives, glow, banner, sponsored] = await Promise.all([
+  const [stories, feed, selection, lives, glow, banner, sponsored, editorial] = await Promise.all([
     storiesOnServer(locale),
     feedOnServer(locale),
     selectionOnServer(locale).catch(() => null),
@@ -41,6 +43,7 @@ export default async function HomePage({ params }: Props) {
     glowTodayOnServer(locale).catch(() => null),
     adsOnServer(locale, { placement: "home_banner" }).catch(() => null),
     adsOnServer(locale, { placement: "feed", count: 2 }).catch(() => null),
+    homeBannersOnServer(locale).catch(() => []),
   ]);
   // One product per aisle for the France Selection band.
   const picks = ["small_prices", "trending", "luxury"]
@@ -65,6 +68,7 @@ export default async function HomePage({ params }: Props) {
         </section>
       )}
 
+      <HomeBanners banners={editorial} />
       <AdSlot list={banner} />
       <StoryStrip groups={stories} />
       {glow && <GlowTodayBand today={glow} />}

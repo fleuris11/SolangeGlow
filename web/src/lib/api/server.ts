@@ -280,3 +280,35 @@ export async function adsOnServer(
   const { data } = await api.GET("/api/v1/ads", { params: { query } });
   return data ?? null;
 }
+
+// --- Contents and help center (module 12) ---------------------------------------------------
+
+/** The home banners written by the team (none when they cannot be reached). */
+export async function homeBannersOnServer(locale: string): Promise<Schemas["Banner"][]> {
+  const api = await serverApi(locale);
+  const { data } = await api.GET("/api/v1/content/banners");
+  return data ?? [];
+}
+
+export async function pagesOnServer(locale: string): Promise<Schemas["PageSummary"][]> {
+  const api = await serverApi(locale);
+  const { data } = await api.GET("/api/v1/content/pages");
+  return data ?? [];
+}
+
+/** A published page (help, terms…), or null when it does not exist. */
+export async function pageOnServer(slug: string, locale: string): Promise<Schemas["Page"] | null> {
+  const api = await serverApi(locale);
+  const { data, response } = await api.GET("/api/v1/content/pages/{slug}", {
+    params: { path: { slug } },
+  });
+  if (response.status === 404) return null;
+  if (!response.ok || !data) throw new Error(`Page ${slug}: ${response.status}`);
+  return data;
+}
+
+export async function faqOnServer(locale: string): Promise<Schemas["FaqTopic"][]> {
+  const api = await serverApi(locale);
+  const { data } = await api.GET("/api/v1/help/faq");
+  return data ?? [];
+}
