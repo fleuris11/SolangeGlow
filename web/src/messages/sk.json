@@ -979,7 +979,9 @@
         "awayText": "Tvoja správa",
         "awayPlaceholder": "napr. Ďakujem! Zajtra som v salóne od 9:00, vtedy ti odpoviem.",
         "saveAway": "Uložiť"
-      }
+      },
+      "boost": "Zviditeľniť moju stránku",
+      "boostHelp": "Buď prvá vo vyhľadávaní na 1 deň alebo 1 týždeň."
     },
     "become": {
       "title": "Staň sa profesionálkou",
@@ -1414,7 +1416,8 @@
       "seeOrder": "Pozrieť objednávku",
       "seeCourses": "Pozrieť moje kurzy",
       "seeAcademy": "Ísť do Akadémie",
-      "seeGift": "Pozrieť môj darček"
+      "seeGift": "Pozrieť môj darček",
+      "seeBoost": "Pozrieť zviditeľnenie"
     },
     "list": {
       "title": "Moje nákupy a predaje",
@@ -3911,6 +3914,44 @@
       "routine": "Rutina dokončená",
       "reward": "Vymenené body",
       "adjustment": "Úprava od tímu"
+    }
+  },
+  "ads": {
+    "aria": "Reklama",
+    "sponsored": "Sponzorované",
+    "sponsoredBy": "Sponzoruje {name}",
+    "house": "Akcia Solange Glow",
+    "discover": "Objaviť",
+    "seeShowcase": "Pozrieť stránku",
+    "verified": "Overená profesionálka",
+    "rating": "{average} z 5 ({count, plural, one {# recenzia} few {# recenzie} other {# recenzií}})",
+    "proAria": "Sponzorované: {name}",
+    "productAria": "Sponzorovaný produkt: {name}",
+    "skip": "Preskočiť",
+    "skipIn": "Preskočiť ({count} s)",
+    "boost": {
+      "title": "Zviditeľniť moju stránku",
+      "help": "Buď prvá vo vyhľadávaní a v príspevkoch tvojho mesta pre tvoje remeslo.",
+      "error": "Nepodarilo sa. Skús znova.",
+      "running": "Tvoja stránka je na prvom mieste do {until}.",
+      "closed": "Zviditeľnenie ešte nie je vo tvojej krajine otvorené.",
+      "choose": "Na ako dlho?",
+      "day": "1 deň",
+      "week": "1 týždeň",
+      "where": "Tvoja stránka sa zobrazí ako prvá vo vyhľadávaní a v príspevkoch.",
+      "sponsored": "Má označenie « Sponzorované », ako každá reklama.",
+      "paidNow": "Zviditeľnenie začne hneď po zaplatení.",
+      "pay": "Zaplatiť {amount}",
+      "history": "Moje zviditeľnenia",
+      "from": "Od {date}",
+      "impressions": "{count, plural, one {# zobrazenie} few {# zobrazenia} other {# zobrazení}}",
+      "clicks": "{count, plural, one {# kliknutie} few {# kliknutia} other {# kliknutí}}",
+      "status": {
+        "waiting_payment": "Čaká na platbu",
+        "active": "Beží",
+        "ended": "Skončené",
+        "cancelled": "Nezaplatené"
+      }
     }
   }
 }

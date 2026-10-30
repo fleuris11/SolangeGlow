@@ -979,7 +979,9 @@
         "awayText": "Ton message",
         "awayPlaceholder": "ex. Merci ! Je suis au salon demain dès 9 h, je te réponds à ce moment-là.",
         "saveAway": "Enregistrer"
-      }
+      },
+      "boost": "Booster ma vitrine",
+      "boostHelp": "Passe en tête de la recherche, 1 jour ou 1 semaine."
     },
     "become": {
       "title": "Devenir pro",
@@ -1414,7 +1416,8 @@
       "seeOrder": "Voir la commande",
       "seeCourses": "Voir mes formations",
       "seeAcademy": "Aller à l'Académie",
-      "seeGift": "Voir mon cadeau"
+      "seeGift": "Voir mon cadeau",
+      "seeBoost": "Voir mon boost"
     },
     "list": {
       "title": "Mes achats et ventes",
@@ -3911,6 +3914,44 @@
       "routine": "Routine terminée",
       "reward": "Points échangés",
       "adjustment": "Ajustement de l'équipe"
+    }
+  },
+  "ads": {
+    "aria": "Publicité",
+    "sponsored": "Sponsorisé",
+    "sponsoredBy": "Sponsorisé par {name}",
+    "house": "Promo Solange Glow",
+    "discover": "Découvrir",
+    "seeShowcase": "Voir sa vitrine",
+    "verified": "Pro vérifiée",
+    "rating": "{average} sur 5 ({count, plural, one {# avis} other {# avis}})",
+    "proAria": "Sponsorisé : {name}",
+    "productAria": "Produit sponsorisé : {name}",
+    "skip": "Passer",
+    "skipIn": "Passer ({count} s)",
+    "boost": {
+      "title": "Booster ma vitrine",
+      "help": "Passe en tête de la recherche et du fil de ta ville, pour ton métier.",
+      "error": "Ça n'a pas marché. Réessaie.",
+      "running": "Ta vitrine est en tête jusqu'au {until}.",
+      "closed": "Les boosts ne sont pas encore ouverts dans ton pays.",
+      "choose": "Combien de temps ?",
+      "day": "1 jour",
+      "week": "1 semaine",
+      "where": "Ta vitrine apparaît en premier dans l'Explorer et dans le fil.",
+      "sponsored": "Elle porte la mention « Sponsorisé », comme toute pub.",
+      "paidNow": "Le boost démarre dès le paiement.",
+      "pay": "Payer {amount}",
+      "history": "Mes boosts",
+      "from": "Depuis le {date}",
+      "impressions": "{count, plural, one {# affichage} other {# affichages}}",
+      "clicks": "{count, plural, one {# clic} other {# clics}}",
+      "status": {
+        "waiting_payment": "En attente du paiement",
+        "active": "En cours",
+        "ended": "Terminé",
+        "cancelled": "Non payé"
+      }
     }
   }
 }

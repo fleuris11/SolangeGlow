@@ -979,7 +979,9 @@
         "awayText": "Your message",
         "awayPlaceholder": "e.g. Thank you! I am at the salon tomorrow from 9 am, I will answer then.",
         "saveAway": "Save"
-      }
+      },
+      "boost": "Boost my showcase",
+      "boostHelp": "Come first in the search, for 1 day or 1 week."
     },
     "become": {
       "title": "Become a pro",
@@ -1414,7 +1416,8 @@
       "seeOrder": "See the order",
       "seeCourses": "See my courses",
       "seeAcademy": "Go to the Academy",
-      "seeGift": "See my gift"
+      "seeGift": "See my gift",
+      "seeBoost": "See my boost"
     },
     "list": {
       "title": "My purchases and sales",
@@ -3911,6 +3914,44 @@
       "routine": "Routine done",
       "reward": "Points exchanged",
       "adjustment": "Adjustment by the team"
+    }
+  },
+  "ads": {
+    "aria": "Advertising",
+    "sponsored": "Sponsored",
+    "sponsoredBy": "Sponsored by {name}",
+    "house": "Solange Glow promotion",
+    "discover": "Discover",
+    "seeShowcase": "See her page",
+    "verified": "Verified pro",
+    "rating": "{average} out of 5 ({count, plural, one {# review} other {# reviews}})",
+    "proAria": "Sponsored: {name}",
+    "productAria": "Sponsored product: {name}",
+    "skip": "Skip",
+    "skipIn": "Skip ({count} s)",
+    "boost": {
+      "title": "Boost my showcase",
+      "help": "Come first in the search and the feed of your city, for your trade.",
+      "error": "That did not work. Try again.",
+      "running": "Your showcase comes first until {until}.",
+      "closed": "Boosts are not open in your country yet.",
+      "choose": "How long?",
+      "day": "1 day",
+      "week": "1 week",
+      "where": "Your showcase comes first in Explore and in the feed.",
+      "sponsored": "It shows « Sponsored », like every ad.",
+      "paidNow": "The boost starts as soon as it is paid.",
+      "pay": "Pay {amount}",
+      "history": "My boosts",
+      "from": "Since {date}",
+      "impressions": "{count, plural, one {# impression} other {# impressions}}",
+      "clicks": "{count, plural, one {# click} other {# clicks}}",
+      "status": {
+        "waiting_payment": "Waiting for the payment",
+        "active": "Running",
+        "ended": "Ended",
+        "cancelled": "Not paid"
+      }
     }
   }
 }
