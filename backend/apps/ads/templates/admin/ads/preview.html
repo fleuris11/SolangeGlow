@@ -1,0 +1,27 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+  <p class="mb-4">{% translate "Each creative in each of its placements, as on a phone (360 px). The word « Sponsored » is always shown." %}</p>
+  <div style="display:flex;flex-wrap:wrap;gap:24px">
+    {% for item in shown %}
+      <figure style="width:360px;margin:0">
+        <figcaption style="font-weight:700;margin-bottom:8px">{{ item.placement }}</figcaption>
+        <div style="border:1px solid #EBD9DE;border-radius:20px;background:#FFF7F5;padding:16px;color:#3B1233;font-family:sans-serif">
+          <p style="margin:0 0 8px;font-size:13px;font-weight:700">&#9733; {% translate "Sponsored" %} · {{ item.ad.sponsor }}</p>
+          {% if item.picture %}<img src="{{ item.picture }}" alt="" style="width:100%;border-radius:16px;aspect-ratio:4/3;object-fit:cover">{% endif %}
+          {% if item.ad.title %}<p style="margin:12px 0 4px;font-size:20px;font-weight:700">{{ item.ad.title }}</p>{% endif %}
+          {% if item.ad.text %}<p style="margin:0 0 12px">{{ item.ad.text }}</p>{% endif %}
+          {% if item.ad.product %}<p style="margin:0 0 12px;font-weight:700">{{ item.ad.product.title }}</p>{% endif %}
+          {% if item.ad.pro %}<p style="margin:0 0 12px">{{ item.ad.pro.city }}</p>{% endif %}
+          {% if item.ad.cta %}<span style="display:inline-block;background:#C8102E;color:#fff;border-radius:999px;padding:12px 20px;font-weight:700">{{ item.ad.cta }}</span>{% endif %}
+        </div>
+      </figure>
+    {% empty %}
+      <p>{% translate "No active creative with a placement yet." %}</p>
+    {% endfor %}
+  </div>
+  <p class="mt-6"><a class="underline" href="{% url 'admin:ads_campaign_change' campaign.pk %}">{% translate "Back" %}</a></p>
+{% endblock %}

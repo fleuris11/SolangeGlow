@@ -264,6 +264,10 @@ SPECTACULAR_SETTINGS = {
         "RewardKindEnum": "apps.gamification.models.Reward.Kind",
         "WheelPrizeKindEnum": "apps.gamification.models.WheelPrize.Kind",
         "ProLevelEnum": "apps.pros.models.Level",
+        "AdPlacementEnum": "apps.ads.models.Placement",
+        "AdFormatEnum": "apps.ads.models.Creative.Format",
+        "BoostDurationEnum": "apps.ads.models.Boost.Duration",
+        "BoostStatusEnum": "apps.ads.models.Boost.Status",
         "PollChoiceEnum": "apps.gamification.models.PollVote.Choice",
         "PollScopeEnum": "apps.gamification.serializers.PollScope",
         "MediaKindEnum": "apps.core.media.models.MediaAsset.Kind",
@@ -508,6 +512,11 @@ CELERY_BEAT_SCHEDULE = {
     "gamification.run_daily": {
         "task": "apps.gamification.tasks.run_daily",
         "schedule": crontab(hour=6, minute=10),
+    },
+    # Ads (ADR-016): campaigns and boosts past their time end.
+    "ads.run": {
+        "task": "apps.ads.tasks.run",
+        "schedule": crontab(minute="*/5"),
     },
 }
 
@@ -932,6 +941,37 @@ UNFOLD = {
                         "title": _("Calendar of celebrations"),
                         "icon": "celebration",
                         "link": reverse_lazy("admin:gamification_celebration_changelist"),
+                    },
+                ],
+            },
+            {
+                "title": _("Advertising"),
+                "separator": True,
+                "items": [
+                    {
+                        "title": _("Campaigns"),
+                        "icon": "campaign",
+                        "link": reverse_lazy("admin:ads_campaign_changelist"),
+                    },
+                    {
+                        "title": _("Creatives"),
+                        "icon": "imagesmode",
+                        "link": reverse_lazy("admin:ads_creative_changelist"),
+                    },
+                    {
+                        "title": _("Advertisers"),
+                        "icon": "storefront",
+                        "link": reverse_lazy("admin:ads_advertiser_changelist"),
+                    },
+                    {
+                        "title": _("Boosts of the pros"),
+                        "icon": "rocket_launch",
+                        "link": reverse_lazy("admin:ads_boost_changelist"),
+                    },
+                    {
+                        "title": _("Ad statistics"),
+                        "icon": "monitoring",
+                        "link": reverse_lazy("admin:ads_adstat_changelist"),
                     },
                 ],
             },

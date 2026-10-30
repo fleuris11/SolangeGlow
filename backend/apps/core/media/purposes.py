@@ -41,6 +41,13 @@ PURPOSES: dict[str, Purpose] = {
         Duration(max_setting="social.story_video_max_seconds", max_default=30),
     ),
     "review_photo": Purpose(("image",), "public"),
+    # Ads (module 12): pictures and short videos of the campaigns, added in the admin.
+    "ad_media": Purpose(
+        ("image", "video"),
+        "public",
+        Duration(max_setting="ads.video_max_seconds", max_default=30),
+        uploadable=False,
+    ),
     # Games (module 10): « Help me choose » photos, photo challenge, quiz pictures and audio.
     "poll_photo": Purpose(("image",), "public"),
     "challenge_photo": Purpose(("image",), "public"),
