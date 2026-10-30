@@ -290,10 +290,20 @@ export async function homeBannersOnServer(locale: string): Promise<Schemas["Bann
   return data ?? [];
 }
 
+/** The published pages: the same for everyone (no cookies), so « Me » stays a static page. */
 export async function pagesOnServer(locale: string): Promise<Schemas["PageSummary"][]> {
-  const api = await serverApi(locale);
-  const { data } = await api.GET("/api/v1/content/pages");
-  return data ?? [];
+  const api = createClient<paths>({
+    baseUrl: API_INTERNAL_URL,
+    headers: { ...CLIENT_HEADER, "Accept-Language": locale },
+    fetch: (request) => globalThis.fetch(request, { next: { revalidate: 300 } }),
+  });
+  try {
+    const { data } = await api.GET("/api/v1/content/pages");
+    return data ?? [];
+  } catch {
+    // The backend is not reachable (e.g. during the build): the list comes back later.
+    return [];
+  }
 }
 
 /** A published page (help, terms…), or null when it does not exist. */
