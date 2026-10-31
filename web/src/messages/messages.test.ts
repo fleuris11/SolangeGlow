@@ -31,4 +31,29 @@ describe("translations", () => {
     });
     expect(empty).toEqual([]);
   });
+
+  it("sk is translated, not left in English", () => {
+    // Same in both languages on purpose: names, units, placeholders.
+    const same = new Set([
+      "audio.stopShort",
+      "messages.thread.online",
+      "auth.phone.countries.BJ",
+      "pros.languages.guw",
+      "social.post.beforeAfterAlt",
+      "shop.product.video",
+      "shop.checkout.spokenOrder",
+      "shop.detail.reference",
+      "academy.mine.size",
+      "academy.studio.countries.BJ",
+      "calls.video",
+    ]);
+    const text = (catalog: unknown, key: string) =>
+      key
+        .split(".")
+        .reduce<unknown>((node, part) => (node as Record<string, unknown>)[part], catalog);
+    const english = keys(en).filter(
+      (key) => !same.has(key) && text(sk, key) === text(en, key) && text(en, key) !== text(fr, key),
+    );
+    expect(english).toEqual([]);
+  });
 });
