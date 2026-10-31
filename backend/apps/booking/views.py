@@ -484,7 +484,8 @@ class AgendaView(AgendaBase):
         values = query.validated_data
         pro, staff_ids = self.access(request, values.get("pro"))
         zone = zone_of(pro)
-        start = datetime.datetime.combine(values["start"], datetime.time.min, tzinfo=zone)
+        first = values.get("start") or timezone.now().astimezone(zone).date()
+        start = datetime.datetime.combine(first, datetime.time.min, tzinfo=zone)
         end = start + datetime.timedelta(days=values["days"])
         shown = staff_ids
         if values.get("staff"):

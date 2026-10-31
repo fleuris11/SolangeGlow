@@ -376,7 +376,7 @@ function UsageSheet({ items, onClose }: { items: StockItem[]; onClose: () => voi
   const { busy, run } = useRun();
   const services = useQuery({
     queryKey: ["agenda", "services"],
-    queryFn: () => getAgenda({ start: new Date().toISOString().slice(0, 10), days: 1 }),
+    queryFn: () => getAgenda({ days: 1 }),
   });
   const [serviceId, setServiceId] = useState("");
   const [rows, setRows] = useState<Record<string, string>>({});

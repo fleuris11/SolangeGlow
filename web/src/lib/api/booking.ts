@@ -116,7 +116,8 @@ export const leaveWaitlist = (id: string) =>
 
 const agendaItem = (id: string) => ({ params: { path: { appointment_id: id } } });
 
-export const getAgenda = (query: { start: string; days?: number; staff?: string; pro?: string }) =>
+/** Without `start`: today in the pro's time zone. */
+export const getAgenda = (query: { start?: string; days?: number; staff?: string; pro?: string }) =>
   unwrap(api.GET("/api/v1/me/agenda", { params: { query } }));
 
 export const quickBook = (body: Schemas["QuickBookInputRequest"]) =>

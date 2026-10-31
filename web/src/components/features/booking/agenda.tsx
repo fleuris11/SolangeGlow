@@ -86,10 +86,8 @@ export function AgendaScreen({ initialDay }: { initialDay?: string }) {
   const query = useQuery({
     queryKey: ["agenda", view, first ?? "today"],
     queryFn: () =>
-      getAgenda({
-        start: first ?? new Date().toISOString().slice(0, 10),
-        days: view === "week" ? 7 : 1,
-      }),
+      // Without a day, the server takes today in the pro's zone (not the browser's).
+      getAgenda({ ...(first ? { start: first } : {}), days: view === "week" ? 7 : 1 }),
     retry: false,
   });
   const agenda = query.data;

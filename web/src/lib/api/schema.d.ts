@@ -14618,11 +14618,11 @@ export interface operations {
   };
   me_agenda_retrieve: {
     parameters: {
-      query: {
+      query?: {
         days?: number;
         pro?: string;
         staff?: string;
-        start: string;
+        start?: string;
       };
       header?: never;
       path?: never;

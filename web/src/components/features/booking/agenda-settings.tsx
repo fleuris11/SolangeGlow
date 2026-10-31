@@ -341,7 +341,7 @@ function PersonSheet({ member, onClose }: { member: Staff | null; onClose: () =>
   const { busy, run } = useRun();
   const services = useQuery({
     queryKey: ["agenda", "services"],
-    queryFn: () => getAgenda({ start: new Date().toISOString().slice(0, 10), days: 1 }),
+    queryFn: () => getAgenda({ days: 1 }),
   });
   const [name, setName] = useState(member?.name ?? "");
   const [phone, setPhone] = useState(member?.phone ?? "");

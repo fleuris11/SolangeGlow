@@ -122,7 +122,7 @@ function PackageList() {
   const query = useQuery({ queryKey: ["packages"], queryFn: getPackages });
   const services = useQuery({
     queryKey: ["agenda", "services"],
-    queryFn: () => getAgenda({ start: new Date().toISOString().slice(0, 10), days: 1 }),
+    queryFn: () => getAgenda({ days: 1 }),
   });
   const [serviceId, setServiceId] = useState("");
   const [name, setName] = useState("");

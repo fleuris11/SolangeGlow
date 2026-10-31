@@ -133,6 +133,26 @@ def test_a_taken_slot_answers_409():
     assert taken.status_code == 409 and taken.json()["code"] == "slot_taken"
 
 
+def test_the_agenda_opens_on_today_in_the_pros_zone(monkeypatch):
+    pro = salon()
+    svc = service(pro, ("work", 60))
+    booked = (
+        signed_in(adult("Awa"))
+        .post(
+            reverse("v1:booking-page", args=[pro.slug]),
+            {"service_id": str(svc.pk), "start": iso(at(10))},
+            format="json",
+            **H,
+        )
+        .json()["appointment"]
+    )
+    # Sunday 23:30 UTC is already Monday 0:30 in Cotonou: the agenda shows Monday.
+    late = datetime.datetime(2030, 1, 6, 23, 30, tzinfo=datetime.UTC)
+    monkeypatch.setattr(timezone, "now", lambda: late)
+    day = signed_in(pro.user).get(reverse("v1:agenda"), {"days": 1}).json()
+    assert [a["id"] for a in day["appointments"]] == [booked["id"]]
+
+
 def test_the_pro_works_in_her_agenda():
     pro = salon()
     agenda.update_settings(pro, auto_confirm=False)

@@ -630,7 +630,8 @@ class AgendaSerializer(serializers.Serializer):
 
 
 class AgendaQuerySerializer(serializers.Serializer):
-    start = serializers.DateField()
+    # Empty: today in the pro's time zone (the browser does not know it yet).
+    start = serializers.DateField(required=False)
     days = serializers.IntegerField(min_value=1, max_value=7, default=1)
     staff = serializers.UUIDField(required=False)
     pro = serializers.UUIDField(required=False)
