@@ -1,6 +1,6 @@
 # Core framework
 Django==5.2.17
-djangorestframework==3.18.1
+djangorestframework==3.18.2
 drf-spectacular==0.30.0
 django-filter==26.2
 djangorestframework-simplejwt==5.5.1
@@ -28,7 +28,7 @@ django-celery-beat==2.9.0
 httpx==0.28.1
 
 # Images (checked, re-encoded, metadata removed) and their blur preview
-Pillow==12.3.0
+Pillow==13.0.0
 blurhash==1.1.5
 
 # Short-lived secrets encrypted at rest; Web Push notifications (VAPID)
@@ -40,8 +40,11 @@ py-vapid==1.9.4
 segno==1.6.6
 
 # Invoices and receipts: real text PDF (searchable, small), pure Python
-fpdf2==2.8.3
+fpdf2==2.8.8
 
 # Files and static
 django-storages[s3]==1.14.6
 whitenoise==6.12.0
+
+# Errors sent to GlitchTip (Sentry compatible), off without SENTRY_DSN
+sentry-sdk[django,celery]==2.73.0
