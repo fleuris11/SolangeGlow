@@ -85,6 +85,11 @@ class InvalidBirthDate(DomainError):
     message = _("This date of birth is not valid. Check the day, month and year.")
 
 
+class TermsRequired(DomainError):
+    code = "terms_required"
+    message = _("Accept the terms of use and the privacy policy to continue.")
+
+
 class TooYoung(DomainError):
     code = "too_young"
     status_code = 403

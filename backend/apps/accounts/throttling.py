@@ -1,4 +1,8 @@
-from rest_framework.throttling import ScopedRateThrottle
+import hmac
+import ipaddress
+
+from django.conf import settings
+from rest_framework.throttling import AnonRateThrottle, ScopedRateThrottle, UserRateThrottle
 
 from apps.core.selectors import get_setting
 
@@ -33,10 +37,38 @@ DEFAULT_RATES = {
     "ads": "240/minute",
     "content": "240/minute",
     "help_ticket": "10/hour",
+    "data_export": "5/hour",
 }
 
 
-class SettingRateThrottle(ScopedRateThrottle):
+def forwarded_ip(request) -> str | None:
+    """The visitor's address sent by the app's own server (pages rendered by Next all come
+    from one address). Trusted only with the shared secret INTERNAL_API_TOKEN."""
+    token = settings.INTERNAL_API_TOKEN
+    given = request.META.get("HTTP_X_SG_INTERNAL", "")
+    if not token or not given or not hmac.compare_digest(given, token):
+        return None
+    address = request.META.get("HTTP_X_SG_CLIENT_IP", "").strip()
+    try:
+        return str(ipaddress.ip_address(address))
+    except ValueError:
+        return None
+
+
+class ClientIdentMixin:
+    def get_ident(self, request):
+        return forwarded_ip(request) or super().get_ident(request)
+
+
+class AnonThrottle(ClientIdentMixin, AnonRateThrottle):
+    pass
+
+
+class UserThrottle(ClientIdentMixin, UserRateThrottle):
+    pass
+
+
+class SettingRateThrottle(ClientIdentMixin, ScopedRateThrottle):
     """Per-IP rate limit whose value is a platform setting ("throttle.<scope>")."""
 
     def get_rate(self):

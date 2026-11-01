@@ -113,6 +113,7 @@ def test_onboarding_as_pro_with_trades(client, user):
             "trades": ["braids", "makeup"],
             "language": "fr",
             "city": "Cotonou",
+            "accept_terms": True,
         },
         format="json",
     )
@@ -147,7 +148,7 @@ def test_onboarding_as_pro_needs_a_trade(client):
 def test_onboarding_refuses_people_under_the_minimum_age(client, user):
     response = client.post(
         reverse("v1:me-onboarding"),
-        {"mode": "client", "birth_date": years_ago(16, days=-1)},
+        {"mode": "client", "birth_date": years_ago(16, days=-1), "accept_terms": True},
         format="json",
     )
 
@@ -161,7 +162,9 @@ def test_minimum_age_is_a_setting(client):
     PlatformSettingFactory(key="accounts.minimum_age", value="13")
 
     response = client.post(
-        reverse("v1:me-onboarding"), {"mode": "client", "birth_date": years_ago(14)}, format="json"
+        reverse("v1:me-onboarding"),
+        {"mode": "client", "birth_date": years_ago(14), "accept_terms": True},
+        format="json",
     )
 
     assert response.status_code == 200
@@ -172,7 +175,9 @@ def test_birth_date_in_the_future_is_refused(client):
     tomorrow = (timezone.localdate() + datetime.timedelta(days=1)).isoformat()
 
     response = client.post(
-        reverse("v1:me-onboarding"), {"mode": "client", "birth_date": tomorrow}, format="json"
+        reverse("v1:me-onboarding"),
+        {"mode": "client", "birth_date": tomorrow, "accept_terms": True},
+        format="json",
     )
 
     assert response.json()["code"] == "invalid_birth_date"
@@ -181,7 +186,7 @@ def test_birth_date_in_the_future_is_refused(client):
 def test_onboarding_as_client(client, user):
     response = client.post(
         reverse("v1:me-onboarding"),
-        {"mode": "client", "birth_date": ADULT_BIRTH_DATE, "city": "Paris"},
+        {"mode": "client", "birth_date": ADULT_BIRTH_DATE, "city": "Paris", "accept_terms": True},
         format="json",
     )
 
@@ -308,3 +313,36 @@ def test_purge_erases_personal_data_after_the_grace_period(user):
     assert user.deleted_at is not None
     assert not GuestIdentity.objects.exists()
     assert User.objects.create_user(phone="+2290197123456")  # the number is free again
+
+
+def test_onboarding_needs_the_terms_accepted_and_keeps_their_version(client, user):
+    refused = client.post(
+        reverse("v1:me-onboarding"),
+        {"mode": "client", "birth_date": ADULT_BIRTH_DATE},
+        format="json",
+    )
+    assert refused.status_code == 400 and refused.json()["code"] == "terms_required"
+    accepted = client.post(
+        reverse("v1:me-onboarding"),
+        {"mode": "client", "birth_date": ADULT_BIRTH_DATE, "accept_terms": True},
+        format="json",
+    )
+    assert accepted.status_code == 200
+    user.refresh_from_db()
+    assert user.terms_accepted_at is not None and user.terms_version >= 1
+
+
+def test_she_downloads_her_data_without_secrets(client, user):
+    import io
+    import json
+    import zipfile
+
+    from apps.core.audit.models import AuditEvent
+
+    response = client.get(reverse("v1:me-export"))
+    assert response.status_code == 200 and response["Content-Type"] == "application/zip"
+    archive = zipfile.ZipFile(io.BytesIO(response.content))
+    account = json.loads(archive.read("account.json"))
+    assert account["id"] == str(user.pk) and "password" not in account
+    assert not any("otpchallenge" in name for name in archive.namelist())
+    assert AuditEvent.objects.filter(action="accounts.data_exported").exists()

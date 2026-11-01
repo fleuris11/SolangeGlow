@@ -14,6 +14,8 @@ from django.templatetags.static import static
 from django.urls import reverse, reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
+from config import sentry
+
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 env = environ.Env()
@@ -24,6 +26,10 @@ environ.Env.read_env(BASE_DIR.parent / ".env", overwrite=False)
 SECRET_KEY = env("DJANGO_SECRET_KEY")
 DEBUG = env.bool("DJANGO_DEBUG", default=False)
 ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=[])
+SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
+SECURE_CROSS_ORIGIN_OPENER_POLICY = "same-origin"
+X_FRAME_OPTIONS = "DENY"
+SECURE_CONTENT_TYPE_NOSNIFF = True
 CSRF_TRUSTED_ORIGINS = env.list("DJANGO_CSRF_TRUSTED_ORIGINS", default=[])
 
 # --- Applications -------------------------------------------------------------
@@ -241,8 +247,8 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "EXCEPTION_HANDLER": "apps.core.api.exceptions.exception_handler",
     "DEFAULT_THROTTLE_CLASSES": [
-        "rest_framework.throttling.AnonRateThrottle",
-        "rest_framework.throttling.UserRateThrottle",
+        "apps.accounts.throttling.AnonThrottle",
+        "apps.accounts.throttling.UserThrottle",
     ],
     "DEFAULT_THROTTLE_RATES": {
         "anon": env("API_THROTTLE_ANON", default="120/minute"),
@@ -365,6 +371,8 @@ AUTH_CLIENT_HEADER = "X-SG-Client"
 ACCOUNTS_OTP_CONSOLE = env.bool("ACCOUNTS_OTP_CONSOLE", default=False)
 # Exposes the last code sent to a destination, for automated browser tests. Development only.
 ACCOUNTS_DEV_OTP_ENDPOINT = env.bool("ACCOUNTS_DEV_OTP_ENDPOINT", default=False)
+# Shared with the web server: lets it pass the visitor's address for the rate limits.
+INTERNAL_API_TOKEN = env("INTERNAL_API_TOKEN", default="")
 
 # --- External providers (ADR-003) -----------------------------------------------
 # Console/Fake clients instead of real providers without keys. Never in production.
@@ -550,13 +558,29 @@ PLATFORM_SETTINGS_CACHE_TIMEOUT = env.int("PLATFORM_SETTINGS_CACHE_TIMEOUT", def
 
 # --- Logging ------------------------------------------------------------------
 
+# --- Errors (GlitchTip, Sentry compatible; prompt 19) ----------------------------------------
+
+SENTRY_DSN = env("SENTRY_DSN", default="")
+sentry.init(
+    SENTRY_DSN,
+    environment=env("SENTRY_ENVIRONMENT", default="development"),
+    traces=env.float("SENTRY_TRACES_SAMPLE_RATE", default=0.0),
+)
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
     "formatters": {
         "simple": {"format": "{asctime} {levelname} {name} {message}", "style": "{"},
     },
-    "handlers": {"console": {"class": "logging.StreamHandler", "formatter": "simple"}},
+    "filters": {"redact": {"()": "apps.core.logging.RedactPersonalData"}},
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "simple",
+            "filters": ["redact"],
+        }
+    },
     "root": {"handlers": ["console"], "level": env("LOG_LEVEL", default="INFO")},
     "loggers": {
         "django.db.backends": {"level": "WARNING"},

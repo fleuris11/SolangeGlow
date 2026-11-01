@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-30 20:45+0100\n"
+"POT-Creation-Date: 2026-11-01 23:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -649,6 +649,9 @@ msgstr ""
 msgid "This date of birth is not valid. Check the day, month and year."
 msgstr ""
 
+msgid "Accept the terms of use and the privacy policy to continue."
+msgstr ""
+
 #, python-format
 msgid "Solange Glow is for people aged %(age)s and over."
 msgstr ""
@@ -765,6 +768,12 @@ msgid "e-mail verified at"
 msgstr ""
 
 msgid "welcome completed at"
+msgstr ""
+
+msgid "terms accepted at"
+msgstr ""
+
+msgid "version of the terms accepted"
 msgstr ""
 
 msgid "tokens revoked at"

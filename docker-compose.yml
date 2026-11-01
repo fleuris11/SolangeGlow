@@ -147,6 +147,7 @@ services:
     environment:
       API_INTERNAL_URL: http://backend:8000
       S3_INTERNAL_URL: http://minio:9000
+      UMAMI_INTERNAL_URL: ${UMAMI_INTERNAL_URL:-http://umami:3000}
       NEXT_TELEMETRY_DISABLED: "1"
       # File watching through Docker Desktop on Windows needs polling.
       WATCHPACK_POLLING: "true"
@@ -217,9 +218,80 @@ services:
       - livekit
     restart: unless-stopped
 
+  # --- Audience and errors (prompt 19): only on demand, they need disk and memory. ------
+  # docker compose --profile monitoring up -d
+  # Umami (no cookies): http://localhost:3001 (admin / umami at first, change it).
+  umami-db:
+    image: postgres:16-alpine
+    profiles: ["monitoring"]
+    environment:
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: ${UMAMI_DB_PASSWORD:-umami-dev-only}
+    volumes:
+      - umami_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  umami:
+    image: umamisoftware/umami:3.4.1
+    profiles: ["monitoring"]
+    environment:
+      DATABASE_URL: postgresql://umami:${UMAMI_DB_PASSWORD:-umami-dev-only}@umami-db:5432/umami
+      APP_SECRET: ${UMAMI_APP_SECRET:-umami-dev-secret-not-for-production}
+      DISABLE_TELEMETRY: "1"
+    ports:
+      - "3001:3000"
+    depends_on:
+      - umami-db
+    restart: unless-stopped
+
+  # GlitchTip (Sentry compatible): http://localhost:8001, create a project, copy its DSN
+  # into SENTRY_DSN (backend) and NEXT_PUBLIC_SENTRY_DSN (web).
+  glitchtip-db:
+    image: postgres:16-alpine
+    profiles: ["monitoring"]
+    environment:
+      POSTGRES_DB: glitchtip
+      POSTGRES_USER: glitchtip
+      POSTGRES_PASSWORD: ${GLITCHTIP_DB_PASSWORD:-glitchtip-dev-only}
+    volumes:
+      - glitchtip_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  glitchtip: &glitchtip
+    image: glitchtip/glitchtip:6.2.6
+    profiles: ["monitoring"]
+    environment: &glitchtip-env
+      DATABASE_URL: postgres://glitchtip:${GLITCHTIP_DB_PASSWORD:-glitchtip-dev-only}@glitchtip-db:5432/glitchtip
+      REDIS_URL: redis://redis:6379/5
+      SECRET_KEY: ${GLITCHTIP_SECRET_KEY:-glitchtip-dev-secret-not-for-production}
+      GLITCHTIP_DOMAIN: ${GLITCHTIP_DOMAIN:-http://localhost:8001}
+      DEFAULT_FROM_EMAIL: errors@solangeglow.local
+      EMAIL_URL: consolemail://
+      ENABLE_USER_REGISTRATION: "true"
+    ports:
+      - "8001:8000"
+    depends_on:
+      - glitchtip-db
+      - redis
+    restart: unless-stopped
+
+  glitchtip-worker:
+    <<: *glitchtip
+    command: ./bin/run-celery-with-beat.sh
+    ports: []
+
+  glitchtip-migrate:
+    <<: *glitchtip
+    command: ./bin/run-migrate.sh
+    ports: []
+    restart: "no"
+
 volumes:
   minio_data:
   postgres_data:
   redis_data:
   web_node_modules:
   web_next:
+  umami_data:
+  glitchtip_data:

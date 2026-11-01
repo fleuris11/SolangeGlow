@@ -513,6 +513,14 @@ def reactivate(user: User, *, actor: User | None = None) -> None:
 # --- Profile -------------------------------------------------------------------------
 
 
+def _terms_version() -> int:
+    from apps.content.models import Page
+
+    page = Page.objects.filter(kind=Page.Kind.TERMS, is_published=True).order_by("position").first()
+    return page.version if page else 0
+
+
+@transaction.atomic
 def complete_onboarding(
     user: User,
     *,
@@ -521,8 +529,10 @@ def complete_onboarding(
     trade_keys: list[str] | None = None,
     language: str | None = None,
     city: str = "",
+    accept_terms: bool = False,
 ) -> User:
-    """End of the welcome screens: client or pro (with trades), birth date, language, city."""
+    """End of the welcome screens: client or pro (with trades), birth date, language, city;
+    the terms are accepted here (date and version kept)."""
     country = user.country.code if user.country_id else None
     minimum = int(get_setting("accounts.minimum_age", country=country, default=16))
     if birth_date > timezone.localdate() or selectors.age_on(birth_date) > 120:
@@ -530,7 +540,13 @@ def complete_onboarding(
     if selectors.age_on(birth_date) < minimum:
         raise errors.TooYoung(errors.TooYoung.message % {"age": minimum})
 
+    if user.terms_accepted_at is None and not accept_terms:
+        raise errors.TermsRequired()
     user.birth_date = birth_date
+    if accept_terms and user.terms_accepted_at is None:
+        user.terms_accepted_at = timezone.now()
+        user.terms_version = _terms_version()
+        audit("accounts.terms_accepted", user, actor=user, metadata={"version": user.terms_version})
     if mode == Role.PRO:
         if Role.PRO not in user.roles:
             user.roles = [*user.roles, Role.PRO]

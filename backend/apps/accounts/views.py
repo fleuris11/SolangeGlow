@@ -2,7 +2,9 @@ import contextlib
 
 from django.conf import settings
 from django.core.cache import cache
+from django.http import HttpResponse
 from django.utils.translation import gettext_lazy as _
+from drf_spectacular.types import OpenApiTypes
 from drf_spectacular.utils import extend_schema, inline_serializer
 from rest_framework import exceptions, serializers, status
 from rest_framework.parsers import FormParser, MultiPartParser
@@ -13,7 +15,7 @@ from rest_framework_simplejwt.exceptions import TokenError
 from rest_framework_simplejwt.serializers import TokenRefreshSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from . import services
+from . import export, services
 from .authentication import token_is_revoked
 from .cookies import (
     GUEST_COOKIE,
@@ -308,6 +310,25 @@ class PasswordView(APIView):
         return Response({"status": "ok"})
 
 
+class ExportView(APIView):
+    """« Download my data »: a ZIP of JSON files, built now, never stored."""
+
+    permission_classes = [IsAuthenticated]
+    throttle_classes = [SettingRateThrottle]
+    throttle_scope = "data_export"
+
+    @extend_schema(tags=["me"], responses={(200, "application/zip"): OpenApiTypes.BINARY})
+    def get(self, request):
+        from apps.core.audit.services import record
+
+        content = export.build(request.user)
+        record("accounts.data_exported", request.user, actor=request.user)
+        response = HttpResponse(content, content_type="application/zip")
+        response["Content-Disposition"] = 'attachment; filename="solange-glow-my-data.zip"'
+        response["Cache-Control"] = "no-store"
+        return response
+
+
 class OnboardingView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -323,6 +344,7 @@ class OnboardingView(APIView):
             trade_keys=data.get("trades"),
             language=data.get("language"),
             city=data.get("city", ""),
+            accept_terms=data["accept_terms"],
         )
         return Response(MeSerializer(user, context={"request": request}).data)
 

@@ -137,6 +137,8 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     phone_verified_at = models.DateTimeField(_("phone verified at"), null=True, blank=True)
     email_verified_at = models.DateTimeField(_("e-mail verified at"), null=True, blank=True)
     onboarded_at = models.DateTimeField(_("welcome completed at"), null=True, blank=True)
+    terms_accepted_at = models.DateTimeField(_("terms accepted at"), null=True, blank=True)
+    terms_version = models.PositiveIntegerField(_("version of the terms accepted"), default=0)
     # Every token issued before this moment is refused ("sign out on every device").
     tokens_revoked_at = models.DateTimeField(_("tokens revoked at"), null=True, blank=True)
     # Deletion asked: the account is erased after the grace period unless she signs in again.

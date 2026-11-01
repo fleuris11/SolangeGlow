@@ -9,4 +9,5 @@ urlpatterns = [
     path("help/faq", views.FaqView.as_view(), name="help-faq"),
     path("help/suggest", views.SuggestView.as_view(), name="help-suggest"),
     path("help/tickets", views.TicketsView.as_view(), name="help-tickets"),
+    path("seo/sitemap/<slug:kind>", views.SitemapView.as_view(), name="seo-sitemap"),
 ]

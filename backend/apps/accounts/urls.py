@@ -20,6 +20,7 @@ urlpatterns = [
     ),
     path("me/password", views.PasswordView.as_view(), name="me-password"),
     path("me/onboarding", views.OnboardingView.as_view(), name="me-onboarding"),
+    path("me/export", views.ExportView.as_view(), name="me-export"),
     path("guest", views.GuestView.as_view(), name="guest"),
 ]
 

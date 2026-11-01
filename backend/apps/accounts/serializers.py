@@ -152,6 +152,7 @@ class OnboardingSerializer(serializers.Serializer):
     )
     language = serializers.ChoiceField(choices=LANGUAGE_CHOICES, required=False)
     city = serializers.CharField(max_length=80, required=False, allow_blank=True)
+    accept_terms = serializers.BooleanField(required=False, default=False)
 
     def validate(self, attrs):
         if attrs["mode"] == Role.PRO and not attrs.get("trades"):

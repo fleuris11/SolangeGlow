@@ -125,3 +125,16 @@ def test_faq_versions_too(boss):
     item = FaqItem.objects.first()
     versions.snapshot(item, author=boss)
     assert versions.history(item).count() == 1
+
+
+def test_sitemaps_list_only_what_anyone_can_see():
+    from apps.pros.models import ProProfile
+    from apps.pros.tests.factories import ProFactory
+
+    shown = ProFactory(status=ProProfile.Status.PUBLISHED)
+    hidden = ProFactory(status=ProProfile.Status.DRAFT)
+    paths = [row["path"] for row in APIClient().get("/api/v1/seo/sitemap/pros").json()]
+    assert f"/{shown.slug}" in paths and f"/{hidden.slug}" not in paths
+    pages = APIClient().get("/api/v1/seo/sitemap/pages").json()
+    assert "/pages/conditions-generales" in [row["path"] for row in pages]
+    assert APIClient().get("/api/v1/seo/sitemap/secrets").status_code == 404

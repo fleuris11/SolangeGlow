@@ -9,7 +9,7 @@ from apps.core.media.api import MediaSerializer
 from apps.core.media.services import asset_payload
 from apps.core.selectors import get_setting
 
-from . import errors
+from . import errors, seo
 from .models import Banner, FaqItem, Page, Ticket
 from .services import help as help_services
 
@@ -182,3 +182,21 @@ class TicketsView(ContentView):
             user=_viewer(request), language=_language(request), **data.validated_data
         )
         return Response(TicketSerializer(ticket).data, status=status.HTTP_201_CREATED)
+
+
+# --- Search engines ------------------------------------------------------------------------------
+
+
+class SitemapEntrySerializer(serializers.Serializer):
+    path = serializers.CharField()
+    updated_at = serializers.DateTimeField()
+
+
+class SitemapView(ContentView):
+    """The public pages of a kind, for the sitemaps of the app."""
+
+    @extend_schema(tags=TAGS, responses=SitemapEntrySerializer(many=True))
+    def get(self, request, kind):
+        if kind not in seo.KINDS:
+            raise errors.PageNotFound()
+        return Response(SitemapEntrySerializer(seo.entries(kind), many=True).data)

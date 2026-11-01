@@ -1926,6 +1926,28 @@ SETTINGS += [
         "Limite des demandes d'aide envoyées par adresse IP.",
         "Help requests limit per IP address.",
     ),
+    # Search engines and personal data (prompt 19).
+    _s(
+        "seo.sitemap_max",
+        INT,
+        "40000",
+        "Plan du site : adresses au plus par type (pros, produits…).",
+        "Sitemap: most addresses per kind (pros, products…).",
+    ),
+    _s(
+        "privacy.export_max_rows",
+        INT,
+        "5000",
+        "« Télécharger mes données » : lignes au plus par type de données.",
+        "« Download my data »: most rows per kind of data.",
+    ),
+    _s(
+        "throttle.data_export",
+        STR,
+        "5/hour",
+        "Limite des téléchargements de ses données par personne.",
+        "Downloads of one's data limit per person.",
+    ),
 ]
 
 # Monthly price of Premium (created with the countries; edited in the admin afterwards).
