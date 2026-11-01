@@ -9,6 +9,8 @@ const umamiInternalUrl = process.env.UMAMI_INTERNAL_URL ?? "";
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  // A second build next to the development server (local Lighthouse runs).
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   reactStrictMode: true,
   poweredByHeader: false,
   // Keeps screenshots clean; the e2e container reaches the dev server as "web".

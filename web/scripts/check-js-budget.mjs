@@ -39,7 +39,7 @@ const DYNAMIC_PAGES = {
   "/[locale]/fetes": "[locale]/(app)/fetes",
   "/[locale]/invite/<code>": "[locale]/(focus)/invite/[code]",
 };
-const NEXT_DIR = ".next";
+const NEXT_DIR = process.env.NEXT_DIST_DIR || ".next";
 
 function scriptsOf(html) {
   const found = new Set();
