@@ -55,7 +55,11 @@ function Picture({ ad, className }: { ad: Ad; className?: string }) {
 
 function Cta({ ad, label }: { ad: Ad; label: string }) {
   return (
-    <a href={ad.click_url} rel="sponsored" className={buttonClasses({ className: "self-start" })}>
+    <a
+      href={ad.click_url}
+      rel="sponsored"
+      className={buttonClasses({ variant: "secondary", className: "self-start" })}
+    >
       {ad.cta || label}
     </a>
   );

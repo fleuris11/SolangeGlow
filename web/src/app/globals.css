@@ -112,6 +112,15 @@
 }
 
 @layer base {
+  /* A title next to the « Listen » button: at very large text on 360 px, a long word
+     wraps (with a hyphen) instead of pushing the button off the screen. */
+  h1,
+  h2 {
+    min-width: 0;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
   html {
     background-color: var(--lait);
     color: var(--prune);

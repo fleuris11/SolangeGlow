@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
@@ -5,6 +6,7 @@ import { AdSlot } from "@/components/features/ads/ad-cards";
 import { SplashLoader } from "@/components/features/ads/splash-loader";
 import { GlowTodayBand, WinnerBand } from "@/components/features/games/home-band";
 import { HomeBanners } from "@/components/features/help/home-banner";
+import { HomeInstallPrompt } from "@/components/pwa/home-install-prompt";
 import { FranceSelectionBand, GiftBand, JoinBand } from "@/components/features/home/bands";
 import { UpcomingLivesBand } from "@/components/features/live/upcoming-band";
 import { SearchBar } from "@/components/features/search/search-bar";
@@ -22,8 +24,14 @@ import {
   upcomingLivesOnServer,
 } from "@/lib/api/server";
 import type { Locale } from "@/lib/i18n/routing";
+import { alternatesFor } from "@/lib/seo/alternates";
 
 type Props = { params: Promise<{ locale: Locale }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  return { alternates: alternatesFor(locale, "/") };
+}
 
 /**
  * Home: today's stories and the personalised feed (rendered on the server, visible before
@@ -69,6 +77,7 @@ export default async function HomePage({ params }: Props) {
       )}
 
       <HomeBanners banners={editorial} />
+      <HomeInstallPrompt />
       <AdSlot list={banner} />
       <StoryStrip groups={stories} />
       {glow && <GlowTodayBand today={glow} />}

@@ -2,6 +2,8 @@ import type { ReactNode } from "react";
 
 import { cn } from "@/lib/cn";
 
+import { SpeakButton } from "./speak-button";
+
 type Props = {
   icon: ReactNode;
   title: string;
@@ -21,7 +23,10 @@ export function EmptyState({ icon, title, description, action, className }: Prop
       >
         {icon}
       </span>
-      <h2 className="text-title font-bold">{title}</h2>
+      <div className="flex items-center gap-2">
+        <h2 className="text-title font-bold">{title}</h2>
+        <SpeakButton text={description ? `${title}. ${description}` : title} />
+      </div>
       {description && <p className="text-prune-doux max-w-[34ch]">{description}</p>}
       {action}
     </section>

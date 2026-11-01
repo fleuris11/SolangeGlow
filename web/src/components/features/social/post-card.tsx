@@ -44,7 +44,19 @@ function Picture({ src, alt, eager }: { src?: string; alt: string; eager?: boole
 }
 
 /** A post of the feed: who, the pictures, the words, « Book this look », and the actions. */
-export function PostCard({ post, eager = false }: { post: Post; eager?: boolean }) {
+/**
+ * `alone`: the post's own page, where « Book this look » is the main action. In a list
+ * (feed, profile) each post keeps an outline button: one main action per screen.
+ */
+export function PostCard({
+  post,
+  eager = false,
+  alone = false,
+}: {
+  post: Post;
+  eager?: boolean;
+  alone?: boolean;
+}) {
   const t = useTranslations("social.post");
   const locale = useLocale();
   const author = post.author;
@@ -168,7 +180,7 @@ export function PostCard({ post, eager = false }: { post: Post; eager?: boolean 
         {post.service && author.pro_slug && (
           <Link
             href={`/${author.pro_slug}/rdv?service=${post.service.id}&post=${post.id}`}
-            className={buttonClasses({ fullWidth: true })}
+            className={buttonClasses({ variant: alone ? "primary" : "secondary", fullWidth: true })}
           >
             <CalendarCheck aria-hidden size={22} weight="bold" />
             {t("bookLook")}
@@ -178,7 +190,7 @@ export function PostCard({ post, eager = false }: { post: Post; eager?: boolean 
           <Link
             href={post.product.link}
             className={buttonClasses({
-              variant: post.service ? "secondary" : "primary",
+              variant: alone && !post.service ? "primary" : "secondary",
               fullWidth: true,
             })}
           >

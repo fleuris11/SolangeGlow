@@ -50,7 +50,7 @@ export default async function PostPage({ params }: Props) {
   if (!post) notFound();
   return (
     <div className="flex flex-col gap-8">
-      <PostCard post={post} eager />
+      <PostCard post={post} eager alone />
       <LazyComments postId={post.id} />
     </div>
   );

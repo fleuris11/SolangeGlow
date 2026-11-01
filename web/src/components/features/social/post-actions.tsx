@@ -34,6 +34,9 @@ type Props = {
 
 const buttonClass =
   "inline-flex min-h-12 min-w-12 items-center justify-center gap-1 rounded-full px-2 font-bold hover:bg-poudre";
+// Icon with its word underneath (like the bottom bar): stays narrow at 360 px.
+const stackedClass =
+  "inline-flex min-h-12 min-w-12 flex-col items-center justify-center rounded-2xl px-2 font-bold leading-none hover:bg-poudre";
 
 /** Like, comment, save, share, more: big targets, an icon and a number or a word. */
 export function PostActions(props: Props) {
@@ -102,13 +105,9 @@ export function PostActions(props: Props) {
           {props.icons.comment}
           <span aria-hidden>{props.commentCount}</span>
         </Link>
-        <button
-          type="button"
-          onClick={() => setSheet("share")}
-          className={buttonClass}
-          aria-label={t("share")}
-        >
+        <button type="button" onClick={() => setSheet("share")} className={stackedClass}>
           {props.icons.share}
+          <span className="text-mention">{t("share")}</span>
         </button>
       </div>
       <div className="flex items-center">
@@ -116,10 +115,10 @@ export function PostActions(props: Props) {
           type="button"
           aria-pressed={saved}
           onClick={() => void toggleSave()}
-          className={buttonClass}
-          aria-label={saved ? t("unsave") : t("save")}
+          className={stackedClass}
         >
           {saved ? props.icons.saveOn : props.icons.save}
+          <span className="text-mention">{t("save")}</span>
         </button>
         <button
           type="button"

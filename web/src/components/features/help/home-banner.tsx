@@ -27,7 +27,10 @@ export function HomeBanners({ banners }: { banners: Schemas["Banner"][] }) {
           <p className="text-lead font-bold">{banner.title}</p>
           {banner.text && <p>{banner.text}</p>}
           {banner.link && (
-            <a href={banner.link} className={buttonClasses({ className: "self-start" })}>
+            <a
+              href={banner.link}
+              className={buttonClasses({ variant: "secondary", className: "self-start" })}
+            >
               {banner.cta || t("discover")}
             </a>
           )}
