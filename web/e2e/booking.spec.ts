@@ -123,7 +123,7 @@ test("a guest books, the pro confirms, reminder, done, then a verified review", 
   // --- The guest signs in with the same number and leaves a verified review --------------------
   await signInWithPhone(guest, phone);
   const onboarded = await guest.request.post("/api/v1/me/onboarding", {
-    data: { mode: "client", birth_date: "1995-04-12", city: "Cotonou" },
+    data: { mode: "client", birth_date: "1995-04-12", city: "Cotonou", accept_terms: true },
     headers: API,
   });
   expect(onboarded.ok()).toBe(true);

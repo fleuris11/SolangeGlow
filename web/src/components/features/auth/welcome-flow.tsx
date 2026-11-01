@@ -18,13 +18,14 @@ import { ApiError } from "@/lib/api/client";
 import { useMe, useSetMe } from "@/lib/auth/use-me";
 import { cn } from "@/lib/cn";
 import { CITIES } from "@/lib/demo/data";
-import { useRouter } from "@/lib/i18n/navigation";
+import { Link, useRouter } from "@/lib/i18n/navigation";
 import { routing, type Locale } from "@/lib/i18n/routing";
 import { usePreferences } from "@/lib/preferences/preferences-provider";
 import { takeReturnPath } from "@/lib/auth/return-path";
 
 import { BirthDateField, EMPTY_BIRTH_DATE, toIsoDate, type BirthDate } from "./birth-date-field";
 import { ErrorMessage } from "./error-message";
+import { track } from "@/lib/analytics";
 
 type Mode = "client" | "pro";
 
@@ -47,6 +48,7 @@ export function WelcomeFlow({ as }: { as?: Mode }) {
   const [city, setCity] = useState(prefs.city);
   const [otherCity, setOtherCity] = useState("");
   const [birthDate, setBirthDate] = useState<BirthDate>(EMPTY_BIRTH_DATE);
+  const [accepted, setAccepted] = useState(false);
   const [done, setDone] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string>();
@@ -67,7 +69,7 @@ export function WelcomeFlow({ as }: { as?: Mode }) {
     step === 1
       ? mode === "client" || (mode === "pro" && chosenTrades.length > 0)
       : step === 3
-        ? birthIso !== null
+        ? birthIso !== null && accepted
         : true;
 
   const finish = async () => {
@@ -81,7 +83,9 @@ export function WelcomeFlow({ as }: { as?: Mode }) {
         trades: mode === "pro" ? chosenTrades : undefined,
         language,
         city: finalCity,
+        accept_terms: accepted,
       });
+      track("signup");
       prefs.update({ city: finalCity });
       setDone(true);
       setMe(updated);
@@ -227,6 +231,36 @@ export function WelcomeFlow({ as }: { as?: Mode }) {
             autoComplete="address-level2"
           />
           <BirthDateField value={birthDate} onChange={setBirthDate} />
+          <label className="flex min-h-12 items-start gap-3">
+            <input
+              type="checkbox"
+              checked={accepted}
+              onChange={(event) => setAccepted(event.target.checked)}
+              className="accent-hibiscus mt-0.5 size-6 shrink-0"
+            />
+            <span>
+              {t.rich("terms", {
+                terms: (text) => (
+                  <Link
+                    href="/pages/conditions-generales"
+                    target="_blank"
+                    className="text-hibiscus font-bold underline"
+                  >
+                    {text}
+                  </Link>
+                ),
+                privacy: (text) => (
+                  <Link
+                    href="/pages/confidentialite"
+                    target="_blank"
+                    className="text-hibiscus font-bold underline"
+                  >
+                    {text}
+                  </Link>
+                ),
+              })}
+            </span>
+          </label>
         </>
       )}
 

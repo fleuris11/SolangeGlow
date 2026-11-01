@@ -102,6 +102,9 @@ test.describe("sign-up on a small phone", () => {
     await page.getByLabel("Jour").selectOption("12");
     await page.getByLabel("Mois").selectOption("4");
     await page.getByLabel("Année").selectOption("1995");
+    // The terms must be accepted before going further.
+    await expect(page.getByRole("button", { name: "C'est parti" })).toBeDisabled();
+    await page.getByRole("checkbox", { name: /J'accepte les conditions/ }).check();
     await page.screenshot({ path: "e2e/screenshots/welcome-3-city.png", fullPage: true });
     await page.getByRole("button", { name: "C'est parti" }).click();
 

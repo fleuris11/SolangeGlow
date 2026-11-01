@@ -92,7 +92,7 @@ export async function signInAsNewClient(page: Page, firstName?: string) {
   const phone = `+2290197${String(Math.floor(Math.random() * 1_000_000)).padStart(6, "0")}`;
   await signInWithPhone(page, phone);
   const onboarded = await page.request.post("/api/v1/me/onboarding", {
-    data: { mode: "client", birth_date: "1995-04-12", city: "Cotonou" },
+    data: { mode: "client", birth_date: "1995-04-12", city: "Cotonou", accept_terms: true },
     headers: API_HEADERS,
   });
   expect(onboarded.ok()).toBe(true);

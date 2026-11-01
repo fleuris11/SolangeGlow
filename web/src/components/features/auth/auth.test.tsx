@@ -174,6 +174,8 @@ describe("WelcomeFlow", () => {
     await userEvent.selectOptions(screen.getByLabelText("Jour"), "12");
     await userEvent.selectOptions(screen.getByLabelText("Mois"), "4");
     await userEvent.selectOptions(screen.getByLabelText("Année"), "1995");
+    expect(screen.getByRole("button", { name: "C'est parti" })).toBeDisabled();
+    await userEvent.click(screen.getByRole("checkbox", { name: /J'accepte les conditions/ }));
     await userEvent.click(screen.getByRole("button", { name: "C'est parti" }));
 
     expect(await screen.findByRole("img", { name: "Bienvenue !" })).toBeInTheDocument();
@@ -183,6 +185,7 @@ describe("WelcomeFlow", () => {
       trades: ["braids"],
       language: "en",
       city: "Abomey-Calavi",
+      accept_terms: true,
     });
   });
 

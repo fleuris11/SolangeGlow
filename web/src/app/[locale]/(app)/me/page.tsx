@@ -1,7 +1,8 @@
-import { FileText, Lifebuoy } from "@phosphor-icons/react/dist/ssr";
+import { DownloadSimple, FileText, Lifebuoy } from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
+import { DataExportButton } from "@/components/features/me/data-export-button";
 import { MeContent } from "@/components/features/me/me-content";
 import { pagesOnServer } from "@/lib/api/server";
 import { Link } from "@/lib/i18n/navigation";
@@ -44,6 +45,12 @@ export default async function MePage({ params }: Props) {
               {page.title}
             </Link>
           ))}
+        <DataExportButton
+          className={rowClass}
+          icon={
+            <DownloadSimple aria-hidden size={24} weight="duotone" className="text-prune-doux" />
+          }
+        />
       </nav>
     </div>
   );
