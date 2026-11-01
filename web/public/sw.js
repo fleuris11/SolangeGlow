@@ -2,14 +2,28 @@
  * the cache of the lessons saved by the student (written by the page, kept across versions).
  * Registered as /sw.js?dev=1 in development: alerts work, but nothing is cached
  * (the cache would fight hot reload). */
-const VERSION = "v2";
+const VERSION = "v3";
 const PAGES = `sg-pages-${VERSION}`;
 const ASSETS = `sg-assets-${VERSION}`;
 const DEV = new URL(self.location.href).searchParams.get("dev") === "1";
 // Lessons saved by the student to watch offline (Academy): never emptied here.
 const LESSONS = "sg-lessons-v1";
 
-self.addEventListener("install", () => self.skipWaiting());
+// The offline screen of each language, kept from the start.
+const OFFLINE = ["fr", "en", "sk"].map((locale) => `/${locale}/hors-ligne`);
+
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    (DEV ? Promise.resolve() : caches.open(PAGES).then((cache) => cache.addAll(OFFLINE)))
+      .catch(() => undefined)
+      .then(() => self.skipWaiting()),
+  );
+});
+
+function offlinePage(url) {
+  const locale = url.pathname.split("/")[1];
+  return caches.match(`/${["fr", "en", "sk"].includes(locale) ? locale : "fr"}/hors-ligne`);
+}
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
@@ -48,7 +62,12 @@ self.addEventListener("fetch", (event) => {
           caches.open(PAGES).then((cache) => cache.put(request, copy));
           return response;
         })
-        .catch(() => caches.match(request).then((cached) => cached || Response.error())),
+        .catch(() =>
+          caches
+            .match(request)
+            .then((cached) => cached || offlinePage(url))
+            .then((page) => page || Response.error()),
+        ),
     );
     return;
   }

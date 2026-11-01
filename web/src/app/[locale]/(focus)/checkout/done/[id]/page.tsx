@@ -1,7 +1,9 @@
+import { DeviceMobile } from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { SignedIn } from "@/components/features/payments/screens";
+import { InstallPrompt } from "@/components/pwa/install-prompt";
 import { CheckoutDone } from "@/components/features/shop/screens";
 import type { Locale } from "@/lib/i18n/routing";
 
@@ -19,6 +21,10 @@ export default async function Page({ params }: Props) {
   return (
     <SignedIn>
       <CheckoutDone groupId={id} />
+      <InstallPrompt
+        moment="success"
+        icon={<DeviceMobile aria-hidden size={24} weight="duotone" />}
+      />
     </SignedIn>
   );
 }

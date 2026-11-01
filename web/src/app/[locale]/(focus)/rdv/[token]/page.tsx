@@ -1,7 +1,9 @@
+import { DeviceMobile } from "@phosphor-icons/react/dist/ssr";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { AppointmentView } from "@/components/features/booking/screens";
+import { InstallPrompt } from "@/components/pwa/install-prompt";
 import type { Locale } from "@/lib/i18n/routing";
 
 type Props = { params: Promise<{ locale: Locale; token: string }> };
@@ -15,5 +17,13 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
 export default async function Page({ params }: Props) {
   const { locale, token } = await params;
   setRequestLocale(locale);
-  return <AppointmentView holder={{ token }} />;
+  return (
+    <>
+      <AppointmentView holder={{ token }} />
+      <InstallPrompt
+        moment="success"
+        icon={<DeviceMobile aria-hidden size={24} weight="duotone" />}
+      />
+    </>
+  );
 }
