@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { SpeakButton } from "@/components/ui/speak-button";
 import { Stepper } from "@/components/ui/stepper";
 import { useToast } from "@/components/ui/toast";
+import { appendText, DictateButton } from "@/components/ui/dictate-button";
 import { ApiError } from "@/lib/api/client";
 import { getMyPro } from "@/lib/api/pros";
 import { getMyProducts } from "@/lib/api/shop";
@@ -320,6 +321,10 @@ export function CreateFlow() {
               value={caption}
               onChange={(event) => setCaption(event.target.value)}
               className="rounded-field bg-poudre focus:border-hibiscus min-h-14 w-full border-2 border-transparent px-4 py-3 outline-none"
+            />
+            <DictateButton
+              className="self-start"
+              onText={(said) => setCaption((current) => appendText(current, said))}
             />
           </div>
           <fieldset className="flex flex-col gap-2">

@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useToast } from "@/components/ui/toast";
+import { appendText, DictateButton } from "@/components/ui/dictate-button";
 import { ApiError } from "@/lib/api/client";
 import {
   createReview,
@@ -92,6 +93,10 @@ function ReviewForm({ item, onDone }: { item: PendingReview; onDone: () => void 
         value={text}
         onChange={(event) => setText(event.target.value)}
         className="rounded-field bg-poudre focus:border-hibiscus min-h-14 w-full border-2 border-transparent px-4 py-3 outline-none"
+      />
+      <DictateButton
+        className="self-start"
+        onText={(said) => setText((current) => appendText(current, said))}
       />
       <div className="flex flex-wrap gap-2">
         <label className="border-prune text-prune inline-flex min-h-12 cursor-pointer items-center gap-2 rounded-full border-2 px-5 font-bold">

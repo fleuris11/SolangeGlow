@@ -5,6 +5,7 @@ import { useId, useState, type FormEvent, type ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { appendText, DictateButton } from "@/components/ui/dictate-button";
 import { ApiError } from "@/lib/api/client";
 import { sendTicket, suggestAnswers, type FaqItem } from "@/lib/api/help";
 import { useMe } from "@/lib/auth/use-me";
@@ -119,6 +120,10 @@ export function HelpContact({
             if (step !== "ask") setStep("ask");
           }}
           className={fieldClass}
+        />
+        <DictateButton
+          className="self-start"
+          onText={(said) => setQuestion((current) => appendText(current, said))}
         />
         {step === "ask" && (
           <Button type="submit" icon={searchIcon} disabled={busy} className="self-start">

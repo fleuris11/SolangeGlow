@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Stepper } from "@/components/ui/stepper";
 import { useToast } from "@/components/ui/toast";
+import { appendText, DictateButton } from "@/components/ui/dictate-button";
 import { ApiError } from "@/lib/api/client";
 import { getMedia } from "@/lib/api/payments";
 import {
@@ -314,6 +315,10 @@ function Editor({ product, currency }: { product?: MyProduct; currency: string }
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             className="rounded-field bg-poudre focus:border-hibiscus w-full border-2 border-transparent px-4 py-3 outline-none"
+          />
+          <DictateButton
+            className="self-start"
+            onText={(said) => setDescription((current) => appendText(current, said))}
           />
           <div className="flex flex-col gap-2">
             <p className="font-bold">{t("voice")}</p>

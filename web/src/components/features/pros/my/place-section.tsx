@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/input";
 import { Skeleton } from "@/components/ui/skeleton";
 import { SwitchRow } from "@/components/ui/switch-row";
 import { useToast } from "@/components/ui/toast";
+import { appendText, DictateButton } from "@/components/ui/dictate-button";
 import { ApiError } from "@/lib/api/client";
 import { setMyLocation, setMyTravel, updateMyPro, type MyPro } from "@/lib/api/pros";
 import { currencyExponent } from "@/lib/money";
@@ -193,6 +194,10 @@ export function PlaceSection({ pro }: { pro: MyPro }) {
               value={landmarks}
               onChange={(event) => setLandmarks(event.target.value)}
               className={fieldClass}
+            />
+            <DictateButton
+              className="self-start"
+              onText={(said) => setLandmarks((current) => appendText(current, said))}
             />
           </div>
           <MediaField
