@@ -26,6 +26,7 @@ import { addDays, dayName, durationLabel, localDay, timeAt } from "@/lib/booking
 import { cn } from "@/lib/cn";
 import { usePathname, useRouter } from "@/lib/i18n/navigation";
 import { formatMoney } from "@/lib/money";
+import { track } from "@/lib/analytics";
 
 // Shown after the booking only: downloaded then (ADR-004).
 const BookedScreen = dynamic(() => import("./booking-done").then((m) => m.BookedScreen));
@@ -192,6 +193,7 @@ export function BookingFlow({
         ...(signedIn ? {} : { guest_name: name, guest_phone: phone }),
         ...(postId ? { post_id: postId } : {}),
       });
+      track("booking");
       if (answer.checkout_url) {
         if (embedded) window.open(answer.checkout_url, "_blank", "noopener");
         else window.location.assign(answer.checkout_url);

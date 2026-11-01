@@ -32,6 +32,32 @@ async function allowedDomains(slug: string): Promise<string[]> {
 }
 
 const VISITOR_COOKIE = "sg_visitor";
+const DEV = process.env.NODE_ENV !== "production";
+
+/**
+ * What a page may load. Inline scripts stay allowed (theme before the first paint,
+ * JSON-LD, Next's own data): pages are static, so no per-request nonce. Media, maps,
+ * calls and lives come from hosts set at run time, hence https: and wss: for them.
+ */
+function contentSecurityPolicy(ancestors: string[]): string {
+  const ads = "https://pagead2.googlesyndication.com https://*.googlesyndication.com";
+  return [
+    "default-src 'self'",
+    `script-src 'self' 'unsafe-inline'${DEV ? " 'unsafe-eval'" : ""} ${ads}`,
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' data: blob: https:",
+    "media-src 'self' blob: https:",
+    "font-src 'self' data:",
+    `connect-src 'self' https: wss:${DEV ? " ws: http://localhost:*" : ""}`,
+    "worker-src 'self' blob:",
+    `frame-src ${ads} https://*.doubleclick.net https://www.google.com`,
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    ["frame-ancestors 'self'", ...ancestors].join(" "),
+    ...(DEV ? [] : ["upgrade-insecure-requests"]),
+  ].join("; ");
+}
 
 export default async function proxy(request: NextRequest) {
   const response = intl(request);
@@ -39,10 +65,7 @@ export default async function proxy(request: NextRequest) {
   const ancestors = embed
     ? (await allowedDomains(embed[1]!.toLowerCase())).map((domain) => `https://${domain}`)
     : [];
-  response.headers.set(
-    "Content-Security-Policy",
-    ["frame-ancestors 'self'", ...ancestors].join(" "),
-  );
+  response.headers.set("Content-Security-Policy", contentSecurityPolicy(ancestors));
   // A random visitor id (no personal data): an ad is not shown too often to the same
   // person without an account (module 12).
   if (!request.cookies.get(VISITOR_COOKIE)) {
@@ -60,5 +83,5 @@ export const config = {
   // Every page except the API and media proxies, Next internals and files with an
   // extension (sw.js, icons…). Short links like /aicha get their language (/fr/aicha).
   // The dot is escaped twice: once for the string, once for the pattern.
-  matcher: "/((?!api|s3|i18n-catalog|_next|_vercel|.*\\..*).*)",
+  matcher: "/((?!api|s3|stats|i18n-catalog|_next|_vercel|.*\\..*).*)",
 };

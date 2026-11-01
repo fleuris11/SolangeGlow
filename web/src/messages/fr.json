@@ -275,7 +275,10 @@
     "cta": "Me connecter ou m'inscrire",
     "language": "Langue",
     "helpTitle": "Aide et informations",
-    "help": "Centre d'aide"
+    "help": "Centre d'aide",
+    "export": "Télécharger mes données",
+    "exportBusy": "Préparation…",
+    "exportError": "Le téléchargement n'a pas marché. Réessaie dans un moment."
   },
   "settings": {
     "title": "Affichage",
@@ -449,7 +452,8 @@
       "month": "Mois",
       "year": "Année",
       "why": "Elle sert à protéger les plus jeunes. Elle n'est jamais affichée."
-    }
+    },
+    "terms": "J'accepte les <terms>conditions d'utilisation</terms> et la <privacy>politique de confidentialité</privacy>."
   },
   "profile": {
     "noName": "Ton profil",
@@ -3992,5 +3996,27 @@
       "sentText": "Ta référence : {reference}. On te répond vite.",
       "another": "Poser une autre question"
     }
+  },
+  "privacy": {
+    "aria": "Tes données",
+    "text": "Aucun cookie publicitaire. Tes données servent seulement à faire marcher l'appli.",
+    "more": "En savoir plus",
+    "ok": "J'ai compris"
+  },
+  "voice": {
+    "speak": "Dicter",
+    "listening": "J'écoute…"
+  },
+  "pwa": {
+    "title": "Installe Solange Glow sur ton téléphone",
+    "text": "Elle s'ouvre comme une appli, même avec peu de réseau.",
+    "install": "Installer",
+    "later": "Plus tard"
+  },
+  "offline": {
+    "title": "Pas de connexion",
+    "text": "Les pages déjà vues restent disponibles. Reconnecte-toi pour le reste.",
+    "retry": "Réessayer",
+    "lessons": "Mes formations hors ligne"
   }
 }

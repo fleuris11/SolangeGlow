@@ -43,6 +43,7 @@ import { mediaSrc } from "@/lib/media";
 import { formatMoney, parseMoney } from "@/lib/money";
 
 import { HoldToRecord } from "../messaging/hold-to-record";
+import { track } from "@/lib/analytics";
 
 /** Where the person receives the gift: the hour of the sending, in Benin. */
 const RECIPIENT_ZONE = "Africa/Porto-Novo";
@@ -429,6 +430,7 @@ export function OfferFlow({ start }: { start: OfferStart }) {
         send_at: later && day ? zonedToIso(day, SEND_MINUTES, RECIPIENT_ZONE) : null,
         from_name: giver.trim(),
       });
+      track("gift");
       window.location.assign(result.checkout_url);
     } catch (failure) {
       toast(failure instanceof ApiError ? failure.message : t("error"), "warning");

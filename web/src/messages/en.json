@@ -275,7 +275,10 @@
     "cta": "Sign in or sign up",
     "language": "Language",
     "helpTitle": "Help and information",
-    "help": "Help center"
+    "help": "Help center",
+    "export": "Download my data",
+    "exportBusy": "Preparing…",
+    "exportError": "The download did not work. Try again in a moment."
   },
   "settings": {
     "title": "Display",
@@ -449,7 +452,8 @@
       "month": "Month",
       "year": "Year",
       "why": "It protects the youngest. It is never shown."
-    }
+    },
+    "terms": "I accept the <terms>terms of use</terms> and the <privacy>privacy policy</privacy>."
   },
   "profile": {
     "noName": "Your profile",
@@ -3992,5 +3996,27 @@
       "sentText": "Your reference: {reference}. We will answer you quickly.",
       "another": "Ask another question"
     }
+  },
+  "privacy": {
+    "aria": "Your data",
+    "text": "No advertising cookies. Your data is only used to run the app.",
+    "more": "Learn more",
+    "ok": "Got it"
+  },
+  "voice": {
+    "speak": "Dictate",
+    "listening": "Listening…"
+  },
+  "pwa": {
+    "title": "Install Solange Glow on your phone",
+    "text": "It opens like an app, even with a weak network.",
+    "install": "Install",
+    "later": "Later"
+  },
+  "offline": {
+    "title": "No connection",
+    "text": "Pages you already saw are still here. Reconnect for the rest.",
+    "retry": "Try again",
+    "lessons": "My offline courses"
   }
 }

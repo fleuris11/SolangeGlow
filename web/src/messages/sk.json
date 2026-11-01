@@ -275,7 +275,10 @@
     "cta": "Prihlásiť sa alebo zaregistrovať",
     "language": "Jazyk",
     "helpTitle": "Pomoc a informácie",
-    "help": "Centrum pomoci"
+    "help": "Centrum pomoci",
+    "export": "Stiahnuť moje údaje",
+    "exportBusy": "Pripravuje sa…",
+    "exportError": "Stiahnutie nefungovalo. Skús to o chvíľu znova."
   },
   "settings": {
     "title": "Zobrazenie",
@@ -449,7 +452,8 @@
       "month": "Mesiac",
       "year": "Rok",
       "why": "Chráni najmladších. Nikdy sa nezobrazuje."
-    }
+    },
+    "terms": "Súhlasím s <terms>podmienkami používania</terms> a <privacy>zásadami ochrany súkromia</privacy>."
   },
   "profile": {
     "noName": "Tvoj profil",
@@ -3992,5 +3996,27 @@
       "sentText": "Tvoja referencia: {reference}. Rýchlo ti odpovieme.",
       "another": "Položiť ďalšiu otázku"
     }
+  },
+  "privacy": {
+    "aria": "Tvoje údaje",
+    "text": "Žiadne reklamné cookies. Tvoje údaje slúžia len na fungovanie aplikácie.",
+    "more": "Viac informácií",
+    "ok": "Rozumiem"
+  },
+  "voice": {
+    "speak": "Diktovať",
+    "listening": "Počúvam…"
+  },
+  "pwa": {
+    "title": "Nainštaluj si Solange Glow do telefónu",
+    "text": "Otvorí sa ako aplikácia, aj so slabým signálom.",
+    "install": "Nainštalovať",
+    "later": "Neskôr"
+  },
+  "offline": {
+    "title": "Bez pripojenia",
+    "text": "Stránky, ktoré si už videla, zostávajú dostupné. Pre ostatné sa pripoj.",
+    "retry": "Skúsiť znova",
+    "lessons": "Moje kurzy offline"
   }
 }

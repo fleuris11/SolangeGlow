@@ -5,6 +5,7 @@ const withNextIntl = createNextIntlPlugin("./src/lib/i18n/request.ts");
 
 const apiInternalUrl = process.env.API_INTERNAL_URL ?? "http://localhost:8000";
 const s3InternalUrl = process.env.S3_INTERNAL_URL ?? "http://localhost:9000";
+const umamiInternalUrl = process.env.UMAMI_INTERNAL_URL ?? "";
 
 const nextConfig: NextConfig = {
   output: "standalone",
@@ -21,10 +22,31 @@ const nextConfig: NextConfig = {
       { source: "/api/:path*", destination: `${apiInternalUrl}/api/:path*` },
       // Media stored on S3 (MinIO locally): signed links stay valid through this proxy.
       { source: "/s3/:path*", destination: `${s3InternalUrl}/:path*` },
+      // Audience (Umami, no cookies) through the app: no third-party address for the browser.
+      ...(umamiInternalUrl
+        ? [{ source: "/stats/:path*", destination: `${umamiInternalUrl}/:path*` }]
+        : []),
     ];
   },
   async headers() {
     return [
+      {
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+          {
+            key: "Permissions-Policy",
+            // Camera and microphone: calls, lives, voice notes; location: nearby pros.
+            value: "camera=(self), microphone=(self), geolocation=(self), payment=(), usb=()",
+          },
+          // Browsers only keep it over HTTPS: harmless in development.
+          ...(process.env.NODE_ENV === "production"
+            ? [{ key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" }]
+            : []),
+        ],
+      },
       {
         source: "/sw.js",
         headers: [

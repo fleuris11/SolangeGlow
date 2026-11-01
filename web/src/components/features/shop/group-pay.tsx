@@ -16,6 +16,7 @@ import { Link, useRouter } from "@/lib/i18n/navigation";
 import { formatMoney } from "@/lib/money";
 
 import { CART_KEY } from "./cart";
+import { track } from "@/lib/analytics";
 
 /** The test provider's page for a whole cart: choose what the « bank » answers. */
 export function TestGroupCheckout({ groupId }: { groupId: string }) {
@@ -99,7 +100,9 @@ export function CheckoutDone({ groupId }: { groupId: string }) {
   const status = query.data?.status;
   useEffect(() => {
     // The cart was emptied on the server: show it as it is now.
-    if (status === "paid") void queryClient.invalidateQueries({ queryKey: CART_KEY });
+    if (status !== "paid") return;
+    track("order");
+    void queryClient.invalidateQueries({ queryKey: CART_KEY });
   }, [status, queryClient]);
 
   if (query.isPending) return <Skeleton className="rounded-card h-80" />;
