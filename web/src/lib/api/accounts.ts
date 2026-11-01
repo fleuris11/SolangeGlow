@@ -55,6 +55,10 @@ export const removePhoto = () => unwrap(api.DELETE("/api/v1/me/photo"));
 export const setPassword = (password: string) =>
   unwrap(api.POST("/api/v1/me/password", { body: { password } }));
 
+/** « Download my data » (GDPR): a ZIP built now by the server. */
+export const downloadMyData = () =>
+  unwrap(api.GET("/api/v1/me/export", { parseAs: "blob" })) as Promise<Blob>;
+
 export const completeOnboarding = (body: Schemas["OnboardingRequest"]) =>
   unwrap(api.POST("/api/v1/me/onboarding", { body }));
 

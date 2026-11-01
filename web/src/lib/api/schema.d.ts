@@ -2745,6 +2745,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/me/export": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description « Download my data »: a ZIP of JSON files, built now, never stored. */
+    get: operations["me_export_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/me/following": {
     parameters: {
       query?: never;
@@ -5254,6 +5271,23 @@ export interface paths {
     put?: never;
     /** @description She accepts the quote: an order to pay. */
     post: operations["selection_requests_order_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/seo/sitemap/{kind}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description The public pages of a kind, for the sitemaps of the app. */
+    get: operations["seo_sitemap_list"];
+    put?: never;
+    post?: never;
     delete?: never;
     options?: never;
     head?: never;
@@ -8608,6 +8642,8 @@ export interface components {
       trades?: string[];
       language?: components["schemas"]["LanguageEnum"];
       city?: string;
+      /** @default false */
+      accept_terms: boolean;
     };
     /**
      * @description * `not_received` - Not received
@@ -10370,6 +10406,11 @@ export interface components {
       /** @description The account was waiting to be deleted: signing in kept it. */
       deletion_cancelled: boolean;
       user: components["schemas"]["Me"];
+    };
+    SitemapEntry: {
+      path: string;
+      /** Format: date-time */
+      updated_at: string;
     };
     Slot: {
       /** Format: date-time */
@@ -15508,6 +15549,25 @@ export interface operations {
       };
     };
   };
+  me_export_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/zip": string;
+        };
+      };
+    };
+  };
   me_following_list: {
     parameters: {
       query?: never;
@@ -20038,6 +20098,27 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["SelectionOrder"];
+        };
+      };
+    };
+  };
+  seo_sitemap_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        kind: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SitemapEntry"][];
         };
       };
     };
