@@ -4,8 +4,9 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { AdSlot } from "@/components/features/ads/ad-cards";
 import { SelectionHome } from "@/components/features/selection/selection-home";
 import type { Schemas } from "@/lib/api/client";
-import { SITE_URL, adsOnServer, selectionOnServer } from "@/lib/api/server";
+import { adsOnServer, selectionOnServer } from "@/lib/api/server";
 import type { Locale } from "@/lib/i18n/routing";
+import { alternatesFor } from "@/lib/seo/alternates";
 
 type Props = {
   params: Promise<{ locale: Locale }>;
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
   return {
     title: t("title"),
     description: t("intro"),
-    alternates: { canonical: `${SITE_URL}/${locale}/selection` },
+    alternates: alternatesFor(locale, "/selection"),
   };
 }
 

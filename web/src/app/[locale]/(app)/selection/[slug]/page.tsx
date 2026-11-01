@@ -7,6 +7,7 @@ import { SelectionProductView } from "@/components/features/selection/selection-
 import { SITE_URL, pickupPointsOnServer, selectionProductOnServer } from "@/lib/api/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { mediaSrc } from "@/lib/media";
+import { alternatesFor } from "@/lib/seo/alternates";
 
 type Props = { params: Promise<{ locale: Locale; slug: string }> };
 
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t("metaTitle", { title: product.title }),
     description: product.description.slice(0, 160) || t("metaDescription"),
-    alternates: { canonical: `${SITE_URL}/${locale}/selection/${product.slug}` },
+    alternates: alternatesFor(locale, `/selection/${product.slug}`),
     openGraph: {
       title: product.title,
       ...(image

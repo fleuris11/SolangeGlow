@@ -4,8 +4,9 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { cache } from "react";
 
 import { ShopView } from "@/components/features/shop/shop-view";
-import { SITE_URL, shopOnServer } from "@/lib/api/server";
+import { shopOnServer } from "@/lib/api/server";
 import type { Locale } from "@/lib/i18n/routing";
+import { alternatesFor } from "@/lib/seo/alternates";
 
 type Props = {
   params: Promise<{ locale: Locale; slug: string }>;
@@ -29,7 +30,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   return {
     title: t("title", { name: page.shop.name }),
     description: t("metaDescription", { name: page.shop.name, count: page.products.length }),
-    alternates: { canonical: `${SITE_URL}/${locale}/${slug}/shop` },
+    alternates: alternatesFor(locale, `/${slug}/shop`),
   };
 }
 

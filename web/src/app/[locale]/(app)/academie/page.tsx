@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { CatalogueView, type CatalogueFilters } from "@/components/features/academy/catalogue-view";
-import { catalogueOnServer, SITE_URL, tradesOnServer, type CatalogueQuery } from "@/lib/api/server";
+import { catalogueOnServer, tradesOnServer, type CatalogueQuery } from "@/lib/api/server";
 import type { Locale } from "@/lib/i18n/routing";
+import { alternatesFor } from "@/lib/seo/alternates";
 
 type Props = {
   params: Promise<{ locale: Locale }>;
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
   return {
     title: t("title"),
     description: t("intro"),
-    alternates: { canonical: `${SITE_URL}/${locale}/academie` },
+    alternates: alternatesFor(locale, "/academie"),
   };
 }
 

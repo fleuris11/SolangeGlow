@@ -6,13 +6,19 @@ import { RichText } from "@/components/features/help/rich-text";
 import { SpeakButton } from "@/components/ui/speak-button";
 import { pageOnServer } from "@/lib/api/server";
 import type { Locale } from "@/lib/i18n/routing";
+import { alternatesFor } from "@/lib/seo/alternates";
 
 type Props = { params: Promise<{ locale: Locale; slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
   const page = await pageOnServer(slug, locale).catch(() => null);
-  return page ? { title: page.title, description: page.summary || undefined } : {};
+  if (!page) return {};
+  return {
+    title: page.title,
+    description: page.summary || undefined,
+    alternates: alternatesFor(locale, `/pages/${page.slug}`),
+  };
 }
 
 /** A page written by the team in the admin: terms, privacy, legal notice, rules… */

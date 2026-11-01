@@ -3,7 +3,7 @@
  * They go straight to Django (API_INTERNAL_URL) with the visitor's cookies and language,
  * so a pro sees her own draft and everyone gets texts in their language.
  */
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import createClient from "openapi-fetch";
 
 import { CLIENT_HEADER } from "./client";
@@ -11,11 +11,29 @@ import type { components, paths } from "./schema";
 
 const API_INTERNAL_URL = process.env.API_INTERNAL_URL ?? "http://localhost:8000";
 
+/**
+ * The visitor's address, for the rate limits of the backend: every page rendered here
+ * reaches Django from this server. Sent only with the shared secret INTERNAL_API_TOKEN.
+ */
+async function visitorHeaders(): Promise<Record<string, string>> {
+  const token = process.env.INTERNAL_API_TOKEN;
+  if (!token) return {};
+  const incoming = await headers();
+  const address =
+    incoming.get("x-forwarded-for")?.split(",")[0]?.trim() || incoming.get("x-real-ip") || "";
+  return address ? { "X-SG-Internal": token, "X-SG-Client-IP": address } : {};
+}
+
 async function serverApi(locale: string) {
   const cookieHeader = (await cookies()).toString();
   return createClient<paths>({
     baseUrl: API_INTERNAL_URL,
-    headers: { ...CLIENT_HEADER, "Accept-Language": locale, cookie: cookieHeader },
+    headers: {
+      ...CLIENT_HEADER,
+      ...(await visitorHeaders()),
+      "Accept-Language": locale,
+      cookie: cookieHeader,
+    },
     fetch: (request) => globalThis.fetch(request, { cache: "no-store" }),
   });
 }
@@ -94,7 +112,7 @@ export async function personPostsOnServer(userId: string, locale: string) {
 }
 
 /** Public address of the site, for links shared on social networks (images, canonical). */
-export const SITE_URL = (process.env.SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
+export { SITE_URL } from "@/lib/seo/alternates";
 
 // --- Shops (module 4) ----------------------------------------------------------------------------
 

@@ -23,6 +23,7 @@ import { SpeakButton } from "@/components/ui/speak-button";
 import { adsOnServer, placesOnServer, searchProsOnServer } from "@/lib/api/server";
 import { Link } from "@/lib/i18n/navigation";
 import type { Locale } from "@/lib/i18n/routing";
+import { alternatesFor } from "@/lib/seo/alternates";
 
 // Map view only: its code (and MapLibre) is not part of the list page.
 const ExploreMapView = dynamic(() =>
@@ -37,7 +38,11 @@ type Props = {
 export async function generateMetadata({ params }: Pick<Props, "params">): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "explore" });
-  return { title: t("title"), description: t("metaDescription") };
+  return {
+    title: t("title"),
+    description: t("metaDescription"),
+    alternates: alternatesFor(locale, "/explore"),
+  };
 }
 
 /**

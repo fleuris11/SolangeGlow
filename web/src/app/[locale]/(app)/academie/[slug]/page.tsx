@@ -6,6 +6,7 @@ import { CourseView } from "@/components/features/academy/course-view";
 import { courseOnServer, SITE_URL } from "@/lib/api/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { jsonLdScript } from "@/lib/pros/json-ld";
+import { alternatesFor } from "@/lib/seo/alternates";
 
 type Props = { params: Promise<{ locale: Locale; slug: string }> };
 
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: course.title,
     description: course.summary || undefined,
-    alternates: { canonical: `${SITE_URL}/${locale}/academie/${course.slug}` },
+    alternates: alternatesFor(locale, `/academie/${course.slug}`),
   };
 }
 

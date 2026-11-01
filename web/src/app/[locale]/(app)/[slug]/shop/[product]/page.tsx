@@ -9,6 +9,7 @@ import type { Locale } from "@/lib/i18n/routing";
 import { mediaSrc } from "@/lib/media";
 import { jsonLdScript } from "@/lib/pros/json-ld";
 import { productJsonLd } from "@/lib/shop/json-ld";
+import { alternatesFor } from "@/lib/seo/alternates";
 
 type Props = { params: Promise<{ locale: Locale; slug: string; product: string }> };
 
@@ -37,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t("metaTitle", { title: product.title, name: product.shop.name }),
     description,
-    alternates: { canonical: `${SITE_URL}/${locale}${product.link}` },
+    alternates: alternatesFor(locale, product.link),
     openGraph: {
       title: product.title,
       description,

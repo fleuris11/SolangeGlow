@@ -13,13 +13,14 @@ import { SpeakButton } from "@/components/ui/speak-button";
 import { faqOnServer, pagesOnServer } from "@/lib/api/server";
 import { Link } from "@/lib/i18n/navigation";
 import type { Locale } from "@/lib/i18n/routing";
+import { alternatesFor } from "@/lib/seo/alternates";
 
 type Props = { params: Promise<{ locale: Locale }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "help" });
-  return { title: t("title") };
+  return { title: t("title"), alternates: alternatesFor(locale, "/aide") };
 }
 
 /** Help center: ask a question (answers of the FAQ first), then the FAQ by topic. */
