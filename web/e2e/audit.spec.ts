@@ -20,6 +20,7 @@ type Finding = {
   speak: boolean | null;
   mainActions: number;
   axe: string[];
+  heading: string;
 };
 
 async function firstPath(page: Page, api: string, pick: (body: never) => string | undefined) {
@@ -66,6 +67,7 @@ async function inspect(page: Page, screen: Screen): Promise<Finding> {
         /^Écouter/.test(b.getAttribute("aria-label") ?? b.textContent ?? ""),
       ),
       mainActions: main.length,
+      heading: (document.querySelector("main h1, main h2")?.textContent ?? "").trim().slice(0, 80),
     };
   });
   const axe = await new AxeBuilder({ page })
@@ -146,7 +148,15 @@ test("every key screen passes the check-list at 360 px, dark, very large text, a
   const findings: Finding[] = [];
   for (const screen of visitor) findings.push(await inspect(page, screen));
   await signInWithPhone(page, AICHA);
+  // Signed in, the display choices come from the profile: turn the audio mode on there.
+  const audio = (on: boolean) =>
+    page.request.patch("/api/v1/me", {
+      data: { audio_mode: on, theme: "dark", text_size: "xlarge" },
+      headers: { "X-SG-Client": "web" },
+    });
+  expect((await audio(true)).ok()).toBe(true);
   for (const screen of member) findings.push(await inspect(page, screen));
+  await audio(false);
   writeFileSync("e2e/screenshots/audit.json", JSON.stringify(findings, null, 2));
 
   const failing = findings.filter(
