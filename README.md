@@ -508,6 +508,45 @@ Variables d'environnement :
 - `HELP_AI_URL` et `HELP_AI_KEY` : vides, donc l'assistant IA est coupé ;
 - `WEB_INTERNAL_URL` : adresse du web vue par Django, pour chercher ses textes.
 
+## Qualité avant le lancement (prompt 19)
+
+**Audit écran par écran** :
+- lancement : `docker compose run --rm e2e npx playwright test e2e/audit.spec.ts` ;
+- les écrans clés sont passés à 360 px, en sombre, en très grand texte, avec le mode audio ;
+- résultat dans `web/e2e/screenshots/audit.json`.
+
+**Mesurer avec Lighthouse** (mobile, 5 pages) :
+1. Construis l'appli de production à côté du serveur de développement :
+   `docker compose exec -e NEXT_DIST_DIR=.next-prod -e NODE_ENV=production web npx next build`
+2. Démarre-la sur le port 3100 :
+   `docker compose exec -d -e NEXT_DIST_DIR=.next-prod -e NODE_ENV=production web npx next start -p 3100`
+3. Lance la mesure :
+   `docker compose run --rm --entrypoint sh e2e e2e/lighthouse.sh`
+   - sur un ordinateur lent, ajoute `-e LH_CPU=1` ;
+   - résultats dans `web/e2e/screenshots/lighthouse-*.json`.
+4. Arrête le serveur de production, puis supprime `web/.next-prod`.
+
+**Audience et erreurs**, à démarrer à la demande avec
+`docker compose --profile monitoring up -d` :
+- **Umami** (http://localhost:3001, `admin` / `umami` au premier lancement, à changer) :
+  1. crée le site ;
+  2. mets son identifiant dans `NEXT_PUBLIC_UMAMI_WEBSITE_ID` ;
+  3. relance le web.
+
+  Événements suivis : `signup`, `booking`, `order`, `gift`.
+- **GlitchTip** (http://localhost:8001) :
+  1. crée un compte et un projet ;
+  2. copie son DSN dans `SENTRY_DSN` (Django) et `NEXT_PUBLIC_SENTRY_DSN` (web).
+
+**Données personnelles** :
+- la case « J'accepte les conditions » est obligatoire à la fin de l'accueil ;
+- « Moi » → « Télécharger mes données » donne un ZIP ;
+- le bandeau d'information s'affiche une fois.
+
+**Production** :
+- `INTERNAL_API_TOKEN` : même valeur longue et aléatoire sur le web et sur Django ;
+- `SITE_URL` : l'adresse publique (plans du site, liens canoniques).
+
 ## Client de l'API (web)
 
 Les types du client web sont générés depuis le schéma de l'API. Après toute
