@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { useSyncExternalStore, type ReactNode } from "react";
 
 import { buttonClasses } from "@/components/ui/button";
+import { SpeakButton } from "@/components/ui/speak-button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { hasSession } from "@/lib/api/client";
 import { Link } from "@/lib/i18n/navigation";
@@ -42,7 +43,10 @@ export function SignedIn({ children }: { children: ReactNode }) {
   if (!signedIn) {
     return (
       <div className="flex flex-col items-start gap-4">
-        <p className="text-lead font-bold">{t("signIn")}</p>
+        <div className="flex items-center gap-2">
+          <p className="text-lead font-bold">{t("signIn")}</p>
+          <SpeakButton text={t("signIn")} />
+        </div>
         <Link href="/auth" className={buttonClasses({ size: "lg" })}>
           {t("signInCta")}
         </Link>
