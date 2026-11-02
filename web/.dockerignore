@@ -2,3 +2,5 @@ node_modules
 .next
 coverage
 .env*
+e2e
+.next-*

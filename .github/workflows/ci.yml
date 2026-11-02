@@ -239,3 +239,25 @@ jobs:
       - name: Stop the stack
         if: always()
         run: docker compose down -v
+
+  production:
+    name: Production stack (images, HTTPS, first start, backup and restore)
+    runs-on: ubuntu-latest
+    needs: [backend, web]
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build, start and check the production stack
+        run: ./deploy/test-prod-stack.sh
+
+      - name: State and logs of the stack
+        if: failure()
+        run: |
+          compose="docker compose --env-file .env.prod.test -p solangeglow-prod-test -f docker-compose.prod.yml -f deploy/compose.test.yml"
+          $compose ps -a
+          $compose logs --tail=80
+
+      - name: Stop the stack
+        if: always()
+        run: docker compose --env-file .env.prod.test -p solangeglow-prod-test -f docker-compose.prod.yml -f deploy/compose.test.yml down -v

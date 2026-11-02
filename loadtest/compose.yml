@@ -1,0 +1,52 @@
+# Load test: the production image (gunicorn + uvicorn) next to the local stack, on its demo
+# data. Started by loadtest/run.sh. The test payment provider stays on through the settings
+# module config.settings.loadtest; everything else is the production configuration.
+name: solangeglow
+
+x-load-env: &load-env
+  DJANGO_SETTINGS_MODULE: config.settings.loadtest
+  # Fake values, for this test on the local machine only.
+  DJANGO_SECRET_KEY: loadtest-0123456789-0123456789-0123456789-0123456789
+  INTERNAL_API_TOKEN: loadtest-0123456789-0123456789-0123456789-0123456789
+  IDENTITY_VAULT_KEY: bG9hZHRlc3QtMDEyMzQ1Njc4OS0wMTIzNDU2Nzg5LTAxMjM=
+  DJANGO_ALLOWED_HOSTS: backend-load
+  SITE_URL: https://load.example.com
+  DATABASE_URL: postgis://${POSTGRES_USER:-solange}:${POSTGRES_PASSWORD:-solange}@db:5432/${POSTGRES_DB:-solangeglow}
+  REDIS_URL: redis://redis:6379/7
+  CELERY_BROKER_URL: redis://redis:6379/8
+  CELERY_RESULT_BACKEND: redis://redis:6379/9
+  CHANNELS_REDIS_URL: redis://redis:6379/10
+  AWS_STORAGE_BUCKET_NAME: solangeglow
+  AWS_S3_ENDPOINT_URL: http://minio:9000
+  AWS_S3_REGION_NAME: us-east-1
+  AWS_ACCESS_KEY_ID: ${MINIO_ROOT_USER:-solange}
+  AWS_SECRET_ACCESS_KEY: ${MINIO_ROOT_PASSWORD:-solange-minio-dev}
+  # The whole test comes from one address: the limits per address would answer instead.
+  API_THROTTLE_ANON: 1000000/minute
+  API_THROTTLE_USER: 1000000/minute
+  JWT_ACCESS_MINUTES: "240"
+  WEB_CONCURRENCY: ${WEB_CONCURRENCY:-3}
+
+services:
+  backend-load:
+    build:
+      context: ../backend
+      target: prod
+    image: solangeglow-backend:load
+    environment: *load-env
+    profiles: ["load"]
+
+  worker-load:
+    image: solangeglow-backend:load
+    command: celery -A config worker --loglevel=warning --concurrency=2
+    environment: *load-env
+    profiles: ["load"]
+    depends_on:
+      - backend-load
+
+  k6:
+    image: grafana/k6:1.8.2
+    profiles: ["load"]
+    working_dir: /scripts
+    volumes:
+      - ./:/scripts

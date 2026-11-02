@@ -28,16 +28,27 @@ ENV DJANGO_SETTINGS_MODULE=config.settings.dev
 EXPOSE 8000
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
-# --- Production image -----------------------------------------------------------
-FROM base AS prod
+# --- Production: dependencies, static files and translations prepared apart -----
+FROM base AS prod-build
 COPY requirements /tmp/requirements
-RUN pip install -r /tmp/requirements/prod.txt
-COPY --chown=app:app . /app
-ENV DJANGO_SETTINGS_MODULE=config.settings.prod
-RUN DJANGO_SECRET_KEY=build DATABASE_URL=postgis://build@localhost/build \
-    python manage.py collectstatic --noinput \
-    && python manage.py compilemessages --ignore=.venv
+RUN python -m venv /opt/venv && /opt/venv/bin/pip install -r /tmp/requirements/prod.txt
+COPY . /app
+# These values only let the settings load during the build: nothing keeps them.
+RUN DJANGO_SETTINGS_MODULE=config.settings.prod \
+    DJANGO_SECRET_KEY=image-build-only-0123456789-0123456789-0123456789 \
+    INTERNAL_API_TOKEN=image-build-only-0123456789-0123456789-0123456789 \
+    DJANGO_ALLOWED_HOSTS=build SITE_URL=https://build IDENTITY_VAULT_KEY=build \
+    AWS_STORAGE_BUCKET_NAME=build DATABASE_URL=postgis://build@localhost/build \
+    sh -c "/opt/venv/bin/python manage.py collectstatic --noinput \
+    && /opt/venv/bin/python manage.py compilemessages --ignore=.venv --verbosity 0"
+
+FROM base AS prod
+COPY --from=prod-build /opt/venv /opt/venv
+COPY --from=prod-build --chown=app:app /app /app
+ENV DJANGO_SETTINGS_MODULE=config.settings.prod \
+    PATH=/opt/venv/bin:$PATH
 USER app
 EXPOSE 8000
-CMD ["gunicorn", "config.asgi:application", "-k", "uvicorn.workers.UvicornWorker", \
-     "--bind", "0.0.0.0:8000", "--workers", "3"]
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=5 \
+    CMD ["python", "-c", "import urllib.request as u; u.urlopen(u.Request('http://localhost:8000/api/v1/health?deep=1', headers={'Host': 'backend'}), timeout=8)"]
+CMD ["gunicorn", "config.asgi:application", "-c", "docker/gunicorn.conf.py"]

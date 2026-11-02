@@ -1,0 +1,412 @@
+# Production stack: always through the scripts of deploy/ (docs/deploiement.md), they pass
+#   docker compose --env-file .env.prod -f docker-compose.prod.yml ...
+# Only Caddy (80, 443) and LiveKit (7881/tcp, 7882/udp) are reachable from the Internet.
+# Media live on an external object storage (OVH): no bucket in this file.
+
+name: solangeglow-prod
+
+x-backend-env: &backend-env
+  DJANGO_SETTINGS_MODULE: ${DJANGO_SETTINGS_MODULE:-config.settings.prod}
+  DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY:?see .env.prod.example}
+  DJANGO_ALLOWED_HOSTS: ${DOMAIN:?see .env.prod.example}
+  SITE_URL: https://${DOMAIN}
+  SHORT_LINK_BASE_URL: ${SHORT_LINK_BASE_URL:-}
+  LOG_LEVEL: ${LOG_LEVEL:-INFO}
+  INTERNAL_API_TOKEN: ${INTERNAL_API_TOKEN:?see .env.prod.example}
+  IDENTITY_VAULT_KEY: ${IDENTITY_VAULT_KEY:?see .env.prod.example}
+  AUTH_COOKIE_DOMAIN: ${AUTH_COOKIE_DOMAIN:-}
+  DATABASE_URL: postgis://${POSTGRES_USER:-solange}:${POSTGRES_PASSWORD:?see .env.prod.example}@db:5432/${POSTGRES_DB:-solangeglow}
+  REDIS_URL: redis://redis:6379/0
+  CELERY_BROKER_URL: redis://redis:6379/1
+  CELERY_RESULT_BACKEND: redis://redis:6379/2
+  CHANNELS_REDIS_URL: redis://redis:6379/3
+  WEB_INTERNAL_URL: http://web:3000
+  # Object storage (OVH): browsers read media from its public address.
+  AWS_STORAGE_BUCKET_NAME: ${AWS_STORAGE_BUCKET_NAME:?see .env.prod.example}
+  AWS_S3_ENDPOINT_URL: ${AWS_S3_ENDPOINT_URL:?see .env.prod.example}
+  AWS_S3_REGION_NAME: ${AWS_S3_REGION_NAME:?see .env.prod.example}
+  AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:?see .env.prod.example}
+  AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:?see .env.prod.example}
+  MEDIA_PUBLIC_BASE_URL: ${MEDIA_PUBLIC_BASE_URL:-}
+  MEDIA_PUBLIC_ACL: ${MEDIA_PUBLIC_ACL:-public-read}
+  # Recent AWS libraries add checksums that other S3 providers may refuse.
+  AWS_REQUEST_CHECKSUM_CALCULATION: when_required
+  AWS_RESPONSE_CHECKSUM_VALIDATION: when_required
+  # Calls and lives: the browser opens the first address, the backend calls the second.
+  LIVEKIT_URL: wss://live.${DOMAIN}
+  LIVEKIT_API_URL: http://livekit:7880
+  LIVEKIT_API_KEY: solangeglow
+  LIVEKIT_API_SECRET: ${LIVEKIT_API_SECRET:?see .env.prod.example}
+  LIVEKIT_EGRESS: ${LIVEKIT_EGRESS:-false}
+  # Providers: empty means off, and the admin says so (banner « To configure »).
+  FEDAPAY_SECRET_KEY: ${FEDAPAY_SECRET_KEY:-}
+  FEDAPAY_WEBHOOK_SECRET: ${FEDAPAY_WEBHOOK_SECRET:-}
+  FEDAPAY_ENVIRONMENT: ${FEDAPAY_ENVIRONMENT:-sandbox}
+  STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY:-}
+  STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET:-}
+  WHATSAPP_ACCESS_TOKEN: ${WHATSAPP_ACCESS_TOKEN:-}
+  WHATSAPP_PHONE_NUMBER_ID: ${WHATSAPP_PHONE_NUMBER_ID:-}
+  WHATSAPP_TEMPLATE_NAME: ${WHATSAPP_TEMPLATE_NAME:-solange_glow_code}
+  TWILIO_ACCOUNT_SID: ${TWILIO_ACCOUNT_SID:-}
+  TWILIO_AUTH_TOKEN: ${TWILIO_AUTH_TOKEN:-}
+  TWILIO_FROM: ${TWILIO_FROM:-}
+  EMAIL_HOST: ${EMAIL_HOST:-}
+  EMAIL_PORT: ${EMAIL_PORT:-587}
+  EMAIL_HOST_USER: ${EMAIL_HOST_USER:-}
+  EMAIL_HOST_PASSWORD: ${EMAIL_HOST_PASSWORD:-}
+  EMAIL_USE_TLS: ${EMAIL_USE_TLS:-true}
+  DEFAULT_FROM_EMAIL: ${DEFAULT_FROM_EMAIL:-Solange Glow <no-reply@solangeglow.com>}
+  VAPID_PUBLIC_KEY: ${VAPID_PUBLIC_KEY:-}
+  VAPID_PRIVATE_KEY: ${VAPID_PRIVATE_KEY:-}
+  VAPID_SUBJECT: ${VAPID_SUBJECT:-mailto:contact@solangeglow.com}
+  MODERATION_AI_URL: ${MODERATION_AI_URL:-}
+  MODERATION_AI_KEY: ${MODERATION_AI_KEY:-}
+  QUIZ_AI_URL: ${QUIZ_AI_URL:-}
+  QUIZ_AI_KEY: ${QUIZ_AI_KEY:-}
+  HELP_AI_URL: ${HELP_AI_URL:-}
+  HELP_AI_KEY: ${HELP_AI_KEY:-}
+  TERMINAL_PROVIDER: ${TERMINAL_PROVIDER:-}
+  EINVOICE_PROVIDER: ${EINVOICE_PROVIDER:-}
+  SENTRY_DSN: ${SENTRY_DSN:-}
+  SENTRY_ENVIRONMENT: production
+  SENTRY_TRACES_SAMPLE_RATE: ${SENTRY_TRACES_SAMPLE_RATE:-0}
+
+x-logging: &logging
+  logging:
+    driver: json-file
+    # The disk never fills up with logs.
+    options:
+      max-size: "20m"
+      max-file: "5"
+
+x-backend: &backend
+  <<: *logging
+  build:
+    context: ./backend
+    target: prod
+  image: solangeglow-backend:${IMAGE_TAG:-latest}
+  environment: *backend-env
+  networks: [front, back]
+  restart: unless-stopped
+
+x-glitchtip: &glitchtip
+  <<: *logging
+  image: glitchtip/glitchtip:6.2.6
+  environment:
+    DATABASE_URL: postgres://glitchtip:${GLITCHTIP_DB_PASSWORD:?see .env.prod.example}@glitchtip-db:5432/glitchtip
+    REDIS_URL: redis://redis:6379/5
+    SECRET_KEY: ${GLITCHTIP_SECRET_KEY:?see .env.prod.example}
+    GLITCHTIP_DOMAIN: https://erreurs.${DOMAIN}
+    DEFAULT_FROM_EMAIL: ${DEFAULT_FROM_EMAIL:-no-reply@solangeglow.com}
+    EMAIL_URL: ${GLITCHTIP_EMAIL_URL:-consolemail://}
+    # On for the first account, then off (docs/deploiement.md).
+    ENABLE_USER_REGISTRATION: ${GLITCHTIP_REGISTRATION:-true}
+  networks: [back]
+
+services:
+  caddy:
+    <<: *logging
+    image: caddy:2.11.7-alpine
+    environment:
+      DOMAIN: ${DOMAIN:?see .env.prod.example}
+      ACME_EMAIL: ${ACME_EMAIL:?see .env.prod.example}
+      CADDY_GLOBAL_OPTIONS: ${CADDY_GLOBAL_OPTIONS:-}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks: [front]
+    depends_on:
+      backend:
+        condition: service_healthy
+      web:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q -O /dev/null http://localhost:2019/config/"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+    restart: unless-stopped
+
+  db:
+    <<: *logging
+    image: postgis/postgis:16-3.4
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-solangeglow}
+      POSTGRES_USER: ${POSTGRES_USER:-solange}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?see .env.prod.example}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks: [back]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  redis:
+    <<: *logging
+    image: redis:7-alpine
+    # Tasks and sessions of the calls survive a restart.
+    command: redis-server --appendonly yes --maxmemory-policy noeviction
+    volumes:
+      - redis_data:/data
+    networks: [back]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  # Runs once at every start and update: new tables and new settings (existing values kept).
+  migrate:
+    <<: *backend
+    command: sh -c "python manage.py migrate --noinput && python manage.py seed_core"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      disable: true
+    restart: "no"
+
+  backend:
+    <<: *backend
+    environment:
+      <<: *backend-env
+      WEB_CONCURRENCY: ${WEB_CONCURRENCY:-3}
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+  worker:
+    <<: *backend
+    command: celery -A config worker --loglevel=warning --concurrency=${CELERY_CONCURRENCY:-2} --max-tasks-per-child=200
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A config inspect ping -d celery@$$HOSTNAME -t 20 >/dev/null"]
+      interval: 120s
+      timeout: 40s
+      start_period: 60s
+      retries: 3
+
+  beat:
+    <<: *backend
+    command: celery -A config beat --loglevel=warning --pidfile=/tmp/beat.pid
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "kill -0 $$(cat /tmp/beat.pid)"]
+      interval: 60s
+      timeout: 10s
+      start_period: 60s
+      retries: 3
+
+  web:
+    <<: *logging
+    build:
+      context: ./web
+      target: prod
+      args:
+        SITE_URL: https://${DOMAIN}
+        NEXT_PUBLIC_UMAMI_WEBSITE_ID: ${NEXT_PUBLIC_UMAMI_WEBSITE_ID:-}
+        NEXT_PUBLIC_SENTRY_DSN: ${NEXT_PUBLIC_SENTRY_DSN:-}
+    image: solangeglow-web:${IMAGE_TAG:-latest}
+    environment:
+      API_INTERNAL_URL: http://backend:8000
+      SITE_URL: https://${DOMAIN}
+      INTERNAL_API_TOKEN: ${INTERNAL_API_TOKEN:?see .env.prod.example}
+    networks: [front]
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+  livekit:
+    <<: *logging
+    image: livekit/livekit-server:v1.13.9
+    command: --config /etc/livekit.yaml
+    environment:
+      LIVEKIT_KEYS: "solangeglow: ${LIVEKIT_API_SECRET:?see .env.prod.example}"
+    ports:
+      - "7881:7881"
+      - "7882:7882/udp"
+    volumes:
+      - ./deploy/livekit.yaml:/etc/livekit.yaml:ro
+    networks: [front, back]
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # Recording of the lives (replays), heavy image: only with --profile replay and
+  # LIVEKIT_EGRESS=true.
+  egress:
+    <<: *logging
+    image: livekit/egress:v1.14.1
+    profiles: ["replay"]
+    cap_add:
+      - SYS_ADMIN
+    environment:
+      EGRESS_CONFIG_BODY: |
+        api_key: solangeglow
+        api_secret: ${LIVEKIT_API_SECRET:-}
+        ws_url: ws://livekit:7880
+        redis:
+          address: redis:6379
+          db: 4
+        health_port: 9090
+        s3:
+          access_key: ${AWS_ACCESS_KEY_ID:-}
+          secret: ${AWS_SECRET_ACCESS_KEY:-}
+          region: ${AWS_S3_REGION_NAME:-}
+          endpoint: ${AWS_S3_ENDPOINT_URL:-}
+          bucket: ${AWS_STORAGE_BUCKET_NAME:-}
+          force_path_style: true
+    networks: [front, back]
+    depends_on:
+      - livekit
+    restart: unless-stopped
+
+  # Every day: the database (encrypted) and the media go to a separate bucket, with rotation.
+  backup:
+    <<: *logging
+    build: ./deploy/backup
+    image: solangeglow-backup:${IMAGE_TAG:-latest}
+    environment:
+      PGHOST: db
+      PGUSER: ${POSTGRES_USER:-solange}
+      PGPASSWORD: ${POSTGRES_PASSWORD:?see .env.prod.example}
+      PGDATABASE: ${POSTGRES_DB:-solangeglow}
+      BACKUP_PASSPHRASE: ${BACKUP_PASSPHRASE:?see .env.prod.example}
+      BACKUP_BUCKET: ${BACKUP_BUCKET:?see .env.prod.example}
+      BACKUP_HOUR_UTC: ${BACKUP_HOUR_UTC:-2}
+      BACKUP_KEEP_DAILY: ${BACKUP_KEEP_DAILY:-7}
+      BACKUP_KEEP_WEEKLY: ${BACKUP_KEEP_WEEKLY:-4}
+      BACKUP_KEEP_MONTHLY: ${BACKUP_KEEP_MONTHLY:-12}
+      BACKUP_MEDIA_DELETED_DAYS: ${BACKUP_MEDIA_DELETED_DAYS:-30}
+      # The backup bucket may live with another provider (keys below), by default the same.
+      MEDIA_BUCKET: ${AWS_STORAGE_BUCKET_NAME:?see .env.prod.example}
+      RCLONE_CONFIG_MEDIA_TYPE: s3
+      RCLONE_CONFIG_MEDIA_PROVIDER: Other
+      RCLONE_CONFIG_MEDIA_ENDPOINT: ${AWS_S3_ENDPOINT_URL:?see .env.prod.example}
+      RCLONE_CONFIG_MEDIA_REGION: ${AWS_S3_REGION_NAME:?see .env.prod.example}
+      RCLONE_CONFIG_MEDIA_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:?see .env.prod.example}
+      RCLONE_CONFIG_MEDIA_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:?see .env.prod.example}
+      RCLONE_CONFIG_MEDIA_FORCE_PATH_STYLE: "true"
+      RCLONE_CONFIG_SAFE_TYPE: s3
+      RCLONE_CONFIG_SAFE_PROVIDER: Other
+      RCLONE_CONFIG_SAFE_ENDPOINT: ${BACKUP_S3_ENDPOINT_URL:-${AWS_S3_ENDPOINT_URL}}
+      RCLONE_CONFIG_SAFE_REGION: ${BACKUP_S3_REGION_NAME:-${AWS_S3_REGION_NAME}}
+      RCLONE_CONFIG_SAFE_ACCESS_KEY_ID: ${BACKUP_ACCESS_KEY_ID:-${AWS_ACCESS_KEY_ID}}
+      RCLONE_CONFIG_SAFE_SECRET_ACCESS_KEY: ${BACKUP_SECRET_ACCESS_KEY:-${AWS_SECRET_ACCESS_KEY}}
+      RCLONE_CONFIG_SAFE_FORCE_PATH_STYLE: "true"
+      SENTRY_DSN: ${SENTRY_DSN:-}
+      MEDIA_PUBLIC_ACL: ${MEDIA_PUBLIC_ACL:-public-read}
+    networks: [front, back]
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # --- Audience (Umami, no cookies): stats.<domain> ------------------------------------
+  umami-db:
+    <<: *logging
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: ${UMAMI_DB_PASSWORD:?see .env.prod.example}
+    volumes:
+      - umami_data:/var/lib/postgresql/data
+    networks: [back]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U umami -d umami"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  umami:
+    <<: *logging
+    image: umamisoftware/umami:3.4.1
+    environment:
+      DATABASE_URL: postgresql://umami:${UMAMI_DB_PASSWORD:?see .env.prod.example}@umami-db:5432/umami
+      APP_SECRET: ${UMAMI_APP_SECRET:?see .env.prod.example}
+      DISABLE_TELEMETRY: "1"
+    networks: [front, back]
+    depends_on:
+      umami-db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # --- Errors (GlitchTip, Sentry compatible): erreurs.<domain> ---------------------------
+  glitchtip-db:
+    <<: *logging
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: glitchtip
+      POSTGRES_USER: glitchtip
+      POSTGRES_PASSWORD: ${GLITCHTIP_DB_PASSWORD:?see .env.prod.example}
+    volumes:
+      - glitchtip_data:/var/lib/postgresql/data
+    networks: [back]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U glitchtip -d glitchtip"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  glitchtip-migrate:
+    <<: *glitchtip
+    command: ./bin/run-migrate.sh
+    depends_on:
+      glitchtip-db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: "no"
+
+  # The default command of the image: the web server.
+  glitchtip:
+    <<: *glitchtip
+    networks: [front, back]
+    depends_on:
+      glitchtip-migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  glitchtip-worker:
+    <<: *glitchtip
+    command: ./bin/run-celery-with-beat.sh
+    networks: [front, back]
+    depends_on:
+      glitchtip-migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+networks:
+  # What Caddy can reach.
+  front:
+  # Databases and Redis: no way in from Caddy.
+  back:
+    internal: true
+
+volumes:
+  caddy_data:
+  caddy_config:
+  postgres_data:
+  redis_data:
+  umami_data:
+  glitchtip_data:

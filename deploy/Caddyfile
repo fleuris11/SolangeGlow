@@ -1,0 +1,63 @@
+# The only door to the Internet. Certificates are obtained and renewed by Caddy by itself.
+{
+	email {$ACME_EMAIL}
+	# CI and local trials: a certificate from Caddy's own authority (see compose.test.yml).
+	{$CADDY_GLOBAL_OPTIONS}
+}
+
+www.{$DOMAIN} {
+	redir https://{$DOMAIN}{uri} permanent
+}
+
+{$DOMAIN} {
+	encode zstd gzip
+
+	# Django answers directly: long uploads and WebSockets do not go through Next.
+	@backend path /api/* /ws/* /admin/* /static/* /i18n/*
+	handle @backend {
+		# Lesson videos: the limits of the media settings come first, this one is the roof.
+		request_body {
+			max_size 600MB
+		}
+		reverse_proxy backend:8000 {
+			transport http {
+				read_timeout 15m
+				write_timeout 15m
+			}
+		}
+	}
+
+	handle {
+		reverse_proxy web:3000
+	}
+
+	log {
+		output stdout
+		format filter {
+			wrap console
+			fields {
+				# No address, query string (tokens) or cookie in the logs.
+				request>remote_ip delete
+				request>client_ip delete
+				request>uri delete
+				request>headers delete
+				resp_headers delete
+			}
+		}
+	}
+}
+
+# Calls and lives: signalling. The media go through the ports 7881/tcp and 7882/udp.
+live.{$DOMAIN} {
+	reverse_proxy livekit:7880
+}
+
+# Audience dashboard.
+stats.{$DOMAIN} {
+	reverse_proxy umami:3000
+}
+
+# Error tracking.
+erreurs.{$DOMAIN} {
+	reverse_proxy glitchtip:8000
+}

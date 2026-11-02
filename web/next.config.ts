@@ -23,7 +23,7 @@ const nextConfig: NextConfig = {
     return [
       { source: "/api/:path*", destination: `${apiInternalUrl}/api/:path*` },
       // Media stored on S3 (MinIO locally): signed links stay valid through this proxy.
-      { source: "/s3/:path*", destination: `${s3InternalUrl}/:path*` },
+      ...(s3InternalUrl ? [{ source: "/s3/:path*", destination: `${s3InternalUrl}/:path*` }] : []),
       // Audience (Umami, no cookies) through the app: no third-party address for the browser.
       ...(umamiInternalUrl
         ? [{ source: "/stats/:path*", destination: `${umamiInternalUrl}/:path*` }]
