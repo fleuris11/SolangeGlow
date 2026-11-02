@@ -2,6 +2,7 @@ import logging
 
 from django.conf import settings
 from django.core.cache import cache
+from django.core.exceptions import ImproperlyConfigured
 
 from .base import OtpMessage, OtpSender
 
@@ -27,6 +28,8 @@ class ConsoleOtpSender(OtpSender):
         return bool(settings.ACCOUNTS_OTP_CONSOLE)
 
     def send(self, message: OtpMessage) -> None:
+        if not settings.ACCOUNTS_OTP_CONSOLE:
+            raise ImproperlyConfigured("The console sender is forbidden here.")
         # The only place a code is ever logged, and it is disabled in production.
         logger.warning("[DEV] One-time code for %s: %s", mask(message.destination), message.code)
         if settings.ACCOUNTS_DEV_OTP_ENDPOINT:

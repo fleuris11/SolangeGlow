@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 23:24+0100\n"
+"POT-Creation-Date: 2026-11-03 00:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2539,6 +2539,72 @@ msgstr "prepínač funkcie"
 
 msgid "feature flags"
 msgstr "prepínače funkcií"
+
+msgid "Payments in Benin (FedaPay)"
+msgstr "Platby v Beníne (FedaPay)"
+
+msgid "Nobody can pay in Benin."
+msgstr "V Beníne nikto nemôže platiť."
+
+msgid "Payments in France (Stripe Connect)"
+msgstr "Platby vo Francúzsku (Stripe Connect)"
+
+msgid "Nobody can pay in France, gifts from abroad included."
+msgstr "Vo Francúzsku nikto nemôže platiť, ani darčeky zo zahraničia."
+
+msgid "WhatsApp Business"
+msgstr "WhatsApp Business"
+
+msgid "No code or message goes through WhatsApp."
+msgstr "Cez WhatsApp nejde žiadny kód ani správa."
+
+msgid "SMS (Twilio)"
+msgstr "SMS (Twilio)"
+
+msgid "No code or message goes through SMS."
+msgstr "Cez SMS nejde žiadny kód ani správa."
+
+msgid "E-mail (SMTP)"
+msgstr "E-mail (SMTP)"
+
+msgid "No e-mail is sent."
+msgstr "Neodosiela sa žiadny e-mail."
+
+msgid "Push notifications (VAPID)"
+msgstr "Push oznámenia (VAPID)"
+
+msgid "No alert on the phones."
+msgstr "Žiadne upozornenia v telefónoch."
+
+msgid "Calls and lives (LiveKit)"
+msgstr "Hovory a živé vysielania (LiveKit)"
+
+msgid "Calls and lives stay off."
+msgstr "Hovory a živé vysielania zostávajú vypnuté."
+
+msgid "AI moderation"
+msgstr "Moderovanie pomocou AI"
+
+msgid "Only the word lists and the rules check what is published."
+msgstr "Zverejnený obsah kontrolujú len zoznamy slov a pravidlá."
+
+msgid "AI for the quizzes"
+msgstr "AI pre kvízy"
+
+msgid "The team writes the quizzes by hand."
+msgstr "Tím píše kvízy ručne."
+
+msgid "AI of the help center"
+msgstr "AI centra pomoci"
+
+msgid "The help center only suggests the answers of the FAQ."
+msgstr "Centrum pomoci ponúka len odpovede z FAQ."
+
+msgid "Error tracking (GlitchTip)"
+msgstr "Sledovanie chýb (GlitchTip)"
+
+msgid "Errors stay in the server logs."
+msgstr "Chyby zostávajú v záznamoch servera."
 
 msgid "Points"
 msgstr "Body"
@@ -7066,6 +7132,29 @@ msgstr "Skupiny"
 
 msgid "Django site admin"
 msgstr "Administrácia Solange Glow"
+
+msgid "To configure"
+msgstr "Treba nastaviť"
+
+msgid "Test mode: payments and messages are simulated on this server."
+msgstr "Testovací režim: platby a správy sú na tomto serveri simulované."
+
+msgid "Nobody can sign in: connect WhatsApp, SMS or e-mail first."
+msgstr "Nikto sa nemôže prihlásiť: najprv pripoj WhatsApp, SMS alebo e-mail."
+
+#, python-format
+msgid "%(total)s service to connect"
+msgid_plural "%(total)s services to connect"
+msgstr[0] "%(total)s služba na pripojenie"
+msgstr[1] "%(total)s služby na pripojenie"
+msgstr[2] "%(total)s služieb na pripojenie"
+msgstr[3] "%(total)s služieb na pripojenie"
+
+msgid "needed to open"
+msgstr "nutné pre spustenie"
+
+msgid "optional"
+msgstr "voliteľné"
 
 msgid "Period"
 msgstr "Obdobie"

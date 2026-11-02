@@ -14,6 +14,7 @@ from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import gettext as _
 
+from apps.core import readiness
 from apps.core.models import Country
 from apps.core.money import Money
 
@@ -215,6 +216,7 @@ def dashboard_callback(request, context: dict) -> dict:
     context.update(
         {
             "show_dashboard": True,
+            "readiness": readiness.missing(),
             "period": request.GET.get("period", "30"),
             "country": window.country,
             "countries": list(Country.objects.filter(is_active=True).values_list("code", "name")),

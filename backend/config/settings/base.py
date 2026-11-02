@@ -39,8 +39,6 @@ DJANGO_APPS = [
     "unfold",
     "unfold.contrib.filters",
     "unfold.contrib.forms",
-    # Daphne makes `runserver` serve ASGI (HTTP + WebSocket).
-    "daphne",
     # modeltranslation must come before django.contrib.admin.
     "modeltranslation",
     "django.contrib.admin",
@@ -202,6 +200,8 @@ AWS_QUERYSTRING_EXPIRE = 600
 # Base used in media links instead of the storage endpoint (e.g. "/s3", proxied by the
 # web app to MinIO). Empty when the endpoint itself is public (production).
 MEDIA_PUBLIC_BASE_URL = env("MEDIA_PUBLIC_BASE_URL", default="")
+# ACL of the public files ("public-read" on OVH). Empty: the bucket decides (MinIO).
+MEDIA_PUBLIC_ACL = env("MEDIA_PUBLIC_ACL", default="")
 # Key of the identity documents vault (a Fernet key). Empty: derived from SECRET_KEY
 # (development only; production refuses to start without it).
 IDENTITY_VAULT_KEY = env("IDENTITY_VAULT_KEY", default="")
@@ -255,6 +255,8 @@ REST_FRAMEWORK = {
         "user": env("API_THROTTLE_USER", default="600/minute"),
     },
 }
+
+API_DOCS_PUBLIC = True
 
 SPECTACULAR_SETTINGS = {
     "TITLE": "Solange Glow API",

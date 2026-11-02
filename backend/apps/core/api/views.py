@@ -1,3 +1,7 @@
+import logging
+
+from django.core.cache import cache
+from django.db import connection
 from drf_spectacular.utils import extend_schema, inline_serializer
 from rest_framework import serializers, status
 from rest_framework.permissions import AllowAny
@@ -7,6 +11,8 @@ from rest_framework.views import APIView
 from apps.core.models import Country
 from apps.core.providers import livekit
 from apps.core.providers.base import ProviderNotConfigured
+
+logger = logging.getLogger("solangeglow.health")
 
 
 class HealthView(APIView):
@@ -22,6 +28,15 @@ class HealthView(APIView):
         responses=inline_serializer("Health", {"status": serializers.CharField()}),
     )
     def get(self, request):
+        # ?deep=1 (container health check): the database and Redis answer too.
+        if request.query_params.get("deep"):
+            try:
+                with connection.cursor() as cursor:
+                    cursor.execute("SELECT 1")
+                cache.get("health")
+            except Exception:
+                logger.exception("Health check failed")
+                return Response({"status": "down"}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
         return Response({"status": "ok"})
 
 

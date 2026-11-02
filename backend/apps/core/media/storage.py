@@ -31,7 +31,8 @@ class _RewrittenUrlMixin:
 class PublicMediaStorage(_RewrittenUrlMixin, S3Storage):
     location = "public"
     querystring_auth = False
-    default_acl = None
+    # OVH has object ACLs, not bucket policies: each public file says it is public.
+    default_acl = settings.MEDIA_PUBLIC_ACL or None
     file_overwrite = False
 
 

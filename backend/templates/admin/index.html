@@ -9,6 +9,26 @@
 
 {% block content %}
   {% if show_dashboard %}
+    {% if readiness.entries %}
+      <section id="readiness" aria-labelledby="readiness-title" class="border border-base-200 rounded-default p-4 dark:border-base-700" style="margin-bottom:24px;border-left:6px solid #B54708">
+        <h2 id="readiness-title" class="font-semibold" style="display:flex;align-items:center;gap:6px;font-size:18px"><span class="material-symbols-outlined" aria-hidden="true">construction</span>{% translate "To configure" %}</h2>
+        {% if readiness.simulated %}<p style="margin-top:4px">{% translate "Test mode: payments and messages are simulated on this server." %}</p>{% endif %}
+        {% if readiness.no_sign_in %}<p class="font-semibold" style="margin-top:8px">{% translate "Nobody can sign in: connect WhatsApp, SMS or e-mail first." %}</p>{% endif %}
+        <details style="margin-top:8px" {% if not readiness.simulated %}open{% endif %}>
+          <summary class="font-semibold" style="cursor:pointer">{% blocktranslate count total=readiness.entries|length %}{{ total }} service to connect{% plural %}{{ total }} services to connect{% endblocktranslate %}</summary>
+          <ul style="margin-top:8px;display:grid;gap:8px">
+            {% for entry in readiness.entries %}
+              <li>
+                <strong>{{ entry.label }}</strong>
+                {% if entry.level == "blocking" %}({% translate "needed to open" %}){% elif entry.level == "optional" %}({% translate "optional" %}){% endif %}
+                : {{ entry.effect }}
+                <br><code style="font-size:13px">{{ entry.variables }}</code>
+              </li>
+            {% endfor %}
+          </ul>
+        </details>
+      </section>
+    {% endif %}
     <form method="get" style="display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin-bottom:24px">
       <label style="display:flex;flex-direction:column;gap:4px">
         <span class="font-semibold">{% translate "Period" %}</span>

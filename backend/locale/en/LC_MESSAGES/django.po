@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 23:24+0100\n"
+"POT-Creation-Date: 2026-11-03 00:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2534,6 +2534,72 @@ msgid "feature flag"
 msgstr ""
 
 msgid "feature flags"
+msgstr ""
+
+msgid "Payments in Benin (FedaPay)"
+msgstr ""
+
+msgid "Nobody can pay in Benin."
+msgstr ""
+
+msgid "Payments in France (Stripe Connect)"
+msgstr ""
+
+msgid "Nobody can pay in France, gifts from abroad included."
+msgstr ""
+
+msgid "WhatsApp Business"
+msgstr ""
+
+msgid "No code or message goes through WhatsApp."
+msgstr ""
+
+msgid "SMS (Twilio)"
+msgstr ""
+
+msgid "No code or message goes through SMS."
+msgstr ""
+
+msgid "E-mail (SMTP)"
+msgstr ""
+
+msgid "No e-mail is sent."
+msgstr ""
+
+msgid "Push notifications (VAPID)"
+msgstr ""
+
+msgid "No alert on the phones."
+msgstr ""
+
+msgid "Calls and lives (LiveKit)"
+msgstr ""
+
+msgid "Calls and lives stay off."
+msgstr ""
+
+msgid "AI moderation"
+msgstr ""
+
+msgid "Only the word lists and the rules check what is published."
+msgstr ""
+
+msgid "AI for the quizzes"
+msgstr ""
+
+msgid "The team writes the quizzes by hand."
+msgstr ""
+
+msgid "AI of the help center"
+msgstr ""
+
+msgid "The help center only suggests the answers of the FAQ."
+msgstr ""
+
+msgid "Error tracking (GlitchTip)"
+msgstr ""
+
+msgid "Errors stay in the server logs."
 msgstr ""
 
 msgid "Points"
@@ -7049,6 +7115,27 @@ msgid "Groups"
 msgstr ""
 
 msgid "Django site admin"
+msgstr ""
+
+msgid "To configure"
+msgstr ""
+
+msgid "Test mode: payments and messages are simulated on this server."
+msgstr ""
+
+msgid "Nobody can sign in: connect WhatsApp, SMS or e-mail first."
+msgstr ""
+
+#, python-format
+msgid "%(total)s service to connect"
+msgid_plural "%(total)s services to connect"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "needed to open"
+msgstr ""
+
+msgid "optional"
 msgstr ""
 
 msgid "Period"

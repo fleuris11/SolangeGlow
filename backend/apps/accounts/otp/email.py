@@ -12,6 +12,9 @@ class EmailOtpSender(OtpSender):
     destination_kind = "email"
 
     def is_available(self) -> bool:
+        # SMTP without a server cannot send anything: the next channel is tried at once.
+        if settings.EMAIL_BACKEND.endswith("smtp.EmailBackend"):
+            return bool(settings.EMAIL_HOST)
         return bool(settings.EMAIL_BACKEND)
 
     def send(self, message: OtpMessage) -> None:

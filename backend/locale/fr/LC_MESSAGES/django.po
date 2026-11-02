@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-01 23:24+0100\n"
+"POT-Creation-Date: 2026-11-03 00:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2535,6 +2535,72 @@ msgstr "module activable"
 
 msgid "feature flags"
 msgstr "modules activables"
+
+msgid "Payments in Benin (FedaPay)"
+msgstr "Paiements au Bénin (FedaPay)"
+
+msgid "Nobody can pay in Benin."
+msgstr "Personne ne peut payer au Bénin."
+
+msgid "Payments in France (Stripe Connect)"
+msgstr "Paiements en France (Stripe Connect)"
+
+msgid "Nobody can pay in France, gifts from abroad included."
+msgstr "Personne ne peut payer en France, cadeaux de l'étranger compris."
+
+msgid "WhatsApp Business"
+msgstr "WhatsApp Business"
+
+msgid "No code or message goes through WhatsApp."
+msgstr "Aucun code ni message ne passe par WhatsApp."
+
+msgid "SMS (Twilio)"
+msgstr "SMS (Twilio)"
+
+msgid "No code or message goes through SMS."
+msgstr "Aucun code ni message ne part par SMS."
+
+msgid "E-mail (SMTP)"
+msgstr "E-mail (SMTP)"
+
+msgid "No e-mail is sent."
+msgstr "Aucun e-mail n'est envoyé."
+
+msgid "Push notifications (VAPID)"
+msgstr "Notifications push (VAPID)"
+
+msgid "No alert on the phones."
+msgstr "Aucune alerte sur les téléphones."
+
+msgid "Calls and lives (LiveKit)"
+msgstr "Appels et lives (LiveKit)"
+
+msgid "Calls and lives stay off."
+msgstr "Les appels et les lives restent coupés."
+
+msgid "AI moderation"
+msgstr "Modération par IA"
+
+msgid "Only the word lists and the rules check what is published."
+msgstr "Seules les listes de mots et les règles contrôlent ce qui est publié."
+
+msgid "AI for the quizzes"
+msgstr "IA pour les quiz"
+
+msgid "The team writes the quizzes by hand."
+msgstr "L'équipe écrit les quiz à la main."
+
+msgid "AI of the help center"
+msgstr "IA du centre d'aide"
+
+msgid "The help center only suggests the answers of the FAQ."
+msgstr "Le centre d'aide propose seulement les réponses de la FAQ."
+
+msgid "Error tracking (GlitchTip)"
+msgstr "Suivi des erreurs (GlitchTip)"
+
+msgid "Errors stay in the server logs."
+msgstr "Les erreurs restent dans les journaux du serveur."
 
 msgid "Points"
 msgstr "Points"
@@ -7050,6 +7116,27 @@ msgstr "Groupes"
 
 msgid "Django site admin"
 msgstr "Administration Solange Glow"
+
+msgid "To configure"
+msgstr "À configurer"
+
+msgid "Test mode: payments and messages are simulated on this server."
+msgstr "Mode test : paiements et messages sont simulés sur ce serveur."
+
+msgid "Nobody can sign in: connect WhatsApp, SMS or e-mail first."
+msgstr "Personne ne peut se connecter : branche d'abord WhatsApp, les SMS ou l'e-mail."
+
+#, python-format
+msgid "%(total)s service to connect"
+msgid_plural "%(total)s services to connect"
+msgstr[0] "%(total)s service à brancher"
+msgstr[1] "%(total)s services à brancher"
+
+msgid "needed to open"
+msgstr "indispensable pour ouvrir"
+
+msgid "optional"
+msgstr "facultatif"
 
 msgid "Period"
 msgstr "Période"
