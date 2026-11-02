@@ -21,6 +21,7 @@ type Finding = {
   mainActions: number;
   axe: string[];
   heading: string;
+  wide: string[];
 };
 
 async function firstPath(page: Page, api: string, pick: (body: never) => string | undefined) {
@@ -68,6 +69,14 @@ async function inspect(page: Page, screen: Screen): Promise<Finding> {
       ),
       mainActions: main.length,
       heading: (document.querySelector("main h1, main h2")?.textContent ?? "").trim().slice(0, 80),
+      // What sticks out on the right, to find the cause of a sideways scroll.
+      wide: [...document.querySelectorAll("body *")]
+        .filter((el) => el.getBoundingClientRect().right > window.innerWidth + 1)
+        .slice(0, 5)
+        .map(
+          (el) =>
+            `${el.tagName}.${el.className.toString().slice(0, 60)} ${(el.textContent ?? "").trim().slice(0, 30)}`,
+        ),
     };
   });
   const axe = await new AxeBuilder({ page })
