@@ -10,6 +10,39 @@ import { durationLabel } from "@/lib/booking/time";
 import { formatMoney } from "@/lib/money";
 
 /** « Check and book »: the summary, the rules, her details, the group, the button. */
+/** Name and WhatsApp number of a guest (no account). */
+export function GuestFields({
+  name,
+  phone,
+  onName,
+  onPhone,
+}: {
+  name: string;
+  phone: string;
+  onName: (value: string) => void;
+  onPhone: (value: string) => void;
+}) {
+  const t = useTranslations("booking.flow");
+  return (
+    <div className="flex flex-col gap-4">
+      <Input
+        label={t("name")}
+        value={name}
+        onChange={(e) => onName(e.target.value)}
+        autoComplete="given-name"
+      />
+      <Input
+        label={t("phone")}
+        hint={t("phoneHint")}
+        value={phone}
+        onChange={(e) => onPhone(e.target.value)}
+        inputMode="tel"
+        autoComplete="tel"
+      />
+    </div>
+  );
+}
+
 export function DetailsStep({
   service,
   optionNames,

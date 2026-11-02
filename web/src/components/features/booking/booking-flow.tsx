@@ -6,7 +6,6 @@ import dynamic from "next/dynamic";
 import { useMemo, useState, useSyncExternalStore, type ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { SpeakButton } from "@/components/ui/speak-button";
 import { Stepper } from "@/components/ui/stepper";
 import { ApiError, hasSession } from "@/lib/api/client";
@@ -33,6 +32,8 @@ const BookedScreen = dynamic(() => import("./booking-done").then((m) => m.Booked
 const GroupCreated = dynamic(() => import("./booking-done").then((m) => m.GroupCreated));
 // The last step comes after choosing a time: downloaded then.
 const DetailsStep = dynamic(() => import("./booking-details").then((m) => m.DetailsStep));
+// Name and phone of a guest: only at the last step (keeps the first load light, ADR-004).
+const GuestFields = dynamic(() => import("./booking-details").then((m) => m.GuestFields));
 
 export type BookingIcons = {
   clock: ReactNode;
@@ -238,22 +239,7 @@ export function BookingFlow({
   }[step];
   const current = days?.find((d) => d.day === day);
   const guestFields = !signedIn && (
-    <div className="flex flex-col gap-4">
-      <Input
-        label={t("name")}
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        autoComplete="given-name"
-      />
-      <Input
-        label={t("phone")}
-        hint={t("phoneHint")}
-        value={phone}
-        onChange={(e) => setPhone(e.target.value)}
-        inputMode="tel"
-        autoComplete="tel"
-      />
-    </div>
+    <GuestFields name={name} phone={phone} onName={setName} onPhone={setPhone} />
   );
 
   return (
