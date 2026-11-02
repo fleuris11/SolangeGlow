@@ -71,7 +71,14 @@ async function inspect(page: Page, screen: Screen): Promise<Finding> {
       heading: (document.querySelector("main h1, main h2")?.textContent ?? "").trim().slice(0, 80),
       // What sticks out on the right, to find the cause of a sideways scroll.
       wide: [...document.querySelectorAll("body *")]
-        .filter((el) => el.getBoundingClientRect().right > window.innerWidth + 1)
+        .filter(
+          (el) =>
+            el.getBoundingClientRect().right > window.innerWidth + 1 ||
+            // Text spilling out of its box (the box itself fits).
+            (el.scrollWidth > el.clientWidth + 1 &&
+              getComputedStyle(el).overflowX === "visible" &&
+              el.getBoundingClientRect().left + el.scrollWidth > window.innerWidth + 1),
+        )
         .slice(0, 5)
         .map(
           (el) =>

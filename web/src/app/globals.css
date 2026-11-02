@@ -128,6 +128,8 @@
   }
 
   body {
+    /* A long word or address never pushes the page sideways (very large text, 360 px). */
+    overflow-wrap: break-word;
     min-height: 100dvh;
     background-color: var(--lait);
     color: var(--prune);
