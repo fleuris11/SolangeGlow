@@ -35,10 +35,20 @@ function timed(metric, name, response, expected = 200) {
   return response;
 }
 
+// Each person has her own address, as behind Caddy: the limits per address stay on.
+function address() {
+  return `10.20.${Math.floor(__VU / 250)}.${(__VU % 250) + 1}`;
+}
+
+function anonymous() {
+  return { headers: { "X-Forwarded-For": address() } };
+}
+
 function authed(token) {
   return {
     headers: {
       Authorization: `Bearer ${token}`,
+      "X-Forwarded-For": address(),
       "Content-Type": "application/json",
       "X-SG-Client": "web",
     },
@@ -94,13 +104,16 @@ export default function () {
   sleep(THINK_SECONDS);
 
   const word = data.words[__ITER % data.words.length];
-  timed(search, "search", http.get(`${BASE}/pros?q=${encodeURIComponent(word)}`));
+  timed(search, "search", http.get(`${BASE}/pros?q=${encodeURIComponent(word)}`, anonymous()));
   sleep(THINK_SECONDS);
 
   timed(
     slots,
     "slots",
-    http.get(`${BASE}/pros/${data.booking_slug}/booking/slots?service=${data.service_id}&days=7`),
+    http.get(
+      `${BASE}/pros/${data.booking_slug}/booking/slots?service=${data.service_id}&days=7`,
+      anonymous(),
+    ),
   );
   sleep(THINK_SECONDS);
 

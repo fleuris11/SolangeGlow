@@ -21,9 +21,6 @@ x-load-env: &load-env
   AWS_S3_REGION_NAME: us-east-1
   AWS_ACCESS_KEY_ID: ${MINIO_ROOT_USER:-solange}
   AWS_SECRET_ACCESS_KEY: ${MINIO_ROOT_PASSWORD:-solange-minio-dev}
-  # The whole test comes from one address: the limits per address would answer instead.
-  API_THROTTLE_ANON: 1000000/minute
-  API_THROTTLE_USER: 1000000/minute
   JWT_ACCESS_MINUTES: "240"
   WEB_CONCURRENCY: ${WEB_CONCURRENCY:-3}
 
@@ -39,6 +36,8 @@ services:
   worker-load:
     image: solangeglow-backend:load
     command: celery -A config worker --loglevel=warning --concurrency=2
+    healthcheck:
+      disable: true
     environment: *load-env
     profiles: ["load"]
     depends_on:

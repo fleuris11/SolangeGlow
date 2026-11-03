@@ -5,6 +5,8 @@ import os
 bind = "0.0.0.0:8000"
 worker_class = "uvicorn_worker.UvicornWorker"
 workers = int(os.environ.get("WEB_CONCURRENCY", "3"))
+# Code loaded once before the workers start: no slow first request, less memory.
+preload_app = True
 # Long uploads (lesson videos): the worker keeps answering meanwhile.
 timeout = 120
 graceful_timeout = 30

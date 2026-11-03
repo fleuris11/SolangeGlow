@@ -547,6 +547,32 @@ Variables d'environnement :
 - `INTERNAL_API_TOKEN` : même valeur longue et aléatoire sur le web et sur Django ;
 - `SITE_URL` : l'adresse publique (plans du site, liens canoniques).
 
+## Mise en production (prompt 20)
+
+- **Guide pas à pas** (VPS OVH, du serveur vierge au site en ligne) : `docs/deploiement.md`.
+- **Tout ce qu'il faut brancher avant l'ouverture**, avec les variables : `docs/checklist-mise-en-ligne.md`.
+- **Temps de réponse mesurés** : `docs/tests-de-charge.md`.
+- **Décisions techniques** : `docs/adr/019-production.md`.
+
+| Besoin | Commande (sur le serveur) |
+| --- | --- |
+| Créer les secrets | `./deploy/generate-secrets.sh <domaine> <e-mail>` |
+| Premier lancement | `./deploy/first-run.sh <e-mail-admin>` |
+| Voir l'état | `./deploy/status.sh` |
+| Mettre à jour | `./deploy/update.sh` |
+| Revenir en arrière | `./deploy/rollback.sh` |
+| Sauvegarder maintenant | `./deploy/backup-now.sh` |
+| Restaurer | `./deploy/restore.sh latest` |
+
+**Essayer la pile de production sur une machine**, sans OVH ni nom de domaine (MinIO et certificat
+local, c'est ce que fait la CI) : `./deploy/test-prod-stack.sh`.
+
+**Tests de charge** (pile locale démarrée, avec `seed_demo`) : `./loadtest/run.sh`. Pour d'autres
+valeurs : `LOADS="10 100" DURATION=120s ./loadtest/run.sh`. Résultats dans `loadtest/results/`.
+
+**Parcours final** (une personne, de l'inscription au code de réception) :
+`docker compose run --rm e2e npx playwright test e2e/launch.spec.ts`.
+
 ## Client de l'API (web)
 
 Les types du client web sont générés depuis le schéma de l'API. Après toute
