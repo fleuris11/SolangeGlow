@@ -80,6 +80,7 @@ Seulement `transform`, `opacity` et `clip-path`, et 2 animations au plus dans le
 - **Pas de template** : ni héros centré, ni rangée de cartes à icônes, ni dégradé décoratif.
 - **Glossier et Topicals** posent aussi un nom géant. Chez eux, le nom se pose sur le visage ou le produit ;
   chez nous, c'est la photo qui s'ouvre à travers le pétale, et la couleur vient du logo.
+- **Mesuré sur 15 sites de référence** : presque tous en police sans empattement, coins quasi carrés, fond blanc. Fraunces, le pétale et la nuit nous en distinguent vraiment.
 - **Pattern** alterne des aplats vifs et des portraits : on en garde le principe (aplat franc, vraie peau),
   pas la composition.
 

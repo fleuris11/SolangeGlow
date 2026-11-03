@@ -26,7 +26,13 @@ print(
             "payment": str(getattr(Payment.objects.filter(buyer=buyer).first(), "pk", "")),
             "course": getattr(course, "slug", ""),
             "lesson": str(getattr(lesson, "pk", "")),
-            "selection": getattr(SelectionProduct.objects.first(), "slug", ""),
+            "selection": getattr(
+                SelectionProduct.objects.filter(
+                    category__is_active=True, availability="available"
+                ).first(),
+                "slug",
+                "",
+            ),
             "selection_order": str(getattr(SelectionOrder.objects.first(), "pk", "")),
             "conversation": str(getattr(membership, "conversation_id", "")),
             "pro": product.pro.slug if product else "",
