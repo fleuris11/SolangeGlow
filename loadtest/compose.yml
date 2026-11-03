@@ -49,3 +49,32 @@ services:
     working_dir: /scripts
     volumes:
       - ./:/scripts
+
+  # Lighthouse on the production images: docker compose -f loadtest/compose.yml --profile load
+  # run --rm lighthouse (with backend-load and web-load started).
+  web-load:
+    build:
+      context: ../web
+      target: prod
+      args:
+        API_INTERNAL_URL: http://backend-load:8000
+        SITE_URL: http://localhost:3000
+        UMAMI_INTERNAL_URL: ""
+    image: solangeglow-web:load
+    environment:
+      API_INTERNAL_URL: http://backend-load:8000
+      SITE_URL: http://localhost:3000
+      INTERNAL_API_TOKEN: loadtest-0123456789-0123456789-0123456789-0123456789
+    profiles: ["load"]
+
+  lighthouse:
+    image: mcr.microsoft.com/playwright:v1.63.0-noble
+    profiles: ["load"]
+    network_mode: "service:web-load"
+    working_dir: /app
+    environment:
+      LH_BASE: http://localhost:3000
+      LH_CPU: ${LH_CPU:-4}
+    volumes:
+      - ../web:/app
+    entrypoint: ["sh", "e2e/lighthouse.sh"]

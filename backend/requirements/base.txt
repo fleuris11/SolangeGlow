@@ -21,6 +21,8 @@ channels-redis==4.3.0
 redis==8.1.0
 django-redis==7.0.0
 celery==5.6.3
+# Imported by kombu's Redis transport, without being declared by it.
+packaging==26.3
 django-celery-beat==2.9.0
 
 # Outgoing HTTP (WhatsApp, SMS providers)

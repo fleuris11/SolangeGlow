@@ -7,6 +7,8 @@ worker_class = "uvicorn_worker.UvicornWorker"
 workers = int(os.environ.get("WEB_CONCURRENCY", "3"))
 # Code loaded once before the workers start: no slow first request, less memory.
 preload_app = True
+# No control socket: nothing here uses it, and the code folder stays read-only.
+control_socket_disable = True
 # Long uploads (lesson videos): the worker keeps answering meanwhile.
 timeout = 120
 graceful_timeout = 30
