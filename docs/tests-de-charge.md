@@ -88,3 +88,22 @@ LOADS="50 100 200" DURATION=300s ./loadtest/run.sh
 ```
 
 Les résultats sont dans `loadtest/results/`.
+
+## Lighthouse mobile sur les images de production
+
+Mesuré le 3 novembre 2026 sur le même ordinateur, photos comprises, processeur ralenti 4 fois
+(`docker compose -f loadtest/compose.yml --profile load run --rm lighthouse`, avec `backend-load` et
+`web-load` démarrés).
+
+| Page | Performance | Accessibilité | Bonnes pratiques | SEO |
+| --- | --- | --- | --- | --- |
+| Accueil | 70 | 100 | 100 | 100 |
+| Explorer | 70 | 100 | 100 | 100 |
+| Vitrine | 74 | 100 | 100 | 100 |
+| Produit | 79 | 100 | 100 | 100 |
+| Formation | 83 | 100 | 100 | 100 |
+
+L'objectif de 90 en performance n'est pas atteint ici : le premier affichage est à 1,0 à 1,4 s et le serveur
+répond en 120 à 600 ms, mais le JavaScript bloque l'écran de 0,3 à 3 s, et ce temps dépend beaucoup de la
+vitesse de la machine (indice 860 à 1 530, Lighthouse suppose environ le double). À mesurer sur le vrai site :
+`LH_BASE=https://solangeglow.com`.
