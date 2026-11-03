@@ -21,6 +21,7 @@ x-load-env: &load-env
   AWS_S3_REGION_NAME: us-east-1
   AWS_ACCESS_KEY_ID: ${MINIO_ROOT_USER:-solange}
   AWS_SECRET_ACCESS_KEY: ${MINIO_ROOT_PASSWORD:-solange-minio-dev}
+  MEDIA_PUBLIC_BASE_URL: /s3
   JWT_ACCESS_MINUTES: "240"
   WEB_CONCURRENCY: ${WEB_CONCURRENCY:-3}
 
@@ -60,6 +61,8 @@ services:
         API_INTERNAL_URL: http://backend-load:8000
         SITE_URL: http://localhost:3000
         UMAMI_INTERNAL_URL: ""
+        # No public address for MinIO here: pictures go through the web app, as in development.
+        S3_INTERNAL_URL: http://minio:9000
     image: solangeglow-web:load
     environment:
       API_INTERNAL_URL: http://backend-load:8000
