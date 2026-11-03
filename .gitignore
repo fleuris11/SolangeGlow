@@ -96,3 +96,6 @@ docs/design/research/
 /.playwright-mcp/
 /skills-lock.json
 /Claude outputs/
+
+# --- Screens before the redesign: all variants stay local, key screens are committed ---
+docs/design/before/full/
