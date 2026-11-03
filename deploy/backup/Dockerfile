@@ -8,7 +8,8 @@ RUN sed -i 's/\r$//' /usr/local/bin/backup.sh /usr/local/bin/restore.sh /usr/loc
     && chmod +x /usr/local/bin/backup.sh /usr/local/bin/restore.sh /usr/local/bin/scheduler.sh
 
 ENV GNUPGHOME=/tmp/gnupg \
-    HOME=/tmp
+    HOME=/tmp \
+    RCLONE_CONFIG=/dev/null
 USER postgres
 # Unhealthy when no backup has worked for 26 hours.
 HEALTHCHECK --interval=5m --timeout=10s --start-period=1m \

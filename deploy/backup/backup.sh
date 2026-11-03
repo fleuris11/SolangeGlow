@@ -18,8 +18,11 @@ pg_dump -Fc --no-owner | gpg --batch --yes --pinentry-mode loopback --cipher-alg
   --passphrase "$BACKUP_PASSPHRASE" --symmetric -o "$work/$dump"
 
 # A backup that cannot be read back is no backup: checked before it is sent.
+# (Through a file: pg_restore stops reading after the table of contents.)
 gpg --batch --quiet --pinentry-mode loopback --passphrase "$BACKUP_PASSPHRASE" \
-  --decrypt "$work/$dump" | pg_restore --list >/dev/null
+  --decrypt "$work/$dump" >"$work/check.dump"
+pg_restore --list "$work/check.dump" >/dev/null
+rm -f "$work/check.dump"
 
 rclone copyto --s3-no-check-bucket "$work/$dump" "$SAFE/database/daily/$dump"
 if [ "$(date -u +%u)" = "7" ]; then
