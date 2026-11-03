@@ -121,6 +121,7 @@ def test_display_preferences_have_comfortable_defaults():
     assert user.text_size == "normal"
     assert user.data_saver is False
     assert user.audio_mode is False
+    assert user.reduced_motion is False
 
 
 def test_display_preferences_are_validated():

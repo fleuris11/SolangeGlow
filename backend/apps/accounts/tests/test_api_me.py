@@ -64,6 +64,7 @@ def test_profile_update(client, user):
             "theme": "dark",
             "text_size": "xlarge",
             "audio_mode": True,
+            "reduced_motion": True,
             "notify_whatsapp": False,
             "quiet_hours_start": "21:30",
             "quiet_hours_end": "06:00",

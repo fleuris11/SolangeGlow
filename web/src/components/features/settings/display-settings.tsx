@@ -4,7 +4,7 @@ import {
   CellSignalLow,
   Desktop,
   Moon,
-  SpeakerHigh,
+  Sparkle, SpeakerHigh,
   Sun,
   TextAa,
   type Icon,
@@ -77,6 +77,13 @@ export function DisplaySettings() {
         description={t("dataSaverText")}
         checked={prefs.dataSaver}
         onChange={(dataSaver) => set({ dataSaver })}
+      />
+      <SwitchRow
+        icon={<Sparkle size={28} weight="duotone" />}
+        label={t("reducedMotion")}
+        description={t("reducedMotionText")}
+        checked={prefs.reducedMotion}
+        onChange={(reducedMotion) => set({ reducedMotion })}
       />
       <SwitchRow
         icon={<SpeakerHigh size={28} weight="duotone" />}

@@ -296,6 +296,8 @@
     },
     "dataSaver": "Data saver",
     "dataSaverText": "Lighter images, videos only play when you tap.",
+    "reducedMotion": "Reduced animations",
+    "reducedMotionText": "Fewer movements: short fades instead.",
     "audioMode": "Audio mode",
     "audioModeText": "A \"Listen\" button reads important texts aloud.",
     "saved": "Setting saved",
@@ -4018,5 +4020,27 @@
     "text": "Pages you already saw are still here. Reconnect for the rest.",
     "retry": "Try again",
     "lessons": "My offline courses"
+  },
+  "ui": {
+    "beforeAfter": {
+      "before": "Before",
+      "after": "After",
+      "label": "Compare before and after"
+    },
+    "gallery": {
+      "label": "Photos",
+      "position": "Photo {current} of {total}",
+      "show": "See photo {number}"
+    },
+    "stories": {
+      "position": "Story {current} of {total}",
+      "close": "Close",
+      "previous": "Previous",
+      "next": "Next",
+      "finish": "Finish"
+    },
+    "pull": {
+      "busy": "Updating"
+    }
   }
 }

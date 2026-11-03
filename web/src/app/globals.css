@@ -17,6 +17,8 @@
   --color-alerte: var(--alerte);
   --color-trait: var(--trait);
   --color-voile: var(--voile);
+  --color-nuit: var(--nuit);
+  --color-voile-photo: var(--voile-photo);
 
   /* Fonts (next/font variables set on <html>). */
   --font-sans: var(--font-atkinson), ui-sans-serif, system-ui, sans-serif;
@@ -48,9 +50,14 @@
 
   --shadow-float: var(--ombre-flottante);
 
-  /* Motion: functional only, 150 to 200 ms, ease-out. */
-  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
-  --animate-halo: halo-pulse 1.4s var(--ease-out-soft) 1 both;
+  /* Motion: durations and curves live in tokens.css. */
+  --ease-out-soft: var(--courbe-sortie);
+  --ease-sortie: var(--courbe-sortie);
+  --ease-mouvement: var(--courbe-mouvement);
+  --ease-feuille: var(--courbe-feuille);
+  --animate-halo: halo-pulse var(--duree-signature) var(--courbe-sortie) 1 both;
+  --transition-duration-micro: var(--duree-micro);
+  --transition-duration-opening: var(--duree-ouverture);
   --animate-shimmer: shimmer 1.6s ease-in-out infinite;
 }
 
@@ -90,6 +97,72 @@
   100% {
     transform: rotate(var(--petal-angle)) translateY(-34%) scale(1);
     opacity: 1;
+  }
+}
+
+@keyframes petal-reveal {
+  from {
+    clip-path: inset(18% 18% 18% 18% round 50% 16% 50% 16%);
+    transform: scale(1.04);
+  }
+  to {
+    clip-path: inset(0 round 50% 16% 50% 16%);
+    transform: scale(1);
+  }
+}
+
+@keyframes line-up {
+  from {
+    opacity: 0;
+    transform: translateY(0.6em);
+  }
+}
+
+@keyframes toast-up {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+@keyframes like-petal {
+  from {
+    opacity: 1;
+    transform: rotate(var(--angle)) translateY(-0.5rem) scale(0.4);
+  }
+  to {
+    opacity: 0;
+    transform: rotate(var(--angle)) translateY(-2.5rem) scale(1);
+  }
+}
+
+@keyframes roll-up {
+  from {
+    opacity: 0;
+    transform: translateY(70%);
+  }
+}
+
+@keyframes roll-down {
+  from {
+    opacity: 0;
+    transform: translateY(-70%);
+  }
+}
+
+@keyframes bloom-petal {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  60% {
+    opacity: 1;
+  }
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
   }
 }
 
@@ -139,6 +212,7 @@
   }
 
   /* Themed regions (e.g. the light/dark panels of /design) repaint themselves. */
+  [data-ambiance],
   [data-theme] {
     background-color: var(--lait);
     color: var(--prune);
@@ -169,10 +243,107 @@
   mask-repeat: no-repeat;
 }
 
+/* The same petal for what is not a picture: same corners as the mask, no file to load. */
+@utility sg-petal-shape {
+  border-radius: 50% 16% 50% 16%;
+}
+
+/* Press feedback of everything tappable: the interface answers before anything loads. */
+@utility press {
+  transition: transform var(--duree-micro) var(--courbe-sortie);
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+@utility sg-fade-in {
+  animation: fade-in var(--duree-micro) var(--courbe-sortie);
+}
+
+@utility sg-sheet-in {
+  animation: sheet-up var(--duree-ouverture) var(--courbe-feuille);
+}
+
+/* After the drag: back to its place along the same curve. */
+@utility sg-sheet {
+  transition: transform var(--duree-ouverture) var(--courbe-feuille);
+}
+
+@utility sg-toast-in {
+  animation: toast-up var(--duree-ouverture) var(--courbe-sortie);
+}
+
+/* --- Glow v2: see components/ui and docs/design/DIRECTION.md ------------------------ */
+
+/* The warm light of a photo on a night section: the only decorative light allowed. */
+@utility sg-glow {
+  position: absolute;
+  inset: 4%;
+  z-index: -1;
+  border-radius: 50%;
+  background: var(--lueur);
+  opacity: 0.36;
+  filter: blur(72px);
+  pointer-events: none;
+}
+
+/* Starts visible, so the first paint never waits. */
+@utility sg-petal-reveal {
+  border-radius: 50% 16% 50% 16%;
+  animation: petal-reveal var(--duree-signature) var(--courbe-sortie) both;
+}
+
+/* Each line of the title, one after the other: --line is its position. */
+@utility sg-line-up {
+  animation: line-up var(--duree-ouverture) var(--courbe-sortie) both;
+  animation-delay: calc(var(--duree-micro) + var(--line, 0) * 60ms);
+}
+
+@utility sg-parallax {
+  will-change: auto;
+}
+
+@utility sg-to-night {
+  will-change: auto;
+}
+
+@utility sg-like-petal {
+  position: absolute;
+  width: 0.625rem;
+  height: 0.875rem;
+  border-radius: 50% 16% 50% 16%;
+  background: var(--hibiscus);
+  animation: like-petal 450ms var(--courbe-sortie) both;
+}
+
+@utility sg-roll-up {
+  animation: roll-up 180ms var(--courbe-sortie);
+}
+
+@utility sg-roll-down {
+  animation: roll-down 180ms var(--courbe-sortie);
+}
+
+@utility sg-bloom-petal {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  animation: bloom-petal var(--duree-signature) var(--courbe-sortie) both;
+}
+
+@utility sg-bloom-check {
+  animation: check-draw 300ms 300ms var(--courbe-sortie) forwards;
+}
+
+@utility sg-marquee-track {
+  animation: marquee 48s linear infinite;
+}
+
 @utility pb-safe {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
+/* Fewer movements (phone setting or « Reduced animations »): everything ends at once, and
+   nothing is lost, since each animation holds its final state. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -182,5 +353,71 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+    view-transition-name: none !important;
+  }
+}
+
+html[data-motion="reduced"] *,
+html[data-motion="reduced"] *::before,
+html[data-motion="reduced"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-delay: 0ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+  view-transition-name: none !important;
+}
+
+.sg-marquee:hover .sg-marquee-track,
+.sg-marquee:focus-within .sg-marquee-track {
+  animation-play-state: paused;
+}
+
+/* With fewer movements the band stays still, and is scrolled by hand. */
+@media (prefers-reduced-motion: reduce) {
+  .sg-marquee-track {
+    animation: none;
+  }
+  .sg-marquee-copy {
+    display: none;
+  }
+}
+
+html[data-motion="reduced"] .sg-marquee-track {
+  animation: none;
+}
+
+html[data-motion="reduced"] .sg-marquee-copy {
+  display: none;
+}
+
+/* Linked to the scroll where the browser knows how, without any script. */
+@keyframes parallax-drift {
+  from {
+    transform: translateY(-6%) scale(1.14);
+  }
+  to {
+    transform: translateY(6%) scale(1.14);
+  }
+}
+
+@keyframes to-night {
+  from {
+    background-color: var(--jour);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    html:not([data-motion="reduced"]) .sg-parallax {
+      animation: parallax-drift linear both;
+      animation-timeline: view();
+    }
+
+    html:not([data-motion="reduced"]) .sg-to-night {
+      animation: to-night linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
   }
 }

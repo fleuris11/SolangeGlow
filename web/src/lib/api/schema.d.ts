@@ -8176,6 +8176,11 @@ export interface components {
       theme: components["schemas"]["ThemeEnum"];
       text_size: components["schemas"]["TextSizeEnum"];
       data_saver: boolean;
+      /**
+       * Reduced animations
+       * @description Movements become short fades or instant changes.
+       */
+      reduced_motion: boolean;
       /** @description Shows buttons that read important texts aloud. */
       audio_mode: boolean;
       /** WhatsApp notifications */
@@ -8966,6 +8971,11 @@ export interface components {
       theme?: components["schemas"]["ThemeEnum"];
       text_size?: components["schemas"]["TextSizeEnum"];
       data_saver?: boolean;
+      /**
+       * Reduced animations
+       * @description Movements become short fades or instant changes.
+       */
+      reduced_motion?: boolean;
       /** @description Shows buttons that read important texts aloud. */
       audio_mode?: boolean;
       /** WhatsApp notifications */

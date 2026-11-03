@@ -34,7 +34,7 @@ export function buttonClasses({
   className,
 }: Pick<ButtonProps, "variant" | "size" | "fullWidth" | "className">) {
   return cn(
-    "inline-flex items-center justify-center rounded-full font-bold transition-colors duration-150 ease-out",
+    "press inline-flex items-center justify-center rounded-full font-bold",
     "disabled:pointer-events-none disabled:opacity-50",
     variants[variant],
     sizes[size],

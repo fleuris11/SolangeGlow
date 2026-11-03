@@ -84,7 +84,7 @@ function ToastCard({
   }, [item.id, duration, onDismiss]);
 
   return (
-    <div className="bg-carte border-trait shadow-float rounded-card pointer-events-auto flex w-full max-w-[480px] animate-[fade-in_180ms_ease-out] items-center gap-3 border-2 py-2 pr-2 pl-4">
+    <div className="bg-carte border-trait shadow-float rounded-card sg-toast-in pointer-events-auto flex w-full max-w-[480px] items-center gap-3 border-2 py-2 pr-2 pl-4">
       {icons[item.tone]}
       <p className="flex-1 font-bold">{item.message}</p>
       <button

@@ -296,6 +296,8 @@
     },
     "dataSaver": "Économie de données",
     "dataSaverText": "Images plus légères, vidéos lancées seulement au toucher.",
+    "reducedMotion": "Animations réduites",
+    "reducedMotionText": "Moins de mouvements : des fondus courts à la place.",
     "audioMode": "Mode audio",
     "audioModeText": "Un bouton « Écouter » lit les textes importants à voix haute.",
     "saved": "Réglage enregistré",
@@ -4018,5 +4020,27 @@
     "text": "Les pages déjà vues restent disponibles. Reconnecte-toi pour le reste.",
     "retry": "Réessayer",
     "lessons": "Mes formations hors ligne"
+  },
+  "ui": {
+    "beforeAfter": {
+      "before": "Avant",
+      "after": "Après",
+      "label": "Comparer avant et après"
+    },
+    "gallery": {
+      "label": "Photos",
+      "position": "Photo {current} sur {total}",
+      "show": "Voir la photo {number}"
+    },
+    "stories": {
+      "position": "Story {current} sur {total}",
+      "close": "Fermer",
+      "previous": "Précédente",
+      "next": "Suivante",
+      "finish": "Terminer"
+    },
+    "pull": {
+      "busy": "Mise à jour en cours"
+    }
   }
 }

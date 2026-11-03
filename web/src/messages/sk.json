@@ -296,6 +296,8 @@
     },
     "dataSaver": "Šetrenie dát",
     "dataSaverText": "Ľahšie obrázky, videá sa spustia len po dotyku.",
+    "reducedMotion": "Menej animácií",
+    "reducedMotionText": "Menej pohybu: namiesto neho krátke prechody.",
     "audioMode": "Zvukový režim",
     "audioModeText": "Tlačidlo „Počúvať“ prečíta dôležité texty nahlas.",
     "saved": "Nastavenie uložené",
@@ -4018,5 +4020,27 @@
     "text": "Stránky, ktoré si už videla, zostávajú dostupné. Pre ostatné sa pripoj.",
     "retry": "Skúsiť znova",
     "lessons": "Moje kurzy offline"
+  },
+  "ui": {
+    "beforeAfter": {
+      "before": "Pred",
+      "after": "Po",
+      "label": "Porovnať pred a po"
+    },
+    "gallery": {
+      "label": "Fotky",
+      "position": "Fotka {current} z {total}",
+      "show": "Zobraziť fotku {number}"
+    },
+    "stories": {
+      "position": "Príbeh {current} z {total}",
+      "close": "Zavrieť",
+      "previous": "Predchádzajúci",
+      "next": "Ďalší",
+      "finish": "Dokončiť"
+    },
+    "pull": {
+      "busy": "Aktualizuje sa"
+    }
   }
 }

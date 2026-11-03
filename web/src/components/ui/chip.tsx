@@ -14,7 +14,7 @@ export function Chip({ selected = false, icon, className, children, ...props }: 
       type="button"
       aria-pressed={selected}
       className={cn(
-        "inline-flex min-h-12 items-center gap-2 rounded-full border-2 px-4 font-bold transition-colors duration-150",
+        "press inline-flex min-h-12 items-center gap-2 rounded-full border-2 px-4 font-bold",
         selected
           ? "border-prune bg-prune text-lait"
           : "border-trait bg-poudre text-prune hover:border-prune-doux",

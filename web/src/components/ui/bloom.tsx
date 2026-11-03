@@ -3,6 +3,7 @@
 import { useEffect, type CSSProperties } from "react";
 
 import { cn } from "@/lib/cn";
+import { prefersReducedMotion } from "@/lib/motion";
 
 type Props = {
   /** Accessible text announcing what succeeded ("Payment received"). */
@@ -11,59 +12,53 @@ type Props = {
   className?: string;
 };
 
-const PETALS = [-62, 0, 62];
+const PETALS = [
+  { angle: 0, fill: "var(--hibiscus)", delay: 0 },
+  { angle: 120, fill: "var(--or)", delay: 60 },
+  { angle: 240, fill: "var(--hibiscus-press)", delay: 120 },
+];
+const PETAL_PATH = "M50 6C68 22 68 38 50 52 32 38 32 22 50 6Z";
 
 /**
  * The "éclosion": three petals open around a check mark (600 ms), with a light vibration.
  * Reserved for important successes: payment, confirmed booking, receipt code accepted.
+ * The result is complete at once with reduced animations: the check never depends on it.
  */
 export function Bloom({ label, size = 120, className }: Props) {
   useEffect(() => {
-    const reduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-    if (!reduced) navigator.vibrate?.(30);
+    if (!prefersReducedMotion()) navigator.vibrate?.(30);
   }, []);
 
   return (
     <span
       role="img"
       aria-label={label}
-      className={cn("relative inline-flex shrink-0 items-center justify-center", className)}
+      className={cn("relative inline-flex shrink-0", className)}
       style={{ width: size, height: size }}
     >
-      {PETALS.map((angle, index) => (
-        <span
-          key={angle}
-          aria-hidden
-          className={cn(
-            "petal absolute top-[6%] left-[34%] h-[44%] w-[32%] origin-[50%_100%]",
-            index === 1 ? "bg-hibiscus" : "bg-or",
-          )}
-          style={
-            {
-              "--petal-angle": `${angle}deg`,
-              transform: `rotate(${angle}deg)`,
-              animation: "petal-open 600ms var(--ease-out-soft) both",
-            } as CSSProperties
-          }
+      <svg viewBox="0 0 100 100" className="size-full overflow-visible" fill="none" aria-hidden>
+        {PETALS.map(({ angle, fill, delay }) => (
+          <g key={angle} transform={`rotate(${angle} 50 50)`}>
+            <path
+              d={PETAL_PATH}
+              fill={fill}
+              className="sg-bloom-petal"
+              style={{ animationDelay: `${delay}ms` } as CSSProperties}
+            />
+          </g>
+        ))}
+        <circle cx="50" cy="50" r="17" fill="var(--feuille)" />
+        <path
+          d="M42 50.5l6 6 11-12"
+          stroke="var(--lait)"
+          strokeWidth="4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeDasharray="28"
+          strokeDashoffset="28"
+          className="sg-bloom-check"
         />
-      ))}
-      <span
-        aria-hidden
-        className="bg-feuille relative inline-flex size-[46%] items-center justify-center rounded-full"
-      >
-        <svg viewBox="0 0 24 24" className="size-[60%]" fill="none">
-          <path
-            d="M5 12.5l4.5 4.5L19 7.5"
-            stroke="var(--lait)"
-            strokeWidth="3"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeDasharray="24"
-            strokeDashoffset="24"
-            style={{ animation: "check-draw 300ms 300ms var(--ease-out-soft) forwards" }}
-          />
-        </svg>
-      </span>
+      </svg>
     </span>
   );
 }

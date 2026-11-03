@@ -15,6 +15,7 @@
   --prune: #3b1233;
   --prune-doux: #7a4e6e;
   --lait: #fff7f5;
+  --jour: #fff7f5;
   --poudre: #f9e1e7;
   --carte: #ffffff;
   --or: #e8b04b;
@@ -24,6 +25,21 @@
   --trait: #ebd9de;
   --voile: rgb(59 18 51 / 0.45);
   --ombre-flottante: 0 12px 40px -12px rgb(59 18 51 / 0.28);
+
+  /* Night sections and the veil under text on a photo: the same in both themes. */
+  --nuit: #1a0915;
+  --voile-photo: rgb(26 9 21 / 0.62);
+  /* The warm light coming out of a photo on a night background (its dominant colour). */
+  --lueur: #b8572a;
+
+  /* Motion: see src/lib/motion.ts for the same values in TypeScript. */
+  --duree-micro: 160ms;
+  --duree-sortie: 160ms;
+  --duree-ouverture: 280ms;
+  --duree-signature: 600ms;
+  --courbe-sortie: cubic-bezier(0.23, 1, 0.32, 1);
+  --courbe-mouvement: cubic-bezier(0.77, 0, 0.175, 1);
+  --courbe-feuille: cubic-bezier(0.32, 0.72, 0, 1);
 
   /* Skin tones and hair colours of the placeholder portraits (illustrations only). */
   --peau-1: #f1c9a5;
@@ -55,6 +71,7 @@
     --prune: #fceff2;
     --prune-doux: #b9a3b2;
     --lait: #1a0915;
+    --jour: #1a0915;
     --poudre: #2a1024;
     --carte: #24101f;
     --feuille: #5cc79e;
@@ -74,6 +91,7 @@
   --prune: #fceff2;
   --prune-doux: #b9a3b2;
   --lait: #1a0915;
+  --jour: #1a0915;
   --poudre: #2a1024;
   --carte: #24101f;
   --feuille: #5cc79e;
@@ -82,6 +100,25 @@
   --voile: rgb(0 0 0 / 0.6);
   --ombre-flottante: 0 12px 40px -12px rgb(0 0 0 / 0.7);
   --cheveux: #120609;
+  color-scheme: dark;
+}
+
+/* A night section keeps its night values whatever the theme, and repaints the tokens for
+   everything inside: components just work on it. */
+[data-ambiance="nuit"] {
+  --hibiscus: #ff6b7d;
+  --hibiscus-press: #ff8a98;
+  --sur-hibiscus: #1a0915;
+  --prune: #fceff2;
+  --prune-doux: #b9a3b2;
+  --lait: #1a0915;
+  --poudre: #2a1024;
+  --carte: #24101f;
+  --feuille: #5cc79e;
+  --alerte: #f5a25d;
+  --trait: #3a1e33;
+  --voile: rgb(0 0 0 / 0.6);
+  --ombre-flottante: 0 12px 40px -12px rgb(0 0 0 / 0.7);
   color-scheme: dark;
 }
 

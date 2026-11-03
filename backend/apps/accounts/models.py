@@ -89,6 +89,11 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
         _("text size"), max_length=8, choices=TextSize.choices, default=TextSize.NORMAL
     )
     data_saver = models.BooleanField(_("data saver"), default=False)
+    reduced_motion = models.BooleanField(
+        _("reduced animations"),
+        default=False,
+        help_text=_("Movements become short fades or instant changes."),
+    )
     audio_mode = models.BooleanField(
         _("audio mode"),
         default=False,

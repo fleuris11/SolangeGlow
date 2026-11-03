@@ -164,6 +164,7 @@ class UserAdmin(BaseUserAdmin, AuditedModelAdmin):
                     "theme",
                     "text_size",
                     "data_saver",
+                    "reduced_motion",
                     "audio_mode",
                     "notify_whatsapp",
                     "notify_email",
