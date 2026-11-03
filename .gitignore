@@ -91,3 +91,8 @@ desktop.ini
 
 # --- Design research (captures of other sites, internal analysis only) ---
 docs/design/research/
+
+# --- Local tools and outputs ---
+/.playwright-mcp/
+/skills-lock.json
+/Claude outputs/
