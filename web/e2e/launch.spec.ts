@@ -56,6 +56,8 @@ test("sign up, find, book, buy, receipt code, rules and my data", async ({ brows
   await expect(page.getByRole("button", { name: "C'est parti" })).toBeDisabled();
   await page.getByRole("checkbox", { name: /J'accepte les conditions/ }).check();
   await page.getByRole("button", { name: "C'est parti" }).click();
+  await expect(page.getByRole("heading", { name: "Bienvenue !" })).toBeVisible({ timeout: 60_000 });
+  await page.getByRole("button", { name: "Découvrir" }).click();
   await expect(page).not.toHaveURL(/welcome/, { timeout: 60_000 });
   const named = await page.request.patch("/api/v1/me", {
     data: { first_name: name },

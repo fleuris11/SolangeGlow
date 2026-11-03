@@ -20,7 +20,9 @@ if grep -q '^VAPID_PUBLIC_KEY=$' "$ENV_FILE"; then
   echo "2/5 Clés des notifications push"
   keys=$(dc run --rm --no-deps -T --entrypoint python migrate manage.py generate_vapid_keys 2>/dev/null)
   sed -i '/^VAPID_PUBLIC_KEY=$/d;/^VAPID_PRIVATE_KEY=$/d' "$ENV_FILE"
-  echo "$keys" | grep '^VAPID_' >>"$ENV_FILE"
+  # printf: echo would turn the \n of the key into real line breaks.
+  printf '%s
+' "$keys" | grep '^VAPID_' >>"$ENV_FILE"
 else
   echo "2/5 Clés des notifications push : déjà là"
 fi
