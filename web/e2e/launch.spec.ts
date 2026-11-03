@@ -66,7 +66,10 @@ test("sign up, find, book, buy, receipt code, rules and my data", async ({ brows
   // --- Find a pro -------------------------------------------------------------------------------
   await openWith(page, "/fr/explore?q=coiffure", LOOK);
   await expectNoSeriousA11yIssue(page);
-  await page.getByRole("link", { name: /Béné Coiffure/ }).first().click();
+  await page
+    .getByRole("link", { name: /Béné Coiffure/ })
+    .first()
+    .click();
   await expect(page).toHaveURL(/\/fr\/bene-coiffure/);
   await expect(page.getByRole("heading", { name: "Béné Coiffure" }).first()).toBeVisible();
 

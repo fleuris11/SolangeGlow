@@ -30,6 +30,7 @@ function timed(metric, name, response, expected = 200) {
   metric.add(response.timings.duration);
   if (!check(response, { [`${name} ${expected}`]: (r) => r.status === expected })) {
     failures.add(1);
+    console.error(`${name}: HTTP ${response.status} after ${response.timings.duration} ms`);
   }
   return response;
 }

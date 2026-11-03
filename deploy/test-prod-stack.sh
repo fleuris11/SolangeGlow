@@ -10,7 +10,6 @@ cd "$ROOT"
 export ENV_FILE=.env.prod.test
 export RELEASE_FILE=deploy/.release.test
 export COMPOSE_FILES="-f docker-compose.prod.yml -f deploy/compose.test.yml"
-export IMAGE_TAG=test
 export COMPOSE_PROJECT_NAME=solangeglow-prod-test
 
 fail() {
@@ -36,12 +35,11 @@ fi
 
 . ./deploy/lib.sh
 
-echo "--- Images"
-dc build
-
-echo "--- Stack"
-WAIT_SECONDS=${WAIT_SECONDS:-900} wait_healthy
-echo "$IMAGE_TAG" >>"$RELEASE_FILE"
+echo "--- First start (images, stack, storage, reference data, admin)"
+WAIT_SECONDS=${WAIT_SECONDS:-900} ./deploy/first-run.sh ops@example.com
+IMAGE_TAG=$(tail -n 1 "$RELEASE_FILE")
+export IMAGE_TAG
+grep -q '^VAPID_PUBLIC_KEY=.' "$ENV_FILE" || fail "no push keys generated"
 
 echo "--- Non-root users"
 for service in backend worker beat web backup; do
@@ -53,11 +51,7 @@ done
 echo "--- Django deployment checks"
 dc exec -T backend python manage.py check --deploy --fail-level WARNING
 
-echo "--- Object storage"
-dc exec -T backend python manage.py setup_storage
-
-echo "--- First start, twice (safe to run again)"
-dc exec -T backend python manage.py init_production --admin-email ops@example.com
+echo "--- First start again (safe to run again)"
 dc exec -T backend python manage.py init_production
 
 echo "--- No demo data"

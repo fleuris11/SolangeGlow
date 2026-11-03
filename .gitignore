@@ -16,6 +16,7 @@ PROMPTS.md
 !.env.prod.example
 /deploy/.release*
 /loadtest/data.json
+/loadtest/results/
 *.pem
 *.key
 
