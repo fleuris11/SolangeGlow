@@ -18,6 +18,7 @@ export function Marquee({ children, label, className }: Props) {
     <div
       role="group"
       aria-label={label}
+      tabIndex={0}
       className={cn("sg-marquee [scrollbar-width:none] overflow-x-auto", className)}
     >
       <div className="sg-marquee-track flex w-max">
