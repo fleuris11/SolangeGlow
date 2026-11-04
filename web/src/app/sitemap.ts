@@ -5,7 +5,17 @@ import { SITE_URL } from "@/lib/seo/alternates";
 import { SITEMAP_KINDS, type SitemapKind } from "@/lib/seo/sitemaps";
 
 const API_INTERNAL_URL = process.env.API_INTERNAL_URL ?? "http://localhost:8000";
-const MAIN = ["", "/explore", "/selection", "/academie", "/aide", "/offrir", "/classements"];
+const MAIN = [
+  "",
+  "/pour-les-pros",
+  "/comment-ca-marche",
+  "/explore",
+  "/selection",
+  "/academie",
+  "/aide",
+  "/offrir",
+  "/classements",
+];
 
 // Built on request and kept one hour: new pros and products come in without a deploy.
 export const revalidate = 3600;

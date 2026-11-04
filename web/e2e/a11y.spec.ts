@@ -3,7 +3,16 @@ import { expect, test } from "@playwright/test";
 
 import { openWith, VIEWPORTS, type Theme } from "./helpers";
 
-const PATHS = ["/fr", "/en/explore", "/sk/messages", "/fr/me", "/fr/create", "/fr/design"];
+const PATHS = [
+  "/fr",
+  "/fr/pour-les-pros",
+  "/fr/comment-ca-marche",
+  "/en/explore",
+  "/sk/messages",
+  "/fr/me",
+  "/fr/create",
+  "/fr/design",
+];
 const THEMES: Theme[] = ["light", "dark"];
 
 /** No serious or critical accessibility violation, in light and dark, on mobile. */

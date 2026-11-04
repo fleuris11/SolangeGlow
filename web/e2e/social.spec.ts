@@ -70,6 +70,8 @@ test("post page with comments and a sharing preview", async ({ page }) => {
   await expect(page).toHaveURL(/\/fr\/p\/[0-9a-f-]+#comments$/);
   await expect(page.getByRole("heading", { name: "Commentaires" })).toBeVisible();
   await expect(page.getByRole("link", { name: "Connecte-toi pour commenter" })).toBeVisible();
+  // What a sharing preview reads: the page opened directly, not reached from another page.
+  await page.reload();
   await expect(page.locator('meta[property="og:title"]')).toHaveAttribute(
     "content",
     /Publication de/,

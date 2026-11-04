@@ -239,3 +239,15 @@ export const updateClientRecord = (id: string, body: Schemas["PatchedClientRecor
   );
 
 export const BOOKING_QR_URL = "/api/v1/me/agenda/qr.png";
+
+/** The QR code a client shows when she arrives (signed in, or by her secret link). */
+export const appointmentQrUrl = (holder: Holder) =>
+  "id" in holder
+    ? `/api/v1/booking/appointments/${holder.id}/qr.png`
+    : `/api/v1/booking/manage/${holder.token}/qr.png`;
+
+export const getArrival = (reference: string) =>
+  unwrap(api.GET("/api/v1/me/agenda/arrivals/{reference}", { params: { path: { reference } } }));
+
+export const markArrival = (reference: string) =>
+  unwrap(api.POST("/api/v1/me/agenda/arrivals/{reference}", { params: { path: { reference } } }));

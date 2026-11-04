@@ -205,6 +205,12 @@ export function AppointmentSheet({
                 <dd>{a.option_names.join(", ")}</dd>
               </div>
             )}
+            {a.arrived_at && (
+              <div>
+                <dt className="text-small text-prune-doux">{t("arrivedAt")}</dt>
+                <dd className="text-feuille font-bold">{timeAt(a.arrived_at, zone, locale)}</dd>
+              </div>
+            )}
             {a.note && (
               <div>
                 <dt className="text-small text-prune-doux">{t("note")}</dt>

@@ -1,16 +1,28 @@
+import {
+  CalendarCheck,
+  ChatsCircle,
+  GameController,
+  Gift as GiftIcon,
+  GraduationCap,
+  MapPin,
+  QrCode,
+  ShieldCheck,
+  SpeakerHigh,
+  Storefront,
+  VideoCamera,
+  ImagesSquare,
+} from "@phosphor-icons/react/dist/ssr";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import type { ReactNode } from "react";
 
+import { lines, MarketingPage, TITLE, TopBar } from "@/components/features/marketing/chrome";
+import { QrPoster } from "@/components/features/marketing/qr-poster";
 import { TRADES, type Trade } from "@/components/features/trades/trade-icon";
-import { AudioToggle } from "@/components/shell/audio-toggle";
 import { CityPicker } from "@/components/shell/city-picker";
-import { navIcons } from "@/components/shell/nav-icons";
 import { AutoplayVideo } from "@/components/ui/autoplay-video";
-import { BottomNav } from "@/components/ui/bottom-nav";
 import { Button } from "@/components/ui/button";
 import { EditorialSection } from "@/components/ui/editorial-section";
-import { LocaleSwitcher } from "@/components/ui/locale-switcher";
 import { ParallaxImage } from "@/components/ui/parallax-image";
 import { SpeakButton } from "@/components/ui/speak-button";
 import { Link } from "@/lib/i18n/navigation";
@@ -32,47 +44,33 @@ const TRADE_PHOTOS: Record<Trade, { photo: Photo; focus: string }> = {
 const FIRST_TRADE: Trade = "braids";
 const ORDER: Trade[] = [FIRST_TRADE, ...TRADES.filter((trade) => trade !== FIRST_TRADE)];
 const CODE = ["4", "8", "1", "7", "2", "6"];
-const PLACES = "Cotonou, Calavi, Porto-Novo, Paris, Brest";
-const TITLE = "font-display text-balance hyphens-none";
+
+/** Each thing the platform does, with where to see it. Nothing here needs a private page. */
+const EVERYTHING = [
+  { key: "find", href: "/explore", icon: MapPin },
+  { key: "book", href: "/explore", icon: CalendarCheck },
+  { key: "qr", href: "/comment-ca-marche#rendez-vous", icon: QrCode },
+  { key: "feed", href: "#feed-title", icon: ImagesSquare },
+  { key: "talk", href: "/comment-ca-marche#comptes", icon: ChatsCircle },
+  { key: "shop", href: "/comment-ca-marche#payer", icon: ShieldCheck },
+  { key: "live", href: "/academie/lives", icon: VideoCamera },
+  { key: "france", href: "/selection", icon: Storefront },
+  { key: "academy", href: "/academie", icon: GraduationCap },
+  { key: "gift", href: "/offrir", icon: GiftIcon },
+  { key: "games", href: "/classements", icon: GameController },
+  { key: "audio", href: "/comment-ca-marche#audio", icon: SpeakerHigh },
+] as const;
+
+const DOORS = [
+  { key: "guest", photo: "bride-makeup", href: "/explore", primary: false },
+  { key: "client", photo: "curls-blue", href: "/auth?as=client", primary: true },
+  { key: "pro", photo: "nails-pro", href: "/auth?as=pro", primary: false },
+] as const;
+
+const QUESTIONS = ["account", "signup", "pro", "qr", "payment", "france"] as const;
 
 function src(photo: Photo) {
   return MEDIA[photo]!.src;
-}
-
-function Logo({ className, sizes }: { className?: string; sizes: string }) {
-  return (
-    <Image
-      src="/brand/logo-white.png"
-      alt="Solange glow"
-      width={640}
-      height={291}
-      sizes={sizes}
-      className={className}
-    />
-  );
-}
-
-function TopBar() {
-  const t = useTranslations("home.public");
-  return (
-    <header className="absolute inset-x-0 top-0 z-20 flex items-center justify-between gap-3 px-4 py-3 lg:px-10 lg:py-5">
-      <Link href="/" aria-label="Solange glow">
-        <Logo sizes="125px" className="h-11 w-auto lg:h-14" />
-      </Link>
-      <nav aria-label={t("menu")} className="hidden items-center gap-8 font-semibold lg:flex">
-        <Link href="/explore">{t("links.explore")}</Link>
-        <Link href="/selection">{t("links.shop")}</Link>
-        <Link href="/academie">{t("links.academy")}</Link>
-        <Link href="/offrir">{t("links.gift")}</Link>
-      </nav>
-      <div className="flex items-center gap-1">
-        <AudioToggle compact />
-        <Button asChild variant="secondary" className="text-small min-h-11 px-4 whitespace-nowrap">
-          <Link href="/auth">{t("signIn")}</Link>
-        </Button>
-      </div>
-    </header>
-  );
 }
 
 /**
@@ -82,6 +80,7 @@ function TopBar() {
  */
 function Opening() {
   const t = useTranslations("home.public");
+  const tMarketing = useTranslations("marketing");
   const tTrades = useTranslations("trades");
   return (
     <EditorialSection
@@ -149,7 +148,7 @@ function Opening() {
           </ul>
         </fieldset>
 
-        <div className="sg-line-up [--line:3]">
+        <div className="sg-line-up flex flex-col gap-3 [--line:3] lg:flex-row lg:flex-wrap lg:items-center">
           {ORDER.map((trade) => (
             <div key={trade} data-show={trade}>
               <Button asChild size="lg" className="w-full lg:w-auto">
@@ -157,8 +156,113 @@ function Opening() {
               </Button>
             </div>
           ))}
+          <div className="grid grid-cols-2 gap-3 lg:flex">
+            <Button asChild variant="secondary" className="text-small px-1 lg:px-5">
+              <Link href="/auth?as=client">{tMarketing("createAccount")}</Link>
+            </Button>
+            <Button asChild variant="secondary" className="text-small px-1 lg:px-5">
+              <Link href="/pour-les-pros">{tMarketing("iAmPro")}</Link>
+            </Button>
+          </div>
         </div>
       </div>
+    </EditorialSection>
+  );
+}
+
+/** The first thing to understand: what you can do without an account, as a client, as a pro. */
+function Doors() {
+  const t = useTranslations("marketing.who");
+  const tMarketing = useTranslations("marketing");
+  return (
+    <EditorialSection aria-labelledby="who-title" className="px-4 py-16 lg:px-10 lg:py-24">
+      <div className="flex items-start justify-between gap-3">
+        <h2 id="who-title" className={`${TITLE} text-[2.5rem] leading-[1.06] lg:text-[5rem]`}>
+          {t("title")}
+        </h2>
+        <SpeakButton text={t("title")} />
+      </div>
+      <ul className="mt-10 grid gap-12 lg:grid-cols-3 lg:gap-8">
+        {DOORS.map(({ key, photo, href, primary }) => (
+          <li key={key} className="flex flex-col gap-4">
+            <div className="rounded-photo relative aspect-[3/2] overflow-hidden">
+              <Image
+                src={src(photo)}
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 30vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <h3 className="font-display text-headline">{t(`${key}.title`)}</h3>
+            <p className="font-semibold">{t(`${key}.text`)}</p>
+            <ul className="text-prune-doux flex flex-1 flex-col gap-1">
+              {lines(t, `${key}.items`).map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <Button asChild size="lg" variant={primary ? "primary" : "secondary"}>
+              <Link href={href}>{t(`${key}.cta`)}</Link>
+            </Button>
+            {key === "pro" && (
+              <Link
+                href="/pour-les-pros"
+                className="inline-flex min-h-12 items-center justify-center font-semibold underline"
+              >
+                {t("pro.more")}
+              </Link>
+            )}
+          </li>
+        ))}
+      </ul>
+      <p className="border-trait mt-10 flex flex-wrap items-center gap-x-3 border-t pt-4">
+        {t("already")}
+        <Link href="/auth" className="inline-flex min-h-12 items-center font-semibold underline">
+          {tMarketing("signIn")}
+        </Link>
+      </p>
+    </EditorialSection>
+  );
+}
+
+/** All the platform on one screen, as an index: an icon and a word, for those who read little. */
+function Everything() {
+  const t = useTranslations("marketing.everything");
+  return (
+    <EditorialSection
+      ambiance="poudre"
+      aria-labelledby="everything-title"
+      className="px-4 py-16 lg:px-10 lg:py-24"
+    >
+      <h2 id="everything-title" className={`${TITLE} text-[2.5rem] leading-[1.06] lg:text-[5rem]`}>
+        {t("title")}
+      </h2>
+      <ul className="border-trait mt-10 grid border-t lg:grid-cols-2 lg:gap-x-16">
+        {EVERYTHING.map(({ key, href, icon: Icon }) => (
+          <li key={key} className="border-trait border-b">
+            {href.startsWith("#") ? (
+              <a href={href} className="press flex min-h-20 items-center gap-4 py-4">
+                <Icon aria-hidden size={32} weight="duotone" className="text-hibiscus shrink-0" />
+                <span className="min-w-0">
+                  <span className="text-lead block font-semibold">{t(`${key}.title`)}</span>
+                  <span className="text-prune-doux block">{t(`${key}.text`)}</span>
+                </span>
+              </a>
+            ) : (
+              <Link href={href} className="press flex min-h-20 items-center gap-4 py-4">
+                <Icon aria-hidden size={32} weight="duotone" className="text-hibiscus shrink-0" />
+                <span className="min-w-0">
+                  <span className="text-lead block font-semibold">{t(`${key}.title`)}</span>
+                  <span className="text-prune-doux block">{t(`${key}.text`)}</span>
+                </span>
+              </Link>
+            )}
+          </li>
+        ))}
+      </ul>
+      <Button asChild variant="secondary" className="mt-8">
+        <Link href="/comment-ca-marche">{t("more")}</Link>
+      </Button>
     </EditorialSection>
   );
 }
@@ -275,7 +379,7 @@ function ReceiptCode() {
 }
 
 function Booking() {
-  const t = useTranslations("home.public.booking");
+  const t = useTranslations("marketing.booking");
   const alt = useTranslations("home.public.alt");
   return (
     <EditorialSection
@@ -287,8 +391,12 @@ function Booking() {
         <h2 id="booking-title" className={`${TITLE} text-[2.5rem] leading-[1.06] lg:text-[4.5rem]`}>
           {t("title")}
         </h2>
-        <p className="text-lead max-w-[40ch]">{t("text")}</p>
-        <Button asChild variant="secondary" className="w-fit">
+        <ul className="text-lead flex max-w-[40ch] flex-col gap-3">
+          {lines(t, "items").map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+        <Button asChild size="lg" className="w-fit">
           <Link href="/explore">{t("cta")}</Link>
         </Button>
       </div>
@@ -298,6 +406,48 @@ function Booking() {
         sizes="(min-width: 1024px) 55vw, 100vw"
         className="min-h-[440px] lg:min-h-[760px]"
       />
+    </EditorialSection>
+  );
+}
+
+/** Pros: free showcase, QR code to print, agenda, shop. Everything else on their own page. */
+function ForPros() {
+  const t = useTranslations("marketing.forPros");
+  return (
+    <EditorialSection
+      id="pros"
+      ambiance="nuit"
+      aria-labelledby="for-pros-title"
+      className="grid gap-10 px-4 py-16 lg:grid-cols-[1fr_auto] lg:gap-20 lg:px-10 lg:py-28"
+    >
+      <div className="flex flex-col gap-6">
+        <div className="flex items-start justify-between gap-3">
+          <h2
+            id="for-pros-title"
+            className={`${TITLE} text-[2.5rem] leading-[1.06] lg:text-[5rem]`}
+          >
+            {t("title")}
+          </h2>
+          <SpeakButton text={t("title")} />
+        </div>
+        <p className="text-lead max-w-[42ch]">{t("line")}</p>
+        <ul className="border-trait grid border-t lg:grid-cols-2 lg:gap-x-10">
+          {lines(t, "items").map((item) => (
+            <li key={item} className="border-trait border-b py-3 font-semibold">
+              {item}
+            </li>
+          ))}
+        </ul>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button asChild size="lg">
+            <Link href="/auth?as=pro">{t("cta")}</Link>
+          </Button>
+          <Button asChild size="lg" variant="secondary">
+            <Link href="/pour-les-pros">{t("more")}</Link>
+          </Button>
+        </div>
+      </div>
+      <QrPoster className="max-w-[320px]" />
     </EditorialSection>
   );
 }
@@ -384,70 +534,56 @@ function Gift() {
   );
 }
 
-function Closing() {
-  const t = useTranslations("home.public.footer");
+function Questions() {
+  const t = useTranslations("marketing.questions");
   return (
-    <EditorialSection ambiance="nuit" className="px-4 pt-12 pb-28 lg:px-10 lg:pb-12">
-      <footer className="flex flex-col gap-6">
-        <Logo sizes="282px" className="h-24 w-auto self-start lg:h-32" />
-        <p className="text-lead text-prune-doux">{PLACES}</p>
-        <nav
-          aria-label={t("label")}
-          className="text-small flex flex-wrap items-center gap-x-6 gap-y-1 font-semibold"
-        >
-          <Link href="/aide" className="inline-flex min-h-12 items-center">
-            {t("help")}
-          </Link>
-          <Link href="/pages/conditions-generales" className="inline-flex min-h-12 items-center">
-            {t("terms")}
-          </Link>
-          <Link href="/pages/confidentialite" className="inline-flex min-h-12 items-center">
-            {t("privacy")}
-          </Link>
-          <a href="/media/CREDITS.md" className="inline-flex min-h-12 items-center">
-            {t("credits")}
-          </a>
-        </nav>
-        <LocaleSwitcher />
-      </footer>
+    <EditorialSection aria-labelledby="questions-title" className="px-4 py-16 lg:px-10 lg:py-24">
+      <h2 id="questions-title" className={`${TITLE} text-[2.5rem] leading-[1.06] lg:text-[5rem]`}>
+        {t("title")}
+      </h2>
+      <div className="border-trait mt-10 border-t">
+        {QUESTIONS.map((key) => (
+          <details key={key} className="border-trait border-b">
+            <summary className="text-lead flex min-h-16 cursor-pointer items-center py-3 font-semibold">
+              {t(`${key}.q`)}
+            </summary>
+            <p className="max-w-[64ch] pb-5">{t(`${key}.a`)}</p>
+          </details>
+        ))}
+      </div>
+      <Button asChild variant="secondary" className="mt-8">
+        <Link href="/aide">{t("help")}</Link>
+      </Button>
     </EditorialSection>
   );
 }
 
-/** Home of a visitor: edge-to-edge chapters with real photos, then the real feed of the pros. */
+/** Home of a visitor: who it is for, all it does, real photos, then the real feed of the pros. */
 export function PublicHome({ feed }: { feed: ReactNode }) {
-  const t = useTranslations("common");
   const tHome = useTranslations("home.public.feed");
-  const icons = navIcons();
   return (
-    <>
-      <a
-        href="#main"
-        className="bg-rouge text-sur-hibiscus sr-only z-50 rounded-full px-5 py-3 font-bold focus:not-sr-only focus:fixed focus:top-2 focus:left-2"
-      >
-        {t("skipToContent")}
-      </a>
-      <main id="main">
-        <Opening />
-        <Hands />
-        <ReceiptCode />
-        <Booking />
-        <ShopAndAcademy />
-        <Gift />
-        <EditorialSection aria-labelledby="feed-title" className="px-4 py-16 lg:py-24">
-          <div className="mx-auto flex max-w-[640px] flex-col gap-8">
-            <div className="flex items-center justify-between gap-3">
-              <h2 id="feed-title" className="font-display text-display">
-                {tHome("title")}
-              </h2>
-              <CityPicker />
-            </div>
-            {feed}
+    <MarketingPage>
+      <Opening />
+      <Doors />
+      <Everything />
+      <Hands />
+      <ReceiptCode />
+      <Booking />
+      <ForPros />
+      <ShopAndAcademy />
+      <Gift />
+      <Questions />
+      <EditorialSection aria-labelledby="feed-title" className="px-4 py-16 lg:py-24">
+        <div className="mx-auto flex max-w-[640px] flex-col gap-8">
+          <div className="flex items-center justify-between gap-3">
+            <h2 id="feed-title" className="font-display text-display scroll-mt-4">
+              {tHome("title")}
+            </h2>
+            <CityPicker />
           </div>
-        </EditorialSection>
-        <Closing />
-      </main>
-      <BottomNav icons={icons} />
-    </>
+          {feed}
+        </div>
+      </EditorialSection>
+    </MarketingPage>
   );
 }

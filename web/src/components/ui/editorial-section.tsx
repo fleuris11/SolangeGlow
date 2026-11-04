@@ -21,6 +21,7 @@ type Props = ComponentPropsWithoutRef<"section"> & { ambiance?: Ambiance };
 export function EditorialSection({ ambiance = "jour", className, children, ...props }: Props) {
   return (
     <section
+      data-chapter
       data-ambiance={ambiance === "nuit" ? "nuit" : undefined}
       className={cn("relative w-full", fields[ambiance], className)}
       {...props}

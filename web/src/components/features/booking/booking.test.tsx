@@ -60,6 +60,7 @@ const PRO = {
 function appointment(overrides: Partial<Appointment> = {}): Appointment {
   return {
     id: "a1",
+    arrived_at: null,
     reference: "RDV-ABC1234",
     status: "confirmed",
     source: "online",

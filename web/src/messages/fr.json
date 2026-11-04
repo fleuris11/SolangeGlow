@@ -86,16 +86,8 @@
       "proText": "Montre ton travail et remplis ton agenda."
     },
     "public": {
-      "menu": "Découvrir",
-      "signIn": "Me connecter",
       "title": "Trouve la pro qui sublime ta beauté",
       "chooseTrade": "Choisis un métier",
-      "links": {
-        "explore": "Explorer",
-        "shop": "Boutiques",
-        "academy": "Académie",
-        "gift": "Offrir"
-      },
       "find": {
         "hair": "Trouver ma pro de coiffure",
         "braids": "Trouver ma pro de tresses",
@@ -124,12 +116,6 @@
         "makeupText": "Mariée, soirée, peau noire et métisse.",
         "headwrap": "Foulard",
         "headwrapText": "Gélé, turban, attaches de fête."
-      },
-      "booking": {
-        "title": "Choisis ton créneau, on s’occupe du reste",
-        "text": "Gratuit pour toi. La pro confirme, tu reçois un rappel.",
-        "day": "Samedi",
-        "cta": "Voir les pros"
       },
       "code": {
         "title": "Ton argent reste bloqué jusqu’à ce code",
@@ -160,14 +146,7 @@
         "title": "Offre un soin à ta mère, de Paris à Cotonou",
         "cta": "Offrir au pays"
       },
-      "footer": {
-        "label": "Informations",
-        "help": "Aide",
-        "terms": "Conditions",
-        "privacy": "Confidentialité",
-        "credits": "Crédits photos"
-      },
-      "line": "Coiffure, tresses, maquillage, ongles. Réserve et paie en sécurité."
+      "line": "Coiffure, tresses, maquillage, ongles. Réserve en ligne, même sans compte."
     }
   },
   "aside": {
@@ -2342,7 +2321,14 @@
       "cancelled": "Rendez-vous annulé",
       "keep": "Non, je garde mon rendez-vous",
       "lateNoDeposit": "Annule le plus tôt possible : la pro pourra donner la place à quelqu'un d'autre.",
-      "cancelNoDeposit": "La pro est prévenue tout de suite."
+      "cancelNoDeposit": "La pro est prévenue tout de suite.",
+      "qr": {
+        "title": "Ton QR code de rendez-vous",
+        "arrived": "Tu es bien arrivée. Bon soin !",
+        "help": "Montre-le à la pro en arrivant. Elle le scanne et voit ton rendez-vous.",
+        "download": "Télécharger mon QR code",
+        "alt": "QR code du rendez-vous {reference}"
+      }
     },
     "list": {
       "title": "Mes rendez-vous",
@@ -2435,7 +2421,8 @@
       "quickBlockCta": "Bloquer ce moment",
       "added": "Rendez-vous ajouté. La cliente reçoit la confirmation.",
       "blocked": "Moment bloqué",
-      "salon": "Mon salon"
+      "salon": "Mon salon",
+      "arrivedAt": "Arrivée à"
     },
     "settings": {
       "saved": "Enregistré",
@@ -2532,6 +2519,21 @@
       "save": "Enregistrer la fiche",
       "history": "Ses rendez-vous",
       "photo": "Photo du résultat"
+    },
+    "arrival": {
+      "title": "Arrivée de la cliente",
+      "client": "Cliente",
+      "service": "Prestation",
+      "time": "Rendez-vous",
+      "status": "État",
+      "when": "{day} à {time}",
+      "mark": "Elle est arrivée",
+      "done": "Arrivée notée.",
+      "arrivedAt": "Arrivée à {time}",
+      "notConfirmed": "Ce rendez-vous n'est pas confirmé. Regarde-le dans ton agenda.",
+      "notFound": "Ce rendez-vous n'est pas dans ton agenda",
+      "notFoundHelp": "Connecte-toi avec le compte du salon, puis scanne à nouveau le QR code.",
+      "error": "Impossible de noter l'arrivée. Réessaie."
     }
   },
   "glowpro": {
@@ -4150,6 +4152,433 @@
     },
     "pull": {
       "busy": "Mise à jour en cours"
+    }
+  },
+  "marketing": {
+    "nav": {
+      "label": "Découvrir",
+      "explore": "Explorer",
+      "selection": "Sélection France",
+      "academy": "Académie",
+      "gift": "Offrir",
+      "pros": "Pour les pros",
+      "how": "Comment ça marche"
+    },
+    "signIn": "Me connecter",
+    "createAccount": "Créer un compte",
+    "myAccount": "Mon compte",
+    "iAmPro": "Je suis une pro",
+    "who": {
+      "title": "Par où commencer ?",
+      "already": "Tu as déjà un compte ?",
+      "guest": {
+        "title": "Je veux juste un rendez-vous",
+        "text": "Pas besoin de compte. Ton nom et ton numéro suffisent.",
+        "items": {
+          "a": "Voir les pros, leurs photos et leurs prix",
+          "b": "Réserver et recevoir un rappel",
+          "c": "Voir les boutiques et les formations gratuites"
+        },
+        "cta": "Trouver une pro"
+      },
+      "client": {
+        "title": "Je veux un compte",
+        "text": "Gratuit, avec ton numéro ou ton e-mail.",
+        "items": {
+          "a": "Acheter en sécurité",
+          "b": "Écrire et appeler les pros",
+          "c": "Suivre, noter et publier",
+          "d": "Te former, jouer, gagner des points"
+        },
+        "cta": "Créer mon compte"
+      },
+      "pro": {
+        "title": "Je suis une pro",
+        "text": "Seule, à domicile ou en salon. Le cœur est gratuit.",
+        "items": {
+          "a": "Ta vitrine et ton lien court",
+          "b": "Ton QR code à imprimer",
+          "c": "Ton agenda et tes rappels",
+          "d": "Ta boutique et tes formations"
+        },
+        "cta": "Créer ma vitrine",
+        "more": "Tout voir pour les pros"
+      }
+    },
+    "everything": {
+      "title": "Tout ce que tu peux faire",
+      "more": "Voir comment ça marche",
+      "find": {
+        "title": "Trouver une pro près de toi",
+        "text": "Carte, itinéraire, horaires, avis vérifiés."
+      },
+      "book": {
+        "title": "Prendre rendez-vous",
+        "text": "En ligne, sans appeler, même sans compte."
+      },
+      "qr": {
+        "title": "Ton QR code de rendez-vous",
+        "text": "Montre-le en arrivant, la pro le scanne."
+      },
+      "feed": {
+        "title": "Voir le travail des pros",
+        "text": "Photos, vidéos, avant et après, stories."
+      },
+      "talk": {
+        "title": "Écrire et appeler",
+        "text": "Messages et appels sans montrer ton numéro."
+      },
+      "shop": {
+        "title": "Acheter dans les boutiques",
+        "text": "Ton argent reste bloqué jusqu'à ton code."
+      },
+      "live": {
+        "title": "Suivre des lives",
+        "text": "Ventes et cours en direct, avec tes questions."
+      },
+      "france": {
+        "title": "Sélection France",
+        "text": "Des produits de France livrés au Bénin."
+      },
+      "academy": {
+        "title": "Te former à l'Académie",
+        "text": "Vidéos courtes, quiz et certificat."
+      },
+      "gift": {
+        "title": "Offrir au pays",
+        "text": "Depuis la France, offre un soin ou un produit."
+      },
+      "games": {
+        "title": "Jouer et gagner des points",
+        "text": "Quiz du jour, roue, défis et récompenses."
+      },
+      "audio": {
+        "title": "Écouter au lieu de lire",
+        "text": "L'appli lit les textes. Français, anglais, slovaque."
+      }
+    },
+    "booking": {
+      "title": "Ton rendez-vous, sans appeler",
+      "items": {
+        "a": "Choisis ta pro, ton service et ton créneau.",
+        "b": "Pas de compte ? Ton nom et ton numéro suffisent.",
+        "c": "Tu reçois un rappel et ton QR code de rendez-vous."
+      },
+      "cta": "Prendre rendez-vous"
+    },
+    "forPros": {
+      "title": "Tu es pro ? Ton salon en ligne, sans abonnement",
+      "line": "Pour les indépendantes, le travail à domicile et les salons. Tu crées ta vitrine et ton QR code en quelques minutes.",
+      "items": {
+        "a": "Vitrine et lien court",
+        "b": "QR code, affiche A4, stickers",
+        "c": "Agenda et réservations",
+        "d": "Rappels automatiques",
+        "e": "Boutique et paiement sécurisé",
+        "f": "Formations et lives"
+      },
+      "cta": "Créer ma vitrine",
+      "more": "Tout voir pour les pros"
+    },
+    "poster": {
+      "name": "Aïcha Tresses",
+      "scan": "Scanne pour réserver",
+      "caption": "Exemple d'affiche. Le tien est créé tout seul.",
+      "alt": "QR code qui ouvre la réservation chez Aïcha Tresses"
+    },
+    "questions": {
+      "title": "Tes questions",
+      "help": "Voir toute l'aide",
+      "account": {
+        "q": "Faut-il un compte pour réserver ?",
+        "a": "Non. Ton nom et ton numéro suffisent. Pour acheter, écrire à une pro ou laisser un avis, il faut un compte."
+      },
+      "signup": {
+        "q": "Comment créer un compte ?",
+        "a": "Entre ton numéro ou ton e-mail, puis le code reçu sur WhatsApp, par SMS ou par e-mail. Ensuite, choisis ta ville et ta langue."
+      },
+      "pro": {
+        "q": "Je suis pro. Que dois-je faire ?",
+        "a": "Crée ton compte, puis choisis « Je suis une pro ». Remplis ta vitrine et publie-la. Pour encaisser, envoie ta pièce d'identité et un selfie."
+      },
+      "qr": {
+        "q": "À quoi servent les QR codes ?",
+        "a": "La pro imprime le sien pour que ses clientes réservent. La cliente reçoit aussi le sien quand le rendez-vous est confirmé, et le montre en arrivant."
+      },
+      "payment": {
+        "q": "Mon argent est-il protégé ?",
+        "a": "Oui. Ton argent reste bloqué. La pro est payée quand tu donnes ton code de réception."
+      },
+      "france": {
+        "q": "Je suis en France. Puis-je offrir au Bénin ?",
+        "a": "Oui. Avec « Offrir », tu paies en euros un soin, un produit ou une carte. La personne reçoit un lien et choisit."
+      }
+    },
+    "footer": {
+      "forYou": "Pour toi",
+      "explore": "Trouver une pro",
+      "gift": "Offrir au pays",
+      "games": "Jeux et classements",
+      "proTools": "Tous les outils",
+      "proStart": "Créer ma vitrine",
+      "proTeach": "Donner des formations",
+      "account": "Mon compte",
+      "accounts": "Les types de compte",
+      "help": "Aide",
+      "helpCentre": "Centre d'aide",
+      "terms": "Conditions",
+      "privacy": "Confidentialité",
+      "credits": "Crédits photos"
+    },
+    "pros": {
+      "metaTitle": "Pour les pros",
+      "title": "Ton salon en ligne. Le cœur est gratuit.",
+      "line": "Vitrine, QR code, agenda, boutique et formations, au même endroit.",
+      "cta": "Créer ma vitrine",
+      "heroAlt": "Une professionnelle pose du vernis sur les ongles d'une cliente.",
+      "who": {
+        "title": "Pour qui ?",
+        "solo": {
+          "title": "Pro indépendante",
+          "text": "Seule, à domicile ou chez tes clientes. Vitrine, boutique, agenda, formations et lives."
+        },
+        "salon": {
+          "title": "Salon, institut, atelier",
+          "text": "Tout ça, avec plusieurs collaboratrices, le stock et les statistiques."
+        },
+        "staff": {
+          "title": "Collaboratrice d'un salon",
+          "text": "Tu vois et tu gères ton propre agenda. Le salon te relie avec ton numéro."
+        }
+      },
+      "qr": {
+        "title": "Ton lien et ton QR code",
+        "text": "Ils sont créés avec ta vitrine. Une cliente scanne et réserve.",
+        "items": {
+          "a": "Un lien court : solangeglow.com/ton-nom",
+          "b": "Une affiche A4 à imprimer",
+          "c": "Des stickers à coller dans ton salon",
+          "d": "Une carte pour Instagram, TikTok et WhatsApp",
+          "e": "Un QR code pour réserver, dans ton agenda"
+        }
+      },
+      "showcase": {
+        "title": "Ta vitrine, c'est ton site",
+        "items": {
+          "a": "Photo, présentation, métiers et réseaux",
+          "b": "Tarifs, horaires, fermetures",
+          "c": "Photos et vidéos avant et après",
+          "d": "Avis vérifiés de vraies clientes",
+          "e": "Carte, itinéraire et repères pour te trouver",
+          "f": "Badge « Pro vérifiée »"
+        }
+      },
+      "agenda": {
+        "title": "Ton agenda, sans logiciel de salon",
+        "items": {
+          "a": "Les réservations arrivent en temps réel",
+          "b": "Tu confirmes, refuses ou proposes une autre heure",
+          "c": "Rappels automatiques à tes clientes",
+          "d": "Temps de pose et prestations en plusieurs étapes",
+          "e": "Liste d'attente et créneaux de dernière minute",
+          "f": "Acomptes pour éviter les rendez-vous manqués",
+          "g": "Réservation de groupe et réservation d'un look",
+          "h": "Tu scannes le QR code de ta cliente à son arrivée"
+        }
+      },
+      "shop": {
+        "title": "Vends sans risque",
+        "items": {
+          "a": "Ta boutique avec photos, variantes et stock",
+          "b": "Paiement sécurisé par code de réception",
+          "c": "Ton portefeuille et tes retraits",
+          "d": "Promotions et ventes flash",
+          "e": "Ventes en live",
+          "f": "Cartes cadeaux"
+        }
+      },
+      "academy": {
+        "title": "Transmets ton savoir",
+        "items": {
+          "a": "Crée tes formations en vidéo",
+          "b": "Ajoute des quiz et un certificat",
+          "c": "Donne des cours en live",
+          "d": "Fixe ton prix ou offre-les"
+        }
+      },
+      "social": {
+        "title": "Fais-toi connaître",
+        "items": {
+          "a": "Publie photos, vidéos et stories",
+          "b": "Annonce tes créneaux libres",
+          "c": "Réponds vite avec les réponses rapides",
+          "d": "Appelle sans montrer ton numéro",
+          "e": "Mets en avant ta vitrine ou un produit"
+        }
+      },
+      "alt": {
+        "braids": "Femme aux longues tresses et grandes créoles, de profil.",
+        "salon": "Intérieur d'un salon de beauté rose.",
+        "palette": "Palette de maquillage ouverte.",
+        "hands": "Mains d'une tresseuse au travail.",
+        "curls": "Femme aux cheveux bouclés."
+      },
+      "plans": {
+        "title": "Gratuit ou Premium ?",
+        "free": "Gratuit",
+        "freeItems": {
+          "a": "Vitrine, lien court et QR code",
+          "b": "Agenda, créneaux et rappels",
+          "c": "Réservation sans compte pour tes clientes",
+          "d": "Historique et notes clientes",
+          "e": "Temps de pose et liste d'attente",
+          "f": "Boutique et formations",
+          "g": "Tableau de bord simple"
+        },
+        "premium": "Glow Pro Premium",
+        "premiumItems": {
+          "a": "Plus de collaboratrices dans l'agenda",
+          "b": "Fichier client complet, forfaits et paiements en plusieurs fois",
+          "c": "Stock avec scan des codes-barres",
+          "d": "Tableau de bord complet",
+          "e": "Campagnes par e-mail et WhatsApp",
+          "f": "Réservation aux couleurs de ton salon sur ton site"
+        },
+        "trial": "Tu peux essayer Premium avant de t'abonner.",
+        "note": "Les paiements en ligne ont des frais, et les SMS sont payants. Pour encaisser, tu envoies une pièce d'identité et un selfie : c'est la vérification."
+      },
+      "start": {
+        "title": "Commence en trois étapes",
+        "steps": {
+          "a": "Crée ton compte avec ton numéro ou ton e-mail.",
+          "b": "Choisis ton métier, tes services et tes horaires.",
+          "c": "Publie ta vitrine, puis partage ton lien et ton QR code."
+        }
+      }
+    },
+    "how": {
+      "title": "Comment ça marche",
+      "line": "Qui peut faire quoi, comment créer un compte, et chaque service étape par étape.",
+      "jump": "Aller à",
+      "accounts": {
+        "title": "Les types de compte",
+        "line": "Un seul compte suffit pour être cliente et pro : tu changes de mode quand tu veux.",
+        "can": "Peut",
+        "cannot": "Ne peut pas",
+        "guest": {
+          "title": "Sans compte",
+          "can": "Voir les pros, les publications, les boutiques et les formations gratuites. Réserver avec un nom et un numéro.",
+          "cannot": "Acheter, écrire en privé, noter, gagner des points."
+        },
+        "client": {
+          "title": "Cliente",
+          "can": "Tout cela, et acheter, écrire, appeler, noter, suivre des pros, publier, se former et jouer.",
+          "cannot": "Vendre."
+        },
+        "solo": {
+          "title": "Pro indépendante",
+          "can": "Vitrine, portfolio, boutique, agenda, formations et lives.",
+          "cannot": "Gérer une équipe au-delà de ce que prévoit son offre."
+        },
+        "salon": {
+          "title": "Salon, institut, atelier",
+          "can": "Tout cela, et plusieurs collaboratrices, le stock et les statistiques.",
+          "cannot": "Utiliser les options Premium sans abonnement."
+        },
+        "staff": {
+          "title": "Collaboratrice d'un salon",
+          "can": "Voir et gérer son propre agenda.",
+          "cannot": "Voir les réglages du salon, sauf si on lui donne le droit."
+        }
+      },
+      "signup": {
+        "title": "Créer un compte",
+        "steps": {
+          "a": "Entre ton numéro de téléphone ou ton e-mail.",
+          "b": "Tape le code reçu sur WhatsApp, par SMS ou par e-mail.",
+          "c": "Choisis ta ville et ta langue. Si tu es pro, choisis « Je suis une pro »."
+        },
+        "note": "Se connecter, c'est pareil : ton numéro ou ton e-mail, puis le code. Pour vendre ou encaisser, une pro envoie aussi une pièce d'identité et un selfie."
+      },
+      "booking": {
+        "short": "Rendez-vous",
+        "title": "Prendre rendez-vous",
+        "cta": "Trouver une pro",
+        "steps": {
+          "a": "Choisis ta pro, ton service et ton créneau. Depuis sa page, son QR code ou une publication.",
+          "b": "Avec un compte, tu réserves directement. Sans compte, donne ton nom et ton numéro, puis garde le lien reçu.",
+          "c": "La pro confirme, ou propose une autre heure. Si elle demande un acompte, tu le paies en ligne.",
+          "d": "Tu reçois un rappel. Tu peux annuler selon les règles affichées.",
+          "e": "Une fois confirmé, ton rendez-vous affiche ton QR code. Montre-le en arrivant : la pro le scanne.",
+          "f": "Plus de place ? Mets-toi sur la liste d'attente. Tu peux aussi réserver à plusieurs, par exemple pour un mariage."
+        }
+      },
+      "payment": {
+        "short": "Paiement",
+        "title": "Payer en sécurité",
+        "cta": "Voir les pros",
+        "steps": {
+          "a": "Tu paies en ligne. L'argent ne part pas chez la vendeuse : il reste bloqué.",
+          "b": "La vendeuse prépare ta commande et te la remet ou te l'envoie.",
+          "c": "Tu vérifies, puis tu donnes ton code de réception. Là seulement, elle est payée.",
+          "d": "Un problème ? Ouvre un litige depuis ta commande : l'équipe s'en occupe."
+        }
+      },
+      "france": {
+        "short": "France",
+        "title": "Sélection France",
+        "cta": "Voir la sélection",
+        "steps": {
+          "a": "Choisis un produit de France. Le prix affiché comprend la livraison et la douane.",
+          "b": "Tu commandes et tu paies. L'équipe s'occupe de l'achat et de l'envoi.",
+          "c": "Tu suis ton colis, puis tu le retires au point choisi avec ton code.",
+          "d": "Tu ne trouves pas ton produit ? Envoie une demande spéciale et reçois un devis."
+        }
+      },
+      "gift": {
+        "short": "Offrir",
+        "title": "Offrir au pays",
+        "cta": "Faire un cadeau",
+        "steps": {
+          "a": "Depuis la France, choisis un soin, un produit ou une carte.",
+          "b": "Écris ton message et paie en euros.",
+          "c": "La personne reçoit un lien et ouvre son cadeau.",
+          "d": "Elle réserve ou reçoit son cadeau, et peut te répondre en photo."
+        }
+      },
+      "academy": {
+        "short": "Académie",
+        "title": "Te former à l'Académie",
+        "cta": "Voir les formations",
+        "steps": {
+          "a": "Choisis une formation gratuite ou à petit prix, ou prends le Pass.",
+          "b": "Regarde les vidéos à ton rythme, même hors ligne.",
+          "c": "Réussis les quiz et reçois ton certificat avec son QR code de vérification.",
+          "d": "Pose tes questions pendant les cours en live."
+        }
+      },
+      "games": {
+        "short": "Jeux",
+        "title": "Jouer et gagner des points",
+        "cta": "Voir les classements",
+        "steps": {
+          "a": "Gagne des points quand tu te connectes, publies, notes, réserves ou achètes.",
+          "b": "Chaque jour : le quiz et la roue. Et aussi : les défis, les sondages et les classements.",
+          "c": "Échange tes points contre des réductions et des récompenses.",
+          "d": "Invite une amie avec ton lien de parrainage."
+        }
+      },
+      "audio": {
+        "short": "Audio et langues",
+        "title": "Écouter, parler, choisir ta langue",
+        "items": {
+          "a": "Active l'audio : le haut-parleur lit les textes importants à voix haute.",
+          "b": "Dicte ta recherche et tes messages au lieu de les écrire.",
+          "c": "L'appli existe en français, en anglais et en slovaque.",
+          "d": "Les prix s'affichent en FCFA ou en euros.",
+          "e": "L'économie de données allège les images et les vidéos."
+        }
+      }
     }
   }
 }

@@ -86,16 +86,8 @@
       "proText": "Show your work and fill your calendar."
     },
     "public": {
-      "menu": "Discover",
-      "signIn": "Sign in",
       "title": "Find the pro who brings out your beauty",
       "chooseTrade": "Choose a trade",
-      "links": {
-        "explore": "Explore",
-        "shop": "Shops",
-        "academy": "Academy",
-        "gift": "Gift"
-      },
       "find": {
         "hair": "Find my hair pro",
         "braids": "Find my braiding pro",
@@ -124,12 +116,6 @@
         "makeupText": "Bridal, evening, Black and mixed skin.",
         "headwrap": "Headwrap",
         "headwrapText": "Gele, turban, party ties."
-      },
-      "booking": {
-        "title": "Pick your time, we take care of the rest",
-        "text": "Free for you. The pro confirms, you get a reminder.",
-        "day": "Saturday",
-        "cta": "See the pros"
       },
       "code": {
         "title": "Your money stays held until this code",
@@ -160,14 +146,7 @@
         "title": "Give your mother a treat, from Paris to Cotonou",
         "cta": "Send a gift home"
       },
-      "footer": {
-        "label": "Information",
-        "help": "Help",
-        "terms": "Terms",
-        "privacy": "Privacy",
-        "credits": "Photo credits"
-      },
-      "line": "Hair, braids, makeup, nails. Book and pay safely."
+      "line": "Hair, braids, makeup, nails. Book online, even without an account."
     }
   },
   "aside": {
@@ -2342,7 +2321,14 @@
       "cancelled": "Appointment cancelled",
       "keep": "No, I keep my appointment",
       "lateNoDeposit": "Cancel as early as you can: the pro can give the place to someone else.",
-      "cancelNoDeposit": "The pro is told at once."
+      "cancelNoDeposit": "The pro is told at once.",
+      "qr": {
+        "title": "Your appointment QR code",
+        "arrived": "You have arrived. Enjoy!",
+        "help": "Show it to the pro when you arrive. She scans it and sees your appointment.",
+        "download": "Download my QR code",
+        "alt": "QR code of appointment {reference}"
+      }
     },
     "list": {
       "title": "My appointments",
@@ -2435,7 +2421,8 @@
       "quickBlockCta": "Block this moment",
       "added": "Appointment added. The client gets the confirmation.",
       "blocked": "Moment blocked",
-      "salon": "My salon"
+      "salon": "My salon",
+      "arrivedAt": "Arrived at"
     },
     "settings": {
       "saved": "Saved",
@@ -2532,6 +2519,21 @@
       "save": "Save the file",
       "history": "Her appointments",
       "photo": "Photo of the result"
+    },
+    "arrival": {
+      "title": "Client arrival",
+      "client": "Client",
+      "service": "Service",
+      "time": "Appointment",
+      "status": "Status",
+      "when": "{day} at {time}",
+      "mark": "She has arrived",
+      "done": "Arrival recorded.",
+      "arrivedAt": "Arrived at {time}",
+      "notConfirmed": "This appointment is not confirmed. Check it in your agenda.",
+      "notFound": "This appointment is not in your agenda",
+      "notFoundHelp": "Sign in with the salon's account, then scan the QR code again.",
+      "error": "Could not record the arrival. Try again."
     }
   },
   "glowpro": {
@@ -4150,6 +4152,433 @@
     },
     "pull": {
       "busy": "Updating"
+    }
+  },
+  "marketing": {
+    "nav": {
+      "label": "Discover",
+      "explore": "Explore",
+      "selection": "France Selection",
+      "academy": "Academy",
+      "gift": "Give",
+      "pros": "For pros",
+      "how": "How it works"
+    },
+    "signIn": "Sign in",
+    "createAccount": "Create an account",
+    "myAccount": "My account",
+    "iAmPro": "I am a pro",
+    "who": {
+      "title": "Where to start?",
+      "already": "Already have an account?",
+      "guest": {
+        "title": "I just want an appointment",
+        "text": "No account needed. Your name and number are enough.",
+        "items": {
+          "a": "See pros, their photos and their prices",
+          "b": "Book and get a reminder",
+          "c": "See shops and free courses"
+        },
+        "cta": "Find a pro"
+      },
+      "client": {
+        "title": "I want an account",
+        "text": "Free, with your number or email.",
+        "items": {
+          "a": "Buy safely",
+          "b": "Message and call pros",
+          "c": "Follow, review and post",
+          "d": "Learn, play, earn points"
+        },
+        "cta": "Create my account"
+      },
+      "pro": {
+        "title": "I am a pro",
+        "text": "On your own, at home or in a salon. The core is free.",
+        "items": {
+          "a": "Your showcase and short link",
+          "b": "Your QR code to print",
+          "c": "Your agenda and reminders",
+          "d": "Your shop and your courses"
+        },
+        "cta": "Create my showcase",
+        "more": "See everything for pros"
+      }
+    },
+    "everything": {
+      "title": "Everything you can do",
+      "more": "See how it works",
+      "find": {
+        "title": "Find a pro near you",
+        "text": "Map, directions, hours, verified reviews."
+      },
+      "book": {
+        "title": "Book an appointment",
+        "text": "Online, no call, even without an account."
+      },
+      "qr": {
+        "title": "Your appointment QR code",
+        "text": "Show it when you arrive, the pro scans it."
+      },
+      "feed": {
+        "title": "See the pros' work",
+        "text": "Photos, videos, before and after, stories."
+      },
+      "talk": {
+        "title": "Message and call",
+        "text": "Messages and calls without showing your number."
+      },
+      "shop": {
+        "title": "Buy from shops",
+        "text": "Your money stays held until you give your code."
+      },
+      "live": {
+        "title": "Join lives",
+        "text": "Live sales and classes, with your questions."
+      },
+      "france": {
+        "title": "France Selection",
+        "text": "Products from France delivered to Benin."
+      },
+      "academy": {
+        "title": "Learn at the Academy",
+        "text": "Short videos, quizzes and a certificate."
+      },
+      "gift": {
+        "title": "Give back home",
+        "text": "From France, give a treatment or a product."
+      },
+      "games": {
+        "title": "Play and earn points",
+        "text": "Daily quiz, wheel, challenges and rewards."
+      },
+      "audio": {
+        "title": "Listen instead of reading",
+        "text": "The app reads texts aloud. French, English, Slovak."
+      }
+    },
+    "booking": {
+      "title": "Your appointment, without calling",
+      "items": {
+        "a": "Choose your pro, your service and your time.",
+        "b": "No account? Your name and number are enough.",
+        "c": "You get a reminder and your appointment QR code."
+      },
+      "cta": "Book an appointment"
+    },
+    "forPros": {
+      "title": "A pro? Your salon online, no subscription",
+      "line": "For independents, home services and salons. Create your showcase and QR code in minutes.",
+      "items": {
+        "a": "Showcase and short link",
+        "b": "QR code, A4 poster, stickers",
+        "c": "Agenda and bookings",
+        "d": "Automatic reminders",
+        "e": "Shop and secure payment",
+        "f": "Courses and lives"
+      },
+      "cta": "Create my showcase",
+      "more": "See everything for pros"
+    },
+    "poster": {
+      "name": "Aïcha Tresses",
+      "scan": "Scan to book",
+      "caption": "Sample poster. Yours is created for you.",
+      "alt": "QR code that opens booking with Aïcha Tresses"
+    },
+    "questions": {
+      "title": "Your questions",
+      "help": "See all the help",
+      "account": {
+        "q": "Do I need an account to book?",
+        "a": "No. Your name and number are enough. To buy, message a pro or leave a review, you need an account."
+      },
+      "signup": {
+        "q": "How do I create an account?",
+        "a": "Enter your number or email, then the code you receive on WhatsApp, by SMS or by email. Then choose your city and language."
+      },
+      "pro": {
+        "q": "I am a pro. What do I do?",
+        "a": "Create your account, then choose « I am a pro ». Fill in your showcase and publish it. To get paid, send your ID and a selfie."
+      },
+      "qr": {
+        "q": "What are the QR codes for?",
+        "a": "A pro prints hers so clients can book. A client also gets her own once the appointment is confirmed, and shows it on arrival."
+      },
+      "payment": {
+        "q": "Is my money protected?",
+        "a": "Yes. Your money stays held. The pro is paid when you give your receipt code."
+      },
+      "france": {
+        "q": "I am in France. Can I give to Benin?",
+        "a": "Yes. With « Give », you pay in euros for a treatment, a product or a card. The person gets a link and chooses."
+      }
+    },
+    "footer": {
+      "forYou": "For you",
+      "explore": "Find a pro",
+      "gift": "Give back home",
+      "games": "Games and rankings",
+      "proTools": "All the tools",
+      "proStart": "Create my showcase",
+      "proTeach": "Teach courses",
+      "account": "My account",
+      "accounts": "Account types",
+      "help": "Help",
+      "helpCentre": "Help centre",
+      "terms": "Terms",
+      "privacy": "Privacy",
+      "credits": "Photo credits"
+    },
+    "pros": {
+      "metaTitle": "For pros",
+      "title": "Your salon online. The core is free.",
+      "line": "Showcase, QR code, agenda, shop and courses, in one place.",
+      "cta": "Create my showcase",
+      "heroAlt": "A professional paints a client's nails.",
+      "who": {
+        "title": "Who is it for?",
+        "solo": {
+          "title": "Independent pro",
+          "text": "On your own, at home or at clients' homes. Showcase, shop, agenda, courses and lives."
+        },
+        "salon": {
+          "title": "Salon, institute, workshop",
+          "text": "All of that, with several team members, stock and statistics."
+        },
+        "staff": {
+          "title": "Salon team member",
+          "text": "You see and manage your own agenda. The salon links you with your number."
+        }
+      },
+      "qr": {
+        "title": "Your link and your QR code",
+        "text": "They come with your showcase. A client scans and books.",
+        "items": {
+          "a": "A short link: solangeglow.com/your-name",
+          "b": "An A4 poster to print",
+          "c": "Stickers for your salon",
+          "d": "A card for Instagram, TikTok and WhatsApp",
+          "e": "A booking QR code, in your agenda"
+        }
+      },
+      "showcase": {
+        "title": "Your showcase is your website",
+        "items": {
+          "a": "Photo, bio, trades and social networks",
+          "b": "Prices, hours, closures",
+          "c": "Before and after photos and videos",
+          "d": "Verified reviews from real clients",
+          "e": "Map, directions and landmarks to find you",
+          "f": "« Verified pro » badge"
+        }
+      },
+      "agenda": {
+        "title": "Your agenda, no salon software",
+        "items": {
+          "a": "Bookings arrive in real time",
+          "b": "Confirm, decline or propose another time",
+          "c": "Automatic reminders to your clients",
+          "d": "Processing times and multi-step services",
+          "e": "Waiting list and last-minute slots",
+          "f": "Deposits against missed appointments",
+          "g": "Group bookings and booking a look",
+          "h": "Scan your client's QR code when she arrives"
+        }
+      },
+      "shop": {
+        "title": "Sell without risk",
+        "items": {
+          "a": "Your shop with photos, variants and stock",
+          "b": "Secure payment with a receipt code",
+          "c": "Your wallet and your withdrawals",
+          "d": "Promotions and flash sales",
+          "e": "Live sales",
+          "f": "Gift cards"
+        }
+      },
+      "academy": {
+        "title": "Pass on your skills",
+        "items": {
+          "a": "Create video courses",
+          "b": "Add quizzes and a certificate",
+          "c": "Teach live classes",
+          "d": "Set your price or offer them free"
+        }
+      },
+      "social": {
+        "title": "Get known",
+        "items": {
+          "a": "Post photos, videos and stories",
+          "b": "Announce your free slots",
+          "c": "Reply fast with quick replies",
+          "d": "Call without showing your number",
+          "e": "Promote your showcase or a product"
+        }
+      },
+      "alt": {
+        "braids": "Woman with long braids and large hoops, in profile.",
+        "salon": "Inside a pink beauty salon.",
+        "palette": "Open makeup palette.",
+        "hands": "Hands of a braider at work.",
+        "curls": "Woman with curly hair."
+      },
+      "plans": {
+        "title": "Free or Premium?",
+        "free": "Free",
+        "freeItems": {
+          "a": "Showcase, short link and QR code",
+          "b": "Agenda, slots and reminders",
+          "c": "Booking without an account for your clients",
+          "d": "Client history and notes",
+          "e": "Processing times and waiting list",
+          "f": "Shop and courses",
+          "g": "Simple dashboard"
+        },
+        "premium": "Glow Pro Premium",
+        "premiumItems": {
+          "a": "More team members in the agenda",
+          "b": "Complete client file, packages and instalments",
+          "c": "Stock with barcode scanning",
+          "d": "Complete dashboard",
+          "e": "Email and WhatsApp campaigns",
+          "f": "Booking in your salon's colours on your website"
+        },
+        "trial": "You can try Premium before subscribing.",
+        "note": "Online payments have fees, and SMS are paid. To get paid, you send an ID and a selfie: this is the verification."
+      },
+      "start": {
+        "title": "Start in three steps",
+        "steps": {
+          "a": "Create your account with your number or email.",
+          "b": "Choose your trade, services and hours.",
+          "c": "Publish your showcase, then share your link and QR code."
+        }
+      }
+    },
+    "how": {
+      "title": "How it works",
+      "line": "Who can do what, how to create an account, and each service step by step.",
+      "jump": "Go to",
+      "accounts": {
+        "title": "Account types",
+        "line": "One account is enough to be both client and pro: switch mode whenever you want.",
+        "can": "Can",
+        "cannot": "Cannot",
+        "guest": {
+          "title": "No account",
+          "can": "See pros, posts, shops and free courses. Book with a name and a number.",
+          "cannot": "Buy, message privately, review, earn points."
+        },
+        "client": {
+          "title": "Client",
+          "can": "All that, and buy, message, call, review, follow pros, post, learn and play.",
+          "cannot": "Sell."
+        },
+        "solo": {
+          "title": "Independent pro",
+          "can": "Showcase, portfolio, shop, agenda, courses and lives.",
+          "cannot": "Manage a team beyond what her plan allows."
+        },
+        "salon": {
+          "title": "Salon, institute, workshop",
+          "can": "All that, and several team members, stock and statistics.",
+          "cannot": "Use the Premium options without a subscription."
+        },
+        "staff": {
+          "title": "Salon team member",
+          "can": "See and manage her own agenda.",
+          "cannot": "See the salon settings, unless given the right."
+        }
+      },
+      "signup": {
+        "title": "Create an account",
+        "steps": {
+          "a": "Enter your phone number or email.",
+          "b": "Type the code received on WhatsApp, by SMS or by email.",
+          "c": "Choose your city and language. If you are a pro, choose « I am a pro »."
+        },
+        "note": "Signing in is the same: your number or email, then the code. To sell or get paid, a pro also sends an ID and a selfie."
+      },
+      "booking": {
+        "short": "Appointments",
+        "title": "Book an appointment",
+        "cta": "Find a pro",
+        "steps": {
+          "a": "Choose your pro, service and time. From her page, her QR code or a post.",
+          "b": "With an account, you book directly. Without one, give your name and number, then keep the link you receive.",
+          "c": "The pro confirms, or proposes another time. If she asks for a deposit, you pay it online.",
+          "d": "You get a reminder. You can cancel under the rules shown.",
+          "e": "Once confirmed, your appointment shows your QR code. Show it on arrival: the pro scans it.",
+          "f": "No slot left? Join the waiting list. You can also book as a group, for a wedding for example."
+        }
+      },
+      "payment": {
+        "short": "Payment",
+        "title": "Pay safely",
+        "cta": "See the pros",
+        "steps": {
+          "a": "You pay online. The money does not go to the seller: it stays held.",
+          "b": "The seller prepares your order and hands it over or sends it.",
+          "c": "You check it, then give your receipt code. Only then is she paid.",
+          "d": "A problem? Open a dispute from your order: the team takes care of it."
+        }
+      },
+      "france": {
+        "short": "France",
+        "title": "France Selection",
+        "cta": "See the selection",
+        "steps": {
+          "a": "Choose a product from France. The price includes delivery and customs.",
+          "b": "You order and pay. The team handles the purchase and shipping.",
+          "c": "You track your parcel, then collect it at the chosen point with your code.",
+          "d": "Can't find your product? Send a special request and get a quote."
+        }
+      },
+      "gift": {
+        "short": "Give",
+        "title": "Give back home",
+        "cta": "Give a gift",
+        "steps": {
+          "a": "From France, choose a treatment, a product or a card.",
+          "b": "Write your message and pay in euros.",
+          "c": "The person receives a link and opens the gift.",
+          "d": "She books or receives it, and can reply with a photo."
+        }
+      },
+      "academy": {
+        "short": "Academy",
+        "title": "Learn at the Academy",
+        "cta": "See the courses",
+        "steps": {
+          "a": "Choose a free or low-cost course, or take the Pass.",
+          "b": "Watch the videos at your pace, even offline.",
+          "c": "Pass the quizzes and get your certificate with its verification QR code.",
+          "d": "Ask your questions during live classes."
+        }
+      },
+      "games": {
+        "short": "Games",
+        "title": "Play and earn points",
+        "cta": "See the rankings",
+        "steps": {
+          "a": "Earn points when you sign in, post, review, book or buy.",
+          "b": "Every day: the quiz and the wheel. And also: challenges, polls and rankings.",
+          "c": "Exchange your points for discounts and rewards.",
+          "d": "Invite a friend with your referral link."
+        }
+      },
+      "audio": {
+        "short": "Audio and languages",
+        "title": "Listen, speak, choose your language",
+        "items": {
+          "a": "Turn on audio: the speaker reads important texts aloud.",
+          "b": "Dictate your search and messages instead of typing.",
+          "c": "The app is available in French, English and Slovak.",
+          "d": "Prices are shown in FCFA or euros.",
+          "e": "Data saver lightens images and videos."
+        }
+      }
     }
   }
 }

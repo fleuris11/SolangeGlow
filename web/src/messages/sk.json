@@ -86,16 +86,8 @@
       "proText": "Ukáž svoju prácu a naplň si kalendár."
     },
     "public": {
-      "menu": "Objavovať",
-      "signIn": "Prihlásiť sa",
       "title": "Nájdi profesionálku, ktorá zvýrazní tvoju krásu",
       "chooseTrade": "Vyber si odbor",
-      "links": {
-        "explore": "Objavovať",
-        "shop": "Obchody",
-        "academy": "Akadémia",
-        "gift": "Darovať"
-      },
       "find": {
         "hair": "Nájsť kaderníčku",
         "braids": "Nájsť majsterku vrkočov",
@@ -124,12 +116,6 @@
         "makeupText": "Svadobný, večerný, tmavá a zmiešaná pleť.",
         "headwrap": "Turban",
         "headwrapText": "Gele, turban, slávnostné viazania."
-      },
-      "booking": {
-        "title": "Vyber si termín, o zvyšok sa postaráme",
-        "text": "Pre teba zadarmo. Profesionálka potvrdí, dostaneš pripomienku.",
-        "day": "Sobota",
-        "cta": "Pozrieť profesionálky"
       },
       "code": {
         "title": "Tvoje peniaze sú zablokované až do tohto kódu",
@@ -160,14 +146,7 @@
         "title": "Dopraj mame starostlivosť, z Paríža do Cotonou",
         "cta": "Darovať domov"
       },
-      "footer": {
-        "label": "Informácie",
-        "help": "Pomoc",
-        "terms": "Podmienky",
-        "privacy": "Súkromie",
-        "credits": "Autori fotiek"
-      },
-      "line": "Účesy, vrkoče, make-up, nechty. Rezervuj a plať bezpečne."
+      "line": "Účesy, vrkoče, make-up, nechty. Rezervuj online, aj bez účtu."
     }
   },
   "aside": {
@@ -2342,7 +2321,14 @@
       "cancelled": "Termín zrušený",
       "keep": "Nie, termín si nechám",
       "lateNoDeposit": "Zruš čo najskôr: profesionálka môže miesto dať niekomu inému.",
-      "cancelNoDeposit": "Profesionálka sa to hneď dozvie."
+      "cancelNoDeposit": "Profesionálka sa to hneď dozvie.",
+      "qr": {
+        "title": "Tvoj QR kód k termínu",
+        "arrived": "Si na mieste. Príjemnú starostlivosť!",
+        "help": "Ukáž ho profesionálke pri príchode. Naskenuje ho a uvidí tvoj termín.",
+        "download": "Stiahnuť môj QR kód",
+        "alt": "QR kód termínu {reference}"
+      }
     },
     "list": {
       "title": "Moje termíny",
@@ -2435,7 +2421,8 @@
       "quickBlockCta": "Zablokovať túto chvíľu",
       "added": "Termín pridaný. Klientka dostane potvrdenie.",
       "blocked": "Chvíľa zablokovaná",
-      "salon": "Môj salón"
+      "salon": "Môj salón",
+      "arrivedAt": "Prišla o"
     },
     "settings": {
       "saved": "Uložené",
@@ -2532,6 +2519,21 @@
       "save": "Uložiť kartu",
       "history": "Jej termíny",
       "photo": "Fotka výsledku"
+    },
+    "arrival": {
+      "title": "Príchod klientky",
+      "client": "Klientka",
+      "service": "Služba",
+      "time": "Termín",
+      "status": "Stav",
+      "when": "{day} o {time}",
+      "mark": "Prišla",
+      "done": "Príchod zaznamenaný.",
+      "arrivedAt": "Prišla o {time}",
+      "notConfirmed": "Tento termín nie je potvrdený. Pozri si ho v diári.",
+      "notFound": "Tento termín nie je v tvojom diári",
+      "notFoundHelp": "Prihlás sa účtom salónu a naskenuj QR kód znova.",
+      "error": "Príchod sa nepodarilo zaznamenať. Skús to znova."
     }
   },
   "glowpro": {
@@ -4150,6 +4152,433 @@
     },
     "pull": {
       "busy": "Aktualizuje sa"
+    }
+  },
+  "marketing": {
+    "nav": {
+      "label": "Objavovať",
+      "explore": "Preskúmať",
+      "selection": "Výber z Francúzska",
+      "academy": "Akadémia",
+      "gift": "Darovať",
+      "pros": "Pre profesionálky",
+      "how": "Ako to funguje"
+    },
+    "signIn": "Prihlásiť sa",
+    "createAccount": "Vytvoriť účet",
+    "myAccount": "Môj účet",
+    "iAmPro": "Som profesionálka",
+    "who": {
+      "title": "Kde začať?",
+      "already": "Už máš účet?",
+      "guest": {
+        "title": "Chcem len termín",
+        "text": "Účet netreba. Stačí meno a číslo.",
+        "items": {
+          "a": "Pozri si profesionálky, ich fotky a ceny",
+          "b": "Rezervuj a dostaň pripomienku",
+          "c": "Pozri si obchody a kurzy zadarmo"
+        },
+        "cta": "Nájsť profesionálku"
+      },
+      "client": {
+        "title": "Chcem účet",
+        "text": "Zadarmo, s číslom alebo e-mailom.",
+        "items": {
+          "a": "Nakupuj bezpečne",
+          "b": "Píš a volaj profesionálkam",
+          "c": "Sleduj, hodnoť a zverejňuj",
+          "d": "Vzdelávaj sa, hraj, získavaj body"
+        },
+        "cta": "Vytvoriť môj účet"
+      },
+      "pro": {
+        "title": "Som profesionálka",
+        "text": "Sama, doma alebo v salóne. Základ je zadarmo.",
+        "items": {
+          "a": "Tvoja vitrína a krátky odkaz",
+          "b": "Tvoj QR kód na tlač",
+          "c": "Tvoj diár a pripomienky",
+          "d": "Tvoj obchod a tvoje kurzy"
+        },
+        "cta": "Vytvoriť moju vitrínu",
+        "more": "Všetko pre profesionálky"
+      }
+    },
+    "everything": {
+      "title": "Všetko, čo môžeš robiť",
+      "more": "Pozrieť, ako to funguje",
+      "find": {
+        "title": "Nájdi profesionálku blízko teba",
+        "text": "Mapa, trasa, otváracie hodiny, overené hodnotenia."
+      },
+      "book": {
+        "title": "Rezervuj si termín",
+        "text": "Online, bez volania, aj bez účtu."
+      },
+      "qr": {
+        "title": "Tvoj QR kód k termínu",
+        "text": "Ukáž ho pri príchode, profesionálka ho naskenuje."
+      },
+      "feed": {
+        "title": "Pozri si prácu profesionálok",
+        "text": "Fotky, videá, pred a po, príbehy."
+      },
+      "talk": {
+        "title": "Píš a volaj",
+        "text": "Správy a hovory bez ukázania čísla."
+      },
+      "shop": {
+        "title": "Nakupuj v obchodoch",
+        "text": "Peniaze ostanú blokované, kým nedáš kód."
+      },
+      "live": {
+        "title": "Sleduj živé vysielania",
+        "text": "Predaj a kurzy naživo, s tvojimi otázkami."
+      },
+      "france": {
+        "title": "Výber z Francúzska",
+        "text": "Produkty z Francúzska s doručením do Beninu."
+      },
+      "academy": {
+        "title": "Vzdelávaj sa v Akadémii",
+        "text": "Krátke videá, kvízy a certifikát."
+      },
+      "gift": {
+        "title": "Daruj domov",
+        "text": "Z Francúzska daruj ošetrenie alebo produkt."
+      },
+      "games": {
+        "title": "Hraj a získavaj body",
+        "text": "Denný kvíz, koleso, výzvy a odmeny."
+      },
+      "audio": {
+        "title": "Počúvaj namiesto čítania",
+        "text": "Aplikácia číta texty nahlas. Francúzsky, anglicky, slovensky."
+      }
+    },
+    "booking": {
+      "title": "Tvoj termín, bez volania",
+      "items": {
+        "a": "Vyber si profesionálku, službu a čas.",
+        "b": "Nemáš účet? Stačí meno a číslo.",
+        "c": "Dostaneš pripomienku a QR kód k termínu."
+      },
+      "cta": "Rezervovať termín"
+    },
+    "forPros": {
+      "title": "Si profesionálka? Tvoj salón online, bez predplatného",
+      "line": "Pre samostatné, prácu doma aj salóny. Vitrínu a QR kód vytvoríš za pár minút.",
+      "items": {
+        "a": "Vitrína a krátky odkaz",
+        "b": "QR kód, plagát A4, nálepky",
+        "c": "Diár a rezervácie",
+        "d": "Automatické pripomienky",
+        "e": "Obchod a bezpečná platba",
+        "f": "Kurzy a živé vysielania"
+      },
+      "cta": "Vytvoriť moju vitrínu",
+      "more": "Všetko pre profesionálky"
+    },
+    "poster": {
+      "name": "Aïcha Tresses",
+      "scan": "Naskenuj a rezervuj",
+      "caption": "Ukážka plagátu. Tvoj sa vytvorí sám.",
+      "alt": "QR kód, ktorý otvorí rezerváciu u Aïcha Tresses"
+    },
+    "questions": {
+      "title": "Tvoje otázky",
+      "help": "Zobraziť celú pomoc",
+      "account": {
+        "q": "Potrebujem účet na rezerváciu?",
+        "a": "Nie. Stačí meno a číslo. Na nákup, písanie profesionálke alebo hodnotenie potrebuješ účet."
+      },
+      "signup": {
+        "q": "Ako si vytvorím účet?",
+        "a": "Zadaj číslo alebo e-mail a potom kód z WhatsAppu, SMS alebo e-mailu. Potom si vyber mesto a jazyk."
+      },
+      "pro": {
+        "q": "Som profesionálka. Čo mám urobiť?",
+        "a": "Vytvor si účet a vyber « Som profesionálka ». Vyplň vitrínu a zverejni ju. Na prijímanie platieb pošli doklad totožnosti a selfie."
+      },
+      "qr": {
+        "q": "Na čo slúžia QR kódy?",
+        "a": "Profesionálka si vytlačí svoj, aby klientky mohli rezervovať. Klientka dostane svoj po potvrdení termínu a ukáže ho pri príchode."
+      },
+      "payment": {
+        "q": "Sú moje peniaze chránené?",
+        "a": "Áno. Peniaze ostanú blokované. Profesionálka dostane platbu, keď dáš kód prevzatia."
+      },
+      "france": {
+        "q": "Som vo Francúzsku. Môžem darovať do Beninu?",
+        "a": "Áno. Cez « Darovať » zaplatíš v eurách ošetrenie, produkt alebo kartu. Obdarovaná dostane odkaz a vyberie si."
+      }
+    },
+    "footer": {
+      "forYou": "Pre teba",
+      "explore": "Nájsť profesionálku",
+      "gift": "Darovať domov",
+      "games": "Hry a rebríčky",
+      "proTools": "Všetky nástroje",
+      "proStart": "Vytvoriť moju vitrínu",
+      "proTeach": "Učiť kurzy",
+      "account": "Môj účet",
+      "accounts": "Typy účtov",
+      "help": "Pomoc",
+      "helpCentre": "Centrum pomoci",
+      "terms": "Podmienky",
+      "privacy": "Súkromie",
+      "credits": "Autori fotiek"
+    },
+    "pros": {
+      "metaTitle": "Pre profesionálky",
+      "title": "Tvoj salón online. Základ je zadarmo.",
+      "line": "Vitrína, QR kód, diár, obchod a kurzy na jednom mieste.",
+      "cta": "Vytvoriť moju vitrínu",
+      "heroAlt": "Profesionálka lakuje klientke nechty.",
+      "who": {
+        "title": "Pre koho?",
+        "solo": {
+          "title": "Samostatná profesionálka",
+          "text": "Sama, doma alebo u klientok. Vitrína, obchod, diár, kurzy a živé vysielania."
+        },
+        "salon": {
+          "title": "Salón, inštitút, dielňa",
+          "text": "To všetko, s viacerými kolegyňami, skladom a štatistikami."
+        },
+        "staff": {
+          "title": "Kolegyňa v salóne",
+          "text": "Vidíš a spravuješ svoj vlastný diár. Salón ťa pripojí cez tvoje číslo."
+        }
+      },
+      "qr": {
+        "title": "Tvoj odkaz a QR kód",
+        "text": "Vzniknú spolu s vitrínou. Klientka naskenuje a rezervuje.",
+        "items": {
+          "a": "Krátky odkaz: solangeglow.com/tvoje-meno",
+          "b": "Plagát A4 na tlač",
+          "c": "Nálepky do salónu",
+          "d": "Karta pre Instagram, TikTok a WhatsApp",
+          "e": "QR kód na rezerváciu v tvojom diári"
+        }
+      },
+      "showcase": {
+        "title": "Tvoja vitrína je tvoja stránka",
+        "items": {
+          "a": "Fotka, predstavenie, odbory a siete",
+          "b": "Ceny, otváracie hodiny, zatvorené dni",
+          "c": "Fotky a videá pred a po",
+          "d": "Overené hodnotenia skutočných klientok",
+          "e": "Mapa, trasa a orientačné body",
+          "f": "Odznak « Overená profesionálka »"
+        }
+      },
+      "agenda": {
+        "title": "Tvoj diár, bez softvéru pre salóny",
+        "items": {
+          "a": "Rezervácie prichádzajú v reálnom čase",
+          "b": "Potvrď, odmietni alebo navrhni iný čas",
+          "c": "Automatické pripomienky klientkam",
+          "d": "Čas pôsobenia a služby v niekoľkých krokoch",
+          "e": "Čakací zoznam a termíny na poslednú chvíľu",
+          "f": "Zálohy proti zmeškaným termínom",
+          "g": "Skupinové rezervácie a rezervácia vzhľadu",
+          "h": "Pri príchode naskenuješ QR kód klientky"
+        }
+      },
+      "shop": {
+        "title": "Predávaj bez rizika",
+        "items": {
+          "a": "Tvoj obchod s fotkami, variantmi a skladom",
+          "b": "Bezpečná platba s kódom prevzatia",
+          "c": "Tvoja peňaženka a výbery",
+          "d": "Akcie a bleskové výpredaje",
+          "e": "Predaj naživo",
+          "f": "Darčekové karty"
+        }
+      },
+      "academy": {
+        "title": "Odovzdaj svoje znalosti",
+        "items": {
+          "a": "Vytvor video kurzy",
+          "b": "Pridaj kvízy a certifikát",
+          "c": "Uč naživo",
+          "d": "Nastav cenu alebo ich daj zadarmo"
+        }
+      },
+      "social": {
+        "title": "Daj o sebe vedieť",
+        "items": {
+          "a": "Zverejňuj fotky, videá a príbehy",
+          "b": "Oznámuj voľné termíny",
+          "c": "Odpovedaj rýchlo cez rýchle odpovede",
+          "d": "Volaj bez ukázania čísla",
+          "e": "Zviditeľni vitrínu alebo produkt"
+        }
+      },
+      "alt": {
+        "braids": "Žena s dlhými vrkočmi a veľkými kruhmi, z profilu.",
+        "salon": "Interiér ružového salónu krásy.",
+        "palette": "Otvorená paleta líčidiel.",
+        "hands": "Ruky pletiarky pri práci.",
+        "curls": "Žena s kučeravými vlasmi."
+      },
+      "plans": {
+        "title": "Zadarmo alebo Premium?",
+        "free": "Zadarmo",
+        "freeItems": {
+          "a": "Vitrína, krátky odkaz a QR kód",
+          "b": "Diár, termíny a pripomienky",
+          "c": "Rezervácia bez účtu pre tvoje klientky",
+          "d": "História a poznámky ku klientkam",
+          "e": "Čas pôsobenia a čakací zoznam",
+          "f": "Obchod a kurzy",
+          "g": "Jednoduchý prehľad"
+        },
+        "premium": "Glow Pro Premium",
+        "premiumItems": {
+          "a": "Viac kolegýň v diári",
+          "b": "Úplná karta klientky, balíky a splátky",
+          "c": "Sklad so skenovaním čiarových kódov",
+          "d": "Úplný prehľad",
+          "e": "Kampane cez e-mail a WhatsApp",
+          "f": "Rezervácia vo farbách salónu na tvojej stránke"
+        },
+        "trial": "Premium si môžeš vyskúšať pred predplatením.",
+        "note": "Online platby majú poplatky a SMS sú platené. Na prijímanie platieb pošleš doklad totožnosti a selfie: to je overenie."
+      },
+      "start": {
+        "title": "Začni v troch krokoch",
+        "steps": {
+          "a": "Vytvor si účet s číslom alebo e-mailom.",
+          "b": "Vyber si odbor, služby a hodiny.",
+          "c": "Zverejni vitrínu a zdieľaj odkaz a QR kód."
+        }
+      }
+    },
+    "how": {
+      "title": "Ako to funguje",
+      "line": "Kto čo môže, ako si vytvoriť účet a každá služba krok za krokom.",
+      "jump": "Prejsť na",
+      "accounts": {
+        "title": "Typy účtov",
+        "line": "Jeden účet stačí na to, aby si bola klientka aj profesionálka: režim prepneš kedykoľvek.",
+        "can": "Môže",
+        "cannot": "Nemôže",
+        "guest": {
+          "title": "Bez účtu",
+          "can": "Pozerať profesionálky, príspevky, obchody a kurzy zadarmo. Rezervovať s menom a číslom.",
+          "cannot": "Nakupovať, písať súkromne, hodnotiť, získavať body."
+        },
+        "client": {
+          "title": "Klientka",
+          "can": "To všetko a nakupovať, písať, volať, hodnotiť, sledovať profesionálky, zverejňovať, vzdelávať sa a hrať.",
+          "cannot": "Predávať."
+        },
+        "solo": {
+          "title": "Samostatná profesionálka",
+          "can": "Vitrína, portfólio, obchod, diár, kurzy a živé vysielania.",
+          "cannot": "Viesť tím nad rámec svojej ponuky."
+        },
+        "salon": {
+          "title": "Salón, inštitút, dielňa",
+          "can": "To všetko a viac kolegýň, sklad a štatistiky.",
+          "cannot": "Používať možnosti Premium bez predplatného."
+        },
+        "staff": {
+          "title": "Kolegyňa v salóne",
+          "can": "Vidieť a spravovať svoj vlastný diár.",
+          "cannot": "Vidieť nastavenia salónu, ak na to nedostane právo."
+        }
+      },
+      "signup": {
+        "title": "Vytvoriť účet",
+        "steps": {
+          "a": "Zadaj telefónne číslo alebo e-mail.",
+          "b": "Napíš kód z WhatsAppu, SMS alebo e-mailu.",
+          "c": "Vyber si mesto a jazyk. Ak si profesionálka, vyber « Som profesionálka »."
+        },
+        "note": "Prihlásenie je rovnaké: číslo alebo e-mail a potom kód. Na predaj alebo prijímanie platieb pošle profesionálka aj doklad totožnosti a selfie."
+      },
+      "booking": {
+        "short": "Termíny",
+        "title": "Rezervovať termín",
+        "cta": "Nájsť profesionálku",
+        "steps": {
+          "a": "Vyber si profesionálku, službu a čas. Z jej stránky, QR kódu alebo príspevku.",
+          "b": "S účtom rezervuješ priamo. Bez účtu zadaj meno a číslo a odlož si prijatý odkaz.",
+          "c": "Profesionálka potvrdí alebo navrhne iný čas. Ak žiada zálohu, zaplatíš ju online.",
+          "d": "Dostaneš pripomienku. Zrušiť môžeš podľa uvedených pravidiel.",
+          "e": "Po potvrdení sa pri termíne zobrazí tvoj QR kód. Ukáž ho pri príchode: profesionálka ho naskenuje.",
+          "f": "Nie je voľno? Pridaj sa na čakací zoznam. Môžeš rezervovať aj skupinovo, napríklad na svadbu."
+        }
+      },
+      "payment": {
+        "short": "Platba",
+        "title": "Plať bezpečne",
+        "cta": "Pozrieť profesionálky",
+        "steps": {
+          "a": "Platíš online. Peniaze nejdú predávajúcej: ostanú blokované.",
+          "b": "Predávajúca pripraví objednávku a odovzdá ju alebo pošle.",
+          "c": "Skontroluješ ju a dáš kód prevzatia. Až potom dostane platbu.",
+          "d": "Problém? Otvor spor z objednávky: tím sa o to postará."
+        }
+      },
+      "france": {
+        "short": "Francúzsko",
+        "title": "Výber z Francúzska",
+        "cta": "Pozrieť výber",
+        "steps": {
+          "a": "Vyber si produkt z Francúzska. Cena zahŕňa doručenie a clo.",
+          "b": "Objednáš a zaplatíš. Tím vybaví nákup a odoslanie.",
+          "c": "Sleduješ balík a vyzdvihneš ho na zvolenom mieste s kódom.",
+          "d": "Nenašla si produkt? Pošli špeciálnu žiadosť a dostaneš ponuku."
+        }
+      },
+      "gift": {
+        "short": "Darovať",
+        "title": "Daruj domov",
+        "cta": "Darovať",
+        "steps": {
+          "a": "Z Francúzska vyber ošetrenie, produkt alebo kartu.",
+          "b": "Napíš správu a zaplať v eurách.",
+          "c": "Obdarovaná dostane odkaz a otvorí darček.",
+          "d": "Rezervuje alebo prevezme darček a môže odpovedať fotkou."
+        }
+      },
+      "academy": {
+        "short": "Akadémia",
+        "title": "Vzdelávaj sa v Akadémii",
+        "cta": "Pozrieť kurzy",
+        "steps": {
+          "a": "Vyber si kurz zadarmo alebo lacno, alebo si vezmi Pass.",
+          "b": "Pozeraj videá vlastným tempom, aj offline.",
+          "c": "Zvládni kvízy a získaj certifikát s overovacím QR kódom.",
+          "d": "Pýtaj sa počas živých kurzov."
+        }
+      },
+      "games": {
+        "short": "Hry",
+        "title": "Hraj a získavaj body",
+        "cta": "Pozrieť rebríčky",
+        "steps": {
+          "a": "Získavaj body za prihlásenie, príspevky, hodnotenia, rezervácie a nákupy.",
+          "b": "Každý deň: kvíz a koleso. A tiež: výzvy, ankety a rebríčky.",
+          "c": "Vymeň body za zľavy a odmeny.",
+          "d": "Pozvi kamarátku cez odkaz."
+        }
+      },
+      "audio": {
+        "short": "Zvuk a jazyky",
+        "title": "Počúvaj, hovor, vyber si jazyk",
+        "items": {
+          "a": "Zapni zvuk: reproduktor číta dôležité texty nahlas.",
+          "b": "Vyhľadávanie a správy nadiktuj namiesto písania.",
+          "c": "Aplikácia je vo francúzštine, angličtine a slovenčine.",
+          "d": "Ceny sú v FCFA alebo eurách.",
+          "e": "Úspora dát odľahčí obrázky a videá."
+        }
+      }
     }
   }
 }

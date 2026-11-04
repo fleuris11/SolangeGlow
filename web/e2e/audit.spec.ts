@@ -61,13 +61,19 @@ async function inspect(page: Page, screen: Screen): Promise<Finding> {
         el.getAttribute("aria-pressed") !== "true" &&
         el.getAttribute("aria-selected") !== "true",
     );
+    // A chapter of an editorial page is a screen of its own.
+    const perScreen = new Map<Element, number>();
+    for (const el of main) {
+      const screen = el.closest("[data-chapter]") ?? document.body;
+      perScreen.set(screen, (perScreen.get(screen) ?? 0) + 1);
+    }
     return {
       overflow: document.documentElement.scrollWidth - window.innerWidth,
       iconOnly: [...new Set(iconOnly)],
       speak: [...document.querySelectorAll("button")].some((b) =>
         /^Écouter/.test(b.getAttribute("aria-label") ?? b.textContent ?? ""),
       ),
-      mainActions: main.length,
+      mainActions: Math.max(0, ...perScreen.values()),
       heading: (document.querySelector("main h1, main h2")?.textContent ?? "").trim().slice(0, 80),
       // What sticks out on the right, to find the cause of a sideways scroll.
       wide: [...document.querySelectorAll("body *")]
@@ -132,6 +138,8 @@ test("every key screen passes the check-list at 360 px, dark, very large text, a
   );
   const visitor: Screen[] = [
     { path: "/fr", speak: true },
+    { path: "/fr/pour-les-pros", speak: true },
+    { path: "/fr/comment-ca-marche", speak: true },
     { path: "/fr/explore", speak: true },
     { path: "/fr/aicha", speak: true },
     { path: "/fr/aicha/shop" },

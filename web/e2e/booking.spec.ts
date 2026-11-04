@@ -91,6 +91,27 @@ test("a guest books, the pro confirms, reminder, done, then a verified review", 
   await expectNoSeriousA11yIssue(guest);
   await guest.screenshot({ path: "e2e/screenshots/booking-guest-link.png", fullPage: true });
 
+  // --- She shows her QR code: the pro scans it and marks her arrival ---------------------------
+  const qrCode = guest.getByRole("img", { name: `QR code du rendez-vous ${reference}` });
+  await expect(qrCode).toBeVisible();
+  expect(await qrCode.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0);
+  await pro.goto(`/fr/pro/agenda/arrivee/${reference}`, { timeout: 120_000 });
+  await expect(pro.getByRole("heading", { name: "Arrivée de la cliente" })).toBeVisible({
+    timeout: 60_000,
+  });
+  await expect(pro.getByText(name)).toBeVisible();
+  await expectNoSeriousA11yIssue(pro);
+  await pro.getByRole("button", { name: "Elle est arrivée" }).click();
+  await expect(pro.getByText(/^Arrivée à /)).toBeVisible();
+  await guest.reload();
+  await expect(
+    guest.getByRole("heading", { name: "Tu es bien arrivée. Bon soin !" }),
+  ).toBeVisible();
+  // A stranger who scans it sees nothing of this appointment.
+  await guest.goto(`/fr/pro/agenda/arrivee/${reference}`, { timeout: 120_000 });
+  await expect(guest.getByText(name)).toHaveCount(0);
+  await guest.goto(manageUrl);
+
   // --- The reminder (the appointment now starts in 90 minutes) ---------------------------------
   const soon = await pro.request.post("/api/v1/dev/booking/time-travel", {
     data: { reference, starts_in_minutes: 90 },

@@ -6,6 +6,7 @@ import {
   CheckCircle,
   Clock,
   CreditCard,
+  DownloadSimple,
   HourglassMedium,
   MapPin,
   ShoppingBag,
@@ -28,6 +29,7 @@ import { ApiError } from "@/lib/api/client";
 import {
   acceptOffer,
   answerProposal,
+  appointmentQrUrl,
   cancelAppointment,
   getGuestAppointment,
   getMyAppointment,
@@ -218,6 +220,40 @@ export function AppointmentView({ holder }: { holder: Holder }) {
             <CreditCard aria-hidden size={26} weight="bold" />
             {t("pay", { amount: formatMoney(a.deposit_minor, a.currency, locale) })}
           </Button>
+        </section>
+      )}
+
+      {a.status === "confirmed" && (
+        <section
+          aria-labelledby="my-qr"
+          className="border-trait rounded-card flex flex-col items-center gap-3 border p-4 text-center"
+        >
+          <div className="flex items-center gap-2">
+            <h2 id="my-qr" className="text-lead font-bold">
+              {a.arrived_at ? t("qr.arrived") : t("qr.title")}
+            </h2>
+            <SpeakButton text={a.arrived_at ? t("qr.arrived") : t("qr.title")} />
+          </div>
+          {!a.arrived_at && (
+            <>
+              {/* eslint-disable-next-line @next/next/no-img-element -- drawn by the backend, white for the scanner */}
+              <img
+                src={appointmentQrUrl(holder)}
+                alt={t("qr.alt", { reference: a.reference })}
+                width={224}
+                height={224}
+                className="bg-sur-hibiscus size-56 p-2"
+              />
+              <p className="text-prune-doux">{t("qr.help")}</p>
+              <a
+                href={`${appointmentQrUrl(holder)}?download=1`}
+                className={buttonClasses({ variant: "secondary", fullWidth: true })}
+              >
+                <DownloadSimple aria-hidden size={24} />
+                {t("qr.download")}
+              </a>
+            </>
+          )}
         </section>
       )}
 

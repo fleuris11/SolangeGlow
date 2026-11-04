@@ -104,6 +104,19 @@ Cela fait 68 pages : les 67 du groupe (app) (dont l'accueil) plus `/welcome`. Le
 | `/selection/requests` | Mes demandes spéciales : envoyer une demande, accepter ou refuser le devis. | Coquille serveur + écran client (données chargées dans le navigateur) | `GET /media/{asset_id}`; `GET /selection/pickup-points`; `GET /selection/requests`; `POST /media`; `POST /selection/requests`; `POST /selection/requests/{request_id}/decline`; `POST /selection/requests/{request_id}/order` | Chargement : oui (Skeleton / isPending). Vide : oui (EmptyState / liste vide). Erreur : catch seulement (pas d'écran d'erreur repéré). Succès : toast. | Oui (menu : villes ; colonne de droite : 3 pros fictives + cadeau) | Oui (SignedIn) |
 | `/wishlist` | Mes favoris (produits). | Coquille serveur + écran client (données chargées dans le navigateur) | `GET /shop/wishlist`; `PUT /shop/wishlist/{product_id}` | Chargement : oui (Skeleton / isPending). Vide : oui (EmptyState / liste vide). Erreur : catch seulement (pas d'écran d'erreur repéré). Succès : toast. | Oui (menu : villes ; colonne de droite : 3 pros fictives + cadeau) | Oui (SignedIn) |
 
+## Pages publiques (home) : sans menu de l'application
+
+| Route | Ce qu'elle affiche | Rendu (serveur/client) | Endpoints appelés | États (chargement, vide, erreur, succès) | Données fictives (src/lib/demo) ? | Connexion requise ? |
+| --- | --- | --- | --- | --- | --- | --- |
+| `/pour-les-pros` | Tout ce qu'une pro obtient : lien et QR code, vitrine, agenda, boutique, formations, gratuit ou Premium, trois étapes pour commencer. | Serveur (statique) | aucun | Sans objet | Non | Non |
+| `/comment-ca-marche` | Types de compte, création de compte, chaque service étape par étape, audio et langues. | Serveur (statique) | aucun | Sans objet | Non | Non |
+
+## Arrivée d'une cliente
+
+| Route | Ce qu'elle affiche | Rendu (serveur/client) | Endpoints appelés | États (chargement, vide, erreur, succès) | Données fictives (src/lib/demo) ? | Connexion requise ? |
+| --- | --- | --- | --- | --- | --- | --- |
+| `/pro/agenda/arrivee/[reference]` | Ce qu'ouvre le QR code de la cliente : son rendez-vous, bouton « Elle est arrivée ». | Coquille serveur + écran client | `GET /me/agenda/arrivals/{reference}`; `POST /me/agenda/arrivals/{reference}` | Chargement : oui. Vide : non. Erreur : oui (hors de l'agenda). Succès : toast. | Oui (menu : villes ; colonne de droite : 3 pros fictives + cadeau) | Oui (SignedIn) et personne de cet agenda |
+
 ## Groupe (focus) : écrans sans menu (parcours, paiements, jetons)
 
 | Route | Ce qu'elle affiche | Rendu (serveur/client) | Endpoints appelés | États (chargement, vide, erreur, succès) | Données fictives (src/lib/demo) ? | Connexion requise ? |
