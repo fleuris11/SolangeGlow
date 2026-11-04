@@ -133,7 +133,7 @@ test.describe("sign-up on a small phone", () => {
     await page.getByRole("button", { name: "Créer ma vitrine" }).click();
 
     // « Ma vitrine »: one service is missing before publishing.
-    await expect(page).toHaveURL(/\/fr\/pro$/);
+    await expect(page).toHaveURL(/\/fr\/pro(\?bienvenue=1)?$/);
     await expect(page.getByText("Pour publier, il manque :")).toBeVisible();
     await expectNoSeriousA11yIssue(page);
     await page.screenshot({ path: "e2e/screenshots/my-showcase-draft.png", fullPage: true });

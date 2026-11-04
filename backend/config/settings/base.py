@@ -237,8 +237,9 @@ STORAGES = {
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
+        # No session here: someone signed in to the admin on the same domain would be asked for
+        # a CSRF token by every call of the site.
         "apps.accounts.authentication.CookieJWTAuthentication",
-        "rest_framework.authentication.SessionAuthentication",
     ],
     "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated"],
     "DEFAULT_PAGINATION_CLASS": "apps.core.api.pagination.DefaultCursorPagination",

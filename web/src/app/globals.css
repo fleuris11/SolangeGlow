@@ -463,3 +463,10 @@ html[data-motion="reduced"] .sg-marquee-copy {
     display: block;
   }
 }
+
+/* The menu of a pro stays fixed on a computer: a first-visit notice goes beside it. */
+@media (min-width: 1024px) {
+  body:has([data-space="pro"]) #sg-privacy {
+    padding-left: 288px;
+  }
+}

@@ -4723,5 +4723,13 @@
       "pause": "Mettre en pause les réservations",
       "resume": "Reprendre les réservations"
     }
+  },
+  "errors": {
+    "title": "Cette page n'a pas pu s'afficher",
+    "text": "Ce n'est pas de ta faute. Réessaie, ou retourne à l'accueil.",
+    "retry": "Réessayer",
+    "home": "Retour à l'accueil",
+    "notFoundTitle": "Cette page n'existe pas",
+    "notFoundText": "Le lien est peut-être ancien ou incomplet."
   }
 }

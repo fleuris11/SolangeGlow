@@ -12,7 +12,7 @@ import { Link } from "@/lib/i18n/navigation";
 
 const PLACES = "Cotonou, Calavi, Porto-Novo, Paris, Brest";
 
-export const TITLE = "font-display text-balance hyphens-none";
+export const TITLE = "font-display min-w-0 text-balance hyphens-none [overflow-wrap:anywhere]";
 
 /** A group of short lines kept as an object in the messages, in order. */
 export function lines(t: { raw: (key: never) => unknown }, key: string) {
@@ -54,7 +54,7 @@ export function TopBar({ signedIn = false }: { signedIn?: boolean }) {
           <Button
             asChild
             variant="secondary"
-            className="text-small min-h-11 px-2 leading-tight sm:px-4 sm:whitespace-nowrap"
+            className="text-small min-h-11 min-w-0 shrink px-2 leading-tight sm:px-4 sm:whitespace-nowrap"
           >
             <Link href="/me">{t("myAccount")}</Link>
           </Button>
@@ -63,7 +63,7 @@ export function TopBar({ signedIn = false }: { signedIn?: boolean }) {
             <Button
               asChild
               variant="secondary"
-              className="text-small min-h-11 px-2 leading-tight sm:px-4 sm:whitespace-nowrap"
+              className="text-small min-h-11 min-w-0 shrink px-2 leading-tight sm:px-4 sm:whitespace-nowrap"
             >
               <Link href="/auth">{t("signIn")}</Link>
             </Button>
@@ -71,7 +71,7 @@ export function TopBar({ signedIn = false }: { signedIn?: boolean }) {
               <Button
                 asChild
                 variant="secondary"
-                className="text-small min-h-11 px-2 leading-tight sm:px-4 sm:whitespace-nowrap"
+                className="text-small min-h-11 min-w-0 shrink px-2 leading-tight sm:px-4 sm:whitespace-nowrap"
               >
                 <Link href="/auth?as=client">{t("createAccount")}</Link>
               </Button>

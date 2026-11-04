@@ -101,7 +101,7 @@ export function ForProsPage({ signedIn }: { signedIn: boolean }) {
       <EditorialSection
         ambiance="nuit"
         aria-labelledby="pros-qr"
-        className="grid gap-10 px-4 py-16 lg:grid-cols-[1fr_auto] lg:gap-20 lg:px-10 lg:py-24"
+        className="grid grid-cols-[minmax(0,1fr)] gap-10 px-4 py-16 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-20 lg:px-10 lg:py-24"
       >
         <div className="flex flex-col gap-6">
           <h2 id="pros-qr" className={`${TITLE} text-[2.5rem] leading-[1.06] lg:text-[4.5rem]`}>

@@ -112,7 +112,7 @@ export function ProSidebar({ icons }: { icons: ProChromeIcons }) {
   const tMeta = useTranslations("metadata");
   const { pro, items } = useProSpace();
   return (
-    <aside className="border-trait sticky top-0 hidden h-dvh flex-col gap-3 border-r p-4 lg:flex">
+    <aside className="border-trait bg-lait fixed inset-y-0 left-0 z-30 hidden w-[272px] flex-col gap-3 border-r p-4 lg:flex">
       <div className="flex items-center justify-between gap-2">
         <Link href="/pro" className="shrink-0">
           <Image src="/icons/logo.png" alt={tMeta("title")} width={100} height={49} />
@@ -218,7 +218,10 @@ export function ProBottomBar({ icons }: { icons: ProChromeIcons }) {
       <Sheet open={more} onOpenChange={setMore} title={pro?.business_name ?? t("menu")}>
         <div className="flex flex-col gap-3">
           <NavList items={items} icons={icons} onChoose={() => setMore(false)} />
-          <Leave icons={icons} slug={pro?.slug} />
+          {/* Leaving stays in sight, however long the menu. */}
+          <div className="bg-carte sticky bottom-0">
+            <Leave icons={icons} slug={pro?.slug} />
+          </div>
         </div>
       </Sheet>
     </>

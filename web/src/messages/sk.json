@@ -4723,5 +4723,13 @@
       "pause": "Pozastaviť rezervácie",
       "resume": "Obnoviť rezervácie"
     }
+  },
+  "errors": {
+    "title": "Túto stránku sa nepodarilo zobraziť",
+    "text": "Nie je to tvoja chyba. Skús to znova alebo sa vráť na úvod.",
+    "retry": "Skúsiť znova",
+    "home": "Späť na úvod",
+    "notFoundTitle": "Táto stránka neexistuje",
+    "notFoundText": "Odkaz môže byť starý alebo neúplný."
   }
 }

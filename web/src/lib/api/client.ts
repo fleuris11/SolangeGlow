@@ -19,13 +19,39 @@ export type ApiErrorBody = {
   retry_after?: number;
 };
 
+const PLAIN = {
+  fr: {
+    network: "Pas de connexion. Vérifie ton réseau et réessaie.",
+    session: "Tu n'es plus connecté. Connecte-toi pour continuer.",
+    server: "Un problème est survenu de notre côté. Réessaie dans un instant.",
+  },
+  en: {
+    network: "No connection. Check your network and try again.",
+    session: "You have been signed out. Sign in to continue.",
+    server: "Something went wrong on our side. Try again in a moment.",
+  },
+  sk: {
+    network: "Nie je pripojenie. Skontroluj sieť a skús to znova.",
+    session: "Bol si odhlásený. Prihlás sa a pokračuj.",
+    server: "Na našej strane nastal problém. Skús to o chvíľu.",
+  },
+};
+
+/** When the server gives no message: this file has no access to the translations. */
+function plainMessage(status: number): string {
+  const lang = typeof document === "undefined" ? "fr" : document.documentElement.lang;
+  const words = PLAIN[lang as keyof typeof PLAIN] ?? PLAIN.fr;
+  if (status === 0) return words.network;
+  return status === 401 ? words.session : words.server;
+}
+
 export class ApiError extends Error {
   constructor(
     public readonly status: number,
     public readonly code: string = "error",
     public readonly body: ApiErrorBody = {},
   ) {
-    super(body.message || `API error ${status} (${code})`);
+    super(body.message || plainMessage(status));
     this.name = "ApiError";
   }
 
@@ -104,9 +130,16 @@ api.use(sessionMiddleware);
 export async function unwrap<T>(
   call: Promise<{ data?: T; error?: unknown; response: Response }>,
 ): Promise<T> {
-  const { data, error, response } = await call;
+  let answer: Awaited<typeof call>;
+  try {
+    answer = await call;
+  } catch {
+    // No answer at all: no network, or the server cannot be reached.
+    throw new ApiError(0, "network");
+  }
+  const { data, error, response } = answer;
   if (!response.ok) {
-    const body = (error ?? {}) as ApiErrorBody;
+    const body = (typeof error === "object" && error ? error : {}) as ApiErrorBody;
     throw new ApiError(response.status, body.code, body);
   }
   return data as T;

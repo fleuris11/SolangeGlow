@@ -70,9 +70,9 @@ export function ProShell({ children }: { children: ReactNode }) {
       >
         {t("skipToContent")}
       </a>
-      <div className="lg:grid lg:grid-cols-[272px_minmax(0,1fr)]">
+      <div>
         <ProSidebar icons={drawn} />
-        <div className="min-w-0">
+        <div className="min-w-0 lg:pl-[272px]">
           <ProHeader icons={drawn} />
           <main
             id="main"

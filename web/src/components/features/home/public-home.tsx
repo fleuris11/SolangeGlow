@@ -418,7 +418,7 @@ function ForPros() {
       id="pros"
       ambiance="nuit"
       aria-labelledby="for-pros-title"
-      className="grid gap-10 px-4 py-16 lg:grid-cols-[1fr_auto] lg:gap-20 lg:px-10 lg:py-28"
+      className="grid grid-cols-[minmax(0,1fr)] gap-10 px-4 py-16 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-20 lg:px-10 lg:py-28"
     >
       <div className="flex flex-col gap-6">
         <div className="flex items-start justify-between gap-3">

@@ -29,7 +29,7 @@ for (const [label, viewport] of Object.entries(VIEWPORTS)) {
     await expect(pro.getByRole("link", { name: "Passer en mode cliente" })).toBeInViewport();
     await pro.getByRole("link", { name: "Passer en mode cliente" }).click();
     await expect(pro).toHaveURL(/\/fr$/);
-    await expect(pro.getByRole("heading", { name: "Les looks du moment" })).toBeVisible({
+    await expect(pro.getByRole("heading", { name: "Ton fil" })).toBeVisible({
       timeout: 60_000,
     });
     await expect(
@@ -109,7 +109,7 @@ test("a client has no pro entry in her menu, and can sign out", async ({ browser
   const page = await context.newPage();
   await signInWithPhone(page, CLIENT);
   await openWith(page, "/fr", LOOK);
-  await expect(page.getByRole("heading", { name: "Les looks du moment" })).toBeVisible({
+  await expect(page.getByRole("heading", { name: "Ton fil" })).toBeVisible({
     timeout: 60_000,
   });
   await expect(page.getByRole("link", { name: "Mon espace pro" })).toHaveCount(0);

@@ -4723,5 +4723,13 @@
       "pause": "Pause bookings",
       "resume": "Resume bookings"
     }
+  },
+  "errors": {
+    "title": "This page could not be shown",
+    "text": "It is not your fault. Try again, or go back to the home page.",
+    "retry": "Try again",
+    "home": "Back to the home page",
+    "notFoundTitle": "This page does not exist",
+    "notFoundText": "The link may be old or incomplete."
   }
 }
