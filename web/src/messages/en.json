@@ -88,7 +88,7 @@
     "public": {
       "menu": "Discover",
       "signIn": "Sign in",
-      "title": "Find your beauty pro, book, pay safely.",
+      "title": "Find the pro who brings out your beauty",
       "chooseTrade": "Choose a trade",
       "links": {
         "explore": "Explore",
@@ -111,7 +111,7 @@
         "makeup": "Portrait of a woman with makeup, red lips and earrings.",
         "nails": "Hands with painted nails near a face.",
         "sewing": "Hands sewing on a machine.",
-        "headwrap": "Smiling woman, yellow headwrap.",
+        "headwrap": "Woman in profile, large straw hat, orange background.",
         "skincare": "Woman with glowing skin, warm background.",
         "booking": "Woman in a lace dress, afro hair, soft light.",
         "gift": "Woman with a yellow headwrap in front of a mural."
@@ -166,7 +166,8 @@
         "terms": "Terms",
         "privacy": "Privacy",
         "credits": "Photo credits"
-      }
+      },
+      "line": "Hair, braids, makeup, nails. Book and pay safely."
     }
   },
   "aside": {

@@ -88,7 +88,7 @@
     "public": {
       "menu": "Objavovať",
       "signIn": "Prihlásiť sa",
-      "title": "Nájdi si kozmetickú profesionálku, rezervuj, plať bezpečne.",
+      "title": "Nájdi profesionálku, ktorá zvýrazní tvoju krásu",
       "chooseTrade": "Vyber si odbor",
       "links": {
         "explore": "Objavovať",
@@ -111,7 +111,7 @@
         "makeup": "Portrét ženy s make-upom, červené pery a náušnice.",
         "nails": "Ruky s nalakovanými nechtami pri tvári.",
         "sewing": "Ruky šijúce na stroji.",
-        "headwrap": "Usmiata žena so žltým turbanom.",
+        "headwrap": "Žena z profilu, veľký slamený klobúk, oranžové pozadie.",
         "skincare": "Žena so žiarivou pleťou, teplé pozadie.",
         "booking": "Žena v čipkových šatách, afro účes, jemné svetlo.",
         "gift": "Žena so žltým turbanom pred nástennou maľbou."
@@ -166,7 +166,8 @@
         "terms": "Podmienky",
         "privacy": "Súkromie",
         "credits": "Autori fotiek"
-      }
+      },
+      "line": "Účesy, vrkoče, make-up, nechty. Rezervuj a plať bezpečne."
     }
   },
   "aside": {

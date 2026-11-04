@@ -88,7 +88,7 @@
     "public": {
       "menu": "Découvrir",
       "signIn": "Me connecter",
-      "title": "Trouve ta pro de beauté, réserve, paie en sécurité.",
+      "title": "Trouve la pro qui sublime ta beauté",
       "chooseTrade": "Choisis un métier",
       "links": {
         "explore": "Explorer",
@@ -111,7 +111,7 @@
         "makeup": "Portrait d'une femme maquillée, lèvres rouges et boucles d'oreilles.",
         "nails": "Mains aux ongles vernis près d'un visage.",
         "sewing": "Mains qui cousent sur une machine.",
-        "headwrap": "Femme souriante, foulard jaune noué sur la tête.",
+        "headwrap": "Femme de profil, grand chapeau de paille, fond orange.",
         "skincare": "Femme à la peau lumineuse, sur fond chaud.",
         "booking": "Femme en robe de dentelle, coiffure afro, lumière douce.",
         "gift": "Femme au foulard jaune devant une fresque."
@@ -126,13 +126,13 @@
         "headwrapText": "Gélé, turban, attaches de fête."
       },
       "booking": {
-        "title": "Choisis ton créneau, on s'occupe du reste",
+        "title": "Choisis ton créneau, on s’occupe du reste",
         "text": "Gratuit pour toi. La pro confirme, tu reçois un rappel.",
         "day": "Samedi",
         "cta": "Voir les pros"
       },
       "code": {
-        "title": "Ton argent reste bloqué jusqu'à ce code",
+        "title": "Ton argent reste bloqué jusqu’à ce code",
         "paid": {
           "title": "Tu paies",
           "text": "L'argent ne part pas chez la vendeuse."
@@ -166,7 +166,8 @@
         "terms": "Conditions",
         "privacy": "Confidentialité",
         "credits": "Crédits photos"
-      }
+      },
+      "line": "Coiffure, tresses, maquillage, ongles. Réserve et paie en sécurité."
     }
   },
   "aside": {

@@ -1,4 +1,5 @@
-// The public home, for review: first screen and whole page, 360 and 1440, then a short video.
+// The public home, for review: first screen and each section as a visitor scrolls to it, 360 and
+// 1440, then a short video. A full-page shot would freeze the scroll effects halfway.
 // docker compose run --rm --no-deps -T --entrypoint node e2e e2e/capture-home.mjs
 import { mkdirSync, renameSync } from "node:fs";
 
@@ -7,15 +8,20 @@ import sharp from "sharp";
 
 const OUT = process.env.OUT ?? "e2e/screenshots/home";
 const BASE = process.env.BASE_URL ?? "http://localhost:3000";
-const FULL_WIDTH = { 360: 360, 1440: 1000 };
+const SECTIONS = [
+  "hands-title",
+  "code-title",
+  "booking-title",
+  "more-title",
+  "gift-title",
+  "feed-title",
+];
 mkdirSync(OUT, { recursive: true });
 const browser = await chromium.launch();
 
-async function shot(page, file, fullPage = false, width) {
-  const png = await page.screenshot({ fullPage, type: "png" });
-  const image = sharp(png, { limitInputPixels: false });
-  // JPEG: a whole page can be too tall for WebP.
-  await (width ? image.resize(width) : image).jpeg({ quality: 78 }).toFile(`${OUT}/${file}.jpg`);
+async function shot(page, file) {
+  const png = await page.screenshot({ type: "png" });
+  await sharp(png).jpeg({ quality: 78 }).toFile(`${OUT}/${file}.jpg`);
 }
 
 for (const size of [
@@ -32,19 +38,23 @@ for (const size of [
       [theme],
     );
     const page = await context.newPage();
+    page.on("console", (message) => {
+      if (message.type() === "error") console.log("console error", message.text().slice(0, 600));
+    });
+    page.on("pageerror", (error) => console.log("page error", error.message.slice(0, 600)));
     await page.goto(`${BASE}/fr`, { waitUntil: "load", timeout: 240_000 });
     await page.waitForTimeout(1500);
     await shot(page, `first-${size.width}-${theme}`);
     if (theme === "light") {
-      // Lazy pictures and scroll effects: go down the page like a visitor.
-      const height = await page.evaluate(() => document.documentElement.scrollHeight);
-      for (let y = 0; y < height; y += size.height * 0.8) {
-        await page.evaluate((top) => window.scrollTo(0, top), y);
-        await page.waitForTimeout(900);
+      for (const id of SECTIONS) {
+        await page.evaluate((target) => {
+          const box = document.getElementById(target).closest("section").getBoundingClientRect();
+          window.scrollTo(0, box.top + window.scrollY);
+        }, id);
+        await page.waitForTimeout(2500);
+        await shot(page, `${id.replace("-title", "")}-${size.width}`);
       }
-      await page.evaluate(() => window.scrollTo(0, 0));
-      await page.waitForTimeout(300);
-      await shot(page, `page-${size.width}-${theme}`, true, FULL_WIDTH[size.width]);
+      const height = await page.evaluate(() => document.documentElement.scrollHeight);
       const overflow = await page.evaluate(
         () => document.documentElement.scrollWidth - window.innerWidth,
       );
