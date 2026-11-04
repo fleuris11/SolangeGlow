@@ -71,6 +71,7 @@ def test_only_consenting_clients_of_the_segment_receive_it(clock):
     for item in (old, recent):
         campaigns.set_consent(item, "email", True, source=MarketingConsent.Source.BOOKING)
     campaigns.set_consent(no_consent, "email", False, source="pro")
+    mail.outbox.clear()  # the pro was told about these appointments by e-mail
     clock.set(at(9, day=datetime.date(2030, 3, 10)))
     sent = campaigns.send(campaign(pro), actor=pro.user)
     assert sent.status == Campaign.Status.SENT
