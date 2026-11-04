@@ -309,7 +309,7 @@ describe("ReviewsSection", () => {
     const page = { count: 0, average: null, distribution: {}, next: null, results: [] };
     renderWithProviders(<ReviewsSection page={page as never} name="Aïcha Tresses" />);
     expect(screen.getByText("Aïcha Tresses n'a pas encore d'avis.")).toBeVisible();
-    expect(screen.getByText(/Seules les clientes qui ont vraiment réservé/)).toBeVisible();
+    expect(screen.getByText(/Seules les clients qui ont vraiment réservé/)).toBeVisible();
   });
 });
 

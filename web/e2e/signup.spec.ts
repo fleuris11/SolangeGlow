@@ -100,7 +100,7 @@ test.describe("sign-up on a small phone", () => {
     await expect(
       page.getByRole("heading", { name: "Ta ville et ta date de naissance" }),
     ).toBeVisible();
-    await page.getByRole("button", { name: "Abomey-Calavi" }).click();
+    await page.getByRole("combobox", { name: "Ta ville" }).fill("Abomey-Calavi");
     await page.getByLabel("Jour").selectOption("12");
     await page.getByLabel("Mois").selectOption("4");
     await page.getByLabel("Année").selectOption("1995");
@@ -125,7 +125,7 @@ test.describe("sign-up on a small phone", () => {
     await page.getByRole("button", { name: "Tresses" }).click();
     await page.screenshot({ path: "e2e/screenshots/become-2-trades.png", fullPage: true });
     await page.getByRole("button", { name: "Continuer" }).click();
-    await page.getByLabel("Ville").fill("Abomey-Calavi");
+    await page.getByRole("combobox", { name: "Ville" }).fill("Abomey-Calavi");
     await page.getByLabel("Quartier").fill("Calavi centre");
     await page.getByRole("button", { name: /utiliser ma position/ }).click();
     await expect(page.getByText("Point placé")).toBeVisible();

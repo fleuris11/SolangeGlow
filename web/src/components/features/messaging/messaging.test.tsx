@@ -95,7 +95,7 @@ describe("ConversationList", () => {
     ]);
     renderWithProviders(<ConversationList />);
     expect(await screen.findByText("Aucun message pour l'instant")).toBeVisible();
-    expect(screen.getByText(/Écris à une pro depuis sa vitrine/)).toBeVisible();
+    expect(screen.getByText(/Écris à un talent depuis sa vitrine/)).toBeVisible();
   });
 });
 

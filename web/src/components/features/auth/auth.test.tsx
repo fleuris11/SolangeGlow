@@ -42,6 +42,8 @@ describe("SignInFlow", () => {
     ]);
     renderWithProviders(<SignInFlow />);
 
+    await userEvent.click(screen.getByRole("button", { name: "Téléphone" }));
+    await userEvent.selectOptions(screen.getByLabelText("Pays"), "BJ");
     await userEvent.type(screen.getByLabelText("Ton numéro de téléphone"), "01 97 12 34 56");
     await userEvent.click(screen.getByRole("button", { name: "Recevoir mon code" }));
 
@@ -83,6 +85,8 @@ describe("SignInFlow", () => {
     ]);
     renderWithProviders(<SignInFlow />);
 
+    await userEvent.click(screen.getByRole("button", { name: "Téléphone" }));
+    await userEvent.selectOptions(screen.getByLabelText("Pays"), "BJ");
     await userEvent.type(screen.getByLabelText("Ton numéro de téléphone"), "0197123456");
     await userEvent.click(screen.getByRole("button", { name: "Recevoir mon code" }));
     await userEvent.click(await screen.findByLabelText("Chiffre 1 sur 6"));
@@ -105,6 +109,8 @@ describe("SignInFlow", () => {
     ]);
     renderWithProviders(<SignInFlow />);
 
+    await userEvent.click(screen.getByRole("button", { name: "Téléphone" }));
+    await userEvent.selectOptions(screen.getByLabelText("Pays"), "BJ");
     await userEvent.type(screen.getByLabelText("Ton numéro de téléphone"), "0197123456");
     await userEvent.click(screen.getByRole("button", { name: "Recevoir mon code" }));
 
@@ -169,7 +175,7 @@ describe("WelcomeFlow", () => {
     await userEvent.click(screen.getByRole("button", { name: "Continuer" }));
 
     expect(screen.getByRole("heading", { name: "Ta ville et ta date de naissance" })).toBeVisible();
-    await userEvent.click(screen.getByRole("button", { name: "Abomey-Calavi" }));
+    await userEvent.type(screen.getByRole("combobox", { name: "Ta ville" }), "Abomey-Calavi");
     expect(screen.getByRole("button", { name: "C'est parti" })).toBeDisabled();
     await userEvent.selectOptions(screen.getByLabelText("Jour"), "12");
     await userEvent.selectOptions(screen.getByLabelText("Mois"), "4");

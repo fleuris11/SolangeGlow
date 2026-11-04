@@ -18,16 +18,16 @@ for (const [label, viewport] of Object.entries(VIEWPORTS)) {
       timeout: 90_000,
     });
     const menu = pro.getByRole("navigation", { name: "Menu de mon activité" }).first();
-    await expect(menu.getByRole("link", { name: "Agenda" })).toBeVisible();
-    await expect(menu.getByRole("link", { name: "Boutique" })).toBeVisible();
+    await expect(menu.getByRole("link", { name: "Agenda", exact: true })).toBeVisible();
+    await expect(menu.getByRole("link", { name: "Boutique", exact: true })).toBeVisible();
     await expect(pro.getByRole("link", { name: "Publier" })).toHaveCount(0);
     await expectNoSeriousA11yIssue(pro);
     if (mobile) await pro.getByRole("button", { name: "Plus" }).click();
     // Leaving is always in sight, even on a short screen.
     const signOut = pro.getByRole("button", { name: "Déconnexion", exact: true });
     await expect(signOut).toBeInViewport();
-    await expect(pro.getByRole("link", { name: "Passer en mode client" })).toBeInViewport();
-    await pro.getByRole("link", { name: "Passer en mode client" }).click();
+    await expect(pro.getByRole("link", { name: "Mon espace personnel" })).toBeInViewport();
+    await pro.getByRole("link", { name: "Mon espace personnel" }).click();
     await expect(pro).toHaveURL(/\/fr$/);
     await expect(pro.getByRole("heading", { name: "Ton fil" })).toBeVisible({
       timeout: 60_000,

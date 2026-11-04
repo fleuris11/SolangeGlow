@@ -515,7 +515,7 @@
     },
     "city": {
       "title": "Ta ville et ta date de naissance",
-      "other": "Une autre ville",
+      "other": "Ta ville",
       "country": "Pays"
     },
     "done": {
@@ -4751,6 +4751,7 @@
     "notFoundText": "Le lien est peut-être ancien ou incomplet."
   },
   "geo": {
-    "placeholder": "Commence à écrire..."
+    "placeholder": "Commence à écrire...",
+    "results": "Villes trouvées"
   }
 }

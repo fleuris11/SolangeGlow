@@ -89,7 +89,7 @@ export function CityField({
       <ul
         id={listId}
         role="listbox"
-        aria-label={label}
+        aria-label={t("results")}
         className={cn(
           "bg-carte border-trait rounded-field absolute top-full z-20 mt-1 max-h-64 w-full overflow-y-auto border shadow-lg",
           !(open && shown.length > 0) && "hidden",

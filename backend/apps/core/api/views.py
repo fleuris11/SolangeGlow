@@ -86,7 +86,9 @@ class CitySearchView(APIView):
     throttle_scope = "search"
 
     @extend_schema(
-        tags=["catalogue"], parameters=[CitySearchQuerySerializer], responses=CitySuggestionSerializer(many=True)
+        tags=["catalogue"],
+        parameters=[CitySearchQuerySerializer],
+        responses=CitySuggestionSerializer(many=True),
     )
     def get(self, request):
         query = CitySearchQuerySerializer(data=request.query_params)

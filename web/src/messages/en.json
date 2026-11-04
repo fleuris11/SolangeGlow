@@ -515,7 +515,7 @@
     },
     "city": {
       "title": "Your city and date of birth",
-      "other": "Another city",
+      "other": "Your city",
       "country": "Country"
     },
     "done": {
@@ -4751,6 +4751,7 @@
     "notFoundText": "The link may be old or incomplete."
   },
   "geo": {
-    "placeholder": "Start typing..."
+    "placeholder": "Start typing...",
+    "results": "Cities found"
   }
 }

@@ -51,7 +51,7 @@ test("sign up, find, book, buy, receipt code, rules and my data", async ({ brows
   await page.getByRole("button", { name: "Continuer" }).click();
   await expect(page.getByRole("heading", { name: "Ta langue" })).toBeVisible();
   await page.getByRole("button", { name: "Continuer" }).click();
-  await page.getByRole("button", { name: "Cotonou", exact: true }).click();
+  await page.getByRole("combobox", { name: "Ta ville" }).fill("Cotonou");
   await page.getByLabel("Jour").selectOption("12");
   await page.getByLabel("Mois").selectOption("4");
   await page.getByLabel("Année").selectOption("1995");

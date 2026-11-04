@@ -1,7 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { useMemo } from "react";
+import { useId, useMemo } from "react";
 
 import { COUNTRIES } from "@/lib/geo/countries";
 
@@ -26,10 +26,14 @@ export function CountrySelect({
   onChange: (code: string) => void;
 }) {
   const countries = useCountryNames();
+  const id = useId();
   return (
-    <label className="flex flex-col gap-2 font-bold">
-      {label}
+    <div className="flex flex-col gap-2">
+      <label htmlFor={id} className="font-bold">
+        {label}
+      </label>
       <select
+        id={id}
         value={value}
         onChange={(event) => onChange(event.target.value)}
         className="border-trait bg-carte rounded-field min-h-12 w-full border-2 px-3 font-normal"
@@ -40,6 +44,6 @@ export function CountrySelect({
           </option>
         ))}
       </select>
-    </label>
+    </div>
   );
 }

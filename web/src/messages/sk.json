@@ -515,7 +515,7 @@
     },
     "city": {
       "title": "Tvoje mesto a dátum narodenia",
-      "other": "Iné mesto",
+      "other": "Tvoje mesto",
       "country": "Krajina"
     },
     "done": {
@@ -4751,6 +4751,7 @@
     "notFoundText": "Odkaz môže byť starý alebo neúplný."
   },
   "geo": {
-    "placeholder": "Začni písať..."
+    "placeholder": "Začni písať...",
+    "results": "Nájdené mestá"
   }
 }
