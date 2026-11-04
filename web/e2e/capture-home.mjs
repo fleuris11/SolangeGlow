@@ -9,11 +9,15 @@ import sharp from "sharp";
 const OUT = process.env.OUT ?? "e2e/screenshots/home";
 const BASE = process.env.BASE_URL ?? "http://localhost:3000";
 const SECTIONS = [
+  "who-title",
+  "everything-title",
   "hands-title",
   "code-title",
   "booking-title",
+  "for-pros-title",
   "more-title",
   "gift-title",
+  "questions-title",
   "feed-title",
 ];
 mkdirSync(OUT, { recursive: true });
