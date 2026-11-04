@@ -36,7 +36,7 @@ export function DailyQuizScreen() {
   if (!quiz || quiz.questions.length === 0) {
     return (
       <EmptyState
-        icon={<Lightbulb size={48} weight="duotone" />}
+        icon={<Lightbulb size={48} />}
         title={t("none")}
         description={t("noneHelp")}
         action={

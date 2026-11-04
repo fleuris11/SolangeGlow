@@ -105,7 +105,7 @@ function Hub({
     <div className="flex flex-col gap-6">
       <section className="border-trait rounded-card flex flex-col gap-3 border p-4">
         <h2 className="text-lead flex items-center gap-2 font-bold">
-          <Sparkle aria-hidden size={24} weight="duotone" className="text-hibiscus" />
+          <Sparkle aria-hidden size={24} />
           {t("cardTitle")}
         </h2>
         <p className="text-small text-prune-doux">{t("cardHelp")}</p>
@@ -139,7 +139,7 @@ function Hub({
       </section>
       <section className="border-trait rounded-card flex flex-col gap-3 border p-4">
         <h2 className="text-lead flex items-center gap-2 font-bold">
-          <Scissors aria-hidden size={24} weight="duotone" className="text-hibiscus" />
+          <Scissors aria-hidden size={24} />
           {t("serviceTitle")}
         </h2>
         <p className="text-small text-prune-doux">{t("serviceHelp")}</p>
@@ -149,7 +149,7 @@ function Hub({
       </section>
       <section className="flex flex-col gap-3">
         <h2 className="text-lead flex items-center gap-2 font-bold">
-          <ShoppingBag aria-hidden size={24} weight="duotone" className="text-hibiscus" />
+          <ShoppingBag aria-hidden size={24} />
           {t("productTitle")}
         </h2>
         <p className="text-small text-prune-doux">{t("productHelp")}</p>
@@ -306,9 +306,9 @@ function MessageMedia({
     return (
       <div className="bg-poudre flex items-center gap-3 rounded-2xl p-3">
         {value.kind === "audio" ? (
-          <Microphone aria-hidden size={24} weight="duotone" />
+          <Microphone aria-hidden size={24} />
         ) : (
-          <VideoCamera aria-hidden size={24} weight="duotone" />
+          <VideoCamera aria-hidden size={24} />
         )}
         <span className="flex-1 font-bold">
           {t(value.kind === "audio" ? "voiceReady" : "videoReady")}
@@ -448,7 +448,7 @@ export function OfferFlow({ start }: { start: OfferStart }) {
           className="petal size-16 shrink-0 object-cover"
         />
       ) : (
-        <Gift aria-hidden size={40} weight="duotone" className="text-hibiscus shrink-0" />
+        <Gift aria-hidden size={40} className="shrink-0" />
       )}
       <span className="flex flex-col">
         <span className="font-bold">{quote.data.title}</span>
@@ -564,11 +564,11 @@ export function OfferFlow({ start }: { start: OfferStart }) {
           <fieldset className="flex flex-col gap-3">
             <legend className="mb-2 font-bold">{t("when")}</legend>
             <Choice name="when" selected={!later} onSelect={() => setLater(false)}>
-              <Gift aria-hidden size={24} weight="duotone" className="text-hibiscus" />
+              <Gift aria-hidden size={24} />
               <span className="font-bold">{t("now")}</span>
             </Choice>
             <Choice name="when" selected={later} onSelect={() => setLater(true)}>
-              <CalendarBlank aria-hidden size={24} weight="duotone" className="text-hibiscus" />
+              <CalendarBlank aria-hidden size={24} />
               <span className="font-bold">{t("onDay")}</span>
             </Choice>
             {later && (
@@ -607,15 +607,15 @@ export function OfferFlow({ start }: { start: OfferStart }) {
           </dl>
           <ul className="flex flex-col gap-3">
             <li className="bg-poudre flex items-start gap-3 rounded-2xl p-4">
-              <LockKey aria-hidden size={28} weight="duotone" className="text-hibiscus shrink-0" />
+              <LockKey aria-hidden size={28} className="shrink-0" />
               <span>{t("safe", { days: quote.data.cancel_days })}</span>
             </li>
             <li className="bg-poudre flex items-start gap-3 rounded-2xl p-4">
               <CalendarBlank
                 aria-hidden
                 size={28}
-                weight="duotone"
-                className="text-hibiscus shrink-0"
+
+                className="shrink-0"
               />
               <span>{t("valid", { days: quote.data.validity_days })}</span>
             </li>

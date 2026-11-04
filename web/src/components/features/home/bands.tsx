@@ -18,7 +18,7 @@ export function FranceSelectionBand({ products }: { products: SelectionSummary[]
       className="bg-poudre rounded-card flex flex-col gap-4 p-5"
     >
       <div className="flex items-start gap-3">
-        <AirplaneTilt aria-hidden size={32} weight="duotone" className="text-hibiscus shrink-0" />
+        <AirplaneTilt aria-hidden size={32} className="shrink-0" />
         <div>
           <h2 id="france-title" className="text-title font-bold">
             {t("title")}
@@ -74,7 +74,7 @@ export function GiftBand() {
       aria-labelledby="gift-title"
       className="border-or bg-carte rounded-card flex flex-col gap-3 border-2 p-5"
     >
-      <Gift aria-hidden size={36} weight="duotone" className="text-hibiscus" />
+      <Gift aria-hidden size={36} />
       <h2 id="gift-title" className="text-title font-bold">
         {t("title")}
       </h2>
@@ -119,7 +119,7 @@ export function JoinBand() {
           href="/auth?as=pro"
           className="border-prune text-prune hover:bg-poudre rounded-card flex min-h-32 flex-col justify-between gap-4 border-2 p-5"
         >
-          <Scissors aria-hidden size={36} weight="duotone" className="text-hibiscus" />
+          <Scissors aria-hidden size={36} />
           <span>
             <span className="text-lead block font-bold">{t("proTitle")}</span>
             <span className="text-prune-doux block">{t("proText")}</span>

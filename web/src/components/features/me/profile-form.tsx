@@ -99,7 +99,7 @@ export function ProfileForm({ me }: { me: Me }) {
       <BlurPreview hash={photo.blurhash} />
     ) : hasName ? undefined : (
       <span className="flex size-full items-center justify-center">
-        <User size={64} weight="duotone" />
+        <User size={64} />
       </span>
     );
 
@@ -141,7 +141,7 @@ export function ProfileForm({ me }: { me: Me }) {
         />
         <Button
           variant="secondary"
-          icon={<Camera size={22} weight="duotone" />}
+          icon={<Camera size={22} />}
           disabled={photoBusy}
           onClick={() => fileInput.current?.click()}
         >
@@ -150,7 +150,7 @@ export function ProfileForm({ me }: { me: Me }) {
         {photo && (
           <Button
             variant="quiet"
-            icon={<Trash size={22} weight="duotone" />}
+            icon={<Trash size={22} />}
             disabled={photoBusy}
             onClick={async () => setMe(await removePhoto())}
           >

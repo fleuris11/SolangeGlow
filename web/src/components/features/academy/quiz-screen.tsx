@@ -75,7 +75,7 @@ export function QuizScreen({ slug, moduleId }: { slug: string; moduleId: string 
       <header className="flex flex-col gap-2">
         <div className="flex items-start gap-2">
           <h1 className="text-headline flex flex-1 items-center gap-2 font-bold">
-            <Exam aria-hidden size={30} weight="duotone" className="text-hibiscus" />
+            <Exam aria-hidden size={30} />
             {t("title", { module: quiz.module_title })}
           </h1>
           <SpeakButton text={t("help", { percent: quiz.pass_percent })} />

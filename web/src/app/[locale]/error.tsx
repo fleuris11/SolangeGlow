@@ -13,7 +13,10 @@ export default function ErrorPage({ error, reset }: { error: Error; reset: () =>
     console.error(error);
   }, [error]);
   return (
-    <main id="main" className="mx-auto flex min-h-[70svh] max-w-[480px] flex-col justify-center gap-4 px-4">
+    <main
+      id="main"
+      className="mx-auto flex min-h-[70svh] max-w-[480px] flex-col justify-center gap-4 px-4"
+    >
       <h1 className="font-display text-display">{t("title")}</h1>
       <p className="text-lead">{t("text")}</p>
       <Button size="lg" onClick={reset}>

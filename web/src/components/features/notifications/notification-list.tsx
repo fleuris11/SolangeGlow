@@ -71,7 +71,7 @@ export function NotificationList() {
   if (items.length === 0) {
     return (
       <EmptyState
-        icon={<BellSimpleSlash size={48} weight="duotone" />}
+        icon={<BellSimpleSlash size={48} />}
         title={t("emptyTitle")}
         description={t("emptyText")}
       />

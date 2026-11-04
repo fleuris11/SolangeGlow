@@ -95,10 +95,10 @@ export function Catalogue({ theme }: { theme: "light" | "dark" }) {
 
       <Section id={id("icon-label")} title="IconLabel">
         <div className="flex flex-wrap gap-6">
-          <IconLabel icon={<MapPin size={22} weight="duotone" className="text-hibiscus" />}>
+          <IconLabel icon={<MapPin size={22} className="text-hibiscus" />}>
             Fidjrossè, Cotonou
           </IconLabel>
-          <IconLabel layout="stacked" icon={<ChatsCircle size={28} weight="duotone" />}>
+          <IconLabel layout="stacked" icon={<ChatsCircle size={28} />}>
             {t("sample.messages")}
           </IconLabel>
           {TRADES.slice(0, 3).map((trade) => (
@@ -240,7 +240,7 @@ export function Catalogue({ theme }: { theme: "light" | "dark" }) {
 
       <Section id={id("empty")} title="EmptyState">
         <EmptyState
-          icon={<Package size={48} weight="duotone" />}
+          icon={<Package size={48} />}
           title={t("sample.emptyTitle")}
           description={t("sample.emptyText")}
           action={<Button>{t("sample.emptyCta")}</Button>}
@@ -267,7 +267,7 @@ export function Catalogue({ theme }: { theme: "light" | "dark" }) {
 
       <Section id={id("bottom-nav")} title="BottomNav">
         <p className="text-prune-doux flex items-center gap-2">
-          <Heart aria-hidden size={20} weight="duotone" className="text-hibiscus" />
+          <Heart aria-hidden size={20} />
           {t("sample.bottomNav")}
         </p>
       </Section>

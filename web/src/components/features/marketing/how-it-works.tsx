@@ -89,7 +89,7 @@ export function HowItWorksPage({ signedIn }: { signedIn: boolean }) {
             <Link href="/auth?as=client">{tNav("createAccount")}</Link>
           </Button>
           <Button asChild size="lg" variant="secondary">
-            <Link href="/pour-les-pros">{tNav("iAmPro")}</Link>
+            <Link href="/proposer-mes-services">{tNav("iAmPro")}</Link>
           </Button>
         </div>
       </EditorialSection>

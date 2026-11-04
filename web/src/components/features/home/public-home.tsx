@@ -161,7 +161,7 @@ function Opening() {
               <Link href="/auth?as=client">{tMarketing("createAccount")}</Link>
             </Button>
             <Button asChild variant="secondary" className="text-small px-1 lg:px-5">
-              <Link href="/pour-les-pros">{tMarketing("iAmPro")}</Link>
+              <Link href="/proposer-mes-services">{tMarketing("iAmPro")}</Link>
             </Button>
           </div>
         </div>
@@ -206,7 +206,7 @@ function Doors() {
             </Button>
             {key === "pro" && (
               <Link
-                href="/pour-les-pros"
+                href="/proposer-mes-services"
                 className="inline-flex min-h-12 items-center justify-center font-semibold underline"
               >
                 {t("pro.more")}
@@ -242,7 +242,7 @@ function Everything() {
           <li key={key} className="border-trait border-b">
             {href.startsWith("#") ? (
               <a href={href} className="press flex min-h-20 items-center gap-4 py-4">
-                <Icon aria-hidden size={32} weight="duotone" className="text-hibiscus shrink-0" />
+                <Icon aria-hidden size={32} className="shrink-0" />
                 <span className="min-w-0">
                   <span className="text-lead block font-semibold">{t(`${key}.title`)}</span>
                   <span className="text-prune-doux block">{t(`${key}.text`)}</span>
@@ -250,7 +250,7 @@ function Everything() {
               </a>
             ) : (
               <Link href={href} className="press flex min-h-20 items-center gap-4 py-4">
-                <Icon aria-hidden size={32} weight="duotone" className="text-hibiscus shrink-0" />
+                <Icon aria-hidden size={32} className="shrink-0" />
                 <span className="min-w-0">
                   <span className="text-lead block font-semibold">{t(`${key}.title`)}</span>
                   <span className="text-prune-doux block">{t(`${key}.text`)}</span>
@@ -443,7 +443,7 @@ function ForPros() {
             <Link href="/auth?as=pro">{t("cta")}</Link>
           </Button>
           <Button asChild size="lg" variant="secondary">
-            <Link href="/pour-les-pros">{t("more")}</Link>
+            <Link href="/proposer-mes-services">{t("more")}</Link>
           </Button>
         </div>
       </div>

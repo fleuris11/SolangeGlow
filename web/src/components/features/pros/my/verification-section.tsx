@@ -54,7 +54,7 @@ export function VerificationSection({ pro }: { pro: MyPro }) {
         {state.status === "verified" ? (
           <SealCheck aria-hidden size={28} weight="fill" className="shrink-0" />
         ) : (
-          <ShieldCheck aria-hidden size={28} weight="duotone" className="text-hibiscus shrink-0" />
+          <ShieldCheck aria-hidden size={28} className="shrink-0" />
         )}
         <div className="flex flex-col gap-1">
           <p className="font-bold">{t(`state.${state.status}`)}</p>

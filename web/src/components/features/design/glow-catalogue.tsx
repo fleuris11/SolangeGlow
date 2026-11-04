@@ -43,7 +43,7 @@ export function MotionSwitch() {
   const { reducedMotion, update } = usePreferences();
   return (
     <SwitchRow
-      icon={<Sparkle size={28} weight="duotone" />}
+      icon={<Sparkle size={28} />}
       label={t("reduced")}
       description={t("reducedText")}
       checked={reducedMotion}

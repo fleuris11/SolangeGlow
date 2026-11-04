@@ -93,7 +93,7 @@ export function ProductView({ product, reviews }: { product: ProductDetail; revi
         icons={{
           cart: <ShoppingBag aria-hidden size={26} weight="bold" />,
           heart: <Heart aria-hidden size={22} weight="bold" />,
-          heartFilled: <Heart aria-hidden size={22} weight="fill" className="text-hibiscus" />,
+          heartFilled: <Heart aria-hidden size={22} weight="fill" />,
           bell: <BellRinging aria-hidden size={24} weight="bold" />,
           flash: <Lightning aria-hidden size={20} weight="fill" />,
           gift: <Gift aria-hidden size={22} weight="bold" />,
@@ -101,7 +101,7 @@ export function ProductView({ product, reviews }: { product: ProductDetail; revi
       />
 
       <p className="flex items-center gap-2">
-        <Hourglass aria-hidden size={22} className="text-hibiscus" />
+        <Hourglass aria-hidden size={22} />
         {product.prep_days > 0 ? t("prep", { count: product.prep_days }) : t("ready")}
       </p>
 
@@ -114,7 +114,7 @@ export function ProductView({ product, reviews }: { product: ProductDetail; revi
           {voice && (
             <div className="flex flex-col gap-2">
               <p className="text-small flex items-center gap-1 font-bold">
-                <Waveform aria-hidden size={18} className="text-hibiscus" />
+                <Waveform aria-hidden size={18} />
                 {t("voice")}
               </p>
               <audio controls preload="none" src={voice} className="w-full">

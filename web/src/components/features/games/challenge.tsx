@@ -139,11 +139,7 @@ export function ChallengeScreen() {
     <div className="flex flex-col gap-6">
       <FeaturedWinner featured={found?.featured ?? null} />
       {!current ? (
-        <EmptyState
-          icon={<Camera size={48} weight="duotone" />}
-          title={t("none")}
-          description={t("noneHelp")}
-        />
+        <EmptyState icon={<Camera size={48} />} title={t("none")} description={t("noneHelp")} />
       ) : (
         <>
           <section className="bg-poudre rounded-card flex flex-col gap-3 p-5">

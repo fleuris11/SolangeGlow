@@ -35,7 +35,7 @@ export function CalendarScreen() {
       <p className="text-prune-doux">{t("help")}</p>
       {query.isPending && <Skeleton className="rounded-card h-80" />}
       {query.data?.length === 0 && (
-        <EmptyState icon={<CalendarStar size={48} weight="duotone" />} title={t("none")} />
+        <EmptyState icon={<CalendarStar size={48} />} title={t("none")} />
       )}
       <ul className="flex flex-col gap-3">
         {query.data?.map((day) => (
@@ -47,8 +47,8 @@ export function CalendarScreen() {
               <CalendarStar
                 aria-hidden
                 size={32}
-                weight="duotone"
-                className="text-hibiscus shrink-0"
+
+                className="shrink-0"
               />
               <div className="flex min-w-0 flex-1 flex-col">
                 <h2 className="text-lead font-bold">{day.name}</h2>
@@ -89,7 +89,7 @@ export function CalendarScreen() {
 const PODIUM = [
   <Trophy key="1" aria-hidden size={28} weight="fill" className="text-or" />,
   <Medal key="2" aria-hidden size={28} weight="fill" className="text-prune-doux" />,
-  <Medal key="3" aria-hidden size={28} weight="duotone" className="text-or" />,
+  <Medal key="3" aria-hidden size={28} className="text-or" />,
 ];
 
 /** Top pros of the month per city and trade, on the verified reviews. */
@@ -119,9 +119,7 @@ export function RankingsScreen() {
       </div>
       <p className="text-prune-doux">{t("help")}</p>
       {query.isPending && <Skeleton className="rounded-card h-80" />}
-      {data && !data.month && (
-        <EmptyState icon={<Trophy size={48} weight="duotone" />} title={t("none")} />
-      )}
+      {data && !data.month && <EmptyState icon={<Trophy size={48} />} title={t("none")} />}
       {data?.month && (
         <>
           <p className="text-lead font-bold">{t("month", { month })}</p>

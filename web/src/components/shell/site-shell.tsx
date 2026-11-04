@@ -23,7 +23,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <header className="bg-lait border-trait sticky top-0 z-30 border-b">
         <div className="mx-auto flex max-w-[1120px] items-center justify-between gap-2 px-4 py-1">
           <Link href="/" className="shrink-0">
-            <Image src="/icons/logo.png" alt={tMeta("title")} width={82} height={40} />
+            <Image src="/brand/logo-red.png" alt={tMeta("title")} width={82} height={40} />
           </Link>
           <div className="flex min-w-0 items-center gap-1">
             <AudioToggle compact />
@@ -40,7 +40,10 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <Link href="/" className="inline-flex min-h-12 items-center font-semibold">
             {tSite("discover")}
           </Link>
-          <Link href="/pour-les-pros" className="inline-flex min-h-12 items-center font-semibold">
+          <Link
+            href="/proposer-mes-services"
+            className="inline-flex min-h-12 items-center font-semibold"
+          >
             {tSite("forPros")}
           </Link>
           <Link href="/aide" className="inline-flex min-h-12 items-center font-semibold">

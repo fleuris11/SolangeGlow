@@ -36,7 +36,7 @@ export function DesktopSidebar({
   return (
     <aside className="sticky top-0 hidden h-dvh flex-col gap-6 overflow-y-auto py-6 lg:flex">
       <Link href="/" className="rounded-card self-start">
-        <Image src="/icons/logo.png" alt={tMeta("title")} width={160} height={78} priority />
+        <Image src="/brand/logo-red.png" alt={tMeta("title")} width={160} height={78} priority />
       </Link>
       <nav aria-label={t("label")}>
         <ul className="flex flex-col gap-1">

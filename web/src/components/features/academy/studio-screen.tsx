@@ -46,7 +46,7 @@ export function StudioScreen() {
   if (!studio.is_pro && !studio.can_platform) {
     return (
       <EmptyState
-        icon={<ChalkboardTeacher size={44} weight="duotone" />}
+        icon={<ChalkboardTeacher size={44} />}
         title={t("notPro")}
         description={t("notProHelp")}
         action={
@@ -62,7 +62,7 @@ export function StudioScreen() {
     <div className="flex flex-col gap-8">
       <div className="flex items-start gap-2">
         <h1 className="text-headline flex flex-1 items-center gap-2 font-bold">
-          <ChalkboardTeacher aria-hidden size={30} weight="duotone" className="text-hibiscus" />
+          <ChalkboardTeacher aria-hidden size={30} />
           {t("title")}
         </h1>
         <SpeakButton text={`${t("title")}. ${t("intro")}`} />
@@ -130,7 +130,7 @@ export function StudioScreen() {
 
       <section aria-labelledby="studio-lives" className="flex flex-col gap-3">
         <h2 id="studio-lives" className="text-title flex items-center gap-2 font-bold">
-          <Broadcast aria-hidden size={26} weight="duotone" className="text-hibiscus" />
+          <Broadcast aria-hidden size={26} />
           {t("lives")}
         </h2>
         {studio.lives_open ? (

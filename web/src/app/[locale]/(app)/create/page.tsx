@@ -28,7 +28,7 @@ export default async function CreatePage({ params }: Props) {
     <>
       <h1 className="sr-only">{t("title")}</h1>
       <EmptyState
-        icon={<Camera size={48} weight="duotone" />}
+        icon={<Camera size={48} />}
         title={t("emptyTitle")}
         description={t("emptyText")}
         action={

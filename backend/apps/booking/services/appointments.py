@@ -11,6 +11,7 @@ from django.utils import timezone
 
 from apps.accounts.selectors import can_purchase
 from apps.core.audit.services import record
+from apps.core.selectors import payments_open
 from apps.payments import services as payment_services
 from apps.payments.models import Payment, Purpose
 from apps.pros.hours import zone_of
@@ -45,6 +46,8 @@ def price_of(service: Service, options, discount_percent: int = 0) -> int | None
 
 def deposit_of(service: Service, price: int | None, *, forced_percent: int = 0) -> int:
     """The service's deposit, or the deposit imposed after too many no-shows."""
+    if not payments_open():
+        return 0
     amount = 0
     if service.deposit_kind == "amount":
         amount = service.deposit_value

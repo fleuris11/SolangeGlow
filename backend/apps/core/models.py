@@ -3,6 +3,7 @@ import uuid
 from decimal import Decimal, InvalidOperation
 
 from django.conf import settings
+from django.contrib.gis.db import models as gis_models
 from django.contrib.postgres.fields import ArrayField
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
@@ -92,6 +93,38 @@ class Country(BaseModel):
 
     def __str__(self):
         return f"{self.name} ({self.code})"
+
+
+class City(BaseModel):
+    """A city to choose from. People may still type a place that is not listed."""
+
+    country = models.ForeignKey(
+        Country, on_delete=models.CASCADE, related_name="cities", verbose_name=_("country")
+    )
+    name = models.CharField(_("name"), max_length=120)
+    search = models.CharField(max_length=120, editable=False)
+    region = models.CharField(_("region"), max_length=40, blank=True)
+    postal_code = models.CharField(_("postal code"), max_length=10, blank=True)
+    location = gis_models.PointField(_("position"), geography=True, null=True, blank=True)
+    population = models.PositiveIntegerField(_("population"), default=0)
+
+    class Meta:
+        verbose_name = _("city")
+        verbose_name_plural = _("cities")
+        ordering = ["-population", "name"]
+        indexes = [
+            models.Index(
+                fields=["search"], name="core_city_search_idx", opclasses=["varchar_pattern_ops"]
+            ),
+            models.Index(
+                fields=["postal_code"],
+                name="core_city_postal_idx",
+                opclasses=["varchar_pattern_ops"],
+            ),
+        ]
+
+    def __str__(self):
+        return self.name
 
 
 class PlatformSetting(BaseModel):

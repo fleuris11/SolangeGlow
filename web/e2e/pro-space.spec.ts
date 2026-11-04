@@ -17,7 +17,7 @@ for (const [label, viewport] of Object.entries(VIEWPORTS)) {
     await expect(pro.getByRole("heading", { name: "Aujourd'hui", level: 1 })).toBeVisible({
       timeout: 90_000,
     });
-    const menu = pro.getByRole("navigation", { name: "Menu de mon espace pro" }).first();
+    const menu = pro.getByRole("navigation", { name: "Menu de mon activité" }).first();
     await expect(menu.getByRole("link", { name: "Agenda" })).toBeVisible();
     await expect(menu.getByRole("link", { name: "Boutique" })).toBeVisible();
     await expect(pro.getByRole("link", { name: "Publier" })).toHaveCount(0);
@@ -26,16 +26,16 @@ for (const [label, viewport] of Object.entries(VIEWPORTS)) {
     // Leaving is always in sight, even on a short screen.
     const signOut = pro.getByRole("button", { name: "Déconnexion", exact: true });
     await expect(signOut).toBeInViewport();
-    await expect(pro.getByRole("link", { name: "Passer en mode cliente" })).toBeInViewport();
-    await pro.getByRole("link", { name: "Passer en mode cliente" }).click();
+    await expect(pro.getByRole("link", { name: "Passer en mode client" })).toBeInViewport();
+    await pro.getByRole("link", { name: "Passer en mode client" }).click();
     await expect(pro).toHaveURL(/\/fr$/);
     await expect(pro.getByRole("heading", { name: "Ton fil" })).toBeVisible({
       timeout: 60_000,
     });
     await expect(
       pro
-        .getByRole("link", { name: "Espace pro" })
-        .or(pro.getByRole("link", { name: "Mon espace pro" }))
+        .getByRole("link", { name: "Mon activité" })
+        .or(pro.getByRole("link", { name: "Mon activité" }))
         .first(),
     ).toBeVisible();
     await context.close();
@@ -91,7 +91,9 @@ test("she opens a time by hand and a client can book it", async ({ browser }) =>
   await expect(pro.getByRole("button", { name: "Mettre en pause les réservations" })).toBeVisible();
 });
 
-test("the page of a pro stands alone, with the way to book always in sight", async ({ page }) => {
+test("the page of a talent stands alone, with the way to book always in sight", async ({
+  page,
+}) => {
   await page.setViewportSize(VIEWPORTS.mobile);
   await openWith(page, "/fr/bene-coiffure", LOOK);
   await expect(page.getByRole("heading", { name: "Béné Coiffure", level: 1 })).toBeVisible();
@@ -103,7 +105,7 @@ test("the page of a pro stands alone, with the way to book always in sight", asy
   await expect(page).toHaveURL(/\/fr\/bene-coiffure\/rdv$/);
 });
 
-test("a client has no pro entry in her menu, and can sign out", async ({ browser }) => {
+test("a client has no talent entry in her menu, and can sign out", async ({ browser }) => {
   test.setTimeout(180_000);
   const context = await browser.newContext({ viewport: VIEWPORTS.desktop });
   const page = await context.newPage();
@@ -112,7 +114,7 @@ test("a client has no pro entry in her menu, and can sign out", async ({ browser
   await expect(page.getByRole("heading", { name: "Ton fil" })).toBeVisible({
     timeout: 60_000,
   });
-  await expect(page.getByRole("link", { name: "Mon espace pro" })).toHaveCount(0);
+  await expect(page.getByRole("link", { name: "Mon activité" })).toHaveCount(0);
   const signOut = page.getByRole("button", { name: "Déconnexion", exact: true });
   await expect(signOut).toBeVisible();
   await signOut.click();

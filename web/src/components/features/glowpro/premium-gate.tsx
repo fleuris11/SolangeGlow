@@ -49,7 +49,7 @@ export function PremiumOffer({ title, text }: { title: string; text?: string }) 
       aria-labelledby="premium-offer"
     >
       <p className="text-small flex items-center gap-2 font-bold">
-        <Crown aria-hidden size={22} weight="duotone" className="text-hibiscus" />
+        <Crown aria-hidden size={22} />
         {t("badge")}
       </p>
       <h2 id="premium-offer" className="text-title font-bold">

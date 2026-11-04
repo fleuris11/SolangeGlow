@@ -37,7 +37,7 @@ export function FeedSection({
       </h2>
       {posts.length === 0 ? (
         <EmptyState
-          icon={<Compass size={48} weight="duotone" />}
+          icon={<Compass size={48} />}
           title={t("emptyTitle")}
           description={t("emptyText")}
           action={

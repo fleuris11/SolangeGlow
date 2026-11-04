@@ -103,7 +103,7 @@ export function PlanScreen() {
         )}
       >
         <h2 id="current" className="text-title flex items-center gap-2 font-bold">
-          {onPremium && <Crown aria-hidden size={26} weight="duotone" className="text-hibiscus" />}
+          {onPremium && <Crown aria-hidden size={26} />}
           {data.current.name}
         </h2>
         <p className="font-bold">{status}</p>
@@ -219,7 +219,7 @@ export function PlanScreen() {
                   rel="noopener noreferrer"
                   className="border-trait hover:bg-poudre rounded-card flex min-h-12 items-center gap-3 border p-3"
                 >
-                  <FilePdf aria-hidden size={24} className="text-hibiscus" />
+                  <FilePdf aria-hidden size={24} />
                   <span className="flex-1 font-bold">{invoice.number}</span>
                   <span>{formatMoney(invoice.total_minor, invoice.currency, locale)}</span>
                 </a>

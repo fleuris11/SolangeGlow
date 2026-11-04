@@ -38,14 +38,14 @@ export function HealthStatus() {
             <WarningCircle
               aria-hidden
               size={28}
-              weight="duotone"
+
               className="text-alerte shrink-0"
             />
             <span>{t("error")}</span>
           </>
         ) : (
           <>
-            <CheckCircle aria-hidden size={28} weight="duotone" className="text-feuille" />
+            <CheckCircle aria-hidden size={28} className="text-feuille" />
             <span className="font-semibold">{t("ok")}</span>
           </>
         )}

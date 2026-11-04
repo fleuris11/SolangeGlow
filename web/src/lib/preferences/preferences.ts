@@ -28,7 +28,7 @@ export const DEFAULT_PREFERENCES: Preferences = {
   dataSaver: false,
   reducedMotion: false,
   audioMode: false,
-  city: "Cotonou",
+  city: "",
 };
 
 export function parsePreferences(raw: string | null): Preferences {

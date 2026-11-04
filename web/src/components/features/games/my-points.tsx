@@ -37,13 +37,13 @@ import { formatMoney } from "@/lib/money";
 import { Flame, LevelBadge, Progress } from "./glow-bits";
 
 const GAMES: { href: string; key: string; icon: ReactNode }[] = [
-  { href: "/quiz", key: "quiz", icon: <Lightbulb size={32} weight="duotone" /> },
-  { href: "/roue", key: "wheel", icon: <Disc size={32} weight="duotone" /> },
-  { href: "/defi", key: "challenge", icon: <Camera size={32} weight="duotone" /> },
-  { href: "/choisir", key: "polls", icon: <Scales size={32} weight="duotone" /> },
-  { href: "/routine", key: "routine", icon: <CheckSquare size={32} weight="duotone" /> },
-  { href: "/fetes", key: "calendar", icon: <CalendarStar size={32} weight="duotone" /> },
-  { href: "/classements", key: "rankings", icon: <Ranking size={32} weight="duotone" /> },
+  { href: "/quiz", key: "quiz", icon: <Lightbulb size={32} /> },
+  { href: "/roue", key: "wheel", icon: <Disc size={32} /> },
+  { href: "/defi", key: "challenge", icon: <Camera size={32} /> },
+  { href: "/choisir", key: "polls", icon: <Scales size={32} /> },
+  { href: "/routine", key: "routine", icon: <CheckSquare size={32} /> },
+  { href: "/fetes", key: "calendar", icon: <CalendarStar size={32} /> },
+  { href: "/classements", key: "rankings", icon: <Ranking size={32} /> },
 ];
 
 /** The games of the day, as big tiles (icon + word). */
@@ -240,7 +240,7 @@ export function MyPoints() {
               className="border-trait bg-carte rounded-card flex flex-col gap-3 border p-4"
             >
               <div className="flex items-start gap-3">
-                <Ticket aria-hidden size={28} weight="duotone" className="text-hibiscus shrink-0" />
+                <Ticket aria-hidden size={28} className="shrink-0" />
                 <div className="flex min-w-0 flex-1 flex-col">
                   <span className="font-bold">{reward.title}</span>
                   {reward.description && (

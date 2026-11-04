@@ -84,7 +84,7 @@ export function ReceiptCode({ code }: { code: string }) {
       className="bg-poudre rounded-card flex flex-col items-center gap-3 p-5 text-center"
     >
       <h2 id="receipt-code" className="flex items-center gap-2 font-bold">
-        <ShieldCheck aria-hidden size={24} weight="fill" className="text-hibiscus" />
+        <ShieldCheck aria-hidden size={24} weight="fill" />
         {t("title")}
       </h2>
       <p

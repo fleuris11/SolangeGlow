@@ -100,7 +100,7 @@ export function TodayScreen({ welcome }: { welcome: boolean }) {
   if (pro.isError || !pro.data) {
     return (
       <EmptyState
-        icon={<Scissors size={44} weight="duotone" />}
+        icon={<Scissors size={44} />}
         title={t("noSpace")}
         description={t("noSpaceHelp")}
         action={
@@ -172,7 +172,7 @@ export function TodayScreen({ welcome }: { welcome: boolean }) {
           role="status"
           className="bg-poudre rounded-card flex items-center gap-3 p-4 font-semibold"
         >
-          <PauseCircle aria-hidden size={28} weight="duotone" className="text-alerte shrink-0" />
+          <PauseCircle aria-hidden size={28} className="text-alerte shrink-0" />
           <span className="flex-1">{t("paused")}</span>
           <Link href="/pro/creneaux" className="underline">
             {t("pausedChange")}
@@ -199,9 +199,9 @@ export function TodayScreen({ welcome }: { welcome: boolean }) {
       <nav aria-label={t("shortcuts")} className="grid grid-cols-2 gap-3 lg:grid-cols-4">
         {(
           [
-            ["/pro/agenda", "addAppointment", <CalendarPlus key="a" size={26} weight="duotone" />],
-            ["/pro/creneaux", "openSlot", <ClockClockwise key="b" size={26} weight="duotone" />],
-            ["/pro/services", "addService", <Scissors key="c" size={26} weight="duotone" />],
+            ["/pro/agenda", "addAppointment", <CalendarPlus key="a" size={26} />],
+            ["/pro/creneaux", "openSlot", <ClockClockwise key="b" size={26} />],
+            ["/pro/services", "addService", <Scissors key="c" size={26} />],
             ["/pro/shop/product/new", "addProduct", <Plus key="d" size={26} weight="bold" />],
           ] as const
         ).map(([href, key, icon]) => (
@@ -235,7 +235,7 @@ export function TodayScreen({ welcome }: { welcome: boolean }) {
               <Skeleton className="h-24" />
             ) : pending.length === 0 ? (
               <p className="text-prune-doux flex items-center gap-2">
-                <CheckCircle aria-hidden size={24} weight="duotone" className="text-feuille" />
+                <CheckCircle aria-hidden size={24} className="text-feuille" />
                 {t("pendingEmpty")}
               </p>
             ) : (
@@ -285,7 +285,7 @@ export function TodayScreen({ welcome }: { welcome: boolean }) {
               <Skeleton className="h-24" />
             ) : appointments.length === 0 ? (
               <p className="text-prune-doux flex items-center gap-2">
-                <CalendarCheck aria-hidden size={24} weight="duotone" />
+                <CalendarCheck aria-hidden size={24} />
                 {t("dayEmpty")}
               </p>
             ) : (
@@ -335,7 +335,7 @@ export function TodayScreen({ welcome }: { welcome: boolean }) {
                   href={printableUrl(data.slug, "poster.pdf", true)}
                   className="inline-flex min-h-12 items-center gap-2 font-semibold underline"
                 >
-                  <QrCode aria-hidden size={24} weight="duotone" />
+                  <QrCode aria-hidden size={24} />
                   {t("poster")}
                 </a>
               </>
@@ -349,14 +349,14 @@ export function TodayScreen({ welcome }: { welcome: boolean }) {
               href="/pro/shop"
               className="hover:bg-poudre flex min-h-12 items-center gap-3 font-semibold"
             >
-              <Package aria-hidden size={26} weight="duotone" className="text-hibiscus" />
+              <Package aria-hidden size={26} />
               {t("newOrders", { count: newOrders })}
             </Link>
             <Link
               href="/pro/wallet"
               className="hover:bg-poudre flex min-h-12 items-center gap-3 font-semibold"
             >
-              <Wallet aria-hidden size={26} weight="duotone" className="text-hibiscus" />
+              <Wallet aria-hidden size={26} />
               {money
                 ? t("available", {
                     amount: formatMoney(money.available_minor, money.currency, locale),

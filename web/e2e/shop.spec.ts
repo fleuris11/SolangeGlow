@@ -58,7 +58,7 @@ test("buy, pay, ship, receipt code and payout", async ({ browser }) => {
   await page.getByRole("link", { name: /^Commander/ }).click();
 
   await expect(page.getByText("Étape 1 sur 3")).toBeVisible();
-  await page.getByText("Livrée par la pro").click();
+  await page.getByText("Livrée par le talent").click();
   await page.getByText("Cotonou centre").click();
   await page.getByLabel("Adresse ou quartier").fill("Rue 12.345, Akpakpa");
   await page.getByLabel("Repères (facultatif)").fill("Portail vert après la pharmacie");

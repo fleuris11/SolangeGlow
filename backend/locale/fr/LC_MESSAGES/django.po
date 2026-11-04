@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-04 18:05+0100\n"
+"POT-Creation-Date: 2026-11-04 21:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -276,7 +276,7 @@ msgid "counts for the badge"
 msgstr "compte pour le badge"
 
 msgid "Finishing it gives the « Trained on Solange Glow » badge to a pro."
-msgstr "La terminer donne à une pro le badge « Formée sur Solange Glow »."
+msgstr "La terminer donne à un talent le badge « Formée sur Solange Glow »."
 
 msgid "length (s)"
 msgstr "durée (s)"
@@ -291,7 +291,7 @@ msgid "courses"
 msgstr "formations"
 
 msgid "Can publish or send back the courses of the pros"
-msgstr "Peut publier ou renvoyer les formations des pros"
+msgstr "Peut publier ou renvoyer les formations des talents"
 
 msgid "course to review"
 msgstr "formation à vérifier"
@@ -1008,7 +1008,7 @@ msgid "Boosts are not open in your country yet."
 msgstr "Les boosts ne sont pas encore ouverts dans ton pays."
 
 msgid "Only a published pro can boost her showcase."
-msgstr "Seule une pro publiée peut booster sa vitrine."
+msgstr "Seule un talent publiée peut booster sa vitrine."
 
 msgid "No price is set for a boost in your country yet."
 msgstr "Aucun prix de boost n'est encore réglé dans ton pays."
@@ -1030,7 +1030,7 @@ msgid "Sponsored product"
 msgstr "Produit sponsorisé"
 
 msgid "Pro shown first in the search"
-msgstr "Pro en tête de la recherche"
+msgstr "Talent en tête de la recherche"
 
 msgid "Screen when the app opens"
 msgstr "Écran au lancement de l'appli"
@@ -1042,7 +1042,7 @@ msgid "Local business"
 msgstr "Commerce local"
 
 msgid "Pro of Solange Glow"
-msgstr "Pro de Solange Glow"
+msgstr "Talent de Solange Glow"
 
 msgid "Solange Glow (own promotions)"
 msgstr "Solange Glow (promos internes)"
@@ -1063,7 +1063,7 @@ msgid "e-mail"
 msgstr "e-mail"
 
 msgid "pro"
-msgstr "pro"
+msgstr "talent"
 
 msgid "notes"
 msgstr "notes"
@@ -1081,7 +1081,7 @@ msgid "Sold to an advertiser"
 msgstr "Vendue à un annonceur"
 
 msgid "Boost paid by a pro"
-msgstr "Boost payé par une pro"
+msgstr "Boost payé par un talent"
 
 msgid "House promotion (when nothing is sold)"
 msgstr "Promo interne (quand rien n'est vendu)"
@@ -1129,7 +1129,7 @@ msgid "people"
 msgstr "personnes"
 
 msgid "\"client\" and/or \"pro\". Empty: everyone."
-msgstr "\"client\" et/ou \"pro\". Vide : tout le monde."
+msgstr "\"client\" et/ou \"talent\". Vide : tout le monde."
 
 msgid "trades"
 msgstr "métiers"
@@ -1171,7 +1171,7 @@ msgid "A page of the app (/aicha, /selection…) or a full https:// address."
 msgstr "Une page de l'appli (/aicha, /selection…) ou une adresse https:// complète."
 
 msgid "pro shown"
-msgstr "pro montrée"
+msgstr "talent montrée"
 
 msgid "product shown"
 msgstr "produit montré"
@@ -1481,7 +1481,7 @@ msgid "Finance"
 msgstr "Finance"
 
 msgid "Pro verification"
-msgstr "Vérification des pros"
+msgstr "Vérification des talents"
 
 msgid "Open disputes, late answers first. « Decide » shows the timeline, the evidence and the decisions in one click."
 msgstr "Litiges ouverts, réponses en retard d'abord. « Décider » montre la chronologie, les preuves et les décisions en un clic."
@@ -1493,7 +1493,7 @@ msgid "Reason"
 msgstr "Motif"
 
 msgid "Client"
-msgstr "Cliente"
+msgstr "Client"
 
 msgid "Seller"
 msgstr "Vendeuse"
@@ -1698,16 +1698,16 @@ msgid "Cancel and refund"
 msgstr "Annuler et rembourser"
 
 msgid "Cancelled; the client is refunded and told."
-msgstr "Annulé ; la cliente est remboursée et prévenue."
+msgstr "Annulé ; le client est remboursée et prévenue."
 
 msgid "client"
-msgstr "cliente"
+msgstr "client"
 
 msgid "Booking"
 msgstr "Rendez-vous"
 
 msgid "This pro does not take online bookings."
-msgstr "Cette pro ne prend pas de rendez-vous en ligne."
+msgstr "Ce talent ne prend pas de rendez-vous en ligne."
 
 msgid "This service cannot be booked."
 msgstr "Cette prestation ne peut pas être réservée."
@@ -1727,7 +1727,7 @@ msgid "You can book up to %(days)s days ahead."
 msgstr "Tu peux réserver jusqu'à %(days)s jours à l'avance."
 
 msgid "Sign in to book with this pro."
-msgstr "Connecte-toi pour réserver chez cette pro."
+msgstr "Connecte-toi pour réserver chez ce talent."
 
 msgid "Give your first name and a phone number."
 msgstr "Donne ton prénom et un numéro de téléphone."
@@ -1789,16 +1789,16 @@ msgid "This gift card cannot pay the deposit: check the code and its balance."
 msgstr "Cette carte cadeau ne peut pas payer l'acompte : vérifie le code et son solde."
 
 msgid "This pro is not taking online bookings at the moment."
-msgstr "Cette pro ne prend pas de réservation en ligne pour le moment."
+msgstr "Ce talent ne prend pas de réservation en ligne pour le moment."
 
 msgid "This place does not exist."
 msgstr "Ce lieu n'existe pas."
 
 msgid "This pro does not go to clients' homes."
-msgstr "Cette pro ne se déplace pas à domicile."
+msgstr "Ce talent ne se déplace pas à domicile."
 
 msgid "Give the address where the pro should come."
-msgstr "Indique l'adresse où la pro doit venir."
+msgstr "Indique l'adresse où le talent doit venir."
 
 msgid "This opened time does not exist."
 msgstr "Ce créneau n'existe pas."
@@ -1861,7 +1861,7 @@ msgid "free times come from"
 msgstr "les créneaux viennent de"
 
 msgid "time kept between two clients (min)"
-msgstr "temps gardé entre deux clientes (min)"
+msgstr "temps gardé entre deux clients (min)"
 
 msgid "time to go from one place to another (min)"
 msgstr "temps de trajet entre deux lieux (min)"
@@ -1879,7 +1879,7 @@ msgid "agenda colour"
 msgstr "couleur dans l'agenda"
 
 msgid "the pro herself"
-msgstr "la pro elle-même"
+msgstr "le talent elle-même"
 
 msgid "phone (invitation)"
 msgstr "téléphone (invitation)"
@@ -1999,7 +1999,7 @@ msgid "opened times"
 msgstr "créneaux ouverts"
 
 msgid "Waiting for the pro"
-msgstr "En attente de la pro"
+msgstr "En attente du talent"
 
 msgid "Waiting for the deposit"
 msgstr "En attente de l'acompte"
@@ -2011,13 +2011,13 @@ msgid "Kept for the waiting list"
 msgstr "Gardé pour la liste d'attente"
 
 msgid "Declined"
-msgstr "Refusé par la cliente"
+msgstr "Refusé par le client"
 
 msgid "Done"
 msgstr "Fait"
 
 msgid "Client did not come"
-msgstr "Cliente absente"
+msgstr "Client absente"
 
 msgid "Expired"
 msgstr "Expiré"
@@ -2038,10 +2038,10 @@ msgid "« Book this look »"
 msgstr "« Réserver ce look »"
 
 msgid "The client"
-msgstr "La cliente"
+msgstr "Le client"
 
 msgid "The pro"
-msgstr "La pro"
+msgstr "Le talent"
 
 msgid "Automatically"
 msgstr "Automatiquement"
@@ -2056,10 +2056,10 @@ msgid "options"
 msgstr "options"
 
 msgid "client name"
-msgstr "nom de la cliente"
+msgstr "nom du client"
 
 msgid "client phone"
-msgstr "téléphone de la cliente"
+msgstr "téléphone du client"
 
 msgid "ends at"
 msgstr "finit le"
@@ -2074,10 +2074,10 @@ msgid "deposit payment"
 msgstr "paiement de l'acompte"
 
 msgid "note from the client"
-msgstr "mot de la cliente"
+msgstr "mot du client"
 
 msgid "message from the pro"
-msgstr "message de la pro"
+msgstr "message du talent"
 
 msgid "time asked first"
 msgstr "créneau demandé au départ"
@@ -2092,10 +2092,10 @@ msgid "look"
 msgstr "look"
 
 msgid "at the client's home"
-msgstr "chez la cliente"
+msgstr "chez le client"
 
 msgid "client's address"
-msgstr "adresse de la cliente"
+msgstr "adresse du client"
 
 msgid "travel fee"
 msgstr "supplément déplacement"
@@ -2176,10 +2176,10 @@ msgid "birthday (month)"
 msgstr "anniversaire (mois)"
 
 msgid "client file"
-msgstr "fiche cliente"
+msgstr "fiche client"
 
 msgid "client files"
-msgstr "fiches clientes"
+msgstr "fiches clients"
 
 msgid "discount (%)"
 msgstr "remise (%)"
@@ -2284,7 +2284,7 @@ msgid "Gifts"
 msgstr "Cadeaux"
 
 msgid "For the pros"
-msgstr "Pour les pros"
+msgstr "Proposer mes services"
 
 msgid "Glow Points and games"
 msgstr "Glow Points et jeux"
@@ -2369,6 +2369,33 @@ msgstr "Tous les pays"
 msgid "Leave empty to enable for every role."
 msgstr "Laisse vide pour activer pour tous les rôles."
 
+msgid "Sign in to continue."
+msgstr "Connecte-toi pour continuer."
+
+msgid "You have been signed out. Sign in again to continue."
+msgstr "Tu n'es plus connecté. Connecte-toi pour continuer."
+
+msgid "Your account cannot do this."
+msgstr "Ton compte ne permet pas de faire cela."
+
+msgid "We could not find what you are looking for."
+msgstr "Nous n'avons pas trouvé ce que tu cherches."
+
+msgid "Too many tries. Wait a moment, then try again."
+msgstr "Trop d'essais. Attends un instant, puis réessaie."
+
+msgid "This action is not possible here."
+msgstr "Cette action n'est pas possible ici."
+
+msgid "This type of file is not accepted."
+msgstr "Ce type de fichier n'est pas accepté."
+
+msgid "We could not read what was sent. Try again."
+msgstr "Nous n'avons pas pu lire ce qui a été envoyé. Réessaie."
+
+msgid "Something went wrong on our side. Try again in a moment."
+msgstr "Un problème est survenu de notre côté. Réessaie dans un instant."
+
 msgid "Some information is missing or incorrect."
 msgstr "Certaines informations manquent ou sont incorrectes."
 
@@ -2409,7 +2436,7 @@ msgid "audit journal"
 msgstr "journal d'audit"
 
 msgid "Professional"
-msgstr "Pro"
+msgstr "Talent"
 
 msgid "Collaborator of a salon"
 msgstr "Collaboratrice d'un salon"
@@ -2556,6 +2583,15 @@ msgstr "langue par défaut"
 
 msgid "time zone"
 msgstr "fuseau horaire"
+
+msgid "region"
+msgstr "région"
+
+msgid "postal code"
+msgstr "code postal"
+
+msgid "population"
+msgstr "population"
 
 msgid "Text"
 msgstr "Texte"
@@ -3031,7 +3067,7 @@ msgid "For a discount only."
 msgstr "Pour une réduction seulement."
 
 msgid "A course of the platform (not of a pro)."
-msgstr "Une formation de la plateforme (pas d'une pro)."
+msgstr "Une formation de la plateforme (pas d'un talent)."
 
 msgid "from the level"
 msgstr "dès le niveau"
@@ -3262,7 +3298,7 @@ msgid "reminder (days before)"
 msgstr "rappel (jours avant)"
 
 msgid "pros of the moment"
-msgstr "pros du moment"
+msgstr "talents du moment"
 
 msgid "products of the moment"
 msgstr "produits du moment"
@@ -3514,7 +3550,7 @@ msgid "money given back to gifts"
 msgstr "argent rendu aux cadeaux"
 
 msgid "Taken by the pro"
-msgstr "Prise par la pro"
+msgstr "Prise par le talent"
 
 msgid "Sent by the person"
 msgstr "Envoyée par la personne"
@@ -3539,7 +3575,7 @@ msgstr "Ouvre-le ici : %(link)s"
 
 #, python-format
 msgid "%(service)s at %(pro)s"
-msgstr "%(service)s chez %(pro)s"
+msgstr "%(service)s chez %(talent)s"
 
 #, python-format
 msgid "Gift from %(name)s"
@@ -3557,7 +3593,7 @@ msgid "Back to the free plan now"
 msgstr "Repasser à l'offre gratuite maintenant"
 
 msgid "Done; the pro is told."
-msgstr "C'est fait ; la pro est prévenue."
+msgstr "C'est fait ; le talent est prévenue."
 
 msgid "allowed websites"
 msgstr "sites autorisés"
@@ -3566,10 +3602,10 @@ msgid "price per month"
 msgstr "prix par mois"
 
 msgid "Glow Pro offers"
-msgstr "Offres Glow Pro"
+msgstr "Offres Glow Premium"
 
 msgid "This is part of Glow Pro Premium. Try it for free in « My plan »."
-msgstr "Ceci fait partie de Glow Pro Premium. Essaie-le gratuitement dans « Mon offre »."
+msgstr "Ceci fait partie de Glow Premium. Essaie-le gratuitement dans « Mon offre »."
 
 #, python-format
 msgid "The free plan has %(limit)s people besides you. Go Premium to add more."
@@ -3591,7 +3627,7 @@ msgid "This booking module is not allowed on this website."
 msgstr "Ce module de réservation n'est pas autorisé sur ce site."
 
 msgid "Create your pro showcase first."
-msgstr "Crée d'abord ta vitrine de pro."
+msgstr "Crée d'abord ta vitrine."
 
 msgid "More people in the agenda"
 msgstr "Plus de personnes dans l'agenda"
@@ -3618,7 +3654,7 @@ msgid "what she gets"
 msgstr "ce qu'elle a"
 
 msgid "plan of every pro"
-msgstr "offre de toutes les pros"
+msgstr "offre de toutes les talents"
 
 msgid "The free plan: one only."
 msgstr "L'offre gratuite : une seule."
@@ -3639,10 +3675,10 @@ msgid "offered"
 msgstr "proposée"
 
 msgid "Glow Pro plan"
-msgstr "offre Glow Pro"
+msgstr "offre Glow Premium"
 
 msgid "Glow Pro plans"
-msgstr "offres Glow Pro"
+msgstr "offres Glow Premium"
 
 msgid "plan"
 msgstr "offre"
@@ -3756,10 +3792,10 @@ msgid "number"
 msgstr "numéro"
 
 msgid "client details"
-msgstr "coordonnées de la cliente"
+msgstr "coordonnées du client"
 
 msgid "client account"
-msgstr "compte de la cliente"
+msgstr "compte du client"
 
 msgid "lines"
 msgstr "lignes"
@@ -3893,7 +3929,7 @@ msgstr "Cette personne n'a pas levé la main."
 
 #, python-format
 msgid "You have used your %(max)s lives of the month. Glow Pro Premium gives you more."
-msgstr "Tu as utilisé tes %(max)s lives du mois. Glow Pro Premium t'en donne plus."
+msgstr "Tu as utilisé tes %(max)s lives du mois. Glow Premium t'en donne plus."
 
 msgid "The live video is not available right now. Try again in a few minutes."
 msgstr "La vidéo du live n'est pas disponible pour le moment. Réessaie dans quelques minutes."
@@ -4047,7 +4083,7 @@ msgid "This person cannot be found."
 msgstr "Cette personne est introuvable."
 
 msgid "Two clients can write to each other once they follow each other."
-msgstr "Deux clientes peuvent s'écrire une fois qu'elles se suivent l'une l'autre."
+msgstr "Deux clients peuvent s'écrire une fois qu'elles se suivent l'une l'autre."
 
 msgid "This young account only gets messages from people it follows."
 msgstr "Ce compte jeune ne reçoit des messages que des personnes qu'il suit."
@@ -4094,7 +4130,7 @@ msgid "You can save %(max)s quick replies at most."
 msgstr "Tu peux enregistrer %(max)s réponses rapides au maximum."
 
 msgid "Only a pro can use this."
-msgstr "Seule une pro peut utiliser cela."
+msgstr "Seule un talent peut utiliser cela."
 
 #, python-format
 msgid "A group can have %(max)s people at most."
@@ -4640,7 +4676,7 @@ msgid "This code is not right. Attempts left: %(left)s."
 msgstr "Ce code n'est pas le bon. Essais restants : %(left)s."
 
 msgid "Too many wrong codes. The client can ask for a new code in her app."
-msgstr "Trop de codes faux. La cliente peut demander un nouveau code dans son appli."
+msgstr "Trop de codes faux. Le client peut demander un nouveau code dans son appli."
 
 msgid "No more new code possible: contact the support."
 msgstr "Plus de nouveau code possible : contacte l'assistance."
@@ -4674,6 +4710,9 @@ msgstr "Indique d'abord où tu veux recevoir ton argent."
 
 msgid "Your identity must be checked before you can receive money."
 msgstr "Ton identité doit être vérifiée avant de recevoir de l'argent."
+
+msgid "Online payment is not open yet. Write to the seller to arrange it together."
+msgstr "Le paiement en ligne n'est pas encore ouvert. Écris au vendeur pour vous arranger ensemble."
 
 msgid "Cash at the payment provider"
 msgstr "Trésorerie chez le prestataire"
@@ -4733,7 +4772,7 @@ msgid "Training"
 msgstr "Formation"
 
 msgid "Glow Pro subscription"
-msgstr "Abonnement Glow Pro"
+msgstr "Abonnement Glow Premium"
 
 msgid "Gift card"
 msgstr "Carte cadeau"
@@ -4748,7 +4787,7 @@ msgid "Gift from abroad"
 msgstr "Cadeau de l'étranger"
 
 msgid "Boost of a pro"
-msgstr "Boost d'une pro"
+msgstr "Boost d'un talent"
 
 msgid "category"
 msgstr "catégorie"
@@ -4975,9 +5014,6 @@ msgstr "nom commercial"
 msgid "birth date"
 msgstr "date de naissance"
 
-msgid "postal code"
-msgstr "code postal"
-
 msgid "country of residence"
 msgstr "pays de résidence"
 
@@ -5084,7 +5120,7 @@ msgstr "Aucun pour l'instant."
 
 #, python-format
 msgid "Part of the seller's amount (%(seller_amount)s) goes back to the client, in the smallest unit of %(currency)s. The buyer protection fee is kept."
-msgstr "Une partie du montant de la vendeuse (%(seller_amount)s) revient à la cliente, dans la plus petite unité de %(currency)s. Le frais de protection acheteur est conservé."
+msgstr "Une partie du montant de la vendeuse (%(seller_amount)s) revient au client, dans la plus petite unité de %(currency)s. Le frais de protection acheteur est conservé."
 
 msgid "Refund this amount"
 msgstr "Rembourser ce montant"
@@ -5144,7 +5180,7 @@ msgid "The showcase is back."
 msgstr "La vitrine est de retour."
 
 msgid "Map of the pros"
-msgstr "Carte des pros"
+msgstr "Carte des talents"
 
 msgid "documents"
 msgstr "documents"
@@ -5153,10 +5189,10 @@ msgid "Each opening of these pictures is written in the audit journal."
 msgstr "Chaque ouverture de ces images est inscrite dans le journal d'audit."
 
 msgid "Save and approve: verified pro"
-msgstr "Enregistrer et valider : pro vérifiée"
+msgstr "Enregistrer et valider : talent vérifiée"
 
 msgid "The pro is verified."
-msgstr "La pro est vérifiée."
+msgstr "Le talent est vérifiée."
 
 msgid "Save and refuse (reason above)"
 msgstr "Enregistrer et refuser (raison ci-dessus)"
@@ -5165,16 +5201,16 @@ msgid "Write the reason of the refusal first."
 msgstr "Écris d'abord la raison du refus."
 
 msgid "The pro was told why."
-msgstr "La pro a été prévenue de la raison."
+msgstr "Le talent a été prévenue de la raison."
 
 msgid "Pros"
-msgstr "Pros"
+msgstr "Talents"
 
 msgid "You do not have a showcase yet. Start with « Become a pro »."
-msgstr "Tu n'as pas encore de vitrine. Commence par « Devenir pro »."
+msgstr "Tu n'as pas encore de vitrine. Commence par « Proposer mes services »."
 
 msgid "This pro does not exist or is not visible any more."
-msgstr "Cette pro n'existe pas ou n'est plus visible."
+msgstr "Ce talent n'existe pas ou n'est plus visible."
 
 msgid "Use 3 to 40 lowercase letters, digits or dashes, e.g. aicha-tresses."
 msgstr "Utilise 3 à 40 lettres minuscules, chiffres ou tirets, ex. aicha-tresses."
@@ -5231,16 +5267,16 @@ msgid "Your documents are being checked. You will get an answer soon."
 msgstr "Tes documents sont en cours de contrôle. Tu auras une réponse bientôt."
 
 msgid "You are already a verified pro."
-msgstr "Tu es déjà une pro vérifiée."
+msgstr "Tu es déjà un talent vérifiée."
 
 msgid "The pro was just told you are here. Wait a few minutes."
-msgstr "La pro vient d'être prévenue. Attends quelques minutes."
+msgstr "Le talent vient d'être prévenue. Attends quelques minutes."
 
 msgid "This pro does not receive clients at a place. Write to her instead."
-msgstr "Cette pro ne reçoit pas dans un lieu. Écris-lui plutôt."
+msgstr "Ce talent ne reçoit pas dans un lieu. Écris-lui plutôt."
 
 msgid "Sign in, or give your first name and number, to tell the pro you are here."
-msgstr "Connecte-toi, ou donne ton prénom et ton numéro, pour prévenir la pro."
+msgstr "Connecte-toi, ou donne ton prénom et ton numéro, pour prévenir le talent."
 
 msgid "Lipstick"
 msgstr "Rouge à lèvres"
@@ -5309,7 +5345,7 @@ msgid "Website"
 msgstr "Site web"
 
 msgid "Top pro"
-msgstr "Top Pro"
+msgstr "Top talent"
 
 msgid "Independent"
 msgstr "Indépendante"
@@ -5318,7 +5354,7 @@ msgid "Salon or business"
 msgstr "Salon ou entreprise"
 
 msgid "Verified pro"
-msgstr "Pro vérifiée"
+msgstr "Talent vérifié"
 
 msgid "Placed on the map"
 msgstr "Placé sur la carte"
@@ -5351,7 +5387,7 @@ msgid "position given by"
 msgstr "position donnée par"
 
 msgid "receives clients"
-msgstr "reçoit des clientes"
+msgstr "reçoit des clients"
 
 msgid "Off: she only goes to her clients; her address and position stay private."
 msgstr "Non : elle se déplace seulement ; son adresse et sa position restent privées."
@@ -5399,10 +5435,10 @@ msgid "search words"
 msgstr "mots de recherche"
 
 msgid "pro profile"
-msgstr "profil pro"
+msgstr "profil talent"
 
 msgid "pro profiles"
-msgstr "profils pros"
+msgstr "profils talents"
 
 msgid "service category"
 msgstr "catégorie de prestations"
@@ -5546,7 +5582,7 @@ msgid "reason of the refusal"
 msgstr "raison du refus"
 
 msgid "Sent to the pro."
-msgstr "Envoyée à la pro."
+msgstr "Envoyée au talent."
 
 msgid "identity check"
 msgstr "vérification d'identité"
@@ -5555,7 +5591,7 @@ msgid "identity checks"
 msgstr "vérifications d'identité"
 
 msgid "Can see identity documents and verify pros"
-msgstr "Peut voir les pièces d'identité et vérifier les pros"
+msgstr "Peut voir les pièces d'identité et vérifier les talents"
 
 msgid "Book an appointment with"
 msgstr "Prends rendez-vous avec"
@@ -5663,10 +5699,10 @@ msgid "sessions used"
 msgstr "séances utilisées"
 
 msgid "package of a client"
-msgstr "forfait d'une cliente"
+msgstr "forfait d'un client"
 
 msgid "packages of clients"
-msgstr "forfaits des clientes"
+msgstr "forfaits des clients"
 
 msgid "session used"
 msgstr "séance utilisée"
@@ -5720,7 +5756,7 @@ msgid "uses of gift cards"
 msgstr "utilisations de cartes cadeaux"
 
 msgid "Sold to clients"
-msgstr "Vendu aux clientes"
+msgstr "Vendu aux clients"
 
 msgid "Used in the salon"
 msgstr "Utilisé au salon"
@@ -5816,13 +5852,13 @@ msgid "Ticked when booking"
 msgstr "Cochée à la réservation"
 
 msgid "Noted by the pro with her agreement"
-msgstr "Noté par la pro avec son accord"
+msgstr "Noté par le talent avec son accord"
 
 msgid "Unsubscribe link"
 msgstr "Lien de désinscription"
 
 msgid "Changed by the client"
-msgstr "Changé par la cliente"
+msgstr "Changé par le client"
 
 msgid "agrees"
 msgstr "d'accord"
@@ -5849,7 +5885,7 @@ msgid "Package almost used"
 msgstr "Forfait presque fini"
 
 msgid "All my clients"
-msgstr "Toutes mes clientes"
+msgstr "Toutes mes clients"
 
 msgid "who"
 msgstr "qui"
@@ -5880,7 +5916,7 @@ msgstr "Carte cadeau %(code)s"
 
 #, python-format
 msgid "Gift card %(pro)s"
-msgstr "Carte cadeau %(pro)s"
+msgstr "Carte cadeau %(talent)s"
 
 #, python-format
 msgid "A gift card from %(name)s"
@@ -5888,7 +5924,7 @@ msgstr "Une carte cadeau de %(name)s"
 
 #, python-format
 msgid "%(amount)s at %(pro)s. Code: %(code)s. Valid until %(until)s."
-msgstr "%(amount)s chez %(pro)s. Code : %(code)s. Valable jusqu'au %(until)s."
+msgstr "%(amount)s chez %(talent)s. Code : %(code)s. Valable jusqu'au %(until)s."
 
 msgid "Purchase price"
 msgstr "Prix d'achat"
@@ -5955,7 +5991,7 @@ msgid "Merchant order number"
 msgstr "Numéro de commande du marchand"
 
 msgid "Receipt code of the client"
-msgstr "Code de réception de la cliente"
+msgstr "Code de réception du client"
 
 msgid "merchant"
 msgstr "marchand"
@@ -5964,7 +6000,7 @@ msgid "Ordered at the merchant"
 msgstr "Commandé chez le marchand"
 
 msgid "Marked as ordered; the client is told."
-msgstr "Marqué comme commandé ; la cliente est prévenue."
+msgstr "Marqué comme commandé ; le client est prévenue."
 
 #, python-format
 msgid "Order placed: %(reference)s"
@@ -5990,7 +6026,7 @@ msgid "Hand over %(reference)s"
 msgstr "Remettre %(reference)s"
 
 msgid "The client gives her 6-digit code when she takes her parcel."
-msgstr "La cliente donne son code à 6 chiffres quand elle prend son colis."
+msgstr "Le client donne son code à 6 chiffres quand elle prend son colis."
 
 msgid "Put in a new shipment"
 msgstr "Mettre dans un nouveau lot"
@@ -6002,16 +6038,16 @@ msgid "Shipment left"
 msgstr "Lot parti"
 
 msgid "On its way: the clients see the tracking."
-msgstr "En route : les clientes voient le suivi."
+msgstr "En route : les clients voient le suivi."
 
 msgid "Shipment arrived"
 msgstr "Lot arrivé"
 
 msgid "Arrived: the clients are told to come with their code."
-msgstr "Arrivé : les clientes sont prévenues de venir avec leur code."
+msgstr "Arrivé : les clients sont prévenues de venir avec leur code."
 
 msgid "Why (shown to the client)"
-msgstr "Pourquoi (montré à la cliente)"
+msgstr "Pourquoi (montré au client)"
 
 msgid "Fill the purchase price, the weight and the category, then save."
 msgstr "Remplis le prix d'achat, le poids et la catégorie, puis enregistre."
@@ -6020,13 +6056,13 @@ msgid "Send the quote"
 msgstr "Envoyer le devis"
 
 msgid "Quote sent to the client."
-msgstr "Devis envoyé à la cliente."
+msgstr "Devis envoyé au client."
 
 msgid "Not possible"
 msgstr "Pas possible"
 
 msgid "The client is told."
-msgstr "La cliente est prévenue."
+msgstr "Le client est prévenu."
 
 msgid "Request not possible"
 msgstr "Demande pas possible"
@@ -6174,7 +6210,7 @@ msgid "choices"
 msgstr "choix"
 
 msgid "Shades or sizes the client chooses from, for example [\"230\", \"240\"]."
-msgstr "Teintes ou tailles parmi lesquelles la cliente choisit, par exemple [\"230\", \"240\"]."
+msgstr "Teintes ou tailles parmi lesquelles le client choisit, par exemple [\"230\", \"240\"]."
 
 msgid "price (FCFA)"
 msgstr "prix (FCFA)"
@@ -6255,7 +6291,7 @@ msgid "Empty: the price of the formula."
 msgstr "Vide : le prix de la formule."
 
 msgid "message to the client"
-msgstr "message à la cliente"
+msgstr "message au client"
 
 msgid "quoted at"
 msgstr "devis envoyé le"
@@ -6318,7 +6354,7 @@ msgid "Selection orders"
 msgstr "commandes Sélection"
 
 msgid "Reason shown to the pro"
-msgstr "Raison montrée à la pro"
+msgstr "Raison montrée au talent"
 
 msgid "forbidden words found"
 msgstr "mots interdits trouvés"
@@ -6346,7 +6382,7 @@ msgid "Create your showcase first: your shop lives in it."
 msgstr "Crée d'abord ta vitrine : ta boutique est dedans."
 
 msgid "Only a verified pro can sell. Send your identity document in « My showcase »."
-msgstr "Seule une pro vérifiée peut vendre. Envoie ta pièce d'identité dans « Ma vitrine »."
+msgstr "Seule un talent vérifiée peut vendre. Envoie ta pièce d'identité dans « Ma vitrine »."
 
 msgid "This product does not exist or is no longer on sale."
 msgstr "Ce produit n'existe pas ou n'est plus en vente."
@@ -6475,7 +6511,7 @@ msgid "what happens"
 msgstr "ce qui se passe"
 
 msgid "reason shown to the pro"
-msgstr "raison montrée à la pro"
+msgstr "raison montrée au talent"
 
 msgid "For example: banned by ABMed."
 msgstr "Par exemple : interdit par l'ABMed."
@@ -6619,7 +6655,7 @@ msgid "uses in total"
 msgstr "utilisations au total"
 
 msgid "uses per client"
-msgstr "utilisations par cliente"
+msgstr "utilisations par client"
 
 msgid "promo code"
 msgstr "code promo"
@@ -6713,7 +6749,7 @@ msgstr "produits épinglés"
 
 #, python-format
 msgid "The product leaves the shop of %(shop)s and every cart. The pro receives this reason."
-msgstr "Le produit quitte la boutique de %(shop)s et tous les paniers. La pro reçoit cette raison."
+msgstr "Le produit quitte la boutique de %(shop)s et tous les paniers. Le talent reçoit cette raison."
 
 msgid "Remove the selected items"
 msgstr "Retirer les éléments choisis"
@@ -6766,7 +6802,7 @@ msgid "Give the free times of today, e.g. 14:00."
 msgstr "Indique les créneaux libres d'aujourd'hui, par exemple 14:00."
 
 msgid "Only a pro can share her free slots."
-msgstr "Seule une pro peut partager ses créneaux libres."
+msgstr "Seule un talent peut partager ses créneaux libres."
 
 msgid "This booking or order does not exist."
 msgstr "Ce rendez-vous ou cette commande n'existe pas."
@@ -6794,7 +6830,7 @@ msgid "Before / after"
 msgstr "Avant / après"
 
 msgid "Set when the author posts as a pro."
-msgstr "Rempli quand l'autrice publie en tant que pro."
+msgstr "Rempli quand l'autrice publie en tant que talent."
 
 msgid "to publish at"
 msgstr "à publier le"
@@ -6908,7 +6944,7 @@ msgid "stars"
 msgstr "étoiles"
 
 msgid "reply of the pro"
-msgstr "réponse de la pro"
+msgstr "réponse du talent"
 
 msgid "replied at"
 msgstr "répondu le"
@@ -6926,10 +6962,10 @@ msgid "private note"
 msgstr "note privée"
 
 msgid "client rating"
-msgstr "note de cliente"
+msgstr "note de client"
 
 msgid "client ratings"
-msgstr "notes de clientes"
+msgstr "notes de clients"
 
 msgid "Solange Glow member"
 msgstr "Membre Solange Glow"
@@ -7031,7 +7067,7 @@ msgid "Pick-up points"
 msgstr "Points de retrait"
 
 msgid "Glow Pro"
-msgstr "Glow Pro"
+msgstr "Glow Premium"
 
 msgid "Agenda people"
 msgstr "Équipes des agendas"
@@ -7106,7 +7142,7 @@ msgid "Advertisers"
 msgstr "Annonceurs"
 
 msgid "Boosts of the pros"
-msgstr "Boosts des pros"
+msgstr "Boosts des talents"
 
 msgid "Ad statistics"
 msgstr "Statistiques des pubs"

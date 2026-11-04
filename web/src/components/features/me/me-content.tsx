@@ -56,7 +56,7 @@ export function MeContent() {
             aria-labelledby="signin-title"
             className="bg-poudre rounded-card flex flex-col items-start gap-3 p-5"
           >
-            <UserCirclePlus aria-hidden size={40} weight="duotone" className="text-hibiscus" />
+            <UserCirclePlus aria-hidden size={40} />
             <h2 id="signin-title" className="text-title font-bold">
               {t("guestTitle")}
             </h2>

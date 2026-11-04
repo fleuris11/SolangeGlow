@@ -138,7 +138,7 @@ test("every key screen passes the check-list at 360 px, dark, very large text, a
   );
   const visitor: Screen[] = [
     { path: "/fr", speak: true },
-    { path: "/fr/pour-les-pros", speak: true },
+    { path: "/fr/proposer-mes-services", speak: true },
     { path: "/fr/comment-ca-marche", speak: true },
     { path: "/fr/explore", speak: true },
     { path: "/fr/aicha", speak: true },

@@ -11,12 +11,11 @@ for (const [label, viewport] of Object.entries(VIEWPORTS)) {
     const main = page.getByRole("main");
     await expect(main.getByRole("link", { name: "Me connecter" }).first()).toBeVisible();
     await expect(main.getByRole("link", { name: "Créer un compte" }).first()).toBeVisible();
-    await expect(main.getByRole("link", { name: "Je suis une pro" }).first()).toBeVisible();
+    await expect(main.getByRole("link", { name: "Je propose mes services" }).first()).toBeVisible();
     await expect(main.getByRole("heading", { name: "Par où commencer ?" })).toBeAttached();
-    await expect(main.getByRole("link", { name: "Trouver une pro", exact: true })).toHaveAttribute(
-      "href",
-      "/fr/explore",
-    );
+    await expect(
+      main.getByRole("link", { name: "Trouver un talent", exact: true }),
+    ).toHaveAttribute("href", "/fr/explore");
     await expect(main.getByRole("link", { name: "Créer mon compte", exact: true })).toHaveAttribute(
       "href",
       "/fr/auth?as=client",
@@ -44,11 +43,11 @@ for (const [label, viewport] of Object.entries(VIEWPORTS)) {
   });
 }
 
-test("the page for pros explains the QR code and what is free, then leads to sign up", async ({
+test("the page for talents explains the QR code and what is free, then leads to sign up", async ({
   page,
 }) => {
   await page.setViewportSize(VIEWPORTS.mobile);
-  await openWith(page, "/fr/pour-les-pros", LOOK);
+  await openWith(page, "/fr/proposer-mes-services", LOOK);
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Ton salon en ligne");
   await expect(page.getByRole("heading", { name: "Ton lien et ton QR code" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Gratuit ou Premium ?" })).toBeVisible();

@@ -180,7 +180,7 @@ test.describe("signed in", () => {
   test("empty states are helpful", async ({ page }) => {
     await openWith(page, "/fr/following", { theme: "light", textSize: "normal" });
     await expect(page.getByText("Tu ne suis personne pour l'instant")).toBeVisible();
-    await expect(page.getByRole("link", { name: "Découvrir des pros" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Découvrir des talents" })).toBeVisible();
     await expectNoSeriousA11yIssue(page);
     await page.screenshot({ path: "e2e/screenshots/following-empty.png", fullPage: true });
     await page.goto("/fr/me/reviews");

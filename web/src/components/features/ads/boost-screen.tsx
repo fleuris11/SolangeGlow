@@ -63,7 +63,7 @@ export function BoostScreen({ justPaid }: { justPaid: boolean }) {
       {page.running_until ? (
         <section className="bg-poudre rounded-card flex flex-col items-center gap-3 p-5 text-center">
           {justPaid && <Bloom label={t("running", { until: date(page.running_until) })} />}
-          <RocketLaunch aria-hidden size={36} weight="duotone" className="text-hibiscus" />
+          <RocketLaunch aria-hidden size={36} />
           <p className="text-lead font-bold">{t("running", { until: date(page.running_until) })}</p>
         </section>
       ) : !page.open || !page.prices ? (

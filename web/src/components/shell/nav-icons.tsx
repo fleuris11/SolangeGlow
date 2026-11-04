@@ -29,7 +29,7 @@ export function navIcons(): NavIcons {
       key,
       {
         on: <Shape aria-hidden size={28} weight="fill" />,
-        off: <Shape aria-hidden size={28} weight="duotone" />,
+        off: <Shape aria-hidden size={28} />,
       },
     ]),
   ) as NavIcons;

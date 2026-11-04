@@ -177,7 +177,7 @@ export function HoursSection({ pro }: { pro: MyPro }) {
 
       <section aria-labelledby="closures-title" className="flex flex-col gap-3">
         <h2 id="closures-title" className="text-title flex items-center gap-2 font-bold">
-          <CalendarX aria-hidden size={26} className="text-hibiscus" />
+          <CalendarX aria-hidden size={26} />
           {t("closures")}
         </h2>
         <p className="text-prune-doux">{t("closuresHelp")}</p>

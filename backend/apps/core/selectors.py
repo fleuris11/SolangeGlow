@@ -84,6 +84,11 @@ def _load_flag(key: str) -> dict | None:
     return data
 
 
+def payments_open() -> bool:
+    """The platform is free at launch: the switch « payments_closed » stops all payments."""
+    return not is_feature_enabled("payments_closed")
+
+
 def is_feature_enabled(
     key: str,
     *,

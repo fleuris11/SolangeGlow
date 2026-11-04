@@ -43,7 +43,7 @@ function Thumb({ gift }: { gift: { photo: GiftSent["photo"]; pro: GiftSent["pro"
     <img src={src} alt="" className="petal size-14 shrink-0 object-cover" loading="lazy" />
   ) : (
     <span className="bg-poudre text-hibiscus petal inline-flex size-14 shrink-0 items-center justify-center">
-      <Gift aria-hidden size={28} weight="duotone" />
+      <Gift aria-hidden size={28} />
     </span>
   );
 }
@@ -90,7 +90,7 @@ export function MyGifts() {
           {sent.isPending && <Skeleton className="rounded-card h-40" />}
           {sent.data?.length === 0 && (
             <EmptyState
-              icon={<Gift size={48} weight="duotone" />}
+              icon={<Gift size={48} />}
               title={t("noneSent")}
               description={t("noneSentHelp")}
             />
@@ -126,7 +126,7 @@ export function MyGifts() {
         <div role="tabpanel" className="flex flex-col gap-3">
           {received.isPending && <Skeleton className="rounded-card h-40" />}
           {received.data?.length === 0 && (
-            <EmptyState icon={<Sparkle size={48} weight="duotone" />} title={t("noneReceived")} />
+            <EmptyState icon={<Sparkle size={48} />} title={t("noneReceived")} />
           )}
           <ul className="flex flex-col gap-3">
             {received.data?.map((gift) => (

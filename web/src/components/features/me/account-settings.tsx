@@ -59,7 +59,7 @@ export function AccountSettings({ me }: { me: Me }) {
         href="/notifications"
         className="border-trait bg-carte rounded-card flex items-center gap-4 border p-4"
       >
-        <BellRinging aria-hidden size={28} weight="duotone" className="text-hibiscus shrink-0" />
+        <BellRinging aria-hidden size={28} className="shrink-0" />
         <span className="flex min-w-0 flex-1 flex-col">
           <span className="font-bold">{t("notifications")}</span>
           <span className="text-small text-prune-doux">{t("notificationsText")}</span>
@@ -81,7 +81,7 @@ export function AccountSettings({ me }: { me: Me }) {
             autoComplete="new-password"
             value={password}
             onChange={(event) => setPasswordValue(event.target.value)}
-            leading={<Key size={22} weight="duotone" />}
+            leading={<Key size={22} />}
           />
           <ErrorMessage message={passwordError} />
           <Button type="submit" variant="secondary" disabled={!password} className="self-start">
@@ -104,7 +104,7 @@ export function AccountSettings({ me }: { me: Me }) {
         </Button>
         <Button
           variant="quiet"
-          icon={<DeviceMobile size={22} weight="duotone" />}
+          icon={<DeviceMobile size={22} />}
           disabled={busy}
           onClick={() => void leave(logoutEverywhere, t("signedOutEverywhere"))}
         >
@@ -120,7 +120,7 @@ export function AccountSettings({ me }: { me: Me }) {
         <Button
           variant="quiet"
           className="text-alerte"
-          icon={<Trash size={22} weight="duotone" />}
+          icon={<Trash size={22} />}
           onClick={() => setConfirmDelete(true)}
         >
           {t("delete.cta")}

@@ -108,7 +108,7 @@ Cela fait 68 pages : les 67 du groupe (app) (dont l'accueil) plus `/welcome`. Le
 
 | Route | Ce qu'elle affiche | Rendu (serveur/client) | Endpoints appelés | États (chargement, vide, erreur, succès) | Données fictives (src/lib/demo) ? | Connexion requise ? |
 | --- | --- | --- | --- | --- | --- | --- |
-| `/pour-les-pros` | Tout ce qu'une pro obtient : lien et QR code, vitrine, agenda, boutique, formations, gratuit ou Premium, trois étapes pour commencer. | Serveur (statique) | aucun | Sans objet | Non | Non |
+| `/proposer-mes-services` | Tout ce qu'une pro obtient : lien et QR code, vitrine, agenda, boutique, formations, gratuit ou Premium, trois étapes pour commencer. | Serveur (statique) | aucun | Sans objet | Non | Non |
 | `/comment-ca-marche` | Types de compte, création de compte, chaque service étape par étape, audio et langues. | Serveur (statique) | aucun | Sans objet | Non | Non |
 
 ## Arrivée d'une cliente

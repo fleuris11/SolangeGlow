@@ -22,9 +22,9 @@ import { SelectionCard } from "./selection-card";
 
 type Aisle = Schemas["AisleEnum"];
 const AISLES: { key: Aisle; icon: ReactNode }[] = [
-  { key: "small_prices", icon: <Tag aria-hidden size={20} weight="duotone" /> },
-  { key: "trending", icon: <Fire aria-hidden size={20} weight="duotone" /> },
-  { key: "luxury", icon: <Diamond aria-hidden size={20} weight="duotone" /> },
+  { key: "small_prices", icon: <Tag aria-hidden size={20} /> },
+  { key: "trending", icon: <Fire aria-hidden size={20} /> },
+  { key: "luxury", icon: <Diamond aria-hidden size={20} /> },
 ];
 
 /** The France Selection: three aisles, final prices, and the special request. */
@@ -61,9 +61,9 @@ export function SelectionHome({
         <p className="text-lead">{t("intro")}</p>
         <ul className="flex flex-col gap-2">
           {[
-            [<Tag key="t" aria-hidden size={22} weight="duotone" />, t("finalPrice")],
-            [<LockKey key="l" aria-hidden size={22} weight="duotone" />, t("held")],
-            [<Airplane key="a" aria-hidden size={22} weight="duotone" />, grouped],
+            [<Tag key="t" aria-hidden size={22} />, t("finalPrice")],
+            [<LockKey key="l" aria-hidden size={22} />, t("held")],
+            [<Airplane key="a" aria-hidden size={22} />, grouped],
           ].map(([icon, text]) => (
             <li key={String(text)} className="flex items-start gap-2">
               <span className="text-hibiscus mt-0.5 shrink-0">{icon}</span>
@@ -102,11 +102,7 @@ export function SelectionHome({
       {sponsored}
 
       {page.results.length === 0 ? (
-        <EmptyState
-          icon={<Package size={44} weight="duotone" />}
-          title={t("empty")}
-          description={t("emptyHelp")}
-        />
+        <EmptyState icon={<Package size={44} />} title={t("empty")} description={t("emptyHelp")} />
       ) : (
         <ul className="grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3">
           {page.results.map((product) => (
@@ -122,7 +118,7 @@ export function SelectionHome({
         className="bg-poudre rounded-card flex flex-col items-start gap-3 p-5"
       >
         <h2 id="special" className="text-title flex items-center gap-2 font-bold">
-          <MagnifyingGlass aria-hidden size={26} weight="duotone" className="text-hibiscus" />
+          <MagnifyingGlass aria-hidden size={26} />
           {t("specialTitle")}
         </h2>
         <p>{t("specialText")}</p>

@@ -80,7 +80,7 @@ export function ClientExtras({ recordId }: { recordId: string }) {
       />
       <fieldset className="flex flex-col gap-2">
         <legend className="flex items-center gap-2 font-bold">
-          <Cake aria-hidden size={22} className="text-hibiscus" />
+          <Cake aria-hidden size={22} />
           {t("birthday")}
         </legend>
         <div className="grid grid-cols-2 gap-3">
@@ -160,7 +160,7 @@ export function ClientExtras({ recordId }: { recordId: string }) {
 
       <section aria-labelledby="client-packages" className="flex flex-col gap-3">
         <h3 id="client-packages" className="flex items-center gap-2 font-bold">
-          <Stack aria-hidden size={22} className="text-hibiscus" />
+          <Stack aria-hidden size={22} />
           {t("packages")}
         </h3>
         {!file.premium ? (

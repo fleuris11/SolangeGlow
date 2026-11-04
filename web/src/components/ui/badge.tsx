@@ -14,7 +14,7 @@ import { cn } from "@/lib/cn";
 export type BadgeTone = "glow" | "star" | "icon" | "verified" | "trained" | "confirmed" | "top";
 
 const tones: Record<BadgeTone, { className: string; icon: ReactNode }> = {
-  glow: { className: "bg-poudre text-prune", icon: <Sparkle weight="duotone" size={16} /> },
+  glow: { className: "bg-poudre text-prune", icon: <Sparkle size={16} /> },
   star: { className: "bg-or text-sur-or", icon: <Star weight="fill" size={16} /> },
   icon: {
     className: "border-2 border-or bg-carte text-prune",

@@ -329,7 +329,7 @@ function Lesson({
                     rel="noreferrer"
                     className="border-trait bg-carte rounded-card flex min-h-14 items-center gap-3 border p-3 font-bold"
                   >
-                    <FilePdf aria-hidden size={26} weight="duotone" className="text-hibiscus" />
+                    <FilePdf aria-hidden size={26} />
                     {resource.title}
                   </a>
                 ) : (

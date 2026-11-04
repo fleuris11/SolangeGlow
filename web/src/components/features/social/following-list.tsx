@@ -23,7 +23,7 @@ export function FollowingList() {
   if (people.length === 0) {
     return (
       <EmptyState
-        icon={<Compass size={48} weight="duotone" />}
+        icon={<Compass size={48} />}
         title={t("emptyTitle")}
         description={t("emptyText")}
         action={

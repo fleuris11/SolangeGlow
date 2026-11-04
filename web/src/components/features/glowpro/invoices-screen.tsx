@@ -36,7 +36,7 @@ export function InvoicesScreen() {
     <div className="flex flex-col gap-6">
       <div className="flex items-center gap-2">
         <h1 className="text-headline flex flex-1 items-center gap-2 font-bold">
-          <Receipt aria-hidden size={30} weight="duotone" className="text-hibiscus" />
+          <Receipt aria-hidden size={30} />
           {t("title")}
         </h1>
         <SpeakButton text={t("title")} />
@@ -51,11 +51,7 @@ export function InvoicesScreen() {
       {query.isPending ? (
         <Skeleton className="h-40 rounded-2xl" />
       ) : rows.length === 0 ? (
-        <EmptyState
-          icon={<Receipt size={44} weight="duotone" />}
-          title={t("empty")}
-          description={t("emptyHelp")}
-        />
+        <EmptyState icon={<Receipt size={44} />} title={t("empty")} description={t("emptyHelp")} />
       ) : (
         <ul className="flex flex-col gap-2">
           {rows.map((doc) => (
@@ -70,7 +66,7 @@ export function InvoicesScreen() {
                 className="flex min-w-0 flex-1 items-center gap-3"
                 aria-label={t("open", { number: doc.number })}
               >
-                <FilePdf aria-hidden size={26} className="text-hibiscus shrink-0" />
+                <FilePdf aria-hidden size={26} className="shrink-0" />
                 <span className="flex min-w-0 flex-col">
                   <span className="font-bold">{doc.number}</span>
                   <span className="text-small text-prune-doux truncate">

@@ -20,13 +20,13 @@ const PRO_PHONE = "+2290161000105";
 test("visitors are invited to sign in", async ({ page }) => {
   await page.setViewportSize(VIEWPORTS.mobile);
   await openWith(page, "/fr/messages", { theme: "light", textSize: "normal" });
-  await expect(page.getByRole("heading", { name: "Écris aux pros" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Écris aux talents" })).toBeVisible();
   await expect(page.getByRole("link", { name: /Me connecter/ })).toBeVisible();
   await expectNoSeriousA11yIssue(page);
   await page.screenshot({ path: "e2e/screenshots/messages-visitor.png", fullPage: true });
 });
 
-test("a client writes to a pro, who answers with a quick reply", async ({ browser }) => {
+test("a client writes to a talent, who answers with a quick reply", async ({ browser }) => {
   test.setTimeout(300_000);
   const words = `Bonjour, êtes-vous libre samedi ? (${Date.now() % 10_000})`;
 

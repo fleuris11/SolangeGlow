@@ -2,13 +2,13 @@ import { describe, expect, it } from "vitest";
 
 import { activeProKey, PRO_BAR, PRO_NAV, STAFF_NAV } from "./pro-nav";
 
-describe("the menu of a pro", () => {
+describe("the menu of a talent", () => {
   it("lights the most precise entry", () => {
     expect(activeProKey("/pro")).toBe("today");
     expect(activeProKey("/pro/agenda")).toBe("agenda");
     expect(activeProKey("/pro/agenda/arrivee/RDV-1")).toBe("agenda");
     expect(activeProKey("/pro/agenda/clients")).toBe("clients");
-    expect(activeProKey("/pro/agenda/settings")).toBe("settings");
+    expect(activeProKey("/pro/agenda/settings")).toBe("agendaSettings");
     expect(activeProKey("/pro/shop/product/new")).toBe("shop");
     expect(activeProKey("/pro/unknown")).toBeUndefined();
   });

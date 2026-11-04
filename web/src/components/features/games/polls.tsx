@@ -167,7 +167,7 @@ export function PollsScreen() {
         {query.isPending && <Skeleton className="rounded-card h-96" />}
         {query.data?.results.length === 0 && (
           <EmptyState
-            icon={<Scales size={48} weight="duotone" />}
+            icon={<Scales size={48} />}
             title={scope === "vote" ? t("noneToVote") : t("noneMine")}
             description={t("noneHelp")}
           />
@@ -253,7 +253,7 @@ function PhotoPick({
         <img src={value.preview} alt={label} className="size-full object-cover" />
       ) : (
         <>
-          <Camera aria-hidden size={36} weight="duotone" className="text-hibiscus" />
+          <Camera aria-hidden size={36} />
           <span className="font-bold">{busy ? t("sending") : label}</span>
         </>
       )}

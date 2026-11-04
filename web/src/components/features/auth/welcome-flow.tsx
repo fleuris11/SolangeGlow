@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Check, MapPin } from "@phosphor-icons/react";
+import { ArrowRight, Check } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState, type ReactNode } from "react";
@@ -10,14 +10,14 @@ import { TradeIcon, TRADES, type Trade } from "@/components/features/trades/trad
 import { Bloom } from "@/components/ui/bloom";
 import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
-import { Input } from "@/components/ui/input";
 import { SpeakButton } from "@/components/ui/speak-button";
 import { Stepper } from "@/components/ui/stepper";
-import { completeOnboarding, getTrades } from "@/lib/api/accounts";
+import { completeOnboarding, getTrades, updateMe } from "@/lib/api/accounts";
 import { ApiError } from "@/lib/api/client";
 import { useMe, useSetMe } from "@/lib/auth/use-me";
 import { cn } from "@/lib/cn";
-import { CITIES } from "@/lib/demo/data";
+import { CityField } from "@/components/features/geo/city-field";
+import { CountrySelect } from "@/components/features/geo/country-select";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { routing, type Locale } from "@/lib/i18n/routing";
 import { usePreferences } from "@/lib/preferences/preferences-provider";
@@ -46,7 +46,7 @@ export function WelcomeFlow({ as }: { as?: Mode }) {
   const [chosenTrades, setChosenTrades] = useState<string[]>([]);
   const [language, setLanguage] = useState<Locale>(locale);
   const [city, setCity] = useState(prefs.city);
-  const [otherCity, setOtherCity] = useState("");
+  const [country, setCountry] = useState(me?.country ?? "FR");
   const [birthDate, setBirthDate] = useState<BirthDate>(EMPTY_BIRTH_DATE);
   const [accepted, setAccepted] = useState(false);
   const [done, setDone] = useState(false);
@@ -75,8 +75,9 @@ export function WelcomeFlow({ as }: { as?: Mode }) {
   const finish = async () => {
     setError(undefined);
     setBusy(true);
-    const finalCity = otherCity.trim() || city;
+    const finalCity = city.trim();
     try {
+      await updateMe({ country }).catch(() => undefined);
       const updated = await completeOnboarding({
         mode: mode ?? "client",
         birth_date: birthIso ?? "",
@@ -208,28 +209,8 @@ export function WelcomeFlow({ as }: { as?: Mode }) {
 
       {step === 3 && (
         <>
-          <div role="group" aria-label={t("city.title")} className="flex flex-wrap gap-2">
-            {CITIES.map((name) => (
-              <Chip
-                key={name}
-                selected={!otherCity && city === name}
-                icon={<MapPin size={20} weight="duotone" />}
-                onClick={() => {
-                  setCity(name);
-                  setOtherCity("");
-                }}
-              >
-                {name}
-              </Chip>
-            ))}
-          </div>
-          <Input
-            label={t("city.other")}
-            value={otherCity}
-            onChange={(event) => setOtherCity(event.target.value)}
-            maxLength={80}
-            autoComplete="address-level2"
-          />
+          <CountrySelect label={t("city.country")} value={country} onChange={setCountry} />
+          <CityField label={t("city.other")} value={city} onChange={setCity} country={country} />
           <BirthDateField value={birthDate} onChange={setBirthDate} />
           <label className="flex min-h-12 items-start gap-3">
             <input

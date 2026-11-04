@@ -26,7 +26,7 @@ export default function FocusLayout({ children, params }: Props) {
         >
           <ArrowLeft aria-hidden size={26} weight="bold" />
         </Link>
-        <Image src="/icons/logo.png" alt={tMeta("title")} width={96} height={47} priority />
+        <Image src="/brand/logo-red.png" alt={tMeta("title")} width={96} height={47} priority />
         <span aria-hidden className="size-12" />
       </header>
       <main id="main" className="flex-1 pt-2">

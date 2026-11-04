@@ -404,6 +404,9 @@ HELP_AI_URL = env("HELP_AI_URL", default="")
 HELP_AI_KEY = env("HELP_AI_KEY", default="")
 # Back office (ADR-017): two-factor sign-in of every team account; where the backend
 # reads the texts of the web app (search of the translations).
+CORE_LOAD_WORLD = env.bool("CORE_LOAD_WORLD", default=True)
+# The launch is free: on a new production database, payments start closed (switch in the admin).
+PAYMENTS_CLOSED_AT_START = env.bool("PAYMENTS_CLOSED_AT_START", default=False)
 BACKOFFICE_REQUIRE_2FA = env.bool("BACKOFFICE_REQUIRE_2FA", default=True)
 WEB_INTERNAL_URL = env("WEB_INTERNAL_URL", default="http://web:3000")
 

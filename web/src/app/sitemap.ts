@@ -7,7 +7,7 @@ import { SITEMAP_KINDS, type SitemapKind } from "@/lib/seo/sitemaps";
 const API_INTERNAL_URL = process.env.API_INTERNAL_URL ?? "http://localhost:8000";
 const MAIN = [
   "",
-  "/pour-les-pros",
+  "/proposer-mes-services",
   "/comment-ca-marche",
   "/explore",
   "/selection",

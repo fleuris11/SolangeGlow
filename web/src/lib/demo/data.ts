@@ -116,5 +116,3 @@ export const DEMO_GIFT = {
   currency: "EUR" as const,
   city: "Cotonou",
 };
-
-export const CITIES = ["Cotonou", "Abomey-Calavi", "Porto-Novo", "Parakou", "Paris", "Lyon"];

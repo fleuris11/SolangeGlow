@@ -79,7 +79,7 @@ const PRODUCT: ProductDetail = {
 
 const ICONS = { cart: null, heart: null, heartFilled: null, bell: null, flash: null };
 
-describe("prices typed by a pro", () => {
+describe("prices typed by a talent", () => {
   it("reads FCFA and euros in the smallest unit", () => {
     expect(parseMoney("8 000", "XOF")).toBe(8000);
     expect(parseMoney("12,50", "EUR")).toBe(1250);

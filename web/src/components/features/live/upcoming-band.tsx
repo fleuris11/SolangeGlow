@@ -24,7 +24,7 @@ export function UpcomingLivesBand({ lives }: { lives: UpcomingLive[] }) {
   return (
     <section aria-labelledby="lives-title" className="flex flex-col gap-3">
       <div className="flex items-center gap-3">
-        <Broadcast aria-hidden size={30} weight="duotone" className="text-hibiscus shrink-0" />
+        <Broadcast aria-hidden size={30} className="shrink-0" />
         <h2 id="lives-title" className="text-title font-bold">
           {t("title")}
         </h2>

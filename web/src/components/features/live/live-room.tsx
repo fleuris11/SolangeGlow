@@ -621,8 +621,8 @@ export function LiveRoom({ kind, id }: { kind: LiveKind; id: string }) {
                 <HandWaving
                   aria-hidden
                   size={24}
-                  weight="duotone"
-                  className="text-hibiscus shrink-0"
+
+                  className="shrink-0"
                 />
                 <span className="min-w-28 flex-1 font-bold">
                   {hand.name || t("someone")}

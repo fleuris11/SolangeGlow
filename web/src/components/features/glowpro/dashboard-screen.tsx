@@ -213,7 +213,7 @@ export function DashboardScreen() {
     <div className="flex flex-col gap-6">
       <div className="flex items-center gap-2">
         <h1 className="text-headline flex flex-1 items-center gap-2 font-bold">
-          <ChartBar aria-hidden size={30} weight="duotone" className="text-hibiscus" />
+          <ChartBar aria-hidden size={30} />
           {t("title")}
         </h1>
         <SpeakButton

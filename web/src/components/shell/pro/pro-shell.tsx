@@ -16,6 +16,18 @@ import {
   UserSwitch,
   Wallet,
   Browser,
+  Broadcast,
+  Gift,
+  GraduationCap,
+  IdentificationCard,
+  Megaphone,
+  Package,
+  PaperPlaneTilt,
+  PlusCircle,
+  QrCode,
+  Receipt,
+  Stack,
+  Star,
 } from "@phosphor-icons/react/dist/ssr";
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
@@ -26,16 +38,28 @@ import { ProBottomBar, ProHeader, ProSidebar, type ProChromeIcons } from "./pro-
 const SHAPES: Record<ProNavKey, typeof House> = {
   today: House,
   agenda: CalendarBlank,
-  services: Scissors,
   slots: ClockClockwise,
-  page: Browser,
-  shop: Storefront,
+  services: Scissors,
   clients: UserList,
+  shop: Storefront,
+  stock: Package,
+  giftCards: Gift,
+  packages: Stack,
+  page: Browser,
+  share: QrCode,
+  publish: PlusCircle,
+  lives: Broadcast,
+  academy: GraduationCap,
+  reviews: Star,
+  boost: Megaphone,
+  campaigns: PaperPlaneTilt,
   messages: ChatsCircle,
   money: Wallet,
+  invoices: Receipt,
   stats: ChartLineUp,
   plan: Crown,
-  settings: GearSix,
+  agendaSettings: GearSix,
+  verification: IdentificationCard,
 };
 
 /** Icons drawn by the server (ADR-004): the phone receives no icon code. */
@@ -44,13 +68,13 @@ function icons(): ProChromeIcons {
     nav: Object.fromEntries(
       Object.entries(SHAPES).map(([key, Shape]) => [
         key,
-        <Shape key={key} aria-hidden size={26} weight="duotone" />,
+        <Shape key={key} aria-hidden size={22} />,
       ]),
     ) as ProChromeIcons["nav"],
-    more: <DotsThreeOutline aria-hidden size={26} weight="duotone" />,
+    more: <DotsThreeOutline aria-hidden size={22} />,
     see: <Eye aria-hidden size={22} weight="bold" />,
     book: <CalendarCheck aria-hidden size={22} weight="bold" />,
-    client: <UserSwitch aria-hidden size={24} weight="duotone" />,
+    client: <UserSwitch aria-hidden size={24} />,
     signOut: <SignOut aria-hidden size={24} weight="bold" />,
   };
 }

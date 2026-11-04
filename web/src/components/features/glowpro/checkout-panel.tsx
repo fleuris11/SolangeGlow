@@ -117,7 +117,7 @@ export function CheckoutPanel({ appointment }: { appointment: Appointment }) {
       className="border-trait rounded-card flex flex-col gap-3 border p-4"
     >
       <h3 id="checkout" className="flex items-center gap-2 font-bold">
-        <CashRegister aria-hidden size={24} weight="duotone" className="text-hibiscus" />
+        <CashRegister aria-hidden size={24} />
         {t("title")}
       </h3>
       <p className="text-small">

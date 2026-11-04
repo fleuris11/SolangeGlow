@@ -225,7 +225,7 @@ test("Premium: team, stock, package, payment at the salon, invoice, gift card, c
   await openWith(pro, "/fr/pro/campaigns", LOOK);
   await pro.getByRole("button", { name: "Nouvelle campagne" }).click();
   await pro.getByLabel("Nom (pour toi)").fill(`Merci ${Date.now() % 1000}`);
-  await pro.getByRole("radio", { name: "Toutes mes clientes" }).check();
+  await pro.getByRole("radio", { name: "Toutes mes clients" }).check();
   await pro.getByLabel("Objet de l'e-mail").fill("Merci {{ first_name }} !");
   await pro.getByLabel("Message").fill("Merci pour ta visite, {{ first_name }}.");
   await pro.getByRole("button", { name: "Enregistrer" }).click();

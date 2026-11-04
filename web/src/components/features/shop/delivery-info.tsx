@@ -17,19 +17,19 @@ export function DeliveryInfo({ delivery, currency }: { delivery: Delivery; curre
   const rows = [
     delivery.pickup && {
       key: "pickup",
-      icon: <Storefront aria-hidden size={24} weight="duotone" />,
+      icon: <Storefront aria-hidden size={24} />,
       title: t("pickup"),
       lines: [t("pickupFree"), delivery.pickup_note].filter(Boolean),
     },
     delivery.seller_delivery && {
       key: "seller",
-      icon: <Moped aria-hidden size={24} weight="duotone" />,
+      icon: <Moped aria-hidden size={24} />,
       title: t("seller"),
       lines: zones("seller"),
     },
     delivery.partner_delivery && {
       key: "partner",
-      icon: <Truck aria-hidden size={24} weight="duotone" />,
+      icon: <Truck aria-hidden size={24} />,
       title: delivery.partner_name
         ? t("partnerNamed", { name: delivery.partner_name })
         : t("partner"),

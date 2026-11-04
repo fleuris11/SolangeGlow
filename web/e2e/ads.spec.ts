@@ -17,7 +17,7 @@ async function warmUp(page: Page, path: string) {
 
 test.use({ viewport: VIEWPORTS.mobile });
 
-test("a visitor sees the sponsored banner, the boosted pro and a sponsored product", async ({
+test("a visitor sees the sponsored banner, the boosted talent and a sponsored product", async ({
   page,
 }) => {
   test.setTimeout(600_000);

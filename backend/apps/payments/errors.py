@@ -100,3 +100,9 @@ class IdentityNeeded(DomainError):
 class InvalidMedia(DomainError):
     code = "invalid_media"
     message = _("This file cannot be used here.")
+
+
+class PaymentsClosed(DomainError):
+    code = "payments_closed"
+    status_code = 409
+    message = _("Online payment is not open yet. Write to the seller to arrange it together.")

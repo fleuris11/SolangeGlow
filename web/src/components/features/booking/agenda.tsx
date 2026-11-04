@@ -140,7 +140,7 @@ export function AgendaScreen({
     const code = query.error instanceof ApiError ? query.error.code : "";
     return (
       <EmptyState
-        icon={<CalendarBlank size={44} weight="duotone" />}
+        icon={<CalendarBlank size={44} />}
         title={code === "agenda_not_found" ? t("noAgenda") : t("error")}
         description={code === "agenda_not_found" ? t("noAgendaHelp") : undefined}
         action={
@@ -266,7 +266,7 @@ export function AgendaScreen({
           className="bg-poudre rounded-card flex flex-col gap-2 p-4"
         >
           <h2 id="pending" className="flex items-center gap-2 font-bold">
-            <HourglassMedium aria-hidden size={24} weight="duotone" className="text-alerte" />
+            <HourglassMedium aria-hidden size={24} className="text-alerte" />
             {t("pending", { count: pending.length })}
           </h2>
           <ul className="flex flex-col gap-2">

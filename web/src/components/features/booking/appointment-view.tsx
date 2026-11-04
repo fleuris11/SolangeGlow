@@ -48,16 +48,16 @@ import { mediaSrc } from "@/lib/media";
 import { formatMoney } from "@/lib/money";
 
 const STATUS_ICON: Record<AppointmentStatus, ReactNode> = {
-  pending: <HourglassMedium aria-hidden size={28} weight="duotone" className="text-alerte" />,
-  awaiting_deposit: <CreditCard aria-hidden size={28} weight="duotone" className="text-alerte" />,
+  pending: <HourglassMedium aria-hidden size={28} className="text-alerte" />,
+  awaiting_deposit: <CreditCard aria-hidden size={28} className="text-alerte" />,
   confirmed: <CheckCircle aria-hidden size={28} weight="fill" className="text-feuille" />,
-  proposed: <Clock aria-hidden size={28} weight="duotone" className="text-hibiscus" />,
-  held: <Clock aria-hidden size={28} weight="duotone" className="text-hibiscus" />,
-  declined: <CalendarX aria-hidden size={28} weight="duotone" className="text-alerte" />,
-  cancelled: <CalendarX aria-hidden size={28} weight="duotone" className="text-alerte" />,
+  proposed: <Clock aria-hidden size={28} />,
+  held: <Clock aria-hidden size={28} />,
+  declined: <CalendarX aria-hidden size={28} className="text-alerte" />,
+  cancelled: <CalendarX aria-hidden size={28} className="text-alerte" />,
   completed: <CheckCircle aria-hidden size={28} weight="fill" className="text-feuille" />,
-  no_show: <WarningCircle aria-hidden size={28} weight="duotone" className="text-alerte" />,
-  expired: <CalendarX aria-hidden size={28} weight="duotone" className="text-prune-doux" />,
+  no_show: <WarningCircle aria-hidden size={28} className="text-alerte" />,
+  expired: <CalendarX aria-hidden size={28} className="text-prune-doux" />,
 };
 
 function paymentKey(status: string): "held" | "refunded" | "released" | "pending" {
@@ -92,7 +92,7 @@ export function AppointmentView({ holder }: { holder: Holder }) {
   if (query.isError || !query.data) {
     return (
       <EmptyState
-        icon={<CalendarX size={44} weight="duotone" />}
+        icon={<CalendarX size={44} />}
         title={t("notFound")}
         description={t("notFoundHelp")}
       />
@@ -136,7 +136,7 @@ export function AppointmentView({ holder }: { holder: Holder }) {
         </div>
         <p className="text-lead font-bold">{a.service_name}</p>
         <p className="flex items-center gap-2">
-          <CalendarCheck aria-hidden size={24} weight="duotone" className="text-hibiscus" />
+          <CalendarCheck aria-hidden size={24} />
           {when}
         </p>
         <Link href={`/${a.pro.slug}`} className="flex items-center gap-2 font-bold underline">
@@ -303,7 +303,7 @@ export function AppointmentView({ holder }: { holder: Holder }) {
       {a.advice.length > 0 && (
         <section aria-labelledby="advice" className="flex flex-col gap-2">
           <h2 id="advice" className="text-lead flex items-center gap-2 font-bold">
-            <ShoppingBag aria-hidden size={24} weight="duotone" className="text-hibiscus" />
+            <ShoppingBag aria-hidden size={24} />
             {t("advice", { name: a.pro.name })}
           </h2>
           <ul className="flex flex-col gap-2">
@@ -485,7 +485,7 @@ function MyAppointments({ upcoming, past }: { upcoming: Appointment[]; past: App
       </div>
       {upcoming.length === 0 && past.length === 0 ? (
         <EmptyState
-          icon={<CalendarCheck size={44} weight="duotone" />}
+          icon={<CalendarCheck size={44} />}
           title={t("empty")}
           description={t("emptyHelp")}
           action={

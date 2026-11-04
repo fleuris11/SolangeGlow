@@ -67,7 +67,7 @@ export function OffersView({ slug }: { slug: string }) {
       {offer && (
         <section aria-labelledby="gift" className="flex flex-col gap-4">
           <h2 id="gift" className="text-title flex items-center gap-2 font-bold">
-            <Gift aria-hidden size={28} weight="duotone" className="text-hibiscus" />
+            <Gift aria-hidden size={28} />
             {t("giftTitle")}
           </h2>
           <p className="text-prune-doux">{t("giftHelp", { days: offer.validity_days })}</p>
@@ -154,7 +154,7 @@ export function OffersView({ slug }: { slug: string }) {
       {packages.length > 0 && (
         <section aria-labelledby="packages" className="flex flex-col gap-4">
           <h2 id="packages" className="text-title flex items-center gap-2 font-bold">
-            <Stack aria-hidden size={28} weight="duotone" className="text-hibiscus" />
+            <Stack aria-hidden size={28} />
             {t("packagesTitle")}
           </h2>
           <ul className="flex flex-col gap-3">

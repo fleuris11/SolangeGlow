@@ -27,7 +27,7 @@ export function WishlistScreen() {
   if (rows.length === 0) {
     return (
       <EmptyState
-        icon={<Heart size={44} weight="duotone" />}
+        icon={<Heart size={44} />}
         title={t("empty")}
         description={t("emptyHelp")}
         action={
@@ -84,7 +84,7 @@ export function WishlistScreen() {
               onClick={() => void remove(product.id)}
               className="self-start px-3"
             >
-              <Heart aria-hidden size={22} weight="fill" className="text-hibiscus" />
+              <Heart aria-hidden size={22} weight="fill" />
               {t("removeShort")}
             </Button>
           </li>

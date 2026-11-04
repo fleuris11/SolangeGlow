@@ -21,10 +21,7 @@ export default async function Page({ params }: Props) {
   return (
     <SignedIn>
       <CheckoutDone groupId={id} />
-      <InstallPrompt
-        moment="success"
-        icon={<DeviceMobile aria-hidden size={24} weight="duotone" />}
-      />
+      <InstallPrompt moment="success" icon={<DeviceMobile aria-hidden size={24} />} />
     </SignedIn>
   );
 }

@@ -34,7 +34,7 @@ export function AudioToggle({
       {audioMode ? (
         <SpeakerHigh aria-hidden size={compact ? 24 : 22} weight="fill" />
       ) : (
-        <SpeakerSlash aria-hidden size={compact ? 24 : 22} weight="duotone" />
+        <SpeakerSlash aria-hidden size={compact ? 24 : 22} />
       )}
       <span>{t("mode")}</span>
     </button>

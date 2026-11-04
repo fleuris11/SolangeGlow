@@ -19,7 +19,7 @@ from unfold.widgets import UnfoldAdminCheckboxSelectMultipleWidget, UnfoldAdminS
 from .audit.admin import AuditedModelAdmin
 from .choices import Role
 from .media import admin as media_admin  # noqa: F401  (registers the media screens)
-from .models import Country, Currency, FeatureFlag, PlatformSetting
+from .models import City, Country, Currency, FeatureFlag, PlatformSetting
 
 
 @admin.register(Currency)
@@ -114,3 +114,11 @@ class SolarScheduleAdmin(AuditedModelAdmin):
 @admin.register(ClockedSchedule)
 class ClockedScheduleAdmin(BaseClockedScheduleAdmin, AuditedModelAdmin):
     pass
+
+
+@admin.register(City)
+class CityAdmin(AuditedModelAdmin):
+    list_display = ["name", "country", "region", "postal_code", "population"]
+    list_filter = ["country"]
+    search_fields = ["search", "postal_code"]
+    readonly_fields = ["search"]

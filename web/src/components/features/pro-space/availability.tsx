@@ -401,12 +401,7 @@ export function AvailabilityScreen() {
         <SpeakButton text={t("title")} />
       </header>
 
-      <Part
-        id="mode-title"
-        icon={<Clock size={26} weight="duotone" />}
-        title={t("modeTitle")}
-        help={t("modeHelp")}
-      >
+      <Part id="mode-title" icon={<Clock size={26} />} title={t("modeTitle")} help={t("modeHelp")}>
         <fieldset className="flex flex-col gap-2">
           <legend className="sr-only">{t("modeTitle")}</legend>
           {(["hours", "manual"] as const).map((mode) => (
@@ -486,7 +481,7 @@ export function AvailabilityScreen() {
 
       <Part
         id="block-title"
-        icon={<CalendarX size={26} weight="duotone" />}
+        icon={<CalendarX size={26} />}
         title={t("blockTitle")}
         help={t("blockHelp")}
       >
@@ -499,7 +494,7 @@ export function AvailabilityScreen() {
         </Link>
       </Part>
 
-      <Part id="rules-title" icon={<Timer size={26} weight="duotone" />} title={t("rulesTitle")}>
+      <Part id="rules-title" icon={<Timer size={26} />} title={t("rulesTitle")}>
         <div className="grid gap-3 sm:grid-cols-2">
           <Input
             key={`buffer-${data.buffer_minutes}`}
@@ -526,7 +521,7 @@ export function AvailabilityScreen() {
 
       <Part
         id="places-title"
-        icon={<MapPin size={26} weight="duotone" />}
+        icon={<MapPin size={26} />}
         title={t("placesTitle")}
         help={t("placesHelp")}
       >
@@ -558,7 +553,7 @@ export function AvailabilityScreen() {
 
       <Part
         id="pause-title"
-        icon={<PauseCircle size={26} weight="duotone" />}
+        icon={<PauseCircle size={26} />}
         title={t("pauseTitle")}
         help={t("pauseHelp")}
       >

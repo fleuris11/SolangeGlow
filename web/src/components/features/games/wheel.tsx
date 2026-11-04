@@ -101,7 +101,7 @@ export function WheelScreen() {
   if (!wheel || !wheel.open || wheel.prizes.length === 0) {
     return (
       <EmptyState
-        icon={<Disc size={48} weight="duotone" />}
+        icon={<Disc size={48} />}
         title={t("closed")}
         action={
           <Link href="/points" className={buttonClasses({ variant: "secondary" })}>

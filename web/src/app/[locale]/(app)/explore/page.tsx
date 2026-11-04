@@ -116,7 +116,7 @@ export default async function ExplorePage({ params, searchParams }: Props) {
         </section>
       ) : (
         <EmptyState
-          icon={<MagnifyingGlass size={48} weight="duotone" />}
+          icon={<MagnifyingGlass size={48} />}
           title={t("noResultTitle")}
           description={t("noResultText")}
           action={

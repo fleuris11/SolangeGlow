@@ -67,12 +67,12 @@ export function GlowTodayBand({ today }: { today: GlowToday }) {
       <CheckIn
         streak={today.streak.streak}
         done={today.streak.today_done}
-        flame={<Fire aria-hidden size={28} weight="fill" className="text-hibiscus" />}
+        flame={<Fire aria-hidden size={28} weight="fill" />}
       />
       <ul className="grid grid-cols-2 gap-2">
         <Tile
           href="/quiz"
-          icon={<Lightbulb size={28} weight="duotone" />}
+          icon={<Lightbulb size={28} />}
           title={t("quiz")}
           text={
             quiz
@@ -84,26 +84,26 @@ export function GlowTodayBand({ today }: { today: GlowToday }) {
         />
         <Tile
           href="/roue"
-          icon={<Disc size={28} weight="duotone" />}
+          icon={<Disc size={28} />}
           title={t("wheel")}
           text={today.wheel?.can_spin ? t("wheelOpen") : t("wheelDone")}
         />
         <Tile
           href="/defi"
-          icon={<Camera size={28} weight="duotone" />}
+          icon={<Camera size={28} />}
           title={t("challenge")}
           text={today.challenge ? today.challenge.theme : t("challengeNone")}
         />
         <Tile
           href="/choisir"
-          icon={<Scales size={28} weight="duotone" />}
+          icon={<Scales size={28} />}
           title={t("polls")}
           text={today.poll ? t("pollOpen") : t("pollNone")}
         />
       </ul>
       {today.celebration && (
         <Link href="/fetes" className="inline-flex items-center gap-2 font-bold">
-          <CalendarStar aria-hidden size={24} weight="duotone" className="text-hibiscus" />
+          <CalendarStar aria-hidden size={24} />
           {today.celebration.days_left === 0
             ? t("celebrationToday", { name: today.celebration.name })
             : t("celebration", {

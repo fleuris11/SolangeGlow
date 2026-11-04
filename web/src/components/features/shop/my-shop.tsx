@@ -209,11 +209,7 @@ function ProductsTab() {
       {query.isPending ? (
         <Skeleton className="h-40 rounded-2xl" />
       ) : (query.data ?? []).length === 0 ? (
-        <EmptyState
-          icon={<Package size={44} weight="duotone" />}
-          title={t("empty")}
-          description={t("emptyHelp")}
-        />
+        <EmptyState icon={<Package size={44} />} title={t("empty")} description={t("emptyHelp")} />
       ) : (
         <ul className="flex flex-col gap-3">
           {(query.data ?? []).map((product) => (
@@ -565,7 +561,7 @@ function DeliveryTab({ shop, onChange }: { shop: MyShop; onChange: (shop: MyShop
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-2">
         <SwitchRow
-          icon={icon(<Storefront size={24} weight="duotone" />)}
+          icon={icon(<Storefront size={24} />)}
           label={t("open")}
           description={t("openHelp")}
           checked={delivery.is_open}
@@ -573,7 +569,7 @@ function DeliveryTab({ shop, onChange }: { shop: MyShop; onChange: (shop: MyShop
           onChange={(value) => void save({ is_open: value })}
         />
         <SwitchRow
-          icon={icon(<Storefront size={24} weight="duotone" />)}
+          icon={icon(<Storefront size={24} />)}
           label={t("pickup")}
           description={t("pickupHelp")}
           checked={delivery.pickup}
@@ -581,7 +577,7 @@ function DeliveryTab({ shop, onChange }: { shop: MyShop; onChange: (shop: MyShop
           onChange={(value) => void save({ pickup: value })}
         />
         <SwitchRow
-          icon={icon(<Moped size={24} weight="duotone" />)}
+          icon={icon(<Moped size={24} />)}
           label={t("seller")}
           description={t("sellerHelp")}
           checked={delivery.seller_delivery}
@@ -589,7 +585,7 @@ function DeliveryTab({ shop, onChange }: { shop: MyShop; onChange: (shop: MyShop
           onChange={(value) => void save({ seller_delivery: value })}
         />
         <SwitchRow
-          icon={icon(<Truck size={24} weight="duotone" />)}
+          icon={icon(<Truck size={24} />)}
           label={t("partner")}
           description={t("partnerHelp")}
           checked={delivery.partner_delivery}
@@ -822,7 +818,7 @@ export function MyShopScreen() {
         {!shop.can_sell && (
           <div className="bg-poudre rounded-card flex flex-col items-start gap-2 p-4" role="status">
             <p className="flex items-center gap-2 font-bold">
-              <SealWarning aria-hidden size={24} weight="duotone" className="text-alerte" />
+              <SealWarning aria-hidden size={24} className="text-alerte" />
               {t("verify")}
             </p>
             <Link href="/pro/verification" className={buttonClasses({ variant: "secondary" })}>

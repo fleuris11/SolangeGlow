@@ -34,7 +34,7 @@ export function LivesScreen() {
     <div className="flex flex-col gap-6">
       <div className="flex items-start gap-2">
         <h1 className="text-headline flex flex-1 items-center gap-2 font-bold">
-          <Broadcast aria-hidden size={30} weight="duotone" className="text-hibiscus" />
+          <Broadcast aria-hidden size={30} />
           {t("title")}
         </h1>
         <SpeakButton text={`${t("title")}. ${t("intro")}`} />
@@ -47,10 +47,10 @@ export function LivesScreen() {
           {query.error instanceof ApiError ? query.error.message : t("error")}
         </p>
       ) : !query.data.open ? (
-        <EmptyState icon={<Broadcast size={44} weight="duotone" />} title={t("closed")} />
+        <EmptyState icon={<Broadcast size={44} />} title={t("closed")} />
       ) : query.data.results.length === 0 ? (
         <EmptyState
-          icon={<Broadcast size={44} weight="duotone" />}
+          icon={<Broadcast size={44} />}
           title={t("empty")}
           description={t("emptyHelp")}
           action={
@@ -214,7 +214,7 @@ export function LiveRoomScreen({ liveId }: { liveId: string }) {
           aria-live="polite"
           className="bg-poudre flex flex-col items-center gap-3 rounded-2xl p-5 text-center"
         >
-          <DoorOpen aria-hidden size={44} weight="duotone" className="text-hibiscus" />
+          <DoorOpen aria-hidden size={44} />
           {ended ? (
             <p className="text-title font-bold">{t("over")}</p>
           ) : left > 0 ? (

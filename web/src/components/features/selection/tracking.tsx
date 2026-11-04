@@ -42,7 +42,7 @@ export function SelectionOrders() {
       <h1 className="text-headline font-bold">{t("title")}</h1>
       {rows.length === 0 ? (
         <EmptyState
-          icon={<Package size={44} weight="duotone" />}
+          icon={<Package size={44} />}
           title={t("empty")}
           action={
             <Link href="/selection" className={buttonClasses({ size: "lg" })}>
@@ -224,7 +224,7 @@ export function SelectionTracking({ orderId }: { orderId: string }) {
 
       <section aria-labelledby="pickup" className="flex flex-col gap-2">
         <h2 id="pickup" className="text-title flex items-center gap-2 font-bold">
-          <MapPin aria-hidden size={24} weight="duotone" className="text-hibiscus" />
+          <MapPin aria-hidden size={24} />
           {t("pickup")}
         </h2>
         <p className="font-bold">{order.pickup_point.name}</p>

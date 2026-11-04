@@ -34,22 +34,20 @@ export default async function MePage({ params }: Props) {
           {t("helpTitle")}
         </h2>
         <Link href="/aide" className={rowClass}>
-          <Lifebuoy aria-hidden size={24} weight="duotone" className="text-hibiscus" />
+          <Lifebuoy aria-hidden size={24} />
           {t("help")}
         </Link>
         {pages
           .filter((page) => page.kind !== "help")
           .map((page) => (
             <Link key={page.slug} href={`/pages/${page.slug}`} className={rowClass}>
-              <FileText aria-hidden size={24} weight="duotone" className="text-prune-doux" />
+              <FileText aria-hidden size={24} className="text-prune-doux" />
               {page.title}
             </Link>
           ))}
         <DataExportButton
           className={rowClass}
-          icon={
-            <DownloadSimple aria-hidden size={24} weight="duotone" className="text-prune-doux" />
-          }
+          icon={<DownloadSimple aria-hidden size={24} className="text-prune-doux" />}
         />
       </nav>
     </div>

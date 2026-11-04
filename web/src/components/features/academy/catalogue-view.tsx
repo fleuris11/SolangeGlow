@@ -58,11 +58,11 @@ export function CatalogueView({
         <p className="text-lead">{t("intro")}</p>
         <nav aria-label={t("spaces")} className="flex flex-wrap gap-2">
           <Link href="/academie/mes-formations" className={buttonClasses({ variant: "secondary" })}>
-            <BookOpenText aria-hidden size={22} weight="duotone" />
+            <BookOpenText aria-hidden size={22} />
             {t("mine")}
           </Link>
           <Link href="/academie/lives" className={buttonClasses({ variant: "secondary" })}>
-            <Broadcast aria-hidden size={22} weight="duotone" />
+            <Broadcast aria-hidden size={22} />
             {t("lives")}
           </Link>
         </nav>
@@ -73,7 +73,7 @@ export function CatalogueView({
           href="/academie/pass"
           className="bg-poudre rounded-card flex min-h-16 items-center gap-4 p-4"
         >
-          <Ticket aria-hidden size={36} weight="duotone" className="text-hibiscus shrink-0" />
+          <Ticket aria-hidden size={36} className="shrink-0" />
           <span className="flex flex-1 flex-col">
             <span className="font-bold">{offer.active ? t("passActive") : t("passTitle")}</span>
             <span className="text-small text-prune-doux">
@@ -150,13 +150,13 @@ export function CatalogueView({
 
       {!page.open ? (
         <EmptyState
-          icon={<GraduationCap size={44} weight="duotone" />}
+          icon={<GraduationCap size={44} />}
           title={t("closed")}
           description={t("closedHelp")}
         />
       ) : page.results.length === 0 ? (
         <EmptyState
-          icon={<GraduationCap size={44} weight="duotone" />}
+          icon={<GraduationCap size={44} />}
           title={t("empty")}
           description={t("emptyHelp")}
           action={

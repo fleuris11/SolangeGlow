@@ -63,10 +63,10 @@ export default async function EmbedPage({ params }: Props) {
         embedded
         icons={{
           clock: <Clock {...icon} size={18} />,
-          person: <User {...icon} weight="duotone" />,
+          person: <User {...icon} />,
           calendar: <CalendarCheck {...icon} size={26} weight="bold" />,
           bell: <Bell {...icon} weight="bold" />,
-          group: <UsersThree {...icon} weight="duotone" />,
+          group: <UsersThree {...icon} />,
           lightning: <Lightning {...icon} size={16} weight="fill" />,
         }}
       />

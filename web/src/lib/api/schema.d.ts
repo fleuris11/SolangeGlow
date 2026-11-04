@@ -1023,6 +1023,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/cities": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description The cities that start with what is typed, in one country or in the whole world. */
+    get: operations["cities_list"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/comments/{comment_id}": {
     parameters: {
       query?: never;
@@ -6725,6 +6742,17 @@ export interface components {
       city: string;
       pros: number;
       districts: string[];
+    };
+    CitySuggestion: {
+      name: string;
+      region: string;
+      postal_code: string;
+      country: string;
+      country_name: string;
+      /** Format: double */
+      latitude?: number;
+      /** Format: double */
+      longitude?: number;
     };
     ClaimRequest: {
       code: string;
@@ -13025,6 +13053,28 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["Call"];
+        };
+      };
+    };
+  };
+  cities_list: {
+    parameters: {
+      query: {
+        country?: string;
+        q: string;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["CitySuggestion"][];
         };
       };
     };

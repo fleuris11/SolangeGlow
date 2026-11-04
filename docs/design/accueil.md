@@ -9,10 +9,10 @@ sans compte. Les belles images ne remplacent jamais cette explication.
 | Adresse | Pour qui | Contenu |
 | --- | --- | --- |
 | `/` | Toute visiteuse | Ouverture, « Par où commencer ? », tout ce qu'on peut faire, photos, code de réception, rendez-vous, pros, Sélection, Académie, Offrir, questions, fil des pros |
-| `/pour-les-pros` | Pros sans compte | Pour qui, lien et QR code, vitrine, agenda, boutique, formations, réseau, gratuit ou Premium, trois étapes pour commencer |
+| `/proposer-mes-services` | Pros sans compte | Pour qui, lien et QR code, vitrine, agenda, boutique, formations, réseau, gratuit ou Premium, trois étapes pour commencer |
 | `/comment-ca-marche` | Toute visiteuse | Types de compte, création de compte, chaque service étape par étape, audio et langues |
 
-Une personne connectée arrive sur son fil. `/pour-les-pros` et `/comment-ca-marche` restent ouvertes, avec « Mon compte » au lieu de « Me connecter ».
+Une personne connectée arrive sur son fil. `/proposer-mes-services` et `/comment-ca-marche` restent ouvertes, avec « Mon compte » au lieu de « Me connecter ».
 
 ## Entrées de compte
 
@@ -21,7 +21,7 @@ Une personne connectée arrive sur son fil. `/pour-les-pros` et `/comment-ca-mar
 | Me connecter | `/auth` | Numéro ou e-mail, code |
 | Créer un compte, Créer mon compte | `/auth?as=client` | Code, puis accueil cliente |
 | Créer ma vitrine | `/auth?as=pro` | Code, puis accueil pro et création de la vitrine |
-| Je suis une pro | `/pour-les-pros` | Explications, puis « Créer ma vitrine » |
+| Je suis une pro | `/proposer-mes-services` | Explications, puis « Créer ma vitrine » |
 | Trouver une pro | `/explore` | Réservation possible sans compte |
 
 ## Chaque module du cahier des charges et sa place
@@ -29,14 +29,14 @@ Une personne connectée arrive sur son fil. `/pour-les-pros` et `/comment-ca-mar
 | Module | Accueil | Page détaillée |
 | --- | --- | --- |
 | Comptes et inscription | Par où commencer, questions | `/comment-ca-marche#comptes` |
-| 1. Profils, localisation, lien court, QR code | Tout ce que tu peux faire, section pros | `/pour-les-pros` |
-| 2. Réseau social | Tout ce que tu peux faire, fil des pros | `/pour-les-pros` |
+| 1. Profils, localisation, lien court, QR code | Tout ce que tu peux faire, section pros | `/proposer-mes-services` |
+| 2. Réseau social | Tout ce que tu peux faire, fil des pros | `/proposer-mes-services` |
 | 3. Messagerie et appels | Tout ce que tu peux faire | `/comment-ca-marche#comptes` |
-| 4. Boutiques et ventes en live | Tout ce que tu peux faire | `/pour-les-pros`, `/comment-ca-marche#payer` |
+| 4. Boutiques et ventes en live | Tout ce que tu peux faire | `/proposer-mes-services`, `/comment-ca-marche#payer` |
 | 5. Paiement sécurisé et litiges | Code de réception, questions | `/comment-ca-marche#payer` |
 | 6. Sélection France | Tout ce que tu peux faire, section photo | `/comment-ca-marche#france` |
-| 7. Académie et lives | Tout ce que tu peux faire, section photo | `/comment-ca-marche#academie`, `/pour-les-pros` |
-| 8. Rendez-vous et Glow Pro | Rendez-vous, section pros | `/comment-ca-marche#rendez-vous`, `/pour-les-pros` |
+| 7. Académie et lives | Tout ce que tu peux faire, section photo | `/comment-ca-marche#academie`, `/proposer-mes-services` |
+| 8. Rendez-vous et Glow Pro | Rendez-vous, section pros | `/comment-ca-marche#rendez-vous`, `/proposer-mes-services` |
 | 9. Offrir au pays | Section Offrir, questions | `/comment-ca-marche#offrir` |
 | 10. Côté ludique | Tout ce que tu peux faire | `/comment-ca-marche#jeux` |
 | 11. Langues, audio, accessibilité | Tout ce que tu peux faire, bouton audio | `/comment-ca-marche#audio` |

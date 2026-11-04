@@ -27,7 +27,7 @@ from apps.core import crypto
 from apps.core.audit.services import record
 from apps.core.media.models import MediaAsset
 from apps.core.money import Money, UnknownCurrencyError
-from apps.core.selectors import get_setting
+from apps.core.selectors import get_setting, payments_open
 from apps.notifications.services import notify
 
 from .. import errors, ledger, pricing
@@ -114,6 +114,8 @@ def create_payment(
 
     `with_buyer_fee=False`: no buyer protection (a gift from abroad already paid its own fee).
     """
+    if not payments_open():
+        raise errors.PaymentsClosed()
     try:
         Money(0, currency)
     except (UnknownCurrencyError, TypeError) as exc:

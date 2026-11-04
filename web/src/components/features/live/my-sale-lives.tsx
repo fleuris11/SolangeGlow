@@ -127,7 +127,7 @@ export function MySaleLivesTab() {
 
       {data.results.length === 0 ? (
         <EmptyState
-          icon={<Broadcast size={44} weight="duotone" />}
+          icon={<Broadcast size={44} />}
           title={t("empty")}
           description={t("emptyHelp")}
         />

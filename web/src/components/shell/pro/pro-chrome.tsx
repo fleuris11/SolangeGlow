@@ -15,7 +15,7 @@ import { Link, usePathname } from "@/lib/i18n/navigation";
 import { AudioToggle } from "../audio-toggle";
 import { NotificationBell } from "../notification-bell";
 import { SignOutButton } from "../sign-out-button";
-import { activeProKey, PRO_BAR, PRO_NAV, STAFF_NAV, type ProNavKey } from "./pro-nav";
+import { activeProKey, PRO_BAR, PRO_GROUPS, PRO_NAV, STAFF_NAV, type ProNavKey } from "./pro-nav";
 
 const MessagesBadge = dynamic(() => import("../messages-badge").then((m) => m.MessagesBadge));
 
@@ -39,45 +39,51 @@ function useProSpace() {
     staleTime: 60_000,
     retry: false,
   });
-  const items = owner ? PRO_NAV : PRO_NAV.filter(({ key }) => STAFF_NAV.includes(key));
-  return { signedIn: !!me, owner, pro, items };
+  const keys = owner ? PRO_NAV.map(({ key }) => key) : STAFF_NAV;
+  const items = PRO_NAV.filter(({ key }) => keys.includes(key));
+  return { signedIn: !!me, owner, pro, items, keys };
 }
 
-function NavList({
-  items,
-  icons,
-  onChoose,
-}: {
-  items: typeof PRO_NAV;
-  icons: ProChromeIcons;
-  onChoose?: () => void;
-}) {
+function NavList({ icons, onChoose }: { icons: ProChromeIcons; onChoose?: () => void }) {
   const t = useTranslations("proSpace.nav");
   const pathname = usePathname();
   const active = activeProKey(pathname);
-  const { signedIn } = useProSpace();
+  const { signedIn, keys } = useProSpace();
   return (
-    <ul className="flex flex-col gap-1">
-      {items.map(({ key, href }) => (
-        <li key={key}>
-          <Link
-            href={href}
-            onClick={onChoose}
-            aria-current={active === key ? "page" : undefined}
-            className={cn(
-              "flex min-h-12 items-center gap-3 rounded-lg px-3 font-semibold",
-              active === key ? "bg-poudre text-prune" : "text-prune hover:bg-poudre",
+    <div className="flex flex-col gap-4">
+      {PRO_GROUPS.map((group) => {
+        const items = group.items.filter(({ key }) => keys.includes(key));
+        if (items.length === 0) return null;
+        return (
+          <div key={group.key}>
+            {group.key !== "main" && (
+              <p className="text-mention text-prune-doux mb-1 px-3 font-semibold">{t(group.key)}</p>
             )}
-          >
-            <span aria-hidden className={cn("inline-flex", active === key && "text-hibiscus")}>
-              {icons.nav[key]}
-            </span>
-            {t(key)}
-            {signedIn && key === "messages" && <MessagesBadge layout="row" />}
-          </Link>
-        </li>
-      ))}
-    </ul>
+            <ul className="flex flex-col">
+              {items.map(({ key, href }) => (
+                <li key={key}>
+                  <Link
+                    href={href}
+                    onClick={onChoose}
+                    aria-current={active === key ? "page" : undefined}
+                    className={cn(
+                      "hover:bg-poudre flex min-h-11 items-center gap-3 rounded-lg px-3 font-medium",
+                      active === key && "bg-prune text-lait hover:bg-prune",
+                    )}
+                  >
+                    <span aria-hidden className="inline-flex">
+                      {icons.nav[key]}
+                    </span>
+                    {t(key)}
+                    {signedIn && key === "messages" && <MessagesBadge layout="row" />}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
@@ -110,12 +116,12 @@ function Leave({ icons, slug }: { icons: ProChromeIcons; slug?: string | null })
 export function ProSidebar({ icons }: { icons: ProChromeIcons }) {
   const t = useTranslations("proSpace");
   const tMeta = useTranslations("metadata");
-  const { pro, items } = useProSpace();
+  const { pro } = useProSpace();
   return (
     <aside className="border-trait bg-lait fixed inset-y-0 left-0 z-30 hidden w-[272px] flex-col gap-3 border-r p-4 lg:flex">
       <div className="flex items-center justify-between gap-2">
         <Link href="/pro" className="shrink-0">
-          <Image src="/icons/logo.png" alt={tMeta("title")} width={100} height={49} />
+          <Image src="/brand/logo-red.png" alt={tMeta("title")} width={100} height={49} />
         </Link>
         <span className="bg-prune text-lait text-mention rounded px-2 py-1 font-bold">
           {t("badge")}
@@ -124,7 +130,7 @@ export function ProSidebar({ icons }: { icons: ProChromeIcons }) {
       {pro && <p className="font-display text-title px-3 break-words">{pro.business_name}</p>}
       {/* The menu scrolls on a short screen: leaving always stays in sight. */}
       <nav aria-label={t("menu")} className="min-h-0 flex-1 overflow-y-auto">
-        <NavList items={items} icons={icons} />
+        <NavList icons={icons} />
       </nav>
       <div className="flex shrink-0 items-center gap-1 px-1">
         <NotificationBell layout="row" />
@@ -156,7 +162,14 @@ export function ProHeader({ icons }: { icons: ProChromeIcons }) {
             <span>{t("myPage")}</span>
           </Link>
         )}
-        <AudioToggle compact />
+        <Link
+          href="/"
+          aria-label={t("clientMode")}
+          className="text-mention hover:bg-poudre inline-flex min-h-12 min-w-14 flex-col items-center justify-center rounded-lg font-semibold"
+        >
+          {icons.client}
+          <span>{t("personal")}</span>
+        </Link>
         <NotificationBell />
       </div>
     </header>
@@ -217,7 +230,7 @@ export function ProBottomBar({ icons }: { icons: ProChromeIcons }) {
       </nav>
       <Sheet open={more} onOpenChange={setMore} title={pro?.business_name ?? t("menu")}>
         <div className="flex flex-col gap-3">
-          <NavList items={items} icons={icons} onChoose={() => setMore(false)} />
+          <NavList icons={icons} onChoose={() => setMore(false)} />
           {/* Leaving stays in sight, however long the menu. */}
           <div className="bg-carte sticky bottom-0">
             <Leave icons={icons} slug={pro?.slug} />

@@ -50,7 +50,9 @@ async function warmUp(page: Page, path: string) {
   await page.waitForLoadState("networkidle", { timeout: 120_000 }).catch(() => undefined);
 }
 
-test("a video call between a client and a pro, without any phone number", async ({ browser }) => {
+test("a video call between a client and a talent, without any phone number", async ({
+  browser,
+}) => {
   test.setTimeout(720_000);
   // Sign-ins first: a code may have to wait, the call must not ring for nobody.
   const pro = await person(browser);

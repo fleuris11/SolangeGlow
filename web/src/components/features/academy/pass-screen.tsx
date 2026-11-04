@@ -63,7 +63,7 @@ export function PassScreen() {
     <div className="flex flex-col gap-6">
       <div className="flex items-start gap-2">
         <h1 className="text-headline flex flex-1 items-center gap-2 font-bold">
-          <Ticket aria-hidden size={30} weight="duotone" className="text-hibiscus" />
+          <Ticket aria-hidden size={30} />
           {t("title")}
         </h1>
         <SpeakButton text={`${t("title")}. ${t("intro")}`} />

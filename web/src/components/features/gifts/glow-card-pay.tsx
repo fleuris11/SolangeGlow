@@ -59,7 +59,7 @@ export function GlowCardPay({
       className="border-trait rounded-card flex flex-col gap-3 border p-4"
     >
       <h2 id="glow-card-title" className="text-lead flex items-center gap-2 font-bold">
-        <Sparkle aria-hidden size={24} weight="duotone" className="text-hibiscus" />
+        <Sparkle aria-hidden size={24} />
         {t("title")}
       </h2>
       <Input

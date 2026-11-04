@@ -357,7 +357,7 @@ export function ServicesSection({ pro }: { pro: MyPro }) {
           <p className="text-small text-prune-doux">{t("poseHelp")}</p>
           {draft.pose > 0 && draft.after > 0 && (
             <SwitchRow
-              icon={<Clock size={28} weight="duotone" />}
+              icon={<Clock size={28} />}
               label={t("afterByOther")}
               description={t("afterByOtherHelp")}
               checked={draft.afterByOther}
@@ -429,7 +429,7 @@ export function ServicesSection({ pro }: { pro: MyPro }) {
           </div>
 
           <SwitchRow
-            icon={<Van size={28} weight="duotone" />}
+            icon={<Van size={28} />}
             label={t("atHome")}
             description={t("atHomeText")}
             checked={draft.atHome}

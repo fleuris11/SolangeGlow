@@ -68,7 +68,7 @@ export function SelectionProductView({
       />
 
       <p className="bg-poudre flex items-start gap-3 rounded-2xl p-4">
-        <ShieldCheck aria-hidden size={26} weight="duotone" className="text-hibiscus shrink-0" />
+        <ShieldCheck aria-hidden size={26} className="shrink-0" />
         {t("protected")}
       </p>
 

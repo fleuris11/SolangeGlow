@@ -130,7 +130,7 @@ export function PlaceSection({ pro }: { pro: MyPro }) {
       </div>
 
       <SwitchRow
-        icon={<Storefront size={28} weight="duotone" />}
+        icon={<Storefront size={28} />}
         label={t("receives")}
         description={receives ? t("receivesOn") : t("receivesOff")}
         checked={receives}
@@ -225,7 +225,7 @@ export function PlaceSection({ pro }: { pro: MyPro }) {
           {t("travelTitle")}
         </h2>
         <SwitchRow
-          icon={<Van size={28} weight="duotone" />}
+          icon={<Van size={28} />}
           label={t("travels")}
           description={t("travelsText")}
           checked={travels}

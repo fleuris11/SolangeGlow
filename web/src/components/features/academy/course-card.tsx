@@ -29,7 +29,7 @@ export function CourseCard({ course }: { course: Card }) {
             className="size-full object-cover"
           />
         ) : (
-          <GraduationCap aria-hidden size={56} weight="duotone" />
+          <GraduationCap aria-hidden size={56} />
         )}
       </span>
       <span className="flex flex-1 flex-col gap-2 p-4">
@@ -40,9 +40,7 @@ export function CourseCard({ course }: { course: Card }) {
           {course.title}
         </span>
         <span className="text-small text-prune-doux flex items-center gap-1">
-          {course.trainer.platform && (
-            <SealCheck aria-hidden size={18} weight="fill" className="text-hibiscus" />
-          )}
+          {course.trainer.platform && <SealCheck aria-hidden size={18} weight="fill" />}
           {t("by", { name: course.trainer.name })}
         </span>
         <span className="text-small text-prune-doux flex flex-wrap items-center gap-x-3 gap-y-1">

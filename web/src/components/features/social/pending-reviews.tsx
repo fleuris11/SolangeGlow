@@ -137,11 +137,7 @@ export function PendingReviews() {
   const items = query.data ?? [];
   if (!items.length) {
     return (
-      <EmptyState
-        icon={<Star size={48} weight="duotone" />}
-        title={t("emptyTitle")}
-        description={t("emptyText")}
-      />
+      <EmptyState icon={<Star size={48} />} title={t("emptyTitle")} description={t("emptyText")} />
     );
   }
   return (

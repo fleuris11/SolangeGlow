@@ -43,7 +43,7 @@ export function BuySheet({
     <Sheet open={open} onOpenChange={onOpenChange} title={t("title")} description={course.title}>
       <div className="flex flex-col gap-4">
         <p className="bg-poudre flex items-start gap-3 rounded-2xl p-3">
-          <ShieldCheck aria-hidden size={28} weight="duotone" className="text-feuille shrink-0" />
+          <ShieldCheck aria-hidden size={28} className="text-feuille shrink-0" />
           <span>{t("safe", { days: course.refund_days })}</span>
         </p>
         <label className="border-trait flex min-h-14 cursor-pointer items-start gap-3 rounded-2xl border-2 p-3">

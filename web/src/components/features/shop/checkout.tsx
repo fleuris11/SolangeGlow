@@ -32,9 +32,9 @@ import { CART_KEY } from "./cart";
 type Choice = { mode: DeliveryMode; zoneId: string | null; promo: string; note: string };
 
 const MODE_ICONS: Record<DeliveryMode, ReactNode> = {
-  pickup: <Storefront aria-hidden size={24} weight="duotone" />,
-  seller: <Moped aria-hidden size={24} weight="duotone" />,
-  partner: <Truck aria-hidden size={24} weight="duotone" />,
+  pickup: <Storefront aria-hidden size={24} />,
+  seller: <Moped aria-hidden size={24} />,
+  partner: <Truck aria-hidden size={24} />,
 };
 
 function modesOf(shop: CartShop): DeliveryMode[] {
@@ -386,8 +386,8 @@ export function CheckoutFlow() {
         <div className="flex flex-col gap-6">
           <ul className="flex flex-col gap-4">
             {[
-              [<LockKey key="l" aria-hidden size={28} weight="duotone" />, t("held")],
-              [<ShieldCheck key="s" aria-hidden size={28} weight="duotone" />, t("code")],
+              [<LockKey key="l" aria-hidden size={28} />, t("held")],
+              [<ShieldCheck key="s" aria-hidden size={28} />, t("code")],
             ].map(([icon, text]) => (
               <li key={String(text)} className="bg-poudre flex items-start gap-3 rounded-2xl p-4">
                 <span className="text-hibiscus shrink-0">{icon}</span>

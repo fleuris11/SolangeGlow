@@ -60,6 +60,8 @@ test.describe("sign-up on a small phone", () => {
     await expectNoSeriousA11yIssue(page);
     await page.screenshot({ path: "e2e/screenshots/auth-1-phone.png", fullPage: true });
 
+    await page.getByRole("button", { name: "Téléphone" }).click();
+    await page.getByLabel("Pays").selectOption("BJ");
     await page.getByLabel("Ton numéro de téléphone").fill(national);
     await page.getByRole("button", { name: "Recevoir mon code" }).click();
 
@@ -87,7 +89,7 @@ test.describe("sign-up on a small phone", () => {
     await expectNoSeriousA11yIssue(page);
     await page.screenshot({ path: "e2e/screenshots/welcome-1-role.png", fullPage: true });
 
-    await page.getByRole("button", { name: /Je suis une pro/ }).click();
+    await page.getByRole("button", { name: /Je propose mes services/ }).click();
     await page.getByRole("button", { name: "Tresses" }).click();
     await page.screenshot({ path: "e2e/screenshots/welcome-1-role-pro.png", fullPage: true });
     await page.getByRole("button", { name: "Continuer" }).click();

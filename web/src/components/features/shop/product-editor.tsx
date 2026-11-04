@@ -167,7 +167,7 @@ function Editor({ product, currency }: { product?: MyProduct; currency: string }
         {online ? (
           <Bloom label={t("online")} size={140} />
         ) : (
-          <Hourglass aria-hidden size={72} weight="duotone" className="text-or" />
+          <Hourglass aria-hidden size={72} className="text-or" />
         )}
         <h1 id="result" className="font-display text-display font-black">
           {online ? t("online") : tStatus(result.status)}

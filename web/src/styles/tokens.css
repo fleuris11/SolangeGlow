@@ -16,23 +16,23 @@
   --rouge: #c8102e;
   --rouge-press: #a50d26;
   --sur-hibiscus: #ffffff;
-  --prune: #3b1233;
-  --prune-doux: #7a4e6e;
-  --lait: #fff7f5;
-  --jour: #fff7f5;
-  --poudre: #f9e1e7;
+  --prune: #0e0e10;
+  --prune-doux: #5a5a60;
+  --lait: #ffffff;
+  --jour: #ffffff;
+  --poudre: #f2f2f3;
   --carte: #ffffff;
   --or: #e8b04b;
-  --sur-or: #3b1233;
+  --sur-or: #0e0e10;
   --feuille: #1f7a5a;
   --alerte: #b54708;
-  --trait: #ebd9de;
-  --voile: rgb(59 18 51 / 0.45);
-  --ombre-flottante: 0 12px 40px -12px rgb(59 18 51 / 0.28);
+  --trait: #e2e2e5;
+  --voile: rgb(0 0 0 / 0.45);
+  --ombre-flottante: 0 12px 40px -12px rgb(0 0 0 / 0.25);
 
   /* Night sections and the veil under text on a photo: the same in both themes. */
-  --nuit: #0b0507;
-  --voile-photo: rgb(11 5 7 / 0.62);
+  --nuit: #0b0b0c;
+  --voile-photo: rgb(0 0 0 / 0.6);
   /* The warm light coming out of a photo on a night background (its dominant colour). */
   --lueur: #b8572a;
 
@@ -55,7 +55,7 @@
 
   /* Text on a salon's own colour (booking widget): the darker or lighter one is chosen. */
   --sur-couleur-sombre: #ffffff;
-  --sur-couleur-claire: #3b1233;
+  --sur-couleur-claire: #0e0e10;
 
   /* Colours a pro can give to the people of her agenda (stored with each person). */
   --agenda-1: #c8102e;
@@ -72,15 +72,15 @@
     --hibiscus: #ff6b7d;
     --hibiscus-press: #ff8a98;
     --sur-hibiscus: #ffffff;
-    --prune: #fceff2;
-    --prune-doux: #b9a3b2;
-    --lait: #1a0915;
-    --jour: #1a0915;
-    --poudre: #2a1024;
-    --carte: #24101f;
+    --prune: #ffffff;
+    --prune-doux: #a9a9b0;
+    --lait: #0b0b0c;
+    --jour: #0b0b0c;
+    --poudre: #1c1c1f;
+    --carte: #141416;
     --feuille: #5cc79e;
     --alerte: #f5a25d;
-    --trait: #3a1e33;
+    --trait: #2c2c30;
     --voile: rgb(0 0 0 / 0.6);
     --ombre-flottante: 0 12px 40px -12px rgb(0 0 0 / 0.7);
     --cheveux: #120609;
@@ -114,13 +114,13 @@
   --hibiscus-press: #ff8a98;
   --sur-hibiscus: #ffffff;
   --prune: #ffffff;
-  --prune-doux: #c9bfc3;
-  --lait: #0b0507;
-  --poudre: #1d1518;
-  --carte: #171013;
+  --prune-doux: #c5c5cc;
+  --lait: #0b0b0c;
+  --poudre: #1c1c1f;
+  --carte: #141416;
   --feuille: #5cc79e;
   --alerte: #f5a25d;
-  --trait: #3a3034;
+  --trait: #333338;
   --voile: rgb(0 0 0 / 0.6);
   --ombre-flottante: 0 12px 40px -12px rgb(0 0 0 / 0.7);
   color-scheme: dark;

@@ -82,7 +82,7 @@ export default async function BookingPage({ params, searchParams }: Props) {
         )}
         {page.last_minute?.is_active && (
           <p className="bg-poudre flex items-center gap-2 rounded-2xl p-3 font-bold">
-            <Lightning aria-hidden size={24} weight="fill" className="text-hibiscus" />
+            <Lightning aria-hidden size={24} weight="fill" />
             {t("lastMinute", {
               percent: page.last_minute.percent_off,
               hours: page.last_minute.window_hours,
@@ -100,10 +100,10 @@ export default async function BookingPage({ params, searchParams }: Props) {
           postId={post && ID.test(post) ? post : undefined}
           icons={{
             clock: <Clock {...icon} size={18} />,
-            person: <User {...icon} weight="duotone" />,
+            person: <User {...icon} />,
             calendar: <CalendarCheck {...icon} size={26} weight="bold" />,
             bell: <BellRinging {...icon} weight="bold" />,
-            group: <UsersThree {...icon} weight="duotone" />,
+            group: <UsersThree {...icon} />,
             lightning: <Lightning {...icon} size={16} weight="fill" />,
           }}
         />

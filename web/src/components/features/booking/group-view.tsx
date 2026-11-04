@@ -37,7 +37,7 @@ export function GroupView({ token }: { token: string }) {
 
   if (query.isPending) return <Skeleton className="rounded-card h-80" />;
   if (!query.data) {
-    return <EmptyState icon={<UsersThree size={44} weight="duotone" />} title={t("notFound")} />;
+    return <EmptyState icon={<UsersThree size={44} />} title={t("notFound")} />;
   }
   const group = query.data;
   const zone = group.pro.timezone;
@@ -86,7 +86,7 @@ export function GroupView({ token }: { token: string }) {
     <article className="flex flex-col gap-6">
       <header className="flex flex-col gap-2">
         <div className="flex items-center gap-2">
-          <UsersThree aria-hidden size={30} weight="duotone" className="text-hibiscus" />
+          <UsersThree aria-hidden size={30} />
           <h1 className="text-headline flex-1 font-bold">{title}</h1>
           <SpeakButton text={title} />
         </div>

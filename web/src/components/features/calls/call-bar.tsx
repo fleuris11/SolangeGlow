@@ -94,7 +94,7 @@ export function ActiveCallBanner({ conversationId }: { conversationId: string })
     : (call.people.find((p) => p.id === call.caller_id)?.name ?? call.people[0]?.name ?? "");
   return (
     <div role="status" className="bg-poudre mx-4 mt-3 flex items-center gap-3 rounded-2xl p-3">
-      <PhoneIncoming aria-hidden size={28} weight="fill" className="text-hibiscus shrink-0" />
+      <PhoneIncoming aria-hidden size={28} weight="fill" className="shrink-0" />
       <p className="min-w-0 flex-1 font-bold">
         {ringingForMe ? t("ringingFrom", { name }) : t("ongoing")}
       </p>

@@ -40,7 +40,7 @@ export function CampaignsScreen() {
     <div className="flex flex-col gap-6">
       <div className="flex items-center gap-2">
         <h1 className="text-headline flex flex-1 items-center gap-2 font-bold">
-          <Megaphone aria-hidden size={30} weight="duotone" className="text-hibiscus" />
+          <Megaphone aria-hidden size={30} />
           {t("title")}
         </h1>
         <SpeakButton text={t("title")} />
@@ -71,7 +71,7 @@ function CampaignList() {
         <Skeleton className="h-40 rounded-2xl" />
       ) : rows.length === 0 ? (
         <EmptyState
-          icon={<Megaphone size={44} weight="duotone" />}
+          icon={<Megaphone size={44} />}
           title={t("empty")}
           description={t("emptyHelp")}
         />
@@ -85,9 +85,9 @@ function CampaignList() {
                 className="border-trait bg-carte hover:bg-poudre rounded-card flex min-h-16 w-full items-center gap-3 border p-3 text-left"
               >
                 {campaign.channel === "email" ? (
-                  <EnvelopeSimple aria-hidden size={24} className="text-hibiscus" />
+                  <EnvelopeSimple aria-hidden size={24} />
                 ) : (
-                  <WhatsappLogo aria-hidden size={24} className="text-hibiscus" />
+                  <WhatsappLogo aria-hidden size={24} />
                 )}
                 <span className="flex min-w-0 flex-1 flex-col">
                   <span className="truncate font-bold">{campaign.name}</span>

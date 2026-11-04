@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model
 from django.utils import timezone
 
 from apps.core.models import Country
-from apps.core.selectors import get_setting
+from apps.core.selectors import get_setting, payments_open
 
 from . import errors
 from .models import Plan, PlanPrice, Subscription
@@ -51,7 +51,8 @@ def plan_of(pro) -> Plan:
 
 
 def has_feature(pro, feature: str) -> bool:
-    return feature in (plan_of(pro).features or [])
+    # While payments are closed nothing can be sold: everyone gets everything.
+    return not payments_open() or feature in (plan_of(pro).features or [])
 
 
 def require(pro, feature: str) -> None:
@@ -61,6 +62,8 @@ def require(pro, feature: str) -> None:
 
 def limit(pro, key: str):
     """A number of the plan (None: no limit)."""
+    if not payments_open():
+        return None
     value = (plan_of(pro).limits or {}).get(key)
     return None if value is None else int(value)
 

@@ -47,7 +47,7 @@ export function ShopView({
           <Avatar name={page.shop.name} src={mediaSrc(page.shop.photo, "thumb")} size="md" />
           <div className="flex flex-col gap-1">
             <h1 className="text-headline flex items-center gap-2 font-bold">
-              <Storefront aria-hidden size={28} weight="duotone" className="text-hibiscus" />
+              <Storefront aria-hidden size={28} />
               {t("title", { name: page.shop.name })}
             </h1>
             {page.shop.is_verified && <Badge tone="verified">{t("verified")}</Badge>}
@@ -87,7 +87,7 @@ export function ShopView({
 
       {page.products.length === 0 ? (
         <EmptyState
-          icon={<ShoppingBag size={44} weight="duotone" />}
+          icon={<ShoppingBag size={44} />}
           title={t("empty")}
           description={t("emptyHelp")}
         />
@@ -104,7 +104,7 @@ export function ShopView({
       {page.bundles.length > 0 && (
         <section aria-labelledby="bundles" className="flex flex-col gap-4">
           <h2 id="bundles" className="text-title flex items-center gap-2 font-bold">
-            <Gift aria-hidden size={26} weight="duotone" className="text-hibiscus" />
+            <Gift aria-hidden size={26} />
             {t("bundles")}
           </h2>
           <ul className="flex flex-col gap-3">

@@ -1,6 +1,8 @@
 "use client";
 
 import { CheckCircle, Camera, Crosshair, SignIn, Storefront, Van } from "@phosphor-icons/react";
+import { CityField } from "@/components/features/geo/city-field";
+import { CountrySelect } from "@/components/features/geo/country-select";
 import { useQuery } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
@@ -14,7 +16,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { SpeakButton } from "@/components/ui/speak-button";
 import { Stepper } from "@/components/ui/stepper";
 import { SwitchRow } from "@/components/ui/switch-row";
-import { getTrades } from "@/lib/api/accounts";
+import { getTrades, updateMe } from "@/lib/api/accounts";
 import { ApiError } from "@/lib/api/client";
 import { claimInvitation } from "@/lib/api/help";
 import { becomePro, setMyLocation, setMyTravel, updateMyPro, uploadProMedia } from "@/lib/api/pros";
@@ -43,6 +45,7 @@ export function BecomeProFlow({ invite }: { invite?: string }) {
   const [name, setName] = useState("");
   const [kind, setKind] = useState<"independent" | "business">("independent");
   const [chosen, setChosen] = useState<string[]>([]);
+  const [country, setCountry] = useState<string | null>(null);
   const [city, setCity] = useState("");
   const [district, setDistrict] = useState("");
   const [receives, setReceives] = useState(true);
@@ -101,6 +104,9 @@ export function BecomeProFlow({ invite }: { invite?: string }) {
     setBusy(true);
     setError(undefined);
     try {
+      if (country || !me.data?.country) {
+        await updateMe({ country: country ?? "FR" }).catch(() => undefined);
+      }
       await becomePro({ business_name: name.trim(), kind, trades: chosen, city, district });
       if (position) await setMyLocation({ ...position, source });
       if (!receives) await updateMyPro({ receives_clients: false });
@@ -174,11 +180,16 @@ export function BecomeProFlow({ invite }: { invite?: string }) {
       {step === 3 && (
         <>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            <Input
+            <CountrySelect
+              label={t("country")}
+              value={country ?? me.data?.country ?? "FR"}
+              onChange={setCountry}
+            />
+            <CityField
               label={t("city")}
               value={city}
-              maxLength={80}
-              onChange={(event) => setCity(event.target.value)}
+              onChange={setCity}
+              country={country ?? me.data?.country ?? "FR"}
             />
             <Input
               label={t("district")}
@@ -188,14 +199,14 @@ export function BecomeProFlow({ invite }: { invite?: string }) {
             />
           </div>
           <SwitchRow
-            icon={<Storefront size={28} weight="duotone" />}
+            icon={<Storefront size={28} />}
             label={t("receives")}
             description={t("receivesText")}
             checked={receives}
             onChange={setReceives}
           />
           <SwitchRow
-            icon={<Van size={28} weight="duotone" />}
+            icon={<Van size={28} />}
             label={t("travels")}
             description={t("travelsText")}
             checked={travels}

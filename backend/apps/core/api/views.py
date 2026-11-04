@@ -8,6 +8,8 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from apps.accounts.throttling import SettingRateThrottle
+from apps.core.geo import search_cities
 from apps.core.models import Country
 from apps.core.providers import livekit
 from apps.core.providers.base import ProviderNotConfigured
@@ -58,6 +60,41 @@ class CountryListView(APIView):
     def get(self, request):
         countries = Country.objects.filter(is_active=True).select_related("default_currency")
         return Response(CountrySerializer(countries, many=True).data)
+
+
+class CitySearchQuerySerializer(serializers.Serializer):
+    q = serializers.CharField(max_length=80)
+    country = serializers.CharField(required=False, allow_blank=True, max_length=2)
+
+
+class CitySuggestionSerializer(serializers.Serializer):
+    name = serializers.CharField()
+    region = serializers.CharField(allow_blank=True)
+    postal_code = serializers.CharField(allow_blank=True)
+    country = serializers.CharField(source="country.code")
+    country_name = serializers.CharField(source="country.name")
+    latitude = serializers.FloatField(source="location.y", default=None)
+    longitude = serializers.FloatField(source="location.x", default=None)
+
+
+class CitySearchView(APIView):
+    """The cities that start with what is typed, in one country or in the whole world."""
+
+    authentication_classes = []
+    permission_classes = [AllowAny]
+    throttle_classes = [SettingRateThrottle]
+    throttle_scope = "search"
+
+    @extend_schema(
+        tags=["catalogue"], parameters=[CitySearchQuerySerializer], responses=CitySuggestionSerializer(many=True)
+    )
+    def get(self, request):
+        query = CitySearchQuerySerializer(data=request.query_params)
+        query.is_valid(raise_exception=True)
+        rows = search_cities(
+            query.validated_data["q"], country=query.validated_data.get("country", "")
+        )
+        return Response(CitySuggestionSerializer(rows, many=True).data)
 
 
 class LiveKitWebhookView(APIView):

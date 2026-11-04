@@ -59,7 +59,7 @@ describe("ads", () => {
     expect(screen.getByText("Promo Solange Glow")).toBeInTheDocument();
   });
 
-  it("shows a boosted pro first, marked « Sponsored »", () => {
+  it("shows a boosted talent first, marked « Sponsored »", () => {
     renderWithProviders(
       <SponsoredPro
         ad={{

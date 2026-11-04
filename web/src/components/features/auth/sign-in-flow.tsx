@@ -27,7 +27,7 @@ import { toProfile } from "@/lib/preferences/profile-sync";
 import { takeReturnPath } from "@/lib/auth/return-path";
 
 import { ErrorMessage } from "./error-message";
-import { PhoneField, toInternational } from "./phone-field";
+import { DEFAULT_PHONE_COUNTRY, PhoneField, toInternational } from "./phone-field";
 import { useCountdown } from "./use-countdown";
 
 type Method = "phone" | "email";
@@ -43,8 +43,8 @@ export function SignInFlow({ as }: { as?: "client" | "pro" }) {
   const prefs = usePreferences();
 
   const [step, setStep] = useState<Step>("identifier");
-  const [method, setMethod] = useState<Method>("phone");
-  const [country, setCountry] = useState("BJ");
+  const [method, setMethod] = useState<Method>("email");
+  const [country, setCountry] = useState(DEFAULT_PHONE_COUNTRY);
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -150,11 +150,11 @@ export function SignInFlow({ as }: { as?: "client" | "pro" }) {
             <WhatsappLogo
               aria-hidden
               size={24}
-              weight="duotone"
+
               className="text-feuille shrink-0"
             />
           ) : (
-            <Envelope aria-hidden size={24} weight="duotone" className="text-hibiscus shrink-0" />
+            <Envelope aria-hidden size={24} className="shrink-0" />
           )}
           <span>{sentText}</span>
         </p>
@@ -191,18 +191,18 @@ export function SignInFlow({ as }: { as?: "client" | "pro" }) {
 
       <div role="group" aria-label={t("method")} className="flex flex-wrap gap-2">
         <Chip
-          selected={method === "phone"}
-          icon={<Phone size={22} weight="duotone" />}
-          onClick={() => setMethod("phone")}
-        >
-          {t("byPhone")}
-        </Chip>
-        <Chip
           selected={method === "email"}
-          icon={<Envelope size={22} weight="duotone" />}
+          icon={<Envelope size={22} />}
           onClick={() => setMethod("email")}
         >
           {t("byEmail")}
+        </Chip>
+        <Chip
+          selected={method === "phone"}
+          icon={<Phone size={22} />}
+          onClick={() => setMethod("phone")}
+        >
+          {t("byPhone")}
         </Chip>
       </div>
 
@@ -262,7 +262,7 @@ export function SignInFlow({ as }: { as?: "client" | "pro" }) {
 
       <Button
         variant="quiet"
-        icon={<Key size={20} weight="duotone" />}
+        icon={<Key size={20} />}
         className="self-start"
         onClick={() => {
           setError(undefined);

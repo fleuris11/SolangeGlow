@@ -9,7 +9,7 @@ export function SearchBar({ defaultValue = "" }: { defaultValue?: string }) {
       defaultValue={defaultValue}
       icons={{
         search: <MagnifyingGlass size={24} weight="bold" />,
-        mic: <Microphone aria-hidden size={22} weight="duotone" />,
+        mic: <Microphone aria-hidden size={22} />,
         micOn: <Microphone aria-hidden size={22} weight="fill" />,
       }}
     />

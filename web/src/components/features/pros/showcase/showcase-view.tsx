@@ -289,11 +289,7 @@ export function ShowcaseView({
           />
         </aside>
         <div className="flex min-w-0 flex-col gap-10">
-          <Section
-            id="services"
-            title={t("services")}
-            icon={<Scissors size={26} weight="duotone" />}
-          >
+          <Section id="services" title={t("services")} icon={<Scissors size={26} />}>
             {groups.length === 0 ? (
               <p className="text-prune-doux">{t("noServices")}</p>
             ) : (
@@ -313,11 +309,7 @@ export function ShowcaseView({
           </Section>
 
           {showcase.portfolio.length > 0 && (
-            <Section
-              id="portfolio"
-              title={t("portfolio")}
-              icon={<Star size={26} weight="duotone" />}
-            >
+            <Section id="portfolio" title={t("portfolio")} icon={<Star size={26} />}>
               <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                 {showcase.portfolio.map((item) => {
                   const after = mediaSrc(item.media, "medium", "large");
@@ -385,7 +377,7 @@ export function ShowcaseView({
           )}
 
           {shop && shop.products.length > 0 && showcase.slug && (
-            <Section id="shop" title={t("shop")} icon={<Storefront size={26} weight="duotone" />}>
+            <Section id="shop" title={t("shop")} icon={<Storefront size={26} />}>
               <ul className="grid grid-cols-2 gap-x-3 gap-y-6">
                 {shop.products.slice(0, 4).map((product) => (
                   <li key={product.id}>
@@ -404,12 +396,12 @@ export function ShowcaseView({
           )}
 
           {(showcase.bio || bioVoice) && (
-            <Section id="about" title={t("about")} icon={<SealCheck size={26} weight="duotone" />}>
+            <Section id="about" title={t("about")} icon={<SealCheck size={26} />}>
               {showcase.bio && <p className="whitespace-pre-line">{showcase.bio}</p>}
               {bioVoice && (
                 <div className="flex flex-col gap-2">
                   <p className="text-small flex items-center gap-1 font-bold">
-                    <Waveform aria-hidden size={18} className="text-hibiscus" />
+                    <Waveform aria-hidden size={18} />
                     {t("bioVoice")}
                   </p>
                   <audio controls preload="none" src={bioVoice} className="w-full">
@@ -421,7 +413,7 @@ export function ShowcaseView({
           )}
 
           {posts.length > 0 && (
-            <Section id="posts" title={t("posts")} icon={<Star size={26} weight="duotone" />}>
+            <Section id="posts" title={t("posts")} icon={<Star size={26} />}>
               <ul className="grid grid-cols-3 gap-1">
                 {posts.slice(0, 9).map((post) => {
                   const cover = post.media.find((item) => item.role !== "before") ?? post.media[0];
@@ -445,7 +437,7 @@ export function ShowcaseView({
 
           {reviews && <ReviewsSection page={reviews} name={name} />}
 
-          <Section id="hours" title={t("hours")} icon={<Clock size={26} weight="duotone" />}>
+          <Section id="hours" title={t("hours")} icon={<Clock size={26} />}>
             {showcase.hours.length === 0 ? (
               <p className="text-prune-doux">{t("noHours")}</p>
             ) : (
@@ -500,7 +492,7 @@ export function ShowcaseView({
             )}
           </Section>
 
-          <Section id="place" title={t("place")} icon={<MapPin size={26} weight="duotone" />}>
+          <Section id="place" title={t("place")} icon={<MapPin size={26} />}>
             {place.receives_clients ? (
               <>
                 {place.address && <p className="font-bold">{place.address}</p>}
@@ -514,7 +506,7 @@ export function ShowcaseView({
                 {voiceSrc(place.landmarks_voice) && (
                   <div className="flex flex-col gap-2">
                     <p className="text-small flex items-center gap-1 font-bold">
-                      <Waveform aria-hidden size={18} className="text-hibiscus" />
+                      <Waveform aria-hidden size={18} />
                       {t("landmarksVoice")}
                     </p>
                     <audio
@@ -571,7 +563,7 @@ export function ShowcaseView({
             {travel.travels_to_clients && (
               <div className="bg-poudre rounded-card flex flex-col gap-1 p-4">
                 <p className="flex items-center gap-2 font-bold">
-                  <Van aria-hidden size={22} className="text-hibiscus" />
+                  <Van aria-hidden size={22} />
                   {travel.radius_km ? t("travel", { km: travel.radius_km }) : t("travelArea")}
                 </p>
                 {(travel.fee_minor ?? 0) > 0 && (
@@ -585,10 +577,10 @@ export function ShowcaseView({
           </Section>
 
           {(showcase.languages.length > 0 || Object.keys(showcase.social_links).length > 0) && (
-            <Section id="more" title={t("more")} icon={<Globe size={26} weight="duotone" />}>
+            <Section id="more" title={t("more")} icon={<Globe size={26} />}>
               {showcase.languages.length > 0 && (
                 <p className="flex flex-wrap items-center gap-2">
-                  <Translate aria-hidden size={20} className="text-hibiscus" />
+                  <Translate aria-hidden size={20} />
                   <span className="font-bold">{t("languages")}</span>
                   {showcase.languages.map((language) => language.label).join(", ")}
                 </p>

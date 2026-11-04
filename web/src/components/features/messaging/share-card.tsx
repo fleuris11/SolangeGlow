@@ -43,7 +43,7 @@ export function ShareCardView({ card, mine = false }: { card: Card; mine?: boole
         <img src={picture} alt="" className="size-14 shrink-0 rounded-xl object-cover" />
       ) : (
         <span className="bg-poudre text-hibiscus inline-flex size-14 shrink-0 items-center justify-center rounded-xl">
-          <Icon aria-hidden size={28} weight="duotone" />
+          <Icon aria-hidden size={28} />
         </span>
       )}
       <span className="flex min-w-0 flex-col">

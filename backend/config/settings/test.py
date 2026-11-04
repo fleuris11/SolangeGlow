@@ -29,3 +29,4 @@ REST_FRAMEWORK = {**REST_FRAMEWORK, "DEFAULT_THROTTLE_CLASSES": []}
 PAYMENTS_FAKE_ENABLED = True
 # Two-factor sign-in is tested on its own (apps/backoffice/tests).
 BACKOFFICE_REQUIRE_2FA = False
+CORE_LOAD_WORLD = False

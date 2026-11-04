@@ -22,7 +22,7 @@ export function WidgetSection() {
       className="border-trait bg-carte rounded-card flex flex-col gap-4 border p-4"
     >
       <h2 id="widget" className="text-title flex items-center gap-2 font-bold">
-        <Code aria-hidden size={28} weight="duotone" className="text-hibiscus" />
+        <Code aria-hidden size={28} />
         {t("title")}
       </h2>
       <PremiumGate feature="widget" title={t("premiumTitle")} text={t("premiumText")}>
@@ -88,7 +88,7 @@ function WidgetForm() {
         <span className="text-small text-prune-doux font-normal">{t("domainsHelp")}</span>
       </label>
       <SwitchRow
-        icon={<Code size={26} weight="duotone" />}
+        icon={<Code size={26} />}
         label={t("active")}
         description={t("activeHelp")}
         checked={active ?? data.is_active}

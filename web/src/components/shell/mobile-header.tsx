@@ -22,7 +22,7 @@ export function MobileHeader() {
           <MagnifyingGlass aria-hidden size={24} weight="bold" />
           <span>{t("search")}</span>
         </Link>
-        <ProSwitch icon={<Storefront aria-hidden size={24} weight="duotone" />} />
+        <ProSwitch icon={<Storefront aria-hidden size={24} />} />
         <AudioToggle compact />
         <NotificationBell />
       </div>

@@ -338,7 +338,7 @@ export function Thread({
 
       {data?.payment_warning && (
         <div className="bg-poudre mx-4 mt-3 flex gap-3 rounded-2xl p-4" role="note">
-          <ShieldCheck aria-hidden size={28} weight="fill" className="text-hibiscus shrink-0" />
+          <ShieldCheck aria-hidden size={28} weight="fill" className="shrink-0" />
           <div className="flex flex-col gap-1">
             <p className="font-bold">{t("payInApp")}</p>
             <p className="text-small">{t("payInAppText")}</p>

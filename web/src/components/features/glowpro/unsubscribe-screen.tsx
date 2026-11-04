@@ -23,7 +23,7 @@ export function UnsubscribeScreen({ token }: { token: string }) {
 
   if (query.isPending) return <Skeleton className="rounded-card h-60" />;
   if (!query.data) {
-    return <EmptyState icon={<BellSlash size={44} weight="duotone" />} title={t("broken")} />;
+    return <EmptyState icon={<BellSlash size={44} />} title={t("broken")} />;
   }
   const info = query.data;
   if (done || info.unsubscribed) {
@@ -37,7 +37,7 @@ export function UnsubscribeScreen({ token }: { token: string }) {
   }
   return (
     <div className="flex flex-col items-center gap-5 text-center">
-      <BellSlash aria-hidden size={48} weight="duotone" className="text-hibiscus" />
+      <BellSlash aria-hidden size={48} />
       <h1 className="text-headline font-bold">{t("title", { name: info.pro_name })}</h1>
       <p className="text-prune-doux">{t(`help.${info.channel}`)}</p>
       <Button

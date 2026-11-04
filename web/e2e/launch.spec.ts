@@ -38,6 +38,8 @@ test("sign up, find, book, buy, receipt code, rules and my data", async ({ brows
 
   // --- Sign up ----------------------------------------------------------------------------------
   await openWith(page, "/fr/auth", LOOK);
+  await page.getByRole("button", { name: "Téléphone" }).click();
+  await page.getByLabel("Pays").selectOption("BJ");
   await page.getByLabel("Ton numéro de téléphone").fill(national);
   await page.getByRole("button", { name: "Recevoir mon code" }).click();
   await expect(page.getByRole("heading", { name: "Tape ton code" })).toBeVisible();
@@ -103,7 +105,7 @@ test("sign up, find, book, buy, receipt code, rules and my data", async ({ brows
   await expect(booked).toBeVisible({ timeout: 30_000 });
   await booked.click();
   await pro.getByRole("button", { name: "Confirmer" }).click();
-  await expect(pro.getByText("Confirmé. La cliente est prévenue.")).toBeVisible();
+  await expect(pro.getByText("Confirmé. Le client est prévenu.")).toBeVisible();
   await proContext.close();
 
   await openWith(page, "/fr/appointments", LOOK);
@@ -120,7 +122,7 @@ test("sign up, find, book, buy, receipt code, rules and my data", async ({ brows
   await expect(page.getByRole("heading", { name: "Mon panier" })).toBeVisible();
   await page.getByRole("link", { name: /^Commander/ }).click();
   await expect(page.getByText("Étape 1 sur 3")).toBeVisible();
-  await page.getByText("Livrée par la pro").click();
+  await page.getByText("Livrée par le talent").click();
   await page.getByText("Cotonou centre").click();
   await page.getByLabel("Adresse ou quartier").fill("Rue 12.345, Akpakpa");
   await page.getByRole("button", { name: "Voir le récapitulatif" }).click();

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-04 18:05+0100\n"
+"POT-Creation-Date: 2026-11-04 21:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2288,7 +2288,7 @@ msgid "Gifts"
 msgstr "Darčeky"
 
 msgid "For the pros"
-msgstr "Pre profesionálky"
+msgstr "Ponúkať služby"
 
 msgid "Glow Points and games"
 msgstr "Glow Points a hry"
@@ -2372,6 +2372,33 @@ msgstr "Všetky krajiny"
 
 msgid "Leave empty to enable for every role."
 msgstr "Nechaj prázdne pre všetky roly."
+
+msgid "Sign in to continue."
+msgstr "Prihlás sa a pokračuj."
+
+msgid "You have been signed out. Sign in again to continue."
+msgstr "Bol si odhlásený. Prihlás sa a pokračuj."
+
+msgid "Your account cannot do this."
+msgstr "Tvoj účet to neumožňuje."
+
+msgid "We could not find what you are looking for."
+msgstr "Nenašli sme, čo hľadáš."
+
+msgid "Too many tries. Wait a moment, then try again."
+msgstr "Príliš veľa pokusov. Chvíľu počkaj a skús to znova."
+
+msgid "This action is not possible here."
+msgstr "Táto akcia tu nie je možná."
+
+msgid "This type of file is not accepted."
+msgstr "Tento typ súboru nie je povolený."
+
+msgid "We could not read what was sent. Try again."
+msgstr "Nepodarilo sa prečítať odoslané údaje. Skús to znova."
+
+msgid "Something went wrong on our side. Try again in a moment."
+msgstr "Na našej strane nastal problém. Skús to o chvíľu."
 
 msgid "Some information is missing or incorrect."
 msgstr "Niektoré údaje chýbajú alebo sú nesprávne."
@@ -2560,6 +2587,15 @@ msgstr "predvolený jazyk"
 
 msgid "time zone"
 msgstr "časové pásmo"
+
+msgid "region"
+msgstr "región"
+
+msgid "postal code"
+msgstr "PSČ"
+
+msgid "population"
+msgstr "počet obyvateľov"
 
 msgid "Text"
 msgstr "Text"
@@ -3570,10 +3606,10 @@ msgid "price per month"
 msgstr "cena za mesiac"
 
 msgid "Glow Pro offers"
-msgstr "Ponuky Glow Pro"
+msgstr "Ponuky Glow Premium"
 
 msgid "This is part of Glow Pro Premium. Try it for free in « My plan »."
-msgstr "Toto patrí do Glow Pro Premium. Vyskúšaj ho zadarmo v « Môj plán »."
+msgstr "Toto patrí do Glow Premium. Vyskúšaj ho zadarmo v « Môj plán »."
 
 #, python-format
 msgid "The free plan has %(limit)s people besides you. Go Premium to add more."
@@ -3643,10 +3679,10 @@ msgid "offered"
 msgstr "ponúkaný"
 
 msgid "Glow Pro plan"
-msgstr "plán Glow Pro"
+msgstr "plán Glow Premium"
 
 msgid "Glow Pro plans"
-msgstr "plány Glow Pro"
+msgstr "plány Glow Premium"
 
 msgid "plan"
 msgstr "plán"
@@ -3897,7 +3933,7 @@ msgstr "Táto osoba nezdvihla ruku."
 
 #, python-format
 msgid "You have used your %(max)s lives of the month. Glow Pro Premium gives you more."
-msgstr "Využila si svojich %(max)s live tento mesiac. Glow Pro Premium ti dá viac."
+msgstr "Využila si svojich %(max)s live tento mesiac. Glow Premium ti dá viac."
 
 msgid "The live video is not available right now. Try again in a few minutes."
 msgstr "Video live momentálne nie je dostupné. Skús to o pár minút."
@@ -4679,6 +4715,9 @@ msgstr "Najprv zadaj, kam chceš dostať peniaze."
 msgid "Your identity must be checked before you can receive money."
 msgstr "Pred prijatím peňazí musí byť tvoja totožnosť overená."
 
+msgid "Online payment is not open yet. Write to the seller to arrange it together."
+msgstr "Online platba ešte nie je otvorená. Napíš predajcovi a dohodnite sa."
+
 msgid "Cash at the payment provider"
 msgstr "Hotovosť u poskytovateľa platieb"
 
@@ -4737,7 +4776,7 @@ msgid "Training"
 msgstr "Školenie"
 
 msgid "Glow Pro subscription"
-msgstr "Predplatné Glow Pro"
+msgstr "Predplatné Glow Premium"
 
 msgid "Gift card"
 msgstr "Darčeková karta"
@@ -4978,9 +5017,6 @@ msgstr "obchodný názov"
 
 msgid "birth date"
 msgstr "dátum narodenia"
-
-msgid "postal code"
-msgstr "PSČ"
 
 msgid "country of residence"
 msgstr "krajina pobytu"
@@ -7047,7 +7083,7 @@ msgid "Pick-up points"
 msgstr "Výdajné miesta"
 
 msgid "Glow Pro"
-msgstr "Glow Pro"
+msgstr "Glow Premium"
 
 msgid "Agenda people"
 msgstr "Tímy kalendárov"

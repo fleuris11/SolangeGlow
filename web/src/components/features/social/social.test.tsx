@@ -74,7 +74,7 @@ describe("PostCard", () => {
     renderWithProviders(<PostCard post={POST} />);
     expect(screen.getByRole("article", { name: "Publication de Aïcha Tresses" })).toBeVisible();
     expect(screen.getByRole("img", { name: "Knotless mi-dos" })).toBeVisible();
-    expect(screen.getByLabelText("Pro vérifiée")).toBeInTheDocument();
+    expect(screen.getByLabelText("Talent vérifié")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Réserver ce look/ })).toHaveAttribute(
       "href",
       "/fr/aicha/rdv?service=s1&post=p1",
@@ -277,7 +277,7 @@ describe("StorySheet", () => {
 });
 
 describe("ReviewsSection", () => {
-  it("shows the average, the stars and the reply of the pro", () => {
+  it("shows the average, the stars and the reply of the talent", () => {
     const page: ReviewPage = {
       count: 2,
       average: 4.5,

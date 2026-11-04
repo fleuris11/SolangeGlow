@@ -9,14 +9,15 @@ test.describe("app shell on mobile", () => {
   });
 
   test("changes the city from the bottom sheet and remembers it", async ({ page }) => {
-    await page
-      .getByRole("button", { name: /Changer de ville/ })
-      .first()
-      .click();
+    await page.getByRole("button", { name: /ville/i }).first().click();
     const sheet = page.getByRole("dialog", { name: "Choisis ta ville" });
     await expect(sheet).toBeVisible();
 
-    await sheet.getByRole("button", { name: "Paris" }).click();
+    await sheet.getByRole("combobox").fill("Paris");
+    await sheet
+      .getByRole("button", { name: /^Paris/ })
+      .first()
+      .click();
     await expect(sheet).toBeHidden();
     await expect(page.getByRole("button", { name: /Ville : Paris/ }).first()).toBeVisible();
 
@@ -28,7 +29,7 @@ test.describe("app shell on mobile", () => {
     const nav = page.getByRole("navigation", { name: "Menu principal" }).last();
     await nav.getByRole("link", { name: "Messages" }).click();
     await expect(page).toHaveURL(/\/fr\/messages$/);
-    await expect(page.getByRole("heading", { name: "Écris aux pros" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Écris aux talents" })).toBeVisible();
     await expect(nav.getByRole("link", { name: "Messages" })).toHaveAttribute(
       "aria-current",
       "page",

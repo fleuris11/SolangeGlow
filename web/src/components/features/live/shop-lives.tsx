@@ -17,7 +17,7 @@ export function ShopLives({ lives }: { lives: ShopLive[] }) {
   return (
     <section aria-labelledby="shop-lives" className="flex flex-col gap-3">
       <h2 id="shop-lives" className="text-title flex items-center gap-2 font-bold">
-        <Broadcast aria-hidden size={26} weight="duotone" className="text-hibiscus" />
+        <Broadcast aria-hidden size={26} />
         {t("title")}
       </h2>
       <ul className="flex flex-col gap-2">
@@ -31,9 +31,9 @@ export function ShopLives({ lives }: { lives: ShopLive[] }) {
               )}
             >
               {live.status === "ended" ? (
-                <Play aria-hidden size={26} weight="fill" className="text-hibiscus shrink-0" />
+                <Play aria-hidden size={26} weight="fill" className="shrink-0" />
               ) : (
-                <Broadcast aria-hidden size={26} weight="bold" className="text-hibiscus shrink-0" />
+                <Broadcast aria-hidden size={26} weight="bold" className="shrink-0" />
               )}
               <span className="flex min-w-0 flex-1 flex-col">
                 <span className="truncate font-bold">{live.title}</span>

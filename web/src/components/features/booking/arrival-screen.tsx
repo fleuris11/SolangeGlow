@@ -29,7 +29,7 @@ export function ArrivalScreen({ reference }: { reference: string }) {
   if (query.isError || !query.data) {
     return (
       <EmptyState
-        icon={<QrCode size={44} weight="duotone" />}
+        icon={<QrCode size={44} />}
         title={t("notFound")}
         description={t("notFoundHelp")}
       />
@@ -66,7 +66,7 @@ export function ArrivalScreen({ reference }: { reference: string }) {
         <div>
           <dt className="sr-only">{t("client")}</dt>
           <dd className="text-lead flex items-center gap-2 font-bold">
-            <UserCircle aria-hidden size={28} weight="duotone" className="text-hibiscus" />
+            <UserCircle aria-hidden size={28} />
             {a.client_name}
           </dd>
         </div>

@@ -30,8 +30,8 @@ export function ContactChange({ me }: { me: Me }) {
   const [editing, setEditing] = useState<Kind | null>(null);
 
   const rows: { kind: Kind; value: string | null; icon: React.ReactNode }[] = [
-    { kind: "phone", value: me.phone, icon: <Phone size={26} weight="duotone" /> },
-    { kind: "email", value: me.email, icon: <Envelope size={26} weight="duotone" /> },
+    { kind: "phone", value: me.phone, icon: <Phone size={26} /> },
+    { kind: "email", value: me.email, icon: <Envelope size={26} /> },
   ];
 
   return (

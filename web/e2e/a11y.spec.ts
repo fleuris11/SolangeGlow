@@ -5,7 +5,7 @@ import { openWith, VIEWPORTS, type Theme } from "./helpers";
 
 const PATHS = [
   "/fr",
-  "/fr/pour-les-pros",
+  "/fr/proposer-mes-services",
   "/fr/comment-ca-marche",
   "/en/explore",
   "/sk/messages",

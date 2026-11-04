@@ -50,7 +50,7 @@ export function CartScreen() {
   if (cart.shops.length === 0) {
     return (
       <EmptyState
-        icon={<ShoppingBag size={44} weight="duotone" />}
+        icon={<ShoppingBag size={44} />}
         title={t("empty")}
         description={t("emptyHelp")}
         action={
@@ -85,7 +85,7 @@ export function CartScreen() {
           className="border-trait rounded-card flex flex-col gap-3 border p-4"
         >
           <h2 id={`shop-${shop.pro_id}`} className="text-lead flex items-center gap-2 font-bold">
-            <Storefront aria-hidden size={24} weight="duotone" className="text-hibiscus" />
+            <Storefront aria-hidden size={24} />
             {shop.shop.name}
           </h2>
           {!shop.delivery.is_open && <p className="text-alerte font-bold">{t("closed")}</p>}

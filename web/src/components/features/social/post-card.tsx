@@ -162,7 +162,7 @@ export function PostCard({
           isMine={post.is_mine}
           icons={{
             heart: <Heart aria-hidden size={26} />,
-            heartOn: <Heart aria-hidden size={26} weight="fill" className="text-hibiscus" />,
+            heartOn: <Heart aria-hidden size={26} weight="fill" />,
             comment: <ChatCircle aria-hidden size={26} />,
             save: <BookmarkSimple aria-hidden size={26} />,
             saveOn: <BookmarkSimple aria-hidden size={26} weight="fill" className="text-or" />,

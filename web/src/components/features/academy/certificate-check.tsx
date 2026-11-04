@@ -22,7 +22,7 @@ export function CertificateCheckView({
   if (!certificate) {
     return (
       <article className="flex flex-col items-center gap-4 text-center">
-        <SealWarning aria-hidden size={64} weight="duotone" className="text-alerte" />
+        <SealWarning aria-hidden size={64} className="text-alerte" />
         <h1 className="text-headline font-bold">{t("unknown")}</h1>
         <p>{t("unknownHelp", { code })}</p>
       </article>
@@ -40,9 +40,9 @@ export function CertificateCheckView({
   return (
     <article className="flex flex-col items-center gap-5 text-center">
       {valid ? (
-        <SealCheck aria-hidden size={72} weight="duotone" className="text-feuille" />
+        <SealCheck aria-hidden size={72} className="text-feuille" />
       ) : (
-        <SealWarning aria-hidden size={72} weight="duotone" className="text-alerte" />
+        <SealWarning aria-hidden size={72} className="text-alerte" />
       )}
       <div className="flex items-start gap-2">
         <h1 className={cn("text-headline font-bold", valid ? "text-feuille" : "text-alerte")}>

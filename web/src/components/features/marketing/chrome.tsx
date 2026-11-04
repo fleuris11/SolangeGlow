@@ -10,8 +10,6 @@ import { EditorialSection } from "@/components/ui/editorial-section";
 import { LocaleSwitcher } from "@/components/ui/locale-switcher";
 import { Link } from "@/lib/i18n/navigation";
 
-const PLACES = "Cotonou, Calavi, Porto-Novo, Paris, Brest";
-
 export const TITLE = "font-display min-w-0 text-balance hyphens-none [overflow-wrap:anywhere]";
 
 /** A group of short lines kept as an object in the messages, in order. */
@@ -45,7 +43,7 @@ export function TopBar({ signedIn = false }: { signedIn?: boolean }) {
         <Link href="/selection">{t("nav.selection")}</Link>
         <Link href="/academie">{t("nav.academy")}</Link>
         <Link href="/offrir">{t("nav.gift")}</Link>
-        <Link href="/pour-les-pros">{t("nav.pros")}</Link>
+        <Link href="/proposer-mes-services">{t("nav.pros")}</Link>
         <Link href="/comment-ca-marche">{t("nav.how")}</Link>
       </nav>
       <div className="flex min-w-0 items-center gap-1 sm:gap-2">
@@ -108,7 +106,7 @@ export function SiteFooter() {
       <footer className="flex flex-col gap-10">
         <div className="flex flex-col gap-2">
           <Logo sizes="176px" className="h-16 w-auto self-start lg:h-20" />
-          <p className="text-lead text-prune-doux">{PLACES}</p>
+          <p className="text-lead text-prune-doux">{t("everywhere")}</p>
         </div>
         <div className="grid grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-4">
           <FooterColumn title={t("footer.forYou")}>
@@ -119,7 +117,7 @@ export function SiteFooter() {
             <FooterLink href="/classements">{t("footer.games")}</FooterLink>
           </FooterColumn>
           <FooterColumn title={t("nav.pros")}>
-            <FooterLink href="/pour-les-pros">{t("footer.proTools")}</FooterLink>
+            <FooterLink href="/proposer-mes-services">{t("footer.proTools")}</FooterLink>
             <FooterLink href="/auth?as=pro">{t("footer.proStart")}</FooterLink>
             <FooterLink href="/academie">{t("footer.proTeach")}</FooterLink>
           </FooterColumn>

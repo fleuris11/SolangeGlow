@@ -132,7 +132,7 @@ function HandOverInfo({ order }: { order: Order }) {
       {pickup ? (
         <>
           <p className="flex items-start gap-2">
-            <Storefront aria-hidden size={22} className="text-hibiscus mt-0.5 shrink-0" />
+            <Storefront aria-hidden size={22} className="mt-0.5 shrink-0" />
             {[pickup.address, pickup.district, pickup.city].filter(Boolean).join(", ")}
           </p>
           {pickup.note && <p className="text-prune-doux">{pickup.note}</p>}
@@ -140,7 +140,7 @@ function HandOverInfo({ order }: { order: Order }) {
           {voice && (
             <div className="flex flex-col gap-2">
               <p className="text-small flex items-center gap-1 font-bold">
-                <Waveform aria-hidden size={18} className="text-hibiscus" />
+                <Waveform aria-hidden size={18} />
                 {t("voice")}
               </p>
               <audio controls preload="none" src={voice} className="w-full">
@@ -168,7 +168,7 @@ function HandOverInfo({ order }: { order: Order }) {
           {order.zone_name && <p className="font-bold">{order.zone_name}</p>}
           {order.address && (
             <p className="flex items-start gap-2">
-              <MapPin aria-hidden size={22} className="text-hibiscus mt-0.5 shrink-0" />
+              <MapPin aria-hidden size={22} className="mt-0.5 shrink-0" />
               {order.address}
             </p>
           )}

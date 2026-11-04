@@ -408,3 +408,15 @@ def test_balance_of_one_payment():
     cash = ledger.account("provider_cash", "XOF", provider="fake")
     assert ledger.balance(cash, payment=first) == 11_330
     assert ledger.balance(cash) == 2 * 11_330 and second.total_minor == 11_330
+
+
+def test_no_payment_can_start_while_payments_are_closed():
+    from apps.core.models import FeatureFlag
+    from apps.core.selectors import payments_open
+
+    FeatureFlag.objects.update_or_create(
+        key="payments_closed", defaults={"name": "Payments closed", "is_enabled": True}
+    )
+    assert payments_open() is False
+    with pytest.raises(errors.PaymentsClosed):
+        payment()

@@ -474,7 +474,7 @@ function ModuleCard({
             </label>
             {lesson.resources.map((resource) => (
               <span key={resource.id} className="flex items-center gap-2">
-                <FilePdf aria-hidden size={20} className="text-hibiscus" />
+                <FilePdf aria-hidden size={20} />
                 <span className="flex-1">{resource.title}</span>
                 <Button
                   variant="quiet"

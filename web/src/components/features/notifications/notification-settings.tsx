@@ -76,7 +76,7 @@ export function NotificationSettings({ me }: { me: Me }) {
 
       <div className="flex flex-col gap-3">
         <SwitchRow
-          icon={<BellRinging size={28} weight="duotone" />}
+          icon={<BellRinging size={28} />}
           label={t("push")}
           description={pushDescription}
           checked={push === "on"}
@@ -84,7 +84,7 @@ export function NotificationSettings({ me }: { me: Me }) {
           onChange={(value) => void togglePush(value)}
         />
         <SwitchRow
-          icon={<EnvelopeSimple size={28} weight="duotone" />}
+          icon={<EnvelopeSimple size={28} />}
           label={t("email")}
           description={me.email ? t("emailText", { email: me.email }) : t("emailMissing")}
           checked={me.notify_email && !!me.email}
@@ -92,7 +92,7 @@ export function NotificationSettings({ me }: { me: Me }) {
           onChange={(value) => void save({ notify_email: value })}
         />
         <SwitchRow
-          icon={<WhatsappLogo size={28} weight="duotone" />}
+          icon={<WhatsappLogo size={28} />}
           label={t("whatsapp")}
           description={t("whatsappText")}
           checked={me.notify_whatsapp}
@@ -100,7 +100,7 @@ export function NotificationSettings({ me }: { me: Me }) {
           onChange={(value) => void save({ notify_whatsapp: value })}
         />
         <SwitchRow
-          icon={<Phone size={28} weight="duotone" />}
+          icon={<Phone size={28} />}
           label={t("calls")}
           description={t("callsText")}
           checked={me.accept_calls}
@@ -116,7 +116,7 @@ export function NotificationSettings({ me }: { me: Me }) {
         className="border-trait bg-carte rounded-card flex flex-col gap-4 border p-4"
       >
         <h3 id="quiet-title" className="flex items-center gap-2 font-bold">
-          <MoonStars aria-hidden size={26} weight="duotone" className="text-hibiscus" />
+          <MoonStars aria-hidden size={26} />
           {t("quietTitle")}
         </h3>
         <p className="text-small text-prune-doux">{t("quietText")}</p>
@@ -148,7 +148,7 @@ export function NotificationSettings({ me }: { me: Me }) {
       <Button
         variant="quiet"
         className="self-start"
-        icon={<PaperPlaneTilt size={22} weight="duotone" />}
+        icon={<PaperPlaneTilt size={22} />}
         onClick={async () => {
           await sendTestNotification();
           toast(t("testSent"));

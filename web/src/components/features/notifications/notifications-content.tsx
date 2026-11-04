@@ -21,7 +21,7 @@ export function NotificationsContent() {
   if (!me) {
     return (
       <EmptyState
-        icon={<BellRinging size={48} weight="duotone" />}
+        icon={<BellRinging size={48} />}
         title={t("visitorTitle")}
         description={t("visitorText")}
         action={

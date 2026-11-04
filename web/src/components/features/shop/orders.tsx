@@ -73,7 +73,7 @@ export function OrderList({
         <Skeleton className="h-40 rounded-2xl" />
       ) : rows.length === 0 ? (
         <EmptyState
-          icon={<Package size={44} weight="duotone" />}
+          icon={<Package size={44} />}
           title={role === "buyer" ? t("noPurchase") : t("noSale")}
           description={role === "buyer" ? t("noPurchaseHelp") : undefined}
           action={

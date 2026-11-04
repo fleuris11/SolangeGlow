@@ -51,9 +51,9 @@ export function SpeakButton({ text, always = false, className }: Props) {
       )}
     >
       {speaking ? (
-        <Stop aria-hidden size={22} weight="fill" className="text-hibiscus" />
+        <Stop aria-hidden size={22} weight="fill" />
       ) : (
-        <SpeakerHigh aria-hidden size={22} weight="duotone" className="text-hibiscus" />
+        <SpeakerHigh aria-hidden size={22} />
       )}
       <span aria-hidden>{speaking ? t("stopShort") : t("listen")}</span>
     </button>

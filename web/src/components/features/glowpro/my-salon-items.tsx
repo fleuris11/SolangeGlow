@@ -38,7 +38,7 @@ export function MySalonItems() {
       {data.packages.length > 0 && (
         <section aria-labelledby="my-packages" className="flex flex-col gap-2">
           <h2 id="my-packages" className="text-title flex items-center gap-2 font-bold">
-            <Stack aria-hidden size={26} weight="duotone" className="text-hibiscus" />
+            <Stack aria-hidden size={26} />
             {t("packages")}
           </h2>
           <ul className="flex flex-col gap-2">
@@ -70,7 +70,7 @@ export function MySalonItems() {
       {data.gift_cards.length > 0 && (
         <section aria-labelledby="my-gifts" className="flex flex-col gap-2">
           <h2 id="my-gifts" className="text-title flex items-center gap-2 font-bold">
-            <Gift aria-hidden size={26} weight="duotone" className="text-hibiscus" />
+            <Gift aria-hidden size={26} />
             {t("giftCards")}
           </h2>
           <ul className="flex flex-col gap-2">

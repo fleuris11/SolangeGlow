@@ -20,10 +20,7 @@ export default async function Page({ params }: Props) {
   return (
     <>
       <AppointmentView holder={{ token }} />
-      <InstallPrompt
-        moment="success"
-        icon={<DeviceMobile aria-hidden size={24} weight="duotone" />}
-      />
+      <InstallPrompt moment="success" icon={<DeviceMobile aria-hidden size={24} />} />
     </>
   );
 }

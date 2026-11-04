@@ -141,7 +141,7 @@ describe("SignInFlow", () => {
 });
 
 describe("WelcomeFlow", () => {
-  it("records a pro with her trades, language and city, then blooms", async () => {
+  it("records a talent with her trades, language and city, then blooms", async () => {
     document.cookie = "sg_signed_in=1; path=/";
     const fetchMock = mockApi([
       { path: "/me", body: ME },
@@ -160,7 +160,7 @@ describe("WelcomeFlow", () => {
     ]);
     renderWithProviders(<WelcomeFlow />);
 
-    await userEvent.click(await screen.findByRole("button", { name: /Je suis une pro/ }));
+    await userEvent.click(await screen.findByRole("button", { name: /Je propose mes services/ }));
     await userEvent.click(await screen.findByRole("button", { name: "Tresses" }));
     await userEvent.click(screen.getByRole("button", { name: "Continuer" }));
 
@@ -189,7 +189,7 @@ describe("WelcomeFlow", () => {
     });
   });
 
-  it("needs a trade before a pro can continue", async () => {
+  it("needs a trade before a talent can continue", async () => {
     document.cookie = "sg_signed_in=1; path=/";
     mockApi([
       { path: "/me", body: ME },

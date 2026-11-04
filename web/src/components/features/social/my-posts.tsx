@@ -111,7 +111,7 @@ export function SavedPosts() {
   if (!posts.length) {
     return (
       <EmptyState
-        icon={<BookmarkSimple size={48} weight="duotone" />}
+        icon={<BookmarkSimple size={48} />}
         title={t("emptyTitle")}
         description={t("emptyText")}
         action={

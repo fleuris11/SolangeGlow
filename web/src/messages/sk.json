@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Solange Glow",
-    "description": "Krása a móda, od Beninu po Francúzsko. Nájdi si profesionálku vo svojom okolí."
+    "description": "Krása a móda blízko teba, na celom svete."
   },
   "manifest": {
     "shortName": "Solange Glow",
@@ -27,8 +27,12 @@
   "city": {
     "change": "Mesto: {city}. Zmeniť mesto",
     "title": "Vyber si mesto",
-    "description": "Ukážeme ti profesionálky vo tvojom okolí.",
-    "saved": "Vybrané mesto: {city}"
+    "description": "Ukážeme ti, čo je blízko teba.",
+    "saved": "Vybrané mesto: {city}",
+    "choose": "Vybrať mesto",
+    "search": "Tvoje mesto",
+    "everywhere": "Všade",
+    "everywhereCta": "Zobraziť všade"
   },
   "audio": {
     "mode": "Zvuk",
@@ -82,7 +86,7 @@
       "title": "Pridaj sa k Solange Glow",
       "clientTitle": "Hľadám profesionálku",
       "clientText": "Rezervuj, nakupuj a plať bezpečne.",
-      "proTitle": "Som profesionálka",
+      "proTitle": "Ponúkam služby",
       "proText": "Ukáž svoju prácu a naplň si kalendár."
     },
     "public": {
@@ -148,13 +152,6 @@
       },
       "line": "Účesy, vrkoče, make-up, nechty. Rezervuj online, aj bez účtu."
     }
-  },
-  "aside": {
-    "prosNearby": "Profesionálky nablízku",
-    "giftTitle": "Daruj domov",
-    "giftText": "Poteš blízkeho v Benine.",
-    "from": "od",
-    "giftCta": "Darovať"
   },
   "explore": {
     "title": "Objavovať",
@@ -462,27 +459,18 @@
     "metaTitle": "Prihlásenie",
     "title": "Vitaj v Solange Glow",
     "titlePro": "Pridaj sa k Solange Glow ako profesionálka",
-    "subtitle": "Stačí tvoje číslo. Pošleme ti 6-miestny kód.",
+    "subtitle": "Stačí tvoj e-mail. Pošleme ti 6-miestny kód.",
     "method": "Ako chceš dostať kód?",
     "byPhone": "Telefón",
     "byEmail": "E-mail",
     "emailLabel": "Tvoja e-mailová adresa",
     "sendCode": "Poslať kód",
-    "privacy": "Tvoje číslo zostáva súkromné: profesionálky ho nevidia.",
+    "privacy": "Tvoje údaje ostanú súkromné: talenty ich nevidia.",
     "welcomeBack": "Vitaj späť!",
     "phone": {
       "label": "Tvoje telefónne číslo",
       "country": "Krajina",
-      "countries": {
-        "BJ": "Benin",
-        "FR": "Francúzsko",
-        "other": "Iná krajina"
-      },
-      "placeholders": {
-        "BJ": "01 97 00 00 00",
-        "FR": "06 12 34 56 78",
-        "other": "+421 900 123 456"
-      }
+      "placeholder": "Tvoje číslo"
     },
     "channels": {
       "whatsapp": "WhatsApp",
@@ -519,7 +507,7 @@
     "role": {
       "title": "Prečo si tu?",
       "client": "Hľadám profesionálku",
-      "pro": "Som profesionálka",
+      "pro": "Ponúkam služby",
       "trades": "Tvoje odbory"
     },
     "language": {
@@ -527,7 +515,8 @@
     },
     "city": {
       "title": "Tvoje mesto a dátum narodenia",
-      "other": "Iné mesto"
+      "other": "Iné mesto",
+      "country": "Krajina"
     },
     "done": {
       "title": "Vitaj!",
@@ -1124,7 +1113,8 @@
       "photoLater": "Môžeš ju zmeniť aj v « Moja vitrína ».",
       "next": "Pokračovať",
       "finish": "Vytvoriť vitrínu",
-      "error": "Vytvorenie zlyhalo. Skús znova."
+      "error": "Vytvorenie zlyhalo. Skús znova.",
+      "country": "Krajina"
     },
     "languages": {
       "fr": "Francúzština",
@@ -1394,7 +1384,7 @@
       "selection": "Moje objednávky z Francúzska",
       "appointments": "Moje termíny",
       "agenda": "Môj kalendár",
-      "salon": "Môj salón (Glow Pro)",
+      "salon": "Môj salón (Glow Premium)",
       "courses": "Moje kurzy (Akadémia)",
       "trainer": "Priestor lektorky",
       "calls": "Moje hovory",
@@ -2560,7 +2550,7 @@
       "unsubscribe": "Odhlásiť sa"
     },
     "gate": {
-      "badge": "S Glow Pro Premium",
+      "badge": "S Glow Premium",
       "try": "Vyskúšať zadarmo {days} dní",
       "see": "Pozrieť Premium",
       "trialStarted": "Ideme na to: všetko z Premium je otvorené.",
@@ -2600,7 +2590,7 @@
       "resume": "Ponechať Premium",
       "resumed": "Premium pokračuje.",
       "downgradeRule": "Po návrate na bezplatný plán sa nič nezmaže: osoby navyše sa pozastavia.",
-      "invoices": "Moje faktúry Glow Pro"
+      "invoices": "Moje faktúry Glow Premium"
     },
     "dashboard": {
       "title": "Prehľad",
@@ -3511,7 +3501,7 @@
       "minutes": "{minutes} min",
       "plan": "Naplánovať live",
       "full": "Využila si svoje live na tento mesiac.",
-      "premium": "Glow Pro Premium ti dá viac",
+      "premium": "Glow Premium ti dá viac",
       "verify": "Tvoj obchod musí byť overený, aby si mohla predávať naživo.",
       "empty": "Zatiaľ žiadny live",
       "emptyHelp": "Ukáž svoje produkty naživo: klientky nakupujú bez opustenia live.",
@@ -4171,13 +4161,13 @@
       "selection": "Výber z Francúzska",
       "academy": "Akadémia",
       "gift": "Darovať",
-      "pros": "Pre profesionálky",
+      "pros": "Ponúkať služby",
       "how": "Ako to funguje"
     },
     "signIn": "Prihlásiť sa",
     "createAccount": "Vytvoriť účet",
     "myAccount": "Môj účet",
-    "iAmPro": "Som profesionálka",
+    "iAmPro": "Ponúkam služby",
     "who": {
       "title": "Kde začať?",
       "already": "Už máš účet?",
@@ -4203,7 +4193,7 @@
         "cta": "Vytvoriť môj účet"
       },
       "pro": {
-        "title": "Som profesionálka",
+        "title": "Ponúkam služby",
         "text": "Sama, doma alebo v salóne. Základ je zadarmo.",
         "items": {
           "a": "Tvoja vitrína a krátky odkaz",
@@ -4277,7 +4267,7 @@
       "cta": "Rezervovať termín"
     },
     "forPros": {
-      "title": "Si profesionálka? Tvoj salón online, bez predplatného",
+      "title": "Ponúkaš služby? Tvoj priestor online, bez predplatného",
       "line": "Pre samostatné, prácu doma aj salóny. Vitrínu a QR kód vytvoríš za pár minút.",
       "items": {
         "a": "Vitrína a krátky odkaz",
@@ -4308,8 +4298,8 @@
         "a": "Zadaj číslo alebo e-mail a potom kód z WhatsAppu, SMS alebo e-mailu. Potom si vyber mesto a jazyk."
       },
       "pro": {
-        "q": "Som profesionálka. Čo mám urobiť?",
-        "a": "Vytvor si účet a vyber « Som profesionálka ». Vyplň vitrínu a zverejni ju. Na prijímanie platieb pošli doklad totožnosti a selfie."
+        "q": "Ponúkam služby. Čo mám urobiť?",
+        "a": "Vytvor si účet a vyber « Ponúkam služby ». Vyplň vitrínu a zverejni ju. Na prijímanie platieb pošli doklad totožnosti a selfie."
       },
       "qr": {
         "q": "Na čo slúžia QR kódy?",
@@ -4341,8 +4331,8 @@
       "credits": "Autori fotiek"
     },
     "pros": {
-      "metaTitle": "Pre profesionálky",
-      "title": "Tvoj salón online. Základ je zadarmo.",
+      "metaTitle": "Ponúkať služby",
+      "title": "Tvoja činnosť online. To podstatné je zadarmo.",
       "line": "Vitrína, QR kód, diár, obchod a kurzy na jednom mieste.",
       "cta": "Vytvoriť moju vitrínu",
       "heroAlt": "Profesionálka lakuje klientke nechty.",
@@ -4449,7 +4439,7 @@
           "f": "Obchod a kurzy",
           "g": "Jednoduchý prehľad"
         },
-        "premium": "Glow Pro Premium",
+        "premium": "Glow Premium",
         "premiumItems": {
           "a": "Viac kolegýň v diári",
           "b": "Úplná karta klientky, balíky a splátky",
@@ -4510,7 +4500,7 @@
         "steps": {
           "a": "Zadaj telefónne číslo alebo e-mail.",
           "b": "Napíš kód z WhatsAppu, SMS alebo e-mailu.",
-          "c": "Vyber si mesto a jazyk. Ak si profesionálka, vyber « Som profesionálka »."
+          "c": "Vyber si mesto a jazyk. Ak si profesionálka, vyber « Ponúkam služby »."
         },
         "note": "Prihlásenie je rovnaké: číslo alebo e-mail a potom kód. Na predaj alebo prijímanie platieb pošle profesionálka aj doklad totožnosti a selfie."
       },
@@ -4593,16 +4583,17 @@
           "e": "Úspora dát odľahčí obrázky a videá."
         }
       }
-    }
+    },
+    "everywhere": "Na celom svete, v tvojom jazyku."
   },
   "proSpace": {
-    "badge": "Pre profesionálky",
-    "menu": "Menu môjho priestoru",
+    "badge": "Moja činnosť",
+    "menu": "Menu mojej činnosti",
     "more": "Viac",
     "myPage": "Moja vitrína",
     "seeMyPage": "Pozrieť moju vitrínu",
-    "clientMode": "Prepnúť na klientku",
-    "proMode": "Môj priestor",
+    "clientMode": "Môj osobný priestor",
+    "proMode": "Moja činnosť",
     "signOut": "Odhlásiť sa",
     "nav": {
       "today": "Dnes",
@@ -4616,12 +4607,30 @@
       "money": "Peniaze",
       "stats": "Štatistiky",
       "plan": "Moja ponuka",
-      "settings": "Nastavenia"
+      "settings": "Nastavenia",
+      "groupAppointments": "Termíny",
+      "groupShop": "Obchod",
+      "groupPresence": "Moja prezentácia",
+      "groupMoney": "Peniaze",
+      "groupMore": "Nastavenia",
+      "stock": "Sklad",
+      "giftCards": "Darčekové karty",
+      "packages": "Balíky",
+      "publish": "Zverejniť",
+      "lives": "Živé vysielania",
+      "boost": "Zviditeľniť",
+      "reviews": "Hodnotenia",
+      "share": "Odkaz a QR kód",
+      "academy": "Kurzy",
+      "campaigns": "Kampane",
+      "invoices": "Faktúry",
+      "verification": "Overenie",
+      "agendaSettings": "Nastavenia diára"
     },
     "site": {
       "poweredBy": "Stránka Solange Glow",
       "discover": "Objaviť Solange Glow",
-      "forPros": "Si profesionálka?",
+      "forPros": "Ponúkaš služby?",
       "help": "Pomoc"
     },
     "today": {
@@ -4722,7 +4731,16 @@
       "pauseHelp": "Nikto nerezervuje online. Diár funguje ďalej.",
       "pause": "Pozastaviť rezervácie",
       "resume": "Obnoviť rezervácie"
-    }
+    },
+    "lives": {
+      "title": "Moje živé vysielania",
+      "line": "Predávaj alebo uč naživo.",
+      "saleTitle": "Predaj naživo",
+      "courseTitle": "Uč naživo",
+      "courseText": "Naplánuj živý kurz zo svojich kurzov.",
+      "courseCta": "Naplánovať kurz"
+    },
+    "personal": "Osobné"
   },
   "errors": {
     "title": "Túto stránku sa nepodarilo zobraziť",
@@ -4731,5 +4749,8 @@
     "home": "Späť na úvod",
     "notFoundTitle": "Táto stránka neexistuje",
     "notFoundText": "Odkaz môže byť starý alebo neúplný."
+  },
+  "geo": {
+    "placeholder": "Začni písať..."
   }
 }

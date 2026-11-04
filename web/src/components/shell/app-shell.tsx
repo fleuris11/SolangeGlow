@@ -7,7 +7,6 @@ import { BottomNav } from "@/components/ui/bottom-nav";
 import { DesktopSidebar } from "./desktop-sidebar";
 import { navIcons } from "./nav-icons";
 import { MobileHeader } from "./mobile-header";
-import { RightColumn } from "./right-column";
 
 /**
  * Mobile: header, content, bottom bar.
@@ -24,11 +23,11 @@ export function AppShell({ children }: { children: ReactNode }) {
       >
         {t("skipToContent")}
       </a>
-      <div className="lg:grid lg:grid-cols-[220px_minmax(0,640px)] lg:justify-center lg:gap-8 xl:grid-cols-[220px_minmax(0,640px)_300px]">
+      <div className="lg:grid lg:grid-cols-[220px_minmax(0,640px)] lg:justify-center lg:gap-8">
         <DesktopSidebar
           icons={icons}
           leave={{
-            pro: <Storefront aria-hidden size={24} weight="duotone" />,
+            pro: <Storefront aria-hidden size={24} />,
             signOut: <SignOut aria-hidden size={24} weight="bold" />,
           }}
         />
@@ -38,7 +37,6 @@ export function AppShell({ children }: { children: ReactNode }) {
             {children}
           </main>
         </div>
-        <RightColumn />
       </div>
       <BottomNav icons={icons} />
     </>

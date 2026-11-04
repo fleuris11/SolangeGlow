@@ -29,7 +29,7 @@ export default async function OfflinePage({ params }: Props) {
         aria-hidden
         className="bg-poudre text-hibiscus petal inline-flex size-24 items-center justify-center"
       >
-        <WifiSlash size={48} weight="duotone" />
+        <WifiSlash size={48} />
       </span>
       <div className="flex items-start gap-2">
         <h1 className="font-display text-headline font-black">{t("title")}</h1>
@@ -44,7 +44,7 @@ export default async function OfflinePage({ params }: Props) {
         href="/academie/mes-formations"
         className={buttonClasses({ variant: "secondary", fullWidth: true })}
       >
-        <GraduationCap aria-hidden size={22} weight="duotone" />
+        <GraduationCap aria-hidden size={22} />
         {t("lessons")}
       </Link>
     </section>

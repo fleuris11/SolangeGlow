@@ -15,7 +15,7 @@ export function ProEntry({ me }: { me: Me }) {
       href={isPro ? "/pro" : "/pro/start"}
       className="bg-poudre rounded-card flex items-center gap-4 p-4"
     >
-      <Storefront aria-hidden size={32} weight="duotone" className="text-hibiscus shrink-0" />
+      <Storefront aria-hidden size={32} className="shrink-0" />
       <span className="flex min-w-0 flex-1 flex-col">
         <span className="font-bold">{isPro ? t("myShowcase") : t("becomePro")}</span>
         <span className="text-small text-prune-doux">

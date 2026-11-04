@@ -14,7 +14,7 @@ export function ReviewsSection({ page, name }: { page: ReviewPage; name: string 
   return (
     <section aria-labelledby="reviews" className="flex flex-col gap-4">
       <h2 id="reviews" className="text-title flex items-center gap-2 font-bold">
-        <Star aria-hidden size={26} weight="duotone" className="text-hibiscus" />
+        <Star aria-hidden size={26} />
         {t("title")}
       </h2>
       <p className="text-small text-prune-doux">{t("verifiedOnly")}</p>
@@ -91,7 +91,7 @@ export function ReviewsSection({ page, name }: { page: ReviewPage; name: string 
                 )}
                 {review.reply && (
                   <div className="bg-poudre rounded-card flex gap-2 p-3">
-                    <ChatCircleText aria-hidden size={20} className="text-hibiscus shrink-0" />
+                    <ChatCircleText aria-hidden size={20} className="shrink-0" />
                     <p>
                       <span className="font-bold">{t("replyOf", { name })}</span> {review.reply}
                     </p>

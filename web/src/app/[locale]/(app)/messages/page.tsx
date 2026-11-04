@@ -34,7 +34,7 @@ export default function MessagesPage({ params }: Props) {
       <MessagesHome
         visitor={
           <EmptyState
-            icon={<ChatsCircle size={48} weight="duotone" />}
+            icon={<ChatsCircle size={48} />}
             title={t("visitorTitle")}
             description={t("visitorText")}
             action={

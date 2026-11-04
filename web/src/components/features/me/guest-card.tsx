@@ -49,7 +49,7 @@ export function GuestCard() {
       aria-labelledby="guest-booking-title"
       className="border-trait bg-carte rounded-card flex flex-col gap-4 border p-5"
     >
-      <CalendarCheck aria-hidden size={36} weight="duotone" className="text-hibiscus" />
+      <CalendarCheck aria-hidden size={36} />
       <h2 id="guest-booking-title" className="text-title font-bold">
         {t("title")}
       </h2>

@@ -14,7 +14,7 @@ const TEAM_PHONE = "+2290197000108"; // Institut Prisca
 const LOOK = { theme: "light", textSize: "normal" } as const;
 const API = { "X-SG-Client": "web" };
 
-test("a guest books, the pro confirms, reminder, done, then a verified review", async ({
+test("a guest books, the talent confirms, reminder, done, then a verified review", async ({
   browser,
 }) => {
   test.setTimeout(480_000);
@@ -67,7 +67,7 @@ test("a guest books, the pro confirms, reminder, done, then a verified review", 
   expect(manageUrl).toMatch(/^\/fr\/rdv\//);
   // First visit of a page: the development server compiles it.
   await guest.goto(manageUrl, { timeout: 120_000 });
-  await expect(guest.getByRole("heading", { name: "À confirmer par la pro" })).toBeVisible({
+  await expect(guest.getByRole("heading", { name: "À confirmer par le talent" })).toBeVisible({
     timeout: 60_000,
   });
 
@@ -83,7 +83,7 @@ test("a guest books, the pro confirms, reminder, done, then a verified review", 
     .click();
   await expect(pro.getByText("« Cheveux mi-longs »")).toBeVisible();
   await pro.getByRole("button", { name: "Confirmer" }).click();
-  await expect(pro.getByText("Confirmé. La cliente est prévenue.")).toBeVisible();
+  await expect(pro.getByText("Confirmé. Le client est prévenu.")).toBeVisible();
   await pro.keyboard.press("Escape");
 
   await guest.goto(manageUrl);
@@ -96,7 +96,7 @@ test("a guest books, the pro confirms, reminder, done, then a verified review", 
   await expect(qrCode).toBeVisible();
   expect(await qrCode.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0);
   await pro.goto(`/fr/pro/agenda/arrivee/${reference}`, { timeout: 120_000 });
-  await expect(pro.getByRole("heading", { name: "Arrivée de la cliente" })).toBeVisible({
+  await expect(pro.getByRole("heading", { name: "Arrivée du client" })).toBeVisible({
     timeout: 60_000,
   });
   await expect(pro.getByText(name)).toBeVisible();

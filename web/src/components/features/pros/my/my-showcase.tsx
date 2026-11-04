@@ -45,15 +45,15 @@ const MISSING_SECTION: Record<string, Section> = {
 };
 
 const ICONS: Record<Section, ReactNode> = {
-  info: <UserCircle size={28} weight="duotone" />,
-  services: <Scissors size={28} weight="duotone" />,
-  hours: <Clock size={28} weight="duotone" />,
-  portfolio: <Images size={28} weight="duotone" />,
-  reviews: <Star size={28} weight="duotone" />,
-  messages: <ChatCenteredText size={28} weight="duotone" />,
-  place: <MapPin size={28} weight="duotone" />,
-  share: <QrCode size={28} weight="duotone" />,
-  verification: <IdentificationCard size={28} weight="duotone" />,
+  info: <UserCircle size={28} />,
+  services: <Scissors size={28} />,
+  hours: <Clock size={28} />,
+  portfolio: <Images size={28} />,
+  reviews: <Star size={28} />,
+  messages: <ChatCenteredText size={28} />,
+  place: <MapPin size={28} />,
+  share: <QrCode size={28} />,
+  verification: <IdentificationCard size={28} />,
 };
 
 type Say = (key: string, values?: Record<string, string | number>) => string;
@@ -206,7 +206,7 @@ export function MyShowcase() {
           href="/pro/boost"
           className="border-or bg-carte rounded-card flex min-h-16 items-center gap-4 border-2 p-4"
         >
-          <Megaphone aria-hidden size={28} weight="duotone" className="text-hibiscus" />
+          <Megaphone aria-hidden size={28} />
           <span className="flex min-w-0 flex-1 flex-col">
             <span className="font-bold">{t("boost")}</span>
             <span className="text-small text-prune-doux">{t("boostHelp")}</span>

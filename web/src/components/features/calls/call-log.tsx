@@ -34,7 +34,7 @@ export function CallLog() {
       {query.isPending && <Skeleton className="rounded-card h-40" />}
       {query.isSuccess && calls.length === 0 && (
         <EmptyState
-          icon={<Phone aria-hidden size={48} weight="duotone" />}
+          icon={<Phone aria-hidden size={48} />}
           title={t("log.empty")}
           action={
             <Link href="/messages" className="font-bold underline">

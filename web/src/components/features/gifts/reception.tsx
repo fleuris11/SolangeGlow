@@ -273,7 +273,7 @@ function ReceivePanel({ gift, token }: { gift: Reception; token: string }) {
                 checked={point === item.id}
                 onChange={() => setPoint(item.id)}
               />
-              <MapPin aria-hidden size={24} className="text-hibiscus mt-1 shrink-0" />
+              <MapPin aria-hidden size={24} className="mt-1 shrink-0" />
               <span className="flex flex-col">
                 <span className="font-bold">{item.name}</span>
                 <span className="text-small text-prune-doux">
@@ -521,7 +521,7 @@ function Envelope({ gift, onOpen }: { gift: Reception; onOpen: () => void }) {
           aria-hidden
           className="bg-or absolute -top-1/2 left-1/2 aspect-square w-3/4 -translate-x-1/2 rotate-45 rounded-3xl opacity-90"
         />
-        <Gift aria-hidden size={72} weight="duotone" className="relative" />
+        <Gift aria-hidden size={72} className="relative" />
       </div>
       <h1 className="font-display text-display font-black">
         {t("forYou", { name: gift.recipient_name })}
@@ -566,7 +566,7 @@ export function GiftReception({ token }: { token: string }) {
     );
     return (
       <div className="flex flex-col items-center gap-4 py-10 text-center">
-        <HourglassMedium aria-hidden size={72} weight="duotone" className="text-hibiscus" />
+        <HourglassMedium aria-hidden size={72} />
         <h1 className="font-display text-display font-black">{t("waitTitle")}</h1>
         <p className="text-lead">{t("waitText", { name: gift.from_name, date })}</p>
       </div>
@@ -636,7 +636,7 @@ export function GiftReception({ token }: { token: string }) {
               className="petal size-20 shrink-0 object-cover"
             />
           ) : (
-            <Gift aria-hidden size={48} weight="duotone" className="text-hibiscus shrink-0" />
+            <Gift aria-hidden size={48} className="shrink-0" />
           )}
           <div className="flex flex-col gap-1">
             <p className="text-lead font-bold">{thing?.name}</p>

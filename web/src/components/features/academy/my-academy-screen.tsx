@@ -56,7 +56,7 @@ export function MyAcademyScreen() {
     <div className="flex flex-col gap-8">
       <div className="flex items-center gap-2">
         <h1 className="text-headline flex flex-1 items-center gap-2 font-bold">
-          <BookOpenText aria-hidden size={30} weight="duotone" className="text-hibiscus" />
+          <BookOpenText aria-hidden size={30} />
           {t("title")}
         </h1>
         <SpeakButton text={t("title")} />
@@ -64,7 +64,7 @@ export function MyAcademyScreen() {
 
       {courses.length === 0 ? (
         <EmptyState
-          icon={<GraduationCap size={44} weight="duotone" />}
+          icon={<GraduationCap size={44} />}
           title={t("empty")}
           description={t("emptyHelp")}
           action={
@@ -173,7 +173,7 @@ export function MyAcademyScreen() {
         href="/academie/pass"
         className="bg-poudre rounded-card flex min-h-16 items-center gap-4 p-4"
       >
-        <Ticket aria-hidden size={32} weight="duotone" className="text-hibiscus shrink-0" />
+        <Ticket aria-hidden size={32} className="shrink-0" />
         <span className="flex flex-1 flex-col">
           <span className="font-bold">{academyPass.active ? t("passOn") : t("passOff")}</span>
           {academyPass.active && academyPass.current_period_end && (
@@ -201,7 +201,7 @@ function Downloads() {
   return (
     <section aria-labelledby="mine-downloads" className="flex flex-col gap-3">
       <h2 id="mine-downloads" className="text-title flex items-center gap-2 font-bold">
-        <CloudArrowDown aria-hidden size={26} weight="duotone" className="text-hibiscus" />
+        <CloudArrowDown aria-hidden size={26} />
         {t("downloads")}
       </h2>
       {lessons.length === 0 ? (

@@ -59,7 +59,7 @@ export function ClientFilesScreen({ initialId }: { initialId?: string }) {
         <Skeleton className="h-40 rounded-2xl" />
       ) : rows.length === 0 ? (
         <EmptyState
-          icon={<UserCircle size={44} weight="duotone" />}
+          icon={<UserCircle size={44} />}
           title={q ? t("noMatch") : t("empty")}
           description={q ? undefined : t("emptyHelp")}
         />

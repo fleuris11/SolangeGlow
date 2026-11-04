@@ -91,11 +91,7 @@ export function RoutineScreen() {
               moment === value ? "bg-carte text-prune" : "text-prune-doux",
             )}
           >
-            {value === "morning" ? (
-              <Sun aria-hidden size={22} weight="duotone" />
-            ) : (
-              <Moon aria-hidden size={22} weight="duotone" />
-            )}
+            {value === "morning" ? <Sun aria-hidden size={22} /> : <Moon aria-hidden size={22} />}
             {t(value)}
           </button>
         ))}
@@ -277,7 +273,7 @@ function Reminders({
         {t("reminders")}
       </h2>
       <SwitchRow
-        icon={<Bell size={24} weight="duotone" />}
+        icon={<Bell size={24} />}
         label={t("remindMe")}
         description={t("remindMeHelp")}
         checked={routine.routine_reminders}
@@ -300,7 +296,7 @@ function Reminders({
         </div>
       )}
       <SwitchRow
-        icon={<CalendarStar size={24} weight="duotone" />}
+        icon={<CalendarStar size={24} />}
         label={t("celebrations")}
         description={t("celebrationsHelp")}
         checked={routine.celebration_reminders}

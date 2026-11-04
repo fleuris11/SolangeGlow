@@ -1,11 +1,11 @@
 {
   "metadata": {
     "title": "Solange Glow",
-    "description": "La beauté et la mode, du Bénin à la France. Trouve ta pro près de chez toi."
+    "description": "La beauté et la mode près de chez toi, partout dans le monde."
   },
   "manifest": {
     "shortName": "Solange Glow",
-    "description": "Trouve ta pro beauté, réserve et achète en sécurité."
+    "description": "Trouve ton talent beauté, réserve et achète en sécurité."
   },
   "common": {
     "close": "Fermer",
@@ -27,8 +27,12 @@
   "city": {
     "change": "Ville : {city}. Changer de ville",
     "title": "Choisis ta ville",
-    "description": "On te montre les pros près de chez toi.",
-    "saved": "Ville choisie : {city}"
+    "description": "On te montre ce qui est près de chez toi.",
+    "saved": "Ville choisie : {city}",
+    "choose": "Choisir ma ville",
+    "search": "Ta ville",
+    "everywhere": "Partout",
+    "everywhereCta": "Voir partout"
   },
   "audio": {
     "mode": "Audio",
@@ -45,7 +49,7 @@
     "progress": "Étape {current} sur {total}"
   },
   "search": {
-    "label": "Chercher une pro ou un look",
+    "label": "Chercher un talent ou un look",
     "placeholder": "Tresses, maquillage…",
     "speak": "Parler",
     "listening": "J'écoute"
@@ -80,22 +84,22 @@
     },
     "join": {
       "title": "Rejoins Solange Glow",
-      "clientTitle": "Je cherche une pro",
+      "clientTitle": "Je cherche un talent",
       "clientText": "Réserve, achète et paie en sécurité.",
-      "proTitle": "Je suis une pro",
+      "proTitle": "Je propose mes services",
       "proText": "Montre ton travail et remplis ton agenda."
     },
     "public": {
-      "title": "Trouve la pro qui sublime ta beauté",
+      "title": "Trouve le talent qui sublime ta beauté",
       "chooseTrade": "Choisis un métier",
       "find": {
-        "hair": "Trouver ma pro de coiffure",
-        "braids": "Trouver ma pro de tresses",
-        "makeup": "Trouver ma pro de maquillage",
-        "nails": "Trouver ma pro d'ongles",
-        "sewing": "Trouver ma pro de couture",
-        "headwrap": "Trouver ma pro de foulard",
-        "skincare": "Trouver ma pro d'esthétique"
+        "hair": "Trouver un talent : coiffure",
+        "braids": "Trouver un talent : tresses",
+        "makeup": "Trouver un talent : maquillage",
+        "nails": "Trouver un talent : ongles",
+        "sewing": "Trouver un talent : couture",
+        "headwrap": "Trouver un talent : foulard",
+        "skincare": "Trouver un talent : esthétique"
       },
       "alt": {
         "hair": "Femme de profil, coiffure afro courte et grandes créoles.",
@@ -137,10 +141,10 @@
         "shop": "Sélection France",
         "shopText": "Les produits de France livrés au Bénin, prix final affiché.",
         "academy": "Académie",
-        "academyText": "Apprends les gestes des pros, à ton rythme, même hors ligne."
+        "academyText": "Apprends les gestes des talents, à ton rythme, même hors ligne."
       },
       "feed": {
-        "title": "Le fil des pros"
+        "title": "Le fil des talents"
       },
       "gift": {
         "title": "Offre un soin à ta mère, de Paris à Cotonou",
@@ -149,17 +153,10 @@
       "line": "Coiffure, tresses, maquillage, ongles. Réserve en ligne, même sans compte."
     }
   },
-  "aside": {
-    "prosNearby": "Pros près de toi",
-    "giftTitle": "Offrir au pays",
-    "giftText": "Fais plaisir à un proche au Bénin.",
-    "from": "dès",
-    "giftCta": "Offrir"
-  },
   "explore": {
     "title": "Explorer",
     "trades": "Métiers",
-    "metaDescription": "Trouve une pro beauté et mode près de chez toi : tresses, coiffure, maquillage, ongles, couture.",
+    "metaDescription": "Trouve un talent beauté et mode près de chez toi : tresses, coiffure, maquillage, ongles, couture.",
     "intro": "Choisis un métier, ta ville, ou appuie sur « Près de moi ».",
     "nearMe": "Près de moi",
     "locating": "Je cherche…",
@@ -168,14 +165,14 @@
     "filtersCount": "Filtres ({count})",
     "showMap": "Carte",
     "showList": "Liste",
-    "mapLabel": "Carte des pros",
-    "results": "{count, plural, =-1 {Résultats} =0 {Aucune pro} one {# pro trouvée} other {# pros trouvées}}",
-    "more": "Voir plus de pros",
-    "noResultTitle": "Aucune pro ne correspond",
+    "mapLabel": "Carte des talents",
+    "results": "{count, plural, =-1 {Résultats} =0 {Aucune pro} one {# talent trouvée} other {# talents trouvées}}",
+    "more": "Voir plus de talents",
+    "noResultTitle": "Aucun talent ne correspond",
     "noResultText": "Essaie un autre mot, une autre ville, ou enlève des filtres.",
     "clear": "Tout effacer",
     "card": {
-      "verified": "Pro vérifiée",
+      "verified": "Talent vérifié",
       "distance": "{distance}, {place}",
       "atHome": "À domicile",
       "open": "Ouvert",
@@ -183,17 +180,17 @@
       "rating": "{rating} ({count})",
       "from": "dès",
       "trained": "Formée sur Solange Glow",
-      "topPro": "Top Pro"
+      "topPro": "Top talent"
     },
     "filtersSheet": {
       "title": "Filtres",
       "city": "Ville et quartier",
       "anyCity": "Toutes",
       "openNow": "Ouvert maintenant",
-      "openNowText": "Seulement les pros ouvertes en ce moment.",
+      "openNowText": "Seulement les talents ouverts en ce moment.",
       "atHome": "Se déplace à domicile",
-      "atHomeText": "La pro vient chez toi.",
-      "verified": "Pros vérifiées",
+      "atHomeText": "Le talent vient chez toi.",
+      "verified": "Talents vérifiés",
       "verifiedText": "Identité contrôlée par Solange Glow.",
       "rating": "Note",
       "anyRating": "Toutes",
@@ -208,7 +205,7 @@
         "rating": "Les mieux notées",
         "price": "Les moins chères"
       },
-      "apply": "Voir les pros",
+      "apply": "Voir les talents",
       "trained": "Formée sur Solange Glow",
       "trainedText": "A terminé une formation de l'Académie."
     }
@@ -221,8 +218,8 @@
   },
   "messages": {
     "title": "Messages",
-    "help": "Tes discussions avec les pros et tes amies. Paie toujours dans l'appli.",
-    "visitorTitle": "Écris aux pros",
+    "help": "Tes discussions avec les talents et tes proches. Paie toujours dans l'appli.",
+    "visitorTitle": "Écris aux talents",
     "visitorText": "Connecte-toi pour poser tes questions, envoyer une photo du modèle ou un message vocal.",
     "visitorCta": "Me connecter",
     "write": "Écrire",
@@ -234,7 +231,7 @@
       "requestsHelp": "Des personnes que tu ne suis pas veulent t'écrire. Accepte ou refuse : elles ne savent pas si tu as lu.",
       "noRequests": "Aucune demande",
       "emptyTitle": "Aucun message pour l'instant",
-      "emptyText": "Écris à une pro depuis sa vitrine : tes échanges restent ici.",
+      "emptyText": "Écris à un talent depuis sa vitrine : tes échanges restent ici.",
       "error": "Impossible de charger tes messages. Vérifie ta connexion.",
       "more": "Voir plus de conversations",
       "noMessage": "Nouvelle conversation",
@@ -409,7 +406,7 @@
       "receiptCode": "Donne ton code de réception seulement quand tu as ton colis.",
       "from": "dès",
       "nameLabel": "Ton prénom",
-      "nameHint": "Les pros le verront.",
+      "nameHint": "Les talents le verront.",
       "phoneLabel": "Ton numéro WhatsApp",
       "phoneError": "Ce numéro est incomplet. Vérifie les 10 chiffres après +229.",
       "codeLabel": "Code reçu sur WhatsApp",
@@ -424,9 +421,9 @@
       "toastSaved": "Publié",
       "toastWarning": "Paie dans l'appli pour être protégée.",
       "levelIcon": "Icône",
-      "verified": "Pro vérifiée",
+      "verified": "Talent vérifié",
       "emptyTitle": "Aucune commande",
-      "emptyText": "Découvre les boutiques des pros près de toi.",
+      "emptyText": "Découvre les boutiques des talents près de toi.",
       "emptyCta": "Voir les boutiques",
       "bloom": "Paiement reçu",
       "replay": "Rejouer",
@@ -461,28 +458,19 @@
   "auth": {
     "metaTitle": "Connexion",
     "title": "Bienvenue sur Solange Glow",
-    "titlePro": "Rejoins Solange Glow en pro",
-    "subtitle": "Ton numéro suffit. On t'envoie un code à 6 chiffres.",
+    "titlePro": "Propose tes services sur Solange Glow",
+    "subtitle": "Ton e-mail suffit. On t'envoie un code à 6 chiffres.",
     "method": "Comment veux-tu recevoir ton code ?",
     "byPhone": "Téléphone",
     "byEmail": "E-mail",
     "emailLabel": "Ton adresse e-mail",
     "sendCode": "Recevoir mon code",
-    "privacy": "Ton numéro reste privé : les pros ne le voient pas.",
+    "privacy": "Tes coordonnées restent privées : les talents ne les voient pas.",
     "welcomeBack": "Te revoilà !",
     "phone": {
       "label": "Ton numéro de téléphone",
       "country": "Pays",
-      "countries": {
-        "BJ": "Bénin",
-        "FR": "France",
-        "other": "Autre pays"
-      },
-      "placeholders": {
-        "BJ": "01 97 00 00 00",
-        "FR": "06 12 34 56 78",
-        "other": "+421 900 123 456"
-      }
+      "placeholder": "Ton numéro"
     },
     "channels": {
       "whatsapp": "WhatsApp",
@@ -518,8 +506,8 @@
     "error": "On n'a pas pu enregistrer. Vérifie ton internet, puis réessaie.",
     "role": {
       "title": "Tu viens pour quoi ?",
-      "client": "Je cherche une pro",
-      "pro": "Je suis une pro",
+      "client": "Je cherche un talent",
+      "pro": "Je propose mes services",
       "trades": "Tes métiers"
     },
     "language": {
@@ -527,11 +515,12 @@
     },
     "city": {
       "title": "Ta ville et ta date de naissance",
-      "other": "Une autre ville"
+      "other": "Une autre ville",
+      "country": "Pays"
     },
     "done": {
       "title": "Bienvenue !",
-      "client": "Trouve ta pro, réserve et paie en sécurité.",
+      "client": "Trouve ton talent, réserve et paie en sécurité.",
       "pro": "Il te reste à créer ta vitrine : quelques minutes suffisent.",
       "cta": "Découvrir",
       "proCta": "Créer ma vitrine"
@@ -616,7 +605,7 @@
     "emptyTitle": "Aucune alerte pour l'instant",
     "emptyText": "Tes rendez-vous, commandes et messages s'afficheront ici.",
     "visitorTitle": "Connecte-toi pour recevoir tes alertes",
-    "visitorText": "On te prévient quand une pro répond ou qu'une commande avance.",
+    "visitorText": "On te prévient quand un talent répond ou qu'une commande avance.",
     "signIn": "Me connecter",
     "settings": {
       "title": "Comment te prévenir ?",
@@ -667,7 +656,7 @@
       "previewTitle": "Aperçu de ta vitrine",
       "previewText": "Elle n'est pas encore publiée : toi seule la vois.",
       "previewEdit": "Modifier ma vitrine",
-      "verified": "Pro vérifiée",
+      "verified": "Talent vérifié",
       "rating": "{rating} sur 5 ({count, plural, one {# avis} other {# avis}})",
       "noReviews": "Nouvelle sur Solange Glow",
       "openUntil": "Ouvert jusqu'à {time}",
@@ -715,7 +704,7 @@
       "arrivedDone": "Elle est prévenue",
       "arrivedHelp": "Un seul geste : {name} reçoit une alerte tout de suite.",
       "arrivedSent": "{name} sait que tu es devant.",
-      "arrivedSignIn": "Connecte-toi pour prévenir la pro que tu es là.",
+      "arrivedSignIn": "Connecte-toi pour prévenir le talent que tu es là.",
       "arrivedError": "L'alerte n'est pas partie. Réessaie dans un instant.",
       "more": "Langues et réseaux",
       "languages": "Langues parlées :",
@@ -727,7 +716,7 @@
         "website": "Site web",
         "whatsapp": "WhatsApp"
       },
-      "notFoundTitle": "Cette pro n'existe pas",
+      "notFoundTitle": "Ce talent n'existe pas",
       "notFoundText": "Le lien est peut-être mal écrit. Cherche-la dans Explorer.",
       "posts": "Publications",
       "shop": "Sa boutique",
@@ -747,7 +736,7 @@
         "published": "En ligne",
         "suspended": "Suspendue"
       },
-      "verifiedBadge": "Pro vérifiée",
+      "verifiedBadge": "Talent vérifié",
       "see": "Voir ma vitrine",
       "preview": "Voir l'aperçu",
       "suspendedTitle": "Ta vitrine est suspendue",
@@ -810,7 +799,7 @@
       },
       "info": {
         "title": "Infos et photos",
-        "help": "Ce que les clientes voient en premier.",
+        "help": "Ce que les clients voient en premier.",
         "photo": "Ta photo",
         "photoHint": "Ton visage ou ton logo, bien éclairé.",
         "cover": "Photo de couverture",
@@ -881,7 +870,7 @@
         "poseLabel": "Pose",
         "description": "Description",
         "atHome": "Aussi à domicile",
-        "atHomeText": "Tu peux la faire chez la cliente.",
+        "atHomeText": "Tu peux la faire chez le client.",
         "options": "Options",
         "optionsHelp": "ex. Mèches fournies, avec un supplément.",
         "optionName": "Option",
@@ -923,7 +912,7 @@
         "saved": "Horaires enregistrés",
         "error": "L'enregistrement n'a pas marché. Réessaie.",
         "closures": "Fermetures exceptionnelles",
-        "closuresHelp": "Congés, fête, formation : tes clientes sont prévenues.",
+        "closuresHelp": "Congés, fête, formation : tes clients sont prévenues.",
         "range": "Du {from, date, long} au {to, date, long}",
         "removeClosure": "Retirer",
         "startsOn": "Premier jour",
@@ -953,10 +942,10 @@
       },
       "place": {
         "title": "Lieu et itinéraire",
-        "help": "Aide tes clientes à te trouver, même sans adresse claire.",
+        "help": "Aide tes clients à te trouver, même sans adresse claire.",
         "city": "Ville",
         "district": "Quartier",
-        "receives": "Je reçois mes clientes",
+        "receives": "Je reçois mes clients",
         "receivesOn": "Ton point et ton adresse sont visibles.",
         "receivesOff": "Ton adresse reste privée : seuls ta ville et ton quartier sont montrés.",
         "point": "Ton point sur la carte",
@@ -976,7 +965,7 @@
         "video": "Vidéo du chemin",
         "videoHint": "30 à 60 secondes, d'un repère connu jusqu'à ta porte.",
         "travelTitle": "À domicile",
-        "travels": "Je me déplace chez mes clientes",
+        "travels": "Je me déplace chez mes clients",
         "travelsText": "Choisis jusqu'où tu vas, et ton supplément.",
         "modeRadius": "Autour de chez moi",
         "modeArea": "Je dessine ma zone",
@@ -1012,11 +1001,11 @@
       },
       "verification": {
         "title": "Vérification",
-        "help": "Ta pièce d'identité et un selfie : le badge « Pro vérifiée ».",
+        "help": "Ta pièce d'identité et un selfie : le badge « Talent vérifié ».",
         "state": {
           "none": "Pas encore vérifiée",
           "pending": "Documents en cours de contrôle",
-          "verified": "Pro vérifiée",
+          "verified": "Talent vérifié",
           "rejected": "Vérification refusée"
         },
         "reason": "Raison : {reason}",
@@ -1047,7 +1036,7 @@
       },
       "reviews": {
         "title": "Avis",
-        "help": "Réponds à tes clientes : une réponse par avis.",
+        "help": "Réponds à tes clients : une réponse par avis.",
         "publishFirst": "Publie ta vitrine pour recevoir des avis.",
         "empty": "Pas encore d'avis.",
         "stars": "{count, plural, one {# étoile} other {# étoiles}}",
@@ -1082,7 +1071,7 @@
       "boostHelp": "Passe en tête de la recherche, 1 jour ou 1 semaine."
     },
     "become": {
-      "title": "Devenir pro",
+      "title": "Proposer mes services",
       "signInFirst": "Connecte-toi d'abord : ta vitrine sera liée à ton compte.",
       "signIn": "Me connecter",
       "steps": {
@@ -1092,7 +1081,7 @@
         "photo": "Ta photo"
       },
       "help": {
-        "name": "C'est le nom que tes clientes verront.",
+        "name": "C'est le nom que tes clients verront.",
         "trades": "Choisis tout ce que tu fais.",
         "place": "Ta ville, et comment tu reçois.",
         "photo": "Une photo donne confiance. Tu peux la mettre plus tard."
@@ -1106,12 +1095,12 @@
       },
       "city": "Ville",
       "district": "Quartier",
-      "receives": "Je reçois mes clientes",
+      "receives": "Je reçois mes clients",
       "receivesText": "Chez toi, dans ton salon ou ton atelier.",
       "travels": "Je me déplace à domicile",
       "travelsText": "Ton adresse reste privée.",
       "pointTitle": "Ton point sur la carte",
-      "pointHelp": "Pour que les clientes te trouvent sans adresse.",
+      "pointHelp": "Pour que les clients te trouvent sans adresse.",
       "pointPrivate": "Il sert à calculer les distances. Il n'est jamais montré.",
       "gps": "Je suis sur place : utiliser ma position",
       "locating": "Je cherche ta position…",
@@ -1124,7 +1113,8 @@
       "photoLater": "Tu pourras aussi la changer dans « Ma vitrine ».",
       "next": "Continuer",
       "finish": "Créer ma vitrine",
-      "error": "La création n'a pas marché. Réessaie."
+      "error": "La création n'a pas marché. Réessaie.",
+      "country": "Pays"
     },
     "languages": {
       "fr": "Français",
@@ -1141,16 +1131,16 @@
       "ln": "Lingala"
     },
     "entry": {
-      "myShowcase": "Mon espace pro",
+      "myShowcase": "Mon activité",
       "myShowcaseText": "Rendez-vous, prestations, boutique et ma vitrine.",
-      "becomePro": "Devenir pro",
-      "becomeProText": "Ta vitrine gratuite, trouvée par les clientes près de toi."
+      "becomePro": "Proposer mes services",
+      "becomeProText": "Ta vitrine gratuite, trouvée par les clients près de toi."
     }
   },
   "social": {
     "post": {
       "noCaption": "Publication de {name}",
-      "verified": "Pro vérifiée",
+      "verified": "Talent vérifié",
       "before": "Avant",
       "after": "Après",
       "beforeAfterAlt": "{label} : {caption}",
@@ -1214,8 +1204,8 @@
       "titleSignedIn": "Ton fil",
       "more": "Voir plus de publications",
       "emptyTitle": "Ton fil est encore vide",
-      "emptyText": "Suis des pros près de chez toi pour voir leurs réalisations ici.",
-      "emptyCta": "Découvrir des pros"
+      "emptyText": "Suis des talents près de chez toi pour voir leurs réalisations ici.",
+      "emptyCta": "Découvrir des talents"
     },
     "comments": {
       "title": "Commentaires",
@@ -1320,8 +1310,8 @@
       "title": "Profils suivis",
       "help": "Leurs publications arrivent en premier dans ton fil.",
       "emptyTitle": "Tu ne suis personne pour l'instant",
-      "emptyText": "Découvre les pros près de toi et suis tes préférées.",
-      "emptyCta": "Découvrir des pros",
+      "emptyText": "Découvre les talents près de toi et suis tes préférés.",
+      "emptyCta": "Découvrir des talents",
       "posts": "{count, plural, =0 {Aucune publication} one {# publication} other {# publications}}",
       "unfollow": "Ne plus suivre"
     },
@@ -1356,7 +1346,7 @@
     "reviews": {
       "title": "Avis vérifiés",
       "help": "Après un rendez-vous ou une commande, dis ce que tu en as pensé.",
-      "verifiedOnly": "Seules les clientes qui ont vraiment réservé ou acheté peuvent noter.",
+      "verifiedOnly": "Seules les clients qui ont vraiment réservé ou acheté peuvent noter.",
       "none": "{name} n'a pas encore d'avis.",
       "starsShort": "{count} ★",
       "starsValue": "{count, plural, one {# étoile} other {# étoiles}}",
@@ -1394,7 +1384,7 @@
       "selection": "Mes commandes Sélection France",
       "appointments": "Mes rendez-vous",
       "agenda": "Mon agenda",
-      "salon": "Mon salon (Glow Pro)",
+      "salon": "Mon salon (Glow Premium)",
       "courses": "Mes formations (Académie)",
       "trainer": "Espace formatrice",
       "calls": "Mes appels",
@@ -1402,7 +1392,7 @@
       "points": "Mes points et mes jeux",
       "routine": "Ma routine",
       "calendar": "Calendrier des fêtes",
-      "rankings": "Classements des pros"
+      "rankings": "Classements des talents"
     }
   },
   "payments": {
@@ -1444,8 +1434,8 @@
     },
     "actions": {
       "error": "Ça n'a pas marché. Réessaie.",
-      "codeTitle": "Code de la cliente",
-      "codeHelp": "À la remise, la cliente te donne son code à 6 chiffres : tu reçois ton argent.",
+      "codeTitle": "Code du client",
+      "codeHelp": "À la remise, le client te donne son code à 6 chiffres : tu reçois ton argent.",
       "codeLabel": "Code à 6 chiffres",
       "attemptsLeft": "{count, plural, one {# essai restant} other {# essais restants}}",
       "confirm": "Valider le code",
@@ -1454,14 +1444,14 @@
       "carrier": "Transporteur (facultatif)",
       "tracking": "Numéro de suivi (facultatif)",
       "ship": "C'est parti",
-      "shippedDone": "La cliente est prévenue.",
+      "shippedDone": "Le client est prévenu.",
       "delivered": "Livré : prendre une photo",
       "deliveredDone": "Livraison notée. Sans code ni contestation, tu seras payée automatiquement.",
-      "deliveredHelp": "Sans code, la photo prouve la livraison : la cliente est relancée, puis tu es payée.",
+      "deliveredHelp": "Sans code, la photo prouve la livraison : le client est relancée, puis tu es payée.",
       "courier": "Lien pour le livreur",
       "courierShared": "Lien prêt : le livreur saisit le code sans compte.",
       "cancelSale": "Annuler la vente",
-      "cancelled": "Annulé : la cliente est remboursée.",
+      "cancelled": "Annulé : le client est remboursée.",
       "pay": "Payer en toute sécurité",
       "newCode": "Recevoir un nouveau code",
       "newCodeSent": "Nouveau code envoyé.",
@@ -1508,7 +1498,7 @@
       "error": "Ça n'a pas marché. Réessaie.",
       "soldBy": "Vendu par {name}",
       "boughtBy": "Acheté par {name}",
-      "heldForSeller": "Paiement reçu et bloqué. Tu seras payée quand la cliente te donnera son code.",
+      "heldForSeller": "Paiement reçu et bloqué. Tu seras payée quand le client te donnera son code.",
       "carrier": "Transport : {carrier}, suivi {tracking}",
       "carrierOnly": "Transport : {carrier}",
       "seeOrder": "Voir la commande",
@@ -1540,7 +1530,7 @@
       "doneTitle": "C'est validé !",
       "doneText": "La vendeuse est payée. Merci !",
       "order": "Commande {reference} de {seller}",
-      "help": "Demande le code à la cliente seulement quand elle a le colis en main.",
+      "help": "Demande le code au client seulement quand elle a le colis en main.",
       "code": "Code à 6 chiffres",
       "confirm": "Valider"
     },
@@ -1555,7 +1545,7 @@
     },
     "wallet": {
       "title": "Mon portefeuille",
-      "help": "L'argent de tes ventes arrive ici une fois la commande reçue par la cliente.",
+      "help": "L'argent de tes ventes arrive ici une fois la commande reçue par le client.",
       "error": "Ça n'a pas marché. Réessaie.",
       "pending": "En attente",
       "pendingHelp": "Bloqué jusqu'à la réception",
@@ -1634,7 +1624,7 @@
       "back": "Vitrine de {name}",
       "title": "Boutique de {name}",
       "metaDescription": "{count, plural, one {# produit} other {# produits}} chez {name}, paiement sécurisé.",
-      "verified": "Pro vérifiée",
+      "verified": "Talent vérifié",
       "closed": "La boutique est en pause : tu peux regarder, mais pas commander.",
       "categories": "Catégories",
       "all": "Tout",
@@ -1648,7 +1638,7 @@
       "back": "Boutique de {name}",
       "photos": "Photos du produit",
       "photoN": "Photo {n}",
-      "verified": "Pro vérifiée",
+      "verified": "Talent vérifié",
       "prep": "Préparé en {count, plural, one {# jour} other {# jours}}",
       "ready": "Prêt tout de suite",
       "description": "Description",
@@ -1695,8 +1685,8 @@
       "title": "Mon panier",
       "error": "Ça n'a pas marché. Réessaie.",
       "empty": "Ton panier est vide",
-      "emptyHelp": "Découvre les boutiques des pros près de toi.",
-      "explore": "Découvrir les pros",
+      "emptyHelp": "Découvre les boutiques des talents près de toi.",
+      "explore": "Découvrir les talents",
       "closed": "Boutique en pause : ces articles attendent sa réouverture.",
       "onlyLeft": "Plus que {count} en stock",
       "gone": "Ce produit n'est plus en vente.",
@@ -1709,8 +1699,8 @@
       "nothingReady": "Rien ne peut être commandé pour l'instant."
     },
     "modes": {
-      "pickup": "Retrait chez la pro",
-      "seller": "Livrée par la pro",
+      "pickup": "Retrait chez le talent",
+      "seller": "Livrée par le talent",
       "partner": "Livraison partenaire",
       "partnerNamed": "Livraison par {name}"
     },
@@ -1725,9 +1715,9 @@
       "prep": "Préparation : {count, plural, one {# jour} other {# jours}}.",
       "zone": "Ta zone",
       "promo": "Code promo (facultatif)",
-      "note": "Un mot pour la pro (facultatif)",
+      "note": "Un mot pour le talent (facultatif)",
       "whereTitle": "Où te livrer",
-      "whereHelp": "La pro voit ton adresse et ton numéro seulement après le paiement.",
+      "whereHelp": "Le talent voit ton adresse et ton numéro seulement après le paiement.",
       "address": "Adresse ou quartier",
       "landmarks": "Repères (facultatif)",
       "phone": "Téléphone pour la livraison",
@@ -1779,9 +1769,9 @@
       "sales": "Mes ventes",
       "onlyActive": "Seulement celles à traiter",
       "noPurchase": "Pas encore de commande",
-      "noPurchaseHelp": "Les boutiques des pros t'attendent.",
+      "noPurchaseHelp": "Les boutiques des talents t'attendent.",
       "noSale": "Pas encore de vente",
-      "explore": "Découvrir les pros",
+      "explore": "Découvrir les talents",
       "line": "{reference}, {count, plural, one {# article} other {# articles}}"
     },
     "steps": {
@@ -1808,15 +1798,15 @@
       "voice": "Écouter les repères",
       "video": "Vidéo d'itinéraire",
       "directions": "Itinéraire",
-      "call": "Appeler la cliente ({phone})",
+      "call": "Appeler le client ({phone})",
       "note": "Son mot :"
     },
     "seller": {
       "error": "Ça n'a pas marché. Réessaie.",
       "prepare": "Je prépare la commande",
-      "preparingDone": "La cliente sait que tu prépares.",
+      "preparingDone": "Le client sait que tu prépares.",
       "ready": "C'est prêt à retirer",
-      "readyDone": "La cliente est prévenue.",
+      "readyDone": "Le client est prévenu.",
       "shipTitle": "J'expédie",
       "photo": "Prendre en photo le colis",
       "photoAgain": "Reprendre la photo",
@@ -1826,7 +1816,7 @@
       "carrier": "Transporteur ou livreur",
       "tracking": "Numéro de suivi (facultatif)",
       "ship": "Expédier",
-      "shippedDone": "Expédiée : la cliente est prévenue."
+      "shippedDone": "Expédiée : le client est prévenue."
     },
     "detail": {
       "error": "Ça n'a pas marché. Réessaie.",
@@ -1848,7 +1838,7 @@
       "help": "On te prévient quand un prix baisse.",
       "empty": "Pas encore d'envie",
       "emptyHelp": "Touche le cœur d'un produit pour le garder ici.",
-      "explore": "Découvrir les pros",
+      "explore": "Découvrir les talents",
       "error": "Ça n'a pas marché. Réessaie.",
       "removed": "Retiré de tes envies",
       "flash": "Vente flash -{percent} %",
@@ -1868,7 +1858,7 @@
       "title": "Ma boutique",
       "error": "Ça n'a pas marché. Réessaie.",
       "becomePro": "Créer ma vitrine",
-      "see": "Voir ma boutique comme une cliente",
+      "see": "Voir ma boutique comme un client",
       "verify": "Fais vérifier ton identité pour mettre tes produits en vente.",
       "verifyCta": "Vérifier mon identité",
       "disabled": "Les boutiques ne sont pas encore ouvertes dans ton pays.",
@@ -1932,7 +1922,7 @@
         "open": "Boutique ouverte",
         "openHelp": "Éteins pendant tes congés : les produits restent visibles, sans commande.",
         "pickup": "Retrait chez moi",
-        "pickupHelp": "La cliente voit ta vidéo d'itinéraire et tes repères.",
+        "pickupHelp": "Le client voit ta vidéo d'itinéraire et tes repères.",
         "seller": "Je livre moi-même",
         "sellerHelp": "Avec des frais par zone.",
         "partner": "Un partenaire livre",
@@ -1943,7 +1933,7 @@
         "save": "Enregistrer",
         "saved": "Enregistré",
         "zones": "Zones de livraison",
-        "zonesHelp": "Une zone, un prix. La cliente choisit la sienne.",
+        "zonesHelp": "Une zone, un prix. Le client choisit la sienne.",
         "bySeller": "Par moi",
         "byPartner": "Par le partenaire",
         "deleteZone": "Supprimer {name}",
@@ -1994,7 +1984,7 @@
       "category": "Catégorie",
       "chooseCategory": "Choisis une catégorie",
       "price": "Prix ({currency})",
-      "priceHelp": "Le prix payé par la cliente, sans la livraison.",
+      "priceHelp": "Le prix payé par le client, sans la livraison.",
       "prep": "Préparation (jours)",
       "prepHelp": "0 si c'est prêt tout de suite. Ce délai s'ajoute au temps pour expédier.",
       "description": "Description",
@@ -2174,10 +2164,10 @@
       "group": "Réservation de groupe",
       "agenda": "Mon agenda",
       "agendaSettings": "Réglages de l'agenda",
-      "clients": "Fichier clientes"
+      "clients": "Fichier clients"
     },
     "status": {
-      "pending": "À confirmer par la pro",
+      "pending": "À confirmer par le talent",
       "awaiting_deposit": "Acompte à payer",
       "confirmed": "Confirmé",
       "proposed": "Autre créneau proposé",
@@ -2191,10 +2181,10 @@
     "page": {
       "back": "Retour à {name}",
       "title": "Rendez-vous chez {name}",
-      "verified": "Pro vérifiée",
+      "verified": "Talent vérifié",
       "metaDescription": "Réserve en ligne chez {name} à {city} : choisis ta prestation et ton créneau, c'est gratuit.",
       "lastMinute": "Dernière minute : -{percent} % sur les créneaux des {hours} prochaines heures",
-      "noService": "Cette pro n'a pas encore de prestation à réserver."
+      "noService": "Ce talent n'a pas encore de prestation à réserver."
     },
     "flow": {
       "titleService": "Choisis ta prestation",
@@ -2221,19 +2211,19 @@
       "wait": "Préviens-moi si une place se libère",
       "waitCta": "M'inscrire sur la liste d'attente",
       "waitingDone": "C'est noté : tu seras prévenue si une place se libère.",
-      "waitHelp": "Si une cliente annule, la place est gardée pour toi pendant 30 minutes.",
+      "waitHelp": "Si un client annule, la place est gardée pour toi pendant 30 minutes.",
       "service": "Prestation",
       "time": "Quand",
       "with": "Avec",
       "price": "Prix",
       "depositLabel": "Acompte à payer maintenant",
       "depositHelp": "Ton argent est bloqué en sécurité jusqu'au rendez-vous.",
-      "cancelRule": "Annulation gratuite jusqu'à {hours} h avant. Après, l'acompte reste à la pro.",
-      "manual": "La pro confirme chaque demande. Tu reçois sa réponse sur WhatsApp.",
+      "cancelRule": "Annulation gratuite jusqu'à {hours} h avant. Après, l'acompte reste au talent.",
+      "manual": "Le talent confirme chaque demande. Tu reçois sa réponse sur WhatsApp.",
       "signInDeposit": "Connecte-toi pour payer l'acompte en sécurité.",
-      "signInNeeded": "Cette pro demande un compte pour réserver.",
+      "signInNeeded": "Ce talent demande un compte pour réserver.",
       "signIn": "Me connecter",
-      "note": "Un mot pour la pro (facultatif)",
+      "note": "Un mot pour le talent (facultatif)",
       "noteHint": "Longueur des cheveux, allergie, photo du modèle…",
       "groupTitle": "Tu réserves pour plusieurs personnes ?",
       "less": "Une personne de moins",
@@ -2251,12 +2241,12 @@
       "guestLink": "Garde ce lien : il sert à annuler ou déplacer ton rendez-vous.",
       "manage": "Voir mon rendez-vous",
       "seeAppointment": "Voir mon rendez-vous",
-      "cancelFree": "Un empêchement ? Annule en un geste avec ton lien : la place repart à une autre cliente.",
+      "cancelFree": "Un empêchement ? Annule en un geste avec ton lien : la place repart à une autre client.",
       "giftCode": "Tu as une carte cadeau de {name} ?",
       "giftCodeHint": "Son code paie l'acompte.",
       "consent": "J'accepte de recevoir les offres de {name} (je peux dire non à tout moment).",
       "titlePlace": "Où ?",
-      "atHome": "Chez moi, la pro se déplace",
+      "atHome": "Chez moi, le talent se déplace",
       "travelFee": "Frais de déplacement : {amount}",
       "paused": "{name} ne prend pas de réservation en ligne pour le moment. Tu peux lui écrire.",
       "homeAddress": "Ton adresse"
@@ -2296,7 +2286,7 @@
       "accept": "J'accepte ce créneau",
       "accepted": "C'est confirmé",
       "refuse": "Non, ça ne me va pas",
-      "refused": "Réponse envoyée à la pro",
+      "refused": "Réponse envoyée au talent",
       "held": "Une place s'est libérée pour toi",
       "heldHelp": "Elle est gardée 30 minutes. Après, elle passe à la personne suivante.",
       "take": "Je prends cette place",
@@ -2311,28 +2301,28 @@
       "payment": {
         "held": "payé, bloqué en sécurité",
         "refunded": "remboursé",
-        "released": "versé à la pro",
+        "released": "versé au talent",
         "pending": "à payer"
       },
       "reference": "Référence",
       "advice": "Le conseil de {name}",
       "photos": "Photos du résultat",
       "review": "Donner mon avis",
-      "lateRule": "Il est trop tard pour annuler gratuitement : l'acompte reste à la pro.",
+      "lateRule": "Il est trop tard pour annuler gratuitement : l'acompte reste au talent.",
       "freeUntil": "Annulation gratuite jusqu'au {when}.",
       "cancel": "Annuler le rendez-vous",
       "cancelTitle": "Annuler ce rendez-vous ?",
       "cancelFree": "C'est gratuit : ton acompte t'est rendu.",
-      "cancelLate": "C'est tard : la pro garde l'acompte.",
+      "cancelLate": "C'est tard : le talent garde l'acompte.",
       "cancelConfirm": "Oui, annuler",
       "cancelled": "Rendez-vous annulé",
       "keep": "Non, je garde mon rendez-vous",
-      "lateNoDeposit": "Annule le plus tôt possible : la pro pourra donner la place à quelqu'un d'autre.",
-      "cancelNoDeposit": "La pro est prévenue tout de suite.",
+      "lateNoDeposit": "Annule le plus tôt possible : le talent pourra donner la place à quelqu'un d'autre.",
+      "cancelNoDeposit": "Le talent est prévenu tout de suite.",
       "qr": {
         "title": "Ton QR code de rendez-vous",
-        "arrived": "Tu es bien arrivée. Bon soin !",
-        "help": "Montre-le à la pro en arrivant. Elle le scanne et voit ton rendez-vous.",
+        "arrived": "Ton arrivée est notée. Bon soin !",
+        "help": "Montre-le au talent en arrivant. Il le scanne et voit ton rendez-vous.",
         "download": "Télécharger mon QR code",
         "alt": "QR code du rendez-vous {reference}"
       }
@@ -2340,8 +2330,8 @@
     "list": {
       "title": "Mes rendez-vous",
       "empty": "Aucun rendez-vous pour l'instant",
-      "emptyHelp": "Trouve une pro près de chez toi et réserve en quelques gestes.",
-      "explore": "Trouver une pro",
+      "emptyHelp": "Trouve un talent près de chez toi et réserve en quelques gestes.",
+      "explore": "Trouver un talent",
       "upcoming": "À venir",
       "noUpcoming": "Rien de prévu.",
       "past": "Passés",
@@ -2351,11 +2341,11 @@
     },
     "agenda": {
       "noAgenda": "Tu n'as pas encore d'agenda",
-      "noAgendaHelp": "Crée ta vitrine de pro : ton agenda est prêt tout de suite.",
+      "noAgendaHelp": "Crée ta vitrine : ton agenda est prêt tout de suite.",
       "becomePro": "Créer ma vitrine",
       "error": "Ça n'a pas marché. Réessaie dans un instant.",
       "title": "Mon agenda",
-      "clients": "Clientes",
+      "clients": "Clients",
       "settings": "Réglages",
       "pending": "{count, plural, one {# demande à confirmer} other {# demandes à confirmer}}",
       "view": "Affichage",
@@ -2376,7 +2366,7 @@
       "blockLabel": "{client}, {service}, {time}, {status}",
       "add": "Ajouter un rendez-vous",
       "help": "Touche une heure libre pour ajouter un rendez-vous ou bloquer un moment. Glisse un rendez-vous pour le déplacer.",
-      "moved": "Déplacé à {time}. La cliente est prévenue.",
+      "moved": "Déplacé à {time}. Le client est prévenu.",
       "loading": "Chargement…",
       "noShows": "{count, plural, one {# rendez-vous manqué} other {# rendez-vous manqués}} ces 12 derniers mois",
       "phone": "Téléphone",
@@ -2384,10 +2374,10 @@
       "note": "Son mot",
       "price": "Prix",
       "depositPaid": "(acompte {amount})",
-      "file": "Fiche cliente",
+      "file": "Fiche client",
       "openFile": "Ouvrir sa fiche",
       "confirm": "Confirmer",
-      "confirmed": "Confirmé. La cliente est prévenue.",
+      "confirmed": "Confirmé. Le client est prévenu.",
       "propose": "Proposer un autre créneau",
       "proposeCta": "Envoyer la proposition",
       "proposed": "Proposition envoyée",
@@ -2399,7 +2389,7 @@
       "completed": "Terminé. Elle peut laisser un avis.",
       "move": "Déplacer",
       "moveCta": "Déplacer le rendez-vous",
-      "movedDone": "Déplacé. La cliente est prévenue.",
+      "movedDone": "Déplacé. Le client est prévenu.",
       "noShow": "Elle n'est pas venue",
       "noShowDone": "Absence notée. L'acompte te revient.",
       "advise": "Conseiller un produit",
@@ -2410,9 +2400,9 @@
       "chooseProduct": "Choisis un produit",
       "adviceNote": "Ton conseil (facultatif)",
       "cancel": "Annuler le rendez-vous",
-      "cancelled": "Annulé. La cliente est remboursée et prévenue.",
-      "cancelHelp": "Si tu annules, la cliente est toujours remboursée.",
-      "message": "Message pour la cliente",
+      "cancelled": "Annulé. Le client est remboursée et prévenue.",
+      "cancelHelp": "Si tu annules, le client est toujours remboursée.",
+      "message": "Message pour le client",
       "back": "Retour",
       "date": "Jour",
       "hour": "Heure",
@@ -2420,18 +2410,18 @@
       "quickBook": "Rendez-vous",
       "quickBlock": "Bloquer",
       "service": "Prestation",
-      "clientName": "Prénom de la cliente",
+      "clientName": "Prénom du client",
       "clientPhone": "Son numéro",
       "until": "Jusqu'à",
       "reason": "Pourquoi (facultatif)",
       "quickBookCta": "Ajouter à {time}",
       "quickBlockCta": "Bloquer ce moment",
-      "added": "Rendez-vous ajouté. La cliente reçoit la confirmation.",
+      "added": "Rendez-vous ajouté. Le client reçoit la confirmation.",
       "blocked": "Moment bloqué",
       "salon": "Mon salon",
       "arrivedAt": "Arrivée à",
       "where": "Lieu",
-      "atHome": "Chez la cliente",
+      "atHome": "Chez le client",
       "outsideHours": "En dehors de mes horaires"
     },
     "settings": {
@@ -2451,7 +2441,7 @@
       "autoConfirm": "Confirmer tout seul",
       "autoConfirmHelp": "Sinon, tu acceptes chaque demande (réponse en 24 h).",
       "guests": "Réservation sans compte",
-      "guestsHelp": "Les clientes réservent avec leur prénom et leur numéro.",
+      "guestsHelp": "Les clients réservent avec leur prénom et leur numéro.",
       "step": "Créneaux proposés toutes les",
       "minutes": "{count} minutes",
       "notice": "Délai minimum (minutes)",
@@ -2493,11 +2483,11 @@
       "quantity": "Combien",
       "addResource": "Ajouter du matériel",
       "lastMinute": "Dernière minute",
-      "lastMinuteHelp": "Une réduction sur tes places libres des prochaines heures. Tes abonnées et anciennes clientes près de toi sont prévenues.",
+      "lastMinuteHelp": "Une réduction sur tes places libres des prochaines heures. Tes abonnées et anciennes clients près de toi sont prévenues.",
       "percent": "Réduction (%)",
       "window": "Pour les prochaines (heures)",
       "start": "Lancer la dernière minute",
-      "lastMinuteOn": "C'est lancé. Tes clientes proches sont prévenues.",
+      "lastMinuteOn": "C'est lancé. Tes clients proches sont prévenues.",
       "lastMinuteActive": "En cours : -{percent} % sur les {hours} prochaines heures.",
       "update": "Mettre à jour",
       "stop": "Arrêter"
@@ -2513,12 +2503,12 @@
     },
     "clients": {
       "back": "Retour à l'agenda",
-      "title": "Fichier clientes",
+      "title": "Fichier clients",
       "help": "Tes notes restent privées : seule toi les vois.",
-      "search": "Chercher une cliente",
+      "search": "Chercher un client",
       "noMatch": "Personne avec ce nom.",
-      "empty": "Pas encore de cliente",
-      "emptyHelp": "Chaque cliente qui réserve arrive ici, avec son historique.",
+      "empty": "Pas encore de client",
+      "emptyHelp": "Chaque client qui réserve arrive ici, avec son historique.",
       "loading": "Chargement…",
       "saved": "Fiche enregistrée",
       "error": "Ça n'a pas marché. Réessaie dans un instant.",
@@ -2531,13 +2521,13 @@
       "photo": "Photo du résultat"
     },
     "arrival": {
-      "title": "Arrivée de la cliente",
-      "client": "Cliente",
+      "title": "Arrivée du client",
+      "client": "Client",
       "service": "Prestation",
       "time": "Rendez-vous",
       "status": "État",
       "when": "{day} à {time}",
-      "mark": "Elle est arrivée",
+      "mark": "Arrivée confirmée",
       "done": "Arrivée notée.",
       "arrivedAt": "Arrivée à {time}",
       "notConfirmed": "Ce rendez-vous n'est pas confirmé. Regarde-le dans ton agenda.",
@@ -2560,7 +2550,7 @@
       "unsubscribe": "Ne plus recevoir"
     },
     "gate": {
-      "badge": "Avec Glow Pro Premium",
+      "badge": "Avec Glow Premium",
       "try": "Essayer gratuitement {days} jours",
       "see": "Voir l'offre Premium",
       "trialStarted": "C'est parti : tout Premium est ouvert.",
@@ -2577,7 +2567,7 @@
     },
     "plan": {
       "title": "Mon offre",
-      "notPro": "Crée d'abord ta vitrine de pro.",
+      "notPro": "Crée d'abord ta vitrine.",
       "trialUntil": "Essai gratuit jusqu'au {date}",
       "pastDue": "Mois non payé : Premium jusqu'au {date}",
       "endsOn": "Premium s'arrête le {date}",
@@ -2600,7 +2590,7 @@
       "resume": "Continuer Premium",
       "resumed": "Premium continue.",
       "downgradeRule": "Si tu repasses en gratuit, rien n'est supprimé : les personnes en trop sont mises en pause.",
-      "invoices": "Mes factures Glow Pro"
+      "invoices": "Mes factures Glow Premium"
     },
     "dashboard": {
       "title": "Tableau de bord",
@@ -2616,7 +2606,7 @@
       "turnoverMonth": "Chiffre d'affaires du mois",
       "appointmentsMonth": "Rendez-vous du mois",
       "premiumTitle": "Tout comprendre de ton activité",
-      "premiumText": "Taux d'occupation, panier moyen, chaque personne et chaque prestation, clientes nouvelles et fidèles.",
+      "premiumText": "Taux d'occupation, panier moyen, chaque personne et chaque prestation, clients nouvelles et fidèles.",
       "period": "Période",
       "periods": {
         "month": "Ce mois",
@@ -2628,7 +2618,7 @@
       "occupancy": "Agenda rempli",
       "average": "Panier moyen",
       "appointmentsDone": "Rendez-vous faits",
-      "clients": "Clientes",
+      "clients": "Clients",
       "newAndLoyal": "{new} nouvelles, {loyal} fidèles",
       "byPerson": "Par personne",
       "byService": "Par prestation"
@@ -2650,7 +2640,7 @@
       "lowCount": "{count, plural, one {# produit bientôt en rupture} other {# produits bientôt en rupture}}",
       "empty": "Pas encore de produit",
       "emptyHelp": "Scanne un produit ou ajoute-le à la main.",
-      "retail": "Vendu aux clientes",
+      "retail": "Vendu aux clients",
       "professional": "Utilisé au salon",
       "scanTitle": "Scanner un produit",
       "added": "Produit ajouté",
@@ -2692,9 +2682,9 @@
     },
     "campaigns": {
       "title": "Campagnes",
-      "premiumTitle": "Fais revenir tes clientes",
-      "premiumText": "Un message aux clientes pas venues depuis un moment, ou pour leur anniversaire. Seulement à celles qui ont dit oui.",
-      "help": "Seules les clientes qui ont accepté tes offres reçoivent le message. Chaque message permet de dire non.",
+      "premiumTitle": "Fais revenir tes clients",
+      "premiumText": "Un message aux clients pas venues depuis un moment, ou pour leur anniversaire. Seulement à celles qui ont dit oui.",
+      "help": "Seules les clients qui ont accepté tes offres reçoivent le message. Chaque message permet de dire non.",
       "new": "Nouvelle campagne",
       "empty": "Pas encore de campagne",
       "emptyHelp": "Écris un message court, choisis à qui l'envoyer.",
@@ -2710,7 +2700,7 @@
       "whatsapp": "WhatsApp",
       "subject": "Objet de l'e-mail",
       "message": "Message",
-      "messageHelp": "'{{ first_name }}' devient le prénom de chaque cliente.",
+      "messageHelp": "'{{ first_name }}' devient le prénom de chaque client.",
       "saveDraft": "Enregistrer",
       "sent": "Campagne envoyée",
       "stats": {
@@ -2722,8 +2712,8 @@
         "pending": "En cours"
       },
       "sentOn": "Envoyée le {date}",
-      "audience": "{count, plural, =0 {Personne ne la recevra pour l'instant.} one {# cliente la recevra.} other {# clientes la recevront.}}",
-      "withoutConsent": "{count, plural, =0 {} one {# cliente sans accord est laissée de côté.} other {# clientes sans accord sont laissées de côté.}}",
+      "audience": "{count, plural, =0 {Personne ne la recevra pour l'instant.} one {# client la recevra.} other {# clients la recevront.}}",
+      "withoutConsent": "{count, plural, =0 {} one {# client sans accord est laissée de côté.} other {# clients sans accord sont laissées de côté.}}",
       "monthly": "{used} campagnes sur {limit} ce mois-ci.",
       "send": "Envoyer à {count, plural, one {# cliente} other {# clientes}}"
     },
@@ -2731,14 +2721,14 @@
       "inactive": "Pas venues depuis un moment",
       "birthday": "Anniversaire dans les 7 jours",
       "package_low": "Forfait presque fini",
-      "all": "Toutes mes clientes"
+      "all": "Toutes mes clients"
     },
     "giftCards": {
       "title": "Cartes cadeaux",
       "sell": "Vendre une carte au salon",
       "search": "Chercher un code ou un prénom",
       "empty": "Pas encore de carte cadeau",
-      "emptyHelp": "Tes clientes peuvent en offrir depuis ta vitrine.",
+      "emptyHelp": "Tes clients peuvent en offrir depuis ta vitrine.",
       "for": "Pour {name}",
       "status": {
         "waiting": "en attente de paiement",
@@ -2750,7 +2740,7 @@
       "of": "sur {amount}",
       "error": "Ça n'a pas marché. Réessaie dans un instant.",
       "used": "C'est déduit. Il reste {balance}.",
-      "redeemTitle": "Une cliente paie avec une carte",
+      "redeemTitle": "Un client paie avec une carte",
       "code": "Code de la carte",
       "check": "Voir le solde",
       "balance": "Solde : {amount}",
@@ -2823,7 +2813,7 @@
         "invoices": "Factures, reçus et avoirs",
         "packages": "Séances payées d'avance",
         "stock": "Produits, scan, alertes",
-        "campaigns": "Messages à tes clientes",
+        "campaigns": "Messages à tes clients",
         "plan": "Gratuit ou Premium"
       }
     },
@@ -3176,7 +3166,7 @@
       "title": "Espace formatrice",
       "intro": "Crée tes formations en vidéo, vends-les, suis tes élèves.",
       "error": "Ton espace ne s'affiche pas. Réessaie dans un instant.",
-      "notPro": "Crée d'abord ta vitrine de pro",
+      "notPro": "Crée d'abord ta vitrine",
       "notProHelp": "Les formations sont publiées sur ta vitrine.",
       "becomePro": "Créer ma vitrine",
       "closed": "L'Académie n'est pas encore ouverte dans ton pays.",
@@ -3511,10 +3501,10 @@
       "minutes": "{minutes} min",
       "plan": "Programmer le live",
       "full": "Tu as utilisé tes lives du mois.",
-      "premium": "Glow Pro Premium t'en donne plus",
+      "premium": "Glow Premium t'en donne plus",
       "verify": "Ta boutique doit être vérifiée pour vendre en live.",
       "empty": "Aucun live pour l'instant",
-      "emptyHelp": "Montre tes produits en direct : tes clientes achètent sans quitter le live.",
+      "emptyHelp": "Montre tes produits en direct : tes clients achètent sans quitter le live.",
       "status": {
         "scheduled": "Programmé",
         "live": "En direct",
@@ -3561,7 +3551,7 @@
       "photo": "Photo reçue"
     },
     "useStatus": {
-      "pending": "En attente de la pro",
+      "pending": "En attente du talent",
       "awaiting_deposit": "En attente",
       "confirmed": "Confirmé",
       "proposed": "Autre horaire proposé",
@@ -3596,11 +3586,11 @@
       "amount": "Montant en euros",
       "amountHint": "Entre {min} et {max}.",
       "serviceTitle": "Une prestation",
-      "serviceHelp": "Ouvre la vitrine d'une pro au Bénin et touche « Offrir une prestation ».",
-      "findPro": "Trouver une pro",
+      "serviceHelp": "Ouvre la vitrine d'un talent au Bénin et touche « Offrir une prestation ».",
+      "findPro": "Trouver un talent",
       "productTitle": "Un produit",
       "productHelp": "Ouvre la fiche d'un produit et touche « Offrir ce produit ».",
-      "noService": "Cette pro n'a pas de prestation à prix fixe en FCFA à offrir.",
+      "noService": "Ce talent n'a pas de prestation à prix fixe en FCFA à offrir.",
       "whichService": "Quelle prestation chez {name} ?",
       "howDelivered": "Comment le produit arrive",
       "pickup": "Retrait à la boutique",
@@ -3771,7 +3761,7 @@
     },
     "proLevels": {
       "confirmed": "Confirmée",
-      "top": "Top Pro"
+      "top": "Top talent"
     },
     "streak": {
       "aria": "{count, plural, =0 {Aucune série} one {# jour d'affilée} other {# jours d'affilée}}"
@@ -3811,7 +3801,7 @@
       "gamesTitle": "Joue et gagne",
       "rewards": {
         "title": "Échanger mes points",
-        "help": "Les réductions sont offertes par Solange Glow, jamais par les pros.",
+        "help": "Les réductions sont offertes par Solange Glow, jamais par les talents.",
         "none": "Aucune récompense pour l'instant.",
         "soldOut": "Épuisé",
         "locked": "Dès le niveau {level}",
@@ -3973,12 +3963,12 @@
       "none": "Aucune fête à venir",
       "today": "C'est aujourd'hui !",
       "inDays": "{count, plural, one {Dans # jour} other {Dans # jours}}",
-      "findPro": "Trouver une pro",
+      "findPro": "Trouver un talent",
       "offer": "Offrir un cadeau"
     },
     "rankings": {
       "title": "Classements",
-      "help": "Les meilleures pros du mois, d'après les avis vérifiés des clientes.",
+      "help": "Les meilleurs talents du mois, d'après les avis vérifiés des clients.",
       "none": "Pas encore de classement",
       "month": "Classement de {month}",
       "city": "Ville",
@@ -4052,7 +4042,7 @@
     "house": "Promo Solange Glow",
     "discover": "Découvrir",
     "seeShowcase": "Voir sa vitrine",
-    "verified": "Pro vérifiée",
+    "verified": "Talent vérifié",
     "rating": "{average} sur 5 ({count, plural, one {# avis} other {# avis}})",
     "proAria": "Sponsorisé : {name}",
     "productAria": "Produit sponsorisé : {name}",
@@ -4171,13 +4161,13 @@
       "selection": "Sélection France",
       "academy": "Académie",
       "gift": "Offrir",
-      "pros": "Pour les pros",
+      "pros": "Proposer mes services",
       "how": "Comment ça marche"
     },
     "signIn": "Me connecter",
     "createAccount": "Créer un compte",
     "myAccount": "Mon compte",
-    "iAmPro": "Je suis une pro",
+    "iAmPro": "Je propose mes services",
     "who": {
       "title": "Par où commencer ?",
       "already": "Tu as déjà un compte ?",
@@ -4185,26 +4175,26 @@
         "title": "Je veux juste un rendez-vous",
         "text": "Pas besoin de compte. Ton nom et ton numéro suffisent.",
         "items": {
-          "a": "Voir les pros, leurs photos et leurs prix",
+          "a": "Voir les talents, leurs photos et leurs prix",
           "b": "Réserver et recevoir un rappel",
           "c": "Voir les boutiques et les formations gratuites"
         },
-        "cta": "Trouver une pro"
+        "cta": "Trouver un talent"
       },
       "client": {
         "title": "Je veux un compte",
         "text": "Gratuit, avec ton numéro ou ton e-mail.",
         "items": {
           "a": "Acheter en sécurité",
-          "b": "Écrire et appeler les pros",
+          "b": "Écrire et appeler les talents",
           "c": "Suivre, noter et publier",
           "d": "Te former, jouer, gagner des points"
         },
         "cta": "Créer mon compte"
       },
       "pro": {
-        "title": "Je suis une pro",
-        "text": "Seule, à domicile ou en salon. Le cœur est gratuit.",
+        "title": "Je propose mes services",
+        "text": "Métier ou passion, seul, à domicile ou en salon. L'essentiel est gratuit.",
         "items": {
           "a": "Ta vitrine et ton lien court",
           "b": "Ton QR code à imprimer",
@@ -4212,14 +4202,14 @@
           "d": "Ta boutique et tes formations"
         },
         "cta": "Créer ma vitrine",
-        "more": "Tout voir pour les pros"
+        "more": "Tout voir pour proposer mes services"
       }
     },
     "everything": {
       "title": "Tout ce que tu peux faire",
       "more": "Voir comment ça marche",
       "find": {
-        "title": "Trouver une pro près de toi",
+        "title": "Trouver un talent près de toi",
         "text": "Carte, itinéraire, horaires, avis vérifiés."
       },
       "book": {
@@ -4228,10 +4218,10 @@
       },
       "qr": {
         "title": "Ton QR code de rendez-vous",
-        "text": "Montre-le en arrivant, la pro le scanne."
+        "text": "Montre-le en arrivant, le talent le scanne."
       },
       "feed": {
-        "title": "Voir le travail des pros",
+        "title": "Voir le travail des talents",
         "text": "Photos, vidéos, avant et après, stories."
       },
       "talk": {
@@ -4270,15 +4260,15 @@
     "booking": {
       "title": "Ton rendez-vous, sans appeler",
       "items": {
-        "a": "Choisis ta pro, ton service et ton créneau.",
+        "a": "Choisis ton talent, ton service et ton créneau.",
         "b": "Pas de compte ? Ton nom et ton numéro suffisent.",
         "c": "Tu reçois un rappel et ton QR code de rendez-vous."
       },
       "cta": "Prendre rendez-vous"
     },
     "forPros": {
-      "title": "Tu es pro ? Ton salon en ligne, sans abonnement",
-      "line": "Pour les indépendantes, le travail à domicile et les salons. Tu crées ta vitrine et ton QR code en quelques minutes.",
+      "title": "Tu proposes tes services ? Ton espace en ligne, sans abonnement",
+      "line": "Pour celles et ceux qui en vivent comme pour les passionnés, à domicile ou en salon. Tu crées ta vitrine et ton QR code en quelques minutes.",
       "items": {
         "a": "Vitrine et lien court",
         "b": "QR code, affiche A4, stickers",
@@ -4288,7 +4278,7 @@
         "f": "Formations et lives"
       },
       "cta": "Créer ma vitrine",
-      "more": "Tout voir pour les pros"
+      "more": "Tout voir pour proposer mes services"
     },
     "poster": {
       "name": "Aïcha Tresses",
@@ -4301,23 +4291,23 @@
       "help": "Voir toute l'aide",
       "account": {
         "q": "Faut-il un compte pour réserver ?",
-        "a": "Non. Ton nom et ton numéro suffisent. Pour acheter, écrire à une pro ou laisser un avis, il faut un compte."
+        "a": "Non. Ton nom et ton numéro suffisent. Pour acheter, écrire à un talent ou laisser un avis, il faut un compte."
       },
       "signup": {
         "q": "Comment créer un compte ?",
         "a": "Entre ton numéro ou ton e-mail, puis le code reçu sur WhatsApp, par SMS ou par e-mail. Ensuite, choisis ta ville et ta langue."
       },
       "pro": {
-        "q": "Je suis pro. Que dois-je faire ?",
-        "a": "Crée ton compte, puis choisis « Je suis une pro ». Remplis ta vitrine et publie-la. Pour encaisser, envoie ta pièce d'identité et un selfie."
+        "q": "Je propose mes services. Que dois-je faire ?",
+        "a": "Crée ton compte, puis choisis « Je propose mes services ». Remplis ta vitrine et publie-la. Pour encaisser, envoie ta pièce d'identité et un selfie."
       },
       "qr": {
         "q": "À quoi servent les QR codes ?",
-        "a": "La pro imprime le sien pour que ses clientes réservent. La cliente reçoit aussi le sien quand le rendez-vous est confirmé, et le montre en arrivant."
+        "a": "Le talent imprime le sien pour que ses clients réservent. Le client reçoit aussi le sien quand le rendez-vous est confirmé, et le montre en arrivant."
       },
       "payment": {
         "q": "Mon argent est-il protégé ?",
-        "a": "Oui. Ton argent reste bloqué. La pro est payée quand tu donnes ton code de réception."
+        "a": "Oui. Ton argent reste bloqué. Le talent est payée quand tu donnes ton code de réception."
       },
       "france": {
         "q": "Je suis en France. Puis-je offrir au Bénin ?",
@@ -4326,7 +4316,7 @@
     },
     "footer": {
       "forYou": "Pour toi",
-      "explore": "Trouver une pro",
+      "explore": "Trouver un talent",
       "gift": "Offrir au pays",
       "games": "Jeux et classements",
       "proTools": "Tous les outils",
@@ -4341,16 +4331,16 @@
       "credits": "Crédits photos"
     },
     "pros": {
-      "metaTitle": "Pour les pros",
-      "title": "Ton salon en ligne. Le cœur est gratuit.",
+      "metaTitle": "Proposer mes services",
+      "title": "Ton activité en ligne. L'essentiel est gratuit.",
       "line": "Vitrine, QR code, agenda, boutique et formations, au même endroit.",
       "cta": "Créer ma vitrine",
-      "heroAlt": "Une professionnelle pose du vernis sur les ongles d'une cliente.",
+      "heroAlt": "Une professionnelle pose du vernis sur les ongles d'un client.",
       "who": {
         "title": "Pour qui ?",
         "solo": {
-          "title": "Pro indépendante",
-          "text": "Seule, à domicile ou chez tes clientes. Vitrine, boutique, agenda, formations et lives."
+          "title": "À mon compte",
+          "text": "Seul, à domicile ou chez tes clients, en métier ou par passion. Vitrine, boutique, agenda, formations et lives."
         },
         "salon": {
           "title": "Salon, institut, atelier",
@@ -4363,7 +4353,7 @@
       },
       "qr": {
         "title": "Ton lien et ton QR code",
-        "text": "Ils sont créés avec ta vitrine. Une cliente scanne et réserve.",
+        "text": "Ils sont créés avec ta vitrine. Un client scanne et réserve.",
         "items": {
           "a": "Un lien court : solangeglow.com/ton-nom",
           "b": "Une affiche A4 à imprimer",
@@ -4378,9 +4368,9 @@
           "a": "Photo, présentation, métiers et réseaux",
           "b": "Tarifs, horaires, fermetures",
           "c": "Photos et vidéos avant et après",
-          "d": "Avis vérifiés de vraies clientes",
+          "d": "Avis vérifiés de vrais clients",
           "e": "Carte, itinéraire et repères pour te trouver",
-          "f": "Badge « Pro vérifiée »"
+          "f": "Badge « Talent vérifié »"
         }
       },
       "agenda": {
@@ -4392,12 +4382,12 @@
           "d": "Ajoute un rendez-vous à toute heure, même hors horaires",
           "e": "Les réservations arrivent en temps réel",
           "f": "Tu confirmes, refuses ou proposes une autre heure",
-          "g": "Rappels automatiques à tes clientes",
+          "g": "Rappels automatiques à tes clients",
           "h": "Temps de pose et prestations en plusieurs étapes",
           "i": "Liste d'attente et créneaux de dernière minute",
           "j": "Acomptes pour éviter les rendez-vous manqués",
           "k": "Réservation de groupe et réservation d'un look",
-          "l": "Tu scannes le QR code de ta cliente à son arrivée"
+          "l": "Tu scannes le QR code de ton client à son arrivée"
         }
       },
       "shop": {
@@ -4443,13 +4433,13 @@
         "freeItems": {
           "a": "Vitrine, lien court et QR code",
           "b": "Agenda, créneaux et rappels",
-          "c": "Réservation sans compte pour tes clientes",
-          "d": "Historique et notes clientes",
+          "c": "Réservation sans compte pour tes clients",
+          "d": "Historique et notes clients",
           "e": "Temps de pose et liste d'attente",
           "f": "Boutique et formations",
           "g": "Tableau de bord simple"
         },
-        "premium": "Glow Pro Premium",
+        "premium": "Glow Premium",
         "premiumItems": {
           "a": "Plus de collaboratrices dans l'agenda",
           "b": "Fichier client complet, forfaits et paiements en plusieurs fois",
@@ -4476,21 +4466,21 @@
       "jump": "Aller à",
       "accounts": {
         "title": "Les types de compte",
-        "line": "Un seul compte suffit pour être cliente et pro : tu changes de mode quand tu veux.",
+        "line": "Un seul compte suffit : tu passes de ton espace personnel à ton activité quand tu veux.",
         "can": "Peut",
         "cannot": "Ne peut pas",
         "guest": {
           "title": "Sans compte",
-          "can": "Voir les pros, les publications, les boutiques et les formations gratuites. Réserver avec un nom et un numéro.",
+          "can": "Voir les talents, les publications, les boutiques et les formations gratuites. Réserver avec un nom et un numéro.",
           "cannot": "Acheter, écrire en privé, noter, gagner des points."
         },
         "client": {
-          "title": "Cliente",
-          "can": "Tout cela, et acheter, écrire, appeler, noter, suivre des pros, publier, se former et jouer.",
+          "title": "Client",
+          "can": "Tout cela, et acheter, écrire, appeler, noter, suivre des talents, publier, se former et jouer.",
           "cannot": "Vendre."
         },
         "solo": {
-          "title": "Pro indépendante",
+          "title": "À mon compte",
           "can": "Vitrine, portfolio, boutique, agenda, formations et lives.",
           "cannot": "Gérer une équipe au-delà de ce que prévoit son offre."
         },
@@ -4510,27 +4500,27 @@
         "steps": {
           "a": "Entre ton numéro de téléphone ou ton e-mail.",
           "b": "Tape le code reçu sur WhatsApp, par SMS ou par e-mail.",
-          "c": "Choisis ta ville et ta langue. Si tu es pro, choisis « Je suis une pro »."
+          "c": "Choisis ta ville et ta langue. Si tu proposes tes services, choisis « Je propose mes services »."
         },
-        "note": "Se connecter, c'est pareil : ton numéro ou ton e-mail, puis le code. Pour vendre ou encaisser, une pro envoie aussi une pièce d'identité et un selfie."
+        "note": "Se connecter, c'est pareil : ton numéro ou ton e-mail, puis le code. Pour vendre ou encaisser, un talent envoie aussi une pièce d'identité et un selfie."
       },
       "booking": {
         "short": "Rendez-vous",
         "title": "Prendre rendez-vous",
-        "cta": "Trouver une pro",
+        "cta": "Trouver un talent",
         "steps": {
-          "a": "Choisis ta pro, ton service et ton créneau. Depuis sa page, son QR code ou une publication.",
+          "a": "Choisis ton talent, ton service et ton créneau. Depuis sa page, son QR code ou une publication.",
           "b": "Avec un compte, tu réserves directement. Sans compte, donne ton nom et ton numéro, puis garde le lien reçu.",
-          "c": "La pro confirme, ou propose une autre heure. Si elle demande un acompte, tu le paies en ligne.",
+          "c": "Le talent confirme, ou propose une autre heure. S'il demande un acompte, tu le paies en ligne.",
           "d": "Tu reçois un rappel. Tu peux annuler selon les règles affichées.",
-          "e": "Une fois confirmé, ton rendez-vous affiche ton QR code. Montre-le en arrivant : la pro le scanne.",
+          "e": "Une fois confirmé, ton rendez-vous affiche ton QR code. Montre-le en arrivant : le talent le scanne.",
           "f": "Plus de place ? Mets-toi sur la liste d'attente. Tu peux aussi réserver à plusieurs, par exemple pour un mariage."
         }
       },
       "payment": {
         "short": "Paiement",
         "title": "Payer en sécurité",
-        "cta": "Voir les pros",
+        "cta": "Voir les talents",
         "steps": {
           "a": "Tu paies en ligne. L'argent ne part pas chez la vendeuse : il reste bloqué.",
           "b": "La vendeuse prépare ta commande et te la remet ou te l'envoie.",
@@ -4593,16 +4583,17 @@
           "e": "L'économie de données allège les images et les vidéos."
         }
       }
-    }
+    },
+    "everywhere": "Dans le monde entier, dans ta langue."
   },
   "proSpace": {
-    "badge": "Espace pro",
-    "menu": "Menu de mon espace pro",
+    "badge": "Mon activité",
+    "menu": "Menu de mon activité",
     "more": "Plus",
     "myPage": "Ma vitrine",
     "seeMyPage": "Voir ma vitrine",
-    "clientMode": "Passer en mode cliente",
-    "proMode": "Mon espace pro",
+    "clientMode": "Mon espace personnel",
+    "proMode": "Mon activité",
     "signOut": "Déconnexion",
     "nav": {
       "today": "Aujourd'hui",
@@ -4611,22 +4602,40 @@
       "slots": "Créneaux et lieux",
       "page": "Ma vitrine",
       "shop": "Boutique",
-      "clients": "Clientes",
+      "clients": "Clients",
       "messages": "Messages",
       "money": "Argent",
       "stats": "Statistiques",
       "plan": "Mon offre",
-      "settings": "Réglages"
+      "settings": "Réglages",
+      "groupAppointments": "Rendez-vous",
+      "groupShop": "Boutique",
+      "groupPresence": "Ma présence",
+      "groupMoney": "Argent",
+      "groupMore": "Réglages",
+      "stock": "Stock",
+      "giftCards": "Cartes cadeaux",
+      "packages": "Forfaits",
+      "publish": "Publier",
+      "lives": "Lives",
+      "boost": "Mettre en avant",
+      "reviews": "Avis",
+      "share": "Lien et QR code",
+      "academy": "Formations",
+      "campaigns": "Campagnes",
+      "invoices": "Factures",
+      "verification": "Vérification",
+      "agendaSettings": "Réglages de l'agenda"
     },
     "site": {
       "poweredBy": "Une page Solange Glow",
       "discover": "Découvrir Solange Glow",
-      "forPros": "Tu es pro ?",
+      "forPros": "Tu proposes tes services ?",
       "help": "Aide"
     },
     "today": {
       "title": "Aujourd'hui",
-      "noSpace": "Tu n'as pas encore d'espace pro",
+      "noSpace": "Tu n'as pas encore de vitrine",
       "noSpaceHelp": "Crée ta vitrine en quelques minutes.",
       "start": "Créer ma vitrine",
       "pendingCount": "{count, plural, =0 {Aucune demande à confirmer} one {# demande à confirmer} other {# demandes à confirmer}}",
@@ -4648,7 +4657,7 @@
       "when": "{day} à {time}",
       "confirm": "Confirmer",
       "otherChoice": "Refuser ou déplacer",
-      "confirmed": "Confirmé. La cliente est prévenue.",
+      "confirmed": "Confirmé. Le client est prévenu.",
       "error": "Ça n'a pas marché. Réessaie.",
       "dayTitle": "Rendez-vous du jour",
       "seeAgenda": "Voir l'agenda",
@@ -4709,11 +4718,11 @@
       "blockTitle": "Bloquer un moment",
       "blockHelp": "Une pause, une absence, un rendez-vous personnel : touche l'heure dans ton agenda.",
       "blockCta": "Ouvrir mon agenda",
-      "rulesTitle": "Temps entre deux clientes",
-      "buffer": "Temps de repos après une cliente (minutes)",
+      "rulesTitle": "Temps entre deux clients",
+      "buffer": "Temps de repos après un client (minutes)",
       "bufferHint": "Pour nettoyer ou souffler.",
       "travel": "Temps de trajet (minutes)",
-      "travelHint": "Entre deux lieux ou vers le domicile d'une cliente.",
+      "travelHint": "Entre deux lieux ou vers le domicile d'un client.",
       "placesTitle": "Mes lieux",
       "placesHelp": "Ton adresse principale, tes autres adresses et le déplacement à domicile.",
       "mainAddress": "Modifier mon adresse principale",
@@ -4722,7 +4731,16 @@
       "pauseHelp": "Plus personne ne réserve en ligne. Ton agenda marche toujours.",
       "pause": "Mettre en pause les réservations",
       "resume": "Reprendre les réservations"
-    }
+    },
+    "lives": {
+      "title": "Mes lives",
+      "line": "Vends ou enseigne en direct.",
+      "saleTitle": "Vendre en live",
+      "courseTitle": "Enseigner en live",
+      "courseText": "Programme un cours en direct depuis tes formations.",
+      "courseCta": "Programmer un cours"
+    },
+    "personal": "Perso"
   },
   "errors": {
     "title": "Cette page n'a pas pu s'afficher",
@@ -4731,5 +4749,8 @@
     "home": "Retour à l'accueil",
     "notFoundTitle": "Cette page n'existe pas",
     "notFoundText": "Le lien est peut-être ancien ou incomplet."
+  },
+  "geo": {
+    "placeholder": "Commence à écrire..."
   }
 }

@@ -39,7 +39,7 @@ export function CourseView({ course }: { course: CourseDetail }) {
             // eslint-disable-next-line @next/next/no-img-element -- resized by the backend
             <img src={cover} alt="" width={960} height={540} className="size-full object-cover" />
           ) : (
-            <GraduationCap aria-hidden size={72} weight="duotone" />
+            <GraduationCap aria-hidden size={72} />
           )}
         </span>
         {course.trade_name && (
@@ -103,7 +103,7 @@ export function CourseView({ course }: { course: CourseDetail }) {
               </Link>
             ) : (
               <span className="inline-flex items-center gap-1 font-bold">
-                <SealCheck aria-hidden size={20} weight="fill" className="text-hibiscus" />
+                <SealCheck aria-hidden size={20} weight="fill" />
                 {course.trainer.name}
               </span>
             )}
@@ -142,9 +142,9 @@ export function CourseView({ course }: { course: CourseDetail }) {
                         {lesson.done ? (
                           <CheckCircle size={24} weight="fill" className="text-feuille" />
                         ) : open ? (
-                          <PlayCircle size={24} weight="duotone" />
+                          <PlayCircle size={24} />
                         ) : (
-                          <LockSimple size={24} weight="duotone" className="text-prune-doux" />
+                          <LockSimple size={24} className="text-prune-doux" />
                         )}
                       </span>
                       <span className="flex min-w-0 flex-1 flex-col">

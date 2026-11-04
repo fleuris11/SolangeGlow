@@ -37,7 +37,7 @@ export default async function HelpPage({ params }: Props) {
     <div className="flex flex-col gap-10">
       <header className="flex items-start justify-between gap-3">
         <h1 className="text-headline flex items-center gap-3 font-bold">
-          <Lifebuoy aria-hidden size={32} weight="duotone" className="text-hibiscus" />
+          <Lifebuoy aria-hidden size={32} />
           {t("title")}
         </h1>
         <SpeakButton text={t("title")} className="mt-1" />

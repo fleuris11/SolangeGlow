@@ -4,6 +4,7 @@ Safe to run several times: existing rows are never overwritten, so values edited
 the admin are kept.
 """
 
+from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.db import transaction
 
@@ -1977,6 +1978,15 @@ class Command(BaseCommand):
             data["name"] = data["name_fr"]
             countries[code], was_created = Country.objects.get_or_create(code=code, defaults=data)
             created["countries"] += was_created
+
+        # The whole world is open; tests keep to the two countries above.
+        if settings.CORE_LOAD_WORLD:
+            from apps.core import geo
+
+            world = geo.load_countries()
+            created["countries"] += world["countries"]
+            created["currencies"] += world["currencies"]
+            created["cities"] = geo.load_cities()
 
         for data in SETTINGS:
             data = dict(data)

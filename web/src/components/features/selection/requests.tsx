@@ -174,7 +174,7 @@ export function SpecialRequests() {
       <header className="flex flex-col gap-2">
         <div className="flex items-start gap-2">
           <h1 className="text-headline flex flex-1 items-center gap-2 font-bold">
-            <MagnifyingGlass aria-hidden size={28} weight="duotone" className="text-hibiscus" />
+            <MagnifyingGlass aria-hidden size={28} />
             {t("title")}
           </h1>
           <SpeakButton text={`${t("title")}. ${t("help")}`} />

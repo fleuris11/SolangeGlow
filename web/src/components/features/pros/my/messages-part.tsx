@@ -149,7 +149,7 @@ function AwayMessageForm({ initial }: { initial: { enabled: boolean; text: strin
         {t("awayTitle")}
       </h2>
       <SwitchRow
-        icon={<MoonStars size={28} weight="duotone" />}
+        icon={<MoonStars size={28} />}
         label={t("awayLabel")}
         description={t("awayHelp")}
         checked={enabled}

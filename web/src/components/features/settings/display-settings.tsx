@@ -51,7 +51,7 @@ export function DisplaySettings() {
               key={theme}
               selected={prefs.theme === theme}
               onClick={() => set({ theme })}
-              icon={<Icon size={22} weight="duotone" />}
+              icon={<Icon size={22} />}
             >
               {t(`themes.${theme}`)}
             </Chip>
@@ -65,7 +65,7 @@ export function DisplaySettings() {
             key={size}
             selected={prefs.textSize === size}
             onClick={() => set({ textSize: size })}
-            icon={<TextAa size={22} weight="duotone" />}
+            icon={<TextAa size={22} />}
           >
             <span className={TEXT_SIZE_SCALE[size]}>{t(`textSizes.${size}`)}</span>
           </Chip>
@@ -73,21 +73,21 @@ export function DisplaySettings() {
       </Group>
 
       <SwitchRow
-        icon={<CellSignalLow size={28} weight="duotone" />}
+        icon={<CellSignalLow size={28} />}
         label={t("dataSaver")}
         description={t("dataSaverText")}
         checked={prefs.dataSaver}
         onChange={(dataSaver) => set({ dataSaver })}
       />
       <SwitchRow
-        icon={<Sparkle size={28} weight="duotone" />}
+        icon={<Sparkle size={28} />}
         label={t("reducedMotion")}
         description={t("reducedMotionText")}
         checked={prefs.reducedMotion}
         onChange={(reducedMotion) => set({ reducedMotion })}
       />
       <SwitchRow
-        icon={<SpeakerHigh size={28} weight="duotone" />}
+        icon={<SpeakerHigh size={28} />}
         label={t("audioMode")}
         description={t("audioModeText")}
         checked={prefs.audioMode}

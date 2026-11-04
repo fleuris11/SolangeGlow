@@ -77,28 +77,28 @@ export function FiltersSheet({ open, onOpenChange, filters, onApply }: Props) {
 
         <div className="flex flex-col gap-3">
           <SwitchRow
-            icon={<Clock size={28} weight="duotone" />}
+            icon={<Clock size={28} />}
             label={t("openNow")}
             description={t("openNowText")}
             checked={draft.openNow}
             onChange={(value) => set({ openNow: value })}
           />
           <SwitchRow
-            icon={<Van size={28} weight="duotone" />}
+            icon={<Van size={28} />}
             label={t("atHome")}
             description={t("atHomeText")}
             checked={draft.atHome}
             onChange={(value) => set({ atHome: value })}
           />
           <SwitchRow
-            icon={<SealCheck size={28} weight="duotone" />}
+            icon={<SealCheck size={28} />}
             label={t("verified")}
             description={t("verifiedText")}
             checked={draft.verified}
             onChange={(value) => set({ verified: value })}
           />
           <SwitchRow
-            icon={<GraduationCap size={28} weight="duotone" />}
+            icon={<GraduationCap size={28} />}
             label={t("trained")}
             description={t("trainedText")}
             checked={draft.trained}

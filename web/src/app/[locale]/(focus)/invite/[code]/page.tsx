@@ -36,7 +36,7 @@ export default async function InvitePage({ params }: Props) {
   const title = invite.name ? t("title", { name: invite.name }) : t("titleNoName");
   return (
     <div className="flex flex-col items-center gap-6 text-center">
-      <HandHeart aria-hidden size={72} weight="duotone" className="text-hibiscus" />
+      <HandHeart aria-hidden size={72} />
       <div className="flex items-start gap-2">
         <h1 className="font-display text-headline font-black">{title}</h1>
         <SpeakButton text={`${title}. ${t("text", { points: invite.points })}`} />

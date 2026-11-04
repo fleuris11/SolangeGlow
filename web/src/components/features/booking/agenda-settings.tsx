@@ -152,7 +152,7 @@ function ShareLink({ settings }: { settings: AgendaSettings }) {
     toast(t("copied"), "success");
   };
   return (
-    <Section id="link" title={t("link")} icon={<QrCode size={28} weight="duotone" />}>
+    <Section id="link" title={t("link")} icon={<QrCode size={28} />}>
       <p className="text-prune-doux">{t("linkHelp")}</p>
       <p className="bg-poudre rounded-2xl p-3 font-bold break-all">{settings.booking_url}</p>
       <Button variant="secondary" fullWidth onClick={() => void copy(settings.booking_url)}>
@@ -222,16 +222,16 @@ function Rules({ settings }: { settings: AgendaSettings }) {
   const save = (body: Parameters<typeof updateAgendaSettings>[0]) =>
     void run(() => updateAgendaSettings(body));
   return (
-    <Section id="rules" title={t("rules")} icon={<CalendarCheck size={28} weight="duotone" />}>
+    <Section id="rules" title={t("rules")} icon={<CalendarCheck size={28} />}>
       <SwitchRow
-        icon={<CalendarCheck size={26} weight="duotone" />}
+        icon={<CalendarCheck size={26} />}
         label={t("autoConfirm")}
         description={t("autoConfirmHelp")}
         checked={settings.auto_confirm}
         onChange={(value) => save({ auto_confirm: value })}
       />
       <SwitchRow
-        icon={<UsersThree size={26} weight="duotone" />}
+        icon={<UsersThree size={26} />}
         label={t("guests")}
         description={t("guestsHelp")}
         checked={settings.accepts_guests}
@@ -288,7 +288,7 @@ function Team() {
   const query = useQuery({ queryKey: ["agenda-staff"], queryFn: getStaff });
   const [editing, setEditing] = useState<Staff | "new" | null>(null);
   return (
-    <Section id="team" title={t("team")} icon={<UsersThree size={28} weight="duotone" />}>
+    <Section id="team" title={t("team")} icon={<UsersThree size={28} />}>
       <p className="text-prune-doux">{t("teamHelp")}</p>
       {query.isPending ? (
         <Skeleton className="h-24 rounded-2xl" />
@@ -442,7 +442,7 @@ function PersonSheet({ member, onClose }: { member: Staff | null; onClose: () =>
           onChange={(e) => setLimit(e.target.value.replace(/[^\d]/g, ""))}
         />
         <SwitchRow
-          icon={<CalendarCheck size={26} weight="duotone" />}
+          icon={<CalendarCheck size={26} />}
           label={t("ownHours")}
           description={t("ownHoursHelp")}
           checked={ownHours}
@@ -495,7 +495,7 @@ function PersonSheet({ member, onClose }: { member: Staff | null; onClose: () =>
         )}
         {member && !member.is_owner && (
           <SwitchRow
-            icon={<UsersThree size={26} weight="duotone" />}
+            icon={<UsersThree size={26} />}
             label={t("active")}
             description={t("activeHelp")}
             checked={active}
@@ -516,7 +516,7 @@ function Resources({ settings }: { settings: AgendaSettings }) {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState("1");
   return (
-    <Section id="resources" title={t("resources")} icon={<Package size={28} weight="duotone" />}>
+    <Section id="resources" title={t("resources")} icon={<Package size={28} />}>
       <p className="text-prune-doux">{t("resourcesHelp")}</p>
       {settings.resources.length > 0 && (
         <ul className="flex flex-col gap-2">
@@ -583,11 +583,7 @@ function LastMinute({ settings }: { settings: AgendaSettings }) {
       is_active ? t("lastMinuteOn") : t("saved"),
     );
   return (
-    <Section
-      id="last-minute"
-      title={t("lastMinute")}
-      icon={<Lightning size={28} weight="duotone" />}
-    >
+    <Section id="last-minute" title={t("lastMinute")} icon={<Lightning size={28} />}>
       <p className="text-prune-doux">{t("lastMinuteHelp")}</p>
       <div className="grid grid-cols-2 gap-3">
         <Input

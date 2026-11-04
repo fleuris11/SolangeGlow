@@ -29,29 +29,29 @@ import { formatMoney, parseMoney } from "@/lib/money";
 import { PremiumGate, useGlowPro } from "./premium-gate";
 
 const TOOLS: { href: string; key: string; icon: ReactNode; feature?: GlowFeature }[] = [
-  { href: "/pro/agenda", key: "agenda", icon: <CalendarDots size={28} weight="duotone" /> },
-  { href: "/pro/dashboard", key: "dashboard", icon: <ChartBar size={28} weight="duotone" /> },
-  { href: "/pro/gift-cards", key: "giftCards", icon: <Gift size={28} weight="duotone" /> },
-  { href: "/pro/invoices", key: "invoices", icon: <Receipt size={28} weight="duotone" /> },
+  { href: "/pro/agenda", key: "agenda", icon: <CalendarDots size={28} /> },
+  { href: "/pro/dashboard", key: "dashboard", icon: <ChartBar size={28} /> },
+  { href: "/pro/gift-cards", key: "giftCards", icon: <Gift size={28} /> },
+  { href: "/pro/invoices", key: "invoices", icon: <Receipt size={28} /> },
   {
     href: "/pro/packages",
     key: "packages",
-    icon: <Stack size={28} weight="duotone" />,
+    icon: <Stack size={28} />,
     feature: "client_file",
   },
   {
     href: "/pro/stock",
     key: "stock",
-    icon: <Package size={28} weight="duotone" />,
+    icon: <Package size={28} />,
     feature: "stock",
   },
   {
     href: "/pro/campaigns",
     key: "campaigns",
-    icon: <Megaphone size={28} weight="duotone" />,
+    icon: <Megaphone size={28} />,
     feature: "campaigns",
   },
-  { href: "/pro/plan", key: "plan", icon: <Crown size={28} weight="duotone" /> },
+  { href: "/pro/plan", key: "plan", icon: <Crown size={28} /> },
 ];
 
 /** « My salon »: every Glow Pro tool in one place, Premium ones marked. */
@@ -102,7 +102,7 @@ export function PackagesScreen() {
     <div className="flex flex-col gap-6">
       <div className="flex items-center gap-2">
         <h1 className="text-headline flex flex-1 items-center gap-2 font-bold">
-          <Stack aria-hidden size={30} weight="duotone" className="text-hibiscus" />
+          <Stack aria-hidden size={30} />
           {t("title")}
         </h1>
         <SpeakButton text={t("title")} />
@@ -159,11 +159,7 @@ function PackageList() {
   return (
     <div className="flex flex-col gap-5">
       {rows.length === 0 ? (
-        <EmptyState
-          icon={<Stack size={44} weight="duotone" />}
-          title={t("empty")}
-          description={t("emptyHelp")}
-        />
+        <EmptyState icon={<Stack size={44} />} title={t("empty")} description={t("emptyHelp")} />
       ) : (
         <ul className="flex flex-col gap-2">
           {rows.map((p) => (

@@ -24,7 +24,7 @@ export function PrivacyNotice() {
         className="bg-poudre border-trait flex flex-wrap items-center gap-3 border-b px-4 py-3 [&[hidden]]:hidden"
       >
         <p className="flex min-w-0 flex-1 basis-64 items-start gap-3">
-          <ShieldCheck aria-hidden size={28} weight="duotone" className="text-feuille shrink-0" />
+          <ShieldCheck aria-hidden size={28} className="text-feuille shrink-0" />
           <span>
             {t("text")}{" "}
             <Link href="/pages/confidentialite" className="text-hibiscus font-bold underline">

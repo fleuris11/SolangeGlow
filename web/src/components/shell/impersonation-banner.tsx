@@ -30,7 +30,7 @@ export function ImpersonationBanner() {
         suppressHydrationWarning
         className="bg-rouge text-sur-hibiscus sticky top-0 z-50 flex flex-wrap items-center gap-3 px-4 py-2 [&[hidden]]:hidden"
       >
-        <UserSwitch size={24} weight="duotone" aria-hidden />
+        <UserSwitch size={24} aria-hidden />
         <p className="min-w-0 flex-1 font-bold">
           <span data-named={t("asNamed", { name: "%NAME%" })} suppressHydrationWarning>
             {t("asMember")}
