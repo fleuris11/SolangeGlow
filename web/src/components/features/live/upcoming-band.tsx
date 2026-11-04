@@ -45,7 +45,7 @@ export function UpcomingLivesBand({ lives }: { lives: UpcomingLive[] }) {
               >
                 <span className="flex items-center gap-2">
                   {live.on_air ? (
-                    <span className="bg-hibiscus text-sur-hibiscus text-mention inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 font-bold">
+                    <span className="bg-rouge text-sur-hibiscus text-mention inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 font-bold">
                       <Broadcast aria-hidden size={16} weight="bold" />
                       {t("onAir")}
                     </span>

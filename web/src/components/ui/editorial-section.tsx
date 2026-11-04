@@ -8,7 +8,7 @@ const fields: Record<Ambiance, string> = {
   jour: "bg-lait text-prune",
   nuit: "bg-nuit text-prune sg-to-night",
   poudre: "bg-poudre text-prune",
-  hibiscus: "bg-hibiscus text-sur-hibiscus",
+  hibiscus: "bg-rouge text-sur-hibiscus",
 };
 
 type Props = ComponentPropsWithoutRef<"section"> & { ambiance?: Ambiance };

@@ -43,7 +43,7 @@ export function DictateButton({
       }}
       className={cn(
         "inline-flex min-h-12 shrink-0 items-center gap-1 rounded-full px-3 font-bold",
-        listening ? "bg-hibiscus text-sur-hibiscus" : "bg-poudre text-prune",
+        listening ? "bg-rouge text-sur-hibiscus" : "bg-poudre text-prune",
         className,
       )}
     >

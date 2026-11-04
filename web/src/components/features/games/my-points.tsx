@@ -200,7 +200,7 @@ export function MyPoints() {
                 key={index}
                 className={
                   lit
-                    ? "bg-hibiscus size-8 rounded-full"
+                    ? "bg-rouge size-8 rounded-full"
                     : "border-trait bg-lait size-8 rounded-full border-2"
                 }
               >

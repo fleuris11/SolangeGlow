@@ -4,6 +4,8 @@
 @theme inline {
   /* Colours (from tokens.css, swapped automatically in dark mode). */
   --color-hibiscus: var(--hibiscus);
+  --color-rouge: var(--rouge);
+  --color-rouge-press: var(--rouge-press);
   --color-hibiscus-press: var(--hibiscus-press);
   --color-sur-hibiscus: var(--sur-hibiscus);
   --color-prune: var(--prune);
@@ -21,8 +23,8 @@
   --color-voile-photo: var(--voile-photo);
 
   /* Fonts (next/font variables set on <html>). */
-  --font-sans: var(--font-atkinson), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-sans: var(--font-text-face), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display-face), ui-serif, Georgia, serif;
 
   /* Type scale: 13/18, 15/22, 17/26 (body), 20/28, 24/30, 30/36, 40/44, 52/56. */
   --text-mention: 0.8125rem;
@@ -42,11 +44,12 @@
   --text-hero: 3.25rem;
   --text-hero--line-height: 3.5rem;
 
-  /* Radii: pills for chips and buttons, 14 fields, 20 cards, 28 sheets, 16 photos. */
-  --radius-field: 0.875rem;
-  --radius-card: 1.25rem;
-  --radius-sheet: 1.75rem;
-  --radius-photo: 1rem;
+  /* Corners: quiet everywhere. Only filters stay round, and avatars keep the petal. */
+  --radius-button: 0.25rem;
+  --radius-field: 0.375rem;
+  --radius-card: 0.5rem;
+  --radius-sheet: 1rem;
+  --radius-photo: 0.125rem;
 
   --shadow-float: var(--ombre-flottante);
 
@@ -229,11 +232,11 @@
   }
 }
 
+/* One weight only: this face is already strong, and a faked bold would ruin its contrast. */
 @utility font-display {
   font-family: var(--font-display);
-  font-variation-settings:
-    "SOFT" 100,
-    "WONK" 1;
+  font-weight: 400;
+  font-synthesis-weight: none;
 }
 
 /* Lotus petal shape: top-left and bottom-right corners at 50 %, the other two at 16 %. */
@@ -458,30 +461,5 @@ html[data-motion="reduced"] .sg-marquee-copy {
 @supports not selector(:has(*)) {
   .sg-chooser [data-show="hair"] {
     display: block;
-  }
-}
-
-/* The name rises once. No fade: it must be there for the first paint. */
-.sg-rise {
-  animation: rise var(--duree-signature) var(--courbe-sortie) both;
-}
-
-@keyframes rise {
-  from {
-    transform: translateY(0.08em);
-  }
-}
-
-/* The six digits of the receipt code, one after the other. */
-.sg-digit {
-  animation: line-up var(--duree-ouverture) var(--courbe-sortie) both;
-  animation-delay: calc(var(--line, 0) * 60ms);
-  animation-timeline: view();
-  animation-range: entry 10% entry 60%;
-}
-
-@supports not (animation-timeline: view()) {
-  .sg-digit {
-    animation: none;
   }
 }

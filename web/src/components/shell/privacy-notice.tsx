@@ -34,7 +34,7 @@ export function PrivacyNotice() {
         </p>
         <button
           type="button"
-          className="bg-hibiscus text-sur-hibiscus min-h-12 rounded-full px-5 font-bold"
+          className="bg-rouge text-sur-hibiscus min-h-12 rounded-full px-5 font-bold"
         >
           {t("ok")}
         </button>

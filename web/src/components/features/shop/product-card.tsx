@@ -28,7 +28,7 @@ export function ProductCard({ product, shopSlug }: { product: ProductSummary; sh
           />
         )}
         {product.flash_sale && (
-          <span className="bg-hibiscus text-sur-hibiscus text-small absolute top-2 left-2 inline-flex items-center gap-1 rounded-full px-2 py-1 font-bold">
+          <span className="bg-rouge text-sur-hibiscus text-small absolute top-2 left-2 inline-flex items-center gap-1 rounded-full px-2 py-1 font-bold">
             <Lightning aria-hidden size={16} weight="fill" />
             {t("flash", { percent: product.flash_sale.percent_off })}
           </span>

@@ -35,7 +35,7 @@ export function NotificationBell({ layout = "stacked" }: { layout?: "stacked" | 
           className={layout === "row" ? "text-hibiscus" : undefined}
         />
         {unread > 0 && (
-          <span className="bg-hibiscus text-sur-hibiscus text-mention absolute -top-1.5 -right-2 inline-flex min-w-5 items-center justify-center rounded-full px-1 leading-5 font-bold">
+          <span className="bg-rouge text-sur-hibiscus text-mention absolute -top-1.5 -right-2 inline-flex min-w-5 items-center justify-center rounded-full px-1 leading-5 font-bold">
             {unread > 99 ? "99+" : unread}
           </span>
         )}

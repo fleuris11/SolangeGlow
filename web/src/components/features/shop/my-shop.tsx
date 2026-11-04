@@ -842,7 +842,7 @@ export function MyShopScreen() {
             onClick={() => setTab(key)}
             className={cn(
               "inline-flex min-h-12 shrink-0 items-center gap-2 rounded-full border-2 px-4 font-bold",
-              tab === key ? "border-hibiscus bg-hibiscus text-sur-hibiscus" : "border-trait",
+              tab === key ? "border-hibiscus bg-rouge text-sur-hibiscus" : "border-trait",
             )}
           >
             {TAB_ICONS[key]}

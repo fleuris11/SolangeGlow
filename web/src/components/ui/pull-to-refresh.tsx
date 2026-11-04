@@ -57,7 +57,7 @@ export function PullToRefresh({ onRefresh, children }: Props) {
         style={{ height: busy ? 48 : distance }}
       >
         <span
-          className="bg-hibiscus sg-petal-shape mt-2 block size-8"
+          className="bg-rouge sg-petal-shape mt-2 block size-8"
           style={{
             transform: `scale(${busy ? 1 : progress}) rotate(${progress * 180}deg)`,
             opacity: busy ? 1 : progress,

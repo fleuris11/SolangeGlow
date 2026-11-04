@@ -25,7 +25,7 @@ function todayAt(slot: string): Date {
 }
 
 const COLOURS: Record<string, string> = {
-  hibiscus: "bg-hibiscus text-sur-hibiscus",
+  hibiscus: "bg-rouge text-sur-hibiscus",
   prune: "bg-prune text-lait",
   or: "bg-or text-sur-or",
   feuille: "bg-feuille text-lait",

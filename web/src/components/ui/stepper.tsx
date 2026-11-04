@@ -36,7 +36,7 @@ export function Stepper({ current, total, onBack }: Props) {
               key={index}
               className={cn(
                 "h-2 flex-1 rounded-full transition-colors duration-200",
-                index < current ? "bg-hibiscus" : "bg-trait",
+                index < current ? "bg-rouge" : "bg-trait",
               )}
             />
           ))}

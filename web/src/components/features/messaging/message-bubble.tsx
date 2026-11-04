@@ -124,7 +124,7 @@ export function MessageBubble({ message, mine, delivery, onDelete, onReport, onR
         className={cn(
           "flex max-w-[85%] flex-col gap-2 rounded-3xl px-4 py-3",
           mine
-            ? "bg-hibiscus text-sur-hibiscus rounded-br-md"
+            ? "bg-rouge text-sur-hibiscus rounded-br-md"
             : "bg-carte border-trait rounded-bl-md border",
           message.state === "held" && "opacity-70",
         )}

@@ -168,7 +168,7 @@ export function ChallengeScreen() {
                 onChange={(event) => setCaption(event.target.value)}
               />
               <label
-                className={`${busy ? "opacity-50" : ""} bg-hibiscus text-sur-hibiscus text-lead flex min-h-14 cursor-pointer items-center justify-center gap-3 rounded-full px-7 font-bold`}
+                className={`${busy ? "opacity-50" : ""} bg-rouge text-sur-hibiscus text-lead flex min-h-14 cursor-pointer items-center justify-center gap-3 rounded-full px-7 font-bold`}
               >
                 <Camera aria-hidden size={24} weight="bold" />
                 {busy ? t("sending") : t("join")}

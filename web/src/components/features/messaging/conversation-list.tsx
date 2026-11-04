@@ -94,7 +94,7 @@ function Row({ conversation }: { conversation: Conversation }) {
             />
           )}
           {unread && (
-            <span className="bg-hibiscus text-sur-hibiscus text-mention ml-auto inline-flex min-w-6 shrink-0 items-center justify-center rounded-full px-1.5 leading-6">
+            <span className="bg-rouge text-sur-hibiscus text-mention ml-auto inline-flex min-w-6 shrink-0 items-center justify-center rounded-full px-1.5 leading-6">
               <span className="sr-only">{t("unread", { count: conversation.unread })}</span>
               <span aria-hidden>{conversation.unread}</span>
             </span>

@@ -305,7 +305,7 @@ function BigChoice({
         aria-hidden
         className={cn(
           "inline-flex size-7 items-center justify-center rounded-full border-2",
-          selected ? "border-hibiscus bg-hibiscus text-sur-hibiscus" : "border-trait",
+          selected ? "border-hibiscus bg-rouge text-sur-hibiscus" : "border-trait",
         )}
       >
         {selected && <Check size={16} weight="bold" />}

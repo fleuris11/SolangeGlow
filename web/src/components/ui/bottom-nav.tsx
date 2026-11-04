@@ -43,7 +43,7 @@ export function BottomNav({ icons }: { icons: NavIcons }) {
                   aria-hidden
                   className={cn(
                     "relative inline-flex items-center justify-center",
-                    isCreate && "bg-hibiscus text-sur-hibiscus -mt-1 size-10 rounded-full",
+                    isCreate && "bg-rouge text-sur-hibiscus -mt-1 size-10 rounded-full",
                   )}
                 >
                   {active || isCreate ? icons[key].on : icons[key].off}

@@ -1,18 +1,16 @@
-import { Atkinson_Hyperlegible_Next, Fraunces } from "next/font/google";
+import { Gloock, Hanken_Grotesk } from "next/font/google";
 
-/** Big moments only (welcome title, pro names, success screens, paid amounts). */
-export const fraunces = Fraunces({
+/** Titles and big moments. Close to the contrast of the logo, readable over a photo. */
+export const displayFont = Gloock({
   subsets: ["latin", "latin-ext"],
-  axes: ["SOFT", "WONK", "opsz"],
+  weight: "400",
   display: "swap",
-  variable: "--font-fraunces",
+  variable: "--font-display-face",
 });
 
-/** Everything else: built for maximum legibility. */
-export const atkinson = Atkinson_Hyperlegible_Next({
+/** Everything else: plain and very legible, with a plain zero for prices. */
+export const textFont = Hanken_Grotesk({
   subsets: ["latin", "latin-ext"],
   display: "swap",
-  variable: "--font-atkinson",
-  // Next.js has no fallback metrics for this recent font yet.
-  adjustFontFallback: false,
+  variable: "--font-text-face",
 });

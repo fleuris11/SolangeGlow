@@ -36,7 +36,7 @@ const POST_KINDS: Kind[] = ["photo", "carousel", "video", "before_after"];
 const STORY_KINDS: Kind[] = ["story_photo", "story_text", "free_slots"];
 const BACKGROUNDS = ["hibiscus", "prune", "or", "feuille", "poudre"] as const;
 const COLOURS: Record<string, string> = {
-  hibiscus: "bg-hibiscus text-sur-hibiscus",
+  hibiscus: "bg-rouge text-sur-hibiscus",
   prune: "bg-prune text-lait",
   or: "bg-or text-sur-or",
   feuille: "bg-feuille text-lait",

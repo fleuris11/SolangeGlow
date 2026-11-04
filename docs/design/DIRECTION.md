@@ -48,7 +48,7 @@ familier.
 | Jour et nuit | Nuit pour les moments forts : ouverture, vitrine, lives, code, réussite. Jour pour l'usage courant |
 | Couleur | Hibiscus sur l'action seulement. Or pour le code et les récompenses. Aplats hibiscus et poudre en section entière |
 | Lumière | Une seule : la lueur chaude tirée de la photo, sur les fonds de nuit |
-| Type | Fraunces très grand, Atkinson pour tout le reste. Le zéro barré d'Atkinson est gardé : il se lit mieux |
+| Type | Gloock en une seule graisse pour les titres, Hanken Grotesk pour tout le reste, avec un zéro normal pour les prix. Remplace Fraunces et Atkinson, refusées par le propriétaire après la première version. |
 | Application connectée | Plus calme que la vitrine : mêmes couleurs et photos, moins d'effets. L'agenda et les tableaux de bord restent des outils |
 
 ## Moments signature

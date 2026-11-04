@@ -393,7 +393,7 @@ export function BookingFlow({
                     }}
                     className={cn(
                       "flex min-h-16 min-w-20 flex-col items-center justify-center rounded-2xl border-2 px-2",
-                      day === d ? "border-hibiscus bg-hibiscus text-sur-hibiscus" : "border-trait",
+                      day === d ? "border-hibiscus bg-rouge text-sur-hibiscus" : "border-trait",
                       full && day !== d && "text-prune-doux",
                     )}
                   >
@@ -451,7 +451,7 @@ export function BookingFlow({
                     className={cn(
                       "flex min-h-12 w-full flex-col items-center justify-center rounded-full border-2 font-bold",
                       start === item.start
-                        ? "border-hibiscus bg-hibiscus text-sur-hibiscus"
+                        ? "border-hibiscus bg-rouge text-sur-hibiscus"
                         : "border-trait hover:bg-poudre",
                     )}
                   >

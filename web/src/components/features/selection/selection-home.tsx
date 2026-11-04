@@ -48,7 +48,7 @@ export function SelectionHome({
   const chip = (active: boolean) =>
     cn(
       "inline-flex min-h-12 items-center gap-2 rounded-full border-2 px-4 font-bold whitespace-nowrap",
-      active ? "border-hibiscus bg-hibiscus text-sur-hibiscus" : "border-trait hover:bg-poudre",
+      active ? "border-hibiscus bg-rouge text-sur-hibiscus" : "border-trait hover:bg-poudre",
     );
 
   return (

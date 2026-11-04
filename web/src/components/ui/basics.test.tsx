@@ -38,7 +38,7 @@ describe("Button", () => {
     );
 
     const link = screen.getByRole("link", { name: "WhatsApp" });
-    expect(link).toHaveClass("rounded-full");
+    expect(link).toHaveClass("rounded-button");
   });
 
   it("cannot be clicked when disabled", async () => {

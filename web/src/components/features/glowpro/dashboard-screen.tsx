@@ -171,7 +171,7 @@ function Ranking({
             </div>
             <div className="bg-poudre h-3 overflow-hidden rounded-full" aria-hidden>
               <div
-                className="bg-hibiscus h-full rounded-full"
+                className="bg-rouge h-full rounded-full"
                 style={{
                   width: `${Math.round((row.turnover_minor / max) * 100)}%`,
                   backgroundColor: row.color,

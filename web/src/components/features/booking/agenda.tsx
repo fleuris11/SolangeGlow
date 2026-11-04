@@ -330,9 +330,7 @@ export function AgendaScreen({ initialDay }: { initialDay?: string }) {
                 onClick={() => setPerson(null)}
                 className={cn(
                   "min-h-12 rounded-full border-2 px-4 font-bold whitespace-nowrap",
-                  person === null
-                    ? "border-hibiscus bg-hibiscus text-sur-hibiscus"
-                    : "border-trait",
+                  person === null ? "border-hibiscus bg-rouge text-sur-hibiscus" : "border-trait",
                 )}
               >
                 {t("everyone")}
@@ -445,7 +443,7 @@ export function AgendaScreen({ initialDay }: { initialDay?: string }) {
                 {nowMinutes !== null && column.day === today(zone) && (
                   <div
                     aria-hidden
-                    className="bg-hibiscus pointer-events-none absolute inset-x-0 z-10 h-0.5"
+                    className="bg-rouge pointer-events-none absolute inset-x-0 z-10 h-0.5"
                     style={{ top: (nowMinutes - range[0]) * PX }}
                   />
                 )}

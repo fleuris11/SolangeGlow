@@ -139,7 +139,7 @@ export function SelectionBuy({
             className="bg-carte h-3 overflow-hidden rounded-full"
           >
             <div
-              className="bg-hibiscus h-full rounded-full"
+              className="bg-rouge h-full rounded-full"
               style={{ width: `${Math.min(100, (group.count / group.target) * 100)}%` }}
             />
           </div>

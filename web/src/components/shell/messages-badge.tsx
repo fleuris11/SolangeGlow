@@ -32,8 +32,8 @@ export function MessagesBadge({ layout }: { layout: "icon" | "row" }) {
         <span
           className={
             layout === "icon"
-              ? "bg-hibiscus text-sur-hibiscus text-mention absolute top-1 left-1/2 ml-2 inline-flex min-w-5 items-center justify-center rounded-full px-1 leading-5 font-bold"
-              : "bg-hibiscus text-sur-hibiscus text-mention ml-auto inline-flex min-w-6 items-center justify-center rounded-full px-1.5 leading-6"
+              ? "bg-rouge text-sur-hibiscus text-mention absolute top-1 left-1/2 ml-2 inline-flex min-w-5 items-center justify-center rounded-full px-1 leading-5 font-bold"
+              : "bg-rouge text-sur-hibiscus text-mention ml-auto inline-flex min-w-6 items-center justify-center rounded-full px-1.5 leading-6"
           }
         >
           <span aria-hidden>{count > 99 ? "99+" : count}</span>

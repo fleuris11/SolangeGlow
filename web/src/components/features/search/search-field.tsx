@@ -99,7 +99,7 @@ export function SearchField({
               aria-pressed={listening}
               className={cn(
                 "-mr-2 inline-flex min-h-11 shrink-0 items-center gap-1 rounded-full px-3 font-bold",
-                listening ? "bg-hibiscus text-sur-hibiscus" : "bg-carte text-prune",
+                listening ? "bg-rouge text-sur-hibiscus" : "bg-carte text-prune",
               )}
             >
               {listening ? icons.micOn : icons.mic}

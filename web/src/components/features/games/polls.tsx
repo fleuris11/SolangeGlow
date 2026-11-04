@@ -76,7 +76,7 @@ export function PollCard({ poll, onChange }: { poll: Poll; onChange?: (poll: Pol
         {share !== null && (
           <span className="bg-poudre h-2 overflow-hidden rounded-full" aria-hidden>
             <span
-              className={cn("block h-full rounded-full", picked ? "bg-hibiscus" : "bg-prune-doux")}
+              className={cn("block h-full rounded-full", picked ? "bg-rouge" : "bg-prune-doux")}
               style={{ width: `${share}%` }}
             />
           </span>

@@ -17,7 +17,7 @@ import { SITE_URL } from "@/lib/seo/alternates";
 
 const UMAMI_ID = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID ?? "";
 
-import { atkinson, fraunces } from "../fonts";
+import { textFont, displayFont } from "../fonts";
 import "../globals.css";
 
 type Props = {
@@ -77,7 +77,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <html
       lang={locale}
-      className={`${fraunces.variable} ${atkinson.variable}`}
+      className={`${displayFont.variable} ${textFont.variable}`}
       data-text-size="normal"
       suppressHydrationWarning
     >

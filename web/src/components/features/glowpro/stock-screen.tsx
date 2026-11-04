@@ -302,7 +302,7 @@ function ItemSheet({ item, onClose }: { item: StockItem; onClose: () => void }) 
                 onClick={() => setKind(value)}
                 className={cn(
                   "min-h-12 rounded-full border-2 px-4 font-bold",
-                  kind === value ? "border-hibiscus bg-hibiscus text-sur-hibiscus" : "border-trait",
+                  kind === value ? "border-hibiscus bg-rouge text-sur-hibiscus" : "border-trait",
                 )}
               >
                 {tKind(value)}

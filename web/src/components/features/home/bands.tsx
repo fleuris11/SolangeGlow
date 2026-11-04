@@ -107,7 +107,7 @@ export function JoinBand() {
       <div className="grid gap-3 sm:grid-cols-2">
         <Link
           href="/auth?as=client"
-          className="bg-hibiscus text-sur-hibiscus rounded-card flex min-h-32 flex-col justify-between gap-4 p-5"
+          className="bg-rouge text-sur-hibiscus rounded-card flex min-h-32 flex-col justify-between gap-4 p-5"
         >
           <Sparkle aria-hidden size={36} weight="fill" />
           <span>

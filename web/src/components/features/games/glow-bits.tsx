@@ -69,7 +69,7 @@ export function Progress({ value, max, label }: { value: number; max: number; la
         aria-valuenow={Math.min(value, max)}
         className="bg-carte h-3 overflow-hidden rounded-full"
       >
-        <div className="bg-hibiscus h-full rounded-full" style={{ width: `${percent}%` }} />
+        <div className="bg-rouge h-full rounded-full" style={{ width: `${percent}%` }} />
       </div>
       <p className="text-small text-prune-doux">{label}</p>
     </div>

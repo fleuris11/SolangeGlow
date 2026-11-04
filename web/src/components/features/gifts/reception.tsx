@@ -191,7 +191,7 @@ function BookPanel({
             onClick={() => setStart(slot.start)}
             className={cn(
               "min-h-12 rounded-2xl border-2 font-bold",
-              slot.start === start ? "border-hibiscus bg-hibiscus text-lait" : "border-trait",
+              slot.start === start ? "border-hibiscus bg-rouge text-lait" : "border-trait",
             )}
           >
             {timeAt(slot.start, zone, locale)}
@@ -336,7 +336,7 @@ function CardPanel({ gift, token }: { gift: Reception; token: string }) {
   };
   return (
     <section aria-labelledby="card-title" className="flex flex-col gap-4">
-      <div className="bg-hibiscus text-lait rounded-card flex flex-col gap-3 p-5">
+      <div className="bg-rouge text-lait rounded-card flex flex-col gap-3 p-5">
         <p id="card-title" className="flex items-center gap-2 font-bold">
           <Sparkle aria-hidden size={24} weight="fill" />
           {t("cardName")}
@@ -516,7 +516,7 @@ function Envelope({ gift, onOpen }: { gift: Reception; onOpen: () => void }) {
   const tOccasions = useTranslations("gifts.occasions");
   return (
     <div className="flex flex-col items-center gap-6 py-6 text-center">
-      <div className="bg-hibiscus text-lait rounded-card relative flex aspect-[4/3] w-full max-w-sm flex-col items-center justify-center gap-3 overflow-hidden">
+      <div className="bg-rouge text-lait rounded-card relative flex aspect-[4/3] w-full max-w-sm flex-col items-center justify-center gap-3 overflow-hidden">
         <span
           aria-hidden
           className="bg-or absolute -top-1/2 left-1/2 aspect-square w-3/4 -translate-x-1/2 rotate-45 rounded-3xl opacity-90"

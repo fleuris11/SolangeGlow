@@ -85,7 +85,7 @@ export function OffersView({ slug }: { slug: string }) {
                 className={cn(
                   "min-h-12 rounded-full border-2 px-4 font-bold",
                   !custom && amount === value
-                    ? "border-hibiscus bg-hibiscus text-sur-hibiscus"
+                    ? "border-hibiscus bg-rouge text-sur-hibiscus"
                     : "border-trait",
                 )}
               >

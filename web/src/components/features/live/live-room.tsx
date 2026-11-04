@@ -71,7 +71,7 @@ function Chip({ children, tone = "carte" }: { children: ReactNode; tone?: "carte
     <span
       className={cn(
         "text-small inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-bold",
-        tone === "live" ? "bg-hibiscus text-sur-hibiscus" : "bg-carte/90 text-prune",
+        tone === "live" ? "bg-rouge text-sur-hibiscus" : "bg-carte/90 text-prune",
       )}
     >
       {children}

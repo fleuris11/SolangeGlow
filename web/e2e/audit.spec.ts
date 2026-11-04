@@ -56,7 +56,7 @@ async function inspect(page: Page, screen: Screen): Promise<Finding> {
     // A chosen filter or tab is coloured too: it is a state, not an action.
     const main = controls.filter(
       (el) =>
-        el.className.toString().includes("bg-hibiscus") &&
+        el.className.toString().includes("bg-rouge") &&
         !el.getAttribute("aria-current") &&
         el.getAttribute("aria-pressed") !== "true" &&
         el.getAttribute("aria-selected") !== "true",

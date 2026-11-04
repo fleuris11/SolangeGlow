@@ -178,7 +178,7 @@ export function Composer({ conversationId, isPro, attachment, onAttachmentChange
           <button
             type="button"
             onClick={submit}
-            className="bg-hibiscus text-sur-hibiscus inline-flex min-h-12 shrink-0 items-center gap-1 rounded-full px-4 font-bold"
+            className="bg-rouge text-sur-hibiscus inline-flex min-h-12 shrink-0 items-center gap-1 rounded-full px-4 font-bold"
           >
             <PaperPlaneRight aria-hidden size={22} weight="fill" />
             {t("send")}

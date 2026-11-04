@@ -138,9 +138,7 @@ export function CheckoutPanel({ appointment }: { appointment: Appointment }) {
                 onClick={() => setMethod(value)}
                 className={cn(
                   "min-h-12 rounded-full border-2 px-4 font-bold",
-                  method === value
-                    ? "border-hibiscus bg-hibiscus text-sur-hibiscus"
-                    : "border-trait",
+                  method === value ? "border-hibiscus bg-rouge text-sur-hibiscus" : "border-trait",
                 )}
               >
                 {tMethod(value)}

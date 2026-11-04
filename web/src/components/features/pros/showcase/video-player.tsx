@@ -47,7 +47,7 @@ export function VideoPlayer({ media, label }: { media: Media; label: string }) {
           className="absolute inset-0 size-full object-cover"
         />
       )}
-      <span className="bg-hibiscus text-sur-hibiscus relative inline-flex min-h-12 items-center gap-2 rounded-full px-5 font-bold">
+      <span className="bg-rouge text-sur-hibiscus relative inline-flex min-h-12 items-center gap-2 rounded-full px-5 font-bold">
         <Play aria-hidden size={22} weight="fill" />
         {t("playVideo", { label })}
       </span>

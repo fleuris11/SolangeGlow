@@ -108,7 +108,7 @@ export function NotificationList() {
               <span className="flex min-w-0 flex-1 flex-col gap-1">
                 <span className="flex flex-wrap items-center gap-2">
                   {!item.read && (
-                    <span className="bg-hibiscus text-sur-hibiscus text-mention rounded-full px-2 font-bold">
+                    <span className="bg-rouge text-sur-hibiscus text-mention rounded-full px-2 font-bold">
                       {t("new")}
                     </span>
                   )}
