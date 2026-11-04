@@ -1447,7 +1447,7 @@
       "shippedDone": "Le client est prévenu.",
       "delivered": "Livré : prendre une photo",
       "deliveredDone": "Livraison notée. Sans code ni contestation, tu seras payée automatiquement.",
-      "deliveredHelp": "Sans code, la photo prouve la livraison : le client est relancée, puis tu es payée.",
+      "deliveredHelp": "Sans code, la photo prouve la livraison : le client est relancé, puis tu es payé.",
       "courier": "Lien pour le livreur",
       "courierShared": "Lien prêt : le livreur saisit le code sans compte.",
       "cancelSale": "Annuler la vente",
@@ -1530,7 +1530,7 @@
       "doneTitle": "C'est validé !",
       "doneText": "La vendeuse est payée. Merci !",
       "order": "Commande {reference} de {seller}",
-      "help": "Demande le code au client seulement quand elle a le colis en main.",
+      "help": "Demande le code au client seulement quand il a le colis en main.",
       "code": "Code à 6 chiffres",
       "confirm": "Valider"
     },
@@ -1816,7 +1816,7 @@
       "carrier": "Transporteur ou livreur",
       "tracking": "Numéro de suivi (facultatif)",
       "ship": "Expédier",
-      "shippedDone": "Expédiée : le client est prévenue."
+      "shippedDone": "Expédiée : le client est prévenu."
     },
     "detail": {
       "error": "Ça n'a pas marché. Réessaie.",
@@ -2400,7 +2400,7 @@
       "chooseProduct": "Choisis un produit",
       "adviceNote": "Ton conseil (facultatif)",
       "cancel": "Annuler le rendez-vous",
-      "cancelled": "Annulé. Le client est remboursée et prévenue.",
+      "cancelled": "Annulé. Le client est remboursé et prévenu.",
       "cancelHelp": "Si tu annules, le client est toujours remboursée.",
       "message": "Message pour le client",
       "back": "Retour",
@@ -4307,7 +4307,7 @@
       },
       "payment": {
         "q": "Mon argent est-il protégé ?",
-        "a": "Oui. Ton argent reste bloqué. Le talent est payée quand tu donnes ton code de réception."
+        "a": "Oui. Ton argent reste bloqué. Le talent est payé quand tu donnes ton code de réception."
       },
       "france": {
         "q": "Je suis en France. Puis-je offrir au Bénin ?",
