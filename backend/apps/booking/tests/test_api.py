@@ -10,6 +10,7 @@ from rest_framework.test import APIClient
 
 from apps.booking.models import Appointment, BookingSettings, ClientRecord, StaffMember
 from apps.booking.services import agenda
+from apps.core.audit.models import AuditEvent
 from apps.messaging.tests.factories import adult
 
 from .factories import MONDAY, at, salon, service
@@ -351,3 +352,49 @@ def test_waiting_list_and_group_through_the_api():
     token = group["share_url"].split("/")[-1]
     shown = APIClient().get(reverse("v1:booking-group", args=[token])).json()
     assert shown["title"] == "Mariage" and shown["is_organizer"] is False
+
+
+def test_the_client_shows_a_qr_code_and_the_pro_marks_her_arrival():
+    pro = salon()
+    svc = service(pro, ("work", 60))
+    client = adult("Awa")
+    booked = (
+        signed_in(client)
+        .post(
+            reverse("v1:booking-page", args=[pro.slug]),
+            {"service_id": str(svc.pk), "start": iso(at(10))},
+            format="json",
+            **H,
+        )
+        .json()["appointment"]
+    )
+    qr_url = reverse("v1:my-appointment-qr", args=[booked["id"]])
+    arrival = reverse("v1:agenda-arrival", args=[booked["reference"]])
+    # Not before the pro has confirmed.
+    if booked["status"] != "confirmed":
+        assert signed_in(client).get(qr_url).status_code == 409
+        owner = signed_in(pro.user)
+        owner.post(reverse("v1:agenda-confirm", args=[booked["id"]]), {}, **H)
+    owner = signed_in(pro.user)
+    shown = signed_in(client).get(qr_url)
+    assert shown.status_code == 200 and shown["Content-Type"] == "image/png"
+    assert shown["Cache-Control"] == "private, no-store"
+    assert signed_in(adult("Inès")).get(qr_url).status_code == 404
+    token = Appointment.objects.get(pk=booked["id"]).manage_token
+    assert APIClient().get(reverse("v1:guest-appointment-qr", args=[token])).status_code == 200
+    # Only the people of this agenda can read what the QR code opens.
+    assert signed_in(salon("Autre salon").user).get(arrival).status_code == 404
+    assert signed_in(client).get(arrival).status_code == 404
+    assert owner.get(arrival).json()["appointment"]["arrived_at"] is None
+    first = owner.post(arrival, {}, **H).json()["appointment"]["arrived_at"]
+    assert first is not None
+    assert owner.post(arrival, {}, **H).json()["appointment"]["arrived_at"] == first
+    assert AuditEvent.objects.filter(action="booking.arrived").count() == 1
+    assert (
+        signed_in(client)
+        .get(reverse("v1:my-appointment", args=[booked["id"]]))
+        .json()["arrived_at"]
+        == first
+    )
+    missing = reverse("v1:agenda-arrival", args=["SG-NOPE"])
+    assert owner.get(missing).status_code == 404

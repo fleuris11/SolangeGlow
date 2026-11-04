@@ -373,6 +373,26 @@ class ClientAppointmentView(ClientAppointmentBase):
         return self.answer(self.appointment(request, appointment_id, token))
 
 
+class ClientAppointmentQrView(ClientAppointmentBase):
+    """The QR code the client shows when she arrives. It only opens for the agenda of the pro."""
+
+    @extend_schema(tags=["booking"], responses={(200, "image/png"): OpenApiTypes.BINARY})
+    def get(self, request, appointment_id=None, token=None):
+        from apps.pros.printables import qr_image
+
+        found = self.appointment(request, appointment_id, token)
+        if found.status != Appointment.Status.CONFIRMED:
+            raise errors.InvalidStep()
+        url = f"{settings.SHORT_LINK_BASE_URL.rstrip('/')}/pro/agenda/arrivee/{found.reference}"
+        buffer = io.BytesIO()
+        qr_image(url, 12).save(buffer, format="PNG")
+        response = HttpResponse(buffer.getvalue(), content_type="image/png")
+        disposition = "attachment" if request.query_params.get("download") == "1" else "inline"
+        response["Content-Disposition"] = f'{disposition}; filename="rdv-{found.reference}.png"'
+        response["Cache-Control"] = "private, no-store"
+        return response
+
+
 class ClientCancelView(ClientAppointmentBase):
     @extend_schema(
         tags=["booking"], request=s.CancelInputSerializer, responses=s.AppointmentSerializer
@@ -564,6 +584,26 @@ class AgendaAppointmentView(AgendaBase):
     @extend_schema(tags=["agenda"], responses=s.AppointmentDetailSerializer)
     def get(self, request, appointment_id):
         found, _ = self.appointment(request, appointment_id)
+        return self.detail(found)
+
+
+class AgendaArrivalView(AgendaBase):
+    """What the scanned QR code opens: only the people of this agenda get an answer."""
+
+    def scanned(self, request, reference) -> Appointment:
+        row = Appointment.objects.filter(reference=reference).values("pk").first()
+        if row is None:
+            raise errors.AppointmentNotFound()
+        return self.appointment(request, row["pk"])[0]
+
+    @extend_schema(tags=["agenda"], responses=s.AppointmentDetailSerializer)
+    def get(self, request, reference):
+        return self.detail(self.scanned(request, reference))
+
+    @extend_schema(tags=["agenda"], request=None, responses=s.AppointmentDetailSerializer)
+    def post(self, request, reference):
+        found = self.scanned(request, reference)
+        appointments.mark_arrived(found, actor=request.user)
         return self.detail(found)
 
 

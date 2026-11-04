@@ -281,6 +281,7 @@ def appointment_payload(appointment: Appointment, *, side: str, viewer=None) -> 
         "id": str(appointment.pk),
         "reference": appointment.reference,
         "status": appointment.status,
+        "arrived_at": _iso(appointment.arrived_at) if appointment.arrived_at else None,
         "source": appointment.source,
         "pro": pro_brief(appointment.pro),
         "service_id": str(appointment.service_id),
@@ -319,6 +320,7 @@ class AppointmentSerializer(serializers.Serializer):
     id = serializers.UUIDField()
     reference = serializers.CharField()
     status = serializers.ChoiceField(choices=A.choices)
+    arrived_at = serializers.DateTimeField(allow_null=True)
     source = serializers.ChoiceField(choices=Appointment.Source.choices)
     pro = BookingProSerializer()
     service_id = serializers.UUIDField()

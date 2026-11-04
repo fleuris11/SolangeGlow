@@ -399,6 +399,7 @@ class Appointment(BaseModel):
     manage_token = models.CharField(max_length=64, default=_token, editable=False, unique=True)
     reminders_sent = models.JSONField(default=list, blank=True, editable=False)
     confirmed_at = models.DateTimeField(_("confirmed at"), null=True, blank=True)
+    arrived_at = models.DateTimeField(_("arrived at"), null=True, blank=True)
     completed_at = models.DateTimeField(_("done at"), null=True, blank=True)
     cancelled_at = models.DateTimeField(_("cancelled at"), null=True, blank=True)
     cancelled_by = models.CharField(

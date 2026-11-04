@@ -312,6 +312,22 @@ def test_no_show_after_the_tolerance(clock):
     assert ClientRating.objects.get(source_id=booked.pk).no_show is True
 
 
+def test_a_client_who_arrived_cannot_be_a_no_show(clock):
+    pro = salon()
+    booked = pay(appointments.book(pro, with_deposit(pro).pk, at(10), user=adult("Awa")))
+    appointments.mark_arrived(booked, actor=pro.user)
+    clock.set(at(10, 16))
+    with pytest.raises(errors.InvalidStep):
+        appointments.no_show(booked, actor=pro.user)
+
+
+def test_only_a_confirmed_appointment_can_be_marked_as_arrived():
+    pro = salon()
+    pending = appointments.book(pro, with_deposit(pro).pk, at(10), user=adult("Awa"))
+    with pytest.raises(errors.InvalidStep):
+        appointments.mark_arrived(pending, actor=pro.user)
+
+
 def test_two_no_shows_make_a_deposit_compulsory(clock):
     client = adult("Awa", phone=GUEST_PHONE)
     for name in ("Salon Un", "Salon Deux"):

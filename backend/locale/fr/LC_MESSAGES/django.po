@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-04 00:10+0100\n"
+"POT-Creation-Date: 2026-11-04 15:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2027,6 +2027,9 @@ msgstr "look"
 
 msgid "confirmed at"
 msgstr "confirmé le"
+
+msgid "arrived at"
+msgstr "arrivé le"
 
 msgid "done at"
 msgstr "terminé le"
@@ -6139,9 +6142,6 @@ msgstr "Arrivé au Bénin"
 
 msgid "mode"
 msgstr "mode"
-
-msgid "arrived at"
-msgstr "arrivé le"
 
 msgid "shipment"
 msgstr "lot d'envoi"

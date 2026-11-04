@@ -474,6 +474,20 @@ def complete(appointment: Appointment, *, actor) -> Appointment:
     return appointment
 
 
+@transaction.atomic
+def mark_arrived(appointment: Appointment, *, actor) -> Appointment:
+    """The pro scanned the QR code of the client, or marked her as there. Done only once."""
+    appointment = _locked(appointment)
+    if appointment.status != A.CONFIRMED:
+        raise errors.InvalidStep()
+    if appointment.arrived_at is None:
+        appointment.arrived_at = timezone.now()
+        appointment.save(update_fields=["arrived_at", "updated_at"])
+        record("booking.arrived", appointment, actor=actor)
+        common.changed(appointment.pro)
+    return appointment
+
+
 def late_tolerance(appointment: Appointment) -> int:
     own = common.settings_of(appointment.pro).late_tolerance_minutes
     return int(common.setting("booking.late_tolerance_minutes", appointment.pro, 15, own))
@@ -483,7 +497,7 @@ def late_tolerance(appointment: Appointment) -> int:
 def no_show(appointment: Appointment, *, actor) -> Appointment:
     """The client did not come: the pro keeps the deposit, the client's rating goes down."""
     appointment = _locked(appointment)
-    if appointment.status != A.CONFIRMED:
+    if appointment.status != A.CONFIRMED or appointment.arrived_at is not None:
         raise errors.InvalidStep()
     minutes = late_tolerance(appointment)
     if timezone.now() < appointment.starts_at + datetime.timedelta(minutes=minutes):

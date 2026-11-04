@@ -790,6 +790,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/booking/appointments/{appointment_id}/qr.png": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description The QR code the client shows when she arrives. It only opens for the agenda of the pro. */
+    get: operations["booking_appointments_qr.png_retrieve"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/booking/groups/{token}": {
     parameters: {
       query?: never;
@@ -886,6 +903,23 @@ export interface paths {
     put?: never;
     /** @description An appointment of the signed-in client (by id) or of a guest (by her secret link). */
     post: operations["booking_manage_cancel_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/booking/manage/{token}/qr.png": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description The QR code the client shows when she arrives. It only opens for the agenda of the pro. */
+    get: operations["booking_manage_qr.png_retrieve"];
+    put?: never;
+    post?: never;
     delete?: never;
     options?: never;
     head?: never;
@@ -2397,6 +2431,24 @@ export interface paths {
     get?: never;
     put?: never;
     post: operations["me_agenda_appointments_propose_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/arrivals/{reference}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description What the scanned QR code opens: only the people of this agenda get an answer. */
+    get: operations["me_agenda_arrivals_retrieve"];
+    put?: never;
+    /** @description What the scanned QR code opens: only the people of this agenda get an answer. */
+    post: operations["me_agenda_arrivals_create"];
     delete?: never;
     options?: never;
     head?: never;
@@ -5845,6 +5897,8 @@ export interface components {
       id: string;
       reference: string;
       status: components["schemas"]["AppointmentStatusEnum"];
+      /** Format: date-time */
+      arrived_at: string | null;
       source: components["schemas"]["AppointmentSourceEnum"];
       pro: components["schemas"]["BookingPro"];
       /** Format: uuid */
@@ -12438,6 +12492,27 @@ export interface operations {
       };
     };
   };
+  "booking_appointments_qr.png_retrieve": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        appointment_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "image/png": string;
+        };
+      };
+    };
+  };
   booking_groups_retrieve: {
     parameters: {
       query?: never;
@@ -12578,6 +12653,27 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["Appointment"];
+        };
+      };
+    };
+  };
+  "booking_manage_qr.png_retrieve": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "image/png": string;
         };
       };
     };
@@ -14951,6 +15047,48 @@ export interface operations {
         "multipart/form-data": components["schemas"]["ProposeInputRequest"];
       };
     };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AppointmentDetail"];
+        };
+      };
+    };
+  };
+  me_agenda_arrivals_retrieve: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        reference: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["AppointmentDetail"];
+        };
+      };
+    };
+  };
+  me_agenda_arrivals_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        reference: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
     responses: {
       200: {
         headers: {

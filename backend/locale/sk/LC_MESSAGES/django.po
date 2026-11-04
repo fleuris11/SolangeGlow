@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-04 00:10+0100\n"
+"POT-Creation-Date: 2026-11-04 15:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2031,6 +2031,9 @@ msgstr "look"
 
 msgid "confirmed at"
 msgstr "potvrdené"
+
+msgid "arrived at"
+msgstr "dorazilo"
 
 msgid "done at"
 msgstr "dokončené"
@@ -6155,9 +6158,6 @@ msgstr "Dorazilo do Beninu"
 
 msgid "mode"
 msgstr "spôsob"
-
-msgid "arrived at"
-msgstr "dorazilo"
 
 msgid "shipment"
 msgstr "zásielka"
