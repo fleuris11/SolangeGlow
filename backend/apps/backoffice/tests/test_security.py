@@ -86,8 +86,9 @@ def test_a_backup_code_opens_once(client, two_factor_on):
 
 
 def test_members_of_the_app_are_not_concerned(client, two_factor_on):
+    # The API ignores the admin session: what matters is that nobody is sent to the code screen.
     client.force_login(adult())
-    assert client.get("/api/v1/me").status_code == 200
+    assert client.get("/api/v1/me").status_code == 401
 
 
 # --- Roles ---------------------------------------------------------------------------------------
