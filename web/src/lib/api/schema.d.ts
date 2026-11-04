@@ -2503,6 +2503,56 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/me/agenda/places": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description Her other addresses. */
+    get: operations["me_agenda_places_list"];
+    put?: never;
+    /** @description Her other addresses. */
+    post: operations["me_agenda_places_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/places/{place_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete: operations["me_agenda_places_destroy"];
+    options?: never;
+    head?: never;
+    patch: operations["me_agenda_places_partial_update"];
+    trace?: never;
+  };
+  "/api/v1/me/agenda/places/{place_id}/hours": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put: operations["me_agenda_places_hours_update"];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/me/agenda/qr.png": {
     parameters: {
       query?: never;
@@ -2566,6 +2616,40 @@ export interface paths {
     options?: never;
     head?: never;
     patch: operations["me_agenda_settings_partial_update"];
+    trace?: never;
+  };
+  "/api/v1/me/agenda/slots": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** @description The times the pro opens herself. */
+    get: operations["me_agenda_slots_list"];
+    put?: never;
+    /** @description The times the pro opens herself. */
+    post: operations["me_agenda_slots_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/me/agenda/slots/{slot_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    delete: operations["me_agenda_slots_destroy"];
+    options?: never;
+    head?: never;
+    patch?: never;
     trace?: never;
   };
   "/api/v1/me/agenda/staff": {
@@ -5867,6 +5951,10 @@ export interface components {
     };
     AgendaSettings: {
       auto_confirm: boolean;
+      slot_mode: components["schemas"]["SlotModeEnum"];
+      buffer_minutes: number;
+      travel_minutes: number;
+      online_paused: boolean;
       slot_step_minutes: number;
       min_notice_minutes: number | null;
       horizon_days: number | null;
@@ -5899,6 +5987,10 @@ export interface components {
       status: components["schemas"]["AppointmentStatusEnum"];
       /** Format: date-time */
       arrived_at: string | null;
+      place: components["schemas"]["BookingPlace"] | null;
+      at_home: boolean;
+      client_address: string;
+      travel_fee_minor: number;
       source: components["schemas"]["AppointmentSourceEnum"];
       pro: components["schemas"]["BookingPro"];
       /** Format: uuid */
@@ -6103,8 +6195,14 @@ export interface components {
       gift_card_code?: string;
       /** @default false */
       marketing_consent: boolean;
+      /** Format: uuid */
+      place_id?: string | null;
+      /** @default false */
+      at_home: boolean;
+      client_address?: string;
     };
     BookableService: {
+      available_at_home: boolean;
       /** Format: uuid */
       id: string;
       name: string;
@@ -6137,12 +6235,52 @@ export interface components {
       staff: components["schemas"]["StaffBrief"][];
       accepts_guests: boolean;
       auto_confirm: boolean;
+      online_paused: boolean;
+      places: components["schemas"]["BookingPlace"][];
+      receives_clients: boolean;
+      travels_to_clients: boolean;
+      travel_fee_minor: number;
       free_cancel_hours: number;
       last_minute: components["schemas"]["LastMinute"] | null;
       /** Format: date */
       first_day: string;
       /** Format: date */
       last_day: string;
+    };
+    BookingPlace: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      city: string;
+      district: string;
+      address: string;
+      /** Format: double */
+      latitude: number | null;
+      /** Format: double */
+      longitude: number | null;
+    };
+    BookingPlaceDetail: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      city: string;
+      district: string;
+      address: string;
+      /** Format: double */
+      latitude: number | null;
+      /** Format: double */
+      longitude: number | null;
+      hours: components["schemas"]["PlaceHoursRow"][];
+    };
+    BookingPlaceInputRequest: {
+      name: string;
+      city?: string;
+      district?: string;
+      address?: string;
+      /** Format: double */
+      latitude?: number;
+      /** Format: double */
+      longitude?: number;
     };
     BookingPro: {
       /** Format: uuid */
@@ -8171,6 +8309,36 @@ export interface components {
       label: string;
       stock: number;
     };
+    ManualSlot: {
+      /** Format: uuid */
+      id: string;
+      /** Format: date-time */
+      starts_at: string;
+      /** Format: date-time */
+      ends_at: string;
+      /** Format: uuid */
+      staff_id: string | null;
+      staff_name: string;
+      /** Format: uuid */
+      place_id: string | null;
+      place_name: string;
+      service_ids: string[];
+      note: string;
+    };
+    ManualSlotInputRequest: {
+      /** Format: date-time */
+      starts_at: string;
+      /** Format: date-time */
+      ends_at: string;
+      /** Format: uuid */
+      staff_id?: string | null;
+      /** Format: uuid */
+      place_id?: string | null;
+      service_ids?: string[];
+      note?: string;
+      /** @default 0 */
+      repeat_weeks: number;
+    };
     MapConfig: {
       style_url: string;
       attribution: string;
@@ -8447,6 +8615,8 @@ export interface components {
       start: string;
       /** Format: uuid */
       staff_id?: string | null;
+      /** @default false */
+      outside_hours: boolean;
     };
     Movement: {
       /** Format: uuid */
@@ -8492,6 +8662,7 @@ export interface components {
     };
     /** @description The pro's own showcase, with what only she sees. */
     MyPro: {
+      other_places: components["schemas"]["OtherPlace"][];
       /** Format: uuid */
       owner_id: string;
       follower_count: number;
@@ -8848,6 +9019,14 @@ export interface components {
      * @enum {string}
      */
     OriginEnum: "reward" | "wheel";
+    OtherPlace: {
+      /** Format: uuid */
+      id: string;
+      name: string;
+      city: string;
+      district: string;
+      address: string;
+    };
     /**
      * @description * `succeeded` - succeeded
      *     * `failed` - failed
@@ -8945,6 +9124,10 @@ export interface components {
       free_cancel_hours?: number | null;
       late_tolerance_minutes?: number | null;
       accepts_guests?: boolean;
+      slot_mode?: components["schemas"]["SlotModeEnum"];
+      buffer_minutes?: number;
+      travel_minutes?: number;
+      online_paused?: boolean;
     };
     PatchedBillingRequest: {
       legal_name?: string;
@@ -8963,6 +9146,16 @@ export interface components {
       /** @description For example « TVA non applicable, art. 293 B du CGI ». */
       vat_mention?: string;
       footer?: string;
+    };
+    PatchedBookingPlaceInputRequest: {
+      name?: string;
+      city?: string;
+      district?: string;
+      address?: string;
+      /** Format: double */
+      latitude?: number;
+      /** Format: double */
+      longitude?: number;
     };
     PatchedBundleInputRequest: {
       title?: string;
@@ -9412,6 +9605,27 @@ export interface components {
       landmarks_voice: components["schemas"]["Media"] | null;
       itinerary_video: components["schemas"]["Media"] | null;
     };
+    PlaceHoursInputRequest: {
+      hours: components["schemas"]["PlaceHoursRowRequest"][];
+    };
+    PlaceHoursRow: {
+      weekday: number;
+      /** Format: time */
+      starts_at: string;
+      /** Format: time */
+      ends_at: string;
+      /** Format: uuid */
+      staff_id?: string | null;
+    };
+    PlaceHoursRowRequest: {
+      weekday: number;
+      /** Format: time */
+      starts_at: string;
+      /** Format: time */
+      ends_at: string;
+      /** Format: uuid */
+      staff_id?: string | null;
+    };
     PlanChoiceRequest: {
       /** @default premium */
       plan: string;
@@ -9790,6 +10004,13 @@ export interface components {
       client_name: string;
       client_phone: string;
       note?: string;
+      /** Format: uuid */
+      place_id?: string | null;
+      /** @default false */
+      at_home: boolean;
+      client_address?: string;
+      /** @default false */
+      outside_hours: boolean;
     };
     QuickReplies: {
       texts: string[];
@@ -10427,6 +10648,7 @@ export interface components {
     };
     /** @description Public page of a pro (also its preview for herself). */
     Showcase: {
+      other_places: components["schemas"]["OtherPlace"][];
       /** Format: uuid */
       owner_id: string;
       follower_count: number;
@@ -10490,6 +10712,12 @@ export interface components {
       day: string;
       slots: components["schemas"]["Slot"][];
     };
+    /**
+     * @description * `hours` - My opening hours, and the times I open
+     *     * `manual` - Only the times I open
+     * @enum {string}
+     */
+    SlotModeEnum: "hours" | "manual";
     Slots: {
       days: components["schemas"]["SlotDay"][];
       /** Format: date */
@@ -15194,6 +15422,124 @@ export interface operations {
       };
     };
   };
+  me_agenda_places_list: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["BookingPlaceDetail"][];
+        };
+      };
+    };
+  };
+  me_agenda_places_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["BookingPlaceInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["BookingPlaceInputRequest"];
+        "multipart/form-data": components["schemas"]["BookingPlaceInputRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["BookingPlaceDetail"];
+        };
+      };
+    };
+  };
+  me_agenda_places_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        place_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  me_agenda_places_partial_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        place_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["PatchedBookingPlaceInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PatchedBookingPlaceInputRequest"];
+        "multipart/form-data": components["schemas"]["PatchedBookingPlaceInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["BookingPlaceDetail"];
+        };
+      };
+    };
+  };
+  me_agenda_places_hours_update: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        place_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PlaceHoursInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PlaceHoursInputRequest"];
+        "multipart/form-data": components["schemas"]["PlaceHoursInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["BookingPlaceDetail"];
+        };
+      };
+    };
+  };
   "me_agenda_qr.png_retrieve": {
     parameters: {
       query?: never;
@@ -15326,6 +15672,73 @@ export interface operations {
         content: {
           "application/json": components["schemas"]["AgendaSettings"];
         };
+      };
+    };
+  };
+  me_agenda_slots_list: {
+    parameters: {
+      query?: {
+        day?: string;
+        days?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ManualSlot"][];
+        };
+      };
+    };
+  };
+  me_agenda_slots_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["ManualSlotInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["ManualSlotInputRequest"];
+        "multipart/form-data": components["schemas"]["ManualSlotInputRequest"];
+      };
+    };
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["ManualSlot"][];
+        };
+      };
+    };
+  };
+  me_agenda_slots_destroy: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        slot_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description No response body */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
@@ -19570,9 +19983,11 @@ export interface operations {
   pros_booking_slots_retrieve: {
     parameters: {
       query: {
+        at_home?: boolean;
         day?: string;
         days?: number;
         options?: string;
+        place?: string;
         service: string;
         staff?: string;
       };

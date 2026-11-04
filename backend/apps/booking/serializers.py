@@ -11,8 +11,17 @@ from apps.core.media.services import asset_payload
 from apps.pros.hours import zone_of
 from apps.pros.models import Service
 
-from . import availability
-from .models import Appointment, BookingSettings, StaffMember, TimeOff, WaitlistEntry
+from . import availability, errors
+from .models import (
+    Appointment,
+    BookingSettings,
+    ManualSlot,
+    Place,
+    SlotMode,
+    StaffMember,
+    TimeOff,
+    WaitlistEntry,
+)
 from .services import appointments as appointment_services
 from .services import common
 
@@ -51,6 +60,39 @@ def pro_brief(pro) -> dict:
     }
 
 
+def place_payload(place: Place, *, with_hours: bool = False) -> dict:
+    data = {
+        "id": str(place.pk),
+        "name": place.name,
+        "city": place.city,
+        "district": place.district,
+        "address": place.address,
+        "latitude": place.location.y if place.location else None,
+        "longitude": place.location.x if place.location else None,
+    }
+    if with_hours:
+        data["hours"] = [
+            {
+                "weekday": row.weekday,
+                "starts_at": row.starts_at.strftime("%H:%M"),
+                "ends_at": row.ends_at.strftime("%H:%M"),
+                "staff_id": str(row.staff_id) if row.staff_id else None,
+            }
+            for row in place.periods.all()
+        ]
+    return data
+
+
+class BookingPlaceSerializer(serializers.Serializer):
+    id = serializers.UUIDField()
+    name = serializers.CharField()
+    city = serializers.CharField(allow_blank=True)
+    district = serializers.CharField(allow_blank=True)
+    address = serializers.CharField(allow_blank=True)
+    latitude = serializers.FloatField(allow_null=True)
+    longitude = serializers.FloatField(allow_null=True)
+
+
 class BookingProSerializer(serializers.Serializer):
     id = serializers.UUIDField()
     slug = serializers.CharField(allow_null=True)
@@ -69,6 +111,7 @@ def service_payload(service: Service, *, forced_percent: int = 0) -> dict:
     price = service.price_minor
     work = sum(s.duration_minutes for s in service.steps.all() if s.kind == "work")
     return {
+        "available_at_home": service.available_at_home,
         "id": str(service.pk),
         "name": service.name,
         "description": service.description,
@@ -101,6 +144,7 @@ class BookingOptionSerializer(serializers.Serializer):
 
 
 class BookableServiceSerializer(serializers.Serializer):
+    available_at_home = serializers.BooleanField()
     id = serializers.UUIDField()
     name = serializers.CharField()
     description = serializers.CharField(allow_blank=True)
@@ -157,6 +201,11 @@ class BookingPageSerializer(serializers.Serializer):
     staff = StaffBriefSerializer(many=True)
     accepts_guests = serializers.BooleanField()
     auto_confirm = serializers.BooleanField()
+    online_paused = serializers.BooleanField()
+    places = BookingPlaceSerializer(many=True)
+    receives_clients = serializers.BooleanField()
+    travels_to_clients = serializers.BooleanField()
+    travel_fee_minor = serializers.IntegerField()
     free_cancel_hours = serializers.IntegerField()
     last_minute = LastMinuteSerializer(allow_null=True)
     first_day = serializers.DateField()
@@ -198,6 +247,8 @@ class SlotsQuerySerializer(serializers.Serializer):
     days = serializers.IntegerField(required=False, min_value=1, max_value=14, default=7)
     staff = serializers.UUIDField(required=False)
     options = serializers.CharField(required=False, allow_blank=True)
+    place = serializers.UUIDField(required=False)
+    at_home = serializers.BooleanField(required=False, default=False)
 
     def validate_options(self, value):
         import uuid
@@ -282,6 +333,10 @@ def appointment_payload(appointment: Appointment, *, side: str, viewer=None) -> 
         "reference": appointment.reference,
         "status": appointment.status,
         "arrived_at": _iso(appointment.arrived_at) if appointment.arrived_at else None,
+        "place": place_payload(appointment.place) if appointment.place_id else None,
+        "at_home": appointment.at_home,
+        "client_address": appointment.client_address,
+        "travel_fee_minor": appointment.travel_fee_minor,
         "source": appointment.source,
         "pro": pro_brief(appointment.pro),
         "service_id": str(appointment.service_id),
@@ -321,6 +376,10 @@ class AppointmentSerializer(serializers.Serializer):
     reference = serializers.CharField()
     status = serializers.ChoiceField(choices=A.choices)
     arrived_at = serializers.DateTimeField(allow_null=True)
+    place = BookingPlaceSerializer(allow_null=True)
+    at_home = serializers.BooleanField()
+    client_address = serializers.CharField(allow_blank=True)
+    travel_fee_minor = serializers.IntegerField()
     source = serializers.ChoiceField(choices=Appointment.Source.choices)
     pro = BookingProSerializer()
     service_id = serializers.UUIDField()
@@ -380,6 +439,9 @@ class BookInputSerializer(serializers.Serializer):
     post_id = serializers.UUIDField(required=False, allow_null=True)
     gift_card_code = serializers.CharField(required=False, allow_blank=True, max_length=20)
     marketing_consent = serializers.BooleanField(required=False, default=False)
+    place_id = serializers.UUIDField(required=False, allow_null=True)
+    at_home = serializers.BooleanField(required=False, default=False)
+    client_address = serializers.CharField(required=False, allow_blank=True, max_length=200)
 
 
 class CancelInputSerializer(serializers.Serializer):
@@ -402,6 +464,7 @@ class ProposeInputSerializer(serializers.Serializer):
 class MoveInputSerializer(serializers.Serializer):
     start = serializers.DateTimeField()
     staff_id = serializers.UUIDField(required=False, allow_null=True)
+    outside_hours = serializers.BooleanField(required=False, default=False)
 
 
 class AppointmentListSerializer(serializers.Serializer):
@@ -647,6 +710,82 @@ class QuickBookInputSerializer(serializers.Serializer):
     client_name = serializers.CharField(max_length=150)
     client_phone = serializers.CharField(max_length=32)
     note = serializers.CharField(required=False, allow_blank=True, max_length=500)
+    place_id = serializers.UUIDField(required=False, allow_null=True)
+    at_home = serializers.BooleanField(required=False, default=False)
+    client_address = serializers.CharField(required=False, allow_blank=True, max_length=200)
+    outside_hours = serializers.BooleanField(required=False, default=False)
+
+
+class PlaceHoursRowSerializer(serializers.Serializer):
+    weekday = serializers.IntegerField(min_value=0, max_value=6)
+    starts_at = serializers.TimeField()
+    ends_at = serializers.TimeField()
+    staff_id = serializers.UUIDField(required=False, allow_null=True)
+
+    def validate(self, attrs):
+        if attrs["ends_at"] <= attrs["starts_at"]:
+            raise errors.InvalidTimeRange()
+        return attrs
+
+
+class BookingPlaceDetailSerializer(BookingPlaceSerializer):
+    hours = PlaceHoursRowSerializer(many=True)
+
+
+class BookingPlaceInputSerializer(serializers.Serializer):
+    name = serializers.CharField(max_length=80)
+    city = serializers.CharField(required=False, allow_blank=True, max_length=80)
+    district = serializers.CharField(required=False, allow_blank=True, max_length=80)
+    address = serializers.CharField(required=False, allow_blank=True, max_length=200)
+    latitude = serializers.FloatField(required=False, min_value=-90, max_value=90)
+    longitude = serializers.FloatField(required=False, min_value=-180, max_value=180)
+
+
+class PlaceHoursInputSerializer(serializers.Serializer):
+    hours = PlaceHoursRowSerializer(many=True)
+
+
+def manual_slot_payload(slot: ManualSlot) -> dict:
+    return {
+        "id": str(slot.pk),
+        "starts_at": _iso(slot.starts_at),
+        "ends_at": _iso(slot.ends_at),
+        "staff_id": str(slot.staff_id) if slot.staff_id else None,
+        "staff_name": slot.staff.name if slot.staff_id else "",
+        "place_id": str(slot.place_id) if slot.place_id else None,
+        "place_name": slot.place.name if slot.place_id else "",
+        "service_ids": [str(x.pk) for x in slot.services.all()],
+        "note": slot.note,
+    }
+
+
+class ManualSlotSerializer(serializers.Serializer):
+    id = serializers.UUIDField()
+    starts_at = serializers.DateTimeField()
+    ends_at = serializers.DateTimeField()
+    staff_id = serializers.UUIDField(allow_null=True)
+    staff_name = serializers.CharField(allow_blank=True)
+    place_id = serializers.UUIDField(allow_null=True)
+    place_name = serializers.CharField(allow_blank=True)
+    service_ids = serializers.ListField(child=serializers.UUIDField())
+    note = serializers.CharField(allow_blank=True)
+
+
+class ManualSlotInputSerializer(serializers.Serializer):
+    starts_at = serializers.DateTimeField()
+    ends_at = serializers.DateTimeField()
+    staff_id = serializers.UUIDField(required=False, allow_null=True)
+    place_id = serializers.UUIDField(required=False, allow_null=True)
+    service_ids = serializers.ListField(
+        child=serializers.UUIDField(), required=False, max_length=50
+    )
+    note = serializers.CharField(required=False, allow_blank=True, max_length=120)
+    repeat_weeks = serializers.IntegerField(required=False, default=0, min_value=0, max_value=52)
+
+
+class ManualSlotsQuerySerializer(serializers.Serializer):
+    day = serializers.DateField(required=False)
+    days = serializers.IntegerField(required=False, default=31, min_value=1, max_value=92)
 
 
 def settings_payload(pro, booking_settings: BookingSettings) -> dict:
@@ -660,6 +799,10 @@ def settings_payload(pro, booking_settings: BookingSettings) -> dict:
         "free_cancel_hours": booking_settings.free_cancel_hours,
         "late_tolerance_minutes": booking_settings.late_tolerance_minutes,
         "accepts_guests": booking_settings.accepts_guests,
+        "slot_mode": booking_settings.slot_mode,
+        "buffer_minutes": booking_settings.buffer_minutes,
+        "travel_minutes": booking_settings.travel_minutes,
+        "online_paused": booking_settings.online_paused,
         "defaults": {
             "min_notice_minutes": int(common.setting("booking.min_notice_minutes", pro, 120)),
             "horizon_days": int(common.setting("booking.horizon_days", pro, 60)),
@@ -687,6 +830,10 @@ class SettingsDefaultsSerializer(serializers.Serializer):
 
 class AgendaSettingsSerializer(serializers.Serializer):
     auto_confirm = serializers.BooleanField()
+    slot_mode = serializers.ChoiceField(choices=SlotMode.choices)
+    buffer_minutes = serializers.IntegerField()
+    travel_minutes = serializers.IntegerField()
+    online_paused = serializers.BooleanField()
     slot_step_minutes = serializers.IntegerField()
     min_notice_minutes = serializers.IntegerField(allow_null=True)
     horizon_days = serializers.IntegerField(allow_null=True)
@@ -714,6 +861,10 @@ class AgendaSettingsInputSerializer(serializers.Serializer):
         required=False, allow_null=True, min_value=0, max_value=120
     )
     accepts_guests = serializers.BooleanField(required=False)
+    slot_mode = serializers.ChoiceField(required=False, choices=SlotMode.choices)
+    buffer_minutes = serializers.IntegerField(required=False, min_value=0, max_value=240)
+    travel_minutes = serializers.IntegerField(required=False, min_value=0, max_value=480)
+    online_paused = serializers.BooleanField(required=False)
 
 
 class LastMinuteInputSerializer(serializers.Serializer):

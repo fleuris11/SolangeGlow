@@ -166,7 +166,12 @@ def tell_pro(appointment: Appointment, event: str, extra: dict | None = None) ->
                 "reference": appointment.reference,
                 **(extra or {}),
             }
-            notify(person, event, context, link=f"/pro/agenda?day={appointment.starts_at.date()}")
+            notify(
+                person,
+                event,
+                context,
+                link=f"/pro/agenda?day={appointment.starts_at.date()}&rdv={appointment.pk}",
+            )
 
     transaction.on_commit(send)
 

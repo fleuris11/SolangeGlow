@@ -17,7 +17,13 @@ from apps.pros.hours import zone_of
 from apps.pros.models import ProProfile, Service, ServiceOption
 
 from .. import availability, errors, selectors
-from ..models import Appointment, BookingSettings, ClientRecord, StaffMember
+from ..models import (
+    Appointment,
+    BookingSettings,
+    ClientRecord,
+    Place,
+    StaffMember,
+)
 from . import common
 
 A = Appointment.Status
@@ -82,6 +88,15 @@ def _staff(pro, staff_id, service: Service):
     if allowed and service.pk not in allowed:
         raise errors.StaffNotFound()
     return staff
+
+
+def _place_of(pro, place_id) -> Place | None:
+    if not place_id:
+        return None
+    place = Place.objects.filter(pk=place_id, pro=pro, is_active=True).first()
+    if place is None:
+        raise errors.PlaceNotFound()
+    return place
 
 
 def _check_time(pro, start: datetime.datetime) -> None:
@@ -151,6 +166,10 @@ def book(
     gift_card_code: str = "",
     prepaid_minor: int | None = None,
     prepay=None,
+    place_id=None,
+    at_home: bool = False,
+    client_address: str = "",
+    outside_hours: bool = False,
 ) -> Appointment:
     """Books a service: checks again the exact time under a lock (no double booking).
 
@@ -158,12 +177,28 @@ def book(
     no deposit, confirmed at once. `status`: forced (the waiting list keeps a place).
     `prepay(appointment) -> Payment`: an offered service (gifts, ADR-014), paid in full at
     `prepaid_minor` (the price paid by the giver), even by a guest.
+    `place_id`: another address of the pro. `at_home`: she goes to the client, travel fee added.
+    `outside_hours`: only for `by_pro`, she books whenever she wants.
     """
     booking_settings = BookingSettings.objects.select_for_update().get_or_create(pro=pro)[0]
     pro._booking_settings = booking_settings
     if by_pro is None and not pro.is_published:
         raise errors.ProNotFound()
+    if by_pro is None and prepay is None and booking_settings.online_paused:
+        raise errors.BookingPaused()
+    place = _place_of(pro, place_id)
+    client_address = (client_address or "").strip()[:200]
+    travel_fee = 0
+    if at_home:
+        if not pro.travels_to_clients:
+            raise errors.NoHomeVisits()
+        if not client_address and by_pro is None:
+            raise errors.AddressNeeded()
+        place = None
+        travel_fee = pro.travel_fee_minor or 0
     service = _service(pro, service_id)
+    if at_home and not service.available_at_home:
+        raise errors.NoHomeVisits()
     _staff(pro, staff_id, service)
     options = list(ServiceOption.objects.filter(service=service, pk__in=list(option_ids)))
 
@@ -186,12 +221,23 @@ def book(
 
     if by_pro is None:
         _check_time(pro, start)
-    slot = availability.find(pro, service, start, staff_id=staff_id, option_ids=option_ids)
+    slot = availability.find(
+        pro,
+        service,
+        start,
+        staff_id=staff_id,
+        option_ids=option_ids,
+        place_id=place.pk if place else None,
+        at_home=at_home,
+        outside_hours=outside_hours and by_pro is not None,
+    )
     if slot is None:
         raise errors.SlotTaken()
 
     discount = 0 if by_pro is not None else availability._discount(pro, start, timezone.now())
     price = price_of(service, options, discount)
+    if price is not None:
+        price += travel_fee
     deposit = 0
     if prepay is not None:
         discount, price, deposit = 0, prepaid_minor, prepaid_minor
@@ -231,6 +277,10 @@ def book(
         post=post,
         answer_due_at=_after_hours(pro) if status == A.PENDING else None,
         confirmed_at=timezone.now() if status == A.CONFIRMED else None,
+        place=place,
+        at_home=at_home,
+        client_address=client_address if at_home else "",
+        travel_fee_minor=travel_fee,
     )
     appointment.options.set(options)
     try:
@@ -424,7 +474,14 @@ def cancel(appointment: Appointment, *, by: str, actor=None) -> Appointment:
 
 
 @transaction.atomic
-def move(appointment: Appointment, *, actor, start: datetime.datetime, staff_id=None):
+def move(
+    appointment: Appointment,
+    *,
+    actor,
+    start: datetime.datetime,
+    staff_id=None,
+    outside_hours: bool = False,
+):
     """The pro moves an appointment (drag and drop): checked by the engine first."""
     appointment = _locked(appointment)
     if appointment.status not in (A.CONFIRMED, A.PENDING, A.AWAITING_DEPOSIT):
@@ -437,6 +494,9 @@ def move(appointment: Appointment, *, actor, start: datetime.datetime, staff_id=
         staff_id=staff_id,
         option_ids=[o.pk for o in appointment.options.all()],
         ignore_appointment=appointment.pk,
+        place_id=appointment.place_id,
+        at_home=appointment.at_home,
+        outside_hours=outside_hours,
     )
     if slot is None:
         raise errors.SlotTaken()

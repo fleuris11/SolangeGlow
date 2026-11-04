@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-04 15:23+0100\n"
+"POT-Creation-Date: 2026-11-04 18:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1792,6 +1792,24 @@ msgstr "Prihlás sa a zaplať zálohu."
 msgid "This gift card cannot pay the deposit: check the code and its balance."
 msgstr "Táto darčeková karta nemôže zaplatiť zálohu: skontroluj kód a zostatok."
 
+msgid "This pro is not taking online bookings at the moment."
+msgstr "Táto profesionálka teraz neprijíma online rezervácie."
+
+msgid "This place does not exist."
+msgstr "Toto miesto neexistuje."
+
+msgid "This pro does not go to clients' homes."
+msgstr "Táto profesionálka nechodí ku klientkam domov."
+
+msgid "Give the address where the pro should come."
+msgstr "Uveď adresu, kam má profesionálka prísť."
+
+msgid "This opened time does not exist."
+msgstr "Tento termín neexistuje."
+
+msgid "Choose a time that has not passed yet."
+msgstr "Vyber si čas, ktorý ešte neprešiel."
+
 msgid "Monday"
 msgstr "Pondelok"
 
@@ -1812,6 +1830,12 @@ msgstr "Sobota"
 
 msgid "Sunday"
 msgstr "Nedeľa"
+
+msgid "My opening hours, and the times I open"
+msgstr "Moje hodiny a termíny, ktoré otvorím"
+
+msgid "Only the times I open"
+msgstr "Iba termíny, ktoré otvorím"
 
 msgid "confirm by itself"
 msgstr "potvrdzovať automaticky"
@@ -1836,6 +1860,21 @@ msgstr "tolerované meškanie (min)"
 
 msgid "guests can book"
 msgstr "rezervácia bez účtu"
+
+msgid "free times come from"
+msgstr "termíny pochádzajú z"
+
+msgid "time kept between two clients (min)"
+msgstr "čas medzi dvoma klientkami (min)"
+
+msgid "time to go from one place to another (min)"
+msgstr "čas cesty medzi miestami (min)"
+
+msgid "online booking paused"
+msgstr "online rezervácie pozastavené"
+
+msgid "On: nobody can book online. The agenda still works."
+msgstr "Zapnuté: nikto nerezervuje online. Diár funguje ďalej."
 
 msgid "booking settings"
 msgstr "nastavenia rezervácií"
@@ -1936,6 +1975,33 @@ msgstr "skupinová rezervácia"
 msgid "group bookings"
 msgstr "skupinové rezervácie"
 
+msgid "district"
+msgstr "štvrť"
+
+msgid "address"
+msgstr "adresa"
+
+msgid "place"
+msgstr "miesto"
+
+msgid "Empty: everyone."
+msgstr "Prázdne: všetci."
+
+msgid "hours at a place"
+msgstr "hodiny na mieste"
+
+msgid "Empty: the main address."
+msgstr "Prázdne: hlavná adresa."
+
+msgid "only for these services"
+msgstr "iba pre tieto služby"
+
+msgid "opened time"
+msgstr "otvorený termín"
+
+msgid "opened times"
+msgstr "otvorené termíny"
+
 msgid "Waiting for the pro"
 msgstr "Čaká na profesionálku"
 
@@ -2028,6 +2094,15 @@ msgstr "skupina"
 
 msgid "look"
 msgstr "look"
+
+msgid "at the client's home"
+msgstr "u klientky doma"
+
+msgid "client's address"
+msgstr "adresa klientky"
+
+msgid "travel fee"
+msgstr "príplatok za cestu"
 
 msgid "confirmed at"
 msgstr "potvrdené"
@@ -3632,9 +3707,6 @@ msgstr "platforma"
 
 msgid "legal name"
 msgstr "úradné meno"
-
-msgid "address"
-msgstr "adresa"
 
 msgid "company number"
 msgstr "IČO"
@@ -5289,9 +5361,6 @@ msgstr "Sieť: odkaz alebo @meno."
 msgid "languages spoken"
 msgstr "jazyky"
 
-msgid "district"
-msgstr "štvrť"
-
 msgid "position given by"
 msgstr "polohu zadal(a)"
 
@@ -5318,9 +5387,6 @@ msgstr "polomer cesty (km)"
 
 msgid "travel area"
 msgstr "oblasť cesty"
-
-msgid "travel fee"
-msgstr "príplatok za cestu"
 
 msgid "In the smallest unit of the currency (FCFA, cents)."
 msgstr "V najmenšej jednotke meny (FCFA, centy)."

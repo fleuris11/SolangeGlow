@@ -15,8 +15,16 @@ from apps.pros.hours import zone_of
 from apps.pros.models import ProProfile
 
 from . import selectors
-from .models import BookingSettings, Resource, StaffMember, WaitlistEntry
-from .services import agenda, appointments, waitlist
+from .models import (
+    BookingSettings,
+    ManualSlot,
+    Place,
+    PlacePeriod,
+    Resource,
+    StaffMember,
+    WaitlistEntry,
+)
+from .services import agenda, appointments, common, waitlist
 
 TEAMS = {
     "institut-prisca": {
@@ -88,6 +96,28 @@ def _fill(pro: ProProfile, team: dict) -> int:
     return count
 
 
+def _places_and_opened_times() -> None:
+    """Prisca also works in Akpakpa on Saturdays; Béné opens an evening herself."""
+    prisca = ProProfile.objects.filter(slug="institut-prisca").first()
+    if prisca is not None and not prisca.places.exists():
+        place = Place.objects.create(
+            pro=prisca, name="Annexe Akpakpa", city="Cotonou", district="Akpakpa"
+        )
+        PlacePeriod.objects.create(
+            place=place, weekday=5, starts_at=datetime.time(9), ends_at=datetime.time(14)
+        )
+    bene = ProProfile.objects.filter(slug="bene-coiffure").first()
+    if bene is not None and not bene.manual_slots.exists():
+        start = _at(bene, 3, 19)
+        ManualSlot.objects.create(
+            pro=bene,
+            starts_at=start,
+            ends_at=start + datetime.timedelta(hours=2),
+            note="Soirée spéciale",
+        )
+        common.changed(bene)
+
+
 def seed_booking() -> dict:
     counts = {"agendas": 0, "appointments": 0, "waiting": 0}
     pros = ProProfile.objects.filter(slug__in=TEAMS, status=ProProfile.Status.PUBLISHED)
@@ -95,4 +125,5 @@ def seed_booking() -> dict:
         counts["appointments"] += _fill(pro, TEAMS[pro.slug])
         counts["agendas"] += 1
     counts["waiting"] = WaitlistEntry.objects.filter(pro__slug__in=TEAMS).count()
+    _places_and_opened_times()
     return counts

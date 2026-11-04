@@ -29,6 +29,7 @@ from .models import (
     BookingSettings,
     ClientRecord,
     GroupBooking,
+    ManualSlot,
     Resource,
     StaffMember,
     TimeOff,
@@ -104,6 +105,11 @@ class BookingPageView(OptionalAuthView):
                 "staff": [s.staff_brief(m) for m in _staff(pro)],
                 "accepts_guests": booking_settings.accepts_guests,
                 "auto_confirm": booking_settings.auto_confirm,
+                "online_paused": booking_settings.online_paused,
+                "places": [s.place_payload(place) for place in pro.places.filter(is_active=True)],
+                "receives_clients": pro.receives_clients,
+                "travels_to_clients": pro.travels_to_clients,
+                "travel_fee_minor": pro.travel_fee_minor or 0,
                 "free_cancel_hours": int(
                     common.setting(
                         "booking.free_cancel_hours", pro, 24, booking_settings.free_cancel_hours
@@ -146,6 +152,9 @@ class BookingPageView(OptionalAuthView):
             source=Appointment.Source.LOOK if post else Appointment.Source.ONLINE,
             post=post,
             gift_card_code=values.get("gift_card_code", ""),
+            place_id=values.get("place_id"),
+            at_home=values.get("at_home", False),
+            client_address=values.get("client_address", ""),
         )
         if values.get("marketing_consent"):
             from apps.salon.services.campaigns import set_consent
@@ -181,12 +190,25 @@ class SlotsView(OptionalAuthView):
         first = max(values.get("day") or today, today)
         last = today + datetime.timedelta(days=availability.horizon(pro))
         days = []
+        place = appointments._place_of(pro, values.get("place"))
+        at_home = values.get("at_home", False)
+        paused = common.settings_of(pro).online_paused
         for offset in range(values["days"]):
             day = first + datetime.timedelta(days=offset)
             if day > last:
                 break
-            found = availability.day_slots(
-                pro, service, day, staff_id=staff_id, option_ids=values.get("options") or ()
+            found = (
+                []
+                if paused
+                else availability.day_slots(
+                    pro,
+                    service,
+                    day,
+                    staff_id=staff_id,
+                    option_ids=values.get("options") or (),
+                    place_id=place.pk if place else None,
+                    at_home=at_home,
+                )
             )
             days.append({"day": day.isoformat(), "slots": [s.slot_payload(x) for x in found]})
         following = first + datetime.timedelta(days=values["days"])
@@ -574,6 +596,10 @@ class AgendaAppointmentsView(AgendaBase):
             note=values.get("note", ""),
             source=Appointment.Source.PHONE,
             by_pro=request.user,
+            place_id=values.get("place_id"),
+            at_home=values.get("at_home", False),
+            client_address=values.get("client_address", ""),
+            outside_hours=values.get("outside_hours", False),
         )
         response = self.detail(booked)
         response.status_code = status.HTTP_201_CREATED
@@ -661,7 +687,11 @@ class AgendaMoveView(AgendaBase):
         if staff_ids is not None and staff_id and staff_id not in staff_ids:
             raise errors.ManagersOnly()
         appointments.move(
-            found, actor=request.user, start=data.validated_data["start"], staff_id=staff_id
+            found,
+            actor=request.user,
+            start=data.validated_data["start"],
+            staff_id=staff_id,
+            outside_hours=data.validated_data.get("outside_hours", False),
         )
         return self.detail(found)
 
@@ -927,6 +957,118 @@ class LastMinuteView(AgendaBase):
         data.is_valid(raise_exception=True)
         agenda.set_last_minute(pro, **data.validated_data)
         return Response(s.last_minute_payload(ProProfile.objects.get(pk=pro.pk)))
+
+
+class ManualSlotsView(AgendaBase):
+    """The times the pro opens herself."""
+
+    manage_only = True
+
+    @extend_schema(
+        tags=["agenda"],
+        parameters=[s.ManualSlotsQuerySerializer],
+        responses=s.ManualSlotSerializer(many=True),
+    )
+    def get(self, request):
+        pro, _ = self.access(request)
+        query = s.ManualSlotsQuerySerializer(data=request.query_params)
+        query.is_valid(raise_exception=True)
+        zone = zone_of(pro)
+        first = query.validated_data.get("day") or timezone.now().astimezone(zone).date()
+        start = datetime.datetime.combine(first, datetime.time.min, tzinfo=zone)
+        end = start + datetime.timedelta(days=query.validated_data["days"])
+        rows = (
+            ManualSlot.objects.filter(pro=pro, starts_at__lt=end, ends_at__gt=start)
+            .select_related("staff", "place")
+            .prefetch_related("services")
+        )
+        return Response([s.manual_slot_payload(row) for row in rows])
+
+    @extend_schema(
+        tags=["agenda"],
+        request=s.ManualSlotInputSerializer,
+        responses={201: s.ManualSlotSerializer(many=True)},
+    )
+    def post(self, request):
+        pro, _ = self.access(request)
+        data = s.ManualSlotInputSerializer(data=request.data)
+        data.is_valid(raise_exception=True)
+        created = agenda.open_slots(pro, **data.validated_data)
+        return Response(
+            [s.manual_slot_payload(row) for row in created], status=status.HTTP_201_CREATED
+        )
+
+
+class ManualSlotItemView(AgendaBase):
+    manage_only = True
+
+    @extend_schema(tags=["agenda"], responses={204: None})
+    def delete(self, request, slot_id):
+        pro, _ = self.access(request)
+        agenda.close_slot(pro, slot_id)
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class PlacesView(AgendaBase):
+    """Her other addresses."""
+
+    manage_only = True
+
+    @extend_schema(tags=["agenda"], responses=s.BookingPlaceDetailSerializer(many=True))
+    def get(self, request):
+        pro, _ = self.access(request)
+        rows = pro.places.filter(is_active=True).prefetch_related("periods")
+        return Response([s.place_payload(row, with_hours=True) for row in rows])
+
+    @extend_schema(
+        tags=["agenda"],
+        request=s.BookingPlaceInputSerializer,
+        responses={201: s.BookingPlaceDetailSerializer},
+    )
+    def post(self, request):
+        pro, _ = self.access(request)
+        data = s.BookingPlaceInputSerializer(data=request.data)
+        data.is_valid(raise_exception=True)
+        place = agenda.save_place(pro, **data.validated_data)
+        return Response(s.place_payload(place, with_hours=True), status=status.HTTP_201_CREATED)
+
+
+class PlaceItemView(AgendaBase):
+    manage_only = True
+
+    @extend_schema(
+        tags=["agenda"],
+        request=s.BookingPlaceInputSerializer,
+        responses=s.BookingPlaceDetailSerializer,
+    )
+    def patch(self, request, place_id):
+        pro, _ = self.access(request)
+        data = s.BookingPlaceInputSerializer(data=request.data, partial=True)
+        data.is_valid(raise_exception=True)
+        place = agenda.save_place(pro, place_id=place_id, **data.validated_data)
+        return Response(s.place_payload(place, with_hours=True))
+
+    @extend_schema(tags=["agenda"], responses={204: None})
+    def delete(self, request, place_id):
+        pro, _ = self.access(request)
+        agenda.remove_place(pro, place_id)
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class PlaceHoursView(AgendaBase):
+    manage_only = True
+
+    @extend_schema(
+        tags=["agenda"],
+        request=s.PlaceHoursInputSerializer,
+        responses=s.BookingPlaceDetailSerializer,
+    )
+    def put(self, request, place_id):
+        pro, _ = self.access(request)
+        data = s.PlaceHoursInputSerializer(data=request.data)
+        data.is_valid(raise_exception=True)
+        place = agenda.set_place_hours(pro, place_id, data.validated_data["hours"])
+        return Response(s.place_payload(place, with_hours=True))
 
 
 class BookingQrView(AgendaBase):

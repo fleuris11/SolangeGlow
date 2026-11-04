@@ -301,8 +301,18 @@ def travel_payload(pro: ProProfile) -> dict:
     }
 
 
+class OtherPlaceSerializer(serializers.Serializer):
+    id = serializers.UUIDField()
+    name = serializers.CharField()
+    city = serializers.CharField(allow_blank=True)
+    district = serializers.CharField(allow_blank=True)
+    address = serializers.CharField(allow_blank=True)
+
+
 class ShowcaseSerializer(serializers.Serializer):
     """Public page of a pro (also its preview for herself)."""
+
+    other_places = OtherPlaceSerializer(many=True)
 
     owner_id = serializers.UUIDField()
     follower_count = serializers.IntegerField()
@@ -379,6 +389,16 @@ def showcase_payload(pro: ProProfile, *, private: bool = False, viewer=None) -> 
         "portfolio": PortfolioItemSerializer(portfolio, many=True).data,
         "place": place_payload(pro, private=private),
         "travel": travel_payload(pro),
+        "other_places": [
+            {
+                "id": str(place.pk),
+                "name": place.name,
+                "city": place.city,
+                "district": place.district,
+                "address": place.address,
+            }
+            for place in pro.places.filter(is_active=True)
+        ],
         "published_at": pro.published_at,
         "updated_at": pro.updated_at,
     }

@@ -23,6 +23,9 @@ from .models import (
     ClientRecord,
     GroupBooking,
     LastMinuteOffer,
+    ManualSlot,
+    Place,
+    PlacePeriod,
     Resource,
     StaffBreak,
     StaffMember,
@@ -264,3 +267,25 @@ class LastMinuteOfferAdmin(AuditedModelAdmin):
 
     def has_add_permission(self, request):
         return False
+
+
+class PlacePeriodInline(TabularInline):
+    model = PlacePeriod
+    extra = 0
+
+
+@admin.register(Place)
+class PlaceAdmin(AuditedModelAdmin):
+    list_display = ["name", "pro", "city", "is_active"]
+    list_filter = ["is_active", "pro__country"]
+    search_fields = ["name", "city", "pro__business_name", "pro__slug"]
+    autocomplete_fields = ["pro"]
+    inlines = [PlacePeriodInline]
+
+
+@admin.register(ManualSlot)
+class ManualSlotAdmin(AuditedModelAdmin):
+    list_display = ["pro", "starts_at", "ends_at", "staff", "place"]
+    search_fields = ["pro__business_name", "pro__slug", "note"]
+    date_hierarchy = "starts_at"
+    autocomplete_fields = ["pro"]

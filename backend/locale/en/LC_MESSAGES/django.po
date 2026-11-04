@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-04 15:23+0100\n"
+"POT-Creation-Date: 2026-11-04 18:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1788,6 +1788,24 @@ msgstr ""
 msgid "This gift card cannot pay the deposit: check the code and its balance."
 msgstr ""
 
+msgid "This pro is not taking online bookings at the moment."
+msgstr ""
+
+msgid "This place does not exist."
+msgstr ""
+
+msgid "This pro does not go to clients' homes."
+msgstr ""
+
+msgid "Give the address where the pro should come."
+msgstr ""
+
+msgid "This opened time does not exist."
+msgstr ""
+
+msgid "Choose a time that has not passed yet."
+msgstr ""
+
 msgid "Monday"
 msgstr ""
 
@@ -1807,6 +1825,12 @@ msgid "Saturday"
 msgstr ""
 
 msgid "Sunday"
+msgstr ""
+
+msgid "My opening hours, and the times I open"
+msgstr ""
+
+msgid "Only the times I open"
 msgstr ""
 
 msgid "confirm by itself"
@@ -1831,6 +1855,21 @@ msgid "lateness accepted (min)"
 msgstr ""
 
 msgid "guests can book"
+msgstr ""
+
+msgid "free times come from"
+msgstr ""
+
+msgid "time kept between two clients (min)"
+msgstr ""
+
+msgid "time to go from one place to another (min)"
+msgstr ""
+
+msgid "online booking paused"
+msgstr ""
+
+msgid "On: nobody can book online. The agenda still works."
 msgstr ""
 
 msgid "booking settings"
@@ -1932,6 +1971,33 @@ msgstr ""
 msgid "group bookings"
 msgstr ""
 
+msgid "district"
+msgstr ""
+
+msgid "address"
+msgstr ""
+
+msgid "place"
+msgstr ""
+
+msgid "Empty: everyone."
+msgstr ""
+
+msgid "hours at a place"
+msgstr ""
+
+msgid "Empty: the main address."
+msgstr ""
+
+msgid "only for these services"
+msgstr ""
+
+msgid "opened time"
+msgstr ""
+
+msgid "opened times"
+msgstr ""
+
 msgid "Waiting for the pro"
 msgstr ""
 
@@ -2023,6 +2089,15 @@ msgid "group"
 msgstr ""
 
 msgid "look"
+msgstr ""
+
+msgid "at the client's home"
+msgstr ""
+
+msgid "client's address"
+msgstr ""
+
+msgid "travel fee"
 msgstr ""
 
 msgid "confirmed at"
@@ -3627,9 +3702,6 @@ msgid "the platform"
 msgstr ""
 
 msgid "legal name"
-msgstr ""
-
-msgid "address"
 msgstr ""
 
 msgid "company number"
@@ -5275,9 +5347,6 @@ msgstr ""
 msgid "languages spoken"
 msgstr ""
 
-msgid "district"
-msgstr ""
-
 msgid "position given by"
 msgstr ""
 
@@ -5303,9 +5372,6 @@ msgid "travel radius (km)"
 msgstr ""
 
 msgid "travel area"
-msgstr ""
-
-msgid "travel fee"
 msgstr ""
 
 msgid "In the smallest unit of the currency (FCFA, cents)."

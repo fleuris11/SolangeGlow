@@ -33,7 +33,16 @@ from apps.core.selectors import get_setting
 from apps.pros.hours import zone_of
 from apps.pros.models import ProProfile, Service, ServiceStep
 
-from .models import Appointment, AppointmentStep, BookingSettings, StaffMember, TimeOff
+from .models import (
+    Appointment,
+    AppointmentStep,
+    BookingSettings,
+    ManualSlot,
+    PlacePeriod,
+    SlotMode,
+    StaffMember,
+    TimeOff,
+)
 
 WORK = ServiceStep.Kind.WORK
 MINUTE = 60
@@ -198,15 +207,58 @@ class DayContext:
     extra_busy: dict = field(default_factory=lambda: defaultdict(list))
 
 
+def _margins(busy_steps, booking_settings, place_id, at_home: bool) -> dict:
+    """Time kept around each appointment of a person: rest, and the way from another place.
+
+    Only around the whole appointment: a processing time inside it stays free for another client.
+    """
+    edges: dict = {}
+    for step in busy_steps:
+        if step["staff_id"] is None or step["kind"] != WORK:
+            continue
+        key = (step["staff_id"], step["appointment_id"])
+        first, last, *_ = edges.get(key, (step["starts_at"], step["ends_at"]))
+        edges[key] = (
+            min(first, step["starts_at"]),
+            max(last, step["ends_at"]),
+            step["appointment__place_id"],
+            step["appointment__at_home"],
+        )
+    cuts = defaultdict(list)
+    for (staff_id, _appointment), (first, last, place, home) in edges.items():
+        same_place = place == place_id and home == at_home and not home
+        minutes = booking_settings.buffer_minutes
+        if not same_place:
+            minutes = max(minutes, booking_settings.travel_minutes)
+        if minutes:
+            margin = minutes * MINUTE
+            cuts[staff_id].append((_ts(first) - margin, _ts(first)))
+            cuts[staff_id].append((_ts(last), _ts(last) + margin))
+    return cuts
+
+
 def _local(day: datetime.date, moment: datetime.time, zone) -> int:
     return _ts(datetime.datetime.combine(day, moment, tzinfo=zone))
 
 
 def day_context(
-    pro: ProProfile, day: datetime.date, *, ignore_appointment=None, appointments: bool = True
+    pro: ProProfile,
+    day: datetime.date,
+    *,
+    ignore_appointment=None,
+    appointments: bool = True,
+    place_id=None,
+    at_home: bool = False,
+    service_id=None,
+    outside_hours: bool = False,
 ) -> DayContext:
-    """`appointments=False`: the open time only (for the occupancy of the dashboard)."""
+    """`appointments=False`: the open time only (for the occupancy of the dashboard).
+
+    `place_id`: another address (empty: the main one). `outside_hours`: the pro books whenever
+    she wants: only her appointments still take time.
+    """
     zone = zone_of(pro)
+    booking_settings = settings_of(pro)
     day_start = datetime.datetime.combine(day, datetime.time.min, tzinfo=zone)
     day_end = day_start + datetime.timedelta(days=1)
     staff = list(
@@ -219,6 +271,23 @@ def day_context(
     ]
     closed = any(c.starts_on <= day <= c.ends_on for c in pro.closures.all())
     time_off = list(TimeOff.objects.filter(pro=pro, starts_at__lt=day_end, ends_at__gt=day_start))
+    only_opened = booking_settings.slot_mode == SlotMode.MANUAL
+    place_periods = (
+        list(PlacePeriod.objects.filter(place_id=place_id, weekday=day.weekday()))
+        if place_id and not only_opened
+        else []
+    )
+    opened = list(
+        ManualSlot.objects.filter(
+            pro=pro, place_id=place_id, starts_at__lt=day_end, ends_at__gt=day_start
+        ).prefetch_related("services")
+    )
+    if service_id is not None:
+        opened = [
+            slot
+            for slot in opened
+            if not slot.services.all() or any(x.pk == service_id for x in slot.services.all())
+        ]
     busy_steps = AppointmentStep.objects.filter(
         appointment__pro=pro,
         blocking=True,
@@ -227,7 +296,19 @@ def day_context(
     )
     if ignore_appointment is not None:
         busy_steps = busy_steps.exclude(appointment_id=ignore_appointment)
-    busy_steps = list(busy_steps.values("staff_id", "resource_id", "kind", "starts_at", "ends_at"))
+    busy_steps = list(
+        busy_steps.values(
+            "staff_id",
+            "resource_id",
+            "kind",
+            "starts_at",
+            "ends_at",
+            "appointment_id",
+            "appointment__place_id",
+            "appointment__at_home",
+        )
+    )
+    margins = _margins(busy_steps, booking_settings, place_id, at_home)
 
     loads = (
         AppointmentStep.objects.filter(
@@ -245,28 +326,52 @@ def day_context(
 
     free = {}
     for member in staff:
-        if closed:
-            free[member.pk] = []
-            continue
-        periods = (
-            [(p.starts_at, p.ends_at) for p in member.periods.all() if p.weekday == day.weekday()]
-            if member.own_hours
-            else salon_periods
-        )
-        windows = _merge(
-            [(_local(day, start, zone), _local(day, end, zone)) for start, end in periods]
-        )
-        for pause in member.breaks.all():
-            if pause.weekday == day.weekday():
-                windows = _subtract(
-                    windows, (_local(day, pause.starts_at, zone), _local(day, pause.ends_at, zone))
-                )
-        for off in time_off:
-            if off.staff_id in (None, member.pk):
-                windows = _subtract(windows, (_ts(off.starts_at), _ts(off.ends_at)))
+        if outside_hours:
+            windows = [(_ts(day_start), _ts(day_end))]
+        else:
+            if place_id:
+                periods = [
+                    (p.starts_at, p.ends_at)
+                    for p in place_periods
+                    if p.staff_id in (None, member.pk)
+                ]
+            elif closed or only_opened:
+                periods = []
+            elif member.own_hours:
+                periods = [
+                    (p.starts_at, p.ends_at)
+                    for p in member.periods.all()
+                    if p.weekday == day.weekday()
+                ]
+            else:
+                periods = salon_periods
+            windows = _merge(
+                [(_local(day, start, zone), _local(day, end, zone)) for start, end in periods]
+            )
+            for pause in member.breaks.all():
+                if pause.weekday == day.weekday():
+                    windows = _subtract(
+                        windows,
+                        (_local(day, pause.starts_at, zone), _local(day, pause.ends_at, zone)),
+                    )
+            # A time she opens goes over a closure or a break; what she blocks stays blocked.
+            windows = _merge(
+                windows
+                + [
+                    (max(_ts(slot.starts_at), _ts(day_start)), min(_ts(slot.ends_at), _ts(day_end)))
+                    for slot in opened
+                    if slot.staff_id in (None, member.pk)
+                ]
+            )
+            for off in time_off:
+                if off.staff_id in (None, member.pk):
+                    windows = _subtract(windows, (_ts(off.starts_at), _ts(off.ends_at)))
         for step in busy_steps if appointments else ():
             if step["staff_id"] == member.pk and step["kind"] == WORK:
                 windows = _subtract(windows, (_ts(step["starts_at"]), _ts(step["ends_at"])))
+        if appointments and not outside_hours:
+            for cut in margins.get(member.pk, ()):
+                windows = _subtract(windows, cut)
         free[member.pk] = windows
 
     from .models import Resource
@@ -280,7 +385,7 @@ def day_context(
         zone=zone,
         free=free,
         load=load,
-        limits={m.pk: m.daily_limit for m in staff},
+        limits={m.pk: None if outside_hours else m.daily_limit for m in staff},
         allowed={m.pk: {s.pk for s in m.services.all()} for m in staff},
         order=[m.pk for m in staff],
         resources=resources,
@@ -385,9 +490,18 @@ def _candidates(ctx: DayContext, step_minutes: int) -> list[int]:
     return list(range(start, last, step))
 
 
-def _raw_day(pro, service, day, *, staff_id, option_ids, ignore_appointment) -> list[dict]:
+def _raw_day(
+    pro, service, day, *, staff_id, option_ids, ignore_appointment, place_id=None, at_home=False
+) -> list[dict]:
     needs = needs_of(service, option_ids)
-    ctx = day_context(pro, day, ignore_appointment=ignore_appointment)
+    ctx = day_context(
+        pro,
+        day,
+        ignore_appointment=ignore_appointment,
+        place_id=place_id,
+        at_home=at_home,
+        service_id=service.pk,
+    )
     if staff_id is not None and staff_id not in ctx.allowed:
         return []
     total = sum(n.minutes for n in needs) * MINUTE
@@ -451,6 +565,8 @@ def day_slots(
     ignore_appointment=None,
     now: datetime.datetime | None = None,
     notice: bool = True,
+    place_id=None,
+    at_home: bool = False,
 ) -> list[Slot]:
     """The possible starts of a service on a local day (cached, then filtered by time)."""
     now = now or timezone.now()
@@ -461,7 +577,7 @@ def day_slots(
     if ignore_appointment is None:
         key = (
             f"booking:slots:{pro.pk}:{version(pro.pk)}:{service.pk}:{options_key}:"
-            f"{staff_key}:{day.isoformat()}"
+            f"{staff_key}:{day.isoformat()}:{place_id or 'main'}:{int(at_home)}"
         )
         raw = cache.get(key)
     if raw is None:
@@ -472,6 +588,8 @@ def day_slots(
             staff_id=staff_id if staff_id is None else _as_uuid(staff_id),
             option_ids=option_ids,
             ignore_appointment=ignore_appointment,
+            place_id=place_id,
+            at_home=at_home,
         )
         if key:
             cache.set(key, raw, CACHE_SECONDS)
@@ -505,14 +623,34 @@ def week_slots(pro, service, first_day: datetime.date, days: int = 7, **kwargs) 
     }
 
 
-def find(pro, service, start: datetime.datetime, *, staff_id=None, option_ids=(), **kwargs):
+def find(
+    pro,
+    service,
+    start: datetime.datetime,
+    *,
+    staff_id=None,
+    option_ids=(),
+    place_id=None,
+    at_home: bool = False,
+    outside_hours: bool = False,
+    **kwargs,
+):
     """The slot that starts exactly at `start`, or None (recomputed, no cache)."""
     day = start.astimezone(zone_of(pro)).date()
     kwargs.setdefault("ignore_appointment", None)
-    if kwargs["ignore_appointment"] is None:
+    kwargs.update(place_id=place_id, at_home=at_home)
+    if kwargs["ignore_appointment"] is None or outside_hours:
         # A fresh look, as at the moment of booking.
         needs = needs_of(service, option_ids)
-        ctx = day_context(pro, day)
+        ctx = day_context(
+            pro,
+            day,
+            ignore_appointment=kwargs["ignore_appointment"],
+            place_id=place_id,
+            at_home=at_home,
+            service_id=service.pk,
+            outside_hours=outside_hours,
+        )
         planned = plan_at(
             ctx, service.pk, needs, _ts(start), chosen=_as_uuid(staff_id) if staff_id else None
         )

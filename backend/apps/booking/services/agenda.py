@@ -7,6 +7,7 @@ from __future__ import annotations
 import datetime
 import re
 
+from django.contrib.gis.geos import Point
 from django.db import transaction
 from django.db.models import Q
 from django.utils import timezone
@@ -25,6 +26,9 @@ from ..models import (
     ClientRecord,
     LastMinuteAlert,
     LastMinuteOffer,
+    ManualSlot,
+    Place,
+    PlacePeriod,
     Recommendation,
     Resource,
     StaffBreak,
@@ -194,6 +198,10 @@ def update_settings(pro, **changes) -> BookingSettings:
         "free_cancel_hours",
         "late_tolerance_minutes",
         "accepts_guests",
+        "slot_mode",
+        "buffer_minutes",
+        "travel_minutes",
+        "online_paused",
     ):
         if field in changes:
             setattr(settings, field, changes[field])
@@ -202,6 +210,111 @@ def update_settings(pro, **changes) -> BookingSettings:
     pro._booking_settings = settings
     common.changed(pro)
     return settings
+
+
+# --- Places and the times she opens -----------------------------------------------------------
+
+
+def _own_place(pro, place_id) -> Place:
+    place = Place.objects.filter(pk=place_id, pro=pro).first()
+    if place is None:
+        raise errors.PlaceNotFound()
+    return place
+
+
+def save_place(pro, *, place_id=None, latitude=None, longitude=None, **values) -> Place:
+    place = _own_place(pro, place_id) if place_id else Place(pro=pro)
+    for field in ("name", "city", "district", "address", "position"):
+        if field in values:
+            setattr(place, field, values[field])
+    if latitude is not None and longitude is not None:
+        place.location = Point(longitude, latitude, srid=4326)
+    place.full_clean()
+    place.save()
+    common.changed(pro)
+    return place
+
+
+def remove_place(pro, place_id) -> None:
+    """Past appointments keep it: it only stops being offered."""
+    place = _own_place(pro, place_id)
+    place.is_active = False
+    place.save(update_fields=["is_active", "updated_at"])
+    common.changed(pro)
+
+
+def set_place_hours(pro, place_id, rows: list[dict]) -> Place:
+    place = _own_place(pro, place_id)
+    with transaction.atomic():
+        place.periods.all().delete()
+        PlacePeriod.objects.bulk_create(
+            [
+                PlacePeriod(
+                    place=place,
+                    weekday=row["weekday"],
+                    starts_at=row["starts_at"],
+                    ends_at=row["ends_at"],
+                    staff=_staff_of(pro, row.get("staff_id")),
+                )
+                for row in rows
+            ]
+        )
+    common.changed(pro)
+    return place
+
+
+def _staff_of(pro, staff_id):
+    if not staff_id:
+        return None
+    staff = StaffMember.objects.filter(pk=staff_id, pro=pro, is_active=True).first()
+    if staff is None:
+        raise errors.StaffNotFound()
+    return staff
+
+
+def open_slots(
+    pro,
+    *,
+    starts_at,
+    ends_at,
+    staff_id=None,
+    place_id=None,
+    service_ids=(),
+    note="",
+    repeat_weeks=0,
+) -> list[ManualSlot]:
+    """Opens a time, and the same time for the next weeks if she asks for it."""
+    if ends_at <= starts_at:
+        raise errors.InvalidTimeRange()
+    if starts_at < timezone.now():
+        raise errors.SlotInThePast()
+    staff = _staff_of(pro, staff_id)
+    place = _own_place(pro, place_id) if place_id else None
+    services = list(Service.objects.filter(pro=pro, pk__in=list(service_ids)))
+    created = []
+    with transaction.atomic():
+        for week in range(repeat_weeks + 1):
+            shift = datetime.timedelta(weeks=week)
+            slot = ManualSlot.objects.create(
+                pro=pro,
+                staff=staff,
+                place=place,
+                starts_at=starts_at + shift,
+                ends_at=ends_at + shift,
+                note=(note or "").strip()[:120],
+            )
+            slot.services.set(services)
+            created.append(slot)
+    common.changed(pro)
+    return created
+
+
+def close_slot(pro, slot_id) -> None:
+    slot = ManualSlot.objects.filter(pk=slot_id, pro=pro).first()
+    if slot is None:
+        raise errors.SlotNotFound()
+    slot.delete()
+    common.changed(pro)
 
 
 # --- Client files, photos, advice ----------------------------------------------------------------

@@ -147,3 +147,41 @@ class SignInToPay(DomainError):
 class GiftCardRefused(DomainError):
     code = "gift_card_refused"
     message = _("This gift card cannot pay the deposit: check the code and its balance.")
+
+
+class BookingPaused(DomainError):
+    code = "booking_paused"
+    status_code = 409
+    message = _("This pro is not taking online bookings at the moment.")
+
+
+class PlaceNotFound(DomainError):
+    code = "place_not_found"
+    status_code = 404
+    message = _("This place does not exist.")
+
+
+class NoHomeVisits(DomainError):
+    code = "no_home_visits"
+    message = _("This pro does not go to clients' homes.")
+
+
+class AddressNeeded(DomainError):
+    code = "address_needed"
+    message = _("Give the address where the pro should come.")
+
+
+class SlotNotFound(DomainError):
+    code = "slot_not_found"
+    status_code = 404
+    message = _("This opened time does not exist.")
+
+
+class InvalidTimeRange(DomainError):
+    code = "invalid_time_range"
+    message = _("The end must come after the start.")
+
+
+class SlotInThePast(DomainError):
+    code = "slot_in_the_past"
+    message = _("Choose a time that has not passed yet.")

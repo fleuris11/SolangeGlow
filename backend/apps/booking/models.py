@@ -9,6 +9,7 @@ Every pro has at least one staff member: herself (`is_owner`). The availability 
 import secrets
 
 from django.conf import settings
+from django.contrib.gis.db import models as gis_models
 from django.contrib.postgres.constraints import ExclusionConstraint
 from django.contrib.postgres.fields import DateTimeRangeField, RangeOperators
 from django.core.validators import MaxValueValidator, MinValueValidator, RegexValidator
@@ -32,6 +33,11 @@ class Weekday(models.IntegerChoices):
     FRIDAY = 4, _("Friday")
     SATURDAY = 5, _("Saturday")
     SUNDAY = 6, _("Sunday")
+
+
+class SlotMode(models.TextChoices):
+    HOURS = "hours", _("My opening hours, and the times I open")
+    MANUAL = "manual", _("Only the times I open")
 
 
 class BookingSettings(BaseModel):
@@ -64,6 +70,22 @@ class BookingSettings(BaseModel):
         _("lateness accepted (min)"), null=True, blank=True
     )
     accepts_guests = models.BooleanField(_("guests can book"), default=True)
+    slot_mode = models.CharField(
+        _("free times come from"), max_length=8, choices=SlotMode.choices, default=SlotMode.HOURS
+    )
+    buffer_minutes = models.PositiveSmallIntegerField(
+        _("time kept between two clients (min)"), default=0, validators=[MaxValueValidator(240)]
+    )
+    travel_minutes = models.PositiveSmallIntegerField(
+        _("time to go from one place to another (min)"),
+        default=0,
+        validators=[MaxValueValidator(480)],
+    )
+    online_paused = models.BooleanField(
+        _("online booking paused"),
+        default=False,
+        help_text=_("On: nobody can book online. The agenda still works."),
+    )
     ical_token = models.CharField(max_length=64, default=_token, editable=False, unique=True)
 
     class Meta:
@@ -288,6 +310,115 @@ class GroupBooking(BaseModel):
         return self.title or str(self.pk)
 
 
+class Place(BaseModel):
+    """Another address of a pro. Her main address stays on her profile."""
+
+    pro = models.ForeignKey(
+        "pros.ProProfile", on_delete=models.CASCADE, related_name="places", verbose_name=_("pro")
+    )
+    name = models.CharField(_("name"), max_length=80)
+    city = models.CharField(_("city"), max_length=80, blank=True)
+    district = models.CharField(_("district"), max_length=80, blank=True)
+    address = models.CharField(_("address"), max_length=200, blank=True)
+    location = gis_models.PointField(_("position"), geography=True, null=True, blank=True)
+    position = models.PositiveSmallIntegerField(_("position"), default=0)
+    is_active = models.BooleanField(_("active"), default=True)
+
+    class Meta:
+        verbose_name = _("place")
+        verbose_name_plural = _("places")
+        ordering = ["position", "name"]
+
+    def __str__(self):
+        return self.name
+
+
+class PlacePeriod(BaseModel):
+    """When a pro works at another address. A person is never in two places at once."""
+
+    place = models.ForeignKey(
+        Place, on_delete=models.CASCADE, related_name="periods", verbose_name=_("place")
+    )
+    staff = models.ForeignKey(
+        StaffMember,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="place_periods",
+        verbose_name=_("person"),
+        help_text=_("Empty: everyone."),
+    )
+    weekday = models.PositiveSmallIntegerField(_("day"), choices=Weekday.choices)
+    starts_at = models.TimeField(_("from"))
+    ends_at = models.TimeField(_("to"))
+
+    class Meta:
+        verbose_name = _("hours at a place")
+        verbose_name_plural = _("hours at a place")
+        ordering = ["weekday", "starts_at"]
+        constraints = [
+            models.CheckConstraint(
+                condition=models.Q(ends_at__gt=models.F("starts_at")),
+                name="booking_place_period_order",
+            )
+        ]
+
+    def __str__(self):
+        return f"{self.place} {self.get_weekday_display()}"
+
+
+class ManualSlot(BaseModel):
+    """A time the pro opens herself, with or without opening hours that day."""
+
+    pro = models.ForeignKey(
+        "pros.ProProfile",
+        on_delete=models.CASCADE,
+        related_name="manual_slots",
+        verbose_name=_("pro"),
+    )
+    staff = models.ForeignKey(
+        StaffMember,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="manual_slots",
+        verbose_name=_("person"),
+        help_text=_("Empty: everyone."),
+    )
+    place = models.ForeignKey(
+        Place,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="manual_slots",
+        verbose_name=_("place"),
+        help_text=_("Empty: the main address."),
+    )
+    services = models.ManyToManyField(
+        "pros.Service",
+        blank=True,
+        related_name="manual_slots",
+        verbose_name=_("only for these services"),
+    )
+    starts_at = models.DateTimeField(_("from"), db_index=True)
+    ends_at = models.DateTimeField(_("to"))
+    note = models.CharField(_("note"), max_length=120, blank=True)
+
+    class Meta:
+        verbose_name = _("opened time")
+        verbose_name_plural = _("opened times")
+        ordering = ["starts_at"]
+        constraints = [
+            models.CheckConstraint(
+                condition=models.Q(ends_at__gt=models.F("starts_at")),
+                name="booking_manual_slot_order",
+            )
+        ]
+
+    def __str__(self):
+        return f"{self.pro} {self.starts_at:%Y-%m-%d %H:%M}"
+
+
 class Appointment(BaseModel):
     class Status(models.TextChoices):
         PENDING = "pending", _("Waiting for the pro")
@@ -396,6 +527,18 @@ class Appointment(BaseModel):
         related_name="+",
         verbose_name=_("look"),
     )
+    place = models.ForeignKey(
+        Place,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="appointments",
+        verbose_name=_("place"),
+        help_text=_("Empty: the main address."),
+    )
+    at_home = models.BooleanField(_("at the client's home"), default=False)
+    client_address = models.CharField(_("client's address"), max_length=200, blank=True)
+    travel_fee_minor = models.BigIntegerField(_("travel fee"), default=0)
     manage_token = models.CharField(max_length=64, default=_token, editable=False, unique=True)
     reminders_sent = models.JSONField(default=list, blank=True, editable=False)
     confirmed_at = models.DateTimeField(_("confirmed at"), null=True, blank=True)

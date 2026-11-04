@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-04 15:23+0100\n"
+"POT-Creation-Date: 2026-11-04 18:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1788,6 +1788,24 @@ msgstr "Connecte-toi pour payer l'acompte."
 msgid "This gift card cannot pay the deposit: check the code and its balance."
 msgstr "Cette carte cadeau ne peut pas payer l'acompte : vérifie le code et son solde."
 
+msgid "This pro is not taking online bookings at the moment."
+msgstr "Cette pro ne prend pas de réservation en ligne pour le moment."
+
+msgid "This place does not exist."
+msgstr "Ce lieu n'existe pas."
+
+msgid "This pro does not go to clients' homes."
+msgstr "Cette pro ne se déplace pas à domicile."
+
+msgid "Give the address where the pro should come."
+msgstr "Indique l'adresse où la pro doit venir."
+
+msgid "This opened time does not exist."
+msgstr "Ce créneau n'existe pas."
+
+msgid "Choose a time that has not passed yet."
+msgstr "Choisis une heure qui n'est pas passée."
+
 msgid "Monday"
 msgstr "Lundi"
 
@@ -1808,6 +1826,12 @@ msgstr "Samedi"
 
 msgid "Sunday"
 msgstr "Dimanche"
+
+msgid "My opening hours, and the times I open"
+msgstr "Mes horaires, et les créneaux que j'ouvre"
+
+msgid "Only the times I open"
+msgstr "Seulement les créneaux que j'ouvre"
 
 msgid "confirm by itself"
 msgstr "confirmer tout seul"
@@ -1832,6 +1856,21 @@ msgstr "retard toléré (min)"
 
 msgid "guests can book"
 msgstr "réservation sans compte"
+
+msgid "free times come from"
+msgstr "les créneaux viennent de"
+
+msgid "time kept between two clients (min)"
+msgstr "temps gardé entre deux clientes (min)"
+
+msgid "time to go from one place to another (min)"
+msgstr "temps de trajet entre deux lieux (min)"
+
+msgid "online booking paused"
+msgstr "réservation en ligne en pause"
+
+msgid "On: nobody can book online. The agenda still works."
+msgstr "Activé : personne ne réserve en ligne. L'agenda marche toujours."
 
 msgid "booking settings"
 msgstr "réglages de réservation"
@@ -1932,6 +1971,33 @@ msgstr "réservation de groupe"
 msgid "group bookings"
 msgstr "réservations de groupe"
 
+msgid "district"
+msgstr "quartier"
+
+msgid "address"
+msgstr "adresse"
+
+msgid "place"
+msgstr "lieu"
+
+msgid "Empty: everyone."
+msgstr "Vide : tout le monde."
+
+msgid "hours at a place"
+msgstr "horaires d'un lieu"
+
+msgid "Empty: the main address."
+msgstr "Vide : l'adresse principale."
+
+msgid "only for these services"
+msgstr "seulement pour ces prestations"
+
+msgid "opened time"
+msgstr "créneau ouvert"
+
+msgid "opened times"
+msgstr "créneaux ouverts"
+
 msgid "Waiting for the pro"
 msgstr "En attente de la pro"
 
@@ -2024,6 +2090,15 @@ msgstr "groupe"
 
 msgid "look"
 msgstr "look"
+
+msgid "at the client's home"
+msgstr "chez la cliente"
+
+msgid "client's address"
+msgstr "adresse de la cliente"
+
+msgid "travel fee"
+msgstr "supplément déplacement"
 
 msgid "confirmed at"
 msgstr "confirmé le"
@@ -3628,9 +3703,6 @@ msgstr "la plateforme"
 
 msgid "legal name"
 msgstr "nom légal"
-
-msgid "address"
-msgstr "adresse"
 
 msgid "company number"
 msgstr "numéro d'entreprise"
@@ -5275,9 +5347,6 @@ msgstr "Réseau : lien ou @nom."
 msgid "languages spoken"
 msgstr "langues parlées"
 
-msgid "district"
-msgstr "quartier"
-
 msgid "position given by"
 msgstr "position donnée par"
 
@@ -5304,9 +5373,6 @@ msgstr "rayon de déplacement (km)"
 
 msgid "travel area"
 msgstr "zone de déplacement"
-
-msgid "travel fee"
-msgstr "supplément déplacement"
 
 msgid "In the smallest unit of the currency (FCFA, cents)."
 msgstr "Dans la plus petite unité de la devise (FCFA, centimes)."
