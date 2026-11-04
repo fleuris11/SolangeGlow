@@ -105,8 +105,8 @@ ENGLISH = [
 
 def _replace(text: str, rules) -> str:
     for old, new in rules:
-        # Never inside a placeholder such as {pro} or {{ pro }}.
-        text = re.sub(rf"(?<![\w{{]){re.escape(old)}(?![\w}}])(?! *}})", new, text)
+        # Never inside a placeholder such as {pro}, {{ pro }} or %(pro)s.
+        text = re.sub(rf"(?<![\w{{(]){re.escape(old)}(?![\w}})])(?! *}})", new, text)
     return text
 
 

@@ -3575,7 +3575,7 @@ msgstr "Ouvre-le ici : %(link)s"
 
 #, python-format
 msgid "%(service)s at %(pro)s"
-msgstr "%(service)s chez %(talent)s"
+msgstr "%(service)s chez %(pro)s"
 
 #, python-format
 msgid "Gift from %(name)s"
@@ -5916,7 +5916,7 @@ msgstr "Carte cadeau %(code)s"
 
 #, python-format
 msgid "Gift card %(pro)s"
-msgstr "Carte cadeau %(talent)s"
+msgstr "Carte cadeau %(pro)s"
 
 #, python-format
 msgid "A gift card from %(name)s"
@@ -5924,7 +5924,7 @@ msgstr "Une carte cadeau de %(name)s"
 
 #, python-format
 msgid "%(amount)s at %(pro)s. Code: %(code)s. Valid until %(until)s."
-msgstr "%(amount)s chez %(talent)s. Code : %(code)s. Valable jusqu'au %(until)s."
+msgstr "%(amount)s chez %(pro)s. Code : %(code)s. Valable jusqu'au %(until)s."
 
 msgid "Purchase price"
 msgstr "Prix d'achat"

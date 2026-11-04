@@ -19,30 +19,21 @@ export type ApiErrorBody = {
   retry_after?: number;
 };
 
-const PLAIN = {
-  fr: {
-    network: "Pas de connexion. Vérifie ton réseau et réessaie.",
-    session: "Tu n'es plus connecté. Connecte-toi pour continuer.",
-    server: "Un problème est survenu de notre côté. Réessaie dans un instant.",
-  },
-  en: {
-    network: "No connection. Check your network and try again.",
-    session: "You have been signed out. Sign in to continue.",
-    server: "Something went wrong on our side. Try again in a moment.",
-  },
-  sk: {
-    network: "Nie je pripojenie. Skontroluj sieť a skús to znova.",
-    session: "Bol si odhlásený. Prihlás sa a pokračuj.",
-    server: "Na našej strane nastal problém. Skús to o chvíľu.",
-  },
+const PLAIN: Record<string, [network: string, session: string, server: string]> = {
+  fr: [
+    "Pas de connexion. Réessaie.",
+    "Connecte-toi pour continuer.",
+    "Un problème est survenu. Réessaie.",
+  ],
+  en: ["No connection. Try again.", "Sign in to continue.", "Something went wrong. Try again."],
+  sk: ["Bez pripojenia. Skús znova.", "Prihlás sa.", "Nastal problém. Skús znova."],
 };
 
 /** When the server gives no message: this file has no access to the translations. */
 function plainMessage(status: number): string {
   const lang = typeof document === "undefined" ? "fr" : document.documentElement.lang;
-  const words = PLAIN[lang as keyof typeof PLAIN] ?? PLAIN.fr;
-  if (status === 0) return words.network;
-  return status === 401 ? words.session : words.server;
+  const [network, session, server] = PLAIN[lang] ?? PLAIN.fr!;
+  return status === 0 ? network : status === 401 ? session : server;
 }
 
 export class ApiError extends Error {

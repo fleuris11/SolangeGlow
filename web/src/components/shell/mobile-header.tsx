@@ -6,7 +6,7 @@ import { Link } from "@/lib/i18n/navigation";
 import { AudioToggle } from "./audio-toggle";
 import { CityPicker } from "./city-picker";
 import { NotificationBell } from "./notification-bell";
-import { ProSwitch } from "./pro-switch";
+import { ProSwitchLoader } from "./pro-switch-loader";
 
 /** Mobile header: chosen city, search, audio mode. */
 export function MobileHeader() {
@@ -22,7 +22,7 @@ export function MobileHeader() {
           <MagnifyingGlass aria-hidden size={24} weight="bold" />
           <span>{t("search")}</span>
         </Link>
-        <ProSwitch icon={<Storefront aria-hidden size={24} />} />
+        <ProSwitchLoader icon={<Storefront aria-hidden size={24} />} />
         <AudioToggle compact />
         <NotificationBell />
       </div>
