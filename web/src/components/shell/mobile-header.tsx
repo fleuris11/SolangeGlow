@@ -1,4 +1,4 @@
-import { MagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
+import { MagnifyingGlass, Storefront } from "@phosphor-icons/react/dist/ssr";
 import { useTranslations } from "next-intl";
 
 import { Link } from "@/lib/i18n/navigation";
@@ -6,6 +6,7 @@ import { Link } from "@/lib/i18n/navigation";
 import { AudioToggle } from "./audio-toggle";
 import { CityPicker } from "./city-picker";
 import { NotificationBell } from "./notification-bell";
+import { ProSwitch } from "./pro-switch";
 
 /** Mobile header: chosen city, search, audio mode. */
 export function MobileHeader() {
@@ -21,6 +22,7 @@ export function MobileHeader() {
           <MagnifyingGlass aria-hidden size={24} weight="bold" />
           <span>{t("search")}</span>
         </Link>
+        <ProSwitch icon={<Storefront aria-hidden size={24} weight="duotone" />} />
         <AudioToggle compact />
         <NotificationBell />
       </div>

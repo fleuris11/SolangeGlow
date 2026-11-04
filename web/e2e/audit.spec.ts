@@ -165,6 +165,8 @@ test("every key screen passes the check-list at 360 px, dark, very large text, a
     { path: "/fr/notifications" },
     { path: "/fr/cadeaux" },
     { path: "/fr/pro" },
+    { path: "/fr/pro/ma-page" },
+    { path: "/fr/pro/creneaux" },
     { path: "/fr/pro/agenda" },
     { path: "/fr/pro/shop" },
   ];

@@ -64,7 +64,14 @@ function today(zone: string) {
 }
 
 /** The agenda: a day by person, or a week for one person; drag to move, tap to add. */
-export function AgendaScreen({ initialDay }: { initialDay?: string }) {
+export function AgendaScreen({
+  initialDay,
+  initialAppointment,
+}: {
+  initialDay?: string;
+  /** Opened from a notification or from « Aujourd'hui ». */
+  initialAppointment?: string;
+}) {
   const t = useTranslations("booking.agenda");
   const tStatus = useTranslations("booking.status");
   const locale = useLocale();
@@ -73,7 +80,7 @@ export function AgendaScreen({ initialDay }: { initialDay?: string }) {
   const [view, setView] = useState<View>("day");
   const [day, setDay] = useState<string | undefined>(initialDay);
   const [person, setPerson] = useState<string | null>(null);
-  const [open, setOpen] = useState<string | null>(null);
+  const [open, setOpen] = useState<string | null>(initialAppointment ?? null);
   const [quick, setQuick] = useState<{ day: string; minutes: number; staffId: string } | null>(
     null,
   );

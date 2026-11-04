@@ -1,3 +1,4 @@
+import { SignOut, Storefront } from "@phosphor-icons/react/dist/ssr";
 import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 
@@ -24,7 +25,13 @@ export function AppShell({ children }: { children: ReactNode }) {
         {t("skipToContent")}
       </a>
       <div className="lg:grid lg:grid-cols-[220px_minmax(0,640px)] lg:justify-center lg:gap-8 xl:grid-cols-[220px_minmax(0,640px)_300px]">
-        <DesktopSidebar icons={icons} />
+        <DesktopSidebar
+          icons={icons}
+          leave={{
+            pro: <Storefront aria-hidden size={24} weight="duotone" />,
+            signOut: <SignOut aria-hidden size={24} weight="bold" />,
+          }}
+        />
         <div className="min-w-0">
           <MobileHeader />
           <main id="main" className="mx-auto w-full max-w-[640px] px-4 pt-6 pb-32 lg:pb-16">

@@ -44,7 +44,7 @@ export type BookingIcons = {
   lightning: ReactNode;
 };
 
-type Step = "service" | "staff" | "time" | "details";
+type Step = "service" | "place" | "staff" | "time" | "details";
 
 const subscribeNothing = () => () => {};
 const DAYS = 7;
@@ -97,6 +97,10 @@ export function BookingFlow({
   const [done, setDone] = useState<Booked | null>(null);
   const [group, setGroup] = useState<Group | null>(null);
   const [waiting, setWaiting] = useState<"idle" | "form" | "done">("idle");
+  // Where: the main address (empty), another address, or at her home.
+  const [placeId, setPlaceId] = useState("");
+  const [atHome, setAtHome] = useState(false);
+  const [address, setAddress] = useState("");
 
   const staffFor = useMemo(
     () =>
@@ -105,15 +109,26 @@ export function BookingFlow({
         : [],
     [page.staff, service],
   );
-  const steps: Step[] =
-    staffFor.length > 1 ? ["service", "staff", "time", "details"] : ["service", "time", "details"];
-  const [step, setStep] = useState<Step>(
-    initial ? (staffFor.length > 1 ? "staff" : "time") : "service",
-  );
+  const canGoHome = page.travels_to_clients && !!service?.available_at_home;
+  const choosesPlace =
+    page.places.length + (page.receives_clients ? 1 : 0) + (canGoHome ? 1 : 0) > 1;
+  const steps: Step[] = [
+    "service",
+    ...(choosesPlace ? (["place"] as const) : []),
+    ...(staffFor.length > 1 ? (["staff"] as const) : []),
+    "time",
+    "details",
+  ];
+  const [step, setStep] = useState<Step>(() => {
+    if (!initial) return "service";
+    const home = page.travels_to_clients && initial.available_at_home;
+    if (page.places.length + (page.receives_clients ? 1 : 0) + (home ? 1 : 0) > 1) return "place";
+    return staffFor.length > 1 ? "staff" : "time";
+  });
   const index = steps.indexOf(step);
 
   const slotsQuery = useQuery({
-    queryKey: ["slots", slug, service?.id, staffId, optionIds.join(","), firstDay],
+    queryKey: ["slots", slug, service?.id, staffId, optionIds.join(","), firstDay, placeId, atHome],
     queryFn: () =>
       getSlots(slug, {
         service: service!.id,
@@ -121,6 +136,8 @@ export function BookingFlow({
         days: DAYS,
         ...(staffId ? { staff: staffId } : {}),
         ...(optionIds.length ? { options: optionIds.join(",") } : {}),
+        ...(placeId ? { place: placeId } : {}),
+        ...(atHome ? { at_home: true } : {}),
       }),
     enabled: !!service && step === "time",
   });
@@ -142,7 +159,10 @@ export function BookingFlow({
     service && service.price_minor !== null
       ? service.price_minor + options.reduce((sum, o) => sum + o.price_minor, 0)
       : null;
-  const price = basePrice === null ? null : Math.round((basePrice * (100 - discount)) / 100);
+  const price =
+    basePrice === null
+      ? null
+      : Math.round((basePrice * (100 - discount)) / 100) + (atHome ? page.travel_fee_minor : 0);
   const deposit = service?.deposit_minor ?? 0;
   const when = start
     ? t("when", { day: dayName(localDay(start, zone), locale), time: timeAt(start, zone, locale) })
@@ -193,6 +213,9 @@ export function BookingFlow({
         ...(giftCode && deposit > 0 ? { gift_card_code: giftCode } : {}),
         ...(signedIn ? {} : { guest_name: name, guest_phone: phone }),
         ...(postId ? { post_id: postId } : {}),
+        ...(placeId ? { place_id: placeId } : {}),
+        at_home: atHome,
+        ...(atHome ? { client_address: address } : {}),
       });
       track("booking");
       if (answer.checkout_url) {
@@ -233,13 +256,35 @@ export function BookingFlow({
 
   const title = {
     service: t("titleService"),
+    place: t("titlePlace"),
     staff: t("titleStaff"),
     time: t("titleTime"),
     details: t("titleDetails"),
   }[step];
   const current = days?.find((d) => d.day === day);
-  const guestFields = !signedIn && (
-    <GuestFields name={name} phone={phone} onName={setName} onPhone={setPhone} />
+  const afterPlace = () => go(staffFor.length > 1 ? "staff" : "time");
+  if (page.online_paused) {
+    return (
+      <p role="status" className="bg-poudre rounded-card p-4 font-semibold">
+        {t("paused", { name: page.pro.name })}
+      </p>
+    );
+  }
+  const guestFields = (
+    <>
+      {atHome && (
+        <label className="flex flex-col gap-2 font-bold">
+          {t("homeAddress")}
+          <input
+            value={address}
+            maxLength={200}
+            onChange={(e) => setAddress(e.target.value)}
+            className="border-trait bg-carte rounded-field min-h-12 border-2 px-3 font-normal"
+          />
+        </label>
+      )}
+      {!signedIn && <GuestFields name={name} phone={phone} onName={setName} onPhone={setPhone} />}
+    </>
   );
 
   return (
@@ -272,7 +317,10 @@ export function BookingFlow({
                       const people = page.staff.filter(
                         (m) => m.service_ids.length === 0 || m.service_ids.includes(item.id),
                       );
-                      go(people.length > 1 ? "staff" : "time");
+                      const home = page.travels_to_clients && item.available_at_home;
+                      const where =
+                        page.places.length + (page.receives_clients ? 1 : 0) + (home ? 1 : 0);
+                      go(where > 1 ? "place" : people.length > 1 ? "staff" : "time");
                     }
                   }}
                   className={cn(
@@ -329,7 +377,9 @@ export function BookingFlow({
                     <Button
                       size="lg"
                       fullWidth
-                      onClick={() => go(staffFor.length > 1 ? "staff" : "time")}
+                      onClick={() =>
+                        go(choosesPlace ? "place" : staffFor.length > 1 ? "staff" : "time")
+                      }
                     >
                       {t("next")}
                     </Button>
@@ -338,6 +388,72 @@ export function BookingFlow({
               </li>
             );
           })}
+        </ul>
+      )}
+
+      {step === "place" && (
+        <ul className="flex flex-col gap-2">
+          {page.receives_clients && (
+            <li>
+              <Button
+                variant="secondary"
+                fullWidth
+                className="h-auto flex-col items-start py-3 text-left"
+                onClick={() => {
+                  setPlaceId("");
+                  setAtHome(false);
+                  afterPlace();
+                }}
+              >
+                <span className="font-bold">{page.pro.name}</span>
+                <span className="text-small font-normal">
+                  {[page.pro.address, page.pro.district, page.pro.city].filter(Boolean).join(", ")}
+                </span>
+              </Button>
+            </li>
+          )}
+          {page.places.map((place) => (
+            <li key={place.id}>
+              <Button
+                variant="secondary"
+                fullWidth
+                className="h-auto flex-col items-start py-3 text-left"
+                onClick={() => {
+                  setPlaceId(place.id);
+                  setAtHome(false);
+                  afterPlace();
+                }}
+              >
+                <span className="font-bold">{place.name}</span>
+                <span className="text-small font-normal">
+                  {[place.address, place.district, place.city].filter(Boolean).join(", ")}
+                </span>
+              </Button>
+            </li>
+          ))}
+          {canGoHome && (
+            <li>
+              <Button
+                variant="secondary"
+                fullWidth
+                className="h-auto flex-col items-start py-3 text-left"
+                onClick={() => {
+                  setPlaceId("");
+                  setAtHome(true);
+                  afterPlace();
+                }}
+              >
+                <span className="font-bold">{t("atHome")}</span>
+                {page.travel_fee_minor > 0 && service && (
+                  <span className="text-small font-normal">
+                    {t("travelFee", {
+                      amount: formatMoney(page.travel_fee_minor, service.currency, locale),
+                    })}
+                  </span>
+                )}
+              </Button>
+            </li>
+          )}
         </ul>
       )}
 

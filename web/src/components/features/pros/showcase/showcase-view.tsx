@@ -200,7 +200,7 @@ export function ShowcaseView({
         <div className="bg-poudre rounded-card flex flex-col items-start gap-2 p-4" role="status">
           <p className="font-bold">{t("previewTitle")}</p>
           <p className="text-prune-doux">{t("previewText")}</p>
-          <Link href="/pro" className={buttonClasses({ variant: "secondary" })}>
+          <Link href="/pro/ma-page" className={buttonClasses({ variant: "secondary" })}>
             <NotePencil aria-hidden size={22} weight="bold" />
             {t("previewEdit")}
           </Link>
@@ -213,7 +213,7 @@ export function ShowcaseView({
           <img
             src={cover}
             alt=""
-            className="rounded-card -mb-16 aspect-[16/7] w-full object-cover"
+            className="rounded-card -mb-16 aspect-[16/7] w-full object-cover object-[50%_30%] lg:aspect-[4/1]"
             fetchPriority="high"
           />
         )}
@@ -222,7 +222,7 @@ export function ShowcaseView({
           <SpeakButton text={[name, showcase.bio].filter(Boolean).join(". ")} />
         </div>
         <div className="flex flex-col gap-2">
-          <h1 className="font-display text-display font-black">{name}</h1>
+          <h1 className="font-display text-display">{name}</h1>
           <ul className="flex flex-wrap gap-x-4 gap-y-1">
             {showcase.trades
               .filter((trade) => isTrade(trade.key))
@@ -252,6 +252,11 @@ export function ShowcaseView({
             <MapPin aria-hidden size={18} />
             {[place.district, place.city].filter(Boolean).join(", ")}
           </p>
+        </div>
+      </header>
+
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-12">
+        <aside className="order-first flex flex-col gap-4 self-start lg:sticky lg:top-20 lg:order-last">
           <OpeningLine showcase={showcase} />
           <FollowButton
             userId={showcase.owner_id}
@@ -266,323 +271,358 @@ export function ShowcaseView({
             personId={showcase.owner_id}
             icon={<ChatCircleText aria-hidden size={22} weight="bold" />}
           />
-        </div>
-        <ShowcaseActions
-          name={name}
-          slug={showcase.slug}
-          shortLink={showcase.short_link}
-          directionsUrl={place.directions_url}
-          giftable={showcase.services.some(
-            (service) =>
-              service.price_kind === "fixed" && service.price_minor && service.currency === "XOF",
-          )}
-          icons={{
-            book: <CalendarCheck aria-hidden size={26} weight="bold" />,
-            directions: <NavigationArrow aria-hidden size={22} weight="bold" />,
-            share: <ShareNetwork aria-hidden size={22} weight="bold" />,
-            gift: <Gift aria-hidden size={22} weight="bold" />,
-          }}
-        />
-      </header>
+          <ShowcaseActions
+            name={name}
+            slug={showcase.slug}
+            shortLink={showcase.short_link}
+            directionsUrl={place.directions_url}
+            giftable={showcase.services.some(
+              (service) =>
+                service.price_kind === "fixed" && service.price_minor && service.currency === "XOF",
+            )}
+            icons={{
+              book: <CalendarCheck aria-hidden size={26} weight="bold" />,
+              directions: <NavigationArrow aria-hidden size={22} weight="bold" />,
+              share: <ShareNetwork aria-hidden size={22} weight="bold" />,
+              gift: <Gift aria-hidden size={22} weight="bold" />,
+            }}
+          />
+        </aside>
+        <div className="flex min-w-0 flex-col gap-10">
+          <Section
+            id="services"
+            title={t("services")}
+            icon={<Scissors size={26} weight="duotone" />}
+          >
+            {groups.length === 0 ? (
+              <p className="text-prune-doux">{t("noServices")}</p>
+            ) : (
+              groups.map((group) => (
+                <div key={group.key} className="flex flex-col">
+                  {group.title && (
+                    <h3 className="text-lead text-prune-doux font-bold">{group.title}</h3>
+                  )}
+                  <ul className="flex flex-col">
+                    {group.services.map((service) => (
+                      <ServiceRow key={service.id} service={service} slug={showcase.slug} />
+                    ))}
+                  </ul>
+                </div>
+              ))
+            )}
+          </Section>
 
-      {(showcase.bio || bioVoice) && (
-        <Section id="about" title={t("about")} icon={<SealCheck size={26} weight="duotone" />}>
-          {showcase.bio && <p className="whitespace-pre-line">{showcase.bio}</p>}
-          {bioVoice && (
-            <div className="flex flex-col gap-2">
-              <p className="text-small flex items-center gap-1 font-bold">
-                <Waveform aria-hidden size={18} className="text-hibiscus" />
-                {t("bioVoice")}
-              </p>
-              <audio controls preload="none" src={bioVoice} className="w-full">
-                <track kind="captions" />
-              </audio>
-            </div>
+          {showcase.portfolio.length > 0 && (
+            <Section
+              id="portfolio"
+              title={t("portfolio")}
+              icon={<Star size={26} weight="duotone" />}
+            >
+              <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+                {showcase.portfolio.map((item) => {
+                  const after = mediaSrc(item.media, "medium", "large");
+                  const before = mediaSrc(item.before, "medium", "large");
+                  const isVideo = item.media.kind === "video";
+                  return (
+                    <li
+                      key={item.id}
+                      className={`flex flex-col gap-2 ${before || isVideo ? "col-span-2" : ""}`}
+                    >
+                      {isVideo ? (
+                        <VideoPlayer media={item.media} label={item.caption || name} />
+                      ) : before ? (
+                        <div className="grid grid-cols-2 gap-2">
+                          {[
+                            [before, t("before")],
+                            [after, t("after")],
+                          ].map(([src, label]) => (
+                            <figure key={label} className="relative">
+                              {/* eslint-disable-next-line @next/next/no-img-element -- resized by the backend */}
+                              <img
+                                src={src}
+                                alt={`${label} ${item.caption}`.trim()}
+                                loading="lazy"
+                                className="aspect-[4/5] w-full rounded-2xl object-cover"
+                              />
+                              <figcaption className="bg-carte text-mention absolute top-2 left-2 rounded-full px-2 py-1 font-bold">
+                                {label}
+                              </figcaption>
+                            </figure>
+                          ))}
+                        </div>
+                      ) : (
+                        // eslint-disable-next-line @next/next/no-img-element -- resized by the backend
+                        <img
+                          src={after}
+                          alt={item.caption || name}
+                          loading="lazy"
+                          className="aspect-[4/5] w-full rounded-2xl object-cover"
+                        />
+                      )}
+                      {(item.caption || item.service_name) && (
+                        <p className="text-small">
+                          {item.caption}
+                          {item.service_name && (
+                            <span className="text-prune-doux block">{item.service_name}</span>
+                          )}
+                        </p>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </Section>
           )}
-        </Section>
-      )}
 
-      <Section id="services" title={t("services")} icon={<Scissors size={26} weight="duotone" />}>
-        {groups.length === 0 ? (
-          <p className="text-prune-doux">{t("noServices")}</p>
-        ) : (
-          groups.map((group) => (
-            <div key={group.key} className="flex flex-col">
-              {group.title && (
-                <h3 className="text-lead text-prune-doux font-bold">{group.title}</h3>
-              )}
-              <ul className="flex flex-col">
-                {group.services.map((service) => (
-                  <ServiceRow key={service.id} service={service} slug={showcase.slug} />
+          {showcase.slug && showcase.status === "published" && (
+            <Link
+              href={`/${showcase.slug}/offres`}
+              className={buttonClasses({ variant: "secondary", fullWidth: true })}
+            >
+              <Gift aria-hidden size={22} weight="bold" />
+              {t("giftCard")}
+            </Link>
+          )}
+
+          {shop && shop.products.length > 0 && showcase.slug && (
+            <Section id="shop" title={t("shop")} icon={<Storefront size={26} weight="duotone" />}>
+              <ul className="grid grid-cols-2 gap-x-3 gap-y-6">
+                {shop.products.slice(0, 4).map((product) => (
+                  <li key={product.id}>
+                    <ProductCard product={product} shopSlug={showcase.slug as string} />
+                  </li>
                 ))}
               </ul>
-            </div>
-          ))
-        )}
-      </Section>
-
-      {showcase.portfolio.length > 0 && (
-        <Section id="portfolio" title={t("portfolio")} icon={<Star size={26} weight="duotone" />}>
-          <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-            {showcase.portfolio.map((item) => {
-              const after = mediaSrc(item.media, "medium", "large");
-              const before = mediaSrc(item.before, "medium", "large");
-              const isVideo = item.media.kind === "video";
-              return (
-                <li
-                  key={item.id}
-                  className={`flex flex-col gap-2 ${before || isVideo ? "col-span-2" : ""}`}
-                >
-                  {isVideo ? (
-                    <VideoPlayer media={item.media} label={item.caption || name} />
-                  ) : before ? (
-                    <div className="grid grid-cols-2 gap-2">
-                      {[
-                        [before, t("before")],
-                        [after, t("after")],
-                      ].map(([src, label]) => (
-                        <figure key={label} className="relative">
-                          {/* eslint-disable-next-line @next/next/no-img-element -- resized by the backend */}
-                          <img
-                            src={src}
-                            alt={`${label} ${item.caption}`.trim()}
-                            loading="lazy"
-                            className="aspect-[4/5] w-full rounded-2xl object-cover"
-                          />
-                          <figcaption className="bg-carte text-mention absolute top-2 left-2 rounded-full px-2 py-1 font-bold">
-                            {label}
-                          </figcaption>
-                        </figure>
-                      ))}
-                    </div>
-                  ) : (
-                    // eslint-disable-next-line @next/next/no-img-element -- resized by the backend
-                    <img
-                      src={after}
-                      alt={item.caption || name}
-                      loading="lazy"
-                      className="aspect-[4/5] w-full rounded-2xl object-cover"
-                    />
-                  )}
-                  {(item.caption || item.service_name) && (
-                    <p className="text-small">
-                      {item.caption}
-                      {item.service_name && (
-                        <span className="text-prune-doux block">{item.service_name}</span>
-                      )}
-                    </p>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        </Section>
-      )}
-
-      {showcase.slug && showcase.status === "published" && (
-        <Link
-          href={`/${showcase.slug}/offres`}
-          className={buttonClasses({ variant: "secondary", fullWidth: true })}
-        >
-          <Gift aria-hidden size={22} weight="bold" />
-          {t("giftCard")}
-        </Link>
-      )}
-
-      {shop && shop.products.length > 0 && showcase.slug && (
-        <Section id="shop" title={t("shop")} icon={<Storefront size={26} weight="duotone" />}>
-          <ul className="grid grid-cols-2 gap-x-3 gap-y-6">
-            {shop.products.slice(0, 4).map((product) => (
-              <li key={product.id}>
-                <ProductCard product={product} shopSlug={showcase.slug as string} />
-              </li>
-            ))}
-          </ul>
-          <Link
-            href={`/${showcase.slug}/shop`}
-            className={buttonClasses({ variant: "secondary", fullWidth: true })}
-          >
-            <ShoppingBag aria-hidden size={22} weight="bold" />
-            {t("shopAll", { count: shop.products.length })}
-          </Link>
-        </Section>
-      )}
-
-      {posts.length > 0 && (
-        <Section id="posts" title={t("posts")} icon={<Star size={26} weight="duotone" />}>
-          <ul className="grid grid-cols-3 gap-1">
-            {posts.slice(0, 9).map((post) => {
-              const cover = post.media.find((item) => item.role !== "before") ?? post.media[0];
-              return (
-                <li key={post.id}>
-                  <Link href={`/p/${post.id}`} className="block">
-                    {/* eslint-disable-next-line @next/next/no-img-element -- resized by the backend */}
-                    <img
-                      src={mediaSrc(cover?.media, "thumb", "medium")}
-                      alt={post.caption || name}
-                      loading="lazy"
-                      className="bg-poudre aspect-square w-full rounded-xl object-cover"
-                    />
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </Section>
-      )}
-
-      {reviews && <ReviewsSection page={reviews} name={name} />}
-
-      <Section id="hours" title={t("hours")} icon={<Clock size={26} weight="duotone" />}>
-        {showcase.hours.length === 0 ? (
-          <p className="text-prune-doux">{t("noHours")}</p>
-        ) : (
-          <table className="w-full text-left">
-            <caption className="sr-only">{t("hours")}</caption>
-            <tbody>
-              {Array.from({ length: 7 }, (_, weekday) => {
-                const periods = showcase.hours.filter((period) => period.weekday === weekday);
-                const isToday = weekday === today;
-                return (
-                  <tr
-                    key={weekday}
-                    className={`border-trait border-b last:border-b-0 ${isToday ? "font-bold" : ""}`}
-                  >
-                    <th scope="row" className="py-3 pr-4 font-bold">
-                      {weekdayName(weekday, locale)}
-                      {isToday && <span className="sr-only"> ({t("today")})</span>}
-                    </th>
-                    <td className="py-3 text-right">
-                      {periods.length === 0
-                        ? t("closed")
-                        : periods
-                            .map((period) =>
-                              t("span", {
-                                from: formatClock(period.opens_at, locale),
-                                to: formatClock(period.closes_at, locale),
-                              }),
-                            )
-                            .join(", ")}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        )}
-        {showcase.closures.length > 0 && (
-          <div className="bg-poudre rounded-card flex flex-col gap-1 p-4">
-            <p className="font-bold">{t("closures")}</p>
-            <ul className="text-small">
-              {showcase.closures.map((closure) => (
-                <li key={closure.id}>
-                  {t("closureRange", {
-                    from: new Date(`${closure.starts_on}T12:00:00`),
-                    to: new Date(`${closure.ends_on}T12:00:00`),
-                  })}
-                  {closure.reason ? ` (${closure.reason})` : ""}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </Section>
-
-      <Section id="place" title={t("place")} icon={<MapPin size={26} weight="duotone" />}>
-        {place.receives_clients ? (
-          <>
-            {place.address && <p className="font-bold">{place.address}</p>}
-            <p>{[place.district, place.city].filter(Boolean).join(", ")}</p>
-            {place.landmarks && (
-              <div className="flex flex-col gap-1">
-                <p className="font-bold">{t("landmarks")}</p>
-                <p className="whitespace-pre-line">{place.landmarks}</p>
-              </div>
-            )}
-            {voiceSrc(place.landmarks_voice) && (
-              <div className="flex flex-col gap-2">
-                <p className="text-small flex items-center gap-1 font-bold">
-                  <Waveform aria-hidden size={18} className="text-hibiscus" />
-                  {t("landmarksVoice")}
-                </p>
-                <audio
-                  controls
-                  preload="none"
-                  src={voiceSrc(place.landmarks_voice)}
-                  className="w-full"
-                >
-                  <track kind="captions" />
-                </audio>
-              </div>
-            )}
-            {place.itinerary_video && place.itinerary_video.status === "ready" && (
-              <div className="flex flex-col gap-2">
-                <p className="font-bold">{t("itineraryVideo")}</p>
-                <VideoPlayer media={place.itinerary_video} label={t("itineraryVideo")} />
-              </div>
-            )}
-            {place.latitude !== null && place.longitude !== null && (
-              <MapPreview
-                name={name}
-                latitude={place.latitude}
-                longitude={place.longitude}
-                country={place.country}
-                icon={<MapTrifold aria-hidden size={22} weight="bold" />}
-              />
-            )}
-            {showcase.slug && (
-              <ArrivalButton
-                slug={showcase.slug}
-                name={name}
-                icon={<DoorOpen aria-hidden size={24} weight="bold" />}
-              />
-            )}
-          </>
-        ) : (
-          <p>{t("homeOnly", { name })}</p>
-        )}
-        {travel.travels_to_clients && (
-          <div className="bg-poudre rounded-card flex flex-col gap-1 p-4">
-            <p className="flex items-center gap-2 font-bold">
-              <Van aria-hidden size={22} className="text-hibiscus" />
-              {travel.radius_km ? t("travel", { km: travel.radius_km }) : t("travelArea")}
-            </p>
-            {(travel.fee_minor ?? 0) > 0 && (
-              <p className="text-small">
-                {t("travelFee")}{" "}
-                <PriceTag amountMinor={travel.fee_minor ?? 0} currency={travel.currency} />
-              </p>
-            )}
-          </div>
-        )}
-      </Section>
-
-      {(showcase.languages.length > 0 || Object.keys(showcase.social_links).length > 0) && (
-        <Section id="more" title={t("more")} icon={<Globe size={26} weight="duotone" />}>
-          {showcase.languages.length > 0 && (
-            <p className="flex flex-wrap items-center gap-2">
-              <Translate aria-hidden size={20} className="text-hibiscus" />
-              <span className="font-bold">{t("languages")}</span>
-              {showcase.languages.map((language) => language.label).join(", ")}
-            </p>
+              <Link
+                href={`/${showcase.slug}/shop`}
+                className={buttonClasses({ variant: "secondary", fullWidth: true })}
+              >
+                <ShoppingBag aria-hidden size={22} weight="bold" />
+                {t("shopAll", { count: shop.products.length })}
+              </Link>
+            </Section>
           )}
-          <ul className="flex flex-wrap gap-2">
-            {Object.entries(showcase.social_links)
-              .filter(([network]) => network !== "whatsapp")
-              .map(([network, value]) => (
-                <li key={network}>
-                  <a
-                    href={socialHref(network, value)}
-                    target="_blank"
-                    rel="noopener noreferrer me"
-                    className={buttonClasses({ variant: "secondary" })}
-                  >
-                    {t(`social.${network}` as "social.instagram")}
-                  </a>
-                </li>
-              ))}
-          </ul>
-        </Section>
+
+          {(showcase.bio || bioVoice) && (
+            <Section id="about" title={t("about")} icon={<SealCheck size={26} weight="duotone" />}>
+              {showcase.bio && <p className="whitespace-pre-line">{showcase.bio}</p>}
+              {bioVoice && (
+                <div className="flex flex-col gap-2">
+                  <p className="text-small flex items-center gap-1 font-bold">
+                    <Waveform aria-hidden size={18} className="text-hibiscus" />
+                    {t("bioVoice")}
+                  </p>
+                  <audio controls preload="none" src={bioVoice} className="w-full">
+                    <track kind="captions" />
+                  </audio>
+                </div>
+              )}
+            </Section>
+          )}
+
+          {posts.length > 0 && (
+            <Section id="posts" title={t("posts")} icon={<Star size={26} weight="duotone" />}>
+              <ul className="grid grid-cols-3 gap-1">
+                {posts.slice(0, 9).map((post) => {
+                  const cover = post.media.find((item) => item.role !== "before") ?? post.media[0];
+                  return (
+                    <li key={post.id}>
+                      <Link href={`/p/${post.id}`} className="block">
+                        {/* eslint-disable-next-line @next/next/no-img-element -- resized by the backend */}
+                        <img
+                          src={mediaSrc(cover?.media, "thumb", "medium")}
+                          alt={post.caption || name}
+                          loading="lazy"
+                          className="bg-poudre aspect-square w-full rounded-xl object-cover"
+                        />
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </Section>
+          )}
+
+          {reviews && <ReviewsSection page={reviews} name={name} />}
+
+          <Section id="hours" title={t("hours")} icon={<Clock size={26} weight="duotone" />}>
+            {showcase.hours.length === 0 ? (
+              <p className="text-prune-doux">{t("noHours")}</p>
+            ) : (
+              <table className="w-full text-left">
+                <caption className="sr-only">{t("hours")}</caption>
+                <tbody>
+                  {Array.from({ length: 7 }, (_, weekday) => {
+                    const periods = showcase.hours.filter((period) => period.weekday === weekday);
+                    const isToday = weekday === today;
+                    return (
+                      <tr
+                        key={weekday}
+                        className={`border-trait border-b last:border-b-0 ${isToday ? "font-bold" : ""}`}
+                      >
+                        <th scope="row" className="py-3 pr-4 font-bold">
+                          {weekdayName(weekday, locale)}
+                          {isToday && <span className="sr-only"> ({t("today")})</span>}
+                        </th>
+                        <td className="py-3 text-right">
+                          {periods.length === 0
+                            ? t("closed")
+                            : periods
+                                .map((period) =>
+                                  t("span", {
+                                    from: formatClock(period.opens_at, locale),
+                                    to: formatClock(period.closes_at, locale),
+                                  }),
+                                )
+                                .join(", ")}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            )}
+            {showcase.closures.length > 0 && (
+              <div className="bg-poudre rounded-card flex flex-col gap-1 p-4">
+                <p className="font-bold">{t("closures")}</p>
+                <ul className="text-small">
+                  {showcase.closures.map((closure) => (
+                    <li key={closure.id}>
+                      {t("closureRange", {
+                        from: new Date(`${closure.starts_on}T12:00:00`),
+                        to: new Date(`${closure.ends_on}T12:00:00`),
+                      })}
+                      {closure.reason ? ` (${closure.reason})` : ""}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </Section>
+
+          <Section id="place" title={t("place")} icon={<MapPin size={26} weight="duotone" />}>
+            {place.receives_clients ? (
+              <>
+                {place.address && <p className="font-bold">{place.address}</p>}
+                <p>{[place.district, place.city].filter(Boolean).join(", ")}</p>
+                {place.landmarks && (
+                  <div className="flex flex-col gap-1">
+                    <p className="font-bold">{t("landmarks")}</p>
+                    <p className="whitespace-pre-line">{place.landmarks}</p>
+                  </div>
+                )}
+                {voiceSrc(place.landmarks_voice) && (
+                  <div className="flex flex-col gap-2">
+                    <p className="text-small flex items-center gap-1 font-bold">
+                      <Waveform aria-hidden size={18} className="text-hibiscus" />
+                      {t("landmarksVoice")}
+                    </p>
+                    <audio
+                      controls
+                      preload="none"
+                      src={voiceSrc(place.landmarks_voice)}
+                      className="w-full"
+                    >
+                      <track kind="captions" />
+                    </audio>
+                  </div>
+                )}
+                {place.itinerary_video && place.itinerary_video.status === "ready" && (
+                  <div className="flex flex-col gap-2">
+                    <p className="font-bold">{t("itineraryVideo")}</p>
+                    <VideoPlayer media={place.itinerary_video} label={t("itineraryVideo")} />
+                  </div>
+                )}
+                {place.latitude !== null && place.longitude !== null && (
+                  <MapPreview
+                    name={name}
+                    latitude={place.latitude}
+                    longitude={place.longitude}
+                    country={place.country}
+                    icon={<MapTrifold aria-hidden size={22} weight="bold" />}
+                  />
+                )}
+                {showcase.slug && (
+                  <ArrivalButton
+                    slug={showcase.slug}
+                    name={name}
+                    icon={<DoorOpen aria-hidden size={24} weight="bold" />}
+                  />
+                )}
+              </>
+            ) : (
+              <p>{t("homeOnly", { name })}</p>
+            )}
+            {showcase.other_places.length > 0 && (
+              <div className="flex flex-col gap-2">
+                <p className="font-bold">{t("otherPlaces")}</p>
+                <ul className="flex flex-col gap-2">
+                  {showcase.other_places.map((other) => (
+                    <li key={other.id}>
+                      <span className="block font-semibold">{other.name}</span>
+                      <span className="text-prune-doux block">
+                        {[other.address, other.district, other.city].filter(Boolean).join(", ")}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {travel.travels_to_clients && (
+              <div className="bg-poudre rounded-card flex flex-col gap-1 p-4">
+                <p className="flex items-center gap-2 font-bold">
+                  <Van aria-hidden size={22} className="text-hibiscus" />
+                  {travel.radius_km ? t("travel", { km: travel.radius_km }) : t("travelArea")}
+                </p>
+                {(travel.fee_minor ?? 0) > 0 && (
+                  <p className="text-small">
+                    {t("travelFee")}{" "}
+                    <PriceTag amountMinor={travel.fee_minor ?? 0} currency={travel.currency} />
+                  </p>
+                )}
+              </div>
+            )}
+          </Section>
+
+          {(showcase.languages.length > 0 || Object.keys(showcase.social_links).length > 0) && (
+            <Section id="more" title={t("more")} icon={<Globe size={26} weight="duotone" />}>
+              {showcase.languages.length > 0 && (
+                <p className="flex flex-wrap items-center gap-2">
+                  <Translate aria-hidden size={20} className="text-hibiscus" />
+                  <span className="font-bold">{t("languages")}</span>
+                  {showcase.languages.map((language) => language.label).join(", ")}
+                </p>
+              )}
+              <ul className="flex flex-wrap gap-2">
+                {Object.entries(showcase.social_links)
+                  .filter(([network]) => network !== "whatsapp")
+                  .map(([network, value]) => (
+                    <li key={network}>
+                      <a
+                        href={socialHref(network, value)}
+                        target="_blank"
+                        rel="noopener noreferrer me"
+                        className={buttonClasses({ variant: "secondary" })}
+                      >
+                        {t(`social.${network}` as "social.instagram")}
+                      </a>
+                    </li>
+                  ))}
+              </ul>
+            </Section>
+          )}
+        </div>
+      </div>
+      {showcase.slug && showcase.status === "published" && (
+        <div className="bg-carte border-trait pb-safe fixed inset-x-0 bottom-0 z-40 border-t p-3 lg:hidden">
+          <Link
+            href={`/${showcase.slug}/rdv`}
+            className={buttonClasses({ size: "lg", fullWidth: true })}
+          >
+            <CalendarCheck aria-hidden size={26} weight="bold" />
+            {t("bookSticky")}
+          </Link>
+        </div>
       )}
     </article>
   );

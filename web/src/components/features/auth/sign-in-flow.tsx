@@ -91,7 +91,7 @@ export function SignInFlow({ as }: { as?: "client" | "pro" }) {
       router.replace(as ? { pathname: "/welcome", query: { as } } : "/welcome");
     } else {
       toast(deletionCancelled ? t("deletionCancelled") : t("welcomeBack"));
-      router.replace(takeReturnPath() ?? "/");
+      router.replace(takeReturnPath() ?? (me.roles.includes("pro") ? "/pro" : "/"));
     }
   };
 

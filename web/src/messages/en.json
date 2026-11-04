@@ -735,7 +735,9 @@
       "bookService": "Book",
       "giftCard": "Offer a gift card",
       "trained": "Trained on Solange Glow",
-      "offer": "Offer a service"
+      "offer": "Offer a service",
+      "bookSticky": "Choose a time",
+      "otherPlaces": "Other addresses"
     },
     "my": {
       "title": "My showcase",
@@ -1139,8 +1141,8 @@
       "ln": "Lingala"
     },
     "entry": {
-      "myShowcase": "My showcase",
-      "myShowcaseText": "Services, hours, link and QR code.",
+      "myShowcase": "My pro space",
+      "myShowcaseText": "Appointments, services, shop and my showcase.",
       "becomePro": "Become a pro",
       "becomeProText": "Your free showcase, found by clients near you."
     }
@@ -2252,7 +2254,12 @@
       "cancelFree": "Can't come? Cancel in one tap with your link: the place goes to another client.",
       "giftCode": "Do you have a gift card from {name}?",
       "giftCodeHint": "Its code pays the deposit.",
-      "consent": "I agree to get offers from {name} (I can say no at any time)."
+      "consent": "I agree to get offers from {name} (I can say no at any time).",
+      "titlePlace": "Where?",
+      "atHome": "At my home, the pro comes to me",
+      "travelFee": "Travel fee: {amount}",
+      "paused": "{name} is not taking online bookings for now. You can message her.",
+      "homeAddress": "Your address"
     },
     "group": {
       "created": "Group booked!",
@@ -2422,7 +2429,10 @@
       "added": "Appointment added. The client gets the confirmation.",
       "blocked": "Moment blocked",
       "salon": "My salon",
-      "arrivedAt": "Arrived at"
+      "arrivedAt": "Arrived at",
+      "where": "Place",
+      "atHome": "At the client's home",
+      "outsideHours": "Outside my hours"
     },
     "settings": {
       "saved": "Saved",
@@ -4376,14 +4386,18 @@
       "agenda": {
         "title": "Your agenda, no salon software",
         "items": {
-          "a": "Bookings arrive in real time",
-          "b": "Confirm, decline or propose another time",
-          "c": "Automatic reminders to your clients",
-          "d": "Processing times and multi-step services",
-          "e": "Waiting list and last-minute slots",
-          "f": "Deposits against missed appointments",
-          "g": "Group bookings and booking a look",
-          "h": "Scan your client's QR code when she arrives"
+          "a": "Open or block your slots yourself, or let them be worked out",
+          "b": "Several addresses and home visits",
+          "c": "E-mail and notification for each request: confirm, decline or move",
+          "d": "Add an appointment at any time, even outside your hours",
+          "e": "Bookings arrive in real time",
+          "f": "Confirm, decline or propose another time",
+          "g": "Automatic reminders to your clients",
+          "h": "Processing times and multi-step services",
+          "i": "Waiting list and last-minute slots",
+          "j": "Deposits against missed appointments",
+          "k": "Group bookings and booking a look",
+          "l": "Scan your client's QR code when she arrives"
         }
       },
       "shop": {
@@ -4579,6 +4593,135 @@
           "e": "Data saver lightens images and videos."
         }
       }
+    }
+  },
+  "proSpace": {
+    "badge": "Pro space",
+    "menu": "My pro space menu",
+    "more": "More",
+    "myPage": "My showcase",
+    "seeMyPage": "See my showcase",
+    "clientMode": "Switch to client mode",
+    "proMode": "My pro space",
+    "signOut": "Sign out",
+    "nav": {
+      "today": "Today",
+      "agenda": "Agenda",
+      "services": "Services",
+      "slots": "Slots and places",
+      "page": "My showcase",
+      "shop": "Shop",
+      "clients": "Clients",
+      "messages": "Messages",
+      "money": "Money",
+      "stats": "Statistics",
+      "plan": "My plan",
+      "settings": "Settings"
+    },
+    "site": {
+      "poweredBy": "A Solange Glow page",
+      "discover": "Discover Solange Glow",
+      "forPros": "Are you a pro?",
+      "help": "Help"
+    },
+    "today": {
+      "title": "Today",
+      "noSpace": "You have no pro space yet",
+      "noSpaceHelp": "Create your showcase in a few minutes.",
+      "start": "Create my showcase",
+      "pendingCount": "{count, plural, =0 {No request to confirm} one {# request to confirm} other {# requests to confirm}}",
+      "welcomeTitle": "Your space is ready",
+      "welcomeLive": "Your showcase is online. Share your link.",
+      "welcomeNext": "Add your services and hours, then publish your showcase.",
+      "paused": "Online booking is paused.",
+      "pausedChange": "Change",
+      "draftTitle": "Your showcase is not online yet",
+      "draftText": "{count, plural, =0 {All set: you can publish it.} one {# item left to fill in.} other {# items left to fill in.}}",
+      "draftCta": "Finish my showcase",
+      "shortcuts": "Quick actions",
+      "addAppointment": "Add an appointment",
+      "openSlot": "Open a slot",
+      "addService": "Add a service",
+      "addProduct": "Add a product",
+      "pendingTitle": "To confirm",
+      "pendingEmpty": "No request waiting.",
+      "when": "{day} at {time}",
+      "confirm": "Confirm",
+      "otherChoice": "Decline or move",
+      "confirmed": "Confirmed. The client has been told.",
+      "error": "That did not work. Try again.",
+      "dayTitle": "Today's appointments",
+      "seeAgenda": "See the agenda",
+      "dayEmpty": "No appointment today.",
+      "arrived": "Arrived",
+      "linkTitle": "My link",
+      "copy": "Copy",
+      "copied": "Link copied.",
+      "share": "Share",
+      "poster": "Download my QR code poster",
+      "linkAfterPublish": "Your link and QR code come once your showcase is published.",
+      "shopTitle": "Shop and money",
+      "newOrders": "{count, plural, =0 {No order to prepare} one {# order to prepare} other {# orders to prepare}}",
+      "available": "{amount} available",
+      "wallet": "My wallet"
+    },
+    "slots": {
+      "title": "Slots and places",
+      "line": "Decide when and where people can book.",
+      "error": "That did not work. Try again.",
+      "saved": "Saved.",
+      "opened": "Slot opened.",
+      "closed": "Slot removed.",
+      "day": "Day",
+      "from": "From",
+      "to": "To",
+      "place": "Place",
+      "mainPlace": "My main address",
+      "person": "Who",
+      "everyone": "The whole team",
+      "repeat": "Repeat",
+      "once": "Once only",
+      "weeks": "For {count} weeks",
+      "open": "Open this slot",
+      "placeRemoved": "Place removed.",
+      "remove": "Remove",
+      "placeNoHours": "Add the hours when you are at this address.",
+      "addHours": "Add these hours",
+      "placeAdded": "Place added.",
+      "placeName": "Name of the place",
+      "city": "City",
+      "district": "District",
+      "address": "Address",
+      "addPlace": "Add this place",
+      "modeTitle": "Where do your slots come from?",
+      "modeHelp": "Change it whenever you want. Booked appointments do not move.",
+      "mode": {
+        "hours": "My hours, and the slots I open",
+        "hoursHelp": "Slots are worked out for you. You can add others.",
+        "manual": "Only the slots I open",
+        "manualHelp": "People can only book what you open here."
+      },
+      "editHours": "Change my hours and closures",
+      "editTeam": "Change my team and rules",
+      "openedTitle": "Open a slot",
+      "openedHelp": "For an evening, a closed day or a special day. It adds to your hours.",
+      "openedEmpty": "No slot opened by hand.",
+      "blockTitle": "Block some time",
+      "blockHelp": "A break, an absence, a personal appointment: tap the time in your agenda.",
+      "blockCta": "Open my agenda",
+      "rulesTitle": "Time between two clients",
+      "buffer": "Rest after a client (minutes)",
+      "bufferHint": "To clean up or take a breath.",
+      "travel": "Travel time (minutes)",
+      "travelHint": "Between two places or to a client's home.",
+      "placesTitle": "My places",
+      "placesHelp": "Your main address, your other addresses and home visits.",
+      "mainAddress": "Change my main address",
+      "homeVisits": "Set up home visits",
+      "pauseTitle": "Pause",
+      "pauseHelp": "Nobody can book online. Your agenda still works.",
+      "pause": "Pause bookings",
+      "resume": "Resume bookings"
     }
   }
 }

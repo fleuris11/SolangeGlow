@@ -7,10 +7,11 @@ import type { Locale } from "@/lib/i18n/routing";
 
 type Props = {
   params: Promise<{ locale: Locale }>;
-  searchParams: Promise<{ day?: string }>;
+  searchParams: Promise<{ day?: string; rdv?: string }>;
 };
 
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
+const UUID = /^[0-9a-f-]{36}$/;
 
 export async function generateMetadata({ params }: Pick<Props, "params">): Promise<Metadata> {
   const { locale } = await params;
@@ -20,11 +21,14 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
 
 export default async function Page({ params, searchParams }: Props) {
   const { locale } = await params;
-  const { day } = await searchParams;
+  const { day, rdv } = await searchParams;
   setRequestLocale(locale);
   return (
     <SignedIn>
-      <AgendaScreen initialDay={day && DAY.test(day) ? day : undefined} />
+      <AgendaScreen
+        initialDay={day && DAY.test(day) ? day : undefined}
+        initialAppointment={rdv && UUID.test(rdv) ? rdv : undefined}
+      />
     </SignedIn>
   );
 }

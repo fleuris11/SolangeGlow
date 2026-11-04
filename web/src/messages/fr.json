@@ -735,7 +735,9 @@
       "bookService": "Réserver",
       "giftCard": "Offrir une carte cadeau",
       "trained": "Formée sur Solange Glow",
-      "offer": "Offrir une prestation"
+      "offer": "Offrir une prestation",
+      "bookSticky": "Choisir un créneau",
+      "otherPlaces": "Autres adresses"
     },
     "my": {
       "title": "Ma vitrine",
@@ -1139,8 +1141,8 @@
       "ln": "Lingala"
     },
     "entry": {
-      "myShowcase": "Ma vitrine",
-      "myShowcaseText": "Prestations, horaires, lien et QR code.",
+      "myShowcase": "Mon espace pro",
+      "myShowcaseText": "Rendez-vous, prestations, boutique et ma vitrine.",
       "becomePro": "Devenir pro",
       "becomeProText": "Ta vitrine gratuite, trouvée par les clientes près de toi."
     }
@@ -2252,7 +2254,12 @@
       "cancelFree": "Un empêchement ? Annule en un geste avec ton lien : la place repart à une autre cliente.",
       "giftCode": "Tu as une carte cadeau de {name} ?",
       "giftCodeHint": "Son code paie l'acompte.",
-      "consent": "J'accepte de recevoir les offres de {name} (je peux dire non à tout moment)."
+      "consent": "J'accepte de recevoir les offres de {name} (je peux dire non à tout moment).",
+      "titlePlace": "Où ?",
+      "atHome": "Chez moi, la pro se déplace",
+      "travelFee": "Frais de déplacement : {amount}",
+      "paused": "{name} ne prend pas de réservation en ligne pour le moment. Tu peux lui écrire.",
+      "homeAddress": "Ton adresse"
     },
     "group": {
       "created": "Groupe réservé !",
@@ -2422,7 +2429,10 @@
       "added": "Rendez-vous ajouté. La cliente reçoit la confirmation.",
       "blocked": "Moment bloqué",
       "salon": "Mon salon",
-      "arrivedAt": "Arrivée à"
+      "arrivedAt": "Arrivée à",
+      "where": "Lieu",
+      "atHome": "Chez la cliente",
+      "outsideHours": "En dehors de mes horaires"
     },
     "settings": {
       "saved": "Enregistré",
@@ -4376,14 +4386,18 @@
       "agenda": {
         "title": "Ton agenda, sans logiciel de salon",
         "items": {
-          "a": "Les réservations arrivent en temps réel",
-          "b": "Tu confirmes, refuses ou proposes une autre heure",
-          "c": "Rappels automatiques à tes clientes",
-          "d": "Temps de pose et prestations en plusieurs étapes",
-          "e": "Liste d'attente et créneaux de dernière minute",
-          "f": "Acomptes pour éviter les rendez-vous manqués",
-          "g": "Réservation de groupe et réservation d'un look",
-          "h": "Tu scannes le QR code de ta cliente à son arrivée"
+          "a": "Ouvre ou bloque tes créneaux toi-même, ou laisse-les se calculer",
+          "b": "Plusieurs adresses et déplacement à domicile",
+          "c": "E-mail et notification à chaque demande : confirme, refuse ou reporte",
+          "d": "Ajoute un rendez-vous à toute heure, même hors horaires",
+          "e": "Les réservations arrivent en temps réel",
+          "f": "Tu confirmes, refuses ou proposes une autre heure",
+          "g": "Rappels automatiques à tes clientes",
+          "h": "Temps de pose et prestations en plusieurs étapes",
+          "i": "Liste d'attente et créneaux de dernière minute",
+          "j": "Acomptes pour éviter les rendez-vous manqués",
+          "k": "Réservation de groupe et réservation d'un look",
+          "l": "Tu scannes le QR code de ta cliente à son arrivée"
         }
       },
       "shop": {
@@ -4579,6 +4593,135 @@
           "e": "L'économie de données allège les images et les vidéos."
         }
       }
+    }
+  },
+  "proSpace": {
+    "badge": "Espace pro",
+    "menu": "Menu de mon espace pro",
+    "more": "Plus",
+    "myPage": "Ma vitrine",
+    "seeMyPage": "Voir ma vitrine",
+    "clientMode": "Passer en mode cliente",
+    "proMode": "Mon espace pro",
+    "signOut": "Déconnexion",
+    "nav": {
+      "today": "Aujourd'hui",
+      "agenda": "Agenda",
+      "services": "Prestations",
+      "slots": "Créneaux et lieux",
+      "page": "Ma vitrine",
+      "shop": "Boutique",
+      "clients": "Clientes",
+      "messages": "Messages",
+      "money": "Argent",
+      "stats": "Statistiques",
+      "plan": "Mon offre",
+      "settings": "Réglages"
+    },
+    "site": {
+      "poweredBy": "Une page Solange Glow",
+      "discover": "Découvrir Solange Glow",
+      "forPros": "Tu es pro ?",
+      "help": "Aide"
+    },
+    "today": {
+      "title": "Aujourd'hui",
+      "noSpace": "Tu n'as pas encore d'espace pro",
+      "noSpaceHelp": "Crée ta vitrine en quelques minutes.",
+      "start": "Créer ma vitrine",
+      "pendingCount": "{count, plural, =0 {Aucune demande à confirmer} one {# demande à confirmer} other {# demandes à confirmer}}",
+      "welcomeTitle": "Ton espace est prêt",
+      "welcomeLive": "Ta vitrine est en ligne. Partage ton lien.",
+      "welcomeNext": "Ajoute tes prestations et tes horaires, puis publie ta vitrine.",
+      "paused": "Les réservations en ligne sont en pause.",
+      "pausedChange": "Modifier",
+      "draftTitle": "Ta vitrine n'est pas encore en ligne",
+      "draftText": "{count, plural, =0 {Tout est prêt : tu peux la publier.} one {Il reste # élément à remplir.} other {Il reste # éléments à remplir.}}",
+      "draftCta": "Terminer ma vitrine",
+      "shortcuts": "Actions rapides",
+      "addAppointment": "Ajouter un rendez-vous",
+      "openSlot": "Ouvrir un créneau",
+      "addService": "Ajouter une prestation",
+      "addProduct": "Ajouter un produit",
+      "pendingTitle": "À confirmer",
+      "pendingEmpty": "Aucune demande en attente.",
+      "when": "{day} à {time}",
+      "confirm": "Confirmer",
+      "otherChoice": "Refuser ou déplacer",
+      "confirmed": "Confirmé. La cliente est prévenue.",
+      "error": "Ça n'a pas marché. Réessaie.",
+      "dayTitle": "Rendez-vous du jour",
+      "seeAgenda": "Voir l'agenda",
+      "dayEmpty": "Aucun rendez-vous aujourd'hui.",
+      "arrived": "Arrivée",
+      "linkTitle": "Mon lien",
+      "copy": "Copier",
+      "copied": "Lien copié.",
+      "share": "Partager",
+      "poster": "Télécharger mon affiche QR code",
+      "linkAfterPublish": "Ton lien et ton QR code arrivent quand ta vitrine est publiée.",
+      "shopTitle": "Boutique et argent",
+      "newOrders": "{count, plural, =0 {Aucune commande à préparer} one {# commande à préparer} other {# commandes à préparer}}",
+      "available": "{amount} disponibles",
+      "wallet": "Mon portefeuille"
+    },
+    "slots": {
+      "title": "Créneaux et lieux",
+      "line": "Décide quand et où on peut réserver.",
+      "error": "Ça n'a pas marché. Réessaie.",
+      "saved": "Enregistré.",
+      "opened": "Créneau ouvert.",
+      "closed": "Créneau retiré.",
+      "day": "Jour",
+      "from": "De",
+      "to": "À",
+      "place": "Lieu",
+      "mainPlace": "Mon adresse principale",
+      "person": "Qui",
+      "everyone": "Toute l'équipe",
+      "repeat": "Répéter",
+      "once": "Une seule fois",
+      "weeks": "Pendant {count} semaines",
+      "open": "Ouvrir ce créneau",
+      "placeRemoved": "Lieu retiré.",
+      "remove": "Retirer",
+      "placeNoHours": "Ajoute les heures où tu es à cette adresse.",
+      "addHours": "Ajouter ces heures",
+      "placeAdded": "Lieu ajouté.",
+      "placeName": "Nom du lieu",
+      "city": "Ville",
+      "district": "Quartier",
+      "address": "Adresse",
+      "addPlace": "Ajouter ce lieu",
+      "modeTitle": "D'où viennent tes créneaux ?",
+      "modeHelp": "Tu peux changer quand tu veux. Les rendez-vous déjà pris ne bougent pas.",
+      "mode": {
+        "hours": "Mes horaires, et les créneaux que j'ouvre",
+        "hoursHelp": "Les créneaux se calculent seuls. Tu peux en ajouter d'autres.",
+        "manual": "Seulement les créneaux que j'ouvre",
+        "manualHelp": "On ne peut réserver que ce que tu ouvres ici."
+      },
+      "editHours": "Modifier mes horaires et mes fermetures",
+      "editTeam": "Modifier mon équipe et mes règles",
+      "openedTitle": "Ouvrir un créneau",
+      "openedHelp": "Pour un soir, un jour de fermeture ou un jour spécial. Il s'ajoute à tes horaires.",
+      "openedEmpty": "Aucun créneau ouvert à la main.",
+      "blockTitle": "Bloquer un moment",
+      "blockHelp": "Une pause, une absence, un rendez-vous personnel : touche l'heure dans ton agenda.",
+      "blockCta": "Ouvrir mon agenda",
+      "rulesTitle": "Temps entre deux clientes",
+      "buffer": "Temps de repos après une cliente (minutes)",
+      "bufferHint": "Pour nettoyer ou souffler.",
+      "travel": "Temps de trajet (minutes)",
+      "travelHint": "Entre deux lieux ou vers le domicile d'une cliente.",
+      "placesTitle": "Mes lieux",
+      "placesHelp": "Ton adresse principale, tes autres adresses et le déplacement à domicile.",
+      "mainAddress": "Modifier mon adresse principale",
+      "homeVisits": "Régler le déplacement à domicile",
+      "pauseTitle": "Mettre en pause",
+      "pauseHelp": "Plus personne ne réserve en ligne. Ton agenda marche toujours.",
+      "pause": "Mettre en pause les réservations",
+      "resume": "Reprendre les réservations"
     }
   }
 }

@@ -48,13 +48,13 @@ export function TopBar({ signedIn = false }: { signedIn?: boolean }) {
         <Link href="/pour-les-pros">{t("nav.pros")}</Link>
         <Link href="/comment-ca-marche">{t("nav.how")}</Link>
       </nav>
-      <div className="flex items-center gap-2">
+      <div className="flex min-w-0 items-center gap-1 sm:gap-2">
         <AudioToggle compact />
         {signedIn ? (
           <Button
             asChild
             variant="secondary"
-            className="text-small min-h-11 px-4 whitespace-nowrap"
+            className="text-small min-h-11 px-2 leading-tight sm:px-4 sm:whitespace-nowrap"
           >
             <Link href="/me">{t("myAccount")}</Link>
           </Button>
@@ -63,7 +63,7 @@ export function TopBar({ signedIn = false }: { signedIn?: boolean }) {
             <Button
               asChild
               variant="secondary"
-              className="text-small min-h-11 px-4 whitespace-nowrap"
+              className="text-small min-h-11 px-2 leading-tight sm:px-4 sm:whitespace-nowrap"
             >
               <Link href="/auth">{t("signIn")}</Link>
             </Button>
@@ -71,7 +71,7 @@ export function TopBar({ signedIn = false }: { signedIn?: boolean }) {
               <Button
                 asChild
                 variant="secondary"
-                className="text-small min-h-11 px-4 whitespace-nowrap"
+                className="text-small min-h-11 px-2 leading-tight sm:px-4 sm:whitespace-nowrap"
               >
                 <Link href="/auth?as=client">{t("createAccount")}</Link>
               </Button>

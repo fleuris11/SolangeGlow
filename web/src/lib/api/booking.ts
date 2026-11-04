@@ -145,11 +145,16 @@ export const proposeTime = (id: string, start: string, message: string) =>
     }),
   );
 
-export const moveAppointment = (id: string, start: string, staffId?: string | null) =>
+export const moveAppointment = (
+  id: string,
+  start: string,
+  staffId?: string | null,
+  outsideHours = false,
+) =>
   unwrap(
     api.POST("/api/v1/me/agenda/appointments/{appointment_id}/move", {
       ...agendaItem(id),
-      body: { start, staff_id: staffId ?? null },
+      body: { start, staff_id: staffId ?? null, outside_hours: outsideHours },
     }),
   );
 
@@ -237,6 +242,33 @@ export const updateClientRecord = (id: string, body: Schemas["PatchedClientRecor
       body,
     }),
   );
+
+export type Place = Schemas["BookingPlaceDetail"];
+
+export const getPlaces = () => unwrap(api.GET("/api/v1/me/agenda/places"));
+
+export const addPlace = (body: Schemas["BookingPlaceInputRequest"]) =>
+  unwrap(api.POST("/api/v1/me/agenda/places", { body }));
+
+export const removePlace = (id: string) =>
+  unwrap(api.DELETE("/api/v1/me/agenda/places/{place_id}", { params: { path: { place_id: id } } }));
+
+export const setPlaceHours = (id: string, hours: Schemas["PlaceHoursInputRequest"]["hours"]) =>
+  unwrap(
+    api.PUT("/api/v1/me/agenda/places/{place_id}/hours", {
+      params: { path: { place_id: id } },
+      body: { hours },
+    }),
+  );
+
+export const getManualSlots = (query: { day?: string; days?: number } = {}) =>
+  unwrap(api.GET("/api/v1/me/agenda/slots", { params: { query } }));
+
+export const openManualSlots = (body: Schemas["ManualSlotInputRequest"]) =>
+  unwrap(api.POST("/api/v1/me/agenda/slots", { body }));
+
+export const closeManualSlot = (id: string) =>
+  unwrap(api.DELETE("/api/v1/me/agenda/slots/{slot_id}", { params: { path: { slot_id: id } } }));
 
 export const BOOKING_QR_URL = "/api/v1/me/agenda/qr.png";
 

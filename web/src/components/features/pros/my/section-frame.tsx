@@ -21,7 +21,7 @@ export function SectionFrame({
   return (
     <div className="flex flex-col gap-6">
       <Link
-        href="/pro"
+        href="/pro/ma-page"
         className="text-hibiscus -ml-1 inline-flex min-h-12 items-center gap-2 self-start font-bold"
       >
         <ArrowLeft aria-hidden size={22} weight="bold" />

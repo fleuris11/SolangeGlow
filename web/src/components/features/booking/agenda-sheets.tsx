@@ -92,6 +92,7 @@ export function AppointmentSheet({
   canManage: boolean;
   onClose: () => void;
 }) {
+  const [anyTime, setAnyTime] = useState(false);
   const t = useTranslations("booking.agenda");
   const tFlow = useTranslations("booking.flow");
   const tStatus = useTranslations("booking.status");
@@ -203,6 +204,14 @@ export function AppointmentSheet({
               <div>
                 <dt className="text-small text-prune-doux">{t("options")}</dt>
                 <dd>{a.option_names.join(", ")}</dd>
+              </div>
+            )}
+            {(a.place || a.at_home) && (
+              <div>
+                <dt className="text-small text-prune-doux">{t("where")}</dt>
+                <dd className="font-bold">
+                  {a.at_home ? `${t("atHome")} : ${a.client_address}` : a.place?.name}
+                </dd>
               </div>
             )}
             {a.arrived_at && (
@@ -327,6 +336,17 @@ export function AppointmentSheet({
           {(mode === "propose" || mode === "move") && (
             <div className="flex flex-col gap-3">
               <WhenFields day={day} time={time} onDay={setDay} onTime={setTime} />
+              {mode === "move" && (
+                <label className="flex min-h-12 items-center gap-3 font-semibold">
+                  <input
+                    type="checkbox"
+                    checked={anyTime}
+                    onChange={(e) => setAnyTime(e.target.checked)}
+                    className="size-5"
+                  />
+                  {t("outsideHours")}
+                </label>
+              )}
               {mode === "propose" && (
                 <Input
                   label={t("message")}
@@ -344,7 +364,7 @@ export function AppointmentSheet({
                   void run(
                     () =>
                       mode === "move"
-                        ? moveAppointment(id, start)
+                        ? moveAppointment(id, start, undefined, anyTime)
                         : proposeTime(id, start, message),
                     mode === "move" ? t("movedDone") : t("proposed"),
                   );
@@ -456,6 +476,7 @@ export function QuickSheet({
   const [phone, setPhone] = useState("");
   const [note, setNote] = useState("");
   const [busy, setBusy] = useState(false);
+  const [anyTime, setAnyTime] = useState(false);
   const staffId = slot.staffId || agenda.staff[0]?.id;
 
   const save = async () => {
@@ -469,6 +490,8 @@ export function QuickSheet({
           client_name: name,
           client_phone: phone,
           note,
+          outside_hours: anyTime,
+          at_home: false,
         });
         toast(t("added"), "success");
       } else {
@@ -547,6 +570,15 @@ export function QuickSheet({
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
             />
+            <label className="flex min-h-12 items-center gap-3 font-semibold">
+              <input
+                type="checkbox"
+                checked={anyTime}
+                onChange={(e) => setAnyTime(e.target.checked)}
+                className="size-5"
+              />
+              {t("outsideHours")}
+            </label>
           </>
         ) : (
           <Input

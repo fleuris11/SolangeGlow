@@ -109,7 +109,7 @@ export function BecomeProFlow({ invite }: { invite?: string }) {
       const code = takeInvite();
       if (code) await claimInvitation(code).catch(() => undefined);
       await existing.refetch();
-      router.push("/pro");
+      router.push("/pro?bienvenue=1");
     } catch (failure) {
       setError(failure instanceof ApiError ? failure.message : t("error"));
       setBusy(false);

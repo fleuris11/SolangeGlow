@@ -42,6 +42,29 @@ Une personne connectée arrive sur son fil. `/pour-les-pros` et `/comment-ca-mar
 | 11. Langues, audio, accessibilité | Tout ce que tu peux faire, bouton audio | `/comment-ca-marche#audio` |
 | 12. Back-office | Sans objet : réservé au propriétaire et à son équipe | Sans objet |
 
+## Les deux espaces
+
+- **Espace cliente** : le fil, Explorer, Publier, Messages, Moi. Une pro y trouve « Mon espace pro » et « Déconnexion ».
+- **Espace pro** (`/pro`) : son propre menu, à gauche sur ordinateur, barre du bas et « Plus » sur téléphone. L'accueil « Aujourd'hui » montre les demandes à confirmer, les rendez-vous du jour, le lien, les commandes et l'argent. « Voir ma vitrine », « Passer en mode cliente » et « Déconnexion » restent toujours visibles.
+- **Vitrine** (`/son-nom`) : le site de la pro, sans menu de l'application et sans autres pros, avec « Choisir un créneau » toujours visible sur téléphone.
+
+## Ce que la pro décide pour ses créneaux
+
+| Cas du métier | Où |
+| --- | --- |
+| Créneaux calculés à partir des horaires, pauses, congés | Créneaux et lieux, mode « Mes horaires » |
+| Seulement les créneaux qu'elle ouvre | Mode « Seulement les créneaux que j'ouvre » |
+| Ouvrir un soir ou un jour fermé, une fois ou chaque semaine, par personne, par lieu, par prestation | Ouvrir un créneau |
+| Bloquer un moment, une absence | Agenda |
+| Temps de repos entre deux clientes, temps de trajet | Temps entre deux clientes |
+| Plusieurs adresses, chacune avec ses heures | Mes lieux |
+| Déplacement à domicile avec frais et adresse de la cliente | Vitrine, Lieu et itinéraire |
+| Mettre en pause les réservations en ligne | Mettre en pause |
+| Ajouter ou déplacer un rendez-vous hors horaires | Agenda, « En dehors de mes horaires » |
+| Confirmer, refuser, proposer ou reporter | Aujourd'hui et Agenda ; e-mail et notification ouvrent le bon rendez-vous |
+
+Une personne n'est jamais à deux endroits en même temps, et les rendez-vous déjà pris ne bougent pas quand elle change de mode.
+
 ## Les deux QR codes
 
 - **Celui de la pro** : lien de réservation, affiche A4, stickers, carte pour les réseaux. Il existait déjà.

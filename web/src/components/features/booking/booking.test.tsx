@@ -61,6 +61,10 @@ function appointment(overrides: Partial<Appointment> = {}): Appointment {
   return {
     id: "a1",
     arrived_at: null,
+    place: null,
+    at_home: false,
+    client_address: "",
+    travel_fee_minor: 0,
     reference: "RDV-ABC1234",
     status: "confirmed",
     source: "online",
@@ -153,6 +157,11 @@ describe("agenda layout", () => {
 
 const PAGE: BookingPage = {
   pro: PRO,
+  online_paused: false,
+  places: [],
+  receives_clients: true,
+  travels_to_clients: false,
+  travel_fee_minor: 0,
   services: [
     {
       id: "s1",
@@ -164,6 +173,7 @@ const PAGE: BookingPage = {
       duration_minutes: 120,
       work_minutes: 60,
       deposit_minor: 0,
+      available_at_home: false,
       category_id: null,
       options: [],
     },

@@ -735,7 +735,9 @@
       "bookService": "Rezervovať",
       "giftCard": "Darovať darčekovú kartu",
       "trained": "Vyškolená na Solange Glow",
-      "offer": "Darovať službu"
+      "offer": "Darovať službu",
+      "bookSticky": "Vybrať si termín",
+      "otherPlaces": "Ďalšie adresy"
     },
     "my": {
       "title": "Moja vitrína",
@@ -1139,8 +1141,8 @@
       "ln": "Lingala"
     },
     "entry": {
-      "myShowcase": "Moja vitrína",
-      "myShowcaseText": "Služby, hodiny, odkaz a QR kód.",
+      "myShowcase": "Môj priestor",
+      "myShowcaseText": "Termíny, služby, obchod a moja vitrína.",
       "becomePro": "Staň sa profesionálkou",
       "becomeProText": "Tvoja bezplatná vitrína pre klientky nablízku."
     }
@@ -2252,7 +2254,12 @@
       "cancelFree": "Nemôžeš prísť? Zruš jedným ťuknutím cez svoj odkaz.",
       "giftCode": "Máš darčekovú kartu od {name}?",
       "giftCodeHint": "Jej kód zaplatí zálohu.",
-      "consent": "Súhlasím s ponukami od {name} (kedykoľvek môžem povedať nie)."
+      "consent": "Súhlasím s ponukami od {name} (kedykoľvek môžem povedať nie).",
+      "titlePlace": "Kde?",
+      "atHome": "U mňa doma, profesionálka príde",
+      "travelFee": "Poplatok za cestu: {amount}",
+      "paused": "{name} teraz neprijíma online rezervácie. Môžeš jej napísať.",
+      "homeAddress": "Tvoja adresa"
     },
     "group": {
       "created": "Skupina rezervovaná!",
@@ -2422,7 +2429,10 @@
       "added": "Termín pridaný. Klientka dostane potvrdenie.",
       "blocked": "Chvíľa zablokovaná",
       "salon": "Môj salón",
-      "arrivedAt": "Prišla o"
+      "arrivedAt": "Prišla o",
+      "where": "Miesto",
+      "atHome": "U klientky doma",
+      "outsideHours": "Mimo mojich hodín"
     },
     "settings": {
       "saved": "Uložené",
@@ -4376,14 +4386,18 @@
       "agenda": {
         "title": "Tvoj diár, bez softvéru pre salóny",
         "items": {
-          "a": "Rezervácie prichádzajú v reálnom čase",
-          "b": "Potvrď, odmietni alebo navrhni iný čas",
-          "c": "Automatické pripomienky klientkam",
-          "d": "Čas pôsobenia a služby v niekoľkých krokoch",
-          "e": "Čakací zoznam a termíny na poslednú chvíľu",
-          "f": "Zálohy proti zmeškaným termínom",
-          "g": "Skupinové rezervácie a rezervácia vzhľadu",
-          "h": "Pri príchode naskenuješ QR kód klientky"
+          "a": "Otváraj alebo blokuj termíny sama, alebo ich nechaj vypočítať",
+          "b": "Viac adries a návštevy doma",
+          "c": "E-mail a upozornenie ku každej žiadosti: potvrď, odmietni alebo presuň",
+          "d": "Pridaj termín kedykoľvek, aj mimo hodín",
+          "e": "Rezervácie prichádzajú v reálnom čase",
+          "f": "Potvrď, odmietni alebo navrhni iný čas",
+          "g": "Automatické pripomienky klientkam",
+          "h": "Čas pôsobenia a služby v niekoľkých krokoch",
+          "i": "Čakací zoznam a termíny na poslednú chvíľu",
+          "j": "Zálohy proti zmeškaným termínom",
+          "k": "Skupinové rezervácie a rezervácia vzhľadu",
+          "l": "Pri príchode naskenuješ QR kód klientky"
         }
       },
       "shop": {
@@ -4579,6 +4593,135 @@
           "e": "Úspora dát odľahčí obrázky a videá."
         }
       }
+    }
+  },
+  "proSpace": {
+    "badge": "Pre profesionálky",
+    "menu": "Menu môjho priestoru",
+    "more": "Viac",
+    "myPage": "Moja vitrína",
+    "seeMyPage": "Pozrieť moju vitrínu",
+    "clientMode": "Prepnúť na klientku",
+    "proMode": "Môj priestor",
+    "signOut": "Odhlásiť sa",
+    "nav": {
+      "today": "Dnes",
+      "agenda": "Diár",
+      "services": "Služby",
+      "slots": "Termíny a miesta",
+      "page": "Moja vitrína",
+      "shop": "Obchod",
+      "clients": "Klientky",
+      "messages": "Správy",
+      "money": "Peniaze",
+      "stats": "Štatistiky",
+      "plan": "Moja ponuka",
+      "settings": "Nastavenia"
+    },
+    "site": {
+      "poweredBy": "Stránka Solange Glow",
+      "discover": "Objaviť Solange Glow",
+      "forPros": "Si profesionálka?",
+      "help": "Pomoc"
+    },
+    "today": {
+      "title": "Dnes",
+      "noSpace": "Ešte nemáš priestor pre profesionálky",
+      "noSpaceHelp": "Vytvor si vitrínu za pár minút.",
+      "start": "Vytvoriť moju vitrínu",
+      "pendingCount": "{count, plural, =0 {Žiadna žiadosť na potvrdenie} other {Na potvrdenie: #}}",
+      "welcomeTitle": "Tvoj priestor je pripravený",
+      "welcomeLive": "Tvoja vitrína je online. Zdieľaj odkaz.",
+      "welcomeNext": "Pridaj služby a hodiny, potom vitrínu zverejni.",
+      "paused": "Online rezervácie sú pozastavené.",
+      "pausedChange": "Zmeniť",
+      "draftTitle": "Tvoja vitrína ešte nie je online",
+      "draftText": "{count, plural, =0 {Všetko je pripravené: môžeš ju zverejniť.} other {Zostáva vyplniť: #}}",
+      "draftCta": "Dokončiť moju vitrínu",
+      "shortcuts": "Rýchle akcie",
+      "addAppointment": "Pridať termín",
+      "openSlot": "Otvoriť termín",
+      "addService": "Pridať službu",
+      "addProduct": "Pridať produkt",
+      "pendingTitle": "Na potvrdenie",
+      "pendingEmpty": "Žiadna čakajúca žiadosť.",
+      "when": "{day} o {time}",
+      "confirm": "Potvrdiť",
+      "otherChoice": "Odmietnuť alebo presunúť",
+      "confirmed": "Potvrdené. Klientka je informovaná.",
+      "error": "Nepodarilo sa. Skús to znova.",
+      "dayTitle": "Dnešné termíny",
+      "seeAgenda": "Pozrieť diár",
+      "dayEmpty": "Dnes žiadny termín.",
+      "arrived": "Prišla",
+      "linkTitle": "Môj odkaz",
+      "copy": "Kopírovať",
+      "copied": "Odkaz skopírovaný.",
+      "share": "Zdieľať",
+      "poster": "Stiahnuť plagát s QR kódom",
+      "linkAfterPublish": "Odkaz a QR kód dostaneš po zverejnení vitríny.",
+      "shopTitle": "Obchod a peniaze",
+      "newOrders": "{count, plural, =0 {Žiadna objednávka na prípravu} other {Na prípravu: #}}",
+      "available": "K dispozícii: {amount}",
+      "wallet": "Moja peňaženka"
+    },
+    "slots": {
+      "title": "Termíny a miesta",
+      "line": "Rozhodni, kedy a kde sa dá rezervovať.",
+      "error": "Nepodarilo sa. Skús to znova.",
+      "saved": "Uložené.",
+      "opened": "Termín otvorený.",
+      "closed": "Termín odstránený.",
+      "day": "Deň",
+      "from": "Od",
+      "to": "Do",
+      "place": "Miesto",
+      "mainPlace": "Moja hlavná adresa",
+      "person": "Kto",
+      "everyone": "Celý tím",
+      "repeat": "Opakovať",
+      "once": "Iba raz",
+      "weeks": "Počas {count} týždňov",
+      "open": "Otvoriť tento termín",
+      "placeRemoved": "Miesto odstránené.",
+      "remove": "Odstrániť",
+      "placeNoHours": "Pridaj hodiny, keď si na tejto adrese.",
+      "addHours": "Pridať tieto hodiny",
+      "placeAdded": "Miesto pridané.",
+      "placeName": "Názov miesta",
+      "city": "Mesto",
+      "district": "Štvrť",
+      "address": "Adresa",
+      "addPlace": "Pridať toto miesto",
+      "modeTitle": "Odkiaľ prichádzajú tvoje termíny?",
+      "modeHelp": "Môžeš to kedykoľvek zmeniť. Rezervované termíny sa nepohnú.",
+      "mode": {
+        "hours": "Moje hodiny a termíny, ktoré otvorím",
+        "hoursHelp": "Termíny sa vypočítajú samy. Môžeš pridať ďalšie.",
+        "manual": "Iba termíny, ktoré otvorím",
+        "manualHelp": "Rezervovať sa dá len to, čo tu otvoríš."
+      },
+      "editHours": "Zmeniť hodiny a zatvorené dni",
+      "editTeam": "Zmeniť tím a pravidlá",
+      "openedTitle": "Otvoriť termín",
+      "openedHelp": "Na večer, zatvorený deň alebo špeciálny deň. Pridá sa k hodinám.",
+      "openedEmpty": "Žiadny termín otvorený ručne.",
+      "blockTitle": "Zablokovať čas",
+      "blockHelp": "Prestávka, neprítomnosť, osobný termín: ťukni na čas v diári.",
+      "blockCta": "Otvoriť môj diár",
+      "rulesTitle": "Čas medzi dvoma klientkami",
+      "buffer": "Oddych po klientke (minúty)",
+      "bufferHint": "Na upratanie alebo oddych.",
+      "travel": "Čas cesty (minúty)",
+      "travelHint": "Medzi miestami alebo ku klientke domov.",
+      "placesTitle": "Moje miesta",
+      "placesHelp": "Hlavná adresa, ďalšie adresy a návštevy doma.",
+      "mainAddress": "Zmeniť hlavnú adresu",
+      "homeVisits": "Nastaviť návštevy doma",
+      "pauseTitle": "Pozastaviť",
+      "pauseHelp": "Nikto nerezervuje online. Diár funguje ďalej.",
+      "pause": "Pozastaviť rezervácie",
+      "resume": "Obnoviť rezervácie"
     }
   }
 }

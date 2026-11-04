@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
+import type { ReactNode } from "react";
 
 import { LocaleSwitcher } from "@/components/ui/locale-switcher";
 import { cn } from "@/lib/cn";
@@ -14,12 +15,20 @@ import { CityPicker } from "./city-picker";
 import type { NavIcons } from "./nav-icons";
 import { isActive, NAV_ITEMS } from "./nav-items";
 import { NotificationBell } from "./notification-bell";
+import { SignOutButton } from "./sign-out-button";
 
 const MessagesBadge = dynamic(() => import("./messages-badge").then((m) => m.MessagesBadge));
 
 /** Computer layout: navigation on the left, always visible. */
-export function DesktopSidebar({ icons }: { icons: NavIcons }) {
+export function DesktopSidebar({
+  icons,
+  leave,
+}: {
+  icons: NavIcons;
+  leave: { pro: ReactNode; signOut: ReactNode };
+}) {
   const t = useTranslations("nav");
+  const tSpace = useTranslations("proSpace");
   const tMeta = useTranslations("metadata");
   const pathname = usePathname();
   const { data: me } = useMe();
@@ -65,6 +74,20 @@ export function DesktopSidebar({ icons }: { icons: NavIcons }) {
         <CityPicker />
         <AudioToggle />
       </div>
+      {me && (
+        <div className="border-trait flex flex-col gap-1 border-t pt-3">
+          {me.roles.includes("pro") && (
+            <Link
+              href="/pro"
+              className="hover:bg-poudre flex min-h-12 items-center gap-3 rounded-lg px-3 font-semibold"
+            >
+              {leave.pro}
+              {tSpace("proMode")}
+            </Link>
+          )}
+          <SignOutButton icon={leave.signOut} className="text-alerte" />
+        </div>
+      )}
       <LocaleSwitcher className="mt-auto" />
     </aside>
   );
