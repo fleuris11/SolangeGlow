@@ -6,14 +6,14 @@ import { AdSlot } from "@/components/features/ads/ad-cards";
 import { SplashLoader } from "@/components/features/ads/splash-loader";
 import { GlowTodayBand, WinnerBand } from "@/components/features/games/home-band";
 import { HomeBanners } from "@/components/features/help/home-banner";
-import { HomeInstallPrompt } from "@/components/pwa/home-install-prompt";
-import { FranceSelectionBand, GiftBand, JoinBand } from "@/components/features/home/bands";
+import { FranceSelectionBand } from "@/components/features/home/bands";
+import { PublicHome } from "@/components/features/home/public-home";
 import { UpcomingLivesBand } from "@/components/features/live/upcoming-band";
 import { SearchBar } from "@/components/features/search/search-bar";
 import { FeedSection } from "@/components/features/social/feed-section";
 import { StoryStrip } from "@/components/features/social/story-strip";
-import { TradePetals } from "@/components/features/trades/trade-petals";
-import { SpeakButton } from "@/components/ui/speak-button";
+import { HomeInstallPrompt } from "@/components/pwa/home-install-prompt";
+import { AppShell } from "@/components/shell/app-shell";
 import {
   adsOnServer,
   feedOnServer,
@@ -34,8 +34,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 /**
- * Home: today's stories and the personalised feed (rendered on the server, visible before
- * any script). Visitors also get the search and the presentation bands.
+ * Home. A visitor gets the edge-to-edge public page, with the real feed further down; a signed-in
+ * person gets her stories and her feed in the app shell. Rendered on the server either way.
  */
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
@@ -58,24 +58,9 @@ export default async function HomePage({ params }: Props) {
     .map((aisle) => selection?.results.find((product) => product.aisle === aisle))
     .filter((product) => product !== undefined);
 
-  return (
+  const content = (
     <div className="flex flex-col gap-10">
       <SplashLoader />
-      {signedIn ? (
-        <h1 className="sr-only">{t("question")}</h1>
-      ) : (
-        <section aria-labelledby="home-title" className="flex flex-col gap-6">
-          <div className="flex items-start justify-between gap-3">
-            <h1 id="home-title" className="font-display text-display lg:text-hero font-black">
-              {t("question")}
-            </h1>
-            <SpeakButton text={t("question")} className="mt-1" />
-          </div>
-          <SearchBar />
-          <TradePetals />
-        </section>
-      )}
-
       <HomeBanners banners={editorial} />
       <HomeInstallPrompt />
       <AdSlot list={banner} />
@@ -89,14 +74,26 @@ export default async function HomePage({ params }: Props) {
         title={signedIn ? tFeed("titleSignedIn") : tFeed("title")}
         sponsored={sponsored}
       />
-
       <FranceSelectionBand products={picks} />
-      {!signedIn && (
-        <>
-          <GiftBand />
-          <JoinBand />
-        </>
-      )}
     </div>
+  );
+
+  if (!signedIn) {
+    return (
+      <PublicHome
+        feed={
+          <>
+            <SearchBar />
+            {content}
+          </>
+        }
+      />
+    );
+  }
+  return (
+    <AppShell>
+      <h1 className="sr-only">{t("question")}</h1>
+      {content}
+    </AppShell>
   );
 }

@@ -11,6 +11,8 @@ import random
 
 from PIL import Image, ImageDraw, ImageFilter
 
+from apps.core import demo_photos
+
 W, H = 1080, 1350
 SKINS = [(241, 201, 165), (198, 138, 94), (160, 102, 63), (122, 74, 44), (79, 46, 28)]
 BACKGROUNDS = [(249, 225, 231), (255, 247, 245), (246, 230, 200), (226, 240, 232), (238, 228, 245)]
@@ -115,6 +117,9 @@ def _skincare(draw, rng, accent):
 
 def picture(seed: str, trade: str, *, stage: str = "after") -> bytes:
     """A JPEG of a look. `stage` is "before" (plain) or "after" (the work of the pro)."""
+    real = demo_photos.look(seed, trade, stage=stage)
+    if real:
+        return real
     rng = _rng(f"{seed}:{trade}")
     background = rng.choice(BACKGROUNDS) if stage == "after" else (236, 231, 229)
     image = Image.new("RGB", (W, H), background)

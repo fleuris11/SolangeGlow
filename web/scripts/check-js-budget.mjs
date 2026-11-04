@@ -15,7 +15,7 @@ const BUDGET_KB = 230;
 const LOCALES = ["fr", "en", "sk"];
 const STATIC_PAGES = ["/messages", "/me"];
 const DYNAMIC_PAGES = {
-  "/[locale]": "[locale]/(app)",
+  "/[locale]": "[locale]/(home)",
   "/[locale]/create": "[locale]/(app)/create",
   "/[locale]/p/<post>": "[locale]/(app)/p/[id]",
   "/[locale]/messages/<conversation>": "[locale]/(chat)/messages/[id]",

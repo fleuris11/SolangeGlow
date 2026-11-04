@@ -84,6 +84,89 @@
       "clientText": "Réserve, achète et paie en sécurité.",
       "proTitle": "Je suis une pro",
       "proText": "Montre ton travail et remplis ton agenda."
+    },
+    "public": {
+      "menu": "Découvrir",
+      "signIn": "Me connecter",
+      "title": "Trouve ta pro de beauté, réserve, paie en sécurité.",
+      "chooseTrade": "Choisis un métier",
+      "links": {
+        "explore": "Explorer",
+        "shop": "Boutiques",
+        "academy": "Académie",
+        "gift": "Offrir"
+      },
+      "find": {
+        "hair": "Trouver ma pro de coiffure",
+        "braids": "Trouver ma pro de tresses",
+        "makeup": "Trouver ma pro de maquillage",
+        "nails": "Trouver ma pro d'ongles",
+        "sewing": "Trouver ma pro de couture",
+        "headwrap": "Trouver ma pro de foulard",
+        "skincare": "Trouver ma pro d'esthétique"
+      },
+      "alt": {
+        "hair": "Femme de profil, coiffure afro courte et grandes créoles.",
+        "braids": "Femme aux longues tresses, pull jaune, sur fond noir.",
+        "makeup": "Portrait d'une femme maquillée, lèvres rouges et boucles d'oreilles.",
+        "nails": "Mains aux ongles vernis près d'un visage.",
+        "sewing": "Mains qui cousent sur une machine.",
+        "headwrap": "Femme souriante, foulard jaune noué sur la tête.",
+        "skincare": "Femme à la peau lumineuse, sur fond chaud.",
+        "booking": "Femme en robe de dentelle, coiffure afro, lumière douce.",
+        "gift": "Femme au foulard jaune devant une fresque."
+      },
+      "hands": {
+        "title": "Des mains qui savent faire",
+        "braids": "Tresses",
+        "braidsText": "Nattes collées, knotless, locks.",
+        "makeup": "Maquillage",
+        "makeupText": "Mariée, soirée, peau noire et métisse.",
+        "headwrap": "Foulard",
+        "headwrapText": "Gélé, turban, attaches de fête."
+      },
+      "booking": {
+        "title": "Choisis ton créneau, on s'occupe du reste",
+        "text": "Gratuit pour toi. La pro confirme, tu reçois un rappel.",
+        "day": "Samedi",
+        "cta": "Voir les pros"
+      },
+      "code": {
+        "title": "Ton argent reste bloqué jusqu'à ce code",
+        "paid": {
+          "title": "Tu paies",
+          "text": "L'argent ne part pas chez la vendeuse."
+        },
+        "received": {
+          "title": "Tu reçois",
+          "text": "Tu vérifies ta commande."
+        },
+        "given": {
+          "title": "Tu donnes ton code",
+          "text": "Là seulement, elle est payée."
+        }
+      },
+      "more": {
+        "title": "Boutiques et formations",
+        "shop": "Sélection France",
+        "shopText": "Les produits de France livrés au Bénin, prix final affiché.",
+        "academy": "Académie",
+        "academyText": "Apprends les gestes des pros, à ton rythme, même hors ligne."
+      },
+      "feed": {
+        "title": "Le fil des pros"
+      },
+      "gift": {
+        "title": "Offre un soin à ta mère, de Paris à Cotonou",
+        "cta": "Offrir au pays"
+      },
+      "footer": {
+        "label": "Informations",
+        "help": "Aide",
+        "terms": "Conditions",
+        "privacy": "Confidentialité",
+        "credits": "Crédits photos"
+      }
     }
   },
   "aside": {
@@ -368,6 +451,31 @@
       "bloom": "Paiement reçu",
       "replay": "Rejouer",
       "bottomNav": "La barre du bas est visible en bas de cette page sur mobile."
+    },
+    "glow": {
+      "reduced": "Animations réduites",
+      "reducedText": "Essaie chaque animation avec et sans.",
+      "night": "Une section de nuit",
+      "action": "Réserver",
+      "openStories": "Voir les stories",
+      "shared": "La carte devient la page : à voir entre deux écrans.",
+      "like": "J'aime",
+      "pull": "Tire vers le bas, avec le doigt, tout en haut de la page.",
+      "openSheet": "Ouvrir la feuille",
+      "sheetText": "Tire la poignée vers le bas pour fermer.",
+      "bloom": "Réussi",
+      "replay": "Rejouer",
+      "trades": "Les métiers"
+    },
+    "media": {
+      "title": "Tri des photos",
+      "intro": "Garde ou rejette chaque photo et vidéo. Ton choix reste sur cet appareil. Copie ensuite la liste des rejets et envoie-la.",
+      "summary": "{kept} gardées, {rejected} rejetées",
+      "copy": "Copier la liste des rejets",
+      "copied": "Liste copiée",
+      "keep": "Garder",
+      "reject": "Rejeter",
+      "noAuthor": "auteur non indiqué"
     }
   },
   "auth": {

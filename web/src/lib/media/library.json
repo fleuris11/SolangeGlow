@@ -1,0 +1,490 @@
+{
+  "hero-afro-profile": {
+    "kind": "image",
+    "category": "coiffure",
+    "src": "/media/hero-afro-profile.webp",
+    "width": 1067,
+    "height": 1600,
+    "blurhash": "UBB{P:Ip-:$%gOxt={R*~BxZR*f+?GxZR+R*",
+    "color": "#080808",
+    "bytes": 70966
+  },
+  "hero-orange-hat": {
+    "kind": "image",
+    "category": "foulard",
+    "src": "/media/hero-orange-hat.webp",
+    "width": 1067,
+    "height": 1600,
+    "blurhash": "USJrTb^N=v-8};F1xYs,}p$$S4I@$hxDw^R+",
+    "color": "#e87808",
+    "bytes": 50608
+  },
+  "makeup-portrait": {
+    "kind": "image",
+    "category": "maquillage",
+    "src": "/media/makeup-portrait.webp",
+    "width": 1600,
+    "height": 1280,
+    "blurhash": "U5By5F}@0z9]0#WX0yAC+uE2-B^60foL-Ufl",
+    "color": "#282828",
+    "bytes": 91792
+  },
+  "skin-warm": {
+    "kind": "image",
+    "category": "peau",
+    "src": "/media/skin-warm.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurhash": "UBExb8bu%M$%~Vsn$*I:t6ayoKbH-VWVoeoL",
+    "color": "#987868",
+    "bytes": 36178
+  },
+  "skin-profile": {
+    "kind": "image",
+    "category": "peau",
+    "src": "/media/skin-profile.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurhash": "UCD+C[Rk-:-p~BR*xZxZS2WVxZs:%2jtayWV",
+    "color": "#786858",
+    "bytes": 26940
+  },
+  "fashion-dark": {
+    "kind": "image",
+    "category": "mode",
+    "src": "/media/fashion-dark.webp",
+    "width": 1063,
+    "height": 1600,
+    "blurhash": "U05}dNIA04X.2xWX^+?bF#kWOtV@0$-o}qIp",
+    "color": "#181818",
+    "bytes": 31120
+  },
+  "fashion-white": {
+    "kind": "image",
+    "category": "mode",
+    "src": "/media/fashion-white.webp",
+    "width": 1067,
+    "height": 1600,
+    "blurhash": "UXL|=Z?H-;.8~qt7_3t7X9MxxtWVaeV@RPxu",
+    "color": "#f8f8e8",
+    "bytes": 52988
+  },
+  "fashion-coat": {
+    "kind": "image",
+    "category": "mode",
+    "src": "/media/fashion-coat.webp",
+    "width": 1067,
+    "height": 1600,
+    "blurhash": "URC=uZ%LSdWB~C%2R*WBkWfjoMoLI:RkxGs:",
+    "color": "#080808",
+    "bytes": 161106
+  },
+  "bride-afro": {
+    "kind": "image",
+    "category": "mariage",
+    "src": "/media/bride-afro.webp",
+    "width": 1064,
+    "height": 1600,
+    "blurhash": "UbKn0Yso^%~pMwkD%Mt6IpR*s,V@WCV@RPbH",
+    "color": "#080808",
+    "bytes": 79808
+  },
+  "headwrap-smile": {
+    "kind": "image",
+    "category": "foulard",
+    "src": "/media/headwrap-smile.webp",
+    "width": 1067,
+    "height": 1600,
+    "blurhash": "UMG8M:~AOW%e?toxI:9]%exYaeNHo}SexF$%",
+    "color": "#282828",
+    "bytes": 73326
+  },
+  "headwrap-mural": {
+    "kind": "image",
+    "category": "foulard",
+    "src": "/media/headwrap-mural.webp",
+    "width": 1067,
+    "height": 1600,
+    "blurhash": "UOHxc:pd.T%M~VOYx]ozs7IAMxoznNnhM{Rj",
+    "color": "#c8d8d8",
+    "bytes": 211120
+  },
+  "sewing": {
+    "kind": "image",
+    "category": "couture",
+    "src": "/media/sewing.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurhash": "UGLW2_0zNF~B2g#Padbw-;IA9vOZ~WD%^O-:",
+    "color": "#f8b868",
+    "bytes": 130372
+  },
+  "locs-light": {
+    "kind": "image",
+    "category": "locks",
+    "src": "/media/locs-light.webp",
+    "width": 1305,
+    "height": 1600,
+    "blurhash": "UqK-hFXTp0Sj.AaekB%1xux[MwV@xZRjs,s:",
+    "color": "#d8d8e8",
+    "bytes": 90562
+  },
+  "locs-sit": {
+    "kind": "image",
+    "category": "locks",
+    "src": "/media/locs-sit.webp",
+    "width": 1280,
+    "height": 1600,
+    "blurhash": "UlJ@d@t7o~%L%%xaNft7NfxuRORP%LbGr;of",
+    "color": "#c8c8d8",
+    "bytes": 86166
+  },
+  "woman-door": {
+    "kind": "image",
+    "category": "mode",
+    "src": "/media/woman-door.webp",
+    "width": 1067,
+    "height": 1600,
+    "blurhash": "U8DJ6O0J_K0100D%JE-m0#~qZg?bH?-pIpNK",
+    "color": "#080808",
+    "bytes": 98626
+  },
+  "curls-hands": {
+    "kind": "image",
+    "category": "coiffure",
+    "src": "/media/curls-hands.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurhash": "UiKd;_M{?wt7tRWB%2t7-=oft7xa?bofRjof",
+    "color": "#f8f8f8",
+    "bytes": 88550
+  },
+  "braids-red": {
+    "kind": "image",
+    "category": "tresses",
+    "src": "/media/braids-red.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurhash": "UuLwkm}s=0Nu$iW;soR+njn%afNa$jsVR+oK",
+    "color": "#e86858",
+    "bytes": 72486
+  },
+  "cornrows-glasses": {
+    "kind": "image",
+    "category": "tresses",
+    "src": "/media/cornrows-glasses.webp",
+    "width": 1280,
+    "height": 1600,
+    "blurhash": "UOEC8,-:?axt~V%M-:tRpJbwRnbcx]kDkDbb",
+    "color": "#181828",
+    "bytes": 232372
+  },
+  "cornrows-down": {
+    "kind": "image",
+    "category": "tresses",
+    "src": "/media/cornrows-down.webp",
+    "width": 1597,
+    "height": 1600,
+    "blurhash": "UhI#oq^6?^Rk%g%2oyaJ-;x]n%t7?at7f+s:",
+    "color": "#f8f8f8",
+    "bytes": 108936
+  },
+  "cornrows-side": {
+    "kind": "image",
+    "category": "tresses",
+    "src": "/media/cornrows-side.webp",
+    "width": 1200,
+    "height": 1600,
+    "blurhash": "UUJa4y~E%LwM5h9Y^+xs_4t6bFRO?d$+NGbI",
+    "color": "#f8d8a8",
+    "bytes": 132338
+  },
+  "braider-hands": {
+    "kind": "image",
+    "category": "tresses",
+    "src": "/media/braider-hands.webp",
+    "width": 1233,
+    "height": 1600,
+    "blurhash": "UVJswmrV-;R%?[ow%0so^j$xE2X7^iNas:oL",
+    "color": "#080808",
+    "bytes": 108348
+  },
+  "bride-makeup": {
+    "kind": "image",
+    "category": "mariage",
+    "src": "/media/bride-makeup.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurhash": "UFF5X702AYr?~WIUW?xWE+EL-Ts:9GSeR*Rj",
+    "color": "#080808",
+    "bytes": 90988
+  },
+  "salon-pink": {
+    "kind": "image",
+    "category": "salons",
+    "src": "/media/salon-pink.webp",
+    "width": 1200,
+    "height": 1600,
+    "blurhash": "UXFXGOJ5IW=#}wORn,xbx[Nsj0Swb@X4V]SK",
+    "color": "#080808",
+    "bytes": 149708
+  },
+  "braids-top": {
+    "kind": "image",
+    "category": "tresses",
+    "src": "/media/braids-top.webp",
+    "width": 1600,
+    "height": 1200,
+    "blurhash": "ULHLqaVzyxy9qAg2$_x.$^t5Vgax-%baNMS5",
+    "color": "#383838",
+    "bytes": 135576
+  },
+  "palette": {
+    "kind": "image",
+    "category": "produits",
+    "src": "/media/palette.webp",
+    "width": 960,
+    "height": 640,
+    "blurhash": "UdEyJTMxNHS0~WRjbbRioyoft6WBW;t6Rjj^",
+    "color": "#080808",
+    "bytes": 30618
+  },
+  "brushes": {
+    "kind": "image",
+    "category": "produits",
+    "src": "/media/brushes.webp",
+    "width": 960,
+    "height": 720,
+    "blurhash": "UOI5Pg~qRjMxD%Rj-pkDtm%NxvR*tRt7IARj",
+    "color": "#d8d8d8",
+    "bytes": 20070
+  },
+  "nails-pro": {
+    "kind": "image",
+    "category": "ongles",
+    "src": "/media/nails-pro.webp",
+    "width": 960,
+    "height": 640,
+    "blurhash": "UBE_OH?G00Qp9radwhRl0JMz}^X+r^j]XkX7",
+    "color": "#080808",
+    "bytes": 31710
+  },
+  "braids-yellow": {
+    "kind": "image",
+    "category": "tresses",
+    "src": "/media/braids-yellow.webp",
+    "width": 1143,
+    "height": 1600,
+    "blurhash": "UEEK[5};0Nw[0BER-PENIWRlxaxY~3xVjJ$*",
+    "color": "#080808",
+    "bytes": 134864
+  },
+  "curls-teal": {
+    "kind": "image",
+    "category": "coiffure",
+    "src": "/media/curls-teal.webp",
+    "width": 1600,
+    "height": 1496,
+    "blurhash": "UWHB}DR*?^xuyDt7V@jZj@%MVsIo.8tRWBay",
+    "color": "#b8c8c8",
+    "bytes": 56678
+  },
+  "locs-skin": {
+    "kind": "image",
+    "category": "locks",
+    "src": "/media/locs-skin.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurhash": "UAExLr0L%#^P~V$%XTEM^jofs:$*NboJxaNH",
+    "color": "#080808",
+    "bytes": 69058
+  },
+  "locs-beauty": {
+    "kind": "image",
+    "category": "maquillage",
+    "src": "/media/locs-beauty.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurhash": "UBBx_-Rj0g57}@WBNbIp9uWV%1j[$%jtNaWC",
+    "color": "#080808",
+    "bytes": 105806
+  },
+  "lips-orange": {
+    "kind": "image",
+    "category": "maquillage",
+    "src": "/media/lips-orange.webp",
+    "width": 1067,
+    "height": 1600,
+    "blurhash": "UePEh]?^.8kCi_Rj%1Nw8_QmrqNbF2xar=Io",
+    "color": "#f8f8f8",
+    "bytes": 38380
+  },
+  "nails-lips": {
+    "kind": "image",
+    "category": "ongles",
+    "src": "/media/nails-lips.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurhash": "UcPFl:DOuP?b%Mf,o}kWI9V@M{Mx%2ayR*R*",
+    "color": "#f8f8f8",
+    "bytes": 33476
+  },
+  "braids-hoops": {
+    "kind": "image",
+    "category": "tresses",
+    "src": "/media/braids-hoops.webp",
+    "width": 1067,
+    "height": 1600,
+    "blurhash": "UDCPkQ0fJ7-n~BD+Naxa.5xGM|SzkVo3IVt6",
+    "color": "#081818",
+    "bytes": 74554
+  },
+  "braids-lilac": {
+    "kind": "image",
+    "category": "tresses",
+    "src": "/media/braids-lilac.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurhash": "UWJj.HaH-s%j-=ads.oIxbofM_Rj%OkDjYoI",
+    "color": "#b8a8d8",
+    "bytes": 101056
+  },
+  "afro-jacket": {
+    "kind": "image",
+    "category": "mode",
+    "src": "/media/afro-jacket.webp",
+    "width": 1280,
+    "height": 1600,
+    "blurhash": "UIDIE_I:11}?jIRj-VeoIUxF-6I:Rit7wHt6",
+    "color": "#080808",
+    "bytes": 143008
+  },
+  "curls-blue": {
+    "kind": "image",
+    "category": "coiffure",
+    "src": "/media/curls-blue.webp",
+    "width": 1067,
+    "height": 1600,
+    "blurhash": "ULI}-C~U1R-.02Ny%gNf0N9vrDMy_Mo0rWxt",
+    "color": "#187898",
+    "bytes": 82522
+  },
+  "red-hair-wall": {
+    "kind": "image",
+    "category": "coiffure",
+    "src": "/media/red-hair-wall.webp",
+    "width": 1600,
+    "height": 1066,
+    "blurhash": "UHEN9j%#uPrW_Na|M{s:NxaynNbbtlofs.W=",
+    "color": "#88a8b8",
+    "bytes": 198280
+  },
+  "sisters-yellow": {
+    "kind": "image",
+    "category": "mode",
+    "src": "/media/sisters-yellow.webp",
+    "width": 1600,
+    "height": 1066,
+    "blurhash": "UVNJgx_4.9s6jKs+${WZxYRjRiog~VM|Rnob",
+    "color": "#e8d8c8",
+    "bytes": 70190
+  },
+  "portrait-white": {
+    "kind": "image",
+    "category": "foulard",
+    "src": "/media/portrait-white.webp",
+    "width": 1067,
+    "height": 1600,
+    "blurhash": "UbN0k]xu-;-:4TaeWARi_N%MIUWB-;j]ofxu",
+    "color": "#f8f8f8",
+    "bytes": 79656
+  },
+  "fete-drums": {
+    "kind": "image",
+    "category": "fetes",
+    "src": "/media/fete-drums.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurhash": "UFHBe|+DE.5k],-:~pNFK8H?%M~V]z%NNFIW",
+    "color": "#080808",
+    "bytes": 78946
+  },
+  "duo-green": {
+    "kind": "image",
+    "category": "mode",
+    "src": "/media/duo-green.webp",
+    "width": 1600,
+    "height": 1063,
+    "blurhash": "U15q-2591Z~R1I=_^N10J5X8rwxV=_RkOWs.",
+    "color": "#081808",
+    "bytes": 114872
+  },
+  "wax-rolls": {
+    "kind": "image",
+    "category": "couture",
+    "src": "/media/wax-rolls.webp",
+    "width": 1200,
+    "height": 1600,
+    "blurhash": "U3Dv0@0|z3%5kLxMxC601lm9E{yW01~B5Wv|",
+    "color": "#181808",
+    "bytes": 272488
+  },
+  "wax-blue": {
+    "kind": "image",
+    "category": "couture",
+    "src": "/media/wax-blue.webp",
+    "width": 746,
+    "height": 1600,
+    "blurhash": "UEC?G%NLMxxtyEWGxps*-=R;w@xVg+JYIp$x",
+    "color": "#184888",
+    "bytes": 113038
+  },
+  "video-face": {
+    "kind": "video",
+    "category": "peau",
+    "src": "/media/video/video-face.mp4",
+    "poster": "/media/video/video-face.webp"
+  },
+  "video-walk": {
+    "kind": "video",
+    "category": "mode",
+    "src": "/media/video/video-walk.mp4",
+    "poster": "/media/video/video-walk.webp"
+  },
+  "video-tools": {
+    "kind": "video",
+    "category": "salons",
+    "src": "/media/video/video-tools.mp4",
+    "poster": "/media/video/video-tools.webp"
+  },
+  "video-makeup-set": {
+    "kind": "video",
+    "category": "produits",
+    "src": "/media/video/video-makeup-set.mp4",
+    "poster": "/media/video/video-makeup-set.webp"
+  },
+  "video-brushes": {
+    "kind": "video",
+    "category": "produits",
+    "src": "/media/video/video-brushes.mp4",
+    "poster": "/media/video/video-brushes.webp"
+  },
+  "video-table": {
+    "kind": "video",
+    "category": "produits",
+    "src": "/media/video/video-table.mp4",
+    "poster": "/media/video/video-table.webp"
+  },
+  "video-powder": {
+    "kind": "video",
+    "category": "maquillage",
+    "src": "/media/video/video-powder.mp4",
+    "poster": "/media/video/video-powder.webp"
+  },
+  "video-hair": {
+    "kind": "video",
+    "category": "tresses",
+    "src": "/media/video/video-hair.mp4",
+    "poster": "/media/video/video-hair.webp"
+  }
+}

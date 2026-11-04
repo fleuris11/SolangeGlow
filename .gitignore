@@ -99,3 +99,6 @@ docs/design/research/
 
 # --- Screens before the redesign: all variants stay local, key screens are committed ---
 docs/design/before/full/
+
+# Originals of the demonstration media (scripts/fetch-media.mjs)
+/web/.media-cache/

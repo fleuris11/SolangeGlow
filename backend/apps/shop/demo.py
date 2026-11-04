@@ -1,7 +1,7 @@
 """Demo shops (called by `seed_demo`): products with shades and sizes, delivery zones, a
 promo code, a flash sale, a bundle, and handed-over orders with verified reviews.
 
-Pictures are flat drawings of the products in the brand palette (no real photo yet).
+Pictures are real photographs where one fits (core.demo_photos), else flat drawings (no photo yet).
 Idempotent: a shop gets its products once; the flash sale is renewed when none runs.
 """
 
@@ -19,6 +19,7 @@ from django.utils import timezone
 from PIL import Image, ImageDraw, ImageFilter
 
 from apps.accounts.models import User
+from apps.core import demo_photos
 from apps.core.errors import DomainError
 from apps.core.media.models import MediaAsset
 from apps.core.media.processing import process
@@ -376,6 +377,9 @@ REVIEWS = [
 
 
 def _draw(seed: str, drawing: str) -> bytes:
+    real = demo_photos.product(seed, drawing)
+    if real:
+        return real
     rng = random.Random(seed)  # noqa: S311  (pictures, not security)
     image = Image.new("RGB", (W, H), rng.choice(BACKGROUNDS))
     draw = ImageDraw.Draw(image)

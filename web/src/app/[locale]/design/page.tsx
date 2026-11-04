@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { use } from "react";
 
 import { Catalogue } from "@/components/features/design/catalogue";
+import { GlowCatalogue, MotionSwitch } from "@/components/features/design/glow-catalogue";
 import { HealthStatus } from "@/components/features/system/health-status";
 import { navIcons } from "@/components/shell/nav-icons";
 import { BottomNav } from "@/components/ui/bottom-nav";
@@ -30,6 +31,7 @@ export default function DesignPage({ params }: Props) {
         <p className="text-prune-doux max-w-[60ch]">{t("intro")}</p>
       </header>
       <HealthStatus />
+      <MotionSwitch />
       <div className="grid min-w-0 grid-cols-1 gap-6 lg:grid-cols-2">
         {(["light", "dark"] as const).map((theme) => (
           <section
@@ -42,6 +44,8 @@ export default function DesignPage({ params }: Props) {
               {t(`themes.${theme}`)}
             </h2>
             <Catalogue theme={theme} />
+            <h2 className="font-display text-title mt-8 mb-4 font-bold">Glow v2</h2>
+            <GlowCatalogue />
           </section>
         ))}
       </div>

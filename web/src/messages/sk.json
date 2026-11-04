@@ -84,6 +84,89 @@
       "clientText": "Rezervuj, nakupuj a plať bezpečne.",
       "proTitle": "Som profesionálka",
       "proText": "Ukáž svoju prácu a naplň si kalendár."
+    },
+    "public": {
+      "menu": "Objavovať",
+      "signIn": "Prihlásiť sa",
+      "title": "Nájdi si kozmetickú profesionálku, rezervuj, plať bezpečne.",
+      "chooseTrade": "Vyber si odbor",
+      "links": {
+        "explore": "Objavovať",
+        "shop": "Obchody",
+        "academy": "Akadémia",
+        "gift": "Darovať"
+      },
+      "find": {
+        "hair": "Nájsť kaderníčku",
+        "braids": "Nájsť majsterku vrkočov",
+        "makeup": "Nájsť vizážistku",
+        "nails": "Nájsť nechtovú dizajnérku",
+        "sewing": "Nájsť krajčírku",
+        "headwrap": "Nájsť majsterku turbanov",
+        "skincare": "Nájsť kozmetičku"
+      },
+      "alt": {
+        "hair": "Žena z profilu, krátke afro a veľké náušnice.",
+        "braids": "Žena s dlhými vrkočmi, žltý sveter, čierne pozadie.",
+        "makeup": "Portrét ženy s make-upom, červené pery a náušnice.",
+        "nails": "Ruky s nalakovanými nechtami pri tvári.",
+        "sewing": "Ruky šijúce na stroji.",
+        "headwrap": "Usmiata žena so žltým turbanom.",
+        "skincare": "Žena so žiarivou pleťou, teplé pozadie.",
+        "booking": "Žena v čipkových šatách, afro účes, jemné svetlo.",
+        "gift": "Žena so žltým turbanom pred nástennou maľbou."
+      },
+      "hands": {
+        "title": "Ruky, ktoré to vedia",
+        "braids": "Vrkoče",
+        "braidsText": "Cornrows, knotless, dredy.",
+        "makeup": "Make-up",
+        "makeupText": "Svadobný, večerný, tmavá a zmiešaná pleť.",
+        "headwrap": "Turban",
+        "headwrapText": "Gele, turban, slávnostné viazania."
+      },
+      "booking": {
+        "title": "Vyber si termín, o zvyšok sa postaráme",
+        "text": "Pre teba zadarmo. Profesionálka potvrdí, dostaneš pripomienku.",
+        "day": "Sobota",
+        "cta": "Pozrieť profesionálky"
+      },
+      "code": {
+        "title": "Tvoje peniaze sú zablokované až do tohto kódu",
+        "paid": {
+          "title": "Zaplatíš",
+          "text": "Peniaze neidú predajkyni."
+        },
+        "received": {
+          "title": "Prijmeš",
+          "text": "Skontroluješ objednávku."
+        },
+        "given": {
+          "title": "Dáš svoj kód",
+          "text": "Až potom dostane zaplatené."
+        }
+      },
+      "more": {
+        "title": "Obchody a kurzy",
+        "shop": "Výber z Francúzska",
+        "shopText": "Produkty z Francúzska doručené do Beninu, konečná cena.",
+        "academy": "Akadémia",
+        "academyText": "Nauč sa postupy profesionálok vlastným tempom, aj offline."
+      },
+      "feed": {
+        "title": "Príspevky profesionálok"
+      },
+      "gift": {
+        "title": "Dopraj mame starostlivosť, z Paríža do Cotonou",
+        "cta": "Darovať domov"
+      },
+      "footer": {
+        "label": "Informácie",
+        "help": "Pomoc",
+        "terms": "Podmienky",
+        "privacy": "Súkromie",
+        "credits": "Autori fotiek"
+      }
     }
   },
   "aside": {
@@ -368,6 +451,31 @@
       "bloom": "Platba prijatá",
       "replay": "Prehrať znova",
       "bottomNav": "Spodná lišta je na mobile zobrazená v dolnej časti stránky."
+    },
+    "glow": {
+      "reduced": "Menej animácií",
+      "reducedText": "Vyskúšaj každú animáciu s nastavením aj bez neho.",
+      "night": "Nočná časť",
+      "action": "Rezervovať",
+      "openStories": "Pozrieť príbehy",
+      "shared": "Karta sa zmení na stránku: vidno to medzi dvoma obrazovkami.",
+      "like": "Páči sa mi",
+      "pull": "Potiahni prstom nadol úplne hore na stránke.",
+      "openSheet": "Otvoriť panel",
+      "sheetText": "Na zatvorenie potiahni úchytku nadol.",
+      "bloom": "Hotovo",
+      "replay": "Prehrať znova",
+      "trades": "Odbory"
+    },
+    "media": {
+      "title": "Triedenie fotiek",
+      "intro": "Každú fotku a video si ponechaj alebo odmietni. Tvoj výber zostane v tomto zariadení. Potom skopíruj zoznam odmietnutých a pošli ho.",
+      "summary": "Ponechané: {kept}, odmietnuté: {rejected}",
+      "copy": "Kopírovať zoznam odmietnutých",
+      "copied": "Zoznam skopírovaný",
+      "keep": "Ponechať",
+      "reject": "Odmietnuť",
+      "noAuthor": "autor neuvedený"
     }
   },
   "auth": {

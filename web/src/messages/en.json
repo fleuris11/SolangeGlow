@@ -84,6 +84,89 @@
       "clientText": "Book, shop and pay safely.",
       "proTitle": "I'm a pro",
       "proText": "Show your work and fill your calendar."
+    },
+    "public": {
+      "menu": "Discover",
+      "signIn": "Sign in",
+      "title": "Find your beauty pro, book, pay safely.",
+      "chooseTrade": "Choose a trade",
+      "links": {
+        "explore": "Explore",
+        "shop": "Shops",
+        "academy": "Academy",
+        "gift": "Gift"
+      },
+      "find": {
+        "hair": "Find my hair pro",
+        "braids": "Find my braiding pro",
+        "makeup": "Find my makeup pro",
+        "nails": "Find my nail pro",
+        "sewing": "Find my tailor",
+        "headwrap": "Find my headwrap pro",
+        "skincare": "Find my skincare pro"
+      },
+      "alt": {
+        "hair": "Woman in profile, short afro and large hoop earrings.",
+        "braids": "Woman with long braids, yellow sweater, black background.",
+        "makeup": "Portrait of a woman with makeup, red lips and earrings.",
+        "nails": "Hands with painted nails near a face.",
+        "sewing": "Hands sewing on a machine.",
+        "headwrap": "Smiling woman, yellow headwrap.",
+        "skincare": "Woman with glowing skin, warm background.",
+        "booking": "Woman in a lace dress, afro hair, soft light.",
+        "gift": "Woman with a yellow headwrap in front of a mural."
+      },
+      "hands": {
+        "title": "Hands that know how",
+        "braids": "Braids",
+        "braidsText": "Cornrows, knotless, locs.",
+        "makeup": "Makeup",
+        "makeupText": "Bridal, evening, Black and mixed skin.",
+        "headwrap": "Headwrap",
+        "headwrapText": "Gele, turban, party ties."
+      },
+      "booking": {
+        "title": "Pick your time, we take care of the rest",
+        "text": "Free for you. The pro confirms, you get a reminder.",
+        "day": "Saturday",
+        "cta": "See the pros"
+      },
+      "code": {
+        "title": "Your money stays held until this code",
+        "paid": {
+          "title": "You pay",
+          "text": "The money does not go to the seller."
+        },
+        "received": {
+          "title": "You receive",
+          "text": "You check your order."
+        },
+        "given": {
+          "title": "You give your code",
+          "text": "Only then is she paid."
+        }
+      },
+      "more": {
+        "title": "Shops and courses",
+        "shop": "France Selection",
+        "shopText": "Products from France delivered to Benin, final price shown.",
+        "academy": "Academy",
+        "academyText": "Learn the pros' skills at your pace, even offline."
+      },
+      "feed": {
+        "title": "The pros' feed"
+      },
+      "gift": {
+        "title": "Give your mother a treat, from Paris to Cotonou",
+        "cta": "Send a gift home"
+      },
+      "footer": {
+        "label": "Information",
+        "help": "Help",
+        "terms": "Terms",
+        "privacy": "Privacy",
+        "credits": "Photo credits"
+      }
     }
   },
   "aside": {
@@ -368,6 +451,31 @@
       "bloom": "Payment received",
       "replay": "Replay",
       "bottomNav": "The bottom bar is shown at the bottom of this page on mobile."
+    },
+    "glow": {
+      "reduced": "Reduced animations",
+      "reducedText": "Try each animation with and without.",
+      "night": "A night section",
+      "action": "Book",
+      "openStories": "See the stories",
+      "shared": "The card becomes the page: seen between two screens.",
+      "like": "Like",
+      "pull": "Pull down with a finger, at the very top of the page.",
+      "openSheet": "Open the sheet",
+      "sheetText": "Pull the handle down to close.",
+      "bloom": "Done",
+      "replay": "Play again",
+      "trades": "The trades"
+    },
+    "media": {
+      "title": "Sorting the photos",
+      "intro": "Keep or reject each photo and video. Your choice stays on this device. Then copy the list of rejects and send it.",
+      "summary": "{kept} kept, {rejected} rejected",
+      "copy": "Copy the list of rejects",
+      "copied": "List copied",
+      "keep": "Keep",
+      "reject": "Reject",
+      "noAuthor": "author not stated"
     }
   },
   "auth": {

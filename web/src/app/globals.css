@@ -401,9 +401,14 @@ html[data-motion="reduced"] .sg-marquee-copy {
   }
 }
 
+/* A veil of the day colour that lifts as the section enters: the section itself stays night
+   coloured, so its text is readable at every moment. */
 @keyframes to-night {
   from {
-    background-color: var(--jour);
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }
 
@@ -415,9 +420,68 @@ html[data-motion="reduced"] .sg-marquee-copy {
     }
 
     html:not([data-motion="reduced"]) .sg-to-night {
+      isolation: isolate;
+    }
+
+    html:not([data-motion="reduced"]) .sg-to-night::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-color: var(--jour);
       animation: to-night linear both;
       animation-timeline: view();
-      animation-range: entry 0% entry 45%;
+      animation-range: entry 0% entry 25%;
+      pointer-events: none;
     }
+  }
+}
+
+/* Public home: choosing a trade with plain radio buttons. What is not chosen is not displayed,
+   so its picture is not downloaded. */
+.sg-chooser [data-show] {
+  display: none;
+}
+
+.sg-chooser:has(input[value="hair"]:checked) [data-show="hair"],
+.sg-chooser:has(input[value="braids"]:checked) [data-show="braids"],
+.sg-chooser:has(input[value="makeup"]:checked) [data-show="makeup"],
+.sg-chooser:has(input[value="nails"]:checked) [data-show="nails"],
+.sg-chooser:has(input[value="sewing"]:checked) [data-show="sewing"],
+.sg-chooser:has(input[value="headwrap"]:checked) [data-show="headwrap"],
+.sg-chooser:has(input[value="skincare"]:checked) [data-show="skincare"] {
+  display: block;
+  animation: fade-in 220ms var(--courbe-sortie);
+}
+
+/* An older browser without :has() keeps the first trade, and every link still works. */
+@supports not selector(:has(*)) {
+  .sg-chooser [data-show="hair"] {
+    display: block;
+  }
+}
+
+/* The name rises once. No fade: it must be there for the first paint. */
+.sg-rise {
+  animation: rise var(--duree-signature) var(--courbe-sortie) both;
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(0.08em);
+  }
+}
+
+/* The six digits of the receipt code, one after the other. */
+.sg-digit {
+  animation: line-up var(--duree-ouverture) var(--courbe-sortie) both;
+  animation-delay: calc(var(--line, 0) * 60ms);
+  animation-timeline: view();
+  animation-range: entry 10% entry 60%;
+}
+
+@supports not (animation-timeline: view()) {
+  .sg-digit {
+    animation: none;
   }
 }

@@ -18,6 +18,7 @@ from apps.ads.demo import seed_ads
 from apps.backoffice.demo import seed_backoffice
 from apps.booking.demo import seed_booking
 from apps.core.choices import Role
+from apps.core.demo_media import refresh_photos, seed_pro_photos
 from apps.core.models import Country
 from apps.gamification.demo import seed_games
 from apps.gifts.demo import seed_gifts
@@ -49,10 +50,18 @@ class Command(BaseCommand):
         parser.add_argument(
             "--force", action="store_true", help="Run even when DEBUG is off (tests)."
         )
+        parser.add_argument(
+            "--refresh-photos",
+            action="store_true",
+            help="Only replace the pictures of the demo accounts with the real photographs.",
+        )
 
     def handle(self, *args, **options):
         if not settings.DEBUG and not options["force"]:
             raise CommandError("seed_demo is for local development only (DEBUG is off).")
+        if options["refresh_photos"]:
+            self.stdout.write(self.style.SUCCESS(f"{refresh_photos()} pictures refreshed."))
+            return
         call_command("seed_core", verbosity=0)
         with transaction.atomic():
             created = self.seed_accounts()
@@ -68,6 +77,7 @@ class Command(BaseCommand):
         games = seed_games()
         ads = seed_ads()
         backoffice = seed_backoffice()
+        seed_pro_photos()
         self.stdout.write(
             self.style.SUCCESS(
                 f"seed_demo: {created} new demo accounts, {self.showcases} showcases filled, "
