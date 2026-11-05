@@ -147,7 +147,7 @@ describe("SignInFlow", () => {
 });
 
 describe("WelcomeFlow", () => {
-  it("records a talent with her trades, language and city, then blooms", async () => {
+  it("records a professional with her trades, language and city, then blooms", async () => {
     document.cookie = "sg_signed_in=1; path=/";
     const fetchMock = mockApi([
       { path: "/me", body: ME },
@@ -195,7 +195,7 @@ describe("WelcomeFlow", () => {
     });
   });
 
-  it("needs a trade before a talent can continue", async () => {
+  it("needs a trade before a professional can continue", async () => {
     document.cookie = "sg_signed_in=1; path=/";
     mockApi([
       { path: "/me", body: ME },

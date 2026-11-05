@@ -10,10 +10,10 @@ import { Stepper } from "./stepper";
 
 describe("Input", () => {
   it("links the label and the hint to the field", () => {
-    renderWithProviders(<Input label="Ton prénom" hint="Les talents le verront." />);
+    renderWithProviders(<Input label="Ton prénom" hint="Les professionnels le verront." />);
 
     const input = screen.getByLabelText("Ton prénom");
-    expect(input).toHaveAccessibleDescription("Les talents le verront.");
+    expect(input).toHaveAccessibleDescription("Les professionnels le verront.");
     expect(input).not.toHaveAttribute("aria-invalid");
   });
 

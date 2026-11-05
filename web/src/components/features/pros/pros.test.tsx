@@ -20,7 +20,7 @@ function signIn() {
 }
 
 describe("format helpers", () => {
-  it("names days, distances and today in the talent's time zone", () => {
+  it("names days, distances and today in the professional's time zone", () => {
     expect(weekdayName(0, "fr")).toBe("Lundi");
     expect(weekdayName(6, "en")).toBe("Sunday");
     expect(formatDistance(430, "fr")).toMatch(/^450\sm$/); // narrow no-break space
@@ -58,7 +58,7 @@ describe("LocalBusiness structured data", () => {
     expect(data.sameAs).toEqual(["https://www.instagram.com/aicha"]);
   });
 
-  it("never gives the address of a talent who only goes to her clients", () => {
+  it("never gives the address of a professional who only goes to her clients", () => {
     const homeOnly = { ...SHOWCASE, place: { ...SHOWCASE.place, receives_clients: false } };
     const text = JSON.stringify(localBusinessJsonLd(homeOnly, "https://x"));
     expect(text).not.toContain("Rue 12");
@@ -87,7 +87,7 @@ describe("ShowcaseView", () => {
     mockApi([]);
     renderWithProviders(<ShowcaseView showcase={SHOWCASE} />);
     expect(screen.getByRole("heading", { level: 1, name: "Aïcha Tresses" })).toBeInTheDocument();
-    expect(screen.getByText("Talent vérifié")).toBeInTheDocument();
+    expect(screen.getByText("Professionnel vérifié")).toBeInTheDocument();
     expect(screen.getByText("Knotless mi-dos")).toBeInTheDocument();
     expect(screen.getByText("En option : Mèches fournies")).toBeInTheDocument();
     expect(screen.getByText("Après la pharmacie, portail bleu.")).toBeInTheDocument();
@@ -98,7 +98,7 @@ describe("ShowcaseView", () => {
     expect(screen.getByRole("button", { name: /Je suis devant/ })).toBeInTheDocument();
   });
 
-  it("keeps the address of a home-visit talent private", () => {
+  it("keeps the address of a home-visit professional private", () => {
     const homeOnly = {
       ...SHOWCASE,
       place: { ...SHOWCASE.place, receives_clients: false, address: null, landmarks: "" },
@@ -110,7 +110,7 @@ describe("ShowcaseView", () => {
     expect(screen.getByText("Se déplace à domicile jusqu'à 12 km")).toBeInTheDocument();
   });
 
-  it("tells the talent when the client is at the door", async () => {
+  it("tells the professional when the client is at the door", async () => {
     const fetchMock = mockApi([
       { method: "POST", path: "/pros/aicha/arrival", body: { sent: true } },
     ]);

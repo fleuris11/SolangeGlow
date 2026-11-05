@@ -83,7 +83,7 @@ describe("PlanScreen", () => {
 });
 
 describe("Premium screens", () => {
-  it("offer the trial to a free talent", async () => {
+  it("offer the trial to a free professional", async () => {
     mockApi([{ path: "/me/glowpro", body: myPlan() }]);
     renderWithProviders(<CampaignsScreen />);
     expect(await screen.findByRole("heading", { name: "Fais revenir tes clients" })).toBeVisible();

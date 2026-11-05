@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-04 21:32+0100\n"
+"POT-Creation-Date: 2026-11-05 23:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -7240,6 +7240,18 @@ msgstr "Skupiny"
 
 msgid "Django site admin"
 msgstr "Administrácia Solange Glow"
+
+msgid "Online payment is closed"
+msgstr "Online platba je zatvorená"
+
+msgid "Free launch: no payment, no deposit, Premium offered. The screens say that payment opens soon."
+msgstr "Bezplatné spustenie: žiadna platba, žiadna záloha, Premium zadarmo. Obrazovky hovoria, že platba sa čoskoro otvorí."
+
+msgid "To open it: connect the payment keys below, then turn off the switch « Payments closed »."
+msgstr "Ako ju otvoriť: pripoj platobné kľúče nižšie a potom vypni prepínač « Platby zatvorené »."
+
+msgid "Open the switch"
+msgstr "Otvoriť prepínač"
 
 msgid "To configure"
 msgstr "Treba nastaviť"

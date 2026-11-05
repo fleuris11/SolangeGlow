@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { activeProKey, PRO_BAR, PRO_NAV, STAFF_NAV } from "./pro-nav";
 
-describe("the menu of a talent", () => {
+describe("the menu of a professional", () => {
   it("lights the most precise entry", () => {
     expect(activeProKey("/pro")).toBe("today");
     expect(activeProKey("/pro/agenda")).toBe("agenda");

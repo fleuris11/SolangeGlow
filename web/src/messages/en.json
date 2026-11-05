@@ -5,7 +5,7 @@
   },
   "manifest": {
     "shortName": "Solange Glow",
-    "description": "Find your beauty talent, book and shop safely."
+    "description": "Find your beauty professional, book and shop safely."
   },
   "common": {
     "close": "Close",
@@ -50,7 +50,7 @@
     "progress": "Step {current} of {total}"
   },
   "search": {
-    "label": "Search a talent or a look",
+    "label": "Search a professional or a look",
     "placeholder": "Braids, makeup…",
     "speak": "Speak",
     "listening": "Listening"
@@ -85,22 +85,22 @@
     },
     "join": {
       "title": "Join Solange Glow",
-      "clientTitle": "I'm looking for a talent",
+      "clientTitle": "I'm looking for a professional",
       "clientText": "Book, shop and pay safely.",
-      "proTitle": "I'm a talent",
+      "proTitle": "I'm a professional",
       "proText": "Show your work and fill your calendar."
     },
     "public": {
-      "title": "Find the talent who brings out your beauty",
+      "title": "Find the professional who brings out your beauty",
       "chooseTrade": "Choose a trade",
       "find": {
-        "hair": "Find my hair talent",
-        "braids": "Find my braiding talent",
-        "makeup": "Find my makeup talent",
-        "nails": "Find my nail talent",
+        "hair": "Find my hair professional",
+        "braids": "Find my braiding professional",
+        "makeup": "Find my makeup professional",
+        "nails": "Find my nail professional",
         "sewing": "Find my tailor",
-        "headwrap": "Find my headwrap talent",
-        "skincare": "Find my skincare talent"
+        "headwrap": "Find my headwrap professional",
+        "skincare": "Find my skincare professional"
       },
       "alt": {
         "hair": "Woman in profile, short afro and large hoop earrings.",
@@ -142,10 +142,10 @@
         "shop": "France Selection",
         "shopText": "Products from France delivered to Benin, final price shown.",
         "academy": "Academy",
-        "academyText": "Learn the talents' skills at your pace, even offline."
+        "academyText": "Learn the professionals' skills at your pace, even offline."
       },
       "feed": {
-        "title": "The talents' feed"
+        "title": "The professionals' feed"
       },
       "gift": {
         "title": "Give your mother a treat, from Paris to Cotonou",
@@ -157,7 +157,7 @@
   "explore": {
     "title": "Explore",
     "trades": "Trades",
-    "metaDescription": "Find a beauty and fashion talent near you: braids, hair, makeup, nails, sewing.",
+    "metaDescription": "Find a beauty and fashion professional near you: braids, hair, makeup, nails, sewing.",
     "intro": "Choose a trade, your city, or tap « Near me ».",
     "nearMe": "Near me",
     "locating": "Finding you…",
@@ -166,14 +166,14 @@
     "filtersCount": "Filters ({count})",
     "showMap": "Map",
     "showList": "List",
-    "mapLabel": "Map of the talents",
-    "results": "{count, plural, =-1 {Results} =0 {No pro} one {# talent found} other {# talents found}}",
-    "more": "See more talents",
-    "noResultTitle": "No talent matches",
+    "mapLabel": "Map of the professionals",
+    "results": "{count, plural, =-1 {Results} =0 {No professional} one {# professional found} other {# professionals found}}",
+    "more": "See more professionals",
+    "noResultTitle": "No professional matches",
     "noResultText": "Try another word, another city, or remove some filters.",
     "clear": "Clear everything",
     "card": {
-      "verified": "Verified talent",
+      "verified": "Verified professional",
       "distance": "{distance}, {place}",
       "atHome": "At your home",
       "open": "Open",
@@ -181,17 +181,17 @@
       "rating": "{rating} ({count})",
       "from": "from",
       "trained": "Trained on Solange Glow",
-      "topPro": "Top talent"
+      "topPro": "Top professional"
     },
     "filtersSheet": {
       "title": "Filters",
       "city": "City and district",
       "anyCity": "All",
       "openNow": "Open now",
-      "openNowText": "Only talents open right now.",
+      "openNowText": "Only professionals open right now.",
       "atHome": "Comes to your home",
-      "atHomeText": "The talent comes to you.",
-      "verified": "Verified talents",
+      "atHomeText": "The professional comes to you.",
+      "verified": "Verified professionals",
       "verifiedText": "Identity checked by Solange Glow.",
       "rating": "Rating",
       "anyRating": "All",
@@ -206,7 +206,7 @@
         "rating": "Best rated",
         "price": "Cheapest"
       },
-      "apply": "Show the talents",
+      "apply": "Show the professionals",
       "trained": "Trained on Solange Glow",
       "trainedText": "Finished a course of the Academy."
     }
@@ -219,8 +219,8 @@
   },
   "messages": {
     "title": "Messages",
-    "help": "Your conversations with talents and friends. Always pay in the app.",
-    "visitorTitle": "Write to talents",
+    "help": "Your conversations with professionals and friends. Always pay in the app.",
+    "visitorTitle": "Write to professionals",
     "visitorText": "Sign in to ask your questions, send a picture of the look or a voice message.",
     "visitorCta": "Sign in",
     "write": "Write",
@@ -232,7 +232,7 @@
       "requestsHelp": "People you do not follow want to write to you. Accept or decline: they do not know if you read it.",
       "noRequests": "No request",
       "emptyTitle": "No message yet",
-      "emptyText": "Write to a talent from her showcase: your conversations stay here.",
+      "emptyText": "Write to a professional from her showcase: your conversations stay here.",
       "error": "Your messages could not load. Check your connection.",
       "more": "See more conversations",
       "noMessage": "New conversation",
@@ -407,7 +407,7 @@
       "receiptCode": "Give your receipt code only once you have your parcel.",
       "from": "from",
       "nameLabel": "Your first name",
-      "nameHint": "Talents will see it.",
+      "nameHint": "Professionals will see it.",
       "phoneLabel": "Your WhatsApp number",
       "phoneError": "This number is incomplete. Check the 10 digits after +229.",
       "codeLabel": "Code received on WhatsApp",
@@ -422,9 +422,9 @@
       "toastSaved": "Posted",
       "toastWarning": "Pay in the app to be protected.",
       "levelIcon": "Icon",
-      "verified": "Verified talent",
+      "verified": "Verified professional",
       "emptyTitle": "No orders",
-      "emptyText": "Discover the shops of talents near you.",
+      "emptyText": "Discover the shops of professionals near you.",
       "emptyCta": "See the shops",
       "bloom": "Payment received",
       "replay": "Replay",
@@ -459,14 +459,14 @@
   "auth": {
     "metaTitle": "Sign in",
     "title": "Welcome to Solange Glow",
-    "titlePro": "Join Solange Glow as a talent",
+    "titlePro": "Join Solange Glow as a professional",
     "subtitle": "Your e-mail is enough. We send you a 6-digit code.",
     "method": "How do you want to get your code?",
     "byPhone": "Phone",
     "byEmail": "E-mail",
     "emailLabel": "Your e-mail address",
     "sendCode": "Get my code",
-    "privacy": "Your details stay private: talents do not see them.",
+    "privacy": "Your details stay private: professionals do not see them.",
     "welcomeBack": "Welcome back!",
     "phone": {
       "label": "Your phone number",
@@ -507,8 +507,8 @@
     "error": "We could not save. Check your internet, then try again.",
     "role": {
       "title": "What brings you here?",
-      "client": "I'm looking for a talent",
-      "pro": "I'm a talent",
+      "client": "I'm looking for a professional",
+      "pro": "I'm a professional",
       "trades": "Your trades"
     },
     "language": {
@@ -521,7 +521,7 @@
     },
     "done": {
       "title": "Welcome!",
-      "client": "Find your talent, book and pay safely.",
+      "client": "Find your professional, book and pay safely.",
       "pro": "Now create your showcase: it takes a few minutes.",
       "cta": "Discover",
       "proCta": "Create my showcase"
@@ -606,7 +606,7 @@
     "emptyTitle": "No alerts yet",
     "emptyText": "Your bookings, orders and messages will show here.",
     "visitorTitle": "Sign in to get your alerts",
-    "visitorText": "We tell you when a talent answers or an order moves on.",
+    "visitorText": "We tell you when a professional answers or an order moves on.",
     "signIn": "Sign in",
     "settings": {
       "title": "How should we tell you?",
@@ -657,7 +657,7 @@
       "previewTitle": "Preview of your showcase",
       "previewText": "It is not published yet: only you can see it.",
       "previewEdit": "Edit my showcase",
-      "verified": "Verified talent",
+      "verified": "Verified professional",
       "rating": "{rating} out of 5 ({count, plural, one {# review} other {# reviews}})",
       "noReviews": "New on Solange Glow",
       "openUntil": "Open until {time}",
@@ -705,7 +705,7 @@
       "arrivedDone": "She knows",
       "arrivedHelp": "One tap: {name} gets an alert right away.",
       "arrivedSent": "{name} knows you are outside.",
-      "arrivedSignIn": "Sign in to tell the talent you are here.",
+      "arrivedSignIn": "Sign in to tell the professional you are here.",
       "arrivedError": "The alert was not sent. Try again in a moment.",
       "more": "Languages and networks",
       "languages": "Languages spoken:",
@@ -717,7 +717,7 @@
         "website": "Website",
         "whatsapp": "WhatsApp"
       },
-      "notFoundTitle": "This talent does not exist",
+      "notFoundTitle": "This professional does not exist",
       "notFoundText": "The link may be misspelled. Look for her in Explore.",
       "posts": "Posts",
       "shop": "Her shop",
@@ -737,7 +737,7 @@
         "published": "Online",
         "suspended": "Suspended"
       },
-      "verifiedBadge": "Verified talent",
+      "verifiedBadge": "Verified professional",
       "see": "See my showcase",
       "preview": "See the preview",
       "suspendedTitle": "Your showcase is suspended",
@@ -1002,11 +1002,11 @@
       },
       "verification": {
         "title": "Verification",
-        "help": "Your identity document and a selfie: the « Verified talent » badge.",
+        "help": "Your identity document and a selfie: the « Verified professional » badge.",
         "state": {
           "none": "Not verified yet",
           "pending": "Documents being checked",
-          "verified": "Verified talent",
+          "verified": "Verified professional",
           "rejected": "Verification refused"
         },
         "reason": "Reason: {reason}",
@@ -1072,7 +1072,7 @@
       "boostHelp": "Come first in the search, for 1 day or 1 week."
     },
     "become": {
-      "title": "Become a talent",
+      "title": "Become a professional",
       "signInFirst": "Sign in first: your showcase will belong to your account.",
       "signIn": "Sign in",
       "steps": {
@@ -1134,14 +1134,14 @@
     "entry": {
       "myShowcase": "My business",
       "myShowcaseText": "Appointments, services, shop and my showcase.",
-      "becomePro": "Become a talent",
+      "becomePro": "Become a professional",
       "becomeProText": "Your free showcase, found by clients near you."
     }
   },
   "social": {
     "post": {
       "noCaption": "Post by {name}",
-      "verified": "Verified talent",
+      "verified": "Verified professional",
       "before": "Before",
       "after": "After",
       "beforeAfterAlt": "{label}: {caption}",
@@ -1205,8 +1205,8 @@
       "titleSignedIn": "Your feed",
       "more": "See more posts",
       "emptyTitle": "Your feed is still empty",
-      "emptyText": "Follow talents near you to see their work here.",
-      "emptyCta": "Discover talents"
+      "emptyText": "Follow professionals near you to see their work here.",
+      "emptyCta": "Discover professionals"
     },
     "comments": {
       "title": "Comments",
@@ -1311,8 +1311,8 @@
       "title": "People I follow",
       "help": "Their posts come first in your feed.",
       "emptyTitle": "You follow nobody yet",
-      "emptyText": "Discover talents near you and follow your favourites.",
-      "emptyCta": "Discover talents",
+      "emptyText": "Discover professionals near you and follow your favourites.",
+      "emptyCta": "Discover professionals",
       "posts": "{count, plural, =0 {No post} one {# post} other {# posts}}",
       "unfollow": "Unfollow"
     },
@@ -1393,7 +1393,7 @@
       "points": "My points and games",
       "routine": "My routine",
       "calendar": "Calendar of celebrations",
-      "rankings": "Rankings of the talents"
+      "rankings": "Rankings of the professionals"
     }
   },
   "payments": {
@@ -1595,6 +1595,20 @@
       "taxId": "Tax number",
       "taxIdKept": "Already saved ({hint}): leave empty to keep it",
       "save": "Save"
+    },
+    "soon": {
+      "title": "Online payment opens soon",
+      "text": "For now, nothing is paid in the app.",
+      "shop": "Your cart is kept. Meanwhile, write to the seller from their shop to arrange it together.",
+      "selection": "Keep this product in mind: you can order it as soon as payment opens.",
+      "course": "This course will be paid once payment opens. Free courses are already open.",
+      "pass": "The pass opens with online payment. Free courses are already open.",
+      "gift": "Offering a service, a product or a card comes with online payment.",
+      "boost": "Your showcase stays visible in the search, for free.",
+      "premium": "During the launch, Premium is offered: everything is already open for you.",
+      "salon": "For now, gift cards and packages are bought directly from the professional.",
+      "freeCourses": "See the free courses",
+      "giftTitle": "Gifts are coming soon"
     }
   },
   "shop": {
@@ -1625,7 +1639,7 @@
       "back": "{name}'s showcase",
       "title": "{name}'s shop",
       "metaDescription": "{count, plural, one {# product} other {# products}} at {name}, secure payment.",
-      "verified": "Verified talent",
+      "verified": "Verified professional",
       "closed": "The shop is paused: you can look, not order.",
       "categories": "Categories",
       "all": "All",
@@ -1639,7 +1653,7 @@
       "back": "{name}'s shop",
       "photos": "Product pictures",
       "photoN": "Picture {n}",
-      "verified": "Verified talent",
+      "verified": "Verified professional",
       "prep": "Prepared in {count, plural, one {# day} other {# days}}",
       "ready": "Ready at once",
       "description": "Description",
@@ -1686,8 +1700,8 @@
       "title": "My cart",
       "error": "That did not work. Try again.",
       "empty": "Your cart is empty",
-      "emptyHelp": "Discover the shops of the talents near you.",
-      "explore": "Discover the talents",
+      "emptyHelp": "Discover the shops of the professionals near you.",
+      "explore": "Discover the professionals",
       "closed": "Shop paused: these items wait until it opens again.",
       "onlyLeft": "Only {count} in stock",
       "gone": "This product is no longer on sale.",
@@ -1700,8 +1714,8 @@
       "nothingReady": "Nothing can be ordered for now."
     },
     "modes": {
-      "pickup": "Pick-up at the talent's",
-      "seller": "Delivered by the talent",
+      "pickup": "Pick-up at the professional's",
+      "seller": "Delivered by the professional",
       "partner": "Partner delivery",
       "partnerNamed": "Delivery by {name}"
     },
@@ -1716,9 +1730,9 @@
       "prep": "Preparation: {count, plural, one {# day} other {# days}}.",
       "zone": "Your area",
       "promo": "Promo code (optional)",
-      "note": "A note for the talent (optional)",
+      "note": "A note for the professional (optional)",
       "whereTitle": "Where to deliver",
-      "whereHelp": "The talent sees your address and number only after payment.",
+      "whereHelp": "The professional sees your address and number only after payment.",
       "address": "Address or area",
       "landmarks": "Landmarks (optional)",
       "phone": "Phone for the delivery",
@@ -1770,9 +1784,9 @@
       "sales": "My sales",
       "onlyActive": "Only those to handle",
       "noPurchase": "No order yet",
-      "noPurchaseHelp": "The shops of the talents are waiting for you.",
+      "noPurchaseHelp": "The shops of the professionals are waiting for you.",
       "noSale": "No sale yet",
-      "explore": "Discover the talents",
+      "explore": "Discover the professionals",
       "line": "{reference}, {count, plural, one {# item} other {# items}}"
     },
     "steps": {
@@ -1839,7 +1853,7 @@
       "help": "We tell you when a price drops.",
       "empty": "Nothing in your wishlist",
       "emptyHelp": "Tap the heart of a product to keep it here.",
-      "explore": "Discover the talents",
+      "explore": "Discover the professionals",
       "error": "That did not work. Try again.",
       "removed": "Removed from your wishlist",
       "flash": "Flash sale -{percent}%",
@@ -2168,7 +2182,7 @@
       "clients": "Client files"
     },
     "status": {
-      "pending": "Waiting for the talent",
+      "pending": "Waiting for the professional",
       "awaiting_deposit": "Deposit to pay",
       "confirmed": "Confirmed",
       "proposed": "Another time proposed",
@@ -2182,10 +2196,10 @@
     "page": {
       "back": "Back to {name}",
       "title": "Book with {name}",
-      "verified": "Verified talent",
+      "verified": "Verified professional",
       "metaDescription": "Book online with {name} in {city}: choose your service and your time, for free.",
       "lastMinute": "Last minute: -{percent}% on the times of the next {hours} hours",
-      "noService": "This talent has no service to book yet."
+      "noService": "This professional has no service to book yet."
     },
     "flow": {
       "titleService": "Choose your service",
@@ -2219,12 +2233,12 @@
       "price": "Price",
       "depositLabel": "Deposit to pay now",
       "depositHelp": "Your money is held safely until the appointment.",
-      "cancelRule": "Free cancellation up to {hours} h before. After that, the talent keeps the deposit.",
-      "manual": "The talent accepts each request. You get her answer on WhatsApp.",
+      "cancelRule": "Free cancellation up to {hours} h before. After that, the professional keeps the deposit.",
+      "manual": "The professional accepts each request. You get her answer on WhatsApp.",
       "signInDeposit": "Sign in to pay the deposit safely.",
-      "signInNeeded": "This talent asks for an account to book.",
+      "signInNeeded": "This professional asks for an account to book.",
       "signIn": "Sign in",
-      "note": "A word for the talent (optional)",
+      "note": "A word for the professional (optional)",
       "noteHint": "Hair length, allergy, photo of the style…",
       "groupTitle": "Booking for several people?",
       "less": "One person less",
@@ -2247,7 +2261,7 @@
       "giftCodeHint": "Its code pays the deposit.",
       "consent": "I agree to get offers from {name} (I can say no at any time).",
       "titlePlace": "Where?",
-      "atHome": "At my home, the talent comes to me",
+      "atHome": "At my home, the professional comes to me",
       "travelFee": "Travel fee: {amount}",
       "paused": "{name} is not taking online bookings for now. You can message her.",
       "homeAddress": "Your address"
@@ -2287,7 +2301,7 @@
       "accept": "I accept this time",
       "accepted": "It's confirmed",
       "refuse": "No, it doesn't suit me",
-      "refused": "Answer sent to the talent",
+      "refused": "Answer sent to the professional",
       "held": "A place freed up for you",
       "heldHelp": "It is kept for 30 minutes. After that, it goes to the next person.",
       "take": "I take this place",
@@ -2302,28 +2316,28 @@
       "payment": {
         "held": "paid, held safely",
         "refunded": "refunded",
-        "released": "paid to the talent",
+        "released": "paid to the professional",
         "pending": "to pay"
       },
       "reference": "Reference",
       "advice": "Advice from {name}",
       "photos": "Photos of the result",
       "review": "Leave a review",
-      "lateRule": "It is too late to cancel for free: the talent keeps the deposit.",
+      "lateRule": "It is too late to cancel for free: the professional keeps the deposit.",
       "freeUntil": "Free cancellation until {when}.",
       "cancel": "Cancel the appointment",
       "cancelTitle": "Cancel this appointment?",
       "cancelFree": "It's free: your deposit is refunded.",
-      "cancelLate": "It's late: the talent keeps the deposit.",
+      "cancelLate": "It's late: the professional keeps the deposit.",
       "cancelConfirm": "Yes, cancel",
       "cancelled": "Appointment cancelled",
       "keep": "No, I keep my appointment",
-      "lateNoDeposit": "Cancel as early as you can: the talent can give the place to someone else.",
-      "cancelNoDeposit": "The talent is told at once.",
+      "lateNoDeposit": "Cancel as early as you can: the professional can give the place to someone else.",
+      "cancelNoDeposit": "The professional is told at once.",
       "qr": {
         "title": "Your appointment QR code",
         "arrived": "Your arrival is noted. Enjoy!",
-        "help": "Show it to the talent when you arrive. She scans it and sees your appointment.",
+        "help": "Show it to the professional when you arrive. She scans it and sees your appointment.",
         "download": "Download my QR code",
         "alt": "QR code of appointment {reference}"
       }
@@ -2331,8 +2345,8 @@
     "list": {
       "title": "My appointments",
       "empty": "No appointment yet",
-      "emptyHelp": "Find a talent near you and book in a few taps.",
-      "explore": "Find a talent",
+      "emptyHelp": "Find a professional near you and book in a few taps.",
+      "explore": "Find a professional",
       "upcoming": "Coming up",
       "noUpcoming": "Nothing planned.",
       "past": "Past",
@@ -2342,7 +2356,7 @@
     },
     "agenda": {
       "noAgenda": "You have no agenda yet",
-      "noAgendaHelp": "Create your talent showcase: your agenda is ready at once.",
+      "noAgendaHelp": "Create your professional showcase: your agenda is ready at once.",
       "becomePro": "Create my showcase",
       "error": "That did not work. Try again in a moment.",
       "title": "My agenda",
@@ -2568,7 +2582,7 @@
     },
     "plan": {
       "title": "My plan",
-      "notPro": "Create your talent showcase first.",
+      "notPro": "Create your professional showcase first.",
       "trialUntil": "Free trial until {date}",
       "pastDue": "Month not paid: Premium until {date}",
       "endsOn": "Premium stops on {date}",
@@ -3167,7 +3181,7 @@
       "title": "Trainer space",
       "intro": "Create your video courses, sell them, follow your students.",
       "error": "Your space does not show. Try again in a moment.",
-      "notPro": "Create your talent showcase first",
+      "notPro": "Create your professional showcase first",
       "notProHelp": "Courses are published on your showcase.",
       "becomePro": "Create my showcase",
       "closed": "The Academy is not open in your country yet.",
@@ -3552,7 +3566,7 @@
       "photo": "Photo received"
     },
     "useStatus": {
-      "pending": "Waiting for the talent",
+      "pending": "Waiting for the professional",
       "awaiting_deposit": "Waiting",
       "confirmed": "Confirmed",
       "proposed": "Another time offered",
@@ -3587,11 +3601,11 @@
       "amount": "Amount in euros",
       "amountHint": "Between {min} and {max}.",
       "serviceTitle": "A service",
-      "serviceHelp": "Open the showcase of a talent in Benin and tap « Offer a service ».",
-      "findPro": "Find a talent",
+      "serviceHelp": "Open the showcase of a professional in Benin and tap « Offer a service ».",
+      "findPro": "Find a professional",
       "productTitle": "A product",
       "productHelp": "Open a product page and tap « Offer this product ».",
-      "noService": "This talent has no fixed-price service in FCFA to offer.",
+      "noService": "This professional has no fixed-price service in FCFA to offer.",
       "whichService": "Which service at {name}?",
       "howDelivered": "How the product arrives",
       "pickup": "Pick-up at the shop",
@@ -3762,7 +3776,7 @@
     },
     "proLevels": {
       "confirmed": "Confirmed",
-      "top": "Top talent"
+      "top": "Top professional"
     },
     "streak": {
       "aria": "{count, plural, =0 {No streak} one {# day in a row} other {# days in a row}}"
@@ -3802,7 +3816,7 @@
       "gamesTitle": "Play and win",
       "rewards": {
         "title": "Exchange my points",
-        "help": "Discounts are paid by Solange Glow, never by the talents.",
+        "help": "Discounts are paid by Solange Glow, never by the professionals.",
         "none": "No reward for now.",
         "soldOut": "Sold out",
         "locked": "From the {level} level",
@@ -3964,12 +3978,12 @@
       "none": "No celebration to come",
       "today": "It is today!",
       "inDays": "{count, plural, one {In # day} other {In # days}}",
-      "findPro": "Find a talent",
+      "findPro": "Find a professional",
       "offer": "Offer a gift"
     },
     "rankings": {
       "title": "Rankings",
-      "help": "The best talents of the month, from the verified reviews of the clients.",
+      "help": "The best professionals of the month, from the verified reviews of the clients.",
       "none": "No ranking yet",
       "month": "Ranking of {month}",
       "city": "City",
@@ -4043,7 +4057,7 @@
     "house": "Solange Glow promotion",
     "discover": "Discover",
     "seeShowcase": "See her page",
-    "verified": "Verified talent",
+    "verified": "Verified professional",
     "rating": "{average} out of 5 ({count, plural, one {# review} other {# reviews}})",
     "proAria": "Sponsored: {name}",
     "productAria": "Sponsored product: {name}",
@@ -4176,18 +4190,18 @@
         "title": "I just want an appointment",
         "text": "No account needed. Your name and number are enough.",
         "items": {
-          "a": "See talents, their photos and their prices",
+          "a": "See professionals, their photos and their prices",
           "b": "Book and get a reminder",
           "c": "See shops and free courses"
         },
-        "cta": "Find a talent"
+        "cta": "Find a professional"
       },
       "client": {
         "title": "I want an account",
         "text": "Free, with your number or email.",
         "items": {
           "a": "Buy safely",
-          "b": "Message and call talents",
+          "b": "Message and call professionals",
           "c": "Follow, review and post",
           "d": "Learn, play, earn points"
         },
@@ -4210,7 +4224,7 @@
       "title": "Everything you can do",
       "more": "See how it works",
       "find": {
-        "title": "Find a talent near you",
+        "title": "Find a professional near you",
         "text": "Map, directions, hours, verified reviews."
       },
       "book": {
@@ -4219,10 +4233,10 @@
       },
       "qr": {
         "title": "Your appointment QR code",
-        "text": "Show it when you arrive, the talent scans it."
+        "text": "Show it when you arrive, the professional scans it."
       },
       "feed": {
-        "title": "See the talents' work",
+        "title": "See the professionals' work",
         "text": "Photos, videos, before and after, stories."
       },
       "talk": {
@@ -4261,7 +4275,7 @@
     "booking": {
       "title": "Your appointment, without calling",
       "items": {
-        "a": "Choose your talent, your service and your time.",
+        "a": "Choose your professional, your service and your time.",
         "b": "No account? Your name and number are enough.",
         "c": "You get a reminder and your appointment QR code."
       },
@@ -4292,7 +4306,7 @@
       "help": "See all the help",
       "account": {
         "q": "Do I need an account to book?",
-        "a": "No. Your name and number are enough. To buy, message a talent or leave a review, you need an account."
+        "a": "No. Your name and number are enough. To buy, message a professional or leave a review, you need an account."
       },
       "signup": {
         "q": "How do I create an account?",
@@ -4304,11 +4318,11 @@
       },
       "qr": {
         "q": "What are the QR codes for?",
-        "a": "A talent prints hers so clients can book. A client also gets her own once the appointment is confirmed, and shows it on arrival."
+        "a": "A professional prints hers so clients can book. A client also gets her own once the appointment is confirmed, and shows it on arrival."
       },
       "payment": {
         "q": "Is my money protected?",
-        "a": "Yes. Your money stays held. The talent is paid when you give your receipt code."
+        "a": "Yes. Your money stays held. The professional is paid when you give your receipt code."
       },
       "france": {
         "q": "I am in France. Can I give to Benin?",
@@ -4321,7 +4335,7 @@
     },
     "footer": {
       "forYou": "For you",
-      "explore": "Find a talent",
+      "explore": "Find a professional",
       "gift": "Give back home",
       "games": "Games and rankings",
       "proTools": "All the tools",
@@ -4374,7 +4388,7 @@
           "c": "Before and after photos and videos",
           "d": "Verified reviews from real clients",
           "e": "Map, directions and landmarks to find you",
-          "f": "« Verified talent » badge"
+          "f": "« Verified professional » badge"
         }
       },
       "agenda": {
@@ -4477,12 +4491,12 @@
         "cannot": "Cannot",
         "guest": {
           "title": "No account",
-          "can": "See talents, posts, shops and free courses. Book with a name and a number.",
+          "can": "See professionals, posts, shops and free courses. Book with a name and a number.",
           "cannot": "Buy, message privately, review, earn points."
         },
         "client": {
           "title": "Client",
-          "can": "All that, and buy, message, call, review, follow talents, post, learn and play.",
+          "can": "All that, and buy, message, call, review, follow professionals, post, learn and play.",
           "cannot": "Sell."
         },
         "solo": {
@@ -4506,27 +4520,27 @@
         "steps": {
           "a": "Enter your phone number or email.",
           "b": "Type the code received on WhatsApp, by SMS or by email.",
-          "c": "Choose your city and language. If you are a talent, choose « I offer services »."
+          "c": "Choose your city and language. If you are a professional, choose « I offer services »."
         },
-        "note": "Signing in is the same: your number or email, then the code. To sell or get paid, a talent also sends an ID and a selfie."
+        "note": "Signing in is the same: your number or email, then the code. To sell or get paid, a professional also sends an ID and a selfie."
       },
       "booking": {
         "short": "Appointments",
         "title": "Book an appointment",
-        "cta": "Find a talent",
+        "cta": "Find a professional",
         "steps": {
-          "a": "Choose your talent, service and time. From her page, her QR code or a post.",
+          "a": "Choose your professional, service and time. From her page, her QR code or a post.",
           "b": "With an account, you book directly. Without one, give your name and number, then keep the link you receive.",
-          "c": "The talent confirms, or proposes another time. If she asks for a deposit, you pay it online.",
+          "c": "The professional confirms, or proposes another time. If she asks for a deposit, you pay it online.",
           "d": "You get a reminder. You can cancel under the rules shown.",
-          "e": "Once confirmed, your appointment shows your QR code. Show it on arrival: the talent scans it.",
+          "e": "Once confirmed, your appointment shows your QR code. Show it on arrival: the professional scans it.",
           "f": "No slot left? Join the waiting list. You can also book as a group, for a wedding for example."
         }
       },
       "payment": {
         "short": "Payment",
         "title": "Pay safely",
-        "cta": "See the talents",
+        "cta": "See the professionals",
         "steps": {
           "a": "You pay online. The money does not go to the seller: it stays held.",
           "b": "The seller prepares your order and hands it over or sends it.",
@@ -4768,7 +4782,7 @@
     "hero": {
       "first": "Book. Scan.",
       "second": "Glow.",
-      "line": "Hair, braids, makeup, nails, sewing. Find a talent and book without calling, even without an account."
+      "line": "Hair, braids, makeup, nails, sewing. Find a professional and book without calling, even without an account."
     },
     "ticket": {
       "trade": "What you want",
@@ -4784,12 +4798,12 @@
         "evening": "Saturday 5 pm"
       },
       "show": "Your QR code. Show it when you arrive.",
-      "qrAlt": "Sample QR code: it opens the talents in {trade}."
+      "qrAlt": "Sample QR code: it opens the professionals in {trade}."
     },
     "sides": {
       "title": "One account, two sides",
       "line": "Go from one to the other whenever you like.",
-      "legend": "I am looking for a talent, or I offer my services",
+      "legend": "I am looking for a professional, or I offer my services",
       "seek": "I look",
       "offer": "I offer",
       "seeAll": "See everything",
@@ -4802,7 +4816,7 @@
       "title": "How it works",
       "more": "See each service in detail",
       "choose": {
-        "title": "First, choose your talent.",
+        "title": "First, choose your professional.",
         "text": "By trade, by city or on the map. You see photos, prices and reviews."
       },
       "book": {
@@ -4811,12 +4825,12 @@
       },
       "show": {
         "title": "Finally, show your QR code.",
-        "text": "You get a reminder. When you arrive, the talent scans it: done."
+        "text": "You get a reminder. When you arrive, the professional scans it: done."
       },
       "ui": {
-        "label": "Sample of the app: talents, free slots, then the QR code of the appointment.",
+        "label": "Sample of the app: professionals, free slots, then the QR code of the appointment.",
         "resultsTitle": "Braids near you",
-        "resultsLine": "3 talents open on Saturday",
+        "resultsLine": "3 professionals open on Saturday",
         "talents": {
           "a": {
             "name": "Aïcha Tresses",
@@ -4986,7 +5000,7 @@
         }
       },
       "all": {
-        "name": "All talents",
+        "name": "All professionals",
         "alt": "Makeup palette and brushes on a table.",
         "subs": {
           "a": "Map",

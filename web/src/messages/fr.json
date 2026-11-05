@@ -5,7 +5,7 @@
   },
   "manifest": {
     "shortName": "Solange Glow",
-    "description": "Trouve ton talent beauté, réserve et achète en sécurité."
+    "description": "Trouve ton professionnel de la beauté, réserve et achète en sécurité."
   },
   "common": {
     "close": "Fermer",
@@ -50,7 +50,7 @@
     "progress": "Étape {current} sur {total}"
   },
   "search": {
-    "label": "Chercher un talent ou un look",
+    "label": "Chercher un professionnel ou un look",
     "placeholder": "Tresses, maquillage…",
     "speak": "Parler",
     "listening": "J'écoute"
@@ -85,22 +85,22 @@
     },
     "join": {
       "title": "Rejoins Solange Glow",
-      "clientTitle": "Je cherche un talent",
+      "clientTitle": "Je cherche un professionnel",
       "clientText": "Réserve, achète et paie en sécurité.",
       "proTitle": "Je propose mes services",
       "proText": "Montre ton travail et remplis ton agenda."
     },
     "public": {
-      "title": "Trouve le talent qui sublime ta beauté",
+      "title": "Trouve le professionnel qui sublime ta beauté",
       "chooseTrade": "Choisis un métier",
       "find": {
-        "hair": "Trouver un talent : coiffure",
-        "braids": "Trouver un talent : tresses",
-        "makeup": "Trouver un talent : maquillage",
-        "nails": "Trouver un talent : ongles",
-        "sewing": "Trouver un talent : couture",
-        "headwrap": "Trouver un talent : foulard",
-        "skincare": "Trouver un talent : esthétique"
+        "hair": "Trouver un professionnel : coiffure",
+        "braids": "Trouver un professionnel : tresses",
+        "makeup": "Trouver un professionnel : maquillage",
+        "nails": "Trouver un professionnel : ongles",
+        "sewing": "Trouver un professionnel : couture",
+        "headwrap": "Trouver un professionnel : foulard",
+        "skincare": "Trouver un professionnel : esthétique"
       },
       "alt": {
         "hair": "Femme de profil, coiffure afro courte et grandes créoles.",
@@ -142,10 +142,10 @@
         "shop": "Sélection France",
         "shopText": "Les produits de France livrés au Bénin, prix final affiché.",
         "academy": "Académie",
-        "academyText": "Apprends les gestes des talents, à ton rythme, même hors ligne."
+        "academyText": "Apprends les gestes des professionnels, à ton rythme, même hors ligne."
       },
       "feed": {
-        "title": "Le fil des talents"
+        "title": "Le fil des professionnels"
       },
       "gift": {
         "title": "Offre un soin à ta mère, de Paris à Cotonou",
@@ -157,7 +157,7 @@
   "explore": {
     "title": "Explorer",
     "trades": "Métiers",
-    "metaDescription": "Trouve un talent beauté et mode près de chez toi : tresses, coiffure, maquillage, ongles, couture.",
+    "metaDescription": "Trouve un professionnel de la beauté et de la mode près de chez toi : tresses, coiffure, maquillage, ongles, couture.",
     "intro": "Choisis un métier, ta ville, ou appuie sur « Près de moi ».",
     "nearMe": "Près de moi",
     "locating": "Je cherche…",
@@ -166,14 +166,14 @@
     "filtersCount": "Filtres ({count})",
     "showMap": "Carte",
     "showList": "Liste",
-    "mapLabel": "Carte des talents",
-    "results": "{count, plural, =-1 {Résultats} =0 {Aucun talent} one {# talent trouvé} other {# talents trouvés}}",
-    "more": "Voir plus de talents",
-    "noResultTitle": "Aucun talent ne correspond",
+    "mapLabel": "Carte des professionnels",
+    "results": "{count, plural, =-1 {Résultats} =0 {Aucun professionnel} one {# professionnel trouvé} other {# professionnels trouvés}}",
+    "more": "Voir plus de professionnels",
+    "noResultTitle": "Aucun professionnel ne correspond",
     "noResultText": "Essaie un autre mot, une autre ville, ou enlève des filtres.",
     "clear": "Tout effacer",
     "card": {
-      "verified": "Talent vérifié",
+      "verified": "Professionnel vérifié",
       "distance": "{distance}, {place}",
       "atHome": "À domicile",
       "open": "Ouvert",
@@ -181,17 +181,17 @@
       "rating": "{rating} ({count})",
       "from": "dès",
       "trained": "Formation Solange Glow",
-      "topPro": "Top talent"
+      "topPro": "Top professionnel"
     },
     "filtersSheet": {
       "title": "Filtres",
       "city": "Ville et quartier",
       "anyCity": "Toutes",
       "openNow": "Ouvert maintenant",
-      "openNowText": "Seulement les talents ouverts en ce moment.",
+      "openNowText": "Seulement les professionnels ouverts en ce moment.",
       "atHome": "Se déplace à domicile",
-      "atHomeText": "Le talent vient chez toi.",
-      "verified": "Talents vérifiés",
+      "atHomeText": "Le professionnel vient chez toi.",
+      "verified": "Professionnels vérifiés",
       "verifiedText": "Identité contrôlée par Solange Glow.",
       "rating": "Note",
       "anyRating": "Toutes",
@@ -206,7 +206,7 @@
         "rating": "Les mieux notées",
         "price": "Les moins chères"
       },
-      "apply": "Voir les talents",
+      "apply": "Voir les professionnels",
       "trained": "Formation Solange Glow",
       "trainedText": "A terminé une formation de l'Académie."
     }
@@ -219,8 +219,8 @@
   },
   "messages": {
     "title": "Messages",
-    "help": "Tes discussions avec les talents et tes proches. Paie toujours dans l'appli.",
-    "visitorTitle": "Écris aux talents",
+    "help": "Tes discussions avec les professionnels et tes proches. Paie toujours dans l'appli.",
+    "visitorTitle": "Écris aux professionnels",
     "visitorText": "Connecte-toi pour poser tes questions, envoyer une photo du modèle ou un message vocal.",
     "visitorCta": "Me connecter",
     "write": "Écrire",
@@ -232,7 +232,7 @@
       "requestsHelp": "Des personnes que tu ne suis pas veulent t'écrire. Accepte ou refuse : elles ne savent pas si tu as lu.",
       "noRequests": "Aucune demande",
       "emptyTitle": "Aucun message pour l'instant",
-      "emptyText": "Écris à un talent depuis sa vitrine : tes échanges restent ici.",
+      "emptyText": "Écris à un professionnel depuis sa vitrine : tes échanges restent ici.",
       "error": "Impossible de charger tes messages. Vérifie ta connexion.",
       "more": "Voir plus de conversations",
       "noMessage": "Nouvelle conversation",
@@ -407,7 +407,7 @@
       "receiptCode": "Donne ton code de réception seulement quand tu as ton colis.",
       "from": "dès",
       "nameLabel": "Ton prénom",
-      "nameHint": "Les talents le verront.",
+      "nameHint": "Les professionnels le verront.",
       "phoneLabel": "Ton numéro WhatsApp",
       "phoneError": "Ce numéro est incomplet. Vérifie les 10 chiffres après +229.",
       "codeLabel": "Code reçu sur WhatsApp",
@@ -422,9 +422,9 @@
       "toastSaved": "Publié",
       "toastWarning": "Paie dans l'appli pour être protégée.",
       "levelIcon": "Icône",
-      "verified": "Talent vérifié",
+      "verified": "Professionnel vérifié",
       "emptyTitle": "Aucune commande",
-      "emptyText": "Découvre les boutiques des talents près de toi.",
+      "emptyText": "Découvre les boutiques des professionnels près de toi.",
       "emptyCta": "Voir les boutiques",
       "bloom": "Paiement reçu",
       "replay": "Rejouer",
@@ -466,7 +466,7 @@
     "byEmail": "E-mail",
     "emailLabel": "Ton adresse e-mail",
     "sendCode": "Recevoir mon code",
-    "privacy": "Tes coordonnées restent privées : les talents ne les voient pas.",
+    "privacy": "Tes coordonnées restent privées : les professionnels ne les voient pas.",
     "welcomeBack": "Te revoilà !",
     "phone": {
       "label": "Ton numéro de téléphone",
@@ -507,7 +507,7 @@
     "error": "On n'a pas pu enregistrer. Vérifie ton internet, puis réessaie.",
     "role": {
       "title": "Tu viens pour quoi ?",
-      "client": "Je cherche un talent",
+      "client": "Je cherche un professionnel",
       "pro": "Je propose mes services",
       "trades": "Tes métiers"
     },
@@ -521,7 +521,7 @@
     },
     "done": {
       "title": "Bienvenue !",
-      "client": "Trouve ton talent, réserve et paie en sécurité.",
+      "client": "Trouve ton professionnel, réserve et paie en sécurité.",
       "pro": "Il te reste à créer ta vitrine : quelques minutes suffisent.",
       "cta": "Découvrir",
       "proCta": "Créer ma vitrine"
@@ -606,7 +606,7 @@
     "emptyTitle": "Aucune alerte pour l'instant",
     "emptyText": "Tes rendez-vous, commandes et messages s'afficheront ici.",
     "visitorTitle": "Connecte-toi pour recevoir tes alertes",
-    "visitorText": "On te prévient quand un talent répond ou qu'une commande avance.",
+    "visitorText": "On te prévient quand un professionnel répond ou qu'une commande avance.",
     "signIn": "Me connecter",
     "settings": {
       "title": "Comment te prévenir ?",
@@ -657,7 +657,7 @@
       "previewTitle": "Aperçu de ta vitrine",
       "previewText": "Elle n'est pas encore publiée : toi seule la vois.",
       "previewEdit": "Modifier ma vitrine",
-      "verified": "Talent vérifié",
+      "verified": "Professionnel vérifié",
       "rating": "{rating} sur 5 ({count, plural, one {# avis} other {# avis}})",
       "noReviews": "Nouvelle sur Solange Glow",
       "openUntil": "Ouvert jusqu'à {time}",
@@ -705,7 +705,7 @@
       "arrivedDone": "Elle est prévenue",
       "arrivedHelp": "Un seul geste : {name} reçoit une alerte tout de suite.",
       "arrivedSent": "{name} sait que tu es devant.",
-      "arrivedSignIn": "Connecte-toi pour prévenir le talent que tu es là.",
+      "arrivedSignIn": "Connecte-toi pour prévenir le professionnel que tu es là.",
       "arrivedError": "L'alerte n'est pas partie. Réessaie dans un instant.",
       "more": "Langues et réseaux",
       "languages": "Langues parlées :",
@@ -717,7 +717,7 @@
         "website": "Site web",
         "whatsapp": "WhatsApp"
       },
-      "notFoundTitle": "Ce talent n'existe pas",
+      "notFoundTitle": "Ce professionnel n'existe pas",
       "notFoundText": "Le lien est peut-être mal écrit. Cherche-la dans Explorer.",
       "posts": "Publications",
       "shop": "Sa boutique",
@@ -737,7 +737,7 @@
         "published": "En ligne",
         "suspended": "Suspendue"
       },
-      "verifiedBadge": "Talent vérifié",
+      "verifiedBadge": "Professionnel vérifié",
       "see": "Voir ma vitrine",
       "preview": "Voir l'aperçu",
       "suspendedTitle": "Ta vitrine est suspendue",
@@ -1002,11 +1002,11 @@
       },
       "verification": {
         "title": "Vérification",
-        "help": "Ta pièce d'identité et un selfie : le badge « Talent vérifié ».",
+        "help": "Ta pièce d'identité et un selfie : le badge « Professionnel vérifié ».",
         "state": {
           "none": "Pas encore vérifiée",
           "pending": "Documents en cours de contrôle",
-          "verified": "Talent vérifié",
+          "verified": "Professionnel vérifié",
           "rejected": "Vérification refusée"
         },
         "reason": "Raison : {reason}",
@@ -1141,7 +1141,7 @@
   "social": {
     "post": {
       "noCaption": "Publication de {name}",
-      "verified": "Talent vérifié",
+      "verified": "Professionnel vérifié",
       "before": "Avant",
       "after": "Après",
       "beforeAfterAlt": "{label} : {caption}",
@@ -1205,8 +1205,8 @@
       "titleSignedIn": "Ton fil",
       "more": "Voir plus de publications",
       "emptyTitle": "Ton fil est encore vide",
-      "emptyText": "Suis des talents près de chez toi pour voir leurs réalisations ici.",
-      "emptyCta": "Découvrir des talents"
+      "emptyText": "Suis des professionnels près de chez toi pour voir leurs réalisations ici.",
+      "emptyCta": "Découvrir des professionnels"
     },
     "comments": {
       "title": "Commentaires",
@@ -1311,8 +1311,8 @@
       "title": "Profils suivis",
       "help": "Leurs publications arrivent en premier dans ton fil.",
       "emptyTitle": "Tu ne suis personne pour l'instant",
-      "emptyText": "Découvre les talents près de toi et suis tes préférés.",
-      "emptyCta": "Découvrir des talents",
+      "emptyText": "Découvre les professionnels près de toi et suis tes préférés.",
+      "emptyCta": "Découvrir des professionnels",
       "posts": "{count, plural, =0 {Aucune publication} one {# publication} other {# publications}}",
       "unfollow": "Ne plus suivre"
     },
@@ -1393,7 +1393,7 @@
       "points": "Mes points et mes jeux",
       "routine": "Ma routine",
       "calendar": "Calendrier des fêtes",
-      "rankings": "Classements des talents"
+      "rankings": "Classements des professionnels"
     }
   },
   "payments": {
@@ -1595,6 +1595,20 @@
       "taxId": "Numéro fiscal (IFU)",
       "taxIdKept": "Déjà enregistré ({hint}) : laisse vide pour le garder",
       "save": "Enregistrer"
+    },
+    "soon": {
+      "title": "Le paiement en ligne ouvre bientôt",
+      "text": "Pour l'instant, rien ne se paie dans l'appli.",
+      "shop": "Ton panier reste gardé. En attendant, écris au vendeur depuis sa boutique pour vous arranger.",
+      "selection": "Garde ce produit en tête : tu pourras le commander dès l'ouverture du paiement.",
+      "course": "Cette formation sera payante à l'ouverture du paiement. Les formations gratuites sont déjà ouvertes.",
+      "pass": "Le pass ouvrira avec le paiement en ligne. Les formations gratuites sont déjà ouvertes.",
+      "gift": "Offrir une prestation, un produit ou une carte arrive avec le paiement en ligne.",
+      "boost": "Ta vitrine reste visible dans la recherche, gratuitement.",
+      "premium": "Pendant le lancement, Premium est offert : tout est déjà ouvert pour toi.",
+      "salon": "Les cartes cadeaux et les forfaits s'achètent pour l'instant directement auprès du professionnel.",
+      "freeCourses": "Voir les formations gratuites",
+      "giftTitle": "Offrir arrive bientôt"
     }
   },
   "shop": {
@@ -1625,7 +1639,7 @@
       "back": "Vitrine de {name}",
       "title": "Boutique de {name}",
       "metaDescription": "{count, plural, one {# produit} other {# produits}} chez {name}, paiement sécurisé.",
-      "verified": "Talent vérifié",
+      "verified": "Professionnel vérifié",
       "closed": "La boutique est en pause : tu peux regarder, mais pas commander.",
       "categories": "Catégories",
       "all": "Tout",
@@ -1639,7 +1653,7 @@
       "back": "Boutique de {name}",
       "photos": "Photos du produit",
       "photoN": "Photo {n}",
-      "verified": "Talent vérifié",
+      "verified": "Professionnel vérifié",
       "prep": "Préparé en {count, plural, one {# jour} other {# jours}}",
       "ready": "Prêt tout de suite",
       "description": "Description",
@@ -1686,8 +1700,8 @@
       "title": "Mon panier",
       "error": "Ça n'a pas marché. Réessaie.",
       "empty": "Ton panier est vide",
-      "emptyHelp": "Découvre les boutiques des talents près de toi.",
-      "explore": "Découvrir les talents",
+      "emptyHelp": "Découvre les boutiques des professionnels près de toi.",
+      "explore": "Découvrir les professionnels",
       "closed": "Boutique en pause : ces articles attendent sa réouverture.",
       "onlyLeft": "Plus que {count} en stock",
       "gone": "Ce produit n'est plus en vente.",
@@ -1700,8 +1714,8 @@
       "nothingReady": "Rien ne peut être commandé pour l'instant."
     },
     "modes": {
-      "pickup": "Retrait chez le talent",
-      "seller": "Livrée par le talent",
+      "pickup": "Retrait chez le professionnel",
+      "seller": "Livrée par le professionnel",
       "partner": "Livraison partenaire",
       "partnerNamed": "Livraison par {name}"
     },
@@ -1716,9 +1730,9 @@
       "prep": "Préparation : {count, plural, one {# jour} other {# jours}}.",
       "zone": "Ta zone",
       "promo": "Code promo (facultatif)",
-      "note": "Un mot pour le talent (facultatif)",
+      "note": "Un mot pour le professionnel (facultatif)",
       "whereTitle": "Où te livrer",
-      "whereHelp": "Le talent voit ton adresse et ton numéro seulement après le paiement.",
+      "whereHelp": "Le professionnel voit ton adresse et ton numéro seulement après le paiement.",
       "address": "Adresse ou quartier",
       "landmarks": "Repères (facultatif)",
       "phone": "Téléphone pour la livraison",
@@ -1770,9 +1784,9 @@
       "sales": "Mes ventes",
       "onlyActive": "Seulement celles à traiter",
       "noPurchase": "Pas encore de commande",
-      "noPurchaseHelp": "Les boutiques des talents t'attendent.",
+      "noPurchaseHelp": "Les boutiques des professionnels t'attendent.",
       "noSale": "Pas encore de vente",
-      "explore": "Découvrir les talents",
+      "explore": "Découvrir les professionnels",
       "line": "{reference}, {count, plural, one {# article} other {# articles}}"
     },
     "steps": {
@@ -1839,7 +1853,7 @@
       "help": "On te prévient quand un prix baisse.",
       "empty": "Pas encore d'envie",
       "emptyHelp": "Touche le cœur d'un produit pour le garder ici.",
-      "explore": "Découvrir les talents",
+      "explore": "Découvrir les professionnels",
       "error": "Ça n'a pas marché. Réessaie.",
       "removed": "Retiré de tes envies",
       "flash": "Vente flash -{percent} %",
@@ -2168,7 +2182,7 @@
       "clients": "Fichier clients"
     },
     "status": {
-      "pending": "À confirmer par le talent",
+      "pending": "À confirmer par le professionnel",
       "awaiting_deposit": "Acompte à payer",
       "confirmed": "Confirmé",
       "proposed": "Autre créneau proposé",
@@ -2182,10 +2196,10 @@
     "page": {
       "back": "Retour à {name}",
       "title": "Rendez-vous chez {name}",
-      "verified": "Talent vérifié",
+      "verified": "Professionnel vérifié",
       "metaDescription": "Réserve en ligne chez {name} à {city} : choisis ta prestation et ton créneau, c'est gratuit.",
       "lastMinute": "Dernière minute : -{percent} % sur les créneaux des {hours} prochaines heures",
-      "noService": "Ce talent n'a pas encore de prestation à réserver."
+      "noService": "Ce professionnel n'a pas encore de prestation à réserver."
     },
     "flow": {
       "titleService": "Choisis ta prestation",
@@ -2219,12 +2233,12 @@
       "price": "Prix",
       "depositLabel": "Acompte à payer maintenant",
       "depositHelp": "Ton argent est bloqué en sécurité jusqu'au rendez-vous.",
-      "cancelRule": "Annulation gratuite jusqu'à {hours} h avant. Après, l'acompte reste au talent.",
-      "manual": "Le talent confirme chaque demande. Tu reçois sa réponse sur WhatsApp.",
+      "cancelRule": "Annulation gratuite jusqu'à {hours} h avant. Après, l'acompte reste au professionnel.",
+      "manual": "Le professionnel confirme chaque demande. Tu reçois sa réponse sur WhatsApp.",
       "signInDeposit": "Connecte-toi pour payer l'acompte en sécurité.",
-      "signInNeeded": "Ce talent demande un compte pour réserver.",
+      "signInNeeded": "Ce professionnel demande un compte pour réserver.",
       "signIn": "Me connecter",
-      "note": "Un mot pour le talent (facultatif)",
+      "note": "Un mot pour le professionnel (facultatif)",
       "noteHint": "Longueur des cheveux, allergie, photo du modèle…",
       "groupTitle": "Tu réserves pour plusieurs personnes ?",
       "less": "Une personne de moins",
@@ -2247,7 +2261,7 @@
       "giftCodeHint": "Son code paie l'acompte.",
       "consent": "J'accepte de recevoir les offres de {name} (je peux dire non à tout moment).",
       "titlePlace": "Où ?",
-      "atHome": "Chez moi, le talent se déplace",
+      "atHome": "Chez moi, le professionnel se déplace",
       "travelFee": "Frais de déplacement : {amount}",
       "paused": "{name} ne prend pas de réservation en ligne pour le moment. Tu peux lui écrire.",
       "homeAddress": "Ton adresse"
@@ -2287,7 +2301,7 @@
       "accept": "J'accepte ce créneau",
       "accepted": "C'est confirmé",
       "refuse": "Non, ça ne me va pas",
-      "refused": "Réponse envoyée au talent",
+      "refused": "Réponse envoyée au professionnel",
       "held": "Une place s'est libérée pour toi",
       "heldHelp": "Elle est gardée 30 minutes. Après, elle passe à la personne suivante.",
       "take": "Je prends cette place",
@@ -2302,28 +2316,28 @@
       "payment": {
         "held": "payé, bloqué en sécurité",
         "refunded": "remboursé",
-        "released": "versé au talent",
+        "released": "versé au professionnel",
         "pending": "à payer"
       },
       "reference": "Référence",
       "advice": "Le conseil de {name}",
       "photos": "Photos du résultat",
       "review": "Donner mon avis",
-      "lateRule": "Il est trop tard pour annuler gratuitement : l'acompte reste au talent.",
+      "lateRule": "Il est trop tard pour annuler gratuitement : l'acompte reste au professionnel.",
       "freeUntil": "Annulation gratuite jusqu'au {when}.",
       "cancel": "Annuler le rendez-vous",
       "cancelTitle": "Annuler ce rendez-vous ?",
       "cancelFree": "C'est gratuit : ton acompte t'est rendu.",
-      "cancelLate": "C'est tard : le talent garde l'acompte.",
+      "cancelLate": "C'est tard : le professionnel garde l'acompte.",
       "cancelConfirm": "Oui, annuler",
       "cancelled": "Rendez-vous annulé",
       "keep": "Non, je garde mon rendez-vous",
-      "lateNoDeposit": "Annule le plus tôt possible : le talent pourra donner la place à quelqu'un d'autre.",
-      "cancelNoDeposit": "Le talent est prévenu tout de suite.",
+      "lateNoDeposit": "Annule le plus tôt possible : le professionnel pourra donner la place à quelqu'un d'autre.",
+      "cancelNoDeposit": "Le professionnel est prévenu tout de suite.",
       "qr": {
         "title": "Ton QR code de rendez-vous",
         "arrived": "Ton arrivée est notée. Bon soin !",
-        "help": "Montre-le au talent en arrivant. Il le scanne et voit ton rendez-vous.",
+        "help": "Montre-le au professionnel en arrivant. Il le scanne et voit ton rendez-vous.",
         "download": "Télécharger mon QR code",
         "alt": "QR code du rendez-vous {reference}"
       }
@@ -2331,8 +2345,8 @@
     "list": {
       "title": "Mes rendez-vous",
       "empty": "Aucun rendez-vous pour l'instant",
-      "emptyHelp": "Trouve un talent près de chez toi et réserve en quelques gestes.",
-      "explore": "Trouver un talent",
+      "emptyHelp": "Trouve un professionnel près de chez toi et réserve en quelques gestes.",
+      "explore": "Trouver un professionnel",
       "upcoming": "À venir",
       "noUpcoming": "Rien de prévu.",
       "past": "Passés",
@@ -3552,7 +3566,7 @@
       "photo": "Photo reçue"
     },
     "useStatus": {
-      "pending": "En attente du talent",
+      "pending": "En attente du professionnel",
       "awaiting_deposit": "En attente",
       "confirmed": "Confirmé",
       "proposed": "Autre horaire proposé",
@@ -3587,11 +3601,11 @@
       "amount": "Montant en euros",
       "amountHint": "Entre {min} et {max}.",
       "serviceTitle": "Une prestation",
-      "serviceHelp": "Ouvre la vitrine d'un talent au Bénin et touche « Offrir une prestation ».",
-      "findPro": "Trouver un talent",
+      "serviceHelp": "Ouvre la vitrine d'un professionnel au Bénin et touche « Offrir une prestation ».",
+      "findPro": "Trouver un professionnel",
       "productTitle": "Un produit",
       "productHelp": "Ouvre la fiche d'un produit et touche « Offrir ce produit ».",
-      "noService": "Ce talent n'a pas de prestation à prix fixe en FCFA à offrir.",
+      "noService": "Ce professionnel n'a pas de prestation à prix fixe en FCFA à offrir.",
       "whichService": "Quelle prestation chez {name} ?",
       "howDelivered": "Comment le produit arrive",
       "pickup": "Retrait à la boutique",
@@ -3762,7 +3776,7 @@
     },
     "proLevels": {
       "confirmed": "Confirmée",
-      "top": "Top talent"
+      "top": "Top professionnel"
     },
     "streak": {
       "aria": "{count, plural, =0 {Aucune série} one {# jour d'affilée} other {# jours d'affilée}}"
@@ -3802,7 +3816,7 @@
       "gamesTitle": "Joue et gagne",
       "rewards": {
         "title": "Échanger mes points",
-        "help": "Les réductions sont offertes par Solange Glow, jamais par les talents.",
+        "help": "Les réductions sont offertes par Solange Glow, jamais par les professionnels.",
         "none": "Aucune récompense pour l'instant.",
         "soldOut": "Épuisé",
         "locked": "Dès le niveau {level}",
@@ -3964,12 +3978,12 @@
       "none": "Aucune fête à venir",
       "today": "C'est aujourd'hui !",
       "inDays": "{count, plural, one {Dans # jour} other {Dans # jours}}",
-      "findPro": "Trouver un talent",
+      "findPro": "Trouver un professionnel",
       "offer": "Offrir un cadeau"
     },
     "rankings": {
       "title": "Classements",
-      "help": "Les meilleurs talents du mois, d'après les avis vérifiés des clients.",
+      "help": "Les meilleurs professionnels du mois, d'après les avis vérifiés des clients.",
       "none": "Pas encore de classement",
       "month": "Classement de {month}",
       "city": "Ville",
@@ -4043,7 +4057,7 @@
     "house": "Promo Solange Glow",
     "discover": "Découvrir",
     "seeShowcase": "Voir sa vitrine",
-    "verified": "Talent vérifié",
+    "verified": "Professionnel vérifié",
     "rating": "{average} sur 5 ({count, plural, one {# avis} other {# avis}})",
     "proAria": "Sponsorisé : {name}",
     "productAria": "Produit sponsorisé : {name}",
@@ -4176,18 +4190,18 @@
         "title": "Je veux juste un rendez-vous",
         "text": "Pas besoin de compte. Ton nom et ton numéro suffisent.",
         "items": {
-          "a": "Voir les talents, leurs photos et leurs prix",
+          "a": "Voir les professionnels, leurs photos et leurs prix",
           "b": "Réserver et recevoir un rappel",
           "c": "Voir les boutiques et les formations gratuites"
         },
-        "cta": "Trouver un talent"
+        "cta": "Trouver un professionnel"
       },
       "client": {
         "title": "Je veux un compte",
         "text": "Gratuit, avec ton numéro ou ton e-mail.",
         "items": {
           "a": "Acheter en sécurité",
-          "b": "Écrire et appeler les talents",
+          "b": "Écrire et appeler les professionnels",
           "c": "Suivre, noter et publier",
           "d": "Te former, jouer, gagner des points"
         },
@@ -4210,7 +4224,7 @@
       "title": "Tout ce que tu peux faire",
       "more": "Voir comment ça marche",
       "find": {
-        "title": "Trouver un talent près de toi",
+        "title": "Trouver un professionnel près de toi",
         "text": "Carte, itinéraire, horaires, avis vérifiés."
       },
       "book": {
@@ -4219,10 +4233,10 @@
       },
       "qr": {
         "title": "Ton QR code de rendez-vous",
-        "text": "Montre-le en arrivant, le talent le scanne."
+        "text": "Montre-le en arrivant, le professionnel le scanne."
       },
       "feed": {
-        "title": "Voir le travail des talents",
+        "title": "Voir le travail des professionnels",
         "text": "Photos, vidéos, avant et après, stories."
       },
       "talk": {
@@ -4261,7 +4275,7 @@
     "booking": {
       "title": "Ton rendez-vous, sans appeler",
       "items": {
-        "a": "Choisis ton talent, ton service et ton créneau.",
+        "a": "Choisis ton professionnel, ton service et ton créneau.",
         "b": "Pas de compte ? Ton nom et ton numéro suffisent.",
         "c": "Tu reçois un rappel et ton QR code de rendez-vous."
       },
@@ -4292,7 +4306,7 @@
       "help": "Voir toute l'aide",
       "account": {
         "q": "Faut-il un compte pour réserver ?",
-        "a": "Non. Ton nom et ton numéro suffisent. Pour acheter, écrire à un talent ou laisser un avis, il faut un compte."
+        "a": "Non. Ton nom et ton numéro suffisent. Pour acheter, écrire à un professionnel ou laisser un avis, il faut un compte."
       },
       "signup": {
         "q": "Comment créer un compte ?",
@@ -4304,11 +4318,11 @@
       },
       "qr": {
         "q": "À quoi servent les QR codes ?",
-        "a": "Le talent imprime le sien pour que ses clients réservent. Le client reçoit aussi le sien quand le rendez-vous est confirmé, et le montre en arrivant."
+        "a": "Le professionnel imprime le sien pour que ses clients réservent. Le client reçoit aussi le sien quand le rendez-vous est confirmé, et le montre en arrivant."
       },
       "payment": {
         "q": "Mon argent est-il protégé ?",
-        "a": "Oui. Ton argent reste bloqué. Le talent est payé quand tu donnes ton code de réception."
+        "a": "Oui. Ton argent reste bloqué. Le professionnel est payé quand tu donnes ton code de réception."
       },
       "france": {
         "q": "Je suis en France. Puis-je offrir au Bénin ?",
@@ -4321,7 +4335,7 @@
     },
     "footer": {
       "forYou": "Pour toi",
-      "explore": "Trouver un talent",
+      "explore": "Trouver un professionnel",
       "gift": "Offrir au pays",
       "games": "Jeux et classements",
       "proTools": "Tous les outils",
@@ -4374,7 +4388,7 @@
           "c": "Photos et vidéos avant et après",
           "d": "Avis vérifiés de vrais clients",
           "e": "Carte, itinéraire et repères pour te trouver",
-          "f": "Badge « Talent vérifié »"
+          "f": "Badge « Professionnel vérifié »"
         }
       },
       "agenda": {
@@ -4477,12 +4491,12 @@
         "cannot": "Ne peut pas",
         "guest": {
           "title": "Sans compte",
-          "can": "Voir les talents, les publications, les boutiques et les formations gratuites. Réserver avec un nom et un numéro.",
+          "can": "Voir les professionnels, les publications, les boutiques et les formations gratuites. Réserver avec un nom et un numéro.",
           "cannot": "Acheter, écrire en privé, noter, gagner des points."
         },
         "client": {
           "title": "Client",
-          "can": "Tout cela, et acheter, écrire, appeler, noter, suivre des talents, publier, se former et jouer.",
+          "can": "Tout cela, et acheter, écrire, appeler, noter, suivre des professionnels, publier, se former et jouer.",
           "cannot": "Vendre."
         },
         "solo": {
@@ -4508,25 +4522,25 @@
           "b": "Tape le code reçu sur WhatsApp, par SMS ou par e-mail.",
           "c": "Choisis ta ville et ta langue. Si tu proposes tes services, choisis « Je propose mes services »."
         },
-        "note": "Se connecter, c'est pareil : ton numéro ou ton e-mail, puis le code. Pour vendre ou encaisser, un talent envoie aussi une pièce d'identité et un selfie."
+        "note": "Se connecter, c'est pareil : ton numéro ou ton e-mail, puis le code. Pour vendre ou encaisser, un professionnel envoie aussi une pièce d'identité et un selfie."
       },
       "booking": {
         "short": "Rendez-vous",
         "title": "Prendre rendez-vous",
-        "cta": "Trouver un talent",
+        "cta": "Trouver un professionnel",
         "steps": {
-          "a": "Choisis ton talent, ton service et ton créneau. Depuis sa page, son QR code ou une publication.",
+          "a": "Choisis ton professionnel, ton service et ton créneau. Depuis sa page, son QR code ou une publication.",
           "b": "Avec un compte, tu réserves directement. Sans compte, donne ton nom et ton numéro, puis garde le lien reçu.",
-          "c": "Le talent confirme, ou propose une autre heure. S'il demande un acompte, tu le paies en ligne.",
+          "c": "Le professionnel confirme, ou propose une autre heure. S'il demande un acompte, tu le paies en ligne.",
           "d": "Tu reçois un rappel. Tu peux annuler selon les règles affichées.",
-          "e": "Une fois confirmé, ton rendez-vous affiche ton QR code. Montre-le en arrivant : le talent le scanne.",
+          "e": "Une fois confirmé, ton rendez-vous affiche ton QR code. Montre-le en arrivant : le professionnel le scanne.",
           "f": "Plus de place ? Mets-toi sur la liste d'attente. Tu peux aussi réserver à plusieurs, par exemple pour un mariage."
         }
       },
       "payment": {
         "short": "Paiement",
         "title": "Payer en sécurité",
-        "cta": "Voir les talents",
+        "cta": "Voir les professionnels",
         "steps": {
           "a": "Tu paies en ligne. L'argent ne part pas chez la vendeuse : il reste bloqué.",
           "b": "La vendeuse prépare ta commande et te la remet ou te l'envoie.",
@@ -4768,7 +4782,7 @@
     "hero": {
       "first": "Réserve. Scanne.",
       "second": "Rayonne.",
-      "line": "Coiffure, tresses, maquillage, ongles, couture. Trouve un talent et réserve sans appeler, même sans compte."
+      "line": "Coiffure, tresses, maquillage, ongles, couture. Trouve un professionnel et réserve sans appeler, même sans compte."
     },
     "ticket": {
       "trade": "Ton envie",
@@ -4784,12 +4798,12 @@
         "evening": "Samedi 17 h"
       },
       "show": "Ton QR code. Tu le montres en arrivant.",
-      "qrAlt": "QR code d'exemple : il ouvre les talents en {trade}."
+      "qrAlt": "QR code d'exemple : il ouvre les professionnels en {trade}."
     },
     "sides": {
       "title": "Un compte, deux côtés",
       "line": "Tu passes de l'un à l'autre quand tu veux.",
-      "legend": "Je cherche un talent, ou je propose mes services",
+      "legend": "Je cherche un professionnel, ou je propose mes services",
       "seek": "Je cherche",
       "offer": "Je propose",
       "seeAll": "Tout voir",
@@ -4802,7 +4816,7 @@
       "title": "Comment ça marche",
       "more": "Voir chaque service en détail",
       "choose": {
-        "title": "D'abord, choisis ton talent.",
+        "title": "D'abord, choisis ton professionnel.",
         "text": "Par métier, par ville ou sur la carte. Tu vois les photos, les prix et les avis."
       },
       "book": {
@@ -4811,12 +4825,12 @@
       },
       "show": {
         "title": "Enfin, montre ton QR code.",
-        "text": "Tu reçois un rappel. En arrivant, le talent le scanne : c'est fait."
+        "text": "Tu reçois un rappel. En arrivant, le professionnel le scanne : c'est fait."
       },
       "ui": {
-        "label": "Exemple de l'application : les talents, les créneaux libres, puis le QR code du rendez-vous.",
+        "label": "Exemple de l'application : les professionnels, les créneaux libres, puis le QR code du rendez-vous.",
         "resultsTitle": "Tresses, près de toi",
-        "resultsLine": "3 talents ouverts samedi",
+        "resultsLine": "3 professionnels ouverts samedi",
         "talents": {
           "a": {
             "name": "Aïcha Tresses",
@@ -4986,7 +5000,7 @@
         }
       },
       "all": {
-        "name": "Tous les talents",
+        "name": "Tous les professionnels",
         "alt": "Palette de maquillage et pinceaux sur une table.",
         "subs": {
           "a": "Carte",

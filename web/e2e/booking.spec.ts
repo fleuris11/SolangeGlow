@@ -14,7 +14,7 @@ const TEAM_PHONE = "+2290197000108"; // Institut Prisca
 const LOOK = { theme: "light", textSize: "normal" } as const;
 const API = { "X-SG-Client": "web" };
 
-test("a guest books, the talent confirms, reminder, done, then a verified review", async ({
+test("a guest books, the professional confirms, reminder, done, then a verified review", async ({
   browser,
 }) => {
   test.setTimeout(480_000);
@@ -48,7 +48,7 @@ test("a guest books, the talent confirms, reminder, done, then a verified review
   await expect(guest.getByRole("heading", { name: "Vérifie et réserve" })).toBeVisible();
   await guest.getByLabel("Ton prénom").fill(name);
   await guest.getByLabel(/Ton numéro WhatsApp/).fill(phone);
-  await guest.getByLabel(/Un mot pour le talent/).fill("Cheveux mi-longs");
+  await guest.getByLabel(/Un mot pour le professionnel/).fill("Cheveux mi-longs");
   await expectNoSeriousA11yIssue(guest);
   await guest.screenshot({ path: "e2e/screenshots/booking-details.png", fullPage: true });
   await guest.getByRole("button", { name: /^Réserver / }).click();
@@ -67,7 +67,7 @@ test("a guest books, the talent confirms, reminder, done, then a verified review
   expect(manageUrl).toMatch(/^\/fr\/rdv\//);
   // First visit of a page: the development server compiles it.
   await guest.goto(manageUrl, { timeout: 120_000 });
-  await expect(guest.getByRole("heading", { name: "À confirmer par le talent" })).toBeVisible({
+  await expect(guest.getByRole("heading", { name: "À confirmer par le professionnel" })).toBeVisible({
     timeout: 60_000,
   });
 

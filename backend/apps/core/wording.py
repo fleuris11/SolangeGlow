@@ -1,7 +1,8 @@
-"""Words of the platform: « pro » means nothing to someone who does this as an amateur.
+"""Words of the platform: never the short « pro ».
 
-We say « talent » for the person, « proposer mes services » for the action and « mon activité »
-for the space. Used once, by a migration, on the texts already in the database.
+We say « professionnel » for the person (« talent » for a while, then the owner chose
+« professionnel »), « proposer mes services » for the action and « mon activité » for the
+space. Used by migrations on the texts already in the database.
 """
 
 from __future__ import annotations
@@ -82,6 +83,21 @@ FRENCH = [
     ("Cliente", "Client"),
 ]
 
+# Second pass: « talent » became « professionnel » (2026-11-05).
+FRENCH_PROFESSIONAL = [
+    ("Seule un talent publiée", "Seul un professionnel publié"),
+    ("Seule un talent vérifiée", "Seul un professionnel vérifié"),
+    ("Seule un talent", "Seul un professionnel"),
+    ("le talent est prévenue", "le professionnel est prévenu"),
+    ("un talent vérifiée", "un professionnel vérifié"),
+    ("talent vérifiée", "professionnel vérifié"),
+    ("Top talent", "Top professionnel"),
+    ("talents", "professionnels"),
+    ("Talents", "Professionnels"),
+    ("talent", "professionnel"),
+    ("Talent", "Professionnel"),
+]
+
 ENGLISH = [
     ("Glow Pro Premium", "Glow Premium"),
     ("Glow Pro", "Glow Premium"),
@@ -102,6 +118,14 @@ ENGLISH = [
     ("Pro", "Talent"),
 ]
 
+ENGLISH_PROFESSIONAL = [
+    ("Top talent", "Top professional"),
+    ("talents", "professionals"),
+    ("Talents", "Professionals"),
+    ("talent", "professional"),
+    ("Talent", "Professional"),
+]
+
 
 def _replace(text: str, rules) -> str:
     for old, new in rules:
@@ -111,8 +135,8 @@ def _replace(text: str, rules) -> str:
 
 
 def plain_fr(text: str) -> str:
-    return _replace(text, FRENCH)
+    return _replace(_replace(text, FRENCH), FRENCH_PROFESSIONAL)
 
 
 def plain_en(text: str) -> str:
-    return _replace(text, ENGLISH)
+    return _replace(_replace(text, ENGLISH), ENGLISH_PROFESSIONAL)

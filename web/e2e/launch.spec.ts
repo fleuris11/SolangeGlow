@@ -122,7 +122,7 @@ test("sign up, find, book, buy, receipt code, rules and my data", async ({ brows
   await expect(page.getByRole("heading", { name: "Mon panier" })).toBeVisible();
   await page.getByRole("link", { name: /^Commander/ }).click();
   await expect(page.getByText("Étape 1 sur 3")).toBeVisible();
-  await page.getByText("Livrée par le talent").click();
+  await page.getByText("Livrée par le professionnel").click();
   await page.getByText("Cotonou centre").click();
   await page.getByLabel("Adresse ou quartier").fill("Rue 12.345, Akpakpa");
   await page.getByRole("button", { name: "Voir le récapitulatif" }).click();

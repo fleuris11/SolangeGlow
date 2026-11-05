@@ -181,7 +181,7 @@
       "rating": "{rating} ({count})",
       "from": "od",
       "trained": "Vyškolená na Solange Glow",
-      "topPro": "Top talent"
+      "topPro": "Top profesionál"
     },
     "filtersSheet": {
       "title": "Filtre",
@@ -466,7 +466,7 @@
     "byEmail": "E-mail",
     "emailLabel": "Tvoja e-mailová adresa",
     "sendCode": "Poslať kód",
-    "privacy": "Tvoje údaje ostanú súkromné: talenty ich nevidia.",
+    "privacy": "Tvoje údaje ostanú súkromné: profesionáli ich nevidia.",
     "welcomeBack": "Vitaj späť!",
     "phone": {
       "label": "Tvoje telefónne číslo",
@@ -1595,6 +1595,20 @@
       "taxId": "Daňové číslo",
       "taxIdKept": "Už uložené ({hint}): nechaj prázdne",
       "save": "Uložiť"
+    },
+    "soon": {
+      "title": "Online platba sa čoskoro otvorí",
+      "text": "Zatiaľ sa v aplikácii nič neplatí.",
+      "shop": "Tvoj košík ostáva uložený. Zatiaľ napíš predajcovi z jeho obchodu a dohodnite sa.",
+      "selection": "Zapamätaj si tento produkt: objednáš ho hneď, ako sa platba otvorí.",
+      "course": "Tento kurz bude platený po otvorení platby. Bezplatné kurzy sú už otvorené.",
+      "pass": "Pas sa otvorí s online platbou. Bezplatné kurzy sú už otvorené.",
+      "gift": "Darovať službu, produkt alebo kartu bude možné s online platbou.",
+      "boost": "Tvoja vitrína ostáva viditeľná vo vyhľadávaní, zadarmo.",
+      "premium": "Počas spustenia je Premium zadarmo: všetko máš už otvorené.",
+      "salon": "Darčekové karty a balíčky sa zatiaľ kupujú priamo u profesionála.",
+      "freeCourses": "Pozrieť bezplatné kurzy",
+      "giftTitle": "Darčeky čoskoro"
     }
   },
   "shop": {
@@ -3762,7 +3776,7 @@
     },
     "proLevels": {
       "confirmed": "Overená",
-      "top": "Top talent"
+      "top": "Top profesionál"
     },
     "streak": {
       "aria": "{count, plural, =0 {Žiadna séria} one {# deň za sebou} few {# dni za sebou} other {# dní za sebou}}"
@@ -4768,7 +4782,7 @@
     "hero": {
       "first": "Rezervuj. Skenuj.",
       "second": "Žiar.",
-      "line": "Vlasy, vrkoče, líčenie, nechty, šitie. Nájdi talent a rezervuj bez volania, aj bez účtu."
+      "line": "Vlasy, vrkoče, líčenie, nechty, šitie. Nájdi profesionála a rezervuj bez volania, aj bez účtu."
     },
     "ticket": {
       "trade": "Čo chceš",
@@ -4784,12 +4798,12 @@
         "evening": "Sobota 17:00"
       },
       "show": "Tvoj QR kód. Ukáž ho pri príchode.",
-      "qrAlt": "Ukážkový QR kód: otvorí talenty v odbore {trade}."
+      "qrAlt": "Ukážkový QR kód: otvorí profesionálov v odbore {trade}."
     },
     "sides": {
       "title": "Jeden účet, dve strany",
       "line": "Medzi nimi prechádzaš, kedy chceš.",
-      "legend": "Hľadám talent alebo ponúkam svoje služby",
+      "legend": "Hľadám profesionála alebo ponúkam svoje služby",
       "seek": "Hľadám",
       "offer": "Ponúkam",
       "seeAll": "Pozrieť všetko",
@@ -4802,7 +4816,7 @@
       "title": "Ako to funguje",
       "more": "Pozrieť každú službu podrobne",
       "choose": {
-        "title": "Najprv si vyber talent.",
+        "title": "Najprv si vyber profesionála.",
         "text": "Podľa remesla, mesta alebo na mape. Vidíš fotky, ceny a hodnotenia."
       },
       "book": {
@@ -4811,12 +4825,12 @@
       },
       "show": {
         "title": "Nakoniec ukáž QR kód.",
-        "text": "Dostaneš pripomienku. Pri príchode ho talent naskenuje a je to."
+        "text": "Dostaneš pripomienku. Pri príchode ho profesionál naskenuje a je to."
       },
       "ui": {
-        "label": "Ukážka aplikácie: talenty, voľné termíny a QR kód termínu.",
+        "label": "Ukážka aplikácie: profesionáli, voľné termíny a QR kód termínu.",
         "resultsTitle": "Vrkoče blízko teba",
-        "resultsLine": "3 talenty otvorené v sobotu",
+        "resultsLine": "3 profesionáli otvorení v sobotu",
         "talents": {
           "a": {
             "name": "Aïcha Tresses",
@@ -4986,7 +5000,7 @@
         }
       },
       "all": {
-        "name": "Všetky talenty",
+        "name": "Všetci profesionáli",
         "alt": "Paleta líčidiel a štetce na stole.",
         "subs": {
           "a": "Mapa",

@@ -50,7 +50,7 @@ async function warmUp(page: Page, path: string) {
   await page.waitForLoadState("networkidle", { timeout: 120_000 }).catch(() => undefined);
 }
 
-test("a video call between a client and a talent, without any phone number", async ({
+test("a video call between a client and a professional, without any phone number", async ({
   browser,
 }) => {
   test.setTimeout(720_000);

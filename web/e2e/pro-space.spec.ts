@@ -91,7 +91,7 @@ test("she opens a time by hand and a client can book it", async ({ browser }) =>
   await expect(pro.getByRole("button", { name: "Mettre en pause les réservations" })).toBeVisible();
 });
 
-test("the page of a talent stands alone, with the way to book always in sight", async ({
+test("the page of a professional stands alone, with the way to book always in sight", async ({
   page,
 }) => {
   await page.setViewportSize(VIEWPORTS.mobile);
@@ -105,7 +105,7 @@ test("the page of a talent stands alone, with the way to book always in sight", 
   await expect(page).toHaveURL(/\/fr\/bene-coiffure\/rdv$/);
 });
 
-test("a client has no talent entry in her menu, and can sign out", async ({ browser }) => {
+test("a client has no professional entry in her menu, and can sign out", async ({ browser }) => {
   test.setTimeout(180_000);
   const context = await browser.newContext({ viewport: VIEWPORTS.desktop });
   const page = await context.newPage();

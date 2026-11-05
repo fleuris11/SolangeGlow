@@ -13,14 +13,14 @@ for (const [label, viewport] of Object.entries(VIEWPORTS)) {
     await expect(main.getByRole("link", { name: "Créer un compte" }).first()).toBeVisible();
     await expect(main.getByRole("link", { name: "Je propose mes services" }).first()).toBeVisible();
 
-    // The ticket answers: the choice changes the photo, the code and the way to the talents.
-    await expect(main.getByRole("link", { name: "Trouver un talent : tresses" })).toHaveAttribute(
+    // The ticket answers: the choice changes the photo, the code and the way to the professionals.
+    await expect(main.getByRole("link", { name: "Trouver un professionnel : tresses" })).toHaveAttribute(
       "href",
       "/fr/explore?trade=braids",
     );
     await main.getByText("Maquillage", { exact: true }).first().click();
     await expect(
-      main.getByRole("link", { name: "Trouver un talent : maquillage" }),
+      main.getByRole("link", { name: "Trouver un professionnel : maquillage" }),
     ).toHaveAttribute("href", "/fr/explore?trade=makeup");
     await expect(main.getByRole("img", { name: /QR code d'exemple/ })).toBeVisible();
 
@@ -59,7 +59,7 @@ test("the name typed on the home page follows to the creation of the page", asyn
   await expect(page).toHaveURL(/\/fr\/auth\?as=pro&vitrine=/);
 });
 
-test("the page for talents explains the QR code and what is free, then leads to sign up", async ({
+test("the page for professionals explains the QR code and what is free, then leads to sign up", async ({
   page,
 }) => {
   await page.setViewportSize(VIEWPORTS.mobile);

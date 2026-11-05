@@ -148,7 +148,7 @@ test("a student follows a free course to its certificate, offline lesson include
   await context.close();
 });
 
-test("a talent writes a course step by step and sends it to the team", async ({ browser }) => {
+test("a professional writes a course step by step and sends it to the team", async ({ browser }) => {
   test.setTimeout(480_000);
   const context = await browser.newContext({ viewport: VIEWPORTS.mobile });
   const pro = await context.newPage();

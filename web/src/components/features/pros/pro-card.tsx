@@ -19,7 +19,7 @@ import { formatDistance } from "@/lib/pros/format";
 
 const isTrade = (key: string): key is Trade => (TRADES as readonly string[]).includes(key);
 
-/** A talent in a list of results: the work first, then who, where, open or not, from how much. */
+/** A professional in a list of results: the work first, then who, where, open or not, from how much. */
 export function ProCard({ pro }: { pro: Card }) {
   const t = useTranslations("explore.card");
   const locale = useLocale();

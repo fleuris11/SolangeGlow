@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-04 21:32+0100\n"
+"POT-Creation-Date: 2026-11-05 23:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -276,7 +276,7 @@ msgid "counts for the badge"
 msgstr "compte pour le badge"
 
 msgid "Finishing it gives the « Trained on Solange Glow » badge to a pro."
-msgstr "La terminer donne à un talent le badge « Formée sur Solange Glow »."
+msgstr "La terminer donne à un professionnel le badge « Formée sur Solange Glow »."
 
 msgid "length (s)"
 msgstr "durée (s)"
@@ -291,7 +291,7 @@ msgid "courses"
 msgstr "formations"
 
 msgid "Can publish or send back the courses of the pros"
-msgstr "Peut publier ou renvoyer les formations des talents"
+msgstr "Peut publier ou renvoyer les formations des professionnels"
 
 msgid "course to review"
 msgstr "formation à vérifier"
@@ -1008,7 +1008,7 @@ msgid "Boosts are not open in your country yet."
 msgstr "Les boosts ne sont pas encore ouverts dans ton pays."
 
 msgid "Only a published pro can boost her showcase."
-msgstr "Seule un talent publiée peut booster sa vitrine."
+msgstr "Seul un professionnel publié peut booster sa vitrine."
 
 msgid "No price is set for a boost in your country yet."
 msgstr "Aucun prix de boost n'est encore réglé dans ton pays."
@@ -1030,7 +1030,7 @@ msgid "Sponsored product"
 msgstr "Produit sponsorisé"
 
 msgid "Pro shown first in the search"
-msgstr "Talent en tête de la recherche"
+msgstr "Professionnel en tête de la recherche"
 
 msgid "Screen when the app opens"
 msgstr "Écran au lancement de l'appli"
@@ -1042,7 +1042,7 @@ msgid "Local business"
 msgstr "Commerce local"
 
 msgid "Pro of Solange Glow"
-msgstr "Talent de Solange Glow"
+msgstr "Professionnel de Solange Glow"
 
 msgid "Solange Glow (own promotions)"
 msgstr "Solange Glow (promos internes)"
@@ -1063,7 +1063,7 @@ msgid "e-mail"
 msgstr "e-mail"
 
 msgid "pro"
-msgstr "talent"
+msgstr "professionnel"
 
 msgid "notes"
 msgstr "notes"
@@ -1081,7 +1081,7 @@ msgid "Sold to an advertiser"
 msgstr "Vendue à un annonceur"
 
 msgid "Boost paid by a pro"
-msgstr "Boost payé par un talent"
+msgstr "Boost payé par un professionnel"
 
 msgid "House promotion (when nothing is sold)"
 msgstr "Promo interne (quand rien n'est vendu)"
@@ -1129,7 +1129,7 @@ msgid "people"
 msgstr "personnes"
 
 msgid "\"client\" and/or \"pro\". Empty: everyone."
-msgstr "\"client\" et/ou \"talent\". Vide : tout le monde."
+msgstr "\"client\" et/ou \"professionnel\". Vide : tout le monde."
 
 msgid "trades"
 msgstr "métiers"
@@ -1171,7 +1171,7 @@ msgid "A page of the app (/aicha, /selection…) or a full https:// address."
 msgstr "Une page de l'appli (/aicha, /selection…) ou une adresse https:// complète."
 
 msgid "pro shown"
-msgstr "talent montrée"
+msgstr "professionnel montré"
 
 msgid "product shown"
 msgstr "produit montré"
@@ -1481,7 +1481,7 @@ msgid "Finance"
 msgstr "Finance"
 
 msgid "Pro verification"
-msgstr "Vérification des talents"
+msgstr "Vérification des professionnels"
 
 msgid "Open disputes, late answers first. « Decide » shows the timeline, the evidence and the decisions in one click."
 msgstr "Litiges ouverts, réponses en retard d'abord. « Décider » montre la chronologie, les preuves et les décisions en un clic."
@@ -1707,7 +1707,7 @@ msgid "Booking"
 msgstr "Rendez-vous"
 
 msgid "This pro does not take online bookings."
-msgstr "Ce talent ne prend pas de rendez-vous en ligne."
+msgstr "Ce professionnel ne prend pas de rendez-vous en ligne."
 
 msgid "This service cannot be booked."
 msgstr "Cette prestation ne peut pas être réservée."
@@ -1727,7 +1727,7 @@ msgid "You can book up to %(days)s days ahead."
 msgstr "Tu peux réserver jusqu'à %(days)s jours à l'avance."
 
 msgid "Sign in to book with this pro."
-msgstr "Connecte-toi pour réserver chez ce talent."
+msgstr "Connecte-toi pour réserver chez ce professionnel."
 
 msgid "Give your first name and a phone number."
 msgstr "Donne ton prénom et un numéro de téléphone."
@@ -1789,16 +1789,16 @@ msgid "This gift card cannot pay the deposit: check the code and its balance."
 msgstr "Cette carte cadeau ne peut pas payer l'acompte : vérifie le code et son solde."
 
 msgid "This pro is not taking online bookings at the moment."
-msgstr "Ce talent ne prend pas de réservation en ligne pour le moment."
+msgstr "Ce professionnel ne prend pas de réservation en ligne pour le moment."
 
 msgid "This place does not exist."
 msgstr "Ce lieu n'existe pas."
 
 msgid "This pro does not go to clients' homes."
-msgstr "Ce talent ne se déplace pas à domicile."
+msgstr "Ce professionnel ne se déplace pas à domicile."
 
 msgid "Give the address where the pro should come."
-msgstr "Indique l'adresse où le talent doit venir."
+msgstr "Indique l'adresse où le professionnel doit venir."
 
 msgid "This opened time does not exist."
 msgstr "Ce créneau n'existe pas."
@@ -1879,7 +1879,7 @@ msgid "agenda colour"
 msgstr "couleur dans l'agenda"
 
 msgid "the pro herself"
-msgstr "le talent elle-même"
+msgstr "le professionnel lui-même"
 
 msgid "phone (invitation)"
 msgstr "téléphone (invitation)"
@@ -1999,7 +1999,7 @@ msgid "opened times"
 msgstr "créneaux ouverts"
 
 msgid "Waiting for the pro"
-msgstr "En attente du talent"
+msgstr "En attente du professionnel"
 
 msgid "Waiting for the deposit"
 msgstr "En attente de l'acompte"
@@ -2041,7 +2041,7 @@ msgid "The client"
 msgstr "Le client"
 
 msgid "The pro"
-msgstr "Le talent"
+msgstr "Le professionnel"
 
 msgid "Automatically"
 msgstr "Automatiquement"
@@ -2077,7 +2077,7 @@ msgid "note from the client"
 msgstr "mot du client"
 
 msgid "message from the pro"
-msgstr "message du talent"
+msgstr "message du professionnel"
 
 msgid "time asked first"
 msgstr "créneau demandé au départ"
@@ -2436,7 +2436,7 @@ msgid "audit journal"
 msgstr "journal d'audit"
 
 msgid "Professional"
-msgstr "Talent"
+msgstr "Professionnel"
 
 msgid "Collaborator of a salon"
 msgstr "Collaboratrice d'un salon"
@@ -3067,7 +3067,7 @@ msgid "For a discount only."
 msgstr "Pour une réduction seulement."
 
 msgid "A course of the platform (not of a pro)."
-msgstr "Une formation de la plateforme (pas d'un talent)."
+msgstr "Une formation de la plateforme (pas d'un professionnel)."
 
 msgid "from the level"
 msgstr "dès le niveau"
@@ -3298,7 +3298,7 @@ msgid "reminder (days before)"
 msgstr "rappel (jours avant)"
 
 msgid "pros of the moment"
-msgstr "talents du moment"
+msgstr "professionnels du moment"
 
 msgid "products of the moment"
 msgstr "produits du moment"
@@ -3550,7 +3550,7 @@ msgid "money given back to gifts"
 msgstr "argent rendu aux cadeaux"
 
 msgid "Taken by the pro"
-msgstr "Prise par le talent"
+msgstr "Prise par le professionnel"
 
 msgid "Sent by the person"
 msgstr "Envoyée par la personne"
@@ -3593,7 +3593,7 @@ msgid "Back to the free plan now"
 msgstr "Repasser à l'offre gratuite maintenant"
 
 msgid "Done; the pro is told."
-msgstr "C'est fait ; le talent est prévenue."
+msgstr "C'est fait ; le professionnel est prévenu."
 
 msgid "allowed websites"
 msgstr "sites autorisés"
@@ -3654,7 +3654,7 @@ msgid "what she gets"
 msgstr "ce qu'elle a"
 
 msgid "plan of every pro"
-msgstr "offre de toutes les talents"
+msgstr "offre de tous les professionnels"
 
 msgid "The free plan: one only."
 msgstr "L'offre gratuite : une seule."
@@ -4130,7 +4130,7 @@ msgid "You can save %(max)s quick replies at most."
 msgstr "Tu peux enregistrer %(max)s réponses rapides au maximum."
 
 msgid "Only a pro can use this."
-msgstr "Seule un talent peut utiliser cela."
+msgstr "Seul un professionnel peut utiliser cela."
 
 #, python-format
 msgid "A group can have %(max)s people at most."
@@ -4787,7 +4787,7 @@ msgid "Gift from abroad"
 msgstr "Cadeau de l'étranger"
 
 msgid "Boost of a pro"
-msgstr "Boost d'un talent"
+msgstr "Boost d'un professionnel"
 
 msgid "category"
 msgstr "catégorie"
@@ -5180,7 +5180,7 @@ msgid "The showcase is back."
 msgstr "La vitrine est de retour."
 
 msgid "Map of the pros"
-msgstr "Carte des talents"
+msgstr "Carte des professionnels"
 
 msgid "documents"
 msgstr "documents"
@@ -5189,10 +5189,10 @@ msgid "Each opening of these pictures is written in the audit journal."
 msgstr "Chaque ouverture de ces images est inscrite dans le journal d'audit."
 
 msgid "Save and approve: verified pro"
-msgstr "Enregistrer et valider : talent vérifiée"
+msgstr "Enregistrer et valider : professionnel vérifié"
 
 msgid "The pro is verified."
-msgstr "Le talent est vérifiée."
+msgstr "Le professionnel est vérifié."
 
 msgid "Save and refuse (reason above)"
 msgstr "Enregistrer et refuser (raison ci-dessus)"
@@ -5201,16 +5201,16 @@ msgid "Write the reason of the refusal first."
 msgstr "Écris d'abord la raison du refus."
 
 msgid "The pro was told why."
-msgstr "Le talent a été prévenue de la raison."
+msgstr "Le professionnel a été prévenu de la raison."
 
 msgid "Pros"
-msgstr "Talents"
+msgstr "Professionnels"
 
 msgid "You do not have a showcase yet. Start with « Become a pro »."
 msgstr "Tu n'as pas encore de vitrine. Commence par « Proposer mes services »."
 
 msgid "This pro does not exist or is not visible any more."
-msgstr "Ce talent n'existe pas ou n'est plus visible."
+msgstr "Ce professionnel n'existe pas ou n'est plus visible."
 
 msgid "Use 3 to 40 lowercase letters, digits or dashes, e.g. aicha-tresses."
 msgstr "Utilise 3 à 40 lettres minuscules, chiffres ou tirets, ex. aicha-tresses."
@@ -5267,16 +5267,16 @@ msgid "Your documents are being checked. You will get an answer soon."
 msgstr "Tes documents sont en cours de contrôle. Tu auras une réponse bientôt."
 
 msgid "You are already a verified pro."
-msgstr "Tu es déjà un talent vérifiée."
+msgstr "Tu es déjà un professionnel vérifié."
 
 msgid "The pro was just told you are here. Wait a few minutes."
-msgstr "Le talent vient d'être prévenue. Attends quelques minutes."
+msgstr "Le professionnel vient d'être prévenu. Attends quelques minutes."
 
 msgid "This pro does not receive clients at a place. Write to her instead."
-msgstr "Ce talent ne reçoit pas dans un lieu. Écris-lui plutôt."
+msgstr "Ce professionnel ne reçoit pas dans un lieu. Écris-lui plutôt."
 
 msgid "Sign in, or give your first name and number, to tell the pro you are here."
-msgstr "Connecte-toi, ou donne ton prénom et ton numéro, pour prévenir le talent."
+msgstr "Connecte-toi, ou donne ton prénom et ton numéro, pour prévenir le professionnel."
 
 msgid "Lipstick"
 msgstr "Rouge à lèvres"
@@ -5345,7 +5345,7 @@ msgid "Website"
 msgstr "Site web"
 
 msgid "Top pro"
-msgstr "Top talent"
+msgstr "Top professionnel"
 
 msgid "Independent"
 msgstr "Indépendante"
@@ -5354,7 +5354,7 @@ msgid "Salon or business"
 msgstr "Salon ou entreprise"
 
 msgid "Verified pro"
-msgstr "Talent vérifié"
+msgstr "Professionnel vérifié"
 
 msgid "Placed on the map"
 msgstr "Placé sur la carte"
@@ -5435,10 +5435,10 @@ msgid "search words"
 msgstr "mots de recherche"
 
 msgid "pro profile"
-msgstr "profil talent"
+msgstr "profil professionnel"
 
 msgid "pro profiles"
-msgstr "profils talents"
+msgstr "profils professionnels"
 
 msgid "service category"
 msgstr "catégorie de prestations"
@@ -5582,7 +5582,7 @@ msgid "reason of the refusal"
 msgstr "raison du refus"
 
 msgid "Sent to the pro."
-msgstr "Envoyée au talent."
+msgstr "Envoyée au professionnel."
 
 msgid "identity check"
 msgstr "vérification d'identité"
@@ -5591,7 +5591,7 @@ msgid "identity checks"
 msgstr "vérifications d'identité"
 
 msgid "Can see identity documents and verify pros"
-msgstr "Peut voir les pièces d'identité et vérifier les talents"
+msgstr "Peut voir les pièces d'identité et vérifier les professionnels"
 
 msgid "Book an appointment with"
 msgstr "Prends rendez-vous avec"
@@ -5852,7 +5852,7 @@ msgid "Ticked when booking"
 msgstr "Cochée à la réservation"
 
 msgid "Noted by the pro with her agreement"
-msgstr "Noté par le talent avec son accord"
+msgstr "Noté par le professionnel avec son accord"
 
 msgid "Unsubscribe link"
 msgstr "Lien de désinscription"
@@ -6354,7 +6354,7 @@ msgid "Selection orders"
 msgstr "commandes Sélection"
 
 msgid "Reason shown to the pro"
-msgstr "Raison montrée au talent"
+msgstr "Raison montrée au professionnel"
 
 msgid "forbidden words found"
 msgstr "mots interdits trouvés"
@@ -6382,7 +6382,7 @@ msgid "Create your showcase first: your shop lives in it."
 msgstr "Crée d'abord ta vitrine : ta boutique est dedans."
 
 msgid "Only a verified pro can sell. Send your identity document in « My showcase »."
-msgstr "Seule un talent vérifiée peut vendre. Envoie ta pièce d'identité dans « Ma vitrine »."
+msgstr "Seul un professionnel vérifié peut vendre. Envoie ta pièce d'identité dans « Ma vitrine »."
 
 msgid "This product does not exist or is no longer on sale."
 msgstr "Ce produit n'existe pas ou n'est plus en vente."
@@ -6511,7 +6511,7 @@ msgid "what happens"
 msgstr "ce qui se passe"
 
 msgid "reason shown to the pro"
-msgstr "raison montrée au talent"
+msgstr "raison montrée au professionnel"
 
 msgid "For example: banned by ABMed."
 msgstr "Par exemple : interdit par l'ABMed."
@@ -6749,7 +6749,7 @@ msgstr "produits épinglés"
 
 #, python-format
 msgid "The product leaves the shop of %(shop)s and every cart. The pro receives this reason."
-msgstr "Le produit quitte la boutique de %(shop)s et tous les paniers. Le talent reçoit cette raison."
+msgstr "Le produit quitte la boutique de %(shop)s et tous les paniers. Le professionnel reçoit cette raison."
 
 msgid "Remove the selected items"
 msgstr "Retirer les éléments choisis"
@@ -6802,7 +6802,7 @@ msgid "Give the free times of today, e.g. 14:00."
 msgstr "Indique les créneaux libres d'aujourd'hui, par exemple 14:00."
 
 msgid "Only a pro can share her free slots."
-msgstr "Seule un talent peut partager ses créneaux libres."
+msgstr "Seul un professionnel peut partager ses créneaux libres."
 
 msgid "This booking or order does not exist."
 msgstr "Ce rendez-vous ou cette commande n'existe pas."
@@ -6830,7 +6830,7 @@ msgid "Before / after"
 msgstr "Avant / après"
 
 msgid "Set when the author posts as a pro."
-msgstr "Rempli quand l'autrice publie en tant que talent."
+msgstr "Rempli quand l'autrice publie en tant que professionnel."
 
 msgid "to publish at"
 msgstr "à publier le"
@@ -6944,7 +6944,7 @@ msgid "stars"
 msgstr "étoiles"
 
 msgid "reply of the pro"
-msgstr "réponse du talent"
+msgstr "réponse du professionnel"
 
 msgid "replied at"
 msgstr "répondu le"
@@ -7142,7 +7142,7 @@ msgid "Advertisers"
 msgstr "Annonceurs"
 
 msgid "Boosts of the pros"
-msgstr "Boosts des talents"
+msgstr "Boosts des professionnels"
 
 msgid "Ad statistics"
 msgstr "Statistiques des pubs"
@@ -7224,6 +7224,18 @@ msgstr "Groupes"
 
 msgid "Django site admin"
 msgstr "Administration Solange Glow"
+
+msgid "Online payment is closed"
+msgstr "Le paiement en ligne est fermé"
+
+msgid "Free launch: no payment, no deposit, Premium offered. The screens say that payment opens soon."
+msgstr "Lancement gratuit : aucun paiement, aucun acompte, Premium offert. Les écrans disent que le paiement ouvre bientôt."
+
+msgid "To open it: connect the payment keys below, then turn off the switch « Payments closed »."
+msgstr "Pour l'ouvrir : branche les clés de paiement ci-dessous, puis décoche le réglage « Paiements fermés »."
+
+msgid "Open the switch"
+msgstr "Ouvrir le réglage"
 
 msgid "To configure"
 msgstr "À configurer"
