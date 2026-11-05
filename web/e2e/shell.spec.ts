@@ -15,7 +15,7 @@ test.describe("app shell on mobile", () => {
 
     await sheet.getByRole("combobox").fill("Paris");
     await sheet
-      .getByRole("button", { name: /^Paris/ })
+      .getByRole("option", { name: /^Paris/ })
       .first()
       .click();
     await expect(sheet).toBeHidden();
