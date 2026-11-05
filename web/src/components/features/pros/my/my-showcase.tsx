@@ -223,9 +223,7 @@ export function MyShowcase() {
                 href={`/pro/${section}`}
                 className="border-trait bg-carte rounded-card hover:border-prune-doux flex min-h-16 items-center gap-4 border p-4"
               >
-                <span aria-hidden className="text-hibiscus">
-                  {ICONS[section]}
-                </span>
+                <span aria-hidden>{ICONS[section]}</span>
                 <span className="flex min-w-0 flex-1 flex-col">
                   <span className="font-bold">{t(`sections.${section}`)}</span>
                   <span className="text-small text-prune-doux truncate">

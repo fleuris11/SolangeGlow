@@ -45,7 +45,7 @@ export function ContactChange({ me }: { me: Me }) {
             key={kind}
             className="border-trait bg-carte rounded-card flex items-center gap-3 border p-4"
           >
-            <span aria-hidden className="text-hibiscus shrink-0">
+            <span aria-hidden className="shrink-0">
               {icon}
             </span>
             <span className="flex min-w-0 flex-1 flex-col">

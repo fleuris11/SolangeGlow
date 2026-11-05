@@ -58,7 +58,7 @@ function Part({
     >
       <div>
         <h2 id={id} className="text-title flex items-center gap-2 font-bold">
-          <span aria-hidden className="text-hibiscus inline-flex">
+          <span aria-hidden className="inline-flex">
             {icon}
           </span>
           {title}

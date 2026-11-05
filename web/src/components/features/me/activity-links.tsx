@@ -81,9 +81,7 @@ export function ActivityLinks() {
               href={link.href}
               className="border-trait bg-carte rounded-card flex min-h-16 items-center gap-4 border p-4"
             >
-              <span aria-hidden className="text-hibiscus">
-                {link.icon}
-              </span>
+              <span aria-hidden>{link.icon}</span>
               <span className="flex-1 font-bold">{t(link.key as "posts")}</span>
               <CaretRight aria-hidden size={20} />
             </Link>

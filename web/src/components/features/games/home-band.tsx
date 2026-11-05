@@ -34,9 +34,7 @@ function Tile({
         href={href}
         className="border-trait bg-lait rounded-card flex min-h-24 flex-col gap-1 border p-3"
       >
-        <span aria-hidden className="text-hibiscus">
-          {icon}
-        </span>
+        <span aria-hidden>{icon}</span>
         <span className="font-bold">{title}</span>
         <span className="text-small text-prune-doux">{text}</span>
       </Link>

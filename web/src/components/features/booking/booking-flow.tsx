@@ -478,7 +478,7 @@ export function BookingFlow({
               >
                 <span
                   aria-hidden
-                  className="bg-poudre text-hibiscus flex size-10 shrink-0 items-center justify-center rounded-full"
+                  className="bg-poudre flex size-10 shrink-0 items-center justify-center rounded-full"
                   style={member ? { backgroundColor: member.color, color: "white" } : undefined}
                 >
                   {member ? member.name.slice(0, 1) : icons.person}

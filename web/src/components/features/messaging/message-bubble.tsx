@@ -52,12 +52,7 @@ function DeliveryLine({ delivery }: { delivery: Delivery }) {
         delivery === "failed" ? "text-alerte" : "text-prune-doux",
       )}
     >
-      <Icon
-        aria-hidden
-        size={16}
-        weight="bold"
-        className={delivery === "read" ? "text-hibiscus" : undefined}
-      />
+      <Icon aria-hidden size={16} weight="bold" className={delivery === "read" ? "" : undefined} />
       {t(delivery)}
     </span>
   );

@@ -28,7 +28,7 @@ export function Flame({
         aria-hidden
         size={24}
         weight={alive ? "fill" : "regular"}
-        className={alive ? "text-hibiscus" : "text-prune-doux"}
+        className={alive ? "" : "text-prune-doux"}
       />
       {!bare && <span aria-hidden>{streak}</span>}
     </span>

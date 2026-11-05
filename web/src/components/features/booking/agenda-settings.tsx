@@ -94,9 +94,7 @@ function Section({
       className="border-trait bg-carte rounded-card flex flex-col gap-4 border p-4"
     >
       <h2 id={id} className="text-title flex items-center gap-2 font-bold">
-        <span aria-hidden className="text-hibiscus">
-          {icon}
-        </span>
+        <span aria-hidden>{icon}</span>
         {title}
       </h2>
       {children}

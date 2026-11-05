@@ -95,18 +95,12 @@ export function Catalogue({ theme }: { theme: "light" | "dark" }) {
 
       <Section id={id("icon-label")} title="IconLabel">
         <div className="flex flex-wrap gap-6">
-          <IconLabel icon={<MapPin size={22} className="text-hibiscus" />}>
-            Fidjrossè, Cotonou
-          </IconLabel>
+          <IconLabel icon={<MapPin size={22} />}>Fidjrossè, Cotonou</IconLabel>
           <IconLabel layout="stacked" icon={<ChatsCircle size={28} />}>
             {t("sample.messages")}
           </IconLabel>
           {TRADES.slice(0, 3).map((trade) => (
-            <IconLabel
-              key={trade}
-              layout="stacked"
-              icon={<TradeIcon trade={trade} size={32} className="text-hibiscus" />}
-            >
+            <IconLabel key={trade} layout="stacked" icon={<TradeIcon trade={trade} size={32} />}>
               {tTrades(trade)}
             </IconLabel>
           ))}

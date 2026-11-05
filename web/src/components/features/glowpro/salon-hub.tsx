@@ -72,9 +72,7 @@ export function SalonHub() {
               href={tool.href}
               className="border-trait bg-carte rounded-card flex min-h-16 items-center gap-4 border p-4"
             >
-              <span aria-hidden className="text-hibiscus">
-                {tool.icon}
-              </span>
+              <span aria-hidden>{tool.icon}</span>
               <span className="flex flex-1 flex-col">
                 <span className="font-bold">{t(`tools.${tool.key as "agenda"}`)}</span>
                 <span className="text-small text-prune-doux">

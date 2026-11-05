@@ -58,9 +58,7 @@ export function GamesGrid() {
               href={game.href}
               className="border-trait bg-carte rounded-card flex min-h-24 flex-col items-start justify-center gap-2 border p-4"
             >
-              <span aria-hidden className="text-hibiscus">
-                {game.icon}
-              </span>
+              <span aria-hidden>{game.icon}</span>
               <span className="font-bold">{t(game.key as "quiz")}</span>
             </Link>
           </li>

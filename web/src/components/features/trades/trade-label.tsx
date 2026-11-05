@@ -17,7 +17,7 @@ export function TradeLabel({
   const t = useTranslations("trades");
   return (
     <span className={cn("inline-flex items-center gap-1", className)}>
-      <TradeIcon trade={trade} size={size} className="text-hibiscus shrink-0" />
+      <TradeIcon trade={trade} size={size} className="shrink-0" />
       {t(trade)}
     </span>
   );

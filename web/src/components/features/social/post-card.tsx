@@ -94,10 +94,7 @@ export function PostCard({
   );
 
   return (
-    <article
-      aria-labelledby={`post-${post.id}`}
-      className="border-trait bg-carte rounded-card overflow-hidden border"
-    >
+    <article aria-labelledby={`post-${post.id}`} className="bg-carte rounded-card overflow-hidden">
       <header className="flex items-center gap-3 p-4">
         {author.pro_slug ? (
           <Link href={`/${author.pro_slug}`} className="flex min-w-0 flex-1 items-center gap-3">

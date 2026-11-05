@@ -138,7 +138,7 @@ export function CourseView({ course }: { course: CourseDetail }) {
                   const open = canWatch || lesson.is_preview;
                   const content = (
                     <>
-                      <span aria-hidden className="text-hibiscus shrink-0">
+                      <span aria-hidden className="shrink-0">
                         {lesson.done ? (
                           <CheckCircle size={24} weight="fill" className="text-feuille" />
                         ) : open ? (

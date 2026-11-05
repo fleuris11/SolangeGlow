@@ -25,10 +25,7 @@ export default async function OfflinePage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: "offline" });
   return (
     <section className="flex flex-col items-center gap-5 py-10 text-center">
-      <span
-        aria-hidden
-        className="bg-poudre text-hibiscus petal inline-flex size-24 items-center justify-center"
-      >
+      <span aria-hidden className="bg-poudre petal inline-flex size-24 items-center justify-center">
         <WifiSlash size={48} />
       </span>
       <div className="flex items-start gap-2">

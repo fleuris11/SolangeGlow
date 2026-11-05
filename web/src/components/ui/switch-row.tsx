@@ -31,7 +31,7 @@ export function SwitchRow({
       disabled={disabled}
       className="border-trait bg-carte rounded-card flex w-full items-center gap-4 border p-4 text-left disabled:opacity-60"
     >
-      <span aria-hidden className="text-hibiscus shrink-0">
+      <span aria-hidden className="shrink-0">
         {icon}
       </span>
       <span className="flex min-w-0 flex-1 flex-col">
