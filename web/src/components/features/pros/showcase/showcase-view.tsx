@@ -60,20 +60,16 @@ const isTrade = (key: string): key is Trade => (TRADES as readonly string[]).inc
 function Section({
   id,
   title,
-  icon,
   children,
 }: {
   id: string;
   title: string;
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
     <section aria-labelledby={id} className="flex flex-col gap-4">
-      <h2 id={id} className="text-title flex items-center gap-2 font-bold">
-        <span aria-hidden className="text-hibiscus inline-flex">
-          {icon}
-        </span>
+      <h2 id={id} className="font-display text-title">
         {title}
       </h2>
       {children}
@@ -113,7 +109,7 @@ function ServiceRow({ service, slug }: { service: Service; slug: string }) {
   return (
     <li className="border-trait flex flex-col gap-2 border-b py-4 last:border-b-0">
       <div className="flex items-start justify-between gap-3">
-        <span className="text-lead font-bold">{service.name}</span>
+        <span className="text-lead font-semibold">{service.name}</span>
         {service.price_kind === "quote" || service.price_minor === null ? (
           <span className="font-bold whitespace-nowrap">{t("quote")}</span>
         ) : (
@@ -154,7 +150,7 @@ function ServiceRow({ service, slug }: { service: Service; slug: string }) {
       )}
       <Link
         href={`/${slug}/rdv?service=${service.id}`}
-        className={buttonClasses({ variant: "secondary", className: "self-start" })}
+        className={buttonClasses({ variant: "secondary", className: "self-start lg:self-end" })}
       >
         <CalendarCheck aria-hidden size={22} />
         {t("bookService")}
@@ -180,6 +176,12 @@ export function ShowcaseView({
   const name = showcase.business_name;
   const photo = mediaSrc(showcase.photo, "medium", "large");
   const cover = mediaSrc(showcase.cover, "large", "medium");
+  // Beside the cover, the work itself, when it is a photo.
+  const works = showcase.portfolio
+    .filter((item) => item.media.kind !== "video")
+    .map((item) => mediaSrc(item.media, "large", "medium"))
+    .filter((src): src is string => !!src && src !== cover);
+  const pictures = (cover ? [cover, ...works] : works).slice(0, 3);
   const bioVoice = voiceSrc(showcase.bio_voice);
   const place = showcase.place;
   const travel = showcase.travel;
@@ -207,70 +209,79 @@ export function ShowcaseView({
         </div>
       )}
 
-      <header className="flex flex-col gap-4">
-        {cover && (
-          // eslint-disable-next-line @next/next/no-img-element -- resized by the backend
-          <img
-            src={cover}
-            alt=""
-            className="rounded-card -mb-16 aspect-[16/7] w-full object-cover object-[50%_30%] lg:aspect-[4/1]"
-            fetchPriority="high"
-          />
-        )}
-        <div className="flex items-end gap-4">
-          <Avatar name={name} src={photo} size="xl" className={cover ? "relative" : undefined} />
-          <SpeakButton text={[name, showcase.bio].filter(Boolean).join(". ")} />
-        </div>
-        <div className="flex flex-col gap-2">
-          <h1 className="font-display text-display">{name}</h1>
-          <ul className="flex flex-wrap gap-x-4 gap-y-1">
-            {showcase.trades
-              .filter((trade) => isTrade(trade.key))
-              .map((trade) => (
-                <li key={trade.key}>
-                  <TradeLabel trade={trade.key as Trade} className="font-bold" />
-                </li>
-              ))}
-          </ul>
-          <div className="flex flex-wrap items-center gap-3">
-            {showcase.verified && <Badge tone="verified">{t("verified")}</Badge>}
-            {showcase.trained && <Badge tone="trained">{t("trained")}</Badge>}
-            <ProLevelBadge level={showcase.level} />
-            <span className="text-small inline-flex items-center gap-1">
-              <Star aria-hidden size={18} weight="fill" className="text-or" />
-              {showcase.rating_count > 0 && showcase.rating_average !== null
-                ? t("rating", {
-                    rating: showcase.rating_average.toLocaleString(locale, {
-                      maximumFractionDigits: 1,
-                    }),
-                    count: showcase.rating_count,
-                  })
-                : t("noReviews")}
-            </span>
+      <header
+        className={`flex flex-col gap-5 ${
+          pictures.length === 1
+            ? "lg:grid lg:grid-cols-[22rem_minmax(0,1fr)] lg:items-end lg:gap-x-8"
+            : ""
+        }`}
+      >
+        {pictures.length > 0 && (
+          <div
+            className={`rounded-card grid aspect-[4/3] grid-cols-1 gap-1 overflow-clip ${
+              pictures.length === 1
+                ? "lg:row-span-2 lg:aspect-[4/5]"
+                : "lg:aspect-auto lg:h-[26rem] lg:grid-cols-[2fr_1fr] lg:grid-rows-2"
+            }`}
+          >
+            {pictures.map((src, index) => (
+              // eslint-disable-next-line @next/next/no-img-element -- resized by the backend
+              <img
+                key={src}
+                src={src}
+                alt=""
+                fetchPriority={index === 0 ? "high" : undefined}
+                loading={index === 0 ? undefined : "lazy"}
+                className={`bg-poudre size-full min-h-0 object-cover object-[50%_20%] ${
+                  index > 0 ? "max-lg:hidden" : ""
+                } ${pictures.length === 2 || (index === 0 && pictures.length === 3) ? "lg:row-span-2" : ""}`}
+              />
+            ))}
           </div>
-          <p className="text-prune-doux flex items-center gap-1">
+        )}
+        <div className="flex items-center gap-4">
+          <Avatar name={name} src={photo} size="md" className="shrink-0" />
+          <div className="flex min-w-0 flex-1 flex-col gap-1">
+            <div className="flex items-start gap-2">
+              <h1 className="font-display text-headline lg:text-display min-w-0">{name}</h1>
+              <SpeakButton text={[name, showcase.bio].filter(Boolean).join(". ")} />
+            </div>
+            <ul className="flex flex-wrap gap-x-4 gap-y-1">
+              {showcase.trades
+                .filter((trade) => isTrade(trade.key))
+                .map((trade) => (
+                  <li key={trade.key}>
+                    <TradeLabel trade={trade.key as Trade} className="font-semibold" />
+                  </li>
+                ))}
+            </ul>
+          </div>
+        </div>
+        <div className="text-small flex flex-wrap items-center gap-x-4 gap-y-2">
+          {showcase.verified && <Badge tone="verified">{t("verified")}</Badge>}
+          {showcase.trained && <Badge tone="trained">{t("trained")}</Badge>}
+          <ProLevelBadge level={showcase.level} />
+          <span className="inline-flex items-center gap-1">
+            <Star aria-hidden size={18} weight="fill" />
+            {showcase.rating_count > 0 && showcase.rating_average !== null
+              ? t("rating", {
+                  rating: showcase.rating_average.toLocaleString(locale, {
+                    maximumFractionDigits: 1,
+                  }),
+                  count: showcase.rating_count,
+                })
+              : t("noReviews")}
+          </span>
+          <span className="inline-flex items-center gap-1">
             <MapPin aria-hidden size={18} />
             {[place.district, place.city].filter(Boolean).join(", ")}
-          </p>
+          </span>
         </div>
       </header>
 
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-12">
-        <aside className="order-first flex flex-col gap-4 self-start lg:sticky lg:top-20 lg:order-last">
+        <aside className="lg:bg-poudre lg:rounded-card order-first flex flex-col gap-3 self-start lg:sticky lg:top-20 lg:order-last lg:p-4">
           <OpeningLine showcase={showcase} />
-          <FollowButton
-            userId={showcase.owner_id}
-            followed={showcase.followed}
-            count={showcase.follower_count}
-            icons={{
-              follow: <UserPlus aria-hidden size={22} weight="bold" />,
-              following: <UserCheck aria-hidden size={22} weight="bold" />,
-            }}
-          />
-          <WriteButton
-            personId={showcase.owner_id}
-            icon={<ChatCircleText aria-hidden size={22} weight="bold" />}
-          />
           <ShowcaseActions
             name={name}
             slug={showcase.slug}
@@ -287,6 +298,19 @@ export function ShowcaseView({
               gift: <Gift aria-hidden size={22} weight="bold" />,
             }}
           />
+          <WriteButton
+            personId={showcase.owner_id}
+            icon={<ChatCircleText aria-hidden size={22} weight="bold" />}
+          />
+          <FollowButton
+            userId={showcase.owner_id}
+            followed={showcase.followed}
+            count={showcase.follower_count}
+            icons={{
+              follow: <UserPlus aria-hidden size={22} weight="bold" />,
+              following: <UserCheck aria-hidden size={22} weight="bold" />,
+            }}
+          />
         </aside>
         <div className="flex min-w-0 flex-col gap-10">
           <Section id="services" title={t("services")} icon={<Scissors size={26} />}>
@@ -296,7 +320,7 @@ export function ShowcaseView({
               groups.map((group) => (
                 <div key={group.key} className="flex flex-col">
                   {group.title && (
-                    <h3 className="text-lead text-prune-doux font-bold">{group.title}</h3>
+                    <h3 className="text-small text-prune-doux font-semibold">{group.title}</h3>
                   )}
                   <ul className="flex flex-col">
                     {group.services.map((service) => (
@@ -334,7 +358,7 @@ export function ShowcaseView({
                                 src={src}
                                 alt={`${label} ${item.caption}`.trim()}
                                 loading="lazy"
-                                className="aspect-[4/5] w-full rounded-2xl object-cover"
+                                className="rounded-photo aspect-[4/5] w-full object-cover"
                               />
                               <figcaption className="bg-carte text-mention absolute top-2 left-2 rounded-full px-2 py-1 font-bold">
                                 {label}
@@ -348,7 +372,7 @@ export function ShowcaseView({
                           src={after}
                           alt={item.caption || name}
                           loading="lazy"
-                          className="aspect-[4/5] w-full rounded-2xl object-cover"
+                          className="rounded-photo aspect-[4/5] w-full object-cover"
                         />
                       )}
                       {(item.caption || item.service_name) && (
