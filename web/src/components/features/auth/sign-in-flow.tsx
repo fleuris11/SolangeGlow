@@ -2,7 +2,7 @@
 
 import { ArrowLeft, Envelope, Key, Phone, WhatsappLogo } from "@phosphor-icons/react";
 import { useLocale, useTranslations } from "next-intl";
-import { useState, type FormEvent } from "react";
+import { type FormEvent, useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
@@ -34,7 +34,16 @@ type Method = "phone" | "email";
 type Step = "identifier" | "code" | "password";
 
 /** Sign-up and sign-in are one flow: number or e-mail, then the 6-digit code. */
-export function SignInFlow({ as }: { as?: "client" | "pro" }) {
+export function SignInFlow({ as, pageName }: { as?: "client" | "pro"; pageName?: string }) {
+  useEffect(() => {
+    if (!pageName) return;
+    try {
+      sessionStorage.setItem("sg.page-name", pageName);
+    } catch {
+      // Private browsing: the person will type the name again.
+    }
+  }, [pageName]);
+
   const t = useTranslations("auth");
   const locale = useLocale();
   const router = useRouter();

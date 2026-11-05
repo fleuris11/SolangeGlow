@@ -21,20 +21,23 @@ export function PrivacyNotice() {
         aria-label={t("aria")}
         hidden
         suppressHydrationWarning
-        className="bg-poudre border-trait flex flex-wrap items-center gap-3 border-b px-4 py-3 [&[hidden]]:hidden"
+        className="bg-poudre flex flex-wrap items-center gap-3 px-4 py-3 [&[hidden]]:hidden"
       >
-        <p className="flex min-w-0 flex-1 basis-64 items-start gap-3">
-          <ShieldCheck aria-hidden size={28} className="text-feuille shrink-0" />
+        <p className="text-small flex min-w-0 flex-1 basis-64 items-start gap-3">
+          <ShieldCheck aria-hidden size={24} className="shrink-0" />
           <span>
             {t("text")}{" "}
-            <Link href="/pages/confidentialite" className="text-hibiscus font-bold underline">
+            <Link
+              href="/pages/confidentialite"
+              className="font-semibold underline underline-offset-4"
+            >
               {t("more")}
             </Link>
           </span>
         </p>
         <button
           type="button"
-          className="bg-rouge text-sur-hibiscus min-h-12 rounded-full px-5 font-bold"
+          className="press border-prune text-small rounded-button min-h-11 border-2 px-4 font-semibold"
         >
           {t("ok")}
         </button>

@@ -1,0 +1,272 @@
+/*
+ * Public home (docs/design/accueil.md). Choices made with plain radio buttons and CSS: no script,
+ * the keyboard works, and a picture that is not shown is not downloaded.
+ */
+
+/* The ticket: the hour chosen. */
+.sg-chooser [data-time] {
+  display: none;
+}
+
+.sg-chooser:has(input[value="morning"]:checked) [data-time="morning"],
+.sg-chooser:has(input[value="noon"]:checked) [data-time="noon"],
+.sg-chooser:has(input[value="evening"]:checked) [data-time="evening"] {
+  display: block;
+}
+
+/* The two notches of a ticket torn along a line: what is under it shows through. */
+.sg-ticket {
+  --tear: calc(100% - 14.5rem);
+  mask:
+    radial-gradient(circle 0.75rem at 0 var(--tear), #0000 98%, #000) intersect,
+    radial-gradient(circle 0.75rem at 100% var(--tear), #0000 98%, #000);
+}
+
+.sg-ticket-foot {
+  height: 14.5rem;
+}
+
+/* The code comes out of the printer each time the choice changes. */
+.sg-chooser [data-show].sg-qr-print {
+  animation: qr-print 520ms var(--courbe-sortie);
+}
+
+@keyframes qr-print {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+/* Each line of the title rises from behind its own baseline, once. */
+.sg-mask {
+  display: block;
+  overflow: clip;
+  padding-block: 0.08em;
+  margin-block: -0.08em;
+}
+
+.sg-mask > span {
+  display: block;
+  animation: mask-rise 900ms var(--courbe-sortie) both;
+  animation-delay: calc(var(--line, 0) * 110ms);
+}
+
+@keyframes mask-rise {
+  from {
+    transform: translateY(105%);
+  }
+}
+
+.sg-after-title {
+  animation: fade-in 500ms 420ms var(--courbe-sortie) both;
+}
+
+.sg-photo-settle {
+  animation: photo-settle 1400ms var(--courbe-sortie) both;
+}
+
+@keyframes photo-settle {
+  from {
+    transform: scale(1.06);
+  }
+}
+
+/* The two sides of an account: the whole field follows the switch. */
+.sg-sides {
+  transition: background-color var(--duree-ouverture) var(--courbe-sortie);
+}
+
+.sg-sides:has(input[value="offer"]:checked) {
+  --rouge: #ffffff;
+  --rouge-press: #f2f2f3;
+  --sur-hibiscus: #c8102e;
+  --prune-doux: #ffffff;
+  --hibiscus: #ffffff;
+  --trait: #ffffff;
+  background-color: #c8102e;
+}
+
+.sg-sides [data-side] {
+  display: none;
+}
+
+.sg-sides:has(input[value="seek"]:checked) [data-side="seek"],
+.sg-sides:has(input[value="offer"]:checked) [data-side="offer"] {
+  display: block;
+  animation: fade-in var(--duree-ouverture) var(--courbe-sortie);
+}
+
+.sg-thumb {
+  transition: transform var(--duree-ouverture) var(--courbe-feuille);
+}
+
+.sg-sides:has(input[value="offer"]:checked) .sg-thumb {
+  transform: translateX(100%);
+}
+
+.sg-sides label {
+  transition: color var(--duree-micro) var(--courbe-sortie);
+}
+
+/* The chosen word sits on white as soon as the thumb has arrived, also where it cannot slide. */
+.sg-sides:has(input[value="seek"]:checked) label[data-for="seek"],
+.sg-sides:has(input[value="offer"]:checked) label[data-for="offer"] {
+  color: #0e0e10;
+  background-color: #ffffff;
+  transition:
+    color var(--duree-micro) var(--courbe-sortie),
+    background-color 0ms linear var(--duree-ouverture);
+}
+
+.sg-sides:has(input:focus-visible) .sg-track {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* How it works: the same piece of the product, in the state of the sentence being read. */
+.sg-steps [data-state] {
+  display: none;
+}
+
+.sg-steps[data-active="0"] [data-state="0"],
+.sg-steps[data-active="1"] [data-state="1"],
+.sg-steps[data-active="2"] [data-state="2"],
+.sg-steps[data-active="3"] [data-state="3"],
+.sg-steps[data-active="4"] [data-state="4"] {
+  display: block;
+  animation: state-in var(--duree-ouverture) var(--courbe-sortie);
+}
+
+@keyframes state-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}
+
+.sg-steps [data-step] {
+  color: var(--prune-doux);
+  transition: color var(--duree-micro) var(--courbe-sortie);
+}
+
+.sg-steps[data-active="0"] [data-step="0"],
+.sg-steps[data-active="1"] [data-step="1"],
+.sg-steps[data-active="2"] [data-step="2"] {
+  color: var(--prune);
+}
+
+/* The panel of an activity: a note brings forward the part it talks about. */
+@media (hover: hover) and (pointer: fine) {
+  .sg-plate:has([data-note]:hover) [data-part],
+  .sg-plate:has([data-note]:focus-visible) [data-part] {
+    opacity: 0.3;
+  }
+
+  .sg-plate:has([data-note="agenda"]:hover) [data-part="agenda"],
+  .sg-plate:has([data-note="slots"]:hover) [data-part="slots"],
+  .sg-plate:has([data-note="places"]:hover) [data-part="places"],
+  .sg-plate:has([data-note="page"]:hover) [data-part="page"],
+  .sg-plate:has([data-note="shop"]:hover) [data-part="shop"],
+  .sg-plate:has([data-note="lives"]:hover) [data-part="lives"],
+  .sg-plate:has([data-note="agenda"]:focus-visible) [data-part="agenda"],
+  .sg-plate:has([data-note="slots"]:focus-visible) [data-part="slots"],
+  .sg-plate:has([data-note="places"]:focus-visible) [data-part="places"],
+  .sg-plate:has([data-note="page"]:focus-visible) [data-part="page"],
+  .sg-plate:has([data-note="shop"]:focus-visible) [data-part="shop"],
+  .sg-plate:has([data-note="lives"]:focus-visible) [data-part="lives"] {
+    opacity: 1;
+  }
+
+  .sg-tile img,
+  .sg-tile video {
+    transition: transform 500ms var(--courbe-sortie);
+  }
+
+  .sg-tile:hover img,
+  .sg-tile:hover video {
+    transform: scale(1.03);
+  }
+}
+
+.sg-plate [data-part] {
+  transition: opacity var(--duree-micro) var(--courbe-sortie);
+}
+
+/* The questions: on a phone the answer opens under its question, on a computer it has a pane. */
+.sg-index input:checked + label {
+  color: var(--prune);
+}
+
+.sg-index input:checked + label .sg-dot {
+  background-color: var(--hibiscus);
+}
+
+.sg-index input:focus-visible + label {
+  outline: 3px solid var(--hibiscus);
+  outline-offset: 2px;
+}
+
+.sg-index .sg-answer {
+  display: none;
+}
+
+.sg-index input:checked + label + .sg-answer {
+  display: block;
+  animation: fade-in 150ms var(--courbe-sortie);
+}
+
+@media (min-width: 1280px) {
+  .sg-index {
+    grid-template-columns: 5fr 7fr;
+  }
+
+  .sg-index > div {
+    display: contents;
+  }
+
+  .sg-index label {
+    grid-column: 1;
+  }
+
+  .sg-index .sg-answer {
+    grid-column: 2;
+    grid-row: 1 / span 8;
+    align-self: start;
+    position: sticky;
+    top: 7.5rem;
+  }
+}
+
+/* The parts of a section rise as it comes into view, where the browser links it to the scroll. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    html:not([data-motion="reduced"]) .sg-rise {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry calc(var(--i, 0) * 6%) entry calc(36% + var(--i, 0) * 6%);
+    }
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+}
+
+/* The notice about data on this page: on a computer a small sheet at the foot of the first screen,
+   over the photo, which scrolls away with it. On a phone it stays in the flow, and never covers. */
+@media (min-width: 1280px) {
+  body:has(#main > [data-ambiance="rouge"]:first-child) #sg-privacy {
+    position: absolute;
+    z-index: 40;
+    top: calc(100svh - 8.5rem);
+    right: 1.5rem;
+    max-width: 24rem;
+    border-radius: var(--radius-card);
+  }
+}

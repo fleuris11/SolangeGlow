@@ -8,7 +8,7 @@ sans compte. Les belles images ne remplacent jamais cette explication.
 
 | Adresse | Pour qui | Contenu |
 | --- | --- | --- |
-| `/` | Toute visiteuse | Ouverture, « Par où commencer ? », tout ce qu'on peut faire, photos, code de réception, rendez-vous, pros, Sélection, Académie, Offrir, questions, fil des pros |
+| `/` | Toute visiteuse | Ticket QR à essayer (métier, heure, code), interrupteur « Je cherche / Je propose » avec les comptes, trois étapes, tous les métiers, espace d'activité commenté, « Et aussi » (boutiques, Sélection, Académie, lives, Offrir, messages, jeux, écouter), questions, adresse de vitrine, fil réel |
 | `/proposer-mes-services` | Pros sans compte | Pour qui, lien et QR code, vitrine, agenda, boutique, formations, réseau, gratuit ou Premium, trois étapes pour commencer |
 | `/comment-ca-marche` | Toute visiteuse | Types de compte, création de compte, chaque service étape par étape, audio et langues |
 
@@ -77,3 +77,7 @@ Une personne n'est jamais à deux endroits en même temps, et les rendez-vous d�
 Ces fonctions du cahier des charges ne sont pas promises sur les pages publiques, car elles ne sont pas actives :
 paiement sur place par téléphone, facture électronique, caisse certifiée, langues locales, traduction automatique
 des contenus. Aucun prix n'est écrit en dur : les offres et les tarifs se règlent dans l'admin. Aucun concurrent n'est nommé.
+
+## Direction de l'accueil (novembre 2026)
+
+Méthode Taste, direction « Le produit en action » (seed 818759591), polices League Spartan et Figtree, palette du logo gardée. Idée : le QR code du rendez-vous devient le contrôle vivant de la première page. Le visiteur choisit, le ticket s'imprime. Écrans de travail : style « Framed sheet » (cadre gris, feuille blanche). Le menu fixe du téléphone est signalé par l'outil de mesure comme couvrant du texte : c'est voulu, il reste.

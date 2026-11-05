@@ -12,36 +12,52 @@ for (const [label, viewport] of Object.entries(VIEWPORTS)) {
     await expect(main.getByRole("link", { name: "Me connecter" }).first()).toBeVisible();
     await expect(main.getByRole("link", { name: "Créer un compte" }).first()).toBeVisible();
     await expect(main.getByRole("link", { name: "Je propose mes services" }).first()).toBeVisible();
-    await expect(main.getByRole("heading", { name: "Par où commencer ?" })).toBeAttached();
+
+    // The ticket answers: the choice changes the photo, the code and the way to the talents.
+    await expect(main.getByRole("link", { name: "Trouver un talent : tresses" })).toHaveAttribute(
+      "href",
+      "/fr/explore?trade=braids",
+    );
+    await main.getByText("Maquillage", { exact: true }).first().click();
     await expect(
-      main.getByRole("link", { name: "Trouver un talent", exact: true }),
-    ).toHaveAttribute("href", "/fr/explore");
+      main.getByRole("link", { name: "Trouver un talent : maquillage" }),
+    ).toHaveAttribute("href", "/fr/explore?trade=makeup");
+    await expect(main.getByRole("img", { name: /QR code d'exemple/ })).toBeVisible();
+
+    // The two sides of an account.
+    await expect(main.getByRole("heading", { name: "Un compte, deux côtés" })).toBeAttached();
     await expect(main.getByRole("link", { name: "Créer mon compte", exact: true })).toHaveAttribute(
       "href",
       "/fr/auth?as=client",
     );
-    await expect(main.getByRole("link", { name: "Créer ma vitrine" }).first()).toHaveAttribute(
+    await main.getByText("Je propose", { exact: true }).click();
+    await expect(main.getByRole("link", { name: "Créer ma vitrine" })).toHaveAttribute(
       "href",
       "/fr/auth?as=pro",
     );
-    await expect(main.getByRole("heading", { name: "Tout ce que tu peux faire" })).toBeAttached();
+
     for (const service of [
-      "Prendre rendez-vous",
-      "Ton QR code de rendez-vous",
-      "Écrire et appeler",
-      "Acheter dans les boutiques",
+      "Boutiques",
       "Sélection France",
-      "Offrir au pays",
-      "Jouer et gagner des points",
+      "Académie",
+      "Lives",
+      "Offrir",
+      "Messages",
+      "Jeux",
+      "Écouter",
     ]) {
       await expect(main.getByRole("link", { name: new RegExp(service) }).first()).toBeAttached();
     }
-    await expect(
-      main.getByRole("img", { name: /QR code qui ouvre la réservation/ }),
-    ).toBeAttached();
     await expect(main.getByText("Faut-il un compte pour réserver ?")).toBeAttached();
   });
 }
+
+test("the name typed on the home page follows to the creation of the page", async ({ page }) => {
+  await openWith(page, "/fr", LOOK);
+  await page.getByLabel("Le nom de ta vitrine").fill("Aïcha Tresses");
+  await page.getByRole("button", { name: "Créer", exact: true }).click();
+  await expect(page).toHaveURL(/\/fr\/auth\?as=pro&vitrine=/);
+});
 
 test("the page for talents explains the QR code and what is free, then leads to sign up", async ({
   page,

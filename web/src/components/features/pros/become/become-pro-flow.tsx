@@ -43,6 +43,15 @@ export function BecomeProFlow({ invite }: { invite?: string }) {
 
   const [step, setStep] = useState(1);
   const [name, setName] = useState("");
+  useEffect(() => {
+    try {
+      const typed = sessionStorage.getItem("sg.page-name");
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- read once from the browser
+      if (typed) setName(typed);
+    } catch {
+      // Private browsing: the field stays empty.
+    }
+  }, []);
   const [kind, setKind] = useState<"independent" | "business">("independent");
   const [chosen, setChosen] = useState<string[]>([]);
   const [country, setCountry] = useState<string | null>(null);

@@ -7,7 +7,7 @@ import type { Locale } from "@/lib/i18n/routing";
 
 type Props = {
   params: Promise<{ locale: Locale }>;
-  searchParams: Promise<{ as?: string }>;
+  searchParams: Promise<{ as?: string; vitrine?: string }>;
 };
 
 export async function generateMetadata({ params }: Pick<Props, "params">): Promise<Metadata> {
@@ -19,6 +19,11 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
 export default function AuthPage({ params, searchParams }: Props) {
   const { locale } = use(params);
   setRequestLocale(locale);
-  const { as } = use(searchParams);
-  return <SignInFlow as={as === "pro" || as === "client" ? as : undefined} />;
+  const { as, vitrine } = use(searchParams);
+  return (
+    <SignInFlow
+      as={as === "pro" || as === "client" ? as : undefined}
+      pageName={vitrine?.slice(0, 60)}
+    />
+  );
 }
