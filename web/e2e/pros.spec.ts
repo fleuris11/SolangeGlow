@@ -72,7 +72,7 @@ for (const size of SIZES) {
   test(`explore list and filters ${size}`, async ({ page }) => {
     await page.setViewportSize(VIEWPORTS[size]);
     await openWith(page, "/fr/explore", { theme: "light", textSize: "normal" });
-    await expect(page.getByRole("heading", { name: /talents trouvées/ })).toBeVisible();
+    await expect(page.getByRole("heading", { name: /talents trouvés/ })).toBeVisible();
 
     await page
       .getByRole("navigation", { name: "Métiers" })
@@ -81,7 +81,7 @@ for (const size of SIZES) {
     await expect(page).toHaveURL(/trade=braids/);
     await expect(
       page
-        .getByRole("region", { name: /talents trouvées/ })
+        .getByRole("region", { name: /talents trouvés/ })
         .getByRole("link", { name: /Aïcha Tresses/ }),
     ).toBeVisible();
     await expectNoSeriousA11yIssue(page);
@@ -94,7 +94,7 @@ for (const size of SIZES) {
     await page.screenshot({ path: `e2e/screenshots/explore-filters-${size}.png` });
     await sheet.getByRole("button", { name: "Voir les talents" }).click();
     await expect(page).toHaveURL(/city=Abomey-Calavi/);
-    const results = page.getByRole("region", { name: /talents trouvées/ });
+    const results = page.getByRole("region", { name: /talents trouvés/ });
     await expect(results.getByRole("link", { name: /Fifonsi Tresses/ })).toBeVisible();
     await expect(results.getByRole("link", { name: /Aïcha Tresses/ })).toHaveCount(0);
   });
@@ -102,7 +102,7 @@ for (const size of SIZES) {
 
 test("search by words, as dictated", async ({ page }) => {
   await page.goto("/fr/explore?q=" + encodeURIComponent("tresses à Calavi"));
-  const results = page.getByRole("region", { name: /talents trouvées/ });
+  const results = page.getByRole("region", { name: /talents trouvés/ });
   await expect(results.getByRole("link", { name: /Fifonsi Tresses/ })).toBeVisible();
   await expect(results.getByRole("link", { name: /Sènami Hair/ })).toBeVisible();
   // Braids in Cotonou, not in Calavi: every word must match.

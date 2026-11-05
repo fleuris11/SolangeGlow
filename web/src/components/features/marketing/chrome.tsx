@@ -16,7 +16,7 @@ export function lines(t: { raw: (key: never) => unknown }, key: string) {
 }
 
 const CHIP =
-  "press bg-lait text-prune hover:bg-poudre rounded-button text-small inline-flex min-h-11 items-center justify-center px-3 font-semibold whitespace-nowrap sm:px-4";
+  "press bg-lait text-prune hover:bg-poudre rounded-button text-small inline-flex min-h-11 min-w-0 shrink items-center justify-center px-3 text-center leading-tight font-semibold sm:px-4 sm:whitespace-nowrap";
 
 /**
  * Top of the public pages. The links sit on the field of colour; the account stays on small sheets
@@ -27,14 +27,14 @@ export function TopBar({ signedIn = false }: { signedIn?: boolean }) {
   return (
     <header className="absolute inset-x-0 top-0 z-20 flex items-center justify-between gap-3 px-4 py-3 md:px-8 xl:px-10 xl:py-5">
       <div className="flex min-w-0 items-center gap-8">
-        <Link href="/" aria-label="Solange glow" className="press shrink-0">
+        <Link href="/" aria-label="Solange glow" className="press min-w-16 shrink">
           <Image
             src="/brand/logo-white.png"
             alt="Solange glow"
             width={640}
             height={291}
             sizes="125px"
-            className="h-11 w-auto xl:h-14"
+            className="h-9 w-auto sm:h-11 xl:h-14"
           />
         </Link>
         <nav

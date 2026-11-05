@@ -105,7 +105,7 @@ export default async function ExplorePage({ params, searchParams }: Props) {
             {t("results", { count: results.count })}
           </h2>
           <AdSlot list={sponsored} />
-          <ul className="grid gap-x-4 gap-y-6 md:grid-cols-3 xl:grid-cols-4">
+          <ul className="grid grid-cols-[minmax(0,1fr)] gap-x-4 gap-y-6 md:grid-cols-3 xl:grid-cols-4">
             {results.results.map((pro) => (
               <li key={pro.slug}>
                 <ProCard pro={pro} />
