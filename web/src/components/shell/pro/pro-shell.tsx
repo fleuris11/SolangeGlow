@@ -87,7 +87,7 @@ export function ProShell({ children }: { children: ReactNode }) {
   const t = useTranslations("common");
   const drawn = icons();
   return (
-    <div data-space="pro">
+    <div data-space="pro" className="lg:bg-poudre lg:min-h-svh">
       <a
         href="#main"
         className="bg-rouge text-sur-hibiscus sr-only z-50 rounded-full px-5 py-3 font-bold focus:not-sr-only focus:fixed focus:top-2 focus:left-2"
@@ -96,14 +96,16 @@ export function ProShell({ children }: { children: ReactNode }) {
       </a>
       <div>
         <ProSidebar icons={drawn} />
-        <div className="min-w-0 lg:pl-[272px]">
+        <div className="min-w-0 lg:py-2 lg:pr-2 lg:pl-[248px]">
           <ProHeader icons={drawn} />
-          <main
-            id="main"
-            className="mx-auto w-full max-w-[1120px] px-4 pt-6 pb-32 lg:px-8 lg:pb-16"
-          >
-            {children}
-          </main>
+          <div className="lg:bg-lait lg:border-trait lg:min-h-[calc(100svh-1rem)] lg:rounded-2xl lg:border">
+            <main
+              id="main"
+              className="mx-auto w-full max-w-[1180px] px-4 pt-6 pb-32 lg:px-6 lg:pb-12"
+            >
+              {children}
+            </main>
+          </div>
         </div>
       </div>
       <ProBottomBar icons={drawn} />

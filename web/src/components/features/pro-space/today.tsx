@@ -36,6 +36,7 @@ import { getWallet } from "@/lib/api/payments";
 import { getMyPro, myProQueryKey, printableUrl } from "@/lib/api/pros";
 import { getOrders } from "@/lib/api/shop";
 import { dayName, localDay, timeAt } from "@/lib/booking/time";
+import { cn } from "@/lib/cn";
 import { Link } from "@/lib/i18n/navigation";
 import { formatMoney } from "@/lib/money";
 
@@ -56,13 +57,55 @@ function Card({
       className="border-trait rounded-card flex flex-col gap-3 border p-4"
     >
       <div className="flex items-center justify-between gap-3">
-        <h2 id={id} className="text-title font-bold">
+        <h2 id={id} className="font-display text-lead">
           {title}
         </h2>
         {action}
       </div>
       {children}
     </section>
+  );
+}
+
+/** The whole day on one line: what is taken in the red of the logo, what is free stays empty. */
+function DayStrip({
+  appointments,
+  zone,
+  locale,
+  label,
+}: {
+  appointments: Appointment[];
+  zone: string;
+  locale: string;
+  label: string;
+}) {
+  if (appointments.length === 0) return null;
+  const HOUR = 3_600_000;
+  const times = appointments.flatMap((a) => [Date.parse(a.starts_at), Date.parse(a.ends_at)]);
+  const first = Math.floor(Math.min(...times) / HOUR) * HOUR;
+  const last = Math.ceil(Math.max(...times) / HOUR) * HOUR;
+  const span = Math.max(last - first, 4 * HOUR);
+  const at = (time: number) => ((time - first) / span) * 100;
+  return (
+    <figure aria-label={label} className="flex flex-col gap-1">
+      <div aria-hidden className="bg-poudre rounded-field relative h-8 overflow-clip">
+        {appointments.map((a) => (
+          <span
+            key={a.id}
+            title={`${timeAt(a.starts_at, zone, locale)} ${a.client_name}`}
+            className="bg-rouge absolute inset-y-0"
+            style={{
+              left: `${at(Date.parse(a.starts_at))}%`,
+              width: `max(0.25rem, ${at(Date.parse(a.ends_at)) - at(Date.parse(a.starts_at))}%)`,
+            }}
+          />
+        ))}
+      </div>
+      <figcaption className="text-mention text-prune-doux flex justify-between tabular-nums">
+        <span>{timeAt(new Date(first).toISOString(), zone, locale)}</span>
+        <span>{timeAt(new Date(first + span).toISOString(), zone, locale)}</span>
+      </figcaption>
+    </figure>
   );
 }
 
@@ -145,13 +188,25 @@ export function TodayScreen({ welcome }: { welcome: boolean }) {
   };
 
   return (
-    <div className="flex flex-col gap-6">
-      <header className="flex items-start justify-between gap-3">
-        <div>
-          <h1 className="font-display text-display">{t("title")}</h1>
-          <p className="text-prune-doux">{data.business_name}</p>
+    <div className="flex flex-col gap-5">
+      <header className="flex flex-wrap items-end justify-between gap-3">
+        <div className="min-w-0">
+          <div className="flex items-start gap-2">
+            <h1 className="font-display text-headline lg:text-display">{t("title")}</h1>
+            <SpeakButton text={`${t("title")}. ${t("pendingCount", { count: pending.length })}`} />
+          </div>
+          <p className="mt-1">{t("pendingCount", { count: pending.length })}</p>
         </div>
-        <SpeakButton text={`${t("title")}. ${t("pendingCount", { count: pending.length })}`} />
+        <Link
+          href="/pro/agenda"
+          className={buttonClasses({
+            variant: pending.length > 0 ? "secondary" : "primary",
+            className: "max-sm:w-full",
+          })}
+        >
+          <CalendarPlus aria-hidden size={22} />
+          {t("addAppointment")}
+        </Link>
       </header>
 
       {welcome && (
@@ -196,21 +251,49 @@ export function TodayScreen({ welcome }: { welcome: boolean }) {
         </section>
       )}
 
-      <nav aria-label={t("shortcuts")} className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+      <dl className="border-trait rounded-card grid grid-cols-2 border lg:grid-cols-4">
         {(
           [
-            ["/pro/agenda", "addAppointment", <CalendarPlus key="a" size={26} />],
-            ["/pro/creneaux", "openSlot", <ClockClockwise key="b" size={26} />],
-            ["/pro/services", "addService", <Scissors key="c" size={26} />],
-            ["/pro/shop/product/new", "addProduct", <Plus key="d" size={26} weight="bold" />],
+            [t("pendingTitle"), String(pending.length)],
+            [t("kpiDay"), String(appointments.length)],
+            [t("kpiOrders"), String(newOrders)],
+            [
+              t("kpiMoney"),
+              money ? formatMoney(money.available_minor, money.currency, locale) : "–",
+            ],
+          ] as const
+        ).map(([label, value], index) => (
+          <div
+            key={label}
+            className={cn(
+              "border-trait flex flex-col gap-0.5 p-4",
+              index % 2 === 1 && "border-l",
+              index > 1 && "max-lg:border-t",
+              index === 2 && "lg:border-l",
+            )}
+          >
+            <dt className="text-small text-prune-doux">{label}</dt>
+            <dd className="text-title font-semibold tabular-nums">{value}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <DayStrip appointments={appointments} zone={zone} locale={locale} label={t("dayStrip")} />
+
+      <nav aria-label={t("shortcuts")} className="flex flex-wrap gap-2">
+        {(
+          [
+            ["/pro/creneaux", "openSlot", <ClockClockwise key="b" size={20} />],
+            ["/pro/services", "addService", <Scissors key="c" size={20} />],
+            ["/pro/shop/product/new", "addProduct", <Plus key="d" size={20} />],
           ] as const
         ).map(([href, key, icon]) => (
           <Link
             key={key}
             href={href}
-            className="press border-trait hover:bg-poudre rounded-card flex min-h-20 flex-col justify-center gap-1 border p-3 font-semibold"
+            className="press bg-poudre rounded-button text-small flex min-h-11 items-center gap-2 px-3 font-semibold"
           >
-            <span aria-hidden className="text-hibiscus inline-flex">
+            <span aria-hidden className="inline-flex">
               {icon}
             </span>
             {t(key)}
@@ -218,16 +301,14 @@ export function TodayScreen({ welcome }: { welcome: boolean }) {
         ))}
       </nav>
 
-      <div className="grid gap-6 lg:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]">
-        <div className="flex min-w-0 flex-col gap-6">
+      <div className="grid items-start gap-5 lg:grid-cols-[minmax(0,1fr)_22rem]">
+        <div className="flex min-w-0 flex-col gap-5">
           <Card
             id="pending-title"
             title={t("pendingTitle")}
             action={
               pending.length > 0 ? (
-                <span className="bg-rouge text-sur-hibiscus rounded-full px-3 py-1 font-bold">
-                  {pending.length}
-                </span>
+                <span className="text-small font-semibold tabular-nums">{pending.length}</span>
               ) : undefined
             }
           >
@@ -235,12 +316,12 @@ export function TodayScreen({ welcome }: { welcome: boolean }) {
               <Skeleton className="h-24" />
             ) : pending.length === 0 ? (
               <p className="text-prune-doux flex items-center gap-2">
-                <CheckCircle aria-hidden size={24} className="text-feuille" />
+                <CheckCircle aria-hidden size={24} />
                 {t("pendingEmpty")}
               </p>
             ) : (
               <ul className="flex flex-col gap-3">
-                {pending.map((a) => (
+                {pending.map((a, index) => (
                   <li
                     key={a.id}
                     className="border-trait flex flex-col gap-2 border-b pb-3 last:border-b-0"
@@ -256,7 +337,11 @@ export function TodayScreen({ welcome }: { welcome: boolean }) {
                       </span>
                     </p>
                     <div className="grid grid-cols-2 gap-2">
-                      <Button disabled={busy === a.id} onClick={() => void confirm(a.id)}>
+                      <Button
+                        variant={index === 0 ? "primary" : "secondary"}
+                        disabled={busy === a.id}
+                        onClick={() => void confirm(a.id)}
+                      >
                         {t("confirm")}
                       </Button>
                       <Link href={link(a)} className={buttonClasses({ variant: "secondary" })}>
@@ -316,11 +401,22 @@ export function TodayScreen({ welcome }: { welcome: boolean }) {
           </Card>
         </div>
 
-        <div className="flex min-w-0 flex-col gap-6">
+        <div className="flex min-w-0 flex-col gap-5">
           <Card id="link-title" title={t("linkTitle")}>
             {data.slug && published ? (
               <>
-                <p className="font-semibold break-all">{shortLink.replace(/^https?:\/\//, "")}</p>
+                <div className="flex items-center gap-3">
+                  {/* eslint-disable-next-line @next/next/no-img-element -- a code drawn by the server */}
+                  <img
+                    src={printableUrl(data.slug, "card.png")}
+                    alt=""
+                    loading="lazy"
+                    className="rounded-field bg-poudre aspect-square w-24 shrink-0 object-cover"
+                  />
+                  <p className="min-w-0 font-semibold break-all">
+                    {shortLink.replace(/^https?:\/\//, "")}
+                  </p>
+                </div>
                 <div className="grid grid-cols-2 gap-2">
                   <Button variant="secondary" onClick={() => void copy()}>
                     <Copy aria-hidden size={22} />

@@ -39,7 +39,7 @@ function useProSpace() {
     staleTime: 60_000,
     retry: false,
   });
-  const keys = owner ? PRO_NAV.map(({ key }) => key) : STAFF_NAV;
+  const keys = me && !owner ? STAFF_NAV : PRO_NAV.map(({ key }) => key);
   const items = PRO_NAV.filter(({ key }) => keys.includes(key));
   return { signedIn: !!me, owner, pro, items, keys };
 }
@@ -67,8 +67,8 @@ function NavList({ icons, onChoose }: { icons: ProChromeIcons; onChoose?: () => 
                     onClick={onChoose}
                     aria-current={active === key ? "page" : undefined}
                     className={cn(
-                      "hover:bg-poudre flex min-h-11 items-center gap-3 rounded-lg px-3 font-medium",
-                      active === key && "bg-prune text-lait hover:bg-prune",
+                      "hover:bg-lait/60 max-lg:hover:bg-poudre flex min-h-11 items-center gap-3 rounded-lg px-3 font-medium lg:min-h-9 lg:text-[0.9375rem]",
+                      active === key && "bg-poudre lg:bg-lait lg:hover:bg-lait font-semibold",
                     )}
                   >
                     <span aria-hidden className="inline-flex">
@@ -95,7 +95,7 @@ function Leave({ icons, slug }: { icons: ProChromeIcons; slug?: string | null })
       {slug && (
         <Link
           href={`/${slug}`}
-          className="hover:bg-poudre flex min-h-12 items-center gap-3 rounded-lg px-3 font-semibold"
+          className="lg:hover:bg-lait/60 max-lg:hover:bg-poudre flex min-h-11 items-center gap-3 rounded-lg px-3 font-semibold lg:min-h-9 lg:text-[0.9375rem]"
         >
           {icons.see}
           {t("seeMyPage")}
@@ -103,12 +103,12 @@ function Leave({ icons, slug }: { icons: ProChromeIcons; slug?: string | null })
       )}
       <Link
         href="/"
-        className="hover:bg-poudre flex min-h-12 items-center gap-3 rounded-lg px-3 font-semibold"
+        className="lg:hover:bg-lait/60 max-lg:hover:bg-poudre flex min-h-11 items-center gap-3 rounded-lg px-3 font-semibold lg:min-h-9 lg:text-[0.9375rem]"
       >
         {icons.client}
         {t("clientMode")}
       </Link>
-      <SignOutButton icon={icons.signOut} className="text-alerte" />
+      <SignOutButton icon={icons.signOut} />
     </div>
   );
 }
@@ -118,7 +118,7 @@ export function ProSidebar({ icons }: { icons: ProChromeIcons }) {
   const tMeta = useTranslations("metadata");
   const { pro } = useProSpace();
   return (
-    <aside className="border-trait bg-lait fixed inset-y-0 left-0 z-30 hidden w-[272px] flex-col gap-3 border-r p-4 lg:flex">
+    <aside className="bg-poudre fixed inset-y-0 left-0 z-30 hidden w-[248px] flex-col gap-3 p-3 lg:flex">
       <div className="flex items-center justify-between gap-2">
         <Link href="/pro" className="shrink-0">
           <Image src="/brand/logo-red.png" alt={tMeta("title")} width={100} height={49} />
@@ -127,7 +127,7 @@ export function ProSidebar({ icons }: { icons: ProChromeIcons }) {
           {t("badge")}
         </span>
       </div>
-      {pro && <p className="font-display text-title px-3 break-words">{pro.business_name}</p>}
+      {pro && <p className="font-display text-lead px-3 break-words">{pro.business_name}</p>}
       {/* The menu scrolls on a short screen: leaving always stays in sight. */}
       <nav aria-label={t("menu")} className="min-h-0 flex-1 overflow-y-auto">
         <NavList icons={icons} />
