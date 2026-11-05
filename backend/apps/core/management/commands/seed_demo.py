@@ -18,7 +18,7 @@ from apps.ads.demo import seed_ads
 from apps.backoffice.demo import seed_backoffice
 from apps.booking.demo import seed_booking
 from apps.core.choices import Role
-from apps.core.demo_media import refresh_photos, seed_pro_photos
+from apps.core.demo_media import refresh_photos, seed_course_covers, seed_pro_photos
 from apps.core.models import Country
 from apps.gamification.demo import seed_games
 from apps.gifts.demo import seed_gifts
@@ -78,6 +78,7 @@ class Command(BaseCommand):
         ads = seed_ads()
         backoffice = seed_backoffice()
         seed_pro_photos()
+        seed_course_covers()
         self.stdout.write(
             self.style.SUCCESS(
                 f"seed_demo: {created} new demo accounts, {self.showcases} showcases filled, "

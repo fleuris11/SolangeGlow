@@ -7,6 +7,8 @@ from pathlib import PurePosixPath
 
 from django.core.files.base import ContentFile
 
+from apps.academy.models import Course
+from apps.ads.models import CreativeMedia
 from apps.core import demo_photos
 from apps.core.media.models import MediaAsset
 from apps.core.media.processing import process
@@ -62,6 +64,19 @@ def seed_pro_photos() -> int:
     return done
 
 
+def seed_course_covers() -> int:
+    """A real photograph on the courses that have no cover."""
+    done = 0
+    for course in Course.objects.filter(cover__isnull=True).select_related("author"):
+        trade = demo_photos._pick(list(demo_photos.TRADES), course.slug)
+        data = demo_photos.look(f"course-{course.slug}", trade)
+        if data:
+            course.cover = _new_asset(course.author, f"course-{course.slug}", "course_cover", data)
+            course.save(update_fields=["cover"])
+            done += 1
+    return done
+
+
 def _replace(asset: MediaAsset, data: bytes | None) -> int:
     if not data:
         return 0
@@ -80,6 +95,7 @@ def refresh_photos() -> int:
     media = list(
         PostMedia.objects.select_related("media").values_list("media_id", flat=True)
     ) + list(Story.objects.values_list("media_id", flat=True))
+    media += list(CreativeMedia.objects.values_list("media_id", flat=True))
     for asset in MediaAsset.objects.filter(pk__in=media, kind=MediaAsset.Kind.IMAGE):
         seed = PurePosixPath(asset.original_name or str(asset.pk)).stem
         count += _replace(asset, demo_art.picture(seed, trades.get(asset.owner_id, "hair")))
@@ -87,4 +103,4 @@ def refresh_photos() -> int:
         for photo in model.objects.select_related("media"):
             drawing = demo_photos._pick(list(demo_photos.PRODUCTS), str(photo.media_id))
             count += _replace(photo.media, demo_photos.product(str(photo.media_id), drawing))
-    return count + seed_pro_photos()
+    return count + seed_pro_photos() + seed_course_covers()
