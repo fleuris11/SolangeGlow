@@ -32,7 +32,8 @@
     "choose": "Vybrať mesto",
     "search": "Tvoje mesto",
     "everywhere": "Všade",
-    "everywhereCta": "Zobraziť všade"
+    "everywhereCta": "Zobraziť všade",
+    "chooseShort": "Moje mesto"
   },
   "audio": {
     "mode": "Zvuk",
@@ -180,7 +181,7 @@
       "rating": "{rating} ({count})",
       "from": "od",
       "trained": "Vyškolená na Solange Glow",
-      "topPro": "Top Pro"
+      "topPro": "Top talent"
     },
     "filtersSheet": {
       "title": "Filtre",
@@ -1396,7 +1397,7 @@
     }
   },
   "payments": {
-    "signIn": "Prihlás sa a uvidíš svoje platby.",
+    "signIn": "Prihlás sa a pokračuj.",
     "signInCta": "Prihlásiť sa",
     "status": {
       "pending_payment": "Čaká na platbu",
@@ -3761,7 +3762,7 @@
     },
     "proLevels": {
       "confirmed": "Overená",
-      "top": "Top Pro"
+      "top": "Top talent"
     },
     "streak": {
       "aria": "{count, plural, =0 {Žiadna séria} one {# deň za sebou} few {# dni za sebou} other {# dní za sebou}}"
@@ -4312,6 +4313,10 @@
       "france": {
         "q": "Som vo Francúzsku. Môžem darovať do Beninu?",
         "a": "Áno. Cez « Darovať » zaplatíš v eurách ošetrenie, produkt alebo kartu. Obdarovaná dostane odkaz a vyberie si."
+      },
+      "free": {
+        "q": "Koľko to stojí?",
+        "a": "Vytvorenie účtu, rezervácia aj otvorenie stránky sú zadarmo."
       }
     },
     "footer": {
@@ -4332,10 +4337,9 @@
     },
     "pros": {
       "metaTitle": "Ponúkať služby",
-      "title": "Tvoja činnosť online. To podstatné je zadarmo.",
       "line": "Vitrína, QR kód, diár, obchod a kurzy na jednom mieste.",
       "cta": "Vytvoriť moju vitrínu",
-      "heroAlt": "Profesionálka lakuje klientke nechty.",
+      "heroAlt": "Ruky pletiarky pri cornrows.",
       "who": {
         "title": "Pre koho?",
         "solo": {
@@ -4423,8 +4427,8 @@
       "alt": {
         "braids": "Žena s dlhými vrkočmi a veľkými kruhmi, z profilu.",
         "salon": "Interiér ružového salónu krásy.",
-        "palette": "Otvorená paleta líčidiel.",
-        "hands": "Ruky pletiarky pri práci.",
+        "palette": "Rolky zelenej, žltej a červenej látky wax.",
+        "hands": "Vizážistka pripravuje nevestu.",
         "curls": "Žena s kučeravými vlasmi."
       },
       "plans": {
@@ -4458,7 +4462,9 @@
           "b": "Vyber si odbor, služby a hodiny.",
           "c": "Zverejni vitrínu a zdieľaj odkaz a QR kód."
         }
-      }
+      },
+      "first": "Tvoja činnosť online.",
+      "second": "To hlavné je zadarmo."
     },
     "how": {
       "title": "Ako to funguje",
@@ -4672,7 +4678,11 @@
       "shopTitle": "Obchod a peniaze",
       "newOrders": "{count, plural, =0 {Žiadna objednávka na prípravu} other {Na prípravu: #}}",
       "available": "K dispozícii: {amount}",
-      "wallet": "Moja peňaženka"
+      "wallet": "Moja peňaženka",
+      "kpiDay": "Termíny",
+      "kpiOrders": "Objednávky",
+      "kpiMoney": "K dispozícii",
+      "dayStrip": "Tvoj deň"
     },
     "slots": {
       "title": "Termíny a miesta",
@@ -4753,5 +4763,280 @@
   "geo": {
     "placeholder": "Začni písať...",
     "results": "Nájdené mestá"
+  },
+  "landing": {
+    "hero": {
+      "first": "Rezervuj. Skenuj.",
+      "second": "Žiar.",
+      "line": "Vlasy, vrkoče, líčenie, nechty, šitie. Nájdi talent a rezervuj bez volania, aj bez účtu."
+    },
+    "ticket": {
+      "trade": "Čo chceš",
+      "time": "Tvoj čas, sobota",
+      "times": {
+        "morning": "10:00",
+        "noon": "14:30",
+        "evening": "17:00"
+      },
+      "when": {
+        "morning": "Sobota 10:00",
+        "noon": "Sobota 14:30",
+        "evening": "Sobota 17:00"
+      },
+      "show": "Tvoj QR kód. Ukáž ho pri príchode.",
+      "qrAlt": "Ukážkový QR kód: otvorí talenty v odbore {trade}."
+    },
+    "sides": {
+      "title": "Jeden účet, dve strany",
+      "line": "Medzi nimi prechádzaš, kedy chceš.",
+      "legend": "Hľadám talent alebo ponúkam svoje služby",
+      "seek": "Hľadám",
+      "offer": "Ponúkam",
+      "seeAll": "Pozrieť všetko",
+      "alt": {
+        "seek": "Usmiata žena v žltej košeli pred modrou stenou.",
+        "offer": "Kaderníčka pri práci vo svojom ružovom salóne."
+      }
+    },
+    "steps": {
+      "title": "Ako to funguje",
+      "more": "Pozrieť každú službu podrobne",
+      "choose": {
+        "title": "Najprv si vyber talent.",
+        "text": "Podľa remesla, mesta alebo na mape. Vidíš fotky, ceny a hodnotenia."
+      },
+      "book": {
+        "title": "Potom si vezmi termín.",
+        "text": "Bez volania. Nemáš účet? Stačí meno a číslo."
+      },
+      "show": {
+        "title": "Nakoniec ukáž QR kód.",
+        "text": "Dostaneš pripomienku. Pri príchode ho talent naskenuje a je to."
+      },
+      "ui": {
+        "label": "Ukážka aplikácie: talenty, voľné termíny a QR kód termínu.",
+        "resultsTitle": "Vrkoče blízko teba",
+        "resultsLine": "3 talenty otvorené v sobotu",
+        "talents": {
+          "a": {
+            "name": "Aïcha Tresses",
+            "meta": "4,9 z 5, 1,2 km",
+            "price": "od 45 €"
+          },
+          "b": {
+            "name": "Studio Nadia",
+            "meta": "4,8 z 5, 2,4 km",
+            "price": "od 60 €"
+          },
+          "c": {
+            "name": "Locks de Mel",
+            "meta": "5 z 5, u teba doma",
+            "price": "od 70 €"
+          }
+        },
+        "service": "Cornrows, 2 h, 45 €",
+        "day": "Sobota",
+        "slots": {
+          "s1": "9:00",
+          "s2": "11:00",
+          "s3": "14:30",
+          "s4": "15:00",
+          "s5": "16:30",
+          "s6": "18:00"
+        },
+        "bookCta": "Rezervovať v sobotu 14:30",
+        "confirmed": "Je to potvrdené",
+        "whenLine": "Sobota 14:30",
+        "showLine": "Ukáž ho pri príchode.",
+        "reminder": "Deň vopred dostaneš pripomienku."
+      }
+    },
+    "plate": {
+      "title": "Tvoja činnosť na jednom mieste",
+      "line": "Práca či vášeň, sám alebo v tíme: všetko spravuješ z telefónu.",
+      "cta": "Pozrieť, ako ponúkať služby",
+      "notes": {
+        "agenda": {
+          "title": "Tvoj kalendár",
+          "text": "Potvrď, presuň alebo odmietni. Pripomienky idú samy."
+        },
+        "slots": {
+          "title": "Tvoje termíny",
+          "text": "Podľa tvojich hodín alebo len tie, ktoré otvoríš."
+        },
+        "places": {
+          "title": "Tvoje miesta",
+          "text": "Salón, doma alebo na cestách, s časom presunu."
+        },
+        "page": {
+          "title": "Tvoja stránka",
+          "text": "Adresa s tvojím menom a QR kód na tlač."
+        },
+        "shop": {
+          "title": "Tvoj obchod",
+          "text": "Tvoje produkty, sklad a objednávky."
+        },
+        "lives": {
+          "title": "Tvoje živé vysielania",
+          "text": "Predávaj a uč naživo, s otázkami."
+        }
+      },
+      "ui": {
+        "labels": {
+          "l0": "Ukážka: dnešný kalendár a voľné termíny.",
+          "l1": "Ukážka: miesta a stránka s QR kódom.",
+          "l2": "Ukážka: obchod a tlačidlo na spustenie vysielania."
+        },
+        "today": "Dnes",
+        "a1": {
+          "time": "9:00",
+          "who": "Awa, vrkoče",
+          "state": "Potvrdené"
+        },
+        "a2": {
+          "time": "11:00",
+          "who": "Grâce, líčenie",
+          "state": "Potvrdiť"
+        },
+        "slots": "Voľné termíny",
+        "s1": "14:00",
+        "s2": "15:30",
+        "s3": "17:00",
+        "places": "Moje miesta",
+        "place1": "Môj salón",
+        "place1Meta": "Otvorené",
+        "place2": "U klienta",
+        "place2Meta": "+ 20 min",
+        "page": "Moja stránka",
+        "shop": "Môj obchod",
+        "shopMeta": "3 objednávky",
+        "live": "Spustiť vysielanie"
+      }
+    },
+    "tiles": {
+      "title": "Všetky remeslá",
+      "braids": {
+        "name": "Vrkoče",
+        "alt": "Žena s vrkočmi na fialovom pozadí.",
+        "subs": {
+          "a": "Prilepené",
+          "b": "Knotless",
+          "c": "Twisty",
+          "d": "Locks"
+        }
+      },
+      "hair": {
+        "name": "Vlasy",
+        "alt": "Žena s medenými kučerami.",
+        "subs": {
+          "a": "Strih",
+          "b": "Farba",
+          "c": "Narovnanie",
+          "d": "Starostlivosť"
+        }
+      },
+      "makeup": {
+        "name": "Líčenie",
+        "alt": "Oranžové pery a oranžové okuliare, zblízka.",
+        "subs": {
+          "a": "Svadba",
+          "b": "Večer",
+          "c": "Foto",
+          "d": "Kurzy"
+        }
+      },
+      "nails": {
+        "name": "Nechty",
+        "alt": "Odborníčka nanáša lak, ružové rukavice.",
+        "subs": {
+          "a": "Nechty",
+          "b": "Gél",
+          "c": "Nail art",
+          "d": "Pedikúra"
+        }
+      },
+      "sewing": {
+        "name": "Šitie",
+        "alt": "Rolky zelenej, žltej a červenej látky wax.",
+        "subs": {
+          "a": "Na mieru",
+          "b": "Úpravy",
+          "c": "Wax",
+          "d": "Svadba"
+        }
+      },
+      "headwrap": {
+        "name": "Turban",
+        "alt": "Žena so žltým turbanom pred nástennou maľbou.",
+        "subs": {
+          "a": "Gélé",
+          "b": "Turban",
+          "c": "Oslava",
+          "d": "Kurzy"
+        }
+      },
+      "skincare": {
+        "name": "Kozmetika",
+        "alt": "Žena z profilu, žiarivá pleť, hnedé pozadie.",
+        "subs": {
+          "a": "Tvár",
+          "b": "Telo",
+          "c": "Depilácia",
+          "d": "Masáž"
+        }
+      },
+      "all": {
+        "name": "Všetky talenty",
+        "alt": "Paleta líčidiel a štetce na stole.",
+        "subs": {
+          "a": "Mapa",
+          "b": "Tvoje mesto",
+          "c": "Blízko teba",
+          "d": "U teba doma"
+        }
+      }
+    },
+    "more": {
+      "title": "A tiež",
+      "shops": {
+        "name": "Obchody",
+        "text": "Tvoje peniaze sú blokované, kým nedáš kód prevzatia."
+      },
+      "selection": {
+        "name": "Výber z Francúzska",
+        "text": "Produkty z Francúzska, doručené, s konečnou cenou."
+      },
+      "academy": {
+        "name": "Akadémia",
+        "text": "Krátke videá, kvíz a tvoj certifikát."
+      },
+      "lives": {
+        "name": "Naživo",
+        "text": "Predaj a kurzy naživo, s tvojimi otázkami."
+      },
+      "gift": {
+        "name": "Darovať",
+        "text": "Daruj starostlivosť alebo produkt niekomu ďaleko."
+      },
+      "talk": {
+        "name": "Správy",
+        "text": "Píš a volaj bez ukázania svojho čísla."
+      },
+      "games": {
+        "name": "Hry",
+        "text": "Denný kvíz, koleso, výzvy, body a odmeny."
+      },
+      "listen": {
+        "name": "Počúvať",
+        "text": "Aplikácia ti číta texty nahlas."
+      }
+    },
+    "address": {
+      "title": "Tvoja stránka bude tu:",
+      "label": "Názov tvojej stránky",
+      "placeholder": "tvoje meno",
+      "cta": "Vytvoriť",
+      "line": "Je to zadarmo. Vytvor si účet a potom vyplň stránku."
+    }
   }
 }

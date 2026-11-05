@@ -21,10 +21,15 @@
   --color-voile: var(--voile);
   --color-nuit: var(--nuit);
   --color-voile-photo: var(--voile-photo);
+  /* The same on every field and in every theme: paper, ink, and the tags of the home page. */
+  --color-blanc: var(--blanc);
+  --color-encre: var(--encre);
+  --color-rouge-fixe: var(--rouge-fixe);
+  --color-poudre-fixe: var(--poudre-fixe);
 
   /* Fonts (next/font variables set on <html>). */
   --font-sans: var(--font-text-face), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-display-face), ui-serif, Georgia, serif;
+  --font-display: var(--font-display-face), ui-sans-serif, system-ui, sans-serif;
 
   /* Type scale: 13/18, 15/22, 17/26 (body), 20/28, 24/30, 30/36, 40/44, 52/56. */
   --text-mention: 0.8125rem;
@@ -235,7 +240,8 @@
 /* One weight only: this face is already strong, and a faked bold would ruin its contrast. */
 @utility font-display {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 700;
+  letter-spacing: -0.03em;
   font-synthesis-weight: none;
 }
 
@@ -459,7 +465,7 @@ html[data-motion="reduced"] .sg-marquee-copy {
 
 /* An older browser without :has() keeps the first trade, and every link still works. */
 @supports not selector(:has(*)) {
-  .sg-chooser [data-show="hair"] {
+  .sg-chooser [data-show="braids"] {
     display: block;
   }
 }
@@ -467,6 +473,6 @@ html[data-motion="reduced"] .sg-marquee-copy {
 /* The menu of a pro stays fixed on a computer: a first-visit notice goes beside it. */
 @media (min-width: 1024px) {
   body:has([data-space="pro"]) #sg-privacy {
-    padding-left: 288px;
+    padding-left: 264px;
   }
 }

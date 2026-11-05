@@ -2,13 +2,14 @@ import type { ComponentPropsWithoutRef } from "react";
 
 import { cn } from "@/lib/cn";
 
-type Ambiance = "jour" | "nuit" | "poudre" | "hibiscus";
+type Ambiance = "jour" | "nuit" | "poudre" | "hibiscus" | "rouge";
 
 const fields: Record<Ambiance, string> = {
   jour: "bg-lait text-prune",
   nuit: "bg-nuit text-prune sg-to-night",
   poudre: "bg-poudre text-prune",
   hibiscus: "bg-rouge text-sur-hibiscus",
+  rouge: "bg-lait text-prune",
 };
 
 type Props = ComponentPropsWithoutRef<"section"> & { ambiance?: Ambiance };
@@ -22,7 +23,7 @@ export function EditorialSection({ ambiance = "jour", className, children, ...pr
   return (
     <section
       data-chapter
-      data-ambiance={ambiance === "nuit" ? "nuit" : undefined}
+      data-ambiance={ambiance === "nuit" || ambiance === "rouge" ? ambiance : undefined}
       className={cn("relative w-full", fields[ambiance], className)}
       {...props}
     >

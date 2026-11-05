@@ -25,7 +25,7 @@ export function AudioToggle({
       className={cn(
         "inline-flex min-h-12 shrink-0 items-center font-bold",
         compact
-          ? "text-mention min-w-14 flex-col justify-center rounded-2xl px-2"
+          ? "text-mention rounded-button min-w-14 flex-col justify-center px-2"
           : "gap-1 rounded-full px-3",
         audioMode ? "bg-prune text-lait" : "hover:bg-poudre",
         className,

@@ -1,15 +1,15 @@
-import { Gloock, Hanken_Grotesk } from "next/font/google";
+import { Figtree, League_Spartan } from "next/font/google";
 
-/** Titles and big moments. Close to the contrast of the logo, readable over a photo. */
-export const displayFont = Gloock({
+/** Titles, names and amounts: a compact geometric, punchy in a few short words. */
+export const displayFont = League_Spartan({
   subsets: ["latin", "latin-ext"],
-  weight: "400",
+  weight: "700",
   display: "swap",
   variable: "--font-display-face",
 });
 
-/** Everything else: plain and very legible, with a plain zero for prices. */
-export const textFont = Hanken_Grotesk({
+/** Everything else: open, friendly and very legible on a small screen. */
+export const textFont = Figtree({
   subsets: ["latin", "latin-ext"],
   display: "swap",
   variable: "--font-text-face",

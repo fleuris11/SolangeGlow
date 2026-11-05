@@ -17,14 +17,11 @@ type Props = {
 export function EmptyState({ icon, title, description, action, className }: Props) {
   return (
     <section className={cn("flex flex-col items-center gap-4 px-4 py-12 text-center", className)}>
-      <span
-        aria-hidden
-        className="bg-poudre text-hibiscus petal inline-flex size-24 items-center justify-center"
-      >
+      <span aria-hidden className="inline-flex">
         {icon}
       </span>
       <div className="flex items-center gap-2">
-        <h2 className="text-title font-bold">{title}</h2>
+        <h2 className="font-display text-title">{title}</h2>
         <SpeakButton text={description ? `${title}. ${description}` : title} />
       </div>
       {description && <p className="text-prune-doux max-w-[34ch]">{description}</p>}

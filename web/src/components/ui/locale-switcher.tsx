@@ -1,6 +1,5 @@
 "use client";
 
-import { Check } from "@phosphor-icons/react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { cn } from "@/lib/cn";
@@ -15,7 +14,7 @@ export function LocaleSwitcher({ className }: { className?: string }) {
 
   return (
     <nav aria-label={t("label")} className={className}>
-      <ul className="flex flex-wrap gap-2">
+      <ul className="flex flex-wrap gap-1">
         {routing.locales.map((code) => {
           const current = code === locale;
           return (
@@ -27,13 +26,10 @@ export function LocaleSwitcher({ className }: { className?: string }) {
                 lang={code}
                 aria-current={current ? "true" : undefined}
                 className={cn(
-                  "inline-flex min-h-12 items-center gap-2 rounded-full border-2 px-4 font-bold",
-                  current
-                    ? "border-prune bg-prune text-lait"
-                    : "border-trait bg-poudre text-prune hover:border-prune-doux",
+                  "text-small rounded-button inline-flex min-h-11 items-center px-2 font-semibold",
+                  current ? "underline underline-offset-4" : "text-prune-doux hover:text-prune",
                 )}
               >
-                {current && <Check aria-hidden size={18} weight="bold" />}
                 {t(code)}
               </Link>
             </li>

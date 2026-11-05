@@ -7,9 +7,11 @@ type Variant = "primary" | "secondary" | "quiet";
 type Size = "md" | "lg";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-rouge text-sur-hibiscus hover:bg-rouge-press",
-  secondary: "border-2 border-prune text-prune hover:bg-poudre",
-  quiet: "text-prune hover:bg-poudre",
+  primary:
+    "bg-rouge text-sur-hibiscus hover:bg-rouge-press disabled:bg-poudre disabled:text-prune-doux",
+  secondary:
+    "border-2 border-prune text-prune hover:bg-poudre disabled:border-trait disabled:text-prune-doux",
+  quiet: "text-prune hover:bg-poudre disabled:text-prune-doux",
 };
 
 const sizes: Record<Size, string> = {
@@ -35,10 +37,11 @@ export function buttonClasses({
 }: Pick<ButtonProps, "variant" | "size" | "fullWidth" | "className">) {
   return cn(
     "press rounded-button inline-flex items-center justify-center text-center font-semibold",
-    "disabled:pointer-events-none disabled:opacity-50",
+    "disabled:pointer-events-none",
     variants[variant],
     sizes[size],
-    fullWidth && "w-full",
+    // A whole line on a phone; in the wide space of an activity it stays the size of its words.
+    fullWidth && "w-full lg:[[data-space=pro]_main_&]:w-auto",
     className,
   );
 }

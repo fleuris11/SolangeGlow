@@ -22,6 +22,7 @@ export function BottomNav({ icons }: { icons: NavIcons }) {
 
   return (
     <nav
+      data-ui
       aria-label={t("label")}
       className="bg-carte border-trait pb-safe fixed inset-x-0 bottom-0 z-40 border-t lg:hidden"
     >

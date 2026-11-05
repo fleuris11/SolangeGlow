@@ -32,7 +32,8 @@
     "choose": "Choose my city",
     "search": "Your city",
     "everywhere": "Everywhere",
-    "everywhereCta": "See everywhere"
+    "everywhereCta": "See everywhere",
+    "chooseShort": "My city"
   },
   "audio": {
     "mode": "Audio",
@@ -1396,7 +1397,7 @@
     }
   },
   "payments": {
-    "signIn": "Sign in to see your payments.",
+    "signIn": "Sign in to continue.",
     "signInCta": "Sign in",
     "status": {
       "pending_payment": "Waiting for payment",
@@ -4312,6 +4313,10 @@
       "france": {
         "q": "I am in France. Can I give to Benin?",
         "a": "Yes. With « Give », you pay in euros for a treatment, a product or a card. The person gets a link and chooses."
+      },
+      "free": {
+        "q": "How much does it cost?",
+        "a": "Creating an account, booking and opening your page are free."
       }
     },
     "footer": {
@@ -4332,10 +4337,9 @@
     },
     "pros": {
       "metaTitle": "Offer my services",
-      "title": "Your business online. The essentials are free.",
       "line": "Showcase, QR code, agenda, shop and courses, in one place.",
       "cta": "Create my showcase",
-      "heroAlt": "A professional paints a client's nails.",
+      "heroAlt": "Hands of a braider drawing cornrows.",
       "who": {
         "title": "Who is it for?",
         "solo": {
@@ -4423,8 +4427,8 @@
       "alt": {
         "braids": "Woman with long braids and large hoops, in profile.",
         "salon": "Inside a pink beauty salon.",
-        "palette": "Open makeup palette.",
-        "hands": "Hands of a braider at work.",
+        "palette": "Rolls of green, yellow and red wax print.",
+        "hands": "A makeup artist preparing a bride.",
         "curls": "Woman with curly hair."
       },
       "plans": {
@@ -4458,7 +4462,9 @@
           "b": "Choose your trade, services and hours.",
           "c": "Publish your showcase, then share your link and QR code."
         }
-      }
+      },
+      "first": "Your business online.",
+      "second": "The essentials are free."
     },
     "how": {
       "title": "How it works",
@@ -4672,7 +4678,11 @@
       "shopTitle": "Shop and money",
       "newOrders": "{count, plural, =0 {No order to prepare} one {# order to prepare} other {# orders to prepare}}",
       "available": "{amount} available",
-      "wallet": "My wallet"
+      "wallet": "My wallet",
+      "kpiDay": "Appointments",
+      "kpiOrders": "Orders",
+      "kpiMoney": "Available",
+      "dayStrip": "Your day"
     },
     "slots": {
       "title": "Slots and places",
@@ -4753,5 +4763,280 @@
   "geo": {
     "placeholder": "Start typing...",
     "results": "Cities found"
+  },
+  "landing": {
+    "hero": {
+      "first": "Book. Scan.",
+      "second": "Glow.",
+      "line": "Hair, braids, makeup, nails, sewing. Find a talent and book without calling, even without an account."
+    },
+    "ticket": {
+      "trade": "What you want",
+      "time": "Your time, Saturday",
+      "times": {
+        "morning": "10 am",
+        "noon": "2:30 pm",
+        "evening": "5 pm"
+      },
+      "when": {
+        "morning": "Saturday 10 am",
+        "noon": "Saturday 2:30 pm",
+        "evening": "Saturday 5 pm"
+      },
+      "show": "Your QR code. Show it when you arrive.",
+      "qrAlt": "Sample QR code: it opens the talents in {trade}."
+    },
+    "sides": {
+      "title": "One account, two sides",
+      "line": "Go from one to the other whenever you like.",
+      "legend": "I am looking for a talent, or I offer my services",
+      "seek": "I look",
+      "offer": "I offer",
+      "seeAll": "See everything",
+      "alt": {
+        "seek": "Smiling woman, yellow shirt, against a blue wall.",
+        "offer": "A hairdresser at work in her pink salon."
+      }
+    },
+    "steps": {
+      "title": "How it works",
+      "more": "See each service in detail",
+      "choose": {
+        "title": "First, choose your talent.",
+        "text": "By trade, by city or on the map. You see photos, prices and reviews."
+      },
+      "book": {
+        "title": "Then, take your slot.",
+        "text": "No calling. No account? Your name and number are enough."
+      },
+      "show": {
+        "title": "Finally, show your QR code.",
+        "text": "You get a reminder. When you arrive, the talent scans it: done."
+      },
+      "ui": {
+        "label": "Sample of the app: talents, free slots, then the QR code of the appointment.",
+        "resultsTitle": "Braids near you",
+        "resultsLine": "3 talents open on Saturday",
+        "talents": {
+          "a": {
+            "name": "Aïcha Tresses",
+            "meta": "4.9 out of 5, 1.2 km away",
+            "price": "from €45"
+          },
+          "b": {
+            "name": "Studio Nadia",
+            "meta": "4.8 out of 5, 2.4 km away",
+            "price": "from €60"
+          },
+          "c": {
+            "name": "Locks de Mel",
+            "meta": "5 out of 5, at home",
+            "price": "from €70"
+          }
+        },
+        "service": "Cornrows, 2 h, €45",
+        "day": "Saturday",
+        "slots": {
+          "s1": "9 am",
+          "s2": "11 am",
+          "s3": "2:30 pm",
+          "s4": "3 pm",
+          "s5": "4:30 pm",
+          "s6": "6 pm"
+        },
+        "bookCta": "Book Saturday 2:30 pm",
+        "confirmed": "It's confirmed",
+        "whenLine": "Saturday 2:30 pm",
+        "showLine": "Show it when you arrive.",
+        "reminder": "You get a reminder the day before."
+      }
+    },
+    "plate": {
+      "title": "Your business, all in one place",
+      "line": "Job or passion, alone or with a team: run it all from your phone.",
+      "cta": "See how to offer my services",
+      "notes": {
+        "agenda": {
+          "title": "Your calendar",
+          "text": "Confirm, move or decline. Reminders go out by themselves."
+        },
+        "slots": {
+          "title": "Your slots",
+          "text": "From your hours, or only the ones you open."
+        },
+        "places": {
+          "title": "Your places",
+          "text": "Salon, home or on the road, with your travel time."
+        },
+        "page": {
+          "title": "Your page",
+          "text": "An address in your name and a QR code to print."
+        },
+        "shop": {
+          "title": "Your shop",
+          "text": "Your products, your stock and your orders."
+        },
+        "lives": {
+          "title": "Your lives",
+          "text": "Sell and teach live, with questions."
+        }
+      },
+      "ui": {
+        "labels": {
+          "l0": "Sample: today's calendar and free slots.",
+          "l1": "Sample: places and the page with its QR code.",
+          "l2": "Sample: the shop and the button to start a live."
+        },
+        "today": "Today",
+        "a1": {
+          "time": "9 am",
+          "who": "Awa, braids",
+          "state": "Confirmed"
+        },
+        "a2": {
+          "time": "11 am",
+          "who": "Grâce, makeup",
+          "state": "Confirm"
+        },
+        "slots": "Free slots",
+        "s1": "2 pm",
+        "s2": "3:30 pm",
+        "s3": "5 pm",
+        "places": "My places",
+        "place1": "My salon",
+        "place1Meta": "Open",
+        "place2": "At home",
+        "place2Meta": "+ 20 min",
+        "page": "My page",
+        "shop": "My shop",
+        "shopMeta": "3 orders",
+        "live": "Start a live"
+      }
+    },
+    "tiles": {
+      "title": "Every trade",
+      "braids": {
+        "name": "Braids",
+        "alt": "Woman with braids, on a lilac background.",
+        "subs": {
+          "a": "Cornrows",
+          "b": "Knotless",
+          "c": "Twists",
+          "d": "Locs"
+        }
+      },
+      "hair": {
+        "name": "Hair",
+        "alt": "Woman with copper curls, three-quarter view.",
+        "subs": {
+          "a": "Cut",
+          "b": "Colour",
+          "c": "Relaxer",
+          "d": "Care"
+        }
+      },
+      "makeup": {
+        "name": "Makeup",
+        "alt": "Orange lips and orange sunglasses, in close-up.",
+        "subs": {
+          "a": "Wedding",
+          "b": "Evening",
+          "c": "Photo",
+          "d": "Lessons"
+        }
+      },
+      "nails": {
+        "name": "Nails",
+        "alt": "A professional applying polish, pink gloves.",
+        "subs": {
+          "a": "Set",
+          "b": "Gel",
+          "c": "Nail art",
+          "d": "Pedicure"
+        }
+      },
+      "sewing": {
+        "name": "Sewing",
+        "alt": "Rolls of green, yellow and red wax print.",
+        "subs": {
+          "a": "Made to measure",
+          "b": "Alterations",
+          "c": "Wax",
+          "d": "Wedding"
+        }
+      },
+      "headwrap": {
+        "name": "Headwrap",
+        "alt": "Woman in a yellow headwrap in front of a mural.",
+        "subs": {
+          "a": "Gele",
+          "b": "Turban",
+          "c": "Party",
+          "d": "Lessons"
+        }
+      },
+      "skincare": {
+        "name": "Skincare",
+        "alt": "Woman in profile, glowing skin, brown background.",
+        "subs": {
+          "a": "Face",
+          "b": "Body",
+          "c": "Waxing",
+          "d": "Massage"
+        }
+      },
+      "all": {
+        "name": "All talents",
+        "alt": "Makeup palette and brushes on a table.",
+        "subs": {
+          "a": "Map",
+          "b": "Your city",
+          "c": "Near you",
+          "d": "At home"
+        }
+      }
+    },
+    "more": {
+      "title": "And also",
+      "shops": {
+        "name": "Shops",
+        "text": "Your money stays held until you give your receipt code."
+      },
+      "selection": {
+        "name": "France Selection",
+        "text": "Products from France, delivered, final price shown."
+      },
+      "academy": {
+        "name": "Academy",
+        "text": "Short videos, a quiz and your certificate."
+      },
+      "lives": {
+        "name": "Lives",
+        "text": "Live sales and lessons, with your questions."
+      },
+      "gift": {
+        "name": "Gift",
+        "text": "Give a treatment or a product to someone far away."
+      },
+      "talk": {
+        "name": "Messages",
+        "text": "Write and call without showing your number."
+      },
+      "games": {
+        "name": "Games",
+        "text": "Daily quiz, wheel, challenges, points and rewards."
+      },
+      "listen": {
+        "name": "Listen",
+        "text": "The app reads the texts aloud for you."
+      }
+    },
+    "address": {
+      "title": "Your page will be here:",
+      "label": "The name of your page",
+      "placeholder": "your name",
+      "cta": "Create",
+      "line": "It's free. Create your account, then fill in your page."
+    }
   }
 }

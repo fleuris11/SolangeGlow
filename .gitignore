@@ -102,3 +102,6 @@ docs/design/before/full/
 
 # Originals of the demonstration media (scripts/fetch-media.mjs)
 /web/.media-cache/
+
+# Art direction working files (local)
+.taste-skill/

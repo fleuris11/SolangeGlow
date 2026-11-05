@@ -32,7 +32,8 @@
     "choose": "Choisir ma ville",
     "search": "Ta ville",
     "everywhere": "Partout",
-    "everywhereCta": "Voir partout"
+    "everywhereCta": "Voir partout",
+    "chooseShort": "Ma ville"
   },
   "audio": {
     "mode": "Audio",
@@ -166,7 +167,7 @@
     "showMap": "Carte",
     "showList": "Liste",
     "mapLabel": "Carte des talents",
-    "results": "{count, plural, =-1 {Résultats} =0 {Aucune pro} one {# talent trouvée} other {# talents trouvées}}",
+    "results": "{count, plural, =-1 {Résultats} =0 {Aucun talent} one {# talent trouvé} other {# talents trouvés}}",
     "more": "Voir plus de talents",
     "noResultTitle": "Aucun talent ne correspond",
     "noResultText": "Essaie un autre mot, une autre ville, ou enlève des filtres.",
@@ -179,7 +180,7 @@
       "closed": "Fermé",
       "rating": "{rating} ({count})",
       "from": "dès",
-      "trained": "Formée sur Solange Glow",
+      "trained": "Formation Solange Glow",
       "topPro": "Top talent"
     },
     "filtersSheet": {
@@ -206,7 +207,7 @@
         "price": "Les moins chères"
       },
       "apply": "Voir les talents",
-      "trained": "Formée sur Solange Glow",
+      "trained": "Formation Solange Glow",
       "trainedText": "A terminé une formation de l'Académie."
     }
   },
@@ -723,7 +724,7 @@
       "shopAll": "Voir toute la boutique ({count, plural, one {# produit} other {# produits}})",
       "bookService": "Réserver",
       "giftCard": "Offrir une carte cadeau",
-      "trained": "Formée sur Solange Glow",
+      "trained": "Formation Solange Glow",
       "offer": "Offrir une prestation",
       "bookSticky": "Choisir un créneau",
       "otherPlaces": "Autres adresses"
@@ -1396,7 +1397,7 @@
     }
   },
   "payments": {
-    "signIn": "Connecte-toi pour voir tes paiements.",
+    "signIn": "Connecte-toi pour continuer.",
     "signInCta": "Me connecter",
     "status": {
       "pending_payment": "En attente de paiement",
@@ -2715,7 +2716,7 @@
       "audience": "{count, plural, =0 {Personne ne la recevra pour l'instant.} one {# client la recevra.} other {# clients la recevront.}}",
       "withoutConsent": "{count, plural, =0 {} one {# client sans accord est laissée de côté.} other {# clients sans accord sont laissées de côté.}}",
       "monthly": "{used} campagnes sur {limit} ce mois-ci.",
-      "send": "Envoyer à {count, plural, one {# cliente} other {# clientes}}"
+      "send": "Envoyer à {count, plural, one {# client} other {# clients}}"
     },
     "segments": {
       "inactive": "Pas venues depuis un moment",
@@ -3015,7 +3016,7 @@
       "lessons": "{count, plural, one {# leçon} other {# leçons}}",
       "students": "{count, plural, one {# élève} other {# élèves}}",
       "trainer": "Ta formatrice",
-      "trained": "Formée sur Solange Glow",
+      "trained": "Formation Solange Glow",
       "about": "Ce que tu vas apprendre",
       "program": "Le programme",
       "module": "Module {number} : {title}",
@@ -4312,6 +4313,10 @@
       "france": {
         "q": "Je suis en France. Puis-je offrir au Bénin ?",
         "a": "Oui. Avec « Offrir », tu paies en euros un soin, un produit ou une carte. La personne reçoit un lien et choisit."
+      },
+      "free": {
+        "q": "Combien ça coûte ?",
+        "a": "Créer un compte, réserver et ouvrir ta vitrine, c'est gratuit."
       }
     },
     "footer": {
@@ -4332,10 +4337,9 @@
     },
     "pros": {
       "metaTitle": "Proposer mes services",
-      "title": "Ton activité en ligne. L'essentiel est gratuit.",
       "line": "Vitrine, QR code, agenda, boutique et formations, au même endroit.",
       "cta": "Créer ma vitrine",
-      "heroAlt": "Une professionnelle pose du vernis sur les ongles d'un client.",
+      "heroAlt": "Mains d'une tresseuse qui trace des nattes collées.",
       "who": {
         "title": "Pour qui ?",
         "solo": {
@@ -4344,10 +4348,10 @@
         },
         "salon": {
           "title": "Salon, institut, atelier",
-          "text": "Tout ça, avec plusieurs collaboratrices, le stock et les statistiques."
+          "text": "Tout ça, avec toute ton équipe, le stock et les statistiques."
         },
         "staff": {
-          "title": "Collaboratrice d'un salon",
+          "title": "Membre d'une équipe",
           "text": "Tu vois et tu gères ton propre agenda. Le salon te relie avec ton numéro."
         }
       },
@@ -4423,8 +4427,8 @@
       "alt": {
         "braids": "Femme aux longues tresses et grandes créoles, de profil.",
         "salon": "Intérieur d'un salon de beauté rose.",
-        "palette": "Palette de maquillage ouverte.",
-        "hands": "Mains d'une tresseuse au travail.",
+        "palette": "Rouleaux de wax vert, jaune et rouge.",
+        "hands": "Une maquilleuse prépare une mariée.",
         "curls": "Femme aux cheveux bouclés."
       },
       "plans": {
@@ -4441,7 +4445,7 @@
         },
         "premium": "Glow Premium",
         "premiumItems": {
-          "a": "Plus de collaboratrices dans l'agenda",
+          "a": "Plus de personnes dans l'agenda",
           "b": "Fichier client complet, forfaits et paiements en plusieurs fois",
           "c": "Stock avec scan des codes-barres",
           "d": "Tableau de bord complet",
@@ -4458,7 +4462,9 @@
           "b": "Choisis ton métier, tes services et tes horaires.",
           "c": "Publie ta vitrine, puis partage ton lien et ton QR code."
         }
-      }
+      },
+      "first": "Ton activité en ligne.",
+      "second": "L'essentiel est gratuit."
     },
     "how": {
       "title": "Comment ça marche",
@@ -4486,7 +4492,7 @@
         },
         "salon": {
           "title": "Salon, institut, atelier",
-          "can": "Tout cela, et plusieurs collaboratrices, le stock et les statistiques.",
+          "can": "Tout cela, avec toute ton équipe, le stock et les statistiques.",
           "cannot": "Utiliser les options Premium sans abonnement."
         },
         "staff": {
@@ -4672,7 +4678,11 @@
       "shopTitle": "Boutique et argent",
       "newOrders": "{count, plural, =0 {Aucune commande à préparer} one {# commande à préparer} other {# commandes à préparer}}",
       "available": "{amount} disponibles",
-      "wallet": "Mon portefeuille"
+      "wallet": "Mon portefeuille",
+      "kpiDay": "Rendez-vous",
+      "kpiOrders": "Commandes",
+      "kpiMoney": "Disponible",
+      "dayStrip": "Ta journée"
     },
     "slots": {
       "title": "Créneaux et lieux",
@@ -4753,5 +4763,280 @@
   "geo": {
     "placeholder": "Commence à écrire...",
     "results": "Villes trouvées"
+  },
+  "landing": {
+    "hero": {
+      "first": "Réserve. Scanne.",
+      "second": "Rayonne.",
+      "line": "Coiffure, tresses, maquillage, ongles, couture. Trouve un talent et réserve sans appeler, même sans compte."
+    },
+    "ticket": {
+      "trade": "Ton envie",
+      "time": "Ton heure, samedi",
+      "times": {
+        "morning": "10 h",
+        "noon": "14 h 30",
+        "evening": "17 h"
+      },
+      "when": {
+        "morning": "Samedi 10 h",
+        "noon": "Samedi 14 h 30",
+        "evening": "Samedi 17 h"
+      },
+      "show": "Ton QR code. Tu le montres en arrivant.",
+      "qrAlt": "QR code d'exemple : il ouvre les talents en {trade}."
+    },
+    "sides": {
+      "title": "Un compte, deux côtés",
+      "line": "Tu passes de l'un à l'autre quand tu veux.",
+      "legend": "Je cherche un talent, ou je propose mes services",
+      "seek": "Je cherche",
+      "offer": "Je propose",
+      "seeAll": "Tout voir",
+      "alt": {
+        "seek": "Femme souriante, chemise jaune, sur un mur bleu.",
+        "offer": "Une coiffeuse au travail dans son salon rose."
+      }
+    },
+    "steps": {
+      "title": "Comment ça marche",
+      "more": "Voir chaque service en détail",
+      "choose": {
+        "title": "D'abord, choisis ton talent.",
+        "text": "Par métier, par ville ou sur la carte. Tu vois les photos, les prix et les avis."
+      },
+      "book": {
+        "title": "Ensuite, prends ton créneau.",
+        "text": "Sans appeler. Pas de compte ? Ton nom et ton numéro suffisent."
+      },
+      "show": {
+        "title": "Enfin, montre ton QR code.",
+        "text": "Tu reçois un rappel. En arrivant, le talent le scanne : c'est fait."
+      },
+      "ui": {
+        "label": "Exemple de l'application : les talents, les créneaux libres, puis le QR code du rendez-vous.",
+        "resultsTitle": "Tresses, près de toi",
+        "resultsLine": "3 talents ouverts samedi",
+        "talents": {
+          "a": {
+            "name": "Aïcha Tresses",
+            "meta": "4,9 sur 5, à 1,2 km",
+            "price": "dès 45 €"
+          },
+          "b": {
+            "name": "Studio Nadia",
+            "meta": "4,8 sur 5, à 2,4 km",
+            "price": "dès 60 €"
+          },
+          "c": {
+            "name": "Locks de Mel",
+            "meta": "5 sur 5, à domicile",
+            "price": "dès 70 €"
+          }
+        },
+        "service": "Tresses collées, 2 h, 45 €",
+        "day": "Samedi",
+        "slots": {
+          "s1": "9 h",
+          "s2": "11 h",
+          "s3": "14 h 30",
+          "s4": "15 h",
+          "s5": "16 h 30",
+          "s6": "18 h"
+        },
+        "bookCta": "Réserver samedi 14 h 30",
+        "confirmed": "C'est confirmé",
+        "whenLine": "Samedi 14 h 30",
+        "showLine": "Montre-le en arrivant.",
+        "reminder": "Tu reçois un rappel la veille."
+      }
+    },
+    "plate": {
+      "title": "Ton activité, au même endroit",
+      "line": "Métier ou passion, seul ou en équipe : tout se gère depuis ton téléphone.",
+      "cta": "Tout voir pour proposer mes services",
+      "notes": {
+        "agenda": {
+          "title": "Ton agenda",
+          "text": "Confirme, déplace ou refuse. Les rappels partent tout seuls."
+        },
+        "slots": {
+          "title": "Tes créneaux",
+          "text": "Selon tes horaires, ou seulement ceux que tu ouvres."
+        },
+        "places": {
+          "title": "Tes lieux",
+          "text": "Salon, domicile ou déplacement, avec ton temps de trajet."
+        },
+        "page": {
+          "title": "Ta vitrine",
+          "text": "Une adresse à ton nom et un QR code à imprimer."
+        },
+        "shop": {
+          "title": "Ta boutique",
+          "text": "Tes produits, ton stock et tes commandes."
+        },
+        "lives": {
+          "title": "Tes lives",
+          "text": "Vends et forme en direct, avec les questions."
+        }
+      },
+      "ui": {
+        "labels": {
+          "l0": "Exemple : l'agenda du jour et les créneaux libres.",
+          "l1": "Exemple : les lieux et la vitrine avec son QR code.",
+          "l2": "Exemple : la boutique et le bouton pour lancer un live."
+        },
+        "today": "Aujourd'hui",
+        "a1": {
+          "time": "9 h",
+          "who": "Awa, tresses",
+          "state": "Confirmé"
+        },
+        "a2": {
+          "time": "11 h",
+          "who": "Grâce, maquillage",
+          "state": "Confirmer"
+        },
+        "slots": "Créneaux libres",
+        "s1": "14 h",
+        "s2": "15 h 30",
+        "s3": "17 h",
+        "places": "Mes lieux",
+        "place1": "Mon salon",
+        "place1Meta": "Ouvert",
+        "place2": "À domicile",
+        "place2Meta": "+ 20 min",
+        "page": "Ma vitrine",
+        "shop": "Ma boutique",
+        "shopMeta": "3 commandes",
+        "live": "Lancer un live"
+      }
+    },
+    "tiles": {
+      "title": "Tous les métiers",
+      "braids": {
+        "name": "Tresses",
+        "alt": "Femme aux tresses, sur fond lilas.",
+        "subs": {
+          "a": "Collées",
+          "b": "Knotless",
+          "c": "Vanilles",
+          "d": "Locks"
+        }
+      },
+      "hair": {
+        "name": "Coiffure",
+        "alt": "Femme aux boucles cuivrées, de trois quarts.",
+        "subs": {
+          "a": "Coupe",
+          "b": "Couleur",
+          "c": "Défrisage",
+          "d": "Soin"
+        }
+      },
+      "makeup": {
+        "name": "Maquillage",
+        "alt": "Lèvres orange et lunettes orange, en très gros plan.",
+        "subs": {
+          "a": "Mariage",
+          "b": "Soirée",
+          "c": "Photo",
+          "d": "Cours"
+        }
+      },
+      "nails": {
+        "name": "Ongles",
+        "alt": "Une professionnelle pose du vernis, gants roses.",
+        "subs": {
+          "a": "Pose",
+          "b": "Gel",
+          "c": "Nail art",
+          "d": "Pédicure"
+        }
+      },
+      "sewing": {
+        "name": "Couture",
+        "alt": "Rouleaux de wax vert, jaune et rouge.",
+        "subs": {
+          "a": "Sur mesure",
+          "b": "Retouche",
+          "c": "Wax",
+          "d": "Mariage"
+        }
+      },
+      "headwrap": {
+        "name": "Foulard",
+        "alt": "Femme au foulard jaune devant une fresque.",
+        "subs": {
+          "a": "Gélé",
+          "b": "Turban",
+          "c": "Fête",
+          "d": "Cours"
+        }
+      },
+      "skincare": {
+        "name": "Esthétique",
+        "alt": "Femme de profil, peau lumineuse, fond brun.",
+        "subs": {
+          "a": "Visage",
+          "b": "Corps",
+          "c": "Épilation",
+          "d": "Massage"
+        }
+      },
+      "all": {
+        "name": "Tous les talents",
+        "alt": "Palette de maquillage et pinceaux sur une table.",
+        "subs": {
+          "a": "Carte",
+          "b": "Ta ville",
+          "c": "Près de toi",
+          "d": "À domicile"
+        }
+      }
+    },
+    "more": {
+      "title": "Et aussi",
+      "shops": {
+        "name": "Boutiques",
+        "text": "Ton argent reste bloqué jusqu'à ton code de réception."
+      },
+      "selection": {
+        "name": "Sélection France",
+        "text": "Des produits de France, livrés, prix final affiché."
+      },
+      "academy": {
+        "name": "Académie",
+        "text": "Des vidéos courtes, un quiz et ton certificat."
+      },
+      "lives": {
+        "name": "Lives",
+        "text": "Ventes et cours en direct, avec tes questions."
+      },
+      "gift": {
+        "name": "Offrir",
+        "text": "Offre un soin ou un produit à un proche, de loin."
+      },
+      "talk": {
+        "name": "Messages",
+        "text": "Écris et appelle sans montrer ton numéro."
+      },
+      "games": {
+        "name": "Jeux",
+        "text": "Quiz du jour, roue, défis, points et récompenses."
+      },
+      "listen": {
+        "name": "Écouter",
+        "text": "L'appli lit les textes à voix haute, pour toi."
+      }
+    },
+    "address": {
+      "title": "Ta vitrine sera ici :",
+      "label": "Le nom de ta vitrine",
+      "placeholder": "ton nom",
+      "cta": "Créer",
+      "line": "C'est gratuit. Tu crées ton compte, puis tu remplis ta vitrine."
+    }
   }
 }
