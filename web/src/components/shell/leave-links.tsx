@@ -24,7 +24,7 @@ export function LeaveLinks({ icons }: { icons: { pro: ReactNode; signOut: ReactN
           {t("proMode")}
         </Link>
       )}
-      <SignOutButton icon={icons.signOut} className="text-alerte" />
+      <SignOutButton icon={icons.signOut} />
     </div>
   );
 }

@@ -71,9 +71,9 @@ export default async function ExplorePage({ params, searchParams }: Props) {
     : undefined;
 
   return (
-    <div className="flex flex-col gap-6">
+    <div data-wide className="flex flex-col gap-6">
       <div className="flex items-center justify-between gap-3">
-        <h1 className="text-headline font-bold">{t("title")}</h1>
+        <h1 className="font-display text-headline lg:text-display">{t("title")}</h1>
         <SpeakButton text={t("intro")} />
       </div>
       <SearchBar key={filters.q} defaultValue={filters.q} />
@@ -105,7 +105,7 @@ export default async function ExplorePage({ params, searchParams }: Props) {
             {t("results", { count: results.count })}
           </h2>
           <AdSlot list={sponsored} />
-          <ul className="flex flex-col gap-3">
+          <ul className="grid gap-x-4 gap-y-6 md:grid-cols-3 xl:grid-cols-4">
             {results.results.map((pro) => (
               <li key={pro.slug}>
                 <ProCard pro={pro} />

@@ -32,7 +32,7 @@ export function LoadMore({ query, next }: { query: SearchQuery; next: string | n
   return (
     <>
       {cards.length > 0 && (
-        <ul className="flex flex-col gap-3">
+        <ul className="grid gap-x-4 gap-y-6 md:grid-cols-3 xl:grid-cols-4">
           {cards.map((pro) => (
             <li key={pro.slug}>
               <ProCard pro={pro} />

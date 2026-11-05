@@ -44,7 +44,7 @@ export function CityPicker({ className }: { className?: string }) {
         )}
       >
         <MapPin aria-hidden size={22} className="shrink-0" />
-        <span className="truncate">{city || t("choose")}</span>
+        <span className="truncate">{city || t("chooseShort")}</span>
         <CaretDown aria-hidden size={16} weight="bold" className="shrink-0" />
       </button>
       {open && (

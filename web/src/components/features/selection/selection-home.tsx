@@ -52,7 +52,7 @@ export function SelectionHome({
     );
 
   return (
-    <article className="flex flex-col gap-8">
+    <article data-wide className="flex flex-col gap-8">
       <header className="flex flex-col gap-3">
         <div className="flex items-start gap-2">
           <h1 className="font-display text-display flex-1 font-black">{t("title")}</h1>
@@ -104,7 +104,7 @@ export function SelectionHome({
       {page.results.length === 0 ? (
         <EmptyState icon={<Package size={44} />} title={t("empty")} description={t("emptyHelp")} />
       ) : (
-        <ul className="grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3">
+        <ul className="grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-3 lg:grid-cols-4">
           {page.results.map((product) => (
             <li key={product.id}>
               <SelectionCard product={product} />

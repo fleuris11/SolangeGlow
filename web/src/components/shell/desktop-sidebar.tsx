@@ -47,15 +47,11 @@ export function DesktopSidebar({
                   href={href}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "text-lead flex min-h-14 items-center gap-3 rounded-full px-4 font-bold",
-                    active ? "bg-poudre text-prune" : "text-prune-doux hover:bg-poudre",
-                    key === "create" && !active && "text-hibiscus",
+                    "flex min-h-12 items-center gap-3 rounded-lg px-3 font-semibold",
+                    active ? "bg-poudre text-prune" : "hover:bg-poudre",
                   )}
                 >
-                  <span
-                    aria-hidden
-                    className={cn("inline-flex", (active || key === "create") && "text-hibiscus")}
-                  >
+                  <span aria-hidden className="inline-flex">
                     {active ? icons[key].on : icons[key].off}
                   </span>
                   {t(key)}

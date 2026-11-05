@@ -30,7 +30,7 @@ export function TradeNav({ filters }: { filters: Filters }) {
                     : "border-trait bg-poudre text-prune hover:border-prune-doux",
                 )}
               >
-                <TradeIcon trade={key} size={24} className={active ? undefined : "text-hibiscus"} />
+                <TradeIcon trade={key} size={24} className={active ? undefined : ""} />
                 {tTrades(key)}
               </Link>
             </li>

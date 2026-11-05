@@ -49,7 +49,7 @@ export function CatalogueView({
   );
 
   return (
-    <article className="flex flex-col gap-8">
+    <article data-wide className="flex flex-col gap-8">
       <header className="flex flex-col gap-3">
         <div className="flex items-start gap-2">
           <h1 className="font-display text-display flex-1 font-black">{t("title")}</h1>
@@ -172,7 +172,7 @@ export function CatalogueView({
           <h2 id="academy-results" className="text-title font-bold">
             {t("results")}
           </h2>
-          <ul className="grid gap-4 sm:grid-cols-2">
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {page.results.map((course) => (
               <li key={course.id}>
                 <CourseCard course={course} />

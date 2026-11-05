@@ -10,7 +10,7 @@ import { MobileHeader } from "./mobile-header";
 
 /**
  * Mobile: header, content, bottom bar.
- * Computer (≥ 1024 px): menu on the left, content of 640 px max, suggestions on the right (≥ 1280 px).
+ * Computer (≥ 1024 px): menu on the left; 640 px for reading, the whole width for a catalogue (data-wide).
  */
 export function AppShell({ children }: { children: ReactNode }) {
   const t = useTranslations("common");
@@ -23,7 +23,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       >
         {t("skipToContent")}
       </a>
-      <div className="lg:grid lg:grid-cols-[220px_minmax(0,640px)] lg:justify-center lg:gap-8">
+      <div className="lg:grid lg:grid-cols-[232px_minmax(0,1fr)] lg:gap-6 lg:pl-6">
         <DesktopSidebar
           icons={icons}
           leave={{
@@ -33,7 +33,10 @@ export function AppShell({ children }: { children: ReactNode }) {
         />
         <div className="min-w-0">
           <MobileHeader />
-          <main id="main" className="mx-auto w-full max-w-[640px] px-4 pt-6 pb-32 lg:pb-16">
+          <main
+            id="main"
+            className="mx-auto w-full max-w-[640px] px-4 pt-6 pb-32 has-[[data-wide]]:max-w-[1240px] lg:pb-16"
+          >
             {children}
           </main>
         </div>
