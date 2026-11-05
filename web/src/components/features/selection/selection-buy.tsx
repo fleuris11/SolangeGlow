@@ -12,6 +12,9 @@ import { rememberReturnPath } from "@/lib/auth/return-path";
 import { cn } from "@/lib/cn";
 import { Link, usePathname, useRouter } from "@/lib/i18n/navigation";
 import { formatMoney } from "@/lib/money";
+import { usePaymentsOpen } from "@/lib/platform/use-payments-open";
+
+import { PaymentsSoon } from "../payments/payments-soon";
 
 import { shortDate } from "./dates";
 
@@ -83,6 +86,7 @@ export function SelectionBuy({
   const [point, setPoint] = useState(points[0]?.id ?? "");
   const [voucher, setVoucher] = useState("");
   const [busy, setBusy] = useState(false);
+  const paymentsOpen = usePaymentsOpen();
   const timeLeft = useTimeLeft(group?.ends_at);
   const money = (value: number) => formatMoney(value, "XOF", locale);
   const range = (estimate: { from: string; to: string }) =>
@@ -262,20 +266,26 @@ export function SelectionBuy({
         autoCapitalize="characters"
         onChange={(event) => setVoucher(event.target.value)}
       />
-      <p className="text-small text-prune-doux">{t("final")}</p>
-      <Button size="lg" fullWidth disabled={busy || !point} onClick={() => void pay()}>
-        {icons.lock}
-        {t("pay", { amount: money(unit * quantity) })}
-      </Button>
-      <Link
-        href={`/offrir?kind=selection&selection_product=${product.id}${
-          option ? `&option=${encodeURIComponent(option)}` : ""
-        }`}
-        className={buttonClasses({ variant: "secondary", fullWidth: true })}
-      >
-        {icons.gift}
-        {t("offer")}
-      </Link>
+      {paymentsOpen ? (
+        <>
+          <p className="text-small text-prune-doux">{t("final")}</p>
+          <Button size="lg" fullWidth disabled={busy || !point} onClick={() => void pay()}>
+            {icons.lock}
+            {t("pay", { amount: money(unit * quantity) })}
+          </Button>
+          <Link
+            href={`/offrir?kind=selection&selection_product=${product.id}${
+              option ? `&option=${encodeURIComponent(option)}` : ""
+            }`}
+            className={buttonClasses({ variant: "secondary", fullWidth: true })}
+          >
+            {icons.gift}
+            {t("offer")}
+          </Link>
+        </>
+      ) : (
+        <PaymentsSoon meanwhile="selection" />
+      )}
     </div>
   );
 }

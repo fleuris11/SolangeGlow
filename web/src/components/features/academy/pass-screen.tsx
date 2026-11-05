@@ -13,6 +13,9 @@ import { cancelPass, getPass, subscribePass } from "@/lib/api/academy";
 import { ApiError } from "@/lib/api/client";
 import { Link } from "@/lib/i18n/navigation";
 import { formatMoney } from "@/lib/money";
+import { usePaymentsOpen } from "@/lib/platform/use-payments-open";
+
+import { PaymentsSoon } from "../payments/payments-soon";
 
 /** The monthly pass: what it opens, its price, paid month by month (never taken by itself). */
 export function PassScreen() {
@@ -22,6 +25,7 @@ export function PassScreen() {
   const queryClient = useQueryClient();
   const query = useQuery({ queryKey: ["academy-pass"], queryFn: getPass });
   const [busy, setBusy] = useState(false);
+  const paymentsOpen = usePaymentsOpen();
 
   if (query.isPending) return <Skeleton className="h-64 rounded-2xl" />;
   if (!query.data) {
@@ -91,7 +95,8 @@ export function PassScreen() {
           ) : (
             <p className="text-title font-bold">{t("price", { price })}</p>
           )}
-          {(!pass.active || pass.payment_due) && (
+          {(!pass.active || pass.payment_due) && !paymentsOpen && <PaymentsSoon meanwhile="pass" />}
+          {(!pass.active || pass.payment_due) && paymentsOpen && (
             <Button size="lg" fullWidth disabled={busy} onClick={() => void run(subscribePass)}>
               <Ticket aria-hidden size={24} weight="bold" />
               {pass.active ? t("payNext", { price }) : t("take", { price })}

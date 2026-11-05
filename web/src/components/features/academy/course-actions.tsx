@@ -11,7 +11,9 @@ import { ApiError, hasSession } from "@/lib/api/client";
 import { rememberReturnPath } from "@/lib/auth/return-path";
 import { Link, usePathname, useRouter } from "@/lib/i18n/navigation";
 import { formatMoney } from "@/lib/money";
+import { usePaymentsOpen } from "@/lib/platform/use-payments-open";
 
+import { PaymentsSoon } from "../payments/payments-soon";
 import { ProgressBar } from "./parts";
 
 // The waiver sheet arrives only when she decides to buy (ADR-004).
@@ -36,6 +38,8 @@ export function CourseActions({
   const toast = useToast();
   const [busy, setBusy] = useState(false);
   const [buying, setBuying] = useState(false);
+  const paymentsOpen = usePaymentsOpen();
+  const tSoon = useTranslations("payments.soon");
   const enrollment = course.enrollment;
   const lessonUrl = (id: string | null) => `/academie/${course.slug}/lecon/${id ?? firstLesson}`;
 
@@ -139,6 +143,16 @@ export function CourseActions({
           {t("takePass")}
         </Link>
       </div>
+    );
+  }
+
+  if (course.pricing === "paid" && !paymentsOpen) {
+    return (
+      <PaymentsSoon meanwhile="course">
+        <Link href="/academie" className={buttonClasses({ variant: "secondary", fullWidth: true })}>
+          {tSoon("freeCourses")}
+        </Link>
+      </PaymentsSoon>
     );
   }
 

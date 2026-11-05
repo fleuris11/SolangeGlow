@@ -233,3 +233,20 @@ def test_init_production_takes_the_password_from_the_environment(monkeypatch):
     call_command("init_production", admin_email="owner@example.com", stdout=out)
     assert "from-the-environment-123" not in out.getvalue()
     assert User.objects.get(email="owner@example.com").check_password("from-the-environment-123")
+
+
+@pytest.mark.django_db
+def test_admin_home_says_payment_is_closed_and_where_to_open_it():
+    from apps.core.models import FeatureFlag
+
+    owner = User.objects.create_superuser(email="owner@example.com", password="x" * 12)
+    client = Client()
+    client.force_login(owner)
+    assert 'id="payments-switch"' not in client.get(reverse("admin:index")).content.decode()
+
+    flag, _ = FeatureFlag.objects.update_or_create(
+        key="payments_closed", defaults={"name": "Payments closed", "is_enabled": True}
+    )
+    page = client.get(reverse("admin:index")).content.decode()
+    assert 'id="payments-switch"' in page
+    assert reverse("admin:core_featureflag_change", args=[flag.pk]) in page

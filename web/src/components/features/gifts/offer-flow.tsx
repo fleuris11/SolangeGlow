@@ -41,8 +41,10 @@ import { cn } from "@/lib/cn";
 import { Link } from "@/lib/i18n/navigation";
 import { mediaSrc } from "@/lib/media";
 import { formatMoney, parseMoney } from "@/lib/money";
+import { usePaymentsOpen } from "@/lib/platform/use-payments-open";
 
 import { HoldToRecord } from "../messaging/hold-to-record";
+import { PaymentsSoon } from "../payments/payments-soon";
 import { track } from "@/lib/analytics";
 
 /** Where the person receives the gift: the hour of the sending, in Benin. */
@@ -380,6 +382,8 @@ export function OfferFlow({ start }: { start: OfferStart }) {
   const [later, setLater] = useState(false);
   const [day, setDay] = useState("");
   const [busy, setBusy] = useState(false);
+  const paymentsOpen = usePaymentsOpen();
+  const tSoon = useTranslations("payments.soon");
 
   const kind: GiftKind = initialKind ?? "card";
   const cents = parseMoney(amount, "EUR");
@@ -471,6 +475,15 @@ export function OfferFlow({ start }: { start: OfferStart }) {
           ? !later || day.length > 0
           : true;
   const today = new Date().toISOString().slice(0, 10);
+
+  if (!paymentsOpen) {
+    return (
+      <div className="flex flex-col gap-6">
+        <h1 className="text-headline font-bold">{tSoon("giftTitle")}</h1>
+        <PaymentsSoon meanwhile="gift" />
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col gap-6">

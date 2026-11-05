@@ -14,6 +14,9 @@ import { buyBoost, getBoosts, type BoostDuration } from "@/lib/api/ads";
 import { ApiError } from "@/lib/api/client";
 import { cn } from "@/lib/cn";
 import { formatMoney } from "@/lib/money";
+import { usePaymentsOpen } from "@/lib/platform/use-payments-open";
+
+import { PaymentsSoon } from "../payments/payments-soon";
 
 /** « Boost my showcase »: first in the search and the feed of her city, a day or a week. */
 export function BoostScreen({ justPaid }: { justPaid: boolean }) {
@@ -24,6 +27,7 @@ export function BoostScreen({ justPaid }: { justPaid: boolean }) {
   const query = useQuery({ queryKey: ["boosts"], queryFn: getBoosts });
   const [duration, setDuration] = useState<BoostDuration>("week");
   const [busy, setBusy] = useState(false);
+  const paymentsOpen = usePaymentsOpen();
 
   if (query.isPending) return <Skeleton className="rounded-card h-96" />;
   const page = query.data;
@@ -96,10 +100,14 @@ export function BoostScreen({ justPaid }: { justPaid: boolean }) {
             <li>{t("sponsored")}</li>
             <li>{t("paidNow")}</li>
           </ul>
-          <Button size="lg" fullWidth onClick={buy} disabled={busy || !price}>
-            <Megaphone aria-hidden size={24} weight="bold" />
-            {t("pay", { amount: money(price) })}
-          </Button>
+          {paymentsOpen ? (
+            <Button size="lg" fullWidth onClick={buy} disabled={busy || !price}>
+              <Megaphone aria-hidden size={24} weight="bold" />
+              {t("pay", { amount: money(price) })}
+            </Button>
+          ) : (
+            <PaymentsSoon meanwhile="boost" />
+          )}
         </section>
       )}
 

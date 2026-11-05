@@ -15,6 +15,9 @@ import { getCart, removeFromCart, setCartQuantity, type Cart } from "@/lib/api/s
 import { Link } from "@/lib/i18n/navigation";
 import { mediaSrc } from "@/lib/media";
 import { formatMoney } from "@/lib/money";
+import { usePaymentsOpen } from "@/lib/platform/use-payments-open";
+
+import { PaymentsSoon } from "../payments/payments-soon";
 
 export const CART_KEY = ["cart"];
 
@@ -26,6 +29,7 @@ export function CartScreen() {
   const queryClient = useQueryClient();
   const query = useQuery({ queryKey: CART_KEY, queryFn: getCart });
   const [busy, setBusy] = useState(false);
+  const paymentsOpen = usePaymentsOpen();
 
   const change = async (step: () => Promise<Cart>) => {
     setBusy(true);
@@ -158,7 +162,9 @@ export function CartScreen() {
       ))}
       <p className="text-small text-prune-doux">{t("protection")}</p>
       {!sameCurrency && <p className="bg-poudre rounded-2xl p-3">{t("twoCurrencies")}</p>}
-      {ready.length > 0 ? (
+      {!paymentsOpen ? (
+        <PaymentsSoon meanwhile="shop" />
+      ) : ready.length > 0 ? (
         <Link href="/checkout" className={buttonClasses({ size: "lg", fullWidth: true })}>
           {t("checkout", { amount: formatMoney(total, currency, locale) })}
         </Link>

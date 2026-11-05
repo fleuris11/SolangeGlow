@@ -20,7 +20,9 @@ import {
 } from "@/lib/api/glowpro";
 import { cn } from "@/lib/cn";
 import { formatMoney } from "@/lib/money";
+import { usePaymentsOpen } from "@/lib/platform/use-payments-open";
 
+import { PaymentsSoon } from "../payments/payments-soon";
 import { useGlowPro } from "./premium-gate";
 
 const FEATURES: GlowFeature[] = [
@@ -49,6 +51,7 @@ export function PlanScreen() {
   const queryClient = useQueryClient();
   const { data, isPending, isError } = useGlowPro();
   const [busy, setBusy] = useState(false);
+  const paymentsOpen = usePaymentsOpen();
 
   if (isPending) return <Skeleton className="rounded-card h-96" />;
   if (isError || !data) return <p className="text-prune-doux">{t("notPro")}</p>;
@@ -158,7 +161,8 @@ export function PlanScreen() {
           {price && <p className="text-lead font-bold">{price}</p>}
           <p className="text-small text-prune-doux">{t("noCommitment")}</p>
 
-          {!onPremium && !sub.trial_used && premium.trial_days > 0 && (
+          {!paymentsOpen && <PaymentsSoon meanwhile="premium" />}
+          {paymentsOpen && !onPremium && !sub.trial_used && premium.trial_days > 0 && (
             <Button
               size="lg"
               fullWidth
@@ -169,7 +173,11 @@ export function PlanScreen() {
               {t("try", { days: premium.trial_days })}
             </Button>
           )}
-          {(!onPremium || sub.status !== "active" || sub.payment_due || sub.cancel_at_period_end) &&
+          {paymentsOpen &&
+            (!onPremium ||
+              sub.status !== "active" ||
+              sub.payment_due ||
+              sub.cancel_at_period_end) &&
             (sub.trial_used || onPremium) && (
               <Button
                 size="lg"

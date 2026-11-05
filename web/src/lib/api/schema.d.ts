@@ -4792,6 +4792,28 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/platform": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * @description What the screens need to know about the platform before showing a way to pay.
+     *
+     *     The owner opens online payment with the switch « payments_closed » in the admin
+     *     (Features): until then, the screens say that it opens soon instead of starting a payment.
+     */
+    get: operations["platform"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/posts": {
     parameters: {
       query?: never;
@@ -5911,7 +5933,7 @@ export interface components {
      * @description * `home_banner` - Banner at the top of the home page
      *     * `feed` - Sponsored post in the feed
      *     * `product` - Sponsored product
-     *     * `search` - Talent shown first in the search
+     *     * `search` - Professional shown first in the search
      *     * `splash` - Screen when the app opens
      * @enum {string}
      */
@@ -6073,7 +6095,7 @@ export interface components {
      */
     AppointmentSourceEnum: "online" | "phone" | "waitlist" | "group" | "look";
     /**
-     * @description * `pending` - Waiting for the talent
+     * @description * `pending` - Waiting for the professional
      *     * `awaiting_deposit` - Waiting for the deposit
      *     * `confirmed` - Confirmed
      *     * `proposed` - Other time proposed
@@ -7269,7 +7291,7 @@ export interface components {
      *     * `shop` - Shops and orders
      *     * `selection` - France Selection
      *     * `gifts` - Gifts
-     *     * `pros` - For the talents
+     *     * `pros` - For the professionals
      *     * `games` - Glow Points and games
      * @enum {string}
      */
@@ -9662,6 +9684,9 @@ export interface components {
       staff?: number;
       campaigns_per_month?: number;
     };
+    Platform: {
+      payments_open: boolean;
+    };
     PlatformInvoice: {
       /** Format: uuid */
       id: string;
@@ -9843,7 +9868,7 @@ export interface components {
     /**
      * @description * `0` - New
      *     * `1` - Confirmed
-     *     * `2` - Top talent
+     *     * `2` - Top professional
      * @enum {integer}
      */
     ProLevelEnum: 0 | 1 | 2;
@@ -11316,7 +11341,7 @@ export interface components {
     /**
      * @description * `none` - Not sent
      *     * `pending` - Waiting for review
-     *     * `verified` - Verified talent
+     *     * `verified` - Verified professional
      *     * `rejected` - Refused
      * @enum {string}
      */
@@ -12347,7 +12372,7 @@ export interface operations {
          * @description * `home_banner` - Banner at the top of the home page
          *     * `feed` - Sponsored post in the feed
          *     * `product` - Sponsored product
-         *     * `search` - Talent shown first in the search
+         *     * `search` - Professional shown first in the search
          *     * `splash` - Screen when the app opens
          */
         placement: "home_banner" | "feed" | "product" | "search" | "splash";
@@ -19613,6 +19638,25 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["PostPage"];
+        };
+      };
+    };
+  };
+  platform: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Platform"];
         };
       };
     };

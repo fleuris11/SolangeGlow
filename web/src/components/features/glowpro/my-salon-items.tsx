@@ -10,6 +10,7 @@ import { useToast } from "@/components/ui/toast";
 import { ApiError } from "@/lib/api/client";
 import { getMySalonItems, payInstallment } from "@/lib/api/glowpro";
 import { formatMoney } from "@/lib/money";
+import { usePaymentsOpen } from "@/lib/platform/use-payments-open";
 
 /** In « My appointments »: her packages (sessions left, next payment) and the gift cards
  * she offered. */
@@ -19,6 +20,7 @@ export function MySalonItems() {
   const toast = useToast();
   const query = useQuery({ queryKey: ["salon-mine"], queryFn: getMySalonItems });
   const [busy, setBusy] = useState(false);
+  const paymentsOpen = usePaymentsOpen();
   const data = query.data;
   if (!data || (data.packages.length === 0 && data.gift_cards.length === 0)) return null;
 
@@ -54,7 +56,7 @@ export function MySalonItems() {
                   <span className="text-small text-prune-doux">
                     {t("left", { count: sold.sessions_total - sold.sessions_used })}
                   </span>
-                  {next && (
+                  {next && paymentsOpen && (
                     <Button variant="secondary" disabled={busy} onClick={() => void pay(next.id)}>
                       {t("payNext", {
                         amount: formatMoney(next.amount_minor, sold.currency, locale),

@@ -25,8 +25,10 @@ import { useMe } from "@/lib/auth/use-me";
 import { cn } from "@/lib/cn";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { formatMoney } from "@/lib/money";
+import { usePaymentsOpen } from "@/lib/platform/use-payments-open";
 
 import { GlowCardPay } from "../gifts/screens";
+import { PaymentsSoon } from "../payments/payments-soon";
 import { CART_KEY } from "./cart";
 
 type Choice = { mode: DeliveryMode; zoneId: string | null; promo: string; note: string };
@@ -237,8 +239,10 @@ export function CheckoutFlow() {
   const [quote, setQuote] = useState<Quote | null>(null);
   const [placed, setPlaced] = useState<{ group_id: string; checkout_url: string } | null>(null);
   const [busy, setBusy] = useState(false);
+  const paymentsOpen = usePaymentsOpen();
 
   if (cart.isPending) return <Skeleton className="rounded-card h-80" />;
+  if (!paymentsOpen) return <PaymentsSoon meanwhile="shop" />;
   const allShops = cart.data?.shops ?? [];
   const ready = allShops.filter(
     (shop) =>

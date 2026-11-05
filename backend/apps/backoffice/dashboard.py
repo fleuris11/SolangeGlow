@@ -217,6 +217,7 @@ def dashboard_callback(request, context: dict) -> dict:
         {
             "show_dashboard": True,
             "readiness": readiness.missing(),
+            "payments_switch": readiness.payments_switch(),
             "period": request.GET.get("period", "30"),
             "country": window.country,
             "countries": list(Country.objects.filter(is_active=True).values_list("code", "name")),

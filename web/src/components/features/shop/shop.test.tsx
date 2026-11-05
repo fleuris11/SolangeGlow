@@ -79,7 +79,7 @@ const PRODUCT: ProductDetail = {
 
 const ICONS = { cart: null, heart: null, heartFilled: null, bell: null, flash: null };
 
-describe("prices typed by a talent", () => {
+describe("prices typed by a professional", () => {
   it("reads FCFA and euros in the smallest unit", () => {
     expect(parseMoney("8 000", "XOF")).toBe(8000);
     expect(parseMoney("12,50", "EUR")).toBe(1250);
@@ -121,48 +121,61 @@ describe("ProductBuy", () => {
 });
 
 describe("CartScreen", () => {
+  const oneShop = (): Cart => ({
+    count: 1,
+    shops: [
+      {
+        shop: SHOP,
+        pro_id: "pro1",
+        currency: "XOF",
+        delivery: DELIVERY,
+        subtotal_minor: 16000,
+        prep_days: 1,
+        lines: [
+          {
+            id: "l1",
+            kind: "variant",
+            product_id: "p1",
+            product_slug: "fond-de-teint",
+            variant_id: "v1",
+            bundle_id: null,
+            title: "Fond de teint Velours",
+            variant_label: "Caramel",
+            photo: null,
+            unit_price_minor: 8000,
+            before_minor: null,
+            quantity: 2,
+            total_minor: 16000,
+            stock_left: 3,
+            available: true,
+            flash_ends_at: null,
+          },
+        ],
+      },
+    ],
+  });
+
   it("shows each shop and opens the checkout", async () => {
     signIn();
-    const cart: Cart = {
-      count: 1,
-      shops: [
-        {
-          shop: SHOP,
-          pro_id: "pro1",
-          currency: "XOF",
-          delivery: DELIVERY,
-          subtotal_minor: 16000,
-          prep_days: 1,
-          lines: [
-            {
-              id: "l1",
-              kind: "variant",
-              product_id: "p1",
-              product_slug: "fond-de-teint",
-              variant_id: "v1",
-              bundle_id: null,
-              title: "Fond de teint Velours",
-              variant_label: "Caramel",
-              photo: null,
-              unit_price_minor: 8000,
-              before_minor: null,
-              quantity: 2,
-              total_minor: 16000,
-              stock_left: 3,
-              available: true,
-              flash_ends_at: null,
-            },
-          ],
-        },
-      ],
-    };
-    mockApi([{ path: "/shop/cart", body: cart }]);
+    mockApi([{ path: "/shop/cart", body: oneShop() }]);
     renderWithProviders(<CartScreen />);
     expect(await screen.findByRole("heading", { name: "Gloria Make-up" })).toBeVisible();
     expect(screen.getByText("Caramel")).toBeVisible();
     const order = screen.getByRole("link", { name: /Commander/ });
     expect(order.textContent?.replace(/\s/g, " ")).toBe("Commander, 16 000 FCFA");
     expect(order).toHaveAttribute("href", "/fr/checkout");
+  });
+
+  it("keeps the cart but says payment opens soon while the owner keeps it closed", async () => {
+    signIn();
+    mockApi([
+      { path: "/shop/cart", body: oneShop() },
+      { path: "/platform", body: { payments_open: false } },
+    ]);
+    renderWithProviders(<CartScreen />);
+    expect(await screen.findByText("Le paiement en ligne ouvre bientôt")).toBeVisible();
+    expect(screen.getByText("Caramel")).toBeVisible();
+    expect(screen.queryByRole("link", { name: /Commander/ })).not.toBeInTheDocument();
   });
 
   it("invites to explore when it is empty", async () => {

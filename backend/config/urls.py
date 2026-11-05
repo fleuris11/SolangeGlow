@@ -4,11 +4,18 @@ from django.contrib import admin
 from django.urls import include, path
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
-from apps.core.api.views import CitySearchView, CountryListView, HealthView, LiveKitWebhookView
+from apps.core.api.views import (
+    CitySearchView,
+    CountryListView,
+    HealthView,
+    LiveKitWebhookView,
+    PlatformView,
+)
 from apps.core.media.api import MediaDetailView, MediaUploadView
 
 api_v1 = [
     path("health", HealthView.as_view(), name="health"),
+    path("platform", PlatformView.as_view(), name="platform"),
     path("countries", CountryListView.as_view(), name="countries"),
     path("cities", CitySearchView.as_view(), name="cities"),
     path("livekit/webhook", LiveKitWebhookView.as_view(), name="livekit-webhook"),

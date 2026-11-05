@@ -13,6 +13,7 @@ from apps.core.geo import search_cities
 from apps.core.models import Country
 from apps.core.providers import livekit
 from apps.core.providers.base import ProviderNotConfigured
+from apps.core.selectors import payments_open
 
 logger = logging.getLogger("solangeglow.health")
 
@@ -40,6 +41,25 @@ class HealthView(APIView):
                 logger.exception("Health check failed")
                 return Response({"status": "down"}, status=status.HTTP_503_SERVICE_UNAVAILABLE)
         return Response({"status": "ok"})
+
+
+class PlatformView(APIView):
+    """What the screens need to know about the platform before showing a way to pay.
+
+    The owner opens online payment with the switch « payments_closed » in the admin
+    (Features): until then, the screens say that it opens soon instead of starting a payment.
+    """
+
+    authentication_classes = []
+    permission_classes = [AllowAny]
+
+    @extend_schema(
+        operation_id="platform",
+        tags=["system"],
+        responses=inline_serializer("Platform", {"payments_open": serializers.BooleanField()}),
+    )
+    def get(self, request):
+        return Response({"payments_open": payments_open()})
 
 
 class CountrySerializer(serializers.ModelSerializer):

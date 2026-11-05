@@ -15,6 +15,9 @@ import { rememberReturnPath } from "@/lib/auth/return-path";
 import { cn } from "@/lib/cn";
 import { usePathname, useRouter } from "@/lib/i18n/navigation";
 import { formatMoney, parseMoney } from "@/lib/money";
+import { usePaymentsOpen } from "@/lib/platform/use-payments-open";
+
+import { PaymentsSoon } from "../payments/payments-soon";
 
 const subscribeNothing = () => () => {};
 
@@ -35,8 +38,14 @@ export function OffersView({ slug }: { slug: string }) {
   const [from, setFrom] = useState("");
   const [busy, setBusy] = useState(false);
   const [times, setTimes] = useState<Record<string, number>>({});
+  const paymentsOpen = usePaymentsOpen();
 
   if (query.isPending) return <Skeleton className="rounded-card h-80" />;
+  if (!paymentsOpen) {
+    return query.data?.gift_cards || query.data?.packages.length ? (
+      <PaymentsSoon meanwhile="salon" />
+    ) : null;
+  }
   const offer = query.data?.gift_cards;
   const packages = query.data?.packages ?? [];
   const currency = offer?.currency ?? "XOF";

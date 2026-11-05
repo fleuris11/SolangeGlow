@@ -43,3 +43,15 @@ def test_flag_cache_follows_changes():
     flag.save()
     flag.countries.add(CountryFactory(code="BJ"))
     assert is_feature_enabled("test-cache", country="FR") is False
+
+
+def test_the_screens_learn_whether_payment_is_open(api_client):
+    assert api_client.get("/api/v1/platform").json() == {"payments_open": True}
+
+    from apps.core.models import FeatureFlag
+
+    FeatureFlag.objects.update_or_create(
+        key="payments_closed", defaults={"name": "Payments closed", "is_enabled": True}
+    )
+
+    assert api_client.get("/api/v1/platform").json() == {"payments_open": False}

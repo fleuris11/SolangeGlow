@@ -9,6 +9,14 @@
 
 {% block content %}
   {% if show_dashboard %}
+    {% if not payments_switch.open %}
+      <section id="payments-switch" aria-labelledby="payments-switch-title" class="border border-base-200 rounded-default p-4 dark:border-base-700" style="margin-bottom:24px">
+        <h2 id="payments-switch-title" class="font-semibold" style="display:flex;align-items:center;gap:6px;font-size:18px"><span class="material-symbols-outlined" aria-hidden="true">lock</span>{% translate "Online payment is closed" %}</h2>
+        <p style="margin-top:4px">{% translate "Free launch: no payment, no deposit, Premium offered. The screens say that payment opens soon." %}</p>
+        <p style="margin-top:4px">{% translate "To open it: connect the payment keys below, then turn off the switch « Payments closed »." %}</p>
+        <a href="{{ payments_switch.link }}" class="bg-primary-600 text-white rounded-default px-4 py-2 font-semibold" style="display:inline-block;margin-top:8px">{% translate "Open the switch" %}</a>
+      </section>
+    {% endif %}
     {% if readiness.entries %}
       <section id="readiness" aria-labelledby="readiness-title" class="border border-base-200 rounded-default p-4 dark:border-base-700" style="margin-bottom:24px;border-left:6px solid #B54708">
         <h2 id="readiness-title" class="font-semibold" style="display:flex;align-items:center;gap:6px;font-size:18px"><span class="material-symbols-outlined" aria-hidden="true">construction</span>{% translate "To configure" %}</h2>

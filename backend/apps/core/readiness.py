@@ -130,3 +130,19 @@ def missing() -> dict:
         # Stand-ins without keys: said on the banner so that nobody mistakes them for real.
         "simulated": bool(settings.PROVIDERS_CONSOLE or settings.PAYMENTS_FAKE_ENABLED),
     }
+
+
+def payments_switch() -> dict:
+    """The banner of the free launch: online payment stays closed until the owner opens it."""
+    from django.urls import reverse
+
+    from apps.core.models import FeatureFlag
+    from apps.core.selectors import payments_open
+
+    flag = FeatureFlag.objects.filter(key="payments_closed").first()
+    link = (
+        reverse("admin:core_featureflag_change", args=[flag.pk])
+        if flag
+        else reverse("admin:core_featureflag_changelist")
+    )
+    return {"open": payments_open(), "link": link}
