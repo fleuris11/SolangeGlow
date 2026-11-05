@@ -14,10 +14,9 @@ for (const [label, viewport] of Object.entries(VIEWPORTS)) {
     await expect(main.getByRole("link", { name: "Je propose mes services" }).first()).toBeVisible();
 
     // The ticket answers: the choice changes the photo, the code and the way to the professionals.
-    await expect(main.getByRole("link", { name: "Trouver un professionnel : tresses" })).toHaveAttribute(
-      "href",
-      "/fr/explore?trade=braids",
-    );
+    await expect(
+      main.getByRole("link", { name: "Trouver un professionnel : tresses" }),
+    ).toHaveAttribute("href", "/fr/explore?trade=braids");
     await main.getByText("Maquillage", { exact: true }).first().click();
     await expect(
       main.getByRole("link", { name: "Trouver un professionnel : maquillage" }),

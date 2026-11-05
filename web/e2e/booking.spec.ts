@@ -67,7 +67,9 @@ test("a guest books, the professional confirms, reminder, done, then a verified 
   expect(manageUrl).toMatch(/^\/fr\/rdv\//);
   // First visit of a page: the development server compiles it.
   await guest.goto(manageUrl, { timeout: 120_000 });
-  await expect(guest.getByRole("heading", { name: "À confirmer par le professionnel" })).toBeVisible({
+  await expect(
+    guest.getByRole("heading", { name: "À confirmer par le professionnel" }),
+  ).toBeVisible({
     timeout: 60_000,
   });
 
