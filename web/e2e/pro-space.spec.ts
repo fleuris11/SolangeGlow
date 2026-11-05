@@ -20,7 +20,7 @@ for (const [label, viewport] of Object.entries(VIEWPORTS)) {
     const menu = pro.getByRole("navigation", { name: "Menu de mon activité" }).first();
     await expect(menu.getByRole("link", { name: "Agenda", exact: true })).toBeVisible();
     await expect(menu.getByRole("link", { name: "Boutique", exact: true })).toBeVisible();
-    await expect(pro.getByRole("link", { name: "Publier" })).toHaveCount(0);
+    await expect(pro.getByRole("link", { name: "Explorer" })).toHaveCount(0);
     await expectNoSeriousA11yIssue(pro);
     if (mobile) await pro.getByRole("button", { name: "Plus" }).click();
     // Leaving is always in sight, even on a short screen.

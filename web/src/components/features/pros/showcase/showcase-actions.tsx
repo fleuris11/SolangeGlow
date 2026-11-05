@@ -41,7 +41,10 @@ export function ShowcaseActions({ name, slug, shortLink, directionsUrl, giftable
 
   return (
     <div className="flex flex-col gap-3">
-      <Link href={`/${slug}/rdv`} className={buttonClasses({ size: "lg", fullWidth: true })}>
+      <Link
+        href={`/${slug}/rdv`}
+        className={buttonClasses({ size: "lg", fullWidth: true, className: "max-lg:hidden" })}
+      >
         {icons.book}
         {t("book")}
       </Link>

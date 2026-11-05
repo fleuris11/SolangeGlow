@@ -101,11 +101,11 @@ test("a guest books, the talent confirms, reminder, done, then a verified review
   });
   await expect(pro.getByText(name)).toBeVisible();
   await expectNoSeriousA11yIssue(pro);
-  await pro.getByRole("button", { name: "Elle est arrivée" }).click();
+  await pro.getByRole("button", { name: "Arrivée confirmée" }).click();
   await expect(pro.getByText(/^Arrivée à /)).toBeVisible();
   await guest.reload();
   await expect(
-    guest.getByRole("heading", { name: "Tu es bien arrivée. Bon soin !" }),
+    guest.getByRole("heading", { name: "Ton arrivée est notée. Bon soin !" }),
   ).toBeVisible();
   // A stranger who scans it sees nothing of this appointment.
   await guest.goto(`/fr/pro/agenda/arrivee/${reference}`, { timeout: 120_000 });

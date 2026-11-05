@@ -14,7 +14,7 @@ export function ProSwitch({ icon }: { icon: ReactNode }) {
   return (
     <Link
       href="/pro"
-      className="text-mention hover:bg-poudre inline-flex min-h-12 min-w-14 shrink-0 flex-col items-center justify-center rounded-lg font-semibold"
+      className="text-mention hover:bg-poudre inline-flex min-h-12 w-14 shrink-0 flex-col items-center justify-center rounded-lg text-center leading-none font-semibold"
     >
       {icon}
       <span>{t("badge")}</span>

@@ -34,6 +34,7 @@ export function CityField({
   const listId = useId();
   const [found, setFound] = useState<City[]>([]);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(-1);
   const skip = useRef(false);
 
   useEffect(() => {
@@ -47,6 +48,7 @@ export function CityField({
       searchCities(value.trim(), country, stop.signal)
         .then((rows) => {
           setFound(rows);
+          setActive(-1);
           setOpen(true);
         })
         .catch(() => setFound([]));
@@ -76,12 +78,28 @@ export function CityField({
         aria-expanded={open && shown.length > 0}
         aria-controls={listId}
         aria-autocomplete="list"
+        aria-activedescendant={active >= 0 ? `${listId}-${active}` : undefined}
         autoComplete="off"
         autoFocus={autoFocus}
         value={value}
         maxLength={80}
         placeholder={t("placeholder")}
         onChange={(event) => onChange(event.target.value)}
+        onKeyDown={(event) => {
+          if (!open || shown.length === 0) return;
+          if (event.key === "ArrowDown") {
+            event.preventDefault();
+            setActive((index) => (index + 1) % shown.length);
+          } else if (event.key === "ArrowUp") {
+            event.preventDefault();
+            setActive((index) => (index <= 0 ? shown.length : index) - 1);
+          } else if (event.key === "Enter" && shown[active]) {
+            event.preventDefault();
+            choose(shown[active]);
+          } else if (event.key === "Escape") {
+            setOpen(false);
+          }
+        }}
         onFocus={() => setOpen(true)}
         onBlur={() => setTimeout(() => setOpen(false), 150)}
         className="border-trait bg-carte rounded-field focus:border-hibiscus min-h-12 w-full border-2 px-3 outline-none"
@@ -95,25 +113,25 @@ export function CityField({
           !(open && shown.length > 0) && "hidden",
         )}
       >
-        {shown.map((city) => (
+        {shown.map((city, index) => (
           <li
             key={`${city.country}-${city.name}-${city.postal_code}`}
+            id={`${listId}-${index}`}
             role="option"
-            aria-selected={city.name === value}
+            aria-selected={index === active}
+            onMouseDown={(event) => event.preventDefault()}
+            onClick={() => choose(city)}
+            className={cn(
+              "hover:bg-poudre flex min-h-12 cursor-pointer flex-col justify-center px-3 py-2",
+              index === active && "bg-poudre",
+            )}
           >
-            <button
-              type="button"
-              onMouseDown={(event) => event.preventDefault()}
-              onClick={() => choose(city)}
-              className="hover:bg-poudre flex min-h-12 w-full flex-col justify-center px-3 py-2 text-left"
-            >
-              <span className="font-semibold">{city.name}</span>
-              <span className="text-small text-prune-doux">
-                {[city.postal_code, showCountry || !country ? city.country_name : ""]
-                  .filter(Boolean)
-                  .join(", ")}
-              </span>
-            </button>
+            <span className="font-semibold">{city.name}</span>
+            <span className="text-small text-prune-doux">
+              {[city.postal_code, showCountry || !country ? city.country_name : ""]
+                .filter(Boolean)
+                .join(", ")}
+            </span>
           </li>
         ))}
       </ul>

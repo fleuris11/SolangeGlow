@@ -5911,7 +5911,7 @@ export interface components {
      * @description * `home_banner` - Banner at the top of the home page
      *     * `feed` - Sponsored post in the feed
      *     * `product` - Sponsored product
-     *     * `search` - Pro shown first in the search
+     *     * `search` - Talent shown first in the search
      *     * `splash` - Screen when the app opens
      * @enum {string}
      */
@@ -6073,7 +6073,7 @@ export interface components {
      */
     AppointmentSourceEnum: "online" | "phone" | "waitlist" | "group" | "look";
     /**
-     * @description * `pending` - Waiting for the pro
+     * @description * `pending` - Waiting for the talent
      *     * `awaiting_deposit` - Waiting for the deposit
      *     * `confirmed` - Confirmed
      *     * `proposed` - Other time proposed
@@ -7269,7 +7269,7 @@ export interface components {
      *     * `shop` - Shops and orders
      *     * `selection` - France Selection
      *     * `gifts` - Gifts
-     *     * `pros` - For the pros
+     *     * `pros` - For the talents
      *     * `games` - Glow Points and games
      * @enum {string}
      */
@@ -9843,7 +9843,7 @@ export interface components {
     /**
      * @description * `0` - New
      *     * `1` - Confirmed
-     *     * `2` - Top pro
+     *     * `2` - Top talent
      * @enum {integer}
      */
     ProLevelEnum: 0 | 1 | 2;
@@ -11316,7 +11316,7 @@ export interface components {
     /**
      * @description * `none` - Not sent
      *     * `pending` - Waiting for review
-     *     * `verified` - Verified pro
+     *     * `verified` - Verified talent
      *     * `rejected` - Refused
      * @enum {string}
      */
@@ -12347,7 +12347,7 @@ export interface operations {
          * @description * `home_banner` - Banner at the top of the home page
          *     * `feed` - Sponsored post in the feed
          *     * `product` - Sponsored product
-         *     * `search` - Pro shown first in the search
+         *     * `search` - Talent shown first in the search
          *     * `splash` - Screen when the app opens
          */
         placement: "home_banner" | "feed" | "product" | "search" | "splash";
