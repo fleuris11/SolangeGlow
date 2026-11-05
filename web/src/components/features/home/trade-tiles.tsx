@@ -2,7 +2,6 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 import { lines, TITLE } from "@/components/features/marketing/chrome";
-import { AutoplayVideo } from "@/components/ui/autoplay-video";
 import { EditorialSection } from "@/components/ui/editorial-section";
 import { Link } from "@/lib/i18n/navigation";
 import library from "@/lib/media/library.json";
@@ -20,6 +19,12 @@ const TILES = [
   { key: "skincare", photo: "skin-profile", tag: "bg-rouge-fixe text-blanc" },
   { key: "all", photo: "video-makeup-set", tag: "bg-nuit text-blanc" },
 ] as const;
+
+/* Written into the page, no JavaScript file (ADR-004). Nothing is downloaded in data saver or with
+   fewer animations: the picture underneath stays. */
+const PLAY = `(function(){var v=document.getElementById("sg-tile-video"),h=document.documentElement;
+if(!v||h.dataset.dataSaver==="true"||h.dataset.motion==="reduced"||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+v.src=v.dataset.src;v.play().catch(function(){})})()`;
 
 export function TradeTiles() {
   const t = useTranslations("landing.tiles");
@@ -51,9 +56,15 @@ export function TradeTiles() {
                     className="object-cover"
                   />
                   {video && (
-                    <AutoplayVideo
-                      src={MEDIA[photo]!.src}
+                    <video
+                      id="sg-tile-video"
+                      data-src={MEDIA[photo]!.src}
                       poster={MEDIA[photo]!.poster}
+                      muted
+                      loop
+                      playsInline
+                      preload="none"
+                      aria-hidden
                       className="absolute inset-0 size-full object-cover"
                     />
                   )}
@@ -71,6 +82,7 @@ export function TradeTiles() {
           );
         })}
       </ul>
+      <script dangerouslySetInnerHTML={{ __html: PLAY }} />
     </EditorialSection>
   );
 }

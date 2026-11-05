@@ -126,7 +126,6 @@ export function Steps() {
       data-active="0"
       className="sg-steps px-4 py-16 md:px-8 xl:px-10 xl:py-24"
     >
-      <StepsWatcher target="etapes" />
       <div className="xl:grid xl:grid-cols-12 xl:gap-x-16">
         <div className="xl:col-span-5">
           <h2 id="steps-title" className={`${TITLE} text-headline xl:text-display`}>
@@ -168,6 +167,7 @@ export function Steps() {
       >
         {t("more")}
       </Link>
+      <StepsWatcher target="etapes" />
     </EditorialSection>
   );
 }

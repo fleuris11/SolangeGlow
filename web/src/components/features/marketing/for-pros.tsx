@@ -118,7 +118,6 @@ export function ForProsPage({ signedIn }: { signedIn: boolean }) {
         data-active="0"
         className="sg-steps grid gap-x-16 px-4 md:px-8 xl:grid-cols-12 xl:px-10"
       >
-        <StepsWatcher target="chapitres" />
         <div className="sticky top-[12vh] hidden h-[76vh] self-start overflow-clip xl:col-span-6 xl:mt-24 xl:block">
           {CHAPTERS.map(({ key, photo, alt }, index) => (
             <div key={key} data-state={index} className="absolute inset-0">
@@ -164,6 +163,7 @@ export function ForProsPage({ signedIn }: { signedIn: boolean }) {
             </EditorialSection>
           ))}
         </div>
+        <StepsWatcher target="chapitres" />
       </div>
 
       <EditorialSection
