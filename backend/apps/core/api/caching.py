@@ -39,7 +39,6 @@ def visitor_cache_key(request) -> str:
 # cookie, the IP address or the time to the second (slots, ads that count what is shown).
 # (A comment, not a docstring: the API documentation keeps the view's own description.)
 class VisitorCacheMixin:
-
     # Plugged after authentication, permissions and rate limits (so they still apply), and
     # before the view's own get(), which most views define themselves.
     def initial(self, request, *args, **kwargs):
