@@ -9,6 +9,7 @@ import { ServiceWorkerRegistration } from "@/components/pwa/service-worker-regis
 import { ImpersonationBanner } from "@/components/shell/impersonation-banner";
 import { PrivacyNotice } from "@/components/shell/privacy-notice";
 import { brand } from "@/lib/brand";
+import { scopedMessages } from "@/lib/i18n/client-messages";
 import { routing } from "@/lib/i18n/routing";
 import { preferencesInitScript } from "@/lib/preferences/preferences";
 import { browserReporterScript } from "@/lib/monitoring/errors";
@@ -101,7 +102,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       </head>
       <body className="antialiased">
         <ImpersonationBanner />
-        <NextIntlClientProvider>
+        <NextIntlClientProvider messages={await scopedMessages("shell", locale)}>
           <PrivacyNotice />
           <Providers>{children}</Providers>
         </NextIntlClientProvider>

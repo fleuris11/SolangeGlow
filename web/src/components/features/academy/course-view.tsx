@@ -16,10 +16,14 @@ import { Avatar } from "@/components/ui/avatar";
 import { SpeakButton } from "@/components/ui/speak-button";
 import type { CourseDetail } from "@/lib/api/academy";
 import { Link } from "@/lib/i18n/navigation";
-import { mediaSrc } from "@/lib/media";
+import { mediaSrc, mediaSrcSet } from "@/lib/media";
+import { preloadMainPicture } from "@/lib/media-preload";
 
 import { CourseActions } from "./course-actions";
 import { CoursePrice, Duration } from "./parts";
+
+/** The cover fills the phone; half the page on a computer. */
+const COVER_SIZES = "(min-width: 1024px) 50vw, 100vw";
 
 /** A course: what it teaches, its programme, who teaches it, and how to start. */
 export function CourseView({ course }: { course: CourseDetail }) {
@@ -27,6 +31,7 @@ export function CourseView({ course }: { course: CourseDetail }) {
   const tLevels = useTranslations("academy.levels");
   const tLanguages = useTranslations("academy.languages");
   const cover = mediaSrc(course.cover, "large", "medium");
+  preloadMainPicture(course.cover, COVER_SIZES);
   const enrollment = course.enrollment;
   const canWatch = Boolean(enrollment?.can_watch) || course.is_trainer;
   const firstLesson = course.modules[0]?.lessons[0]?.id ?? null;
@@ -37,7 +42,16 @@ export function CourseView({ course }: { course: CourseDetail }) {
         <span className="bg-poudre text-hibiscus flex aspect-video items-center justify-center overflow-hidden rounded-2xl">
           {cover ? (
             // eslint-disable-next-line @next/next/no-img-element -- resized by the backend
-            <img src={cover} alt="" width={960} height={540} className="size-full object-cover" />
+            <img
+              src={cover}
+              srcSet={mediaSrcSet(course.cover)}
+              sizes={COVER_SIZES}
+              alt=""
+              width={960}
+              height={540}
+              fetchPriority="high"
+              className="size-full object-cover"
+            />
           ) : (
             <GraduationCap aria-hidden size={72} />
           )}

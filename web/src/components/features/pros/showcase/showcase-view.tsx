@@ -40,7 +40,8 @@ import type { Service, Showcase } from "@/lib/api/pros";
 import type { ShopPage } from "@/lib/api/shop";
 import type { Post, ReviewPage } from "@/lib/api/social";
 import { Link } from "@/lib/i18n/navigation";
-import { mediaSrc, voiceSrc } from "@/lib/media";
+import { mediaSrc, mediaSrcSet, voiceSrc } from "@/lib/media";
+import { preloadMainPicture } from "@/lib/media-preload";
 import {
   durationParts,
   formatClock,
@@ -176,6 +177,9 @@ export function ShowcaseView({
   const name = showcase.business_name;
   const photo = mediaSrc(showcase.photo, "medium", "large");
   const cover = mediaSrc(showcase.cover, "large", "medium");
+  const COVER_SIZES = "(min-width: 1024px) 66vw, 100vw";
+  const coverSet = mediaSrcSet(showcase.cover);
+  preloadMainPicture(showcase.cover, COVER_SIZES);
   // Beside the cover, the work itself, when it is a photo.
   const works = showcase.portfolio
     .filter((item) => item.media.kind !== "video")
@@ -230,6 +234,8 @@ export function ShowcaseView({
                 key={src}
                 src={src}
                 alt=""
+                srcSet={index === 0 && cover ? coverSet : undefined}
+                sizes={index === 0 && cover && coverSet ? COVER_SIZES : undefined}
                 fetchPriority={index === 0 ? "high" : undefined}
                 loading={index === 0 ? undefined : "lazy"}
                 className={`bg-poudre size-full min-h-0 object-cover object-[50%_20%] ${

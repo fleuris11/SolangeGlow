@@ -10,6 +10,7 @@ import { mediaSrc } from "@/lib/media";
 import { jsonLdScript } from "@/lib/pros/json-ld";
 import { productJsonLd } from "@/lib/shop/json-ld";
 import { alternatesFor } from "@/lib/seo/alternates";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale; slug: string; product: string }> };
 
@@ -49,7 +50,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function ProductPage({ params }: Props) {
+async function ProductPage({ params }: Props) {
   const { locale, slug, product: productSlug } = await params;
   setRequestLocale(locale);
   const product = await loadProduct(slug, productSlug, locale);
@@ -70,3 +71,5 @@ export default async function ProductPage({ params }: Props) {
     </>
   );
 }
+
+export default withClientMessages(ProductPage, "[locale]/(site)/[slug]/shop/[product]/page.tsx");

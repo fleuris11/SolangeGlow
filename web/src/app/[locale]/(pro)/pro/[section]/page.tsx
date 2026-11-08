@@ -6,6 +6,7 @@ import { use } from "react";
 import { MySection } from "@/components/features/pros/my/my-section";
 import { SECTIONS, type Section } from "@/components/features/pros/my/sections";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale; section: string }> };
 
@@ -19,9 +20,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: t(section), robots: { index: false } };
 }
 
-export default function MySectionPage({ params }: Props) {
+function MySectionPage({ params }: Props) {
   const { locale, section } = use(params);
   setRequestLocale(locale);
   if (!isSection(section)) notFound();
   return <MySection section={section} />;
 }
+
+export default withClientMessages(MySectionPage, "[locale]/(pro)/pro/[section]/page.tsx");

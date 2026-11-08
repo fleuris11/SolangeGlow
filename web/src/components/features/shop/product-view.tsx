@@ -18,7 +18,8 @@ import { SpeakButton } from "@/components/ui/speak-button";
 import type { Schemas } from "@/lib/api/client";
 import type { ProductDetail } from "@/lib/api/shop";
 import { Link } from "@/lib/i18n/navigation";
-import { mediaSrc, voiceSrc } from "@/lib/media";
+import { mediaSrc, mediaSrcSet, voiceSrc } from "@/lib/media";
+import { preloadMainPicture } from "@/lib/media-preload";
 
 import { ProductBuy } from "./buy-buttons";
 import { DeliveryInfo } from "./delivery-info";
@@ -30,9 +31,13 @@ const VideoPlayer = dynamic(() =>
 
 type Reviews = Schemas["ProductReviews"];
 
+/** Photos of the gallery: most of the phone, about half a computer screen. */
+const PHOTO_SIZES = "(min-width: 640px) 60vw, 85vw";
+
 /** The product page: photos, price and choices, description (text and voice), delivery, reviews. */
 export function ProductView({ product, reviews }: { product: ProductDetail; reviews: Reviews }) {
   const t = useTranslations("shop.product");
+  preloadMainPicture(product.photos[0], PHOTO_SIZES);
   const locale = useLocale();
   const shopSlug = product.shop.slug ?? "";
   const voice = voiceSrc(product.description_voice);
@@ -58,6 +63,8 @@ export function ProductView({ product, reviews }: { product: ProductDetail; revi
             {/* eslint-disable-next-line @next/next/no-img-element -- resized by the backend */}
             <img
               src={mediaSrc(photo, "large", "medium")}
+              srcSet={mediaSrcSet(photo)}
+              sizes={PHOTO_SIZES}
               alt={index === 0 ? product.title : t("photoN", { n: index + 1 })}
               className="bg-poudre aspect-square w-full rounded-2xl object-cover"
               fetchPriority={index === 0 ? "high" : undefined}

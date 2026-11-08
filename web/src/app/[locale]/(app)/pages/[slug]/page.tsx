@@ -7,6 +7,7 @@ import { SpeakButton } from "@/components/ui/speak-button";
 import { pageOnServer } from "@/lib/api/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { alternatesFor } from "@/lib/seo/alternates";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale; slug: string }> };
 
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 /** A page written by the team in the admin: terms, privacy, legal notice, rules… */
-export default async function ContentPage({ params }: Props) {
+async function ContentPage({ params }: Props) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
   const page = await pageOnServer(slug, locale);
@@ -48,3 +49,5 @@ export default async function ContentPage({ params }: Props) {
     </article>
   );
 }
+
+export default withClientMessages(ContentPage, "[locale]/(app)/pages/[slug]/page.tsx");

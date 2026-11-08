@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { SpeakButton } from "@/components/ui/speak-button";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 const FollowingList = dynamic(() =>
   import("@/components/features/social/following-list").then((m) => m.FollowingList),
@@ -17,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: t("title"), robots: { index: false } };
 }
 
-export default async function Page({ params }: Props) {
+async function Page({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "social.following" });
@@ -34,3 +35,5 @@ export default async function Page({ params }: Props) {
     </div>
   );
 }
+
+export default withClientMessages(Page, "[locale]/(app)/following/page.tsx");

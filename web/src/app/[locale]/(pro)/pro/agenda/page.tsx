@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { AgendaScreen } from "@/components/features/booking/screens";
 import { SignedIn } from "@/components/features/payments/screens";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = {
   params: Promise<{ locale: Locale }>;
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
   return { title: t("agenda"), robots: { index: false, follow: false } };
 }
 
-export default async function Page({ params, searchParams }: Props) {
+async function Page({ params, searchParams }: Props) {
   const { locale } = await params;
   const { day, rdv } = await searchParams;
   setRequestLocale(locale);
@@ -32,3 +33,5 @@ export default async function Page({ params, searchParams }: Props) {
     </SignedIn>
   );
 }
+
+export default withClientMessages(Page, "[locale]/(pro)/pro/agenda/page.tsx");

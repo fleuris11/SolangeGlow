@@ -18,6 +18,15 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: ["web"],
   // Django URLs end with a slash: let them through untouched.
   skipTrailingSlashRedirect: true,
+  images: {
+    // WebP only: AVIF is lighter but slow to encode, and the first visitor of each size waited
+    // seconds for it on a small server (measured: 7 s for the photo at the top of the home).
+    formats: ["image/webp"],
+    // Our photos are at most 1600 px wide: no larger variants to compute and store.
+    deviceSizes: [360, 480, 640, 768, 1024, 1280, 1600],
+    // Optimised copies are kept a month: a photo that changes gets a new name.
+    minimumCacheTTL: 2_592_000,
+  },
   async rewrites() {
     // The browser calls /api/* on the web origin; Next forwards it to Django.
     return [
@@ -47,6 +56,13 @@ const nextConfig: NextConfig = {
           ...(process.env.NODE_ENV === "production"
             ? [{ key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" }]
             : []),
+        ],
+      },
+      {
+        // Photos, videos and brand files of public/: kept a day, then checked again.
+        source: "/:folder(media|brand)/:path*",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" },
         ],
       },
       {

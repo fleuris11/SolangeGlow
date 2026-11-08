@@ -14,6 +14,20 @@ export function mediaSrc(media: Media | null | undefined, ...order: Variant[]): 
   return undefined;
 }
 
+/** "medium 640w, large 1280w": a phone takes the smaller picture, a computer the larger. */
+export function mediaSrcSet(media: Media | null | undefined): string | undefined {
+  if (!media || media.status !== "ready") return undefined;
+  const parts = (
+    [
+      ["medium", 640],
+      ["large", 1280],
+    ] as const
+  )
+    .filter(([name]) => media.urls[name])
+    .map(([name, width]) => `${media.urls[name]} ${width}w`);
+  return parts.length > 1 ? parts.join(", ") : undefined;
+}
+
 /** Video link: low quality in data saver mode, medium otherwise. */
 export function videoSrc(media: Media | null | undefined, dataSaver: boolean): string | undefined {
   if (!media || media.status !== "ready") return undefined;

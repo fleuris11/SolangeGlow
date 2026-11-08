@@ -6,6 +6,7 @@ import { SignedIn } from "@/components/features/payments/screens";
 import { InstallPrompt } from "@/components/pwa/install-prompt";
 import { CheckoutDone } from "@/components/features/shop/screens";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale; id: string }> };
 
@@ -15,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: t("done"), robots: { index: false, follow: false } };
 }
 
-export default async function Page({ params }: Props) {
+async function Page({ params }: Props) {
   const { locale, id } = await params;
   setRequestLocale(locale);
   return (
@@ -25,3 +26,5 @@ export default async function Page({ params }: Props) {
     </SignedIn>
   );
 }
+
+export default withClientMessages(Page, "[locale]/(focus)/checkout/done/[id]/page.tsx");

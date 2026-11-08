@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { RankingsScreen } from "@/components/features/games/screens";
 
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale }> };
 
@@ -13,8 +14,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: t("rankings"), robots: { index: false, follow: false } };
 }
 
-export default async function Page({ params }: Props) {
+async function Page({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   return <RankingsScreen />;
 }
+
+export default withClientMessages(Page, "[locale]/(app)/classements/page.tsx");

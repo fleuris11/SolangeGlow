@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { SentGiftDetail } from "@/components/features/gifts/screens";
 import { SignedIn } from "@/components/features/payments/screens";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = {
   params: Promise<{ locale: Locale; id: string }>;
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
   return { title: t("detail"), robots: { index: false, follow: false } };
 }
 
-export default async function Page({ params, searchParams }: Props) {
+async function Page({ params, searchParams }: Props) {
   const { locale, id } = await params;
   setRequestLocale(locale);
   const query = await searchParams;
@@ -26,3 +27,5 @@ export default async function Page({ params, searchParams }: Props) {
     </SignedIn>
   );
 }
+
+export default withClientMessages(Page, "[locale]/(app)/cadeaux/[id]/page.tsx");

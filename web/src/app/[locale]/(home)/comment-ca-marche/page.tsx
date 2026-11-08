@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { HowItWorksPage } from "@/components/features/marketing/how-it-works";
 import type { Locale } from "@/lib/i18n/routing";
 import { alternatesFor } from "@/lib/seo/alternates";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale }> };
 
@@ -18,8 +19,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function Page({ params }: Props) {
+async function Page({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   return <HowItWorksPage signedIn={(await cookies()).get("sg_signed_in")?.value === "1"} />;
 }
+
+export default withClientMessages(Page, "[locale]/(home)/comment-ca-marche/page.tsx");

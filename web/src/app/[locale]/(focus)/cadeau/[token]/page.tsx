@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { GiftReception } from "@/components/features/gifts/screens";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale; token: string }> };
 
@@ -13,8 +14,10 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
   return { title: t("gift"), robots: { index: false, follow: false }, referrer: "no-referrer" };
 }
 
-export default async function Page({ params }: Props) {
+async function Page({ params }: Props) {
   const { locale, token } = await params;
   setRequestLocale(locale);
   return <GiftReception token={token} />;
 }
+
+export default withClientMessages(Page, "[locale]/(focus)/cadeau/[token]/page.tsx");

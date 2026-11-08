@@ -7,6 +7,7 @@ import { MediaTriage } from "@/components/features/design/media-triage";
 import type { Locale } from "@/lib/i18n/routing";
 import library from "@/lib/media/library.json";
 import sources from "../../../../../scripts/media-sources.json";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale }> };
 
@@ -17,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 /** Internal page: the owner keeps or rejects the demonstration media. Not indexed. */
-export default function MediaPage({ params }: Props) {
+function MediaPage({ params }: Props) {
   const { locale } = use(params);
   setRequestLocale(locale);
   const t = useTranslations("design.media");
@@ -44,3 +45,5 @@ export default function MediaPage({ params }: Props) {
     </main>
   );
 }
+
+export default withClientMessages(MediaPage, "[locale]/design/media/page.tsx");

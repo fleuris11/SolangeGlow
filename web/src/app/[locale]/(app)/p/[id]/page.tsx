@@ -8,6 +8,7 @@ import { PostCard } from "@/components/features/social/post-card";
 import { postOnServer, SITE_URL } from "@/lib/api/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { mediaSrc } from "@/lib/media";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale; id: string }> };
 
@@ -43,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function PostPage({ params }: Props) {
+async function PostPage({ params }: Props) {
   const { locale, id } = await params;
   setRequestLocale(locale);
   const post = await loadPost(id, locale);
@@ -55,3 +56,5 @@ export default async function PostPage({ params }: Props) {
     </div>
   );
 }
+
+export default withClientMessages(PostPage, "[locale]/(app)/p/[id]/page.tsx");

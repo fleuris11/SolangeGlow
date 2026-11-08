@@ -18,6 +18,7 @@
     "test:watch": "vitest",
     "e2e": "playwright test",
     "api:generate": "openapi-typescript \"${API_SCHEMA:-http://backend:8000/api/schema/?format=json&lang=en}\" -o src/lib/api/schema.d.ts && prettier --write src/lib/api/schema.d.ts",
+    "messages:scope": "node scripts/client-messages.mjs",
     "check:js-budget": "node scripts/check-js-budget.mjs"
   },
   "dependencies": {

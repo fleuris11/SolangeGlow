@@ -8,6 +8,7 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { Link } from "@/lib/i18n/navigation";
 import { LazyCreateFlow } from "@/components/features/social/lazy";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale }> };
 
@@ -17,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: t("create") };
 }
 
-export default async function CreatePage({ params }: Props) {
+async function CreatePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "create" });
@@ -40,3 +41,5 @@ export default async function CreatePage({ params }: Props) {
     </>
   );
 }
+
+export default withClientMessages(CreatePage, "[locale]/(app)/create/page.tsx");

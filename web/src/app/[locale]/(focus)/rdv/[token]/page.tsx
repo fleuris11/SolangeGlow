@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { AppointmentView } from "@/components/features/booking/screens";
 import { InstallPrompt } from "@/components/pwa/install-prompt";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale; token: string }> };
 
@@ -14,7 +15,7 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
   return { title: t("appointment"), robots: { index: false, follow: false } };
 }
 
-export default async function Page({ params }: Props) {
+async function Page({ params }: Props) {
   const { locale, token } = await params;
   setRequestLocale(locale);
   return (
@@ -24,3 +25,5 @@ export default async function Page({ params }: Props) {
     </>
   );
 }
+
+export default withClientMessages(Page, "[locale]/(focus)/rdv/[token]/page.tsx");

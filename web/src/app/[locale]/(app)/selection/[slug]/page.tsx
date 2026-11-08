@@ -8,6 +8,7 @@ import { SITE_URL, pickupPointsOnServer, selectionProductOnServer } from "@/lib/
 import type { Locale } from "@/lib/i18n/routing";
 import { mediaSrc } from "@/lib/media";
 import { alternatesFor } from "@/lib/seo/alternates";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale; slug: string }> };
 
@@ -36,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function SelectionProductPage({ params }: Props) {
+async function SelectionProductPage({ params }: Props) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
   const [product, points] = await Promise.all([
@@ -46,3 +47,5 @@ export default async function SelectionProductPage({ params }: Props) {
   if (!product) notFound();
   return <SelectionProductView product={product} points={points} />;
 }
+
+export default withClientMessages(SelectionProductPage, "[locale]/(app)/selection/[slug]/page.tsx");

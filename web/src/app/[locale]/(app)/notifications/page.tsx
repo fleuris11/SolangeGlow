@@ -5,6 +5,7 @@ import { use } from "react";
 
 import { NotificationsContent } from "@/components/features/notifications/notifications-content";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale }> };
 
@@ -14,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: t("title"), robots: { index: false } };
 }
 
-export default function NotificationsPage({ params }: Props) {
+function NotificationsPage({ params }: Props) {
   const { locale } = use(params);
   setRequestLocale(locale);
   const t = useTranslations("notifications");
@@ -26,3 +27,5 @@ export default function NotificationsPage({ params }: Props) {
     </div>
   );
 }
+
+export default withClientMessages(NotificationsPage, "[locale]/(app)/notifications/page.tsx");

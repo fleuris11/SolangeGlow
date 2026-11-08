@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CertificateCheckView } from "@/components/features/academy/certificate-check";
 import { certificateOnServer } from "@/lib/api/server";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale; code: string }> };
 
@@ -18,9 +19,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: t("certificate"), robots: { index: false, follow: false } };
 }
 
-export default async function Page({ params }: Props) {
+async function Page({ params }: Props) {
   const { locale, code } = await params;
   setRequestLocale(locale);
   const certificate = CODE.test(code) ? await certificateOnServer(code, locale) : null;
   return <CertificateCheckView code={code} certificate={certificate} />;
 }
+
+export default withClientMessages(Page, "[locale]/(app)/certificat/[code]/page.tsx");

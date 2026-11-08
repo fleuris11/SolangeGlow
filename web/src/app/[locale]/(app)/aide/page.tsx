@@ -14,6 +14,7 @@ import { faqOnServer, pagesOnServer } from "@/lib/api/server";
 import { Link } from "@/lib/i18n/navigation";
 import type { Locale } from "@/lib/i18n/routing";
 import { alternatesFor } from "@/lib/seo/alternates";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale }> };
 
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 /** Help center: ask a question (answers of the FAQ first), then the FAQ by topic. */
-export default async function HelpPage({ params }: Props) {
+async function HelpPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "help" });
@@ -101,3 +102,5 @@ export default async function HelpPage({ params }: Props) {
     </div>
   );
 }
+
+export default withClientMessages(HelpPage, "[locale]/(app)/aide/page.tsx");

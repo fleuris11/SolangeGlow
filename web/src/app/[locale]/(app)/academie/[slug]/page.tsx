@@ -7,6 +7,7 @@ import { courseOnServer, SITE_URL } from "@/lib/api/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { jsonLdScript } from "@/lib/pros/json-ld";
 import { alternatesFor } from "@/lib/seo/alternates";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale; slug: string }> };
 
@@ -25,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function CoursePage({ params }: Props) {
+async function CoursePage({ params }: Props) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
   if (!SLUG.test(slug)) notFound();
@@ -59,3 +60,5 @@ export default async function CoursePage({ params }: Props) {
     </>
   );
 }
+
+export default withClientMessages(CoursePage, "[locale]/(app)/academie/[slug]/page.tsx");

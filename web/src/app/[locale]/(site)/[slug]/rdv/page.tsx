@@ -20,6 +20,7 @@ import { bookingOnServer, SITE_URL } from "@/lib/api/server";
 import { Link } from "@/lib/i18n/navigation";
 import type { Locale } from "@/lib/i18n/routing";
 import { mediaSrc } from "@/lib/media";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = {
   params: Promise<{ locale: Locale; slug: string }>;
@@ -47,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function BookingPage({ params, searchParams }: Props) {
+async function BookingPage({ params, searchParams }: Props) {
   const { locale, slug } = await params;
   const { service, post } = await searchParams;
   setRequestLocale(locale);
@@ -111,3 +112,5 @@ export default async function BookingPage({ params, searchParams }: Props) {
     </article>
   );
 }
+
+export default withClientMessages(BookingPage, "[locale]/(site)/[slug]/rdv/page.tsx");

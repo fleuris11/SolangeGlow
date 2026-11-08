@@ -13,9 +13,13 @@ import { gzipSync } from "node:zlib";
 
 const BUDGET_KB = 230;
 const LOCALES = ["fr", "en", "sk"];
-const STATIC_PAGES = ["/messages", "/me"];
+// Every page now gets its own translations from the server (lib/i18n/client-messages.tsx):
+// « Messages » and « Me » are measured like the other pages, from the build manifests.
+const STATIC_PAGES = [];
 const DYNAMIC_PAGES = {
   "/[locale]": "[locale]/(home)",
+  "/[locale]/messages": "[locale]/(app)/messages",
+  "/[locale]/me": "[locale]/(app)/me",
   "/[locale]/create": "[locale]/(app)/create",
   "/[locale]/p/<post>": "[locale]/(app)/p/[id]",
   "/[locale]/messages/<conversation>": "[locale]/(chat)/messages/[id]",

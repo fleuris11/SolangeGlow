@@ -4,6 +4,7 @@ import { use } from "react";
 
 import { WelcomeFlow } from "@/components/features/auth/welcome-flow";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = {
   params: Promise<{ locale: Locale }>;
@@ -16,9 +17,11 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
   return { title: t("metaTitle"), robots: { index: false } };
 }
 
-export default function WelcomePage({ params, searchParams }: Props) {
+function WelcomePage({ params, searchParams }: Props) {
   const { locale } = use(params);
   setRequestLocale(locale);
   const { as } = use(searchParams);
   return <WelcomeFlow as={as === "pro" || as === "client" ? as : undefined} />;
 }
+
+export default withClientMessages(WelcomePage, "[locale]/(focus)/welcome/page.tsx");

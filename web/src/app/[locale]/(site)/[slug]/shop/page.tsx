@@ -7,6 +7,7 @@ import { ShopView } from "@/components/features/shop/shop-view";
 import { shopOnServer } from "@/lib/api/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { alternatesFor } from "@/lib/seo/alternates";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = {
   params: Promise<{ locale: Locale; slug: string }>;
@@ -34,7 +35,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   };
 }
 
-export default async function ShopPage({ params, searchParams }: Props) {
+async function ShopPage({ params, searchParams }: Props) {
   const { locale, slug } = await params;
   const { category } = await searchParams;
   setRequestLocale(locale);
@@ -42,3 +43,5 @@ export default async function ShopPage({ params, searchParams }: Props) {
   if (!page) notFound();
   return <ShopView page={page} slug={slug.toLowerCase()} category={category} />;
 }
+
+export default withClientMessages(ShopPage, "[locale]/(site)/[slug]/shop/page.tsx");

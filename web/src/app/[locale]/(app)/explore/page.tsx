@@ -24,6 +24,7 @@ import { adsOnServer, placesOnServer, searchProsOnServer } from "@/lib/api/serve
 import { Link } from "@/lib/i18n/navigation";
 import type { Locale } from "@/lib/i18n/routing";
 import { alternatesFor } from "@/lib/seo/alternates";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 // Map view only: its code (and MapLibre) is not part of the list page.
 const ExploreMapView = dynamic(() =>
@@ -49,7 +50,7 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
  * Explore: the first results are rendered on the server (readable before any script,
  * light on a 3G phone); near me, filters, map and « see more » are small islands.
  */
-export default async function ExplorePage({ params, searchParams }: Props) {
+async function ExplorePage({ params, searchParams }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "explore" });
@@ -129,3 +130,5 @@ export default async function ExplorePage({ params, searchParams }: Props) {
     </div>
   );
 }
+
+export default withClientMessages(ExplorePage, "[locale]/(app)/explore/page.tsx");

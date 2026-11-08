@@ -43,8 +43,23 @@ function Picture({ src, alt, eager }: { src?: string; alt: string; eager?: boole
   );
 }
 
-/** A post of the feed: who, the pictures, the words, « Book this look », and the actions. */
 /**
+ * Drawn once for the whole feed: the same object handed to every card is written once in the
+ * page sent to the browser, instead of seven drawings repeated for each post.
+ */
+const ACTION_ICONS = {
+  heart: <Heart aria-hidden size={26} />,
+  heartOn: <Heart aria-hidden size={26} weight="fill" />,
+  comment: <ChatCircle aria-hidden size={26} />,
+  save: <BookmarkSimple aria-hidden size={26} />,
+  saveOn: <BookmarkSimple aria-hidden size={26} weight="fill" className="text-or" />,
+  share: <ShareNetwork aria-hidden size={26} />,
+  more: <DotsThreeOutline aria-hidden size={24} weight="fill" />,
+};
+
+/**
+ * A post of the feed: who, the pictures, the words, « Book this look », and the actions.
+ *
  * `alone`: the post's own page, where « Book this look » is the main action. In a list
  * (feed, profile) each post keeps an outline button: one main action per screen.
  */
@@ -157,15 +172,7 @@ export function PostCard({
           commentCount={post.comment_count}
           shareUrl={post.share_url}
           isMine={post.is_mine}
-          icons={{
-            heart: <Heart aria-hidden size={26} />,
-            heartOn: <Heart aria-hidden size={26} weight="fill" />,
-            comment: <ChatCircle aria-hidden size={26} />,
-            save: <BookmarkSimple aria-hidden size={26} />,
-            saveOn: <BookmarkSimple aria-hidden size={26} weight="fill" className="text-or" />,
-            share: <ShareNetwork aria-hidden size={26} />,
-            more: <DotsThreeOutline aria-hidden size={24} weight="fill" />,
-          }}
+          icons={ACTION_ICONS}
         />
         <h2 id={`post-${post.id}`} className="sr-only">
           {t("by", { name: author.name })}

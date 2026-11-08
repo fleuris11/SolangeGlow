@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { PaymentList, SignedIn } from "@/components/features/payments/screens";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 export async function generateMetadata({
   params,
@@ -19,7 +20,7 @@ type Props = {
   searchParams: Promise<{ role?: string }>;
 };
 
-export default async function PaymentsPage({ params, searchParams }: Props) {
+async function PaymentsPage({ params, searchParams }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const { role } = await searchParams;
@@ -33,3 +34,5 @@ export default async function PaymentsPage({ params, searchParams }: Props) {
     </div>
   );
 }
+
+export default withClientMessages(PaymentsPage, "[locale]/(app)/payments/page.tsx");

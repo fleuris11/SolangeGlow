@@ -14,6 +14,7 @@ import {
 import { routing, type Locale } from "@/lib/i18n/routing";
 import { mediaSrc } from "@/lib/media";
 import { jsonLdScript, localBusinessJsonLd } from "@/lib/pros/json-ld";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale; slug: string }> };
 
@@ -63,7 +64,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function ShowcasePage({ params }: Props) {
+async function ShowcasePage({ params }: Props) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
   const showcase = await loadShowcase(slug, locale);
@@ -92,3 +93,5 @@ export default async function ShowcasePage({ params }: Props) {
     </>
   );
 }
+
+export default withClientMessages(ShowcasePage, "[locale]/(site)/[slug]/page.tsx");

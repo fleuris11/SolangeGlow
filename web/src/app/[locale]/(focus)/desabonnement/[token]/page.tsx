@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { UnsubscribeScreen } from "@/components/features/glowpro/screens";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale; token: string }> };
 
@@ -12,8 +13,10 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
   return { title: t("unsubscribe"), robots: { index: false, follow: false } };
 }
 
-export default async function Page({ params }: Props) {
+async function Page({ params }: Props) {
   const { locale, token } = await params;
   setRequestLocale(locale);
   return <UnsubscribeScreen token={token} />;
 }
+
+export default withClientMessages(Page, "[locale]/(focus)/desabonnement/[token]/page.tsx");

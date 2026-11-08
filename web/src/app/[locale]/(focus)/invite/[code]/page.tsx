@@ -8,6 +8,7 @@ import { SpeakButton } from "@/components/ui/speak-button";
 import { inviteOnServer } from "@/lib/api/server";
 import { Link } from "@/lib/i18n/navigation";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale; code: string }> };
 
@@ -18,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 /** The personal invitation link of a client: who invites, what the friend gets. */
-export default async function InvitePage({ params }: Props) {
+async function InvitePage({ params }: Props) {
   const { locale, code } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "games.invite" });
@@ -53,3 +54,5 @@ export default async function InvitePage({ params }: Props) {
     </div>
   );
 }
+
+export default withClientMessages(InvitePage, "[locale]/(focus)/invite/[code]/page.tsx");

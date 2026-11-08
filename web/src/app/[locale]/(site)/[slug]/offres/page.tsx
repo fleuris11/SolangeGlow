@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { OffersView } from "@/components/features/glowpro/screens";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale; slug: string }> };
 
@@ -15,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: t("offers") };
 }
 
-export default async function Page({ params }: Props) {
+async function Page({ params }: Props) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
   if (!SLUG.test(slug)) notFound();
@@ -27,3 +28,5 @@ export default async function Page({ params }: Props) {
     </div>
   );
 }
+
+export default withClientMessages(Page, "[locale]/(site)/[slug]/offres/page.tsx");

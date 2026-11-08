@@ -4,6 +4,7 @@ import { use } from "react";
 
 import { BecomeProFlow } from "@/components/features/pros/become/become-pro-flow";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = {
   params: Promise<{ locale: Locale }>;
@@ -16,9 +17,11 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
   return { title: t("title"), robots: { index: false } };
 }
 
-export default function BecomeProPage({ params, searchParams }: Props) {
+function BecomeProPage({ params, searchParams }: Props) {
   const { locale } = use(params);
   const { invite } = use(searchParams);
   setRequestLocale(locale);
   return <BecomeProFlow invite={typeof invite === "string" ? invite : undefined} />;
 }
+
+export default withClientMessages(BecomeProPage, "[locale]/(focus)/pro/start/page.tsx");

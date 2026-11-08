@@ -6,6 +6,7 @@ import { buttonClasses } from "@/components/ui/button";
 import { SpeakButton } from "@/components/ui/speak-button";
 import { Link } from "@/lib/i18n/navigation";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale }> };
 
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
  * Shown by the service worker when the network is gone and the page was never seen.
  * No script needed: « Try again » reloads the address that was asked.
  */
-export default async function OfflinePage({ params }: Props) {
+async function OfflinePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "offline" });
@@ -47,3 +48,5 @@ export default async function OfflinePage({ params }: Props) {
     </section>
   );
 }
+
+export default withClientMessages(OfflinePage, "[locale]/(focus)/hors-ligne/page.tsx");

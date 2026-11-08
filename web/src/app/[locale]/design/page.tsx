@@ -9,6 +9,7 @@ import { HealthStatus } from "@/components/features/system/health-status";
 import { navIcons } from "@/components/shell/nav-icons";
 import { BottomNav } from "@/components/ui/bottom-nav";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale }> };
 
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 /** Internal catalogue of the design system, in light and dark side by side. Not indexed. */
-export default function DesignPage({ params }: Props) {
+function DesignPage({ params }: Props) {
   const { locale } = use(params);
   setRequestLocale(locale);
   const t = useTranslations("design");
@@ -53,3 +54,5 @@ export default function DesignPage({ params }: Props) {
     </main>
   );
 }
+
+export default withClientMessages(DesignPage, "[locale]/design/page.tsx");

@@ -10,6 +10,7 @@ import { EmptyState } from "@/components/ui/empty-state";
 import { SpeakButton } from "@/components/ui/speak-button";
 import { Link } from "@/lib/i18n/navigation";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale }> };
 
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 /** Static page: the list arrives on the phone for signed-in people only. */
-export default function MessagesPage({ params }: Props) {
+function MessagesPage({ params }: Props) {
   const { locale } = use(params);
   setRequestLocale(locale);
   const t = useTranslations("messages");
@@ -51,3 +52,5 @@ export default function MessagesPage({ params }: Props) {
     </div>
   );
 }
+
+export default withClientMessages(MessagesPage, "[locale]/(app)/messages/page.tsx");

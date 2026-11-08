@@ -5,6 +5,7 @@ import { CatalogueView, type CatalogueFilters } from "@/components/features/acad
 import { catalogueOnServer, tradesOnServer, type CatalogueQuery } from "@/lib/api/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { alternatesFor } from "@/lib/seo/alternates";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = {
   params: Promise<{ locale: Locale }>;
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
   };
 }
 
-export default async function AcademyPage({ params, searchParams }: Props) {
+async function AcademyPage({ params, searchParams }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const raw = await searchParams;
@@ -48,3 +49,5 @@ export default async function AcademyPage({ params, searchParams }: Props) {
   ]);
   return <CatalogueView page={page} trades={trades} filters={filters} />;
 }
+
+export default withClientMessages(AcademyPage, "[locale]/(app)/academie/page.tsx");

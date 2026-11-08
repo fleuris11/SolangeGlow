@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { SignedIn } from "@/components/features/payments/screens";
 import { TodayScreen } from "@/components/features/pro-space/today";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = {
   params: Promise<{ locale: Locale }>;
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
   return { title: t("title"), robots: { index: false } };
 }
 
-export default async function Page({ params, searchParams }: Props) {
+async function Page({ params, searchParams }: Props) {
   const { locale } = await params;
   const { bienvenue } = await searchParams;
   setRequestLocale(locale);
@@ -26,3 +27,5 @@ export default async function Page({ params, searchParams }: Props) {
     </SignedIn>
   );
 }
+
+export default withClientMessages(Page, "[locale]/(pro)/pro/page.tsx");

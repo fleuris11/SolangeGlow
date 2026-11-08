@@ -7,6 +7,7 @@ import type { Schemas } from "@/lib/api/client";
 import { adsOnServer, selectionOnServer } from "@/lib/api/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { alternatesFor } from "@/lib/seo/alternates";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = {
   params: Promise<{ locale: Locale }>;
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
   };
 }
 
-export default async function SelectionPage({ params, searchParams }: Props) {
+async function SelectionPage({ params, searchParams }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const aisle = asAisle((await searchParams).aisle);
@@ -41,3 +42,5 @@ export default async function SelectionPage({ params, searchParams }: Props) {
   ]);
   return <SelectionHome page={page} aisle={aisle} sponsored={<AdSlot list={sponsored} />} />;
 }
+
+export default withClientMessages(SelectionPage, "[locale]/(app)/selection/page.tsx");

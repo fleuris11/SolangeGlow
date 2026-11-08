@@ -7,6 +7,7 @@ import { MeContent } from "@/components/features/me/me-content";
 import { pagesOnServer } from "@/lib/api/server";
 import { Link } from "@/lib/i18n/navigation";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale }> };
 
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 const rowClass =
   "border-trait rounded-card bg-carte flex min-h-14 items-center gap-3 border px-4 py-3 font-bold";
 
-export default async function MePage({ params }: Props) {
+async function MePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "me" });
@@ -53,3 +54,5 @@ export default async function MePage({ params }: Props) {
     </div>
   );
 }
+
+export default withClientMessages(MePage, "[locale]/(app)/me/page.tsx");

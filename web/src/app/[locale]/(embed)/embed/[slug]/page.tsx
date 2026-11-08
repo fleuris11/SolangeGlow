@@ -14,6 +14,7 @@ import { BookingFlow } from "@/components/features/booking/booking-flow";
 import { EmbedHeight } from "@/components/features/glowpro/embed-height";
 import { bookingOnServer, widgetOnServer } from "@/lib/api/server";
 import type { Locale } from "@/lib/i18n/routing";
+import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = { params: Promise<{ locale: Locale; slug: string }> };
 
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: t("title"), robots: { index: false, follow: false } };
 }
 
-export default async function EmbedPage({ params }: Props) {
+async function EmbedPage({ params }: Props) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "glowpro.embed" });
@@ -75,3 +76,5 @@ export default async function EmbedPage({ params }: Props) {
     </div>
   );
 }
+
+export default withClientMessages(EmbedPage, "[locale]/(embed)/embed/[slug]/page.tsx");
