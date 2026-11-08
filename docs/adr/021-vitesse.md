@@ -33,10 +33,11 @@ Le propriétaire trouve la plateforme lente. Deux choses différentes se mélang
    qui n'envoie que ses chemins. Une clé calculée ou un `t` passé à un autre composant font envoyer
    l'espace entier : jamais de texte manquant. La CI vérifie que le fichier est à jour
    (`npm run messages:scope -- --check`). Accueil : 161 Ko → environ 15 Ko de traductions.
-2. **Envoi progressif.** L'accueil rend tout de suite son haut de page ; le fil arrive dans un
-   `Suspense` quand ses données sont là.
-3. **Écrans de chargement** (`loading.tsx`) dans chaque groupe de pages : le squelette s'affiche au
-   toucher.
+2. **Pas d'envoi progressif ni de `loading.tsx`** (essayés puis retirés) : le fil de l'accueil doit
+   être dans la page sans script (3G, moteurs de recherche), une adresse inconnue doit répondre 404
+   (et non 200 après un squelette), et les copies cachées en attente doublaient les textes. Le cache
+   des réponses visiteurs (point 5) rend ces pages rapides sans cela.
+3. (retiré, voir 2.)
 4. **Objets partagés une fois.** Les icônes des actions d'une publication sont créées au niveau du
    module : React n'écrit qu'une fois un objet réutilisé.
 5. **Cache des réponses visiteurs** (`apps/core/api/caching.py`, `VisitorCacheMixin`) : même adresse et

@@ -33,13 +33,12 @@ def visitor_cache_key(request) -> str:
     return "visitor-answer:" + hashlib.sha256(raw.encode()).hexdigest()
 
 
+# GET: same address and language, same answer for visitors, during the setting's seconds.
+# Signed-in people always get a fresh answer (their own drafts, their likes, their country).
+# Only answers that depend on nothing but the address may use it: never one that reads a
+# cookie, the IP address or the time to the second (slots, ads that count what is shown).
+# (A comment, not a docstring: the API documentation keeps the view's own description.)
 class VisitorCacheMixin:
-    """GET: same address and language, same answer for visitors, during the setting's seconds.
-
-    Signed-in people always get a fresh answer (their own drafts, their likes, their country).
-    Only answers that depend on nothing but the address may use it: never one that reads a
-    cookie, the IP address or the time to the second (slots, ads that count what is shown).
-    """
 
     # Plugged after authentication, permissions and rate limits (so they still apply), and
     # before the view's own get(), which most views define themselves.

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
-import { Suspense } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { AdSlot } from "@/components/features/ads/ad-cards";
@@ -11,7 +10,6 @@ import { FranceSelectionBand } from "@/components/features/home/bands";
 import { PublicHome } from "@/components/features/home/public-home";
 import { UpcomingLivesBand } from "@/components/features/live/upcoming-band";
 import { SearchBar } from "@/components/features/search/search-bar";
-import { Skeleton } from "@/components/ui/skeleton";
 import { FeedSection } from "@/components/features/social/feed-section";
 import { StoryStrip } from "@/components/features/social/story-strip";
 import { HomeInstallPrompt } from "@/components/pwa/home-install-prompt";
@@ -45,12 +43,8 @@ async function HomePage({ params }: Props) {
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "home" });
   const signedIn = (await cookies()).get("sg_signed_in")?.value === "1";
-  // Streamed: the top of the page leaves at once, the feed follows when its data is there.
-  const feed = (
-    <Suspense fallback={<Skeleton className="rounded-card h-96" />}>
-      <HomeFeed locale={locale} signedIn={signedIn} />
-    </Suspense>
-  );
+  // Not streamed: the feed is in the page itself, even before any script runs (3G, search engines).
+  const feed = <HomeFeed locale={locale} signedIn={signedIn} />;
 
   if (!signedIn) {
     return (

@@ -58,6 +58,8 @@ export function TradeTiles() {
                   {video && (
                     <video
                       id="sg-tile-video"
+                      // Its source is set by the script below, sometimes before React takes over.
+                      suppressHydrationWarning
                       data-src={MEDIA[photo]!.src}
                       poster={MEDIA[photo]!.poster}
                       muted
