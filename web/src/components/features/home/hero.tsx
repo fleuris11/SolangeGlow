@@ -25,6 +25,23 @@ const FIRST: Trade = "braids";
 const ORDER: Trade[] = [FIRST, ...TRADES.filter((trade) => trade !== FIRST)];
 const TIMES = ["morning", "noon", "evening"] as const;
 
+/* Written into the page, no JavaScript file (ADR-004). The trades follow one another every few
+   seconds, so the visitor sees every kind of beauty without touching anything. It stops for good as
+   soon as the visitor chooses a trade, waits while the pointer is on the ticket, has a pause button
+   (WCAG 2.2.2), and never runs with fewer animations asked. The next photo is fetched ahead. */
+const ROTATE = `(function(){var r=document.getElementById("sg-hero"),h=document.documentElement;
+if(!r||h.dataset.motion==="reduced"||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+var rs=[].slice.call(r.querySelectorAll('input[name="home-trade"]')),b=document.getElementById("sg-hero-pause");
+if(rs.length<2||!b)return;var off=false,hold=false;b.hidden=false;
+function warm(i){var im=r.querySelector('[data-show="'+rs[i].value+'"] img');if(im&&im.srcset){var p=new Image();p.sizes=im.sizes;p.srcset=im.srcset}}
+function at(){for(var i=0;i<rs.length;i++)if(rs[i].checked)return i;return 0}
+function stop(){off=true;b.hidden=true}
+warm((at()+1)%rs.length);
+setInterval(function(){if(off||hold||document.hidden)return;var n=(at()+1)%rs.length;rs[n].checked=true;warm((n+1)%rs.length)},3200);
+rs.forEach(function(x){x.addEventListener("click",function(e){if(e.isTrusted)stop()})});
+var t=r.querySelector(".sg-ticket");if(t){t.addEventListener("mouseenter",function(){hold=true});t.addEventListener("mouseleave",function(){hold=false})}
+b.addEventListener("click",function(){var on=b.getAttribute("aria-pressed")!=="true";b.setAttribute("aria-pressed",on?"true":"false");hold=on;off=false})})()`;
+
 const CHOICE =
   "press peer-checked:bg-encre peer-checked:text-blanc peer-focus-visible:outline-hibiscus bg-poudre rounded-button text-small flex min-h-11 cursor-pointer items-center justify-center px-3 font-semibold peer-focus-visible:outline-3 peer-focus-visible:outline-offset-2";
 
@@ -131,6 +148,7 @@ export function Hero() {
   return (
     <EditorialSection
       ambiance="rouge"
+      id="sg-hero"
       aria-labelledby="home-title"
       className="sg-chooser relative flex flex-col overflow-clip xl:grid xl:min-h-[max(100svh,52rem)] xl:grid-cols-2"
     >
@@ -177,9 +195,23 @@ export function Hero() {
               />
             </div>
           ))}
+          {/* Shown by the script only, when the photos move by themselves. */}
+          <button
+            id="sg-hero-pause"
+            type="button"
+            hidden
+            // The script below shows it, before React takes over.
+            suppressHydrationWarning
+            aria-pressed="false"
+            className="press bg-encre/70 text-blanc text-small absolute right-3 bottom-3 z-10 min-h-11 rounded-full px-4 font-semibold backdrop-blur"
+          >
+            <span className="sg-when-playing">{t("pause")}</span>
+            <span className="sg-when-paused">{t("play")}</span>
+          </button>
         </div>
         <Ticket />
       </div>
+      <script dangerouslySetInnerHTML={{ __html: ROTATE }} />
     </EditorialSection>
   );
 }

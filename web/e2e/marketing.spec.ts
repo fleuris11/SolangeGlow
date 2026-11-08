@@ -63,7 +63,7 @@ test("the page for professionals explains the QR code and what is free, then lea
 }) => {
   await page.setViewportSize(VIEWPORTS.mobile);
   await openWith(page, "/fr/proposer-mes-services", LOOK);
-  await expect(page.getByRole("heading", { level: 1 })).toContainText("Ton activité en ligne");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("On fait ta publicité");
   await expect(page.getByRole("heading", { name: "Ton lien et ton QR code" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Gratuit ou Premium ?" })).toBeVisible();
   await expectNoSeriousA11yIssue(page);

@@ -41,6 +41,9 @@ export function TopBar({ signedIn = false }: { signedIn?: boolean }) {
           aria-label={t("nav.label")}
           className="text-small hidden items-center gap-6 font-semibold xl:flex"
         >
+          <Link href="/#services" className="hover:underline hover:underline-offset-4">
+            {t("nav.services")}
+          </Link>
           <Link href="/explore" className="hover:underline hover:underline-offset-4">
             {t("nav.explore")}
           </Link>

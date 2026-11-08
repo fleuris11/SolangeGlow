@@ -9,7 +9,8 @@ import { ActivityPlate } from "./activity-plate";
 import { AddressBlank } from "./address-blank";
 import { Hero } from "./hero";
 import "./home.css";
-import { PosterLines } from "./poster-lines";
+import { ProFree } from "./pro-free";
+import { Services } from "./services";
 import { QuestionIndex } from "./question-index";
 import { Steps } from "./steps";
 import { EverySkin } from "./every-skin";
@@ -22,12 +23,13 @@ export function PublicHome({ feed }: { feed: ReactNode }) {
   return (
     <MarketingPage>
       <Hero />
+      <Services />
       <TwoSides />
       <EverySkin />
       <Steps />
+      <ProFree />
       <TradeTiles />
       <ActivityPlate />
-      <PosterLines />
       <QuestionIndex />
       <AddressBlank />
       <EditorialSection

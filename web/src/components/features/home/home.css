@@ -270,3 +270,108 @@
     border-radius: var(--radius-card);
   }
 }
+
+/* The pause button of the moving photos says what it will do. */
+#sg-hero-pause .sg-when-paused,
+#sg-hero-pause[aria-pressed="true"] .sg-when-playing {
+  display: none;
+}
+
+#sg-hero-pause[aria-pressed="true"] .sg-when-paused {
+  display: inline;
+}
+
+/* One photo follows another: a slow fade and a slow zoom, like a page turned in a magazine. */
+.sg-chooser [data-show] .sg-photo-settle {
+  animation:
+    photo-settle 3400ms var(--courbe-sortie) both,
+    fade-in 700ms var(--courbe-sortie) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sg-chooser [data-show] .sg-photo-settle {
+    animation: none;
+  }
+}
+
+/* Services: each card leans towards the visitor, in depth, when the pointer comes. */
+.sg-services > li {
+  perspective: 900px;
+}
+
+.sg-service {
+  transform-style: preserve-3d;
+  transition:
+    transform 360ms var(--courbe-sortie),
+    background-color 200ms ease;
+}
+
+.sg-service > svg {
+  transition: transform 360ms var(--courbe-sortie);
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .sg-service:hover {
+    transform: rotateX(7deg) translateY(-6px);
+  }
+
+  .sg-service:hover > svg {
+    transform: translateZ(28px) scale(1.08);
+  }
+}
+
+/* The computer and the phone of the professionals: turned in space, straightened by the scroll. */
+.sg-devices {
+  perspective: 1400px;
+}
+
+.sg-device-laptop,
+.sg-device-phone {
+  transform: rotateY(-12deg) rotateX(6deg);
+  transform-style: preserve-3d;
+}
+
+.sg-device-phone {
+  transform: rotateY(-12deg) rotateX(6deg) translateZ(80px);
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .sg-device-laptop {
+      animation: device-straighten linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 45%;
+    }
+
+    .sg-device-phone {
+      animation: phone-straighten linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 45%;
+    }
+  }
+}
+
+@keyframes device-straighten {
+  from {
+    transform: rotateY(-28deg) rotateX(14deg) translateY(40px);
+  }
+  to {
+    transform: rotateY(-6deg) rotateX(3deg);
+  }
+}
+
+@keyframes phone-straighten {
+  from {
+    transform: rotateY(-28deg) rotateX(14deg) translateZ(40px) translateY(120px);
+  }
+  to {
+    transform: rotateY(-6deg) rotateX(3deg) translateZ(80px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sg-device-laptop,
+  .sg-device-phone {
+    transform: none;
+  }
+}

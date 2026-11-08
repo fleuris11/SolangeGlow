@@ -110,9 +110,3 @@ export const DEMO_PROS: DemoPro[] = [
 ];
 
 export type ShelfKey = "smallPrices" | "trending" | "luxury";
-
-export const DEMO_GIFT = {
-  fromAmountMinor: 1500,
-  currency: "EUR" as const,
-  city: "Cotonou",
-};

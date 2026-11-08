@@ -46,7 +46,7 @@ function FragmentState({ index }: { index: number }) {
                 <span className="text-small text-prune-doux block">{t(`talents.${key}.meta`)}</span>
               </span>
               <span className="text-small shrink-0 font-semibold tabular-nums">
-                {t(`talents.${key}.price`)}
+                {t(`talents.${key}.slot`)}
               </span>
             </li>
           ))}
@@ -124,6 +124,8 @@ export function Steps() {
       id="etapes"
       aria-labelledby="steps-title"
       data-active="0"
+      // StepsWatcher moves data-active as the visitor reads, maybe before React takes over.
+      suppressHydrationWarning
       className="sg-steps px-4 py-16 md:px-8 xl:px-10 xl:py-24"
     >
       <div className="xl:grid xl:grid-cols-12 xl:gap-x-16">

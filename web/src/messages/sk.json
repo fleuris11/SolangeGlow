@@ -10,8 +10,7 @@
   "common": {
     "close": "Zavrieť",
     "skipToContent": "Prejsť na obsah",
-    "backHome": "Späť domov",
-    "loading": "Načítava sa…"
+    "backHome": "Späť domov"
   },
   "nav": {
     "label": "Hlavné menu",
@@ -4173,6 +4172,7 @@
   "marketing": {
     "nav": {
       "label": "Objavovať",
+      "services": "Služby",
       "explore": "Preskúmať",
       "selection": "Výber z Francúzska",
       "academy": "Akadémia",
@@ -4352,7 +4352,7 @@
     },
     "pros": {
       "metaTitle": "Ponúkať služby",
-      "line": "Vitrína, QR kód, diár, obchod a kurzy na jednom mieste.",
+      "line": "Solange Glow ukazuje tvoju vitrínu klientom blízko teba. Vitrína, QR kód, diár aj klienti sú zadarmo, v telefóne aj v počítači.",
       "cta": "Vytvoriť moju vitrínu",
       "heroAlt": "Ruky pletiarky pri cornrows.",
       "who": {
@@ -4478,8 +4478,8 @@
           "c": "Zverejni vitrínu a zdieľaj odkaz a QR kód."
         }
       },
-      "first": "Tvoja činnosť online.",
-      "second": "To hlavné je zadarmo."
+      "first": "Robíme ti reklamu.",
+      "second": "Tvoja vitrína je zadarmo."
     },
     "how": {
       "title": "Ako to funguje",
@@ -4600,7 +4600,7 @@
           "a": "Zapni zvuk: reproduktor číta dôležité texty nahlas.",
           "b": "Vyhľadávanie a správy nadiktuj namiesto písania.",
           "c": "Aplikácia je vo francúzštine, angličtine a slovenčine.",
-          "d": "Ceny sú v FCFA alebo eurách.",
+          "d": "Ceny sa zobrazujú v mene tvojej krajiny.",
           "e": "Úspora dát odľahčí obrázky a videá."
         }
       }
@@ -4783,7 +4783,54 @@
     "hero": {
       "first": "Rezervuj. Skenuj.",
       "second": "Žiar.",
-      "line": "Vlasy, vrkoče, líčenie, nechty, šitie. Nájdi profesionála a rezervuj bez volania, aj bez účtu."
+      "line": "Vlasy, vrkoče, líčenie, nechty, šitie. Nájdi profesionála a rezervuj bez volania, aj bez účtu.",
+      "pause": "Pozastaviť",
+      "play": "Prehrať"
+    },
+    "services": {
+      "first": "Celý Solange Glow,",
+      "second": "na jeden pohľad.",
+      "line": "Rezervuj, nakupuj, uč sa, daruj, píš: jedna aplikácia pre tvoju krásu a štýl.",
+      "book": {
+        "title": "Rezervovať termín",
+        "text": "Kaderníctvo, vrkôčiky, líčenie, nechty, šitie. Vyber si čas bez telefonovania.",
+        "cta": "Nájsť profesionála"
+      },
+      "shops": {
+        "title": "Nakupovať u profesionálov krásy",
+        "text": "Ich produkty, bezpečne zaplatené: peniaze čakajú, kým tovar dostaneš.",
+        "cta": "Pozrieť obchody"
+      },
+      "selection": {
+        "title": "Výber z Francúzska",
+        "text": "Produkty vybrané vo Francúzsku, doručené blízko teba.",
+        "cta": "Pozrieť výber"
+      },
+      "academy": {
+        "title": "Vzdelávať sa",
+        "text": "Video kurzy, aj offline, s certifikátom na konci.",
+        "cta": "Pozrieť kurzy"
+      },
+      "gifts": {
+        "title": "Darovať blízkym",
+        "text": "Službu alebo produkt, darovaný aj z veľkej diaľky.",
+        "cta": "Darovať"
+      },
+      "messages": {
+        "title": "Písať a volať",
+        "text": "Píš, volaj alebo sa spoj videom s profesionálom bez zdieľania čísla.",
+        "cta": "Otvoriť správy"
+      },
+      "lives": {
+        "title": "Živé vysielania",
+        "text": "Sleduj ukážky naživo a pýtaj sa.",
+        "cta": "Pozrieť vysielania"
+      },
+      "games": {
+        "title": "Hraj a vyhrávaj",
+        "text": "Kvízy, koleso, výzvy: získaj Glow body a odmeny.",
+        "cta": "Moje body"
+      }
     },
     "ticket": {
       "trade": "Čo chceš",
@@ -4852,20 +4899,20 @@
           "a": {
             "name": "Aïcha Tresses",
             "meta": "4,9 z 5, 1,2 km",
-            "price": "od 45 €"
+            "slot": "14:30"
           },
           "b": {
             "name": "Studio Nadia",
             "meta": "4,8 z 5, 2,4 km",
-            "price": "od 60 €"
+            "slot": "16:00"
           },
           "c": {
             "name": "Locks de Mel",
             "meta": "5 z 5, u teba doma",
-            "price": "od 70 €"
+            "slot": "17:30"
           }
         },
-        "service": "Cornrows, 2 h, 45 €",
+        "service": "Vrkôčiky, 2 h",
         "day": "Sobota",
         "slots": {
           "s1": "9:00",
@@ -4880,6 +4927,44 @@
         "whenLine": "Sobota 14:30",
         "showLine": "Ukáž ho pri príchode.",
         "reminder": "Deň vopred dostaneš pripomienku."
+      }
+    },
+    "proFree": {
+      "first": "Si profesionál?",
+      "second": "Urobíme ťa známym.",
+      "line": "Solange Glow ti robí reklamu zadarmo: tvoja vitrína sa ukáže klientom, ktorí hľadajú blízko teba.",
+      "points": {
+        "a": "Tvoja online vitrína, zadarmo",
+        "b": "Tvoj diár a klienti, zadarmo, v telefóne aj počítači",
+        "c": "Reklamu ti robí Solange Glow, bez poplatkov",
+        "d": "Tvoj QR kód na vystavenie: rezervácia jedným dotykom"
+      },
+      "cta": "Ponúknuť moje služby",
+      "start": "Vytvoriť vitrínu",
+      "ui": {
+        "label": "Ukážka: denný diár v počítači a vitrína kaderníčky v telefóne.",
+        "day": "Sobota",
+        "slots": {
+          "a": {
+            "time": "9:00",
+            "what": "Vrkôčiky, Awa"
+          },
+          "b": {
+            "time": "11:30",
+            "what": "Nová rezervácia, Mariam"
+          },
+          "c": {
+            "time": "14:00",
+            "what": "Knotless, Grace"
+          },
+          "d": {
+            "time": "17:00",
+            "what": "Úprava, Inès"
+          }
+        },
+        "name": "Aïcha Tresses",
+        "open": "Dnes otvorené",
+        "book": "Rezervovať"
       }
     },
     "plate": {
@@ -5025,41 +5110,6 @@
           "c": "Blízko teba",
           "d": "U teba doma"
         }
-      }
-    },
-    "more": {
-      "title": "A tiež",
-      "shops": {
-        "name": "Obchody",
-        "text": "Tvoje peniaze sú blokované, kým nedáš kód prevzatia."
-      },
-      "selection": {
-        "name": "Výber z Francúzska",
-        "text": "Produkty z Francúzska, doručené, s konečnou cenou."
-      },
-      "academy": {
-        "name": "Akadémia",
-        "text": "Krátke videá, kvíz a tvoj certifikát."
-      },
-      "lives": {
-        "name": "Naživo",
-        "text": "Predaj a kurzy naživo, s tvojimi otázkami."
-      },
-      "gift": {
-        "name": "Darovať",
-        "text": "Daruj starostlivosť alebo produkt niekomu ďaleko."
-      },
-      "talk": {
-        "name": "Správy",
-        "text": "Píš a volaj bez ukázania svojho čísla."
-      },
-      "games": {
-        "name": "Hry",
-        "text": "Denný kvíz, koleso, výzvy, body a odmeny."
-      },
-      "listen": {
-        "name": "Počúvať",
-        "text": "Aplikácia ti číta texty nahlas."
       }
     },
     "address": {

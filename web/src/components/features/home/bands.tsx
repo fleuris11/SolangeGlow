@@ -1,10 +1,8 @@
-import { AirplaneTilt, Gift, Scissors, ShoppingBag, Sparkle } from "@phosphor-icons/react/dist/ssr";
+import { AirplaneTilt, ShoppingBag } from "@phosphor-icons/react/dist/ssr";
 import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
-import { PriceTag } from "@/components/ui/price-tag";
 import type { SelectionSummary } from "@/lib/api/selection";
-import { DEMO_GIFT } from "@/lib/demo/data";
 import { Link } from "@/lib/i18n/navigation";
 import { mediaSrc } from "@/lib/media";
 
@@ -48,7 +46,6 @@ export function FranceSelectionBand({ products }: { products: SelectionSummary[]
                     {tAisles(product.aisle)}
                   </span>
                   <span className="font-bold">{product.title}</span>
-                  <PriceTag amountMinor={product.price_xof} currency="XOF" />
                 </span>
               </Link>
             </li>
@@ -62,70 +59,6 @@ export function FranceSelectionBand({ products }: { products: SelectionSummary[]
           {t("cta")}
         </Link>
       </Button>
-    </section>
-  );
-}
-
-/** Diaspora: offer a beauty service to a loved one back home, paid in euros. */
-export function GiftBand() {
-  const t = useTranslations("home.gift");
-  return (
-    <section
-      aria-labelledby="gift-title"
-      className="border-or bg-carte rounded-card flex flex-col gap-3 border-2 p-5"
-    >
-      <Gift aria-hidden size={36} />
-      <h2 id="gift-title" className="text-title font-bold">
-        {t("title")}
-      </h2>
-      <p>{t("text", { city: DEMO_GIFT.city })}</p>
-      <p className="text-prune-doux">
-        <PriceTag
-          amountMinor={DEMO_GIFT.fromAmountMinor}
-          currency={DEMO_GIFT.currency}
-          prefix={t("from")}
-        />
-      </p>
-      <Button asChild variant="secondary" className="self-start">
-        <Link href="/auth?as=client">
-          <Gift aria-hidden size={22} weight="bold" />
-          {t("cta")}
-        </Link>
-      </Button>
-    </section>
-  );
-}
-
-/** The clear invitation to join, as a client or as a pro. */
-export function JoinBand() {
-  const t = useTranslations("home.join");
-  return (
-    <section aria-labelledby="join-title" className="flex flex-col gap-4">
-      <h2 id="join-title" className="font-display text-headline font-black">
-        {t("title")}
-      </h2>
-      <div className="grid gap-3 sm:grid-cols-2">
-        <Link
-          href="/auth?as=client"
-          className="bg-rouge text-sur-hibiscus rounded-card flex min-h-32 flex-col justify-between gap-4 p-5"
-        >
-          <Sparkle aria-hidden size={36} weight="fill" />
-          <span>
-            <span className="text-lead block font-bold">{t("clientTitle")}</span>
-            <span className="block">{t("clientText")}</span>
-          </span>
-        </Link>
-        <Link
-          href="/auth?as=pro"
-          className="border-prune text-prune hover:bg-poudre rounded-card flex min-h-32 flex-col justify-between gap-4 border-2 p-5"
-        >
-          <Scissors aria-hidden size={36} />
-          <span>
-            <span className="text-lead block font-bold">{t("proTitle")}</span>
-            <span className="text-prune-doux block">{t("proText")}</span>
-          </span>
-        </Link>
-      </div>
     </section>
   );
 }

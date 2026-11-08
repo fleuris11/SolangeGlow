@@ -10,8 +10,7 @@
   "common": {
     "close": "Fermer",
     "skipToContent": "Aller au contenu",
-    "backHome": "Retour à l'accueil",
-    "loading": "Chargement…"
+    "backHome": "Retour à l'accueil"
   },
   "nav": {
     "label": "Menu principal",
@@ -4173,6 +4172,7 @@
   "marketing": {
     "nav": {
       "label": "Découvrir",
+      "services": "Services",
       "explore": "Explorer",
       "selection": "Sélection France",
       "academy": "Académie",
@@ -4352,7 +4352,7 @@
     },
     "pros": {
       "metaTitle": "Proposer mes services",
-      "line": "Vitrine, QR code, agenda, boutique et formations, au même endroit.",
+      "line": "Solange Glow montre ta vitrine aux clients près de chez toi. Ta vitrine, ton QR code, ton agenda et tes clients sont gratuits, sur téléphone comme sur ordinateur.",
       "cta": "Créer ma vitrine",
       "heroAlt": "Mains d'une tresseuse qui trace des nattes collées.",
       "who": {
@@ -4478,8 +4478,8 @@
           "c": "Publie ta vitrine, puis partage ton lien et ton QR code."
         }
       },
-      "first": "Ton activité en ligne.",
-      "second": "L'essentiel est gratuit."
+      "first": "On fait ta publicité.",
+      "second": "Ta vitrine est gratuite."
     },
     "how": {
       "title": "Comment ça marche",
@@ -4600,7 +4600,7 @@
           "a": "Active l'audio : le haut-parleur lit les textes importants à voix haute.",
           "b": "Dicte ta recherche et tes messages au lieu de les écrire.",
           "c": "L'appli existe en français, en anglais et en slovaque.",
-          "d": "Les prix s'affichent en FCFA ou en euros.",
+          "d": "Les prix s'affichent dans la monnaie de ton pays.",
           "e": "L'économie de données allège les images et les vidéos."
         }
       }
@@ -4783,7 +4783,54 @@
     "hero": {
       "first": "Réserve. Scanne.",
       "second": "Rayonne.",
-      "line": "Coiffure, tresses, maquillage, ongles, couture. Trouve un professionnel et réserve sans appeler, même sans compte."
+      "line": "Coiffure, tresses, maquillage, ongles, couture. Trouve un professionnel et réserve sans appeler, même sans compte.",
+      "pause": "Pause",
+      "play": "Lecture"
+    },
+    "services": {
+      "first": "Tout Solange Glow,",
+      "second": "en un coup d'œil.",
+      "line": "Réserver, acheter, apprendre, offrir, discuter : une seule appli pour ta beauté et ton style.",
+      "book": {
+        "title": "Prendre rendez-vous",
+        "text": "Coiffure, tresses, maquillage, ongles, couture. Choisis ton heure, sans appeler.",
+        "cta": "Trouver un professionnel"
+      },
+      "shops": {
+        "title": "Acheter chez les pros de la beauté",
+        "text": "Leurs produits, payés en sécurité : ton argent attend que tu aies reçu.",
+        "cta": "Voir les boutiques"
+      },
+      "selection": {
+        "title": "Sélection France",
+        "text": "Des produits choisis en France, livrés près de chez toi.",
+        "cta": "Voir la sélection"
+      },
+      "academy": {
+        "title": "Se former",
+        "text": "Des formations en vidéo, même hors ligne, avec un certificat à la fin.",
+        "cta": "Voir les formations"
+      },
+      "gifts": {
+        "title": "Offrir à un proche",
+        "text": "Une prestation ou un produit, offert même de très loin.",
+        "cta": "Offrir"
+      },
+      "messages": {
+        "title": "Écrire et appeler",
+        "text": "Discute, appelle ou fais une vidéo avec un professionnel, sans donner ton numéro.",
+        "cta": "Ouvrir les messages"
+      },
+      "lives": {
+        "title": "Les lives",
+        "text": "Regarde des démonstrations en direct et pose tes questions.",
+        "cta": "Voir les lives"
+      },
+      "games": {
+        "title": "Jouer et gagner",
+        "text": "Quiz, roue, défis : gagne des Glow Points et des récompenses.",
+        "cta": "Voir mes points"
+      }
     },
     "ticket": {
       "trade": "Ton envie",
@@ -4852,20 +4899,20 @@
           "a": {
             "name": "Aïcha Tresses",
             "meta": "4,9 sur 5, à 1,2 km",
-            "price": "dès 45 €"
+            "slot": "14 h 30"
           },
           "b": {
             "name": "Studio Nadia",
             "meta": "4,8 sur 5, à 2,4 km",
-            "price": "dès 60 €"
+            "slot": "16 h"
           },
           "c": {
             "name": "Locks de Mel",
             "meta": "5 sur 5, à domicile",
-            "price": "dès 70 €"
+            "slot": "17 h 30"
           }
         },
-        "service": "Tresses collées, 2 h, 45 €",
+        "service": "Tresses collées, 2 h",
         "day": "Samedi",
         "slots": {
           "s1": "9 h",
@@ -4880,6 +4927,44 @@
         "whenLine": "Samedi 14 h 30",
         "showLine": "Montre-le en arrivant.",
         "reminder": "Tu reçois un rappel la veille."
+      }
+    },
+    "proFree": {
+      "first": "Tu es professionnel ?",
+      "second": "On te fait connaître.",
+      "line": "Solange Glow fait ta publicité gratuitement : ta vitrine est montrée aux clients qui cherchent près de chez toi.",
+      "points": {
+        "a": "Ta vitrine en ligne, gratuite",
+        "b": "Ton agenda et tes clients, gratuits, sur téléphone et ordinateur",
+        "c": "Ta publicité faite par Solange Glow, sans rien payer",
+        "d": "Ton QR code à afficher : on réserve chez toi en un geste"
+      },
+      "cta": "Proposer mes services",
+      "start": "Créer ma vitrine",
+      "ui": {
+        "label": "Exemple : l'agenda du jour sur un ordinateur et la vitrine d'une coiffeuse sur un téléphone.",
+        "day": "Samedi",
+        "slots": {
+          "a": {
+            "time": "9 h",
+            "what": "Tresses collées, Awa"
+          },
+          "b": {
+            "time": "11 h 30",
+            "what": "Nouvelle réservation, Mariam"
+          },
+          "c": {
+            "time": "14 h",
+            "what": "Knotless, Grace"
+          },
+          "d": {
+            "time": "17 h",
+            "what": "Retouche, Inès"
+          }
+        },
+        "name": "Aïcha Tresses",
+        "open": "Ouvert aujourd'hui",
+        "book": "Réserver"
       }
     },
     "plate": {
@@ -5025,41 +5110,6 @@
           "c": "Près de toi",
           "d": "À domicile"
         }
-      }
-    },
-    "more": {
-      "title": "Et aussi",
-      "shops": {
-        "name": "Boutiques",
-        "text": "Ton argent reste bloqué jusqu'à ton code de réception."
-      },
-      "selection": {
-        "name": "Sélection France",
-        "text": "Des produits de France, livrés, prix final affiché."
-      },
-      "academy": {
-        "name": "Académie",
-        "text": "Des vidéos courtes, un quiz et ton certificat."
-      },
-      "lives": {
-        "name": "Lives",
-        "text": "Ventes et cours en direct, avec tes questions."
-      },
-      "gift": {
-        "name": "Offrir",
-        "text": "Offre un soin ou un produit à un proche, de loin."
-      },
-      "talk": {
-        "name": "Messages",
-        "text": "Écris et appelle sans montrer ton numéro."
-      },
-      "games": {
-        "name": "Jeux",
-        "text": "Quiz du jour, roue, défis, points et récompenses."
-      },
-      "listen": {
-        "name": "Écouter",
-        "text": "L'appli lit les textes à voix haute, pour toi."
       }
     },
     "address": {

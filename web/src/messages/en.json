@@ -10,8 +10,7 @@
   "common": {
     "close": "Close",
     "skipToContent": "Skip to content",
-    "backHome": "Back to home",
-    "loading": "Loading…"
+    "backHome": "Back to home"
   },
   "nav": {
     "label": "Main menu",
@@ -4173,6 +4172,7 @@
   "marketing": {
     "nav": {
       "label": "Discover",
+      "services": "Services",
       "explore": "Explore",
       "selection": "France Selection",
       "academy": "Academy",
@@ -4352,7 +4352,7 @@
     },
     "pros": {
       "metaTitle": "Offer my services",
-      "line": "Showcase, QR code, agenda, shop and courses, in one place.",
+      "line": "Solange Glow shows your showcase to clients near you. Your showcase, QR code, agenda and clients are free, on phone as on computer.",
       "cta": "Create my showcase",
       "heroAlt": "Hands of a braider drawing cornrows.",
       "who": {
@@ -4478,8 +4478,8 @@
           "c": "Publish your showcase, then share your link and QR code."
         }
       },
-      "first": "Your business online.",
-      "second": "The essentials are free."
+      "first": "We advertise you.",
+      "second": "Your showcase is free."
     },
     "how": {
       "title": "How it works",
@@ -4600,7 +4600,7 @@
           "a": "Turn on audio: the speaker reads important texts aloud.",
           "b": "Dictate your search and messages instead of typing.",
           "c": "The app is available in French, English and Slovak.",
-          "d": "Prices are shown in FCFA or euros.",
+          "d": "Prices show in the currency of your country.",
           "e": "Data saver lightens images and videos."
         }
       }
@@ -4783,7 +4783,54 @@
     "hero": {
       "first": "Book. Scan.",
       "second": "Glow.",
-      "line": "Hair, braids, makeup, nails, sewing. Find a professional and book without calling, even without an account."
+      "line": "Hair, braids, makeup, nails, sewing. Find a professional and book without calling, even without an account.",
+      "pause": "Pause",
+      "play": "Play"
+    },
+    "services": {
+      "first": "All of Solange Glow,",
+      "second": "at a glance.",
+      "line": "Book, shop, learn, give, talk: one app for your beauty and your style.",
+      "book": {
+        "title": "Book an appointment",
+        "text": "Hair, braids, makeup, nails, sewing. Pick your time, no phone call.",
+        "cta": "Find a professional"
+      },
+      "shops": {
+        "title": "Shop from beauty professionals",
+        "text": "Their products, paid safely: your money waits until you have received.",
+        "cta": "See the shops"
+      },
+      "selection": {
+        "title": "France Selection",
+        "text": "Products chosen in France, delivered near you.",
+        "cta": "See the selection"
+      },
+      "academy": {
+        "title": "Learn",
+        "text": "Video courses, even offline, with a certificate at the end.",
+        "cta": "See the courses"
+      },
+      "gifts": {
+        "title": "Give to a loved one",
+        "text": "A service or a product, offered even from far away.",
+        "cta": "Give"
+      },
+      "messages": {
+        "title": "Write and call",
+        "text": "Chat, call or video call a professional without giving your number.",
+        "cta": "Open messages"
+      },
+      "lives": {
+        "title": "Lives",
+        "text": "Watch live demonstrations and ask your questions.",
+        "cta": "See the lives"
+      },
+      "games": {
+        "title": "Play and win",
+        "text": "Quizzes, wheel, challenges: earn Glow Points and rewards.",
+        "cta": "See my points"
+      }
     },
     "ticket": {
       "trade": "What you want",
@@ -4852,20 +4899,20 @@
           "a": {
             "name": "Aïcha Tresses",
             "meta": "4.9 out of 5, 1.2 km away",
-            "price": "from €45"
+            "slot": "2:30 pm"
           },
           "b": {
             "name": "Studio Nadia",
             "meta": "4.8 out of 5, 2.4 km away",
-            "price": "from €60"
+            "slot": "4 pm"
           },
           "c": {
             "name": "Locks de Mel",
             "meta": "5 out of 5, at home",
-            "price": "from €70"
+            "slot": "5:30 pm"
           }
         },
-        "service": "Cornrows, 2 h, €45",
+        "service": "Cornrows, 2 h",
         "day": "Saturday",
         "slots": {
           "s1": "9 am",
@@ -4880,6 +4927,44 @@
         "whenLine": "Saturday 2:30 pm",
         "showLine": "Show it when you arrive.",
         "reminder": "You get a reminder the day before."
+      }
+    },
+    "proFree": {
+      "first": "Are you a professional?",
+      "second": "We make you known.",
+      "line": "Solange Glow advertises you for free: your showcase is shown to clients looking near you.",
+      "points": {
+        "a": "Your online showcase, free",
+        "b": "Your agenda and your clients, free, on phone and computer",
+        "c": "Your advertising done by Solange Glow, at no cost",
+        "d": "Your QR code to display: people book with you in one tap"
+      },
+      "cta": "Offer my services",
+      "start": "Create my showcase",
+      "ui": {
+        "label": "Example: the day's agenda on a computer and a hairdresser's showcase on a phone.",
+        "day": "Saturday",
+        "slots": {
+          "a": {
+            "time": "9 am",
+            "what": "Cornrows, Awa"
+          },
+          "b": {
+            "time": "11:30 am",
+            "what": "New booking, Mariam"
+          },
+          "c": {
+            "time": "2 pm",
+            "what": "Knotless, Grace"
+          },
+          "d": {
+            "time": "5 pm",
+            "what": "Touch-up, Inès"
+          }
+        },
+        "name": "Aïcha Tresses",
+        "open": "Open today",
+        "book": "Book"
       }
     },
     "plate": {
@@ -5025,41 +5110,6 @@
           "c": "Near you",
           "d": "At home"
         }
-      }
-    },
-    "more": {
-      "title": "And also",
-      "shops": {
-        "name": "Shops",
-        "text": "Your money stays held until you give your receipt code."
-      },
-      "selection": {
-        "name": "France Selection",
-        "text": "Products from France, delivered, final price shown."
-      },
-      "academy": {
-        "name": "Academy",
-        "text": "Short videos, a quiz and your certificate."
-      },
-      "lives": {
-        "name": "Lives",
-        "text": "Live sales and lessons, with your questions."
-      },
-      "gift": {
-        "name": "Gift",
-        "text": "Give a treatment or a product to someone far away."
-      },
-      "talk": {
-        "name": "Messages",
-        "text": "Write and call without showing your number."
-      },
-      "games": {
-        "name": "Games",
-        "text": "Daily quiz, wheel, challenges, points and rewards."
-      },
-      "listen": {
-        "name": "Listen",
-        "text": "The app reads the texts aloud for you."
       }
     },
     "address": {
