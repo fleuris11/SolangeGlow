@@ -407,6 +407,11 @@ HELP_AI_KEY = env("HELP_AI_KEY", default="")
 CORE_LOAD_WORLD = env.bool("CORE_LOAD_WORLD", default=True)
 # The launch is free: on a new production database, payments start closed (switch in the admin).
 PAYMENTS_CLOSED_AT_START = env.bool("PAYMENTS_CLOSED_AT_START", default=False)
+
+# Public answers to visitors kept a few seconds (apps/core/api/caching.py; the duration is the
+# setting performance.visitor_cache_seconds). Off in development and tests: what was just
+# changed shows at once.
+VISITOR_CACHE = env.bool("VISITOR_CACHE", default=True)
 BACKOFFICE_REQUIRE_2FA = env.bool("BACKOFFICE_REQUIRE_2FA", default=True)
 WEB_INTERNAL_URL = env("WEB_INTERNAL_URL", default="http://web:3000")
 

@@ -9,6 +9,7 @@ from rest_framework.views import APIView
 
 from apps.accounts.throttling import SettingRateThrottle
 from apps.accounts.views_base import OptionalAuthView
+from apps.core.api.caching import VisitorCacheMixin
 
 from . import errors, selectors, services
 from . import serializers as s
@@ -30,7 +31,7 @@ class SelectionWriteView(APIView):
         return super().get_throttles() if self.request.method != "GET" else []
 
 
-class ProductListView(OptionalAuthView):
+class ProductListView(VisitorCacheMixin, OptionalAuthView):
     """The three aisles of the France Selection (final prices in FCFA)."""
 
     @extend_schema(
@@ -56,7 +57,7 @@ class ProductListView(OptionalAuthView):
         )
 
 
-class ProductView(OptionalAuthView):
+class ProductView(VisitorCacheMixin, OptionalAuthView):
     @extend_schema(tags=["selection"], responses=s.SelectionProductDetailSerializer)
     def get(self, request, slug):
         product = selectors.on_sale().filter(slug=slug).first()
@@ -65,7 +66,7 @@ class ProductView(OptionalAuthView):
         return Response(s.product_detail(product))
 
 
-class PickupPointsView(OptionalAuthView):
+class PickupPointsView(VisitorCacheMixin, OptionalAuthView):
     @extend_schema(tags=["selection"], responses=s.SelectionPickupPointSerializer(many=True))
     def get(self, request):
         return Response([s.point_payload(p) for p in selectors.pickup_points()])

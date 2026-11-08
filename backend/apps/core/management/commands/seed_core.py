@@ -625,6 +625,13 @@ SETTINGS += [
         "Feed score: weights of recency, interactions (likes, comments, saves) and closeness; half-life of recency in hours.",
     ),
     _s(
+        "performance.visitor_cache_seconds",
+        INT,
+        "60",
+        "Les pages publiques (fil, recherche, vitrines, boutiques, formations) vues par les visiteurs non connectés sont gardées ce nombre de secondes : le site reste rapide quand beaucoup de monde arrive. 0 : désactivé.",
+        "Public pages (feed, search, showcases, shops, courses) seen by visitors who are not signed in are kept this many seconds: the site stays fast when many people arrive. 0: off.",
+    ),
+    _s(
         "reviews.window_days",
         INT,
         "30",

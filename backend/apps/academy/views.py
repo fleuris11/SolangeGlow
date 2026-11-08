@@ -10,6 +10,7 @@ from rest_framework.views import APIView
 from apps.accounts.throttling import SettingRateThrottle
 from apps.accounts.views import client_ip
 from apps.accounts.views_base import OptionalAuthView
+from apps.core.api.caching import VisitorCacheMixin
 from apps.core.providers import livekit
 from apps.glowpro.serializers import CheckoutUrlSerializer
 from apps.pros.models import ProProfile
@@ -57,7 +58,7 @@ class PublicAcademyView(OptionalAuthView):
 # --- Catalogue and course page ------------------------------------------------------------------
 
 
-class CatalogueView(PublicAcademyView):
+class CatalogueView(VisitorCacheMixin, PublicAcademyView):
     @extend_schema(
         operation_id="academy_catalogue",
         tags=["academy"],
@@ -91,7 +92,7 @@ class CatalogueView(PublicAcademyView):
         )
 
 
-class CourseView(PublicAcademyView):
+class CourseView(VisitorCacheMixin, PublicAcademyView):
     @extend_schema(tags=["academy"], responses=s.CourseDetailSerializer)
     def get(self, request, slug):
         course = selectors.course_by_slug(slug, request.user)
@@ -260,7 +261,7 @@ def _registered_ids(user, live_ids) -> set:
     )
 
 
-class LivesView(PublicAcademyView):
+class LivesView(VisitorCacheMixin, PublicAcademyView):
     @extend_schema(operation_id="academy_lives_list", tags=["academy"], responses=s.LivesSerializer)
     def get(self, request):
         country = _country(request, request.query_params.get("country", ""))

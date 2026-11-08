@@ -17,6 +17,7 @@ from apps.accounts.cookies import GUEST_COOKIE
 from apps.accounts.models import GuestIdentity
 from apps.accounts.throttling import SettingRateThrottle
 from apps.accounts.views_base import OptionalAuthView
+from apps.core.api.caching import VisitorCacheMixin
 from apps.core.models import Country
 from apps.core.selectors import get_setting
 
@@ -31,7 +32,7 @@ class PublicProView(OptionalAuthView):
     """Open to everyone; a signed-in visitor is recognised (her own draft, her name)."""
 
 
-class TradeListView(APIView):
+class TradeListView(VisitorCacheMixin, APIView):
     """Trades offered at sign-up and in search, in the language of the request."""
 
     authentication_classes = []
@@ -65,7 +66,7 @@ def _params(data: dict) -> search.SearchParams:
     )
 
 
-class ProSearchView(PublicProView):
+class ProSearchView(VisitorCacheMixin, PublicProView):
     """Pros by words, trade, place, distance, price, rating, opening hours, home visits."""
 
     @extend_schema(
@@ -126,7 +127,7 @@ class ProMapView(PublicProView):
         )
 
 
-class PlacesView(PublicProView):
+class PlacesView(VisitorCacheMixin, PublicProView):
     """Cities and districts with published pros (filters of Explore)."""
 
     @extend_schema(tags=["pros"], responses=s.CitySerializer(many=True))
@@ -168,7 +169,7 @@ class MapConfigView(APIView):
         )
 
 
-class ShowcaseView(PublicProView):
+class ShowcaseView(VisitorCacheMixin, PublicProView):
     """Public page of a pro. Its owner also sees it before publication (preview)."""
 
     throttle_scope = None

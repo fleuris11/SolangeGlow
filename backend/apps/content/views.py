@@ -5,6 +5,7 @@ from rest_framework import serializers, status
 from rest_framework.response import Response
 
 from apps.accounts.views_base import OptionalAuthView
+from apps.core.api.caching import VisitorCacheMixin
 from apps.core.media.api import MediaSerializer
 from apps.core.media.services import asset_payload
 from apps.core.selectors import get_setting
@@ -44,14 +45,14 @@ class PageSerializer(PageSummarySerializer):
     version = serializers.IntegerField()
 
 
-class PagesView(ContentView):
+class PagesView(VisitorCacheMixin, ContentView):
     @extend_schema(tags=TAGS, responses=PageSummarySerializer(many=True))
     def get(self, request):
         rows = Page.objects.filter(is_published=True)
         return Response(PageSummarySerializer(rows, many=True).data)
 
 
-class PageView(ContentView):
+class PageView(VisitorCacheMixin, ContentView):
     @extend_schema(tags=TAGS, responses=PageSerializer)
     def get(self, request, slug):
         page = Page.objects.filter(slug=slug, is_published=True).first()
@@ -76,7 +77,7 @@ class BannerQuerySerializer(serializers.Serializer):
     country = serializers.CharField(required=False, default="", allow_blank=True, max_length=2)
 
 
-class BannersView(ContentView):
+class BannersView(VisitorCacheMixin, ContentView):
     @extend_schema(
         tags=TAGS, parameters=[BannerQuerySerializer], responses=BannerSerializer(many=True)
     )
@@ -124,7 +125,7 @@ class FaqTopicSerializer(serializers.Serializer):
     items = FaqItemSerializer(many=True)
 
 
-class FaqView(ContentView):
+class FaqView(VisitorCacheMixin, ContentView):
     @extend_schema(tags=TAGS, responses=FaqTopicSerializer(many=True))
     def get(self, request):
         items = list(FaqItem.objects.filter(is_published=True))

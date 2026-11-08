@@ -6,6 +6,7 @@ from rest_framework.views import APIView
 
 from apps.accounts.throttling import SettingRateThrottle
 from apps.accounts.views_base import OptionalAuthView
+from apps.core.api.caching import VisitorCacheMixin
 from apps.core.models import Country
 
 from . import selectors, services
@@ -108,7 +109,7 @@ class LiveFloorView(LiveView):
         return _state(request, kind, source_id)
 
 
-class UpcomingLivesView(PublicLiveView):
+class UpcomingLivesView(VisitorCacheMixin, PublicLiveView):
     """Lives on air and coming soon (home page), in her country or the one asked."""
 
     @extend_schema(

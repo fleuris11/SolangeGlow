@@ -30,3 +30,5 @@ PAYMENTS_FAKE_ENABLED = True
 # Two-factor sign-in is tested on its own (apps/backoffice/tests).
 BACKOFFICE_REQUIRE_2FA = False
 CORE_LOAD_WORLD = False
+
+VISITOR_CACHE = False

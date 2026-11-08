@@ -10,6 +10,7 @@ from rest_framework.views import APIView
 
 from apps.accounts.throttling import SettingRateThrottle
 from apps.accounts.views_base import OptionalAuthView
+from apps.core.api.caching import VisitorCacheMixin
 from apps.payments import services as payment_services
 from apps.pros.models import ProProfile
 from apps.pros.selectors import can_collect_payments
@@ -73,7 +74,7 @@ class CategoriesView(OptionalAuthView):
         return Response([s.category_payload(c) for c in rows])
 
 
-class ShopPageView(OptionalAuthView):
+class ShopPageView(VisitorCacheMixin, OptionalAuthView):
     """The « Shop » tab of a showcase: products on sale, bundles, how to receive them."""
 
     @extend_schema(
@@ -109,7 +110,7 @@ class ShopPageView(OptionalAuthView):
         )
 
 
-class ProductBySlugView(OptionalAuthView):
+class ProductBySlugView(VisitorCacheMixin, OptionalAuthView):
     @extend_schema(
         tags=["shop"], operation_id="shop_product_by_slug", responses=s.ProductDetailSerializer
     )
@@ -129,7 +130,7 @@ class ProductView(OptionalAuthView):
         return _detail(request, product)
 
 
-class ProductReviewsView(OptionalAuthView):
+class ProductReviewsView(VisitorCacheMixin, OptionalAuthView):
     """Verified reviews left after orders that contained this product."""
 
     @extend_schema(tags=["shop"], responses=s.ProductReviewsSerializer)

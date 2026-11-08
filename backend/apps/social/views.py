@@ -14,6 +14,7 @@ from rest_framework.views import APIView
 from apps.accounts.models import User
 from apps.accounts.throttling import SettingRateThrottle
 from apps.accounts.views_base import OptionalAuthView
+from apps.core.api.caching import VisitorCacheMixin
 from apps.pros import errors as pro_errors
 from apps.pros import services as pro_services
 from apps.pros.models import ProProfile
@@ -54,7 +55,7 @@ class SocialWriteView(APIView):
 # --- Feed and posts ----------------------------------------------------------------------------
 
 
-class FeedView(OptionalAuthView):
+class FeedView(VisitorCacheMixin, OptionalAuthView):
     """Followed people, then trending in her city, then her country (cursor pages)."""
 
     @extend_schema(
@@ -118,7 +119,7 @@ class PostCreateView(SocialWriteView):
         return Response(_posts_payload([post], request.user)[0], status=status.HTTP_201_CREATED)
 
 
-class PostView(OptionalAuthView):
+class PostView(VisitorCacheMixin, OptionalAuthView):
     throttle_scope = None
     throttle_classes = []
 
@@ -192,7 +193,7 @@ class SavedPostsView(APIView):
         )
 
 
-class PersonPostsView(OptionalAuthView):
+class PersonPostsView(VisitorCacheMixin, OptionalAuthView):
     """Posts of one person (a pro's showcase shows them under « Publications »)."""
 
     @extend_schema(
@@ -369,7 +370,7 @@ class FollowingView(APIView):
 # --- Stories -------------------------------------------------------------------------------------
 
 
-class StoriesView(OptionalAuthView):
+class StoriesView(VisitorCacheMixin, OptionalAuthView):
     def get_permissions(self):
         return [IsAuthenticated()] if self.request.method == "POST" else super().get_permissions()
 
@@ -433,7 +434,7 @@ class StorySeenView(APIView):
 # --- Reviews -------------------------------------------------------------------------------------
 
 
-class ProReviewsView(OptionalAuthView):
+class ProReviewsView(VisitorCacheMixin, OptionalAuthView):
     @extend_schema(
         tags=["reviews"],
         parameters=[OpenApiParameter("cursor", str, required=False)],
