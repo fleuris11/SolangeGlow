@@ -10,7 +10,8 @@
   "common": {
     "close": "Fermer",
     "skipToContent": "Aller au contenu",
-    "backHome": "Retour à l'accueil"
+    "backHome": "Retour à l'accueil",
+    "loading": "Chargement…"
   },
   "nav": {
     "label": "Menu principal",
@@ -103,10 +104,10 @@
         "skincare": "Trouver un professionnel : esthétique"
       },
       "alt": {
-        "hair": "Femme de profil, coiffure afro courte et grandes créoles.",
+        "hair": "Coiffeuse qui fait un brushing à une cliente aux cheveux châtains.",
         "braids": "Femme aux longues tresses, pull jaune, sur fond noir.",
-        "makeup": "Portrait d'une femme maquillée, lèvres rouges et boucles d'oreilles.",
-        "nails": "Mains aux ongles vernis près d'un visage.",
+        "makeup": "Maquilleuse qui applique du rouge à lèvres, en gros plan.",
+        "nails": "Vernis à paillettes posé sur des ongles roses.",
         "sewing": "Mains qui cousent sur une machine.",
         "headwrap": "Femme de profil, grand chapeau de paille, fond orange.",
         "skincare": "Femme à la peau lumineuse, sur fond chaud.",
@@ -4812,6 +4813,22 @@
         "offer": "Une coiffeuse au travail dans son salon rose."
       }
     },
+    "everyone": {
+      "first": "Toutes les peaux.",
+      "second": "Tous les cheveux.",
+      "line": "Peau noire, métisse, blanche, albinos ou avec du vitiligo : chacun trouve le professionnel qui sait le sublimer.",
+      "label": "Des portraits de toutes les beautés",
+      "alt": {
+        "albinism-braids": "Femme albinos aux tresses collées et au rouge à lèvres, une branche verte à la main.",
+        "makeup-red-hair": "Femme rousse qui se maquille devant un miroir.",
+        "vitiligo-hands": "Femme avec du vitiligo, ongles longs et bagues dorées, la main devant le visage.",
+        "hero-afro-profile": "Femme à la coupe afro, de profil.",
+        "bride-makeup-gold": "Mariée maquillée, parée de bijoux dorés.",
+        "albinism-cornrows-man": "Homme albinos aux tresses et à la barbe, collier argenté.",
+        "vitiligo-lips": "Femme avec du vitiligo, lèvres rouges, bras croisés.",
+        "hair-colour-foils": "Coloration en salon, mèches dans des feuilles d'aluminium."
+      }
+    },
     "steps": {
       "title": "Comment ça marche",
       "more": "Voir chaque service en détail",
@@ -4951,7 +4968,7 @@
       },
       "makeup": {
         "name": "Maquillage",
-        "alt": "Lèvres orange et lunettes orange, en très gros plan.",
+        "alt": "Une maquilleuse au travail dans un studio.",
         "subs": {
           "a": "Mariage",
           "b": "Soirée",
@@ -4961,7 +4978,7 @@
       },
       "nails": {
         "name": "Ongles",
-        "alt": "Une professionnelle pose du vernis, gants roses.",
+        "alt": "Pose de vernis dans un salon d'ongles.",
         "subs": {
           "a": "Pose",
           "b": "Gel",

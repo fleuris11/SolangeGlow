@@ -10,7 +10,8 @@
   "common": {
     "close": "Zavrieť",
     "skipToContent": "Prejsť na obsah",
-    "backHome": "Späť domov"
+    "backHome": "Späť domov",
+    "loading": "Načítava sa…"
   },
   "nav": {
     "label": "Hlavné menu",
@@ -103,10 +104,10 @@
         "skincare": "Nájsť kozmetičku"
       },
       "alt": {
-        "hair": "Žena z profilu, krátke afro a veľké náušnice.",
+        "hair": "Kaderníčka fúka klientke gaštanové vlasy.",
         "braids": "Žena s dlhými vrkočmi, žltý sveter, čierne pozadie.",
-        "makeup": "Portrét ženy s make-upom, červené pery a náušnice.",
-        "nails": "Ruky s nalakovanými nechtami pri tvári.",
+        "makeup": "Vizážistka nanáša rúž, zblízka.",
+        "nails": "Trblietavý lak na ružových nechtoch.",
         "sewing": "Ruky šijúce na stroji.",
         "headwrap": "Žena z profilu, veľký slamený klobúk, oranžové pozadie.",
         "skincare": "Žena so žiarivou pleťou, teplé pozadie.",
@@ -4812,6 +4813,22 @@
         "offer": "Kaderníčka pri práci vo svojom ružovom salóne."
       }
     },
+    "everyone": {
+      "first": "Každá pleť.",
+      "second": "Každé vlasy.",
+      "line": "Tmavá, zmiešaná, svetlá pleť, albinizmus či vitiligo: každý nájde profesionála, ktorý ho zvýrazní.",
+      "label": "Portréty všetkých druhov krásy",
+      "alt": {
+        "albinism-braids": "Žena s albinizmom, s vrkôčikmi a červeným rúžom, so zelenou vetvičkou.",
+        "makeup-red-hair": "Ryšavá žena sa líči pred zrkadlom.",
+        "vitiligo-hands": "Žena s vitiligom, dlhé nechty a zlaté prstene, ruka pred tvárou.",
+        "hero-afro-profile": "Žena s afro účesom z profilu.",
+        "bride-makeup-gold": "Nalíčená nevesta so zlatými šperkami.",
+        "albinism-cornrows-man": "Muž s albinizmom, s vrkôčikmi, bradou a strieborným náhrdelníkom.",
+        "vitiligo-lips": "Žena s vitiligom, červené pery, prekrížené ruky.",
+        "hair-colour-foils": "Farbenie vlasov v salóne, prameňe vo fólii."
+      }
+    },
     "steps": {
       "title": "Ako to funguje",
       "more": "Pozrieť každú službu podrobne",
@@ -4951,7 +4968,7 @@
       },
       "makeup": {
         "name": "Líčenie",
-        "alt": "Oranžové pery a oranžové okuliare, zblízka.",
+        "alt": "Vizážistka pri práci v štúdiu.",
         "subs": {
           "a": "Svadba",
           "b": "Večer",
@@ -4961,7 +4978,7 @@
       },
       "nails": {
         "name": "Nechty",
-        "alt": "Odborníčka nanáša lak, ružové rukavice.",
+        "alt": "Lakovanie nechtov v nechtovom salóne.",
         "subs": {
           "a": "Nechty",
           "b": "Gél",

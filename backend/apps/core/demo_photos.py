@@ -27,6 +27,8 @@ TRADES = {
         "cornrows-down",
         "braids-top",
         "braider-hands",
+        "albinism-braids",
+        "albinism-cornrows-man",
     ],
     "hair": [
         "hero-afro-profile",
@@ -37,14 +39,48 @@ TRADES = {
         "locs-light",
         "locs-sit",
         "salon-pink",
+        "hair-blow-dry",
+        "hair-colour-foils",
     ],
-    "makeup": ["makeup-portrait", "lips-orange", "locs-beauty", "bride-makeup", "bride-afro"],
-    "nails": ["nails-lips", "nails-pro"],
-    "sewing": ["sewing", "fashion-coat", "wax-rolls", "wax-blue", "sisters-yellow", "afro-jacket"],
+    # Every skin: black, mixed, white, with albinism or vitiligo (the platform speaks to everyone).
+    "makeup": [
+        "makeup-portrait",
+        "lips-orange",
+        "locs-beauty",
+        "bride-makeup",
+        "bride-afro",
+        "makeup-artist-studio",
+        "makeup-lipstick",
+        "makeup-red-hair",
+        "bride-makeup-gold",
+        "vitiligo-lips",
+        "vitiligo-hands",
+    ],
+    "nails": ["nails-lips", "nails-pro", "nails-salon", "nails-glitter"],
+    "sewing": [
+        "sewing",
+        "fashion-coat",
+        "wax-rolls",
+        "wax-blue",
+        "sisters-yellow",
+        "afro-jacket",
+        "albinism-jacket",
+        "albinism-suit",
+        "vitiligo-portrait",
+    ],
     "headwrap": ["headwrap-smile", "headwrap-mural", "hero-orange-hat", "portrait-white"],
     "skincare": ["skin-warm", "skin-profile", "locs-skin", "portrait-white"],
 }
-PORTRAITS = ["headwrap-smile", "woman-door", "curls-blue", "braids-hoops", "skin-warm"]
+PORTRAITS = [
+    "headwrap-smile",
+    "woman-door",
+    "curls-blue",
+    "braids-hoops",
+    "skin-warm",
+    "albinism-braids",
+    "vitiligo-portrait",
+    "makeup-red-hair",
+]
 # The drawing a demo product asked for → the closest real photograph.
 PRODUCTS = {
     "palette": "palette",

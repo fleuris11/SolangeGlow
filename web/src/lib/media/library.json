@@ -486,5 +486,155 @@
     "category": "tresses",
     "src": "/media/video/video-hair.mp4",
     "poster": "/media/video/video-hair.webp"
+  },
+  "vitiligo-hands": {
+    "kind": "image",
+    "category": "maquillage",
+    "src": "/media/vitiligo-hands.webp",
+    "width": 900,
+    "height": 1600,
+    "blurhash": "U^N];4%1o}t6_NW=oKofNfWWRjbHxCoJWBjZ",
+    "color": "#f8f8f8",
+    "bytes": 53898
+  },
+  "vitiligo-lips": {
+    "kind": "image",
+    "category": "maquillage",
+    "src": "/media/vitiligo-lips.webp",
+    "width": 1600,
+    "height": 1301,
+    "blurhash": "U6BfFh5k00R4^jj?JAWA00RO%M~E9ZNbS0=}",
+    "color": "#080808",
+    "bytes": 40064
+  },
+  "albinism-braids": {
+    "kind": "image",
+    "category": "tresses",
+    "src": "/media/albinism-braids.webp",
+    "width": 1067,
+    "height": 1600,
+    "blurhash": "UEGj{K^h0~5Q9F^Q0f0f~VNxNIxG9aIU?Gs:",
+    "color": "#281818",
+    "bytes": 72628
+  },
+  "albinism-cornrows-man": {
+    "kind": "image",
+    "category": "tresses",
+    "src": "/media/albinism-cornrows-man.webp",
+    "width": 1067,
+    "height": 1600,
+    "blurhash": "UTECd@E-B;xv~qSiJVbc9u$erWRjEMn$wHjY",
+    "color": "#080808",
+    "bytes": 34300
+  },
+  "albinism-jacket": {
+    "kind": "image",
+    "category": "mode",
+    "src": "/media/albinism-jacket.webp",
+    "width": 1064,
+    "height": 1600,
+    "blurhash": "U24niEs:0MI:$#ofI=R%0fR*}@$*0#R*^Pxa",
+    "color": "#080808",
+    "bytes": 48888
+  },
+  "albinism-suit": {
+    "kind": "image",
+    "category": "mode",
+    "src": "/media/albinism-suit.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurhash": "UsM%_?t7_M%f~qofRjj[xuj[M{WB%MofafWB",
+    "color": "#f8f8f8",
+    "bytes": 33290
+  },
+  "makeup-artist-studio": {
+    "kind": "image",
+    "category": "maquillage",
+    "src": "/media/makeup-artist-studio.webp",
+    "width": 1067,
+    "height": 1600,
+    "blurhash": "UEBWGENI9ZIo00t4xuxt~pM}xFod01%1S4M|",
+    "color": "#181818",
+    "bytes": 66252
+  },
+  "makeup-lipstick": {
+    "kind": "image",
+    "category": "maquillage",
+    "src": "/media/makeup-lipstick.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurhash": "UBJ@RWtm00~V.8S#EKjv00Ri=|Vs={xGSgxZ",
+    "color": "#d8b8a8",
+    "bytes": 62616
+  },
+  "makeup-red-hair": {
+    "kind": "image",
+    "category": "maquillage",
+    "src": "/media/makeup-red-hair.webp",
+    "width": 1600,
+    "height": 1065,
+    "blurhash": "URKw@9009Z4n~qbHRjj[_3-;ROof?bofRjt7",
+    "color": "#e8e8e8",
+    "bytes": 41258
+  },
+  "bride-makeup-gold": {
+    "kind": "image",
+    "category": "mariage",
+    "src": "/media/bride-makeup-gold.webp",
+    "width": 1600,
+    "height": 900,
+    "blurhash": "U49%eu~D00=_:|ITGK-?18T1Mv9DNGRNxFTM",
+    "color": "#181818",
+    "bytes": 216750
+  },
+  "hair-blow-dry": {
+    "kind": "image",
+    "category": "coiffure",
+    "src": "/media/hair-blow-dry.webp",
+    "width": 1600,
+    "height": 1068,
+    "blurhash": "UfIhQw?H~qt7?vIotRR+W;jYRjxa%Ln$V@ay",
+    "color": "#080808",
+    "bytes": 70248
+  },
+  "hair-colour-foils": {
+    "kind": "image",
+    "category": "coiffure",
+    "src": "/media/hair-colour-foils.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurhash": "U5F#:b?uK+$K+F000g9F00~WM|58kW9G^*V?",
+    "color": "#080808",
+    "bytes": 93460
+  },
+  "nails-salon": {
+    "kind": "image",
+    "category": "ongles",
+    "src": "/media/nails-salon.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurhash": "UGLDoZtRIT.94nxr4TVs57XSMxRO~qIqo|%g",
+    "color": "#786858",
+    "bytes": 37000
+  },
+  "nails-glitter": {
+    "kind": "image",
+    "category": "ongles",
+    "src": "/media/nails-glitter.webp",
+    "width": 1600,
+    "height": 1068,
+    "blurhash": "UYP6pu9F%#oz_NIUDiWCpIRiMwt7xuozxajF",
+    "color": "#f8f8f8",
+    "bytes": 35878
+  },
+  "vitiligo-portrait": {
+    "kind": "image",
+    "category": "mode",
+    "src": "/media/vitiligo-portrait.webp",
+    "width": 1067,
+    "height": 1600,
+    "blurhash": "UFG8_$s.IV~q%MD*WBt7-:ofayWB~qxuxuxu",
+    "color": "#383828",
+    "bytes": 96882
   }
 }

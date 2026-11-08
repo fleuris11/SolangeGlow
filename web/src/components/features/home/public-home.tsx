@@ -12,6 +12,7 @@ import "./home.css";
 import { PosterLines } from "./poster-lines";
 import { QuestionIndex } from "./question-index";
 import { Steps } from "./steps";
+import { EverySkin } from "./every-skin";
 import { TradeTiles } from "./trade-tiles";
 import { TwoSides } from "./two-sides";
 
@@ -22,6 +23,7 @@ export function PublicHome({ feed }: { feed: ReactNode }) {
     <MarketingPage>
       <Hero />
       <TwoSides />
+      <EverySkin />
       <Steps />
       <TradeTiles />
       <ActivityPlate />

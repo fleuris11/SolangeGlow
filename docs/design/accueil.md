@@ -8,7 +8,7 @@ sans compte. Les belles images ne remplacent jamais cette explication.
 
 | Adresse | Pour qui | Contenu |
 | --- | --- | --- |
-| `/` | Toute visiteuse | Ticket QR à essayer (métier, heure, code), interrupteur « Je cherche / Je propose » avec les comptes, trois étapes, tous les métiers, espace d'activité commenté, « Et aussi » (boutiques, Sélection, Académie, lives, Offrir, messages, jeux, écouter), questions, adresse de vitrine, fil réel |
+| `/` | Toute visiteuse | Ticket QR à essayer (métier, heure, code), interrupteur « Je cherche / Je propose » avec les comptes, « Toutes les peaux. Tous les cheveux. » (portraits : peaux noires, métisses, blanches, albinisme, vitiligo), trois étapes, tous les métiers, espace d'activité commenté, « Et aussi » (boutiques, Sélection, Académie, lives, Offrir, messages, jeux, écouter), questions, adresse de vitrine, fil réel |
 | `/proposer-mes-services` | Pros sans compte | Pour qui, lien et QR code, vitrine, agenda, boutique, formations, réseau, gratuit ou Premium, trois étapes pour commencer |
 | `/comment-ca-marche` | Toute visiteuse | Types de compte, création de compte, chaque service étape par étape, audio et langues |
 

@@ -10,7 +10,8 @@
   "common": {
     "close": "Close",
     "skipToContent": "Skip to content",
-    "backHome": "Back to home"
+    "backHome": "Back to home",
+    "loading": "Loading…"
   },
   "nav": {
     "label": "Main menu",
@@ -103,10 +104,10 @@
         "skincare": "Find my skincare professional"
       },
       "alt": {
-        "hair": "Woman in profile, short afro and large hoop earrings.",
+        "hair": "Hairdresser blow-drying a client's light brown hair.",
         "braids": "Woman with long braids, yellow sweater, black background.",
-        "makeup": "Portrait of a woman with makeup, red lips and earrings.",
-        "nails": "Hands with painted nails near a face.",
+        "makeup": "Makeup artist applying lipstick, close up.",
+        "nails": "Glitter polish on pink nails.",
         "sewing": "Hands sewing on a machine.",
         "headwrap": "Woman in profile, large straw hat, orange background.",
         "skincare": "Woman with glowing skin, warm background.",
@@ -4812,6 +4813,22 @@
         "offer": "A hairdresser at work in her pink salon."
       }
     },
+    "everyone": {
+      "first": "Every skin.",
+      "second": "Every hair.",
+      "line": "Black, mixed, white, with albinism or vitiligo: everyone finds the professional who knows how to make them shine.",
+      "label": "Portraits of every kind of beauty",
+      "alt": {
+        "albinism-braids": "Woman with albinism, cornrows and red lipstick, holding a green branch.",
+        "makeup-red-hair": "Red-haired woman doing her makeup in front of a mirror.",
+        "vitiligo-hands": "Woman with vitiligo, long nails and gold rings, hand in front of her face.",
+        "hero-afro-profile": "Woman with an afro, in profile.",
+        "bride-makeup-gold": "Bride with makeup and gold jewellery.",
+        "albinism-cornrows-man": "Man with albinism, braids, beard and a silver necklace.",
+        "vitiligo-lips": "Woman with vitiligo, red lips, arms crossed.",
+        "hair-colour-foils": "Hair colouring in a salon, strands in foil."
+      }
+    },
     "steps": {
       "title": "How it works",
       "more": "See each service in detail",
@@ -4951,7 +4968,7 @@
       },
       "makeup": {
         "name": "Makeup",
-        "alt": "Orange lips and orange sunglasses, in close-up.",
+        "alt": "A makeup artist at work in a studio.",
         "subs": {
           "a": "Wedding",
           "b": "Evening",
@@ -4961,7 +4978,7 @@
       },
       "nails": {
         "name": "Nails",
-        "alt": "A professional applying polish, pink gloves.",
+        "alt": "Polish applied in a nail salon.",
         "subs": {
           "a": "Set",
           "b": "Gel",

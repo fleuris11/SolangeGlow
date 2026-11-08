@@ -14,9 +14,9 @@ const MEDIA = library as Record<string, { src: string }>;
 /** Each photo has its own focus, so that the ticket never covers a face. */
 const PHOTOS: Record<Trade, { photo: string; focus: string }> = {
   braids: { photo: "braids-yellow", focus: "62% 12%" },
-  hair: { photo: "hero-afro-profile", focus: "50% 8%" },
-  makeup: { photo: "makeup-portrait", focus: "60% 20%" },
-  nails: { photo: "nails-lips", focus: "60% 20%" },
+  hair: { photo: "hair-blow-dry", focus: "55% 30%" },
+  makeup: { photo: "makeup-lipstick", focus: "50% 40%" },
+  nails: { photo: "nails-glitter", focus: "50% 50%" },
   sewing: { photo: "sewing", focus: "70% 50%" },
   headwrap: { photo: "headwrap-smile", focus: "50% 6%" },
   skincare: { photo: "skin-warm", focus: "60% 20%" },
@@ -169,6 +169,7 @@ export function Hero() {
                 alt={tHome(`alt.${trade}`)}
                 fill
                 priority={index === 0}
+                fetchPriority={index === 0 ? "high" : undefined}
                 loading={index === 0 ? undefined : "lazy"}
                 sizes="(min-width: 768px) 50vw, 100vw"
                 className="sg-photo-settle object-cover"

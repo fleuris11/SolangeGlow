@@ -18,7 +18,7 @@ const CHAPTERS = [
   { key: "showcase", id: "page", photo: "braids-hoops", alt: "braids" },
   { key: "agenda", id: "agenda", photo: "salon-pink", alt: "salon" },
   { key: "shop", id: "shop", photo: "wax-rolls", alt: "palette" },
-  { key: "academy", id: "academy", photo: "bride-makeup", alt: "hands" },
+  { key: "academy", id: "academy", photo: "bride-makeup-gold", alt: "hands" },
   { key: "social", id: "social", photo: "curls-teal", alt: "curls" },
 ] as const;
 

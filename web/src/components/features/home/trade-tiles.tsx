@@ -12,8 +12,8 @@ const MEDIA = library as Record<string, { src: string; poster?: string }>;
 const TILES = [
   { key: "braids", photo: "braids-lilac", tag: "bg-nuit text-blanc" },
   { key: "hair", photo: "curls-teal", tag: "bg-rouge-fixe text-blanc" },
-  { key: "makeup", photo: "lips-orange", tag: "bg-poudre-fixe text-encre" },
-  { key: "nails", photo: "nails-pro", tag: "bg-nuit text-blanc" },
+  { key: "makeup", photo: "makeup-artist-studio", tag: "bg-poudre-fixe text-encre" },
+  { key: "nails", photo: "nails-salon", tag: "bg-nuit text-blanc" },
   { key: "sewing", photo: "wax-rolls", tag: "bg-poudre-fixe text-encre" },
   { key: "headwrap", photo: "headwrap-mural", tag: "bg-nuit text-blanc" },
   { key: "skincare", photo: "skin-profile", tag: "bg-rouge-fixe text-blanc" },
