@@ -16,6 +16,9 @@ const nextConfig: NextConfig = {
   // Keeps screenshots clean; the e2e container reaches the dev server as "web".
   devIndicators: false,
   allowedDevOrigins: ["web"],
+  // Docker Desktop on Windows does not pass file events into the container: the development
+  // server polls instead, or it misses new files ("Module not found" on a file that exists).
+  ...(process.env.WATCHPACK_POLLING ? { watchOptions: { pollIntervalMs: 1000 } } : {}),
   // Django URLs end with a slash: let them through untouched.
   skipTrailingSlashRedirect: true,
   images: {

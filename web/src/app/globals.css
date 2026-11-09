@@ -1,4 +1,6 @@
-@import "tailwindcss";
+/* Classes are only looked for in src/: the tests, photos and scripts next to it are skipped, so
+   the style sheet is rebuilt fast in development (a slow rebuild crashed the dev server). */
+@import "tailwindcss" source("../");
 @import "../styles/tokens.css";
 
 @theme inline {
