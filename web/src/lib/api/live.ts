@@ -30,6 +30,33 @@ export const markAnswered = (kind: LiveKind, id: string, questionId: string) =>
       params: { path: { kind, source_id: id, question_id: questionId } },
     }),
   );
+const comment = (kind: LiveKind, id: string, questionId: string) => ({
+  params: { path: { kind, source_id: id, question_id: questionId } },
+});
+export const replyToComment = (kind: LiveKind, id: string, questionId: string, text: string) =>
+  unwrap(
+    api.POST("/api/v1/live/{kind}/{source_id}/questions/{question_id}/reply", {
+      ...comment(kind, id, questionId),
+      body: { text },
+    }),
+  );
+export const removeComment = (kind: LiveKind, id: string, questionId: string) =>
+  unwrap(
+    api.POST(
+      "/api/v1/live/{kind}/{source_id}/questions/{question_id}/remove",
+      comment(kind, id, questionId),
+    ),
+  );
+export const setComments = (kind: LiveKind, id: string, off: boolean) =>
+  unwrap(
+    api.POST("/api/v1/live/{kind}/{source_id}/comments", { ...room(kind, id), body: { off } }),
+  );
+export const blockInLive = (kind: LiveKind, id: string, userId: string) =>
+  unwrap(
+    api.POST("/api/v1/live/{kind}/{source_id}/block/{user_id}", {
+      params: { path: { kind, source_id: id, user_id: userId } },
+    }),
+  );
 export const raiseHand = (kind: LiveKind, id: string) =>
   unwrap(api.POST("/api/v1/live/{kind}/{source_id}/hand", room(kind, id)));
 export const lowerHand = (kind: LiveKind, id: string) =>

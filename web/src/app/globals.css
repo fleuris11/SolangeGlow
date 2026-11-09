@@ -514,3 +514,21 @@ html[data-motion="reduced"] .sg-marquee-copy {
 html[data-navigating] {
   cursor: progress;
 }
+
+/* A live happening now: its dot breathes (still with fewer animations asked). */
+.sg-live-dot {
+  animation: sg-live-dot 1.6s ease-in-out infinite;
+}
+
+@keyframes sg-live-dot {
+  50% {
+    opacity: 0.35;
+    transform: scale(0.75);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sg-live-dot {
+    animation: none;
+  }
+}

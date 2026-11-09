@@ -3495,7 +3495,8 @@
       "title": "Coming lives",
       "onAir": "On air",
       "training": "Training",
-      "sale": "Sale"
+      "sale": "Sale",
+      "enter": "Join"
     },
     "shop": {
       "title": "Lives of the shop",
@@ -3532,6 +3533,39 @@
       "seeReplay": "See the replay",
       "openRoom": "Open the live room",
       "cancel": "Cancel"
+    },
+    "comments": {
+      "title": "Comments",
+      "label": "Write a comment",
+      "placeholder": "Write a comment…",
+      "placeholderHost": "Write to everyone…",
+      "send": "Send",
+      "signIn": "Sign in to comment",
+      "someone": "Someone",
+      "at": "at {time}",
+      "held": "Waiting for review",
+      "replyOf": "Reply from {name}",
+      "reply": "Reply",
+      "replyLabel": "Your reply to {name}",
+      "replySend": "Reply",
+      "remove": "Remove",
+      "block": "Block",
+      "blockConfirm": "Block {name}? Their comments go away and they can no longer write in this live.",
+      "turnOff": "Turn comments off",
+      "turnOn": "Turn comments back on",
+      "offForAll": "Comments are off for everyone. You can still write.",
+      "offForNow": "Comments are off for now."
+    },
+    "people": {
+      "title": "In the live right now",
+      "open": "{count, plural, one {# person watching: see who} other {# people watching: see who}}",
+      "guests": "{count, plural, one {And # guest without an account} other {And # guests without an account}}",
+      "none": "Nobody yet."
+    },
+    "invite": {
+      "button": "Invite",
+      "text": "I'm live: « {title} ». Come!",
+      "copied": "Link copied: paste it in WhatsApp or a text message."
     }
   },
   "gifts": {

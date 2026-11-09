@@ -147,7 +147,7 @@ test("a training live: questions, raised hand, the floor, the end", async ({ bro
 
   // The student sees the trainer, writes, raises her hand.
   await expect(student.getByLabel(/Caméra de Institut Prisca/)).toBeVisible({ timeout: 60_000 });
-  await student.getByLabel("Écris ta question").fill("Quel fond de teint pour une peau mixte ?");
+  await student.getByLabel("Écris un commentaire").fill("Quel fond de teint pour une peau mixte ?");
   await student.getByRole("button", { name: "Envoyer" }).click();
   await student.getByRole("button", { name: "Lever la main" }).click();
   await expect(student.getByRole("button", { name: "Baisser la main" })).toBeVisible();
@@ -160,7 +160,13 @@ test("a training live: questions, raised hand, the floor, the end", async ({ bro
   await expect(trainer.getByText("1 main levée")).toBeVisible({ timeout: 30_000 });
   await trainer.getByRole("button", { name: "Donner la parole" }).click();
   await expect(student.getByText(/Tu as la parole/)).toBeVisible({ timeout: 30_000 });
-  await trainer.getByRole("button", { name: "Répondue" }).click();
+  // She replies in writing under the comment: everyone sees it.
+  await trainer.getByRole("button", { name: "Répondre", exact: true }).first().click();
+  await trainer.getByLabel(/Ta réponse à/).fill("Un fond de teint mat, en fine couche.");
+  await trainer.getByRole("button", { name: "Répondre", exact: true }).last().click();
+  await expect(student.getByText("Un fond de teint mat, en fine couche.")).toBeVisible({
+    timeout: 30_000,
+  });
   await expectNoSeriousA11yIssue(trainer);
   await trainer.screenshot({ path: "e2e/screenshots/live-training-host.png", fullPage: true });
 

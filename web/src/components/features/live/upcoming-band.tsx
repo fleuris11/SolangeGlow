@@ -41,12 +41,15 @@ export function UpcomingLivesBand({ lives }: { lives: UpcomingLive[] }) {
             <li key={`${live.kind}-${live.source_id}`} className="w-64 shrink-0">
               <Link
                 href={href}
-                className="border-trait bg-carte rounded-card flex h-full flex-col gap-2 border p-4"
+                className={`bg-carte rounded-card flex h-full flex-col gap-2 border p-4 ${
+                  live.on_air ? "border-rouge border-2" : "border-trait"
+                }`}
               >
                 <span className="flex items-center gap-2">
                   {live.on_air ? (
-                    <span className="bg-rouge text-sur-hibiscus text-mention inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 font-bold">
-                      <Broadcast aria-hidden size={16} weight="bold" />
+                    <span className="bg-rouge text-sur-hibiscus text-mention inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 font-bold">
+                      {/* A dot that breathes: this live is happening now. */}
+                      <span aria-hidden className="sg-live-dot bg-blanc size-2 rounded-full" />
                       {t("onAir")}
                     </span>
                   ) : (
@@ -73,6 +76,11 @@ export function UpcomingLivesBand({ lives }: { lives: UpcomingLive[] }) {
                     />
                   ) : null}
                   <span className="truncate">{live.host.name}</span>
+                  {live.on_air && (
+                    <span className="bg-rouge text-sur-hibiscus ml-auto shrink-0 rounded-full px-3 py-1 font-bold">
+                      {t("enter")}
+                    </span>
+                  )}
                 </span>
               </Link>
             </li>

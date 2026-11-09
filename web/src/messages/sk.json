@@ -3495,7 +3495,8 @@
       "title": "Nadchádzajúce live",
       "onAir": "Naživo",
       "training": "Školenie",
-      "sale": "Predaj"
+      "sale": "Predaj",
+      "enter": "Vstúpiť"
     },
     "shop": {
       "title": "Live obchodu",
@@ -3532,6 +3533,39 @@
       "seeReplay": "Pozrieť záznam",
       "openRoom": "Otvoriť miestnosť live",
       "cancel": "Zrušiť"
+    },
+    "comments": {
+      "title": "Komentáre",
+      "label": "Napíš komentár",
+      "placeholder": "Napíš komentár…",
+      "placeholderHost": "Napíš všetkým…",
+      "send": "Odoslať",
+      "signIn": "Prihlás sa a komentuj",
+      "someone": "Niekto",
+      "at": "o {time}",
+      "held": "Čaká na kontrolu",
+      "replyOf": "Odpoveď od {name}",
+      "reply": "Odpovedať",
+      "replyLabel": "Tvoja odpoveď pre {name}",
+      "replySend": "Odpovedať",
+      "remove": "Odstrániť",
+      "block": "Zablokovať",
+      "blockConfirm": "Zablokovať {name}? Komentáre zmiznú a v tomto live už nebude môcť písať.",
+      "turnOff": "Vypnúť komentáre",
+      "turnOn": "Zapnúť komentáre",
+      "offForAll": "Komentáre sú vypnuté pre všetkých. Ty môžeš stále písať.",
+      "offForNow": "Komentáre sú zatiaľ vypnuté."
+    },
+    "people": {
+      "title": "Práve v live",
+      "open": "{count, plural, one {# osoba pozerá: kto} few {# osoby pozerajú: kto} other {# osôb pozerá: kto}}",
+      "guests": "{count, plural, one {A # hosť bez účtu} few {A # hostia bez účtu} other {A # hostí bez účtu}}",
+      "none": "Zatiaľ nikto."
+    },
+    "invite": {
+      "button": "Pozvať",
+      "text": "Som naživo: « {title} ». Príď!",
+      "copied": "Odkaz skopírovaný: vlož ho do WhatsAppu alebo SMS."
     }
   },
   "gifts": {

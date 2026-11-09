@@ -4,13 +4,12 @@ import {
   ArrowLeft,
   Broadcast,
   CameraRotate,
-  CheckCircle,
   Eye,
   HandWaving,
   Microphone,
   MicrophoneSlash,
-  PaperPlaneRight,
   PushPin,
+  ShareNetwork,
   ShoppingBag,
   SpeakerHigh,
   StopCircle,
@@ -31,13 +30,11 @@ import { SpeakButton } from "@/components/ui/speak-button";
 import { useToast } from "@/components/ui/toast";
 import { ApiError } from "@/lib/api/client";
 import {
-  askQuestion,
   endLive,
   getLive,
   giveFloor,
   joinLive,
   lowerHand,
-  markAnswered,
   pinProduct,
   raiseHand,
   startLive,
@@ -57,6 +54,7 @@ import { RtcSession, weakNetwork, type RtcEvent } from "@/lib/rtc/room";
 
 import { TrackView } from "../rtc/track-view";
 import { BuySheet } from "./buy-sheet";
+import { LiveComments } from "./live-comments";
 
 function clock(seconds: number): string {
   const s = Math.max(0, Math.floor(seconds));
@@ -134,11 +132,11 @@ export function LiveRoom({ kind, id }: { kind: LiveKind; id: string }) {
   const [weak, setWeak] = useState(false);
   const [audioBlocked, setAudioBlocked] = useState(false);
   const [hostIdentity, setHostIdentity] = useState<string | undefined>();
-  const [question, setQuestion] = useState("");
   const [buying, setBuying] = useState<LivePin | null>(null);
   const [picking, setPicking] = useState(false);
   const [confirmEnd, setConfirmEnd] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [showPeople, setShowPeople] = useState(false);
   const replayRef = useRef<HTMLVideoElement>(null);
 
   const query = useQuery({
@@ -280,6 +278,24 @@ export function LiveRoom({ kind, id }: { kind: LiveKind; id: string }) {
     rememberReturnPath(pathname);
     router.push("/auth?as=client");
   };
+  // Invite people: the phone's own sharing (WhatsApp, SMS…), or the link copied.
+  const invite = async () => {
+    const url = window.location.href;
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: live.title,
+          text: t("invite.text", { title: live.title }),
+          url,
+        });
+        return;
+      }
+      await navigator.clipboard.writeText(url);
+      toast(t("invite.copied"), "success");
+    } catch {
+      // Sharing closed by the person: nothing to say.
+    }
+  };
 
   const startsIn = (new Date(live.starts_at).getTime() - now) / 1000;
   const canStart = now >= new Date(live.can_start_at).getTime();
@@ -389,11 +405,27 @@ export function LiveRoom({ kind, id }: { kind: LiveKind; id: string }) {
               <Broadcast aria-hidden size={18} weight="bold" />
               {t("onAir")}
             </Chip>
-            <Chip>
-              <Eye aria-hidden size={18} weight="bold" />
-              <span className="sr-only">{t("viewers", { count: viewers })}</span>
-              <span aria-hidden>{viewers}</span>
-            </Chip>
+            {live.is_host ? (
+              <button type="button" onClick={() => setShowPeople(true)} className="press">
+                <Chip>
+                  <Eye aria-hidden size={18} weight="bold" />
+                  <span className="sr-only">{t("people.open", { count: viewers })}</span>
+                  <span aria-hidden>{viewers}</span>
+                </Chip>
+              </button>
+            ) : (
+              <Chip>
+                <Eye aria-hidden size={18} weight="bold" />
+                <span className="sr-only">{t("viewers", { count: viewers })}</span>
+                <span aria-hidden>{viewers}</span>
+              </Chip>
+            )}
+            <button type="button" onClick={() => void invite()} className="press">
+              <Chip>
+                <ShareNetwork aria-hidden size={18} weight="bold" />
+                {t("invite.button")}
+              </Chip>
+            </button>
             {sale && (
               <Chip>
                 <ShoppingBag aria-hidden size={18} weight="bold" />
@@ -654,95 +686,46 @@ export function LiveRoom({ kind, id }: { kind: LiveKind; id: string }) {
         </section>
       )}
 
-      {/* Written questions (comments during a sale). */}
-      {(live.questions.length > 0 || live.can_ask) && (
-        <section aria-labelledby="live-questions" className="flex flex-col gap-3 px-4">
-          <h2 id="live-questions" className="text-lead font-bold">
-            {t(kind === "sale" ? "questions.titleSale" : "questions.title")}
-          </h2>
-          {live.can_ask && (
-            <form
-              className="flex items-end gap-2"
-              onSubmit={(event) => {
-                event.preventDefault();
-                const text = question.trim();
-                if (!text) return;
-                void run(() => askQuestion(kind, id, text)).then(() => setQuestion(""));
-              }}
-            >
-              <label className="flex min-w-0 flex-1 flex-col gap-1">
-                <span className="text-small font-bold">{t("questions.label")}</span>
-                <input
-                  value={question}
-                  maxLength={300}
-                  onChange={(event) => setQuestion(event.target.value)}
-                  className="border-trait bg-carte min-h-12 rounded-[14px] border-2 px-4"
+      <LiveComments
+        kind={kind}
+        id={id}
+        live={live}
+        busy={busy}
+        run={run}
+        onSignIn={signIn}
+        onSeek={
+          live.status === "ended" && replay?.status === "ready"
+            ? (second) => {
+                if (replayRef.current) {
+                  replayRef.current.currentTime = second;
+                  void replayRef.current.play().catch(() => undefined);
+                }
+              }
+            : undefined
+        }
+      />
+
+      {showPeople && (
+        <Sheet open onOpenChange={(open) => setShowPeople(open)} title={t("people.title")}>
+          <ul className="flex flex-col gap-2">
+            {live.people.map((person) => (
+              <li key={person.user_id} className="flex items-center gap-3">
+                <Avatar
+                  name={person.name || t("someone")}
+                  src={person.photo_url || undefined}
+                  size="sm"
                 />
-              </label>
-              <Button type="submit" className="shrink-0" disabled={busy || !question.trim()}>
-                <PaperPlaneRight aria-hidden size={20} weight="bold" />
-                {t("questions.send")}
-              </Button>
-            </form>
-          )}
-          {!live.signed_in && live.status === "on_air" && (
-            <Button variant="quiet" onClick={signIn}>
-              {t("questions.signIn")}
-            </Button>
-          )}
-          <ul className="flex flex-col gap-2" aria-live="polite">
-            {live.questions.map((item) => (
-              <li
-                key={item.id}
-                className={cn(
-                  "flex items-start gap-3 rounded-2xl p-3",
-                  item.answered ? "border-feuille bg-carte border-2" : "border-trait border",
-                )}
-              >
-                <div className="flex min-w-0 flex-1 flex-col gap-1">
-                  <p className="text-small text-prune-doux font-bold">
-                    {item.name || t("someone")}
-                    {live.status === "ended" && replay?.status === "ready" && (
-                      <button
-                        type="button"
-                        className="ml-2 underline"
-                        onClick={() => {
-                          if (replayRef.current) {
-                            replayRef.current.currentTime = item.at_second;
-                            void replayRef.current.play().catch(() => undefined);
-                          }
-                        }}
-                      >
-                        {t("questions.at", { time: clock(item.at_second) })}
-                      </button>
-                    )}
-                  </p>
-                  <p className="break-words">{item.text}</p>
-                  {item.held && <p className="text-small text-alerte">{t("questions.held")}</p>}
-                </div>
-                {item.answered ? (
-                  <span className="text-feuille text-small flex shrink-0 items-center gap-1 font-bold">
-                    <CheckCircle aria-hidden size={18} weight="fill" />
-                    {t("questions.answered")}
-                  </span>
-                ) : (
-                  live.is_host &&
-                  live.status === "on_air" && (
-                    <Button
-                      variant="quiet"
-                      className="shrink-0 px-3"
-                      disabled={busy}
-                      onClick={() => void run(() => markAnswered(kind, id, item.id))}
-                    >
-                      <CheckCircle aria-hidden size={20} weight="bold" />
-                      {t("questions.markAnswered")}
-                    </Button>
-                  )
-                )}
+                <span className="font-semibold">{person.name || t("someone")}</span>
               </li>
             ))}
           </ul>
-        </section>
+          {viewers > live.people.length && (
+            <p className="text-prune-doux mt-3">
+              {t("people.guests", { count: viewers - live.people.length })}
+            </p>
+          )}
+          {viewers === 0 && <p className="text-prune-doux">{t("people.none")}</p>}
+        </Sheet>
       )}
 
       {buying && (
