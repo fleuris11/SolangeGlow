@@ -13,7 +13,8 @@ test.describe("app shell on mobile", () => {
     const sheet = page.getByRole("dialog", { name: "Choisis ta ville" });
     await expect(sheet).toBeVisible();
 
-    await sheet.getByRole("combobox").fill("Paris");
+    // The city field (the sheet also has the country shown).
+    await sheet.getByRole("combobox", { name: "Ta ville" }).fill("Paris");
     await sheet
       .getByRole("option", { name: /^Paris/ })
       .first()
