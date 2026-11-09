@@ -53,3 +53,19 @@ def test_the_feed_shows_her_country_and_the_people_she_follows(api_client, count
     Follow.objects.create(follower=awa, followed=paris.author)
     api_client.force_authenticate(awa)
     assert captions() == {cotonou.caption, paris.caption, nowhere.caption}
+
+
+def test_search_shows_her_country_and_professionals_without_one(api_client, countries):
+    from apps.pros.tests.factories import ProFactory
+
+    benin, france = countries
+    ProFactory(slug="aicha", business_name="Aïcha Tresses", country=benin)
+    ProFactory(slug="ines", business_name="Inès Coiffure", country=france)
+    ProFactory(slug="lou", business_name="Lou Ongles", country=None)
+
+    def names(code):
+        page = api_client.get("/api/v1/pros", HTTP_X_SG_COUNTRY=code).json()
+        return {pro["business_name"] for pro in page["results"]}
+
+    assert names("BJ") == {"Aïcha Tresses", "Lou Ongles"}
+    assert names("*") == {"Aïcha Tresses", "Inès Coiffure", "Lou Ongles"}

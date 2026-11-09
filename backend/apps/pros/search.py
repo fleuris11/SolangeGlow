@@ -116,7 +116,8 @@ def search(params: SearchParams) -> QuerySet[ProProfile]:
     if params.trade:
         pros = pros.filter(trades__key=params.trade, trades__is_active=True)
     if params.country:
-        pros = pros.filter(country__code=params.country)
+        # A professional who gave no country is shown everywhere.
+        pros = pros.filter(Q(country__code=params.country) | Q(country__isnull=True))
     if params.city:
         pros = pros.filter(city__iexact=params.city.strip())
     if params.district:

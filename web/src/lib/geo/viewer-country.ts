@@ -22,12 +22,13 @@ export function writeViewerCountry(code: string) {
 
 /**
  * First visit only: the country is found from the time zone of the device (no permission asked).
+ * A generic zone (UTC, GMT, Etc/…) names no country: every country is shown.
  * Written into the page, no JavaScript file (ADR-004); waits until the page is shown. The pages
  * opened next follow that country; she can change it in the city picker.
  */
 export const countryDetectScript = `(function(){try{if(/(?:^|;\\s*)sg_country=/.test(document.cookie))return;
 setTimeout(function(){var z=Intl.DateTimeFormat().resolvedOptions().timeZone;
 fetch("/api/v1/countries",{headers:{"X-SG-Client":"web"}}).then(function(r){return r.ok?r.json():[]}).then(function(l){
-var c="*";for(var i=0;i<l.length;i++)if(l[i].timezone===z){c=l[i].code;break}
+var c="*";if(z&&!/^(UTC|GMT|Etc\\/)/.test(z))for(var i=0;i<l.length;i++)if(l[i].timezone===z){c=l[i].code;break}
 document.cookie="sg_country="+encodeURIComponent(c)+"; Path=/; Max-Age=31536000; SameSite=Lax";
 window.dispatchEvent(new Event("sg:country"))}).catch(function(){})},1500)}catch(e){}})()`;
