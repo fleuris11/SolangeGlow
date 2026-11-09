@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 from apps.accounts.throttling import SettingRateThrottle
 from apps.accounts.views_base import OptionalAuthView
 from apps.core.api.caching import VisitorCacheMixin
-from apps.core.models import Country
+from apps.core.viewer import viewer_country
 
 from . import selectors, services
 from .serializers import (
@@ -153,8 +153,7 @@ class UpcomingLivesView(VisitorCacheMixin, PublicLiveView):
         responses=UpcomingLiveSerializer(many=True),
     )
     def get(self, request):
-        code = request.query_params.get("country") or ""
-        country = Country.objects.filter(code=code.upper()).first() if code else None
+        country = viewer_country(request, request.query_params.get("country") or "")
         if country is None:
             country = selectors.country_of(request.user)
         return Response(UpcomingLiveSerializer(services.upcoming(country), many=True).data)

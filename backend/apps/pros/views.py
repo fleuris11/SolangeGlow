@@ -18,8 +18,8 @@ from apps.accounts.models import GuestIdentity
 from apps.accounts.throttling import SettingRateThrottle
 from apps.accounts.views_base import OptionalAuthView
 from apps.core.api.caching import VisitorCacheMixin
-from apps.core.models import Country
 from apps.core.selectors import get_setting
+from apps.core.viewer import viewer_country
 
 from . import errors, printables, search, selectors, services
 from . import serializers as s
@@ -43,7 +43,7 @@ class TradeListView(VisitorCacheMixin, APIView):
         return Response(s.TradeSerializer(selectors.active_trades(), many=True).data)
 
 
-def _params(data: dict) -> search.SearchParams:
+def _params(data: dict, request=None) -> search.SearchParams:
     near = None
     if data.get("lat") is not None and data.get("lng") is not None:
         near = Point(data["lng"], data["lat"], srid=4326)
@@ -51,6 +51,7 @@ def _params(data: dict) -> search.SearchParams:
         q=data.get("q", ""),
         trade=data.get("trade", ""),
         city=data.get("city", ""),
+        country=(seen.code if (seen := viewer_country(request)) else "") if request else "",
         district=data.get("district", ""),
         near=near,
         radius_km=data.get("radius_km"),
@@ -78,7 +79,7 @@ class ProSearchView(VisitorCacheMixin, PublicProView):
     def get(self, request):
         query = s.SearchQuerySerializer(data=request.query_params)
         query.is_valid(raise_exception=True)
-        pros = search.search(_params(query.validated_data))
+        pros = search.search(_params(query.validated_data, request))
         size = int(get_setting("search.page_size", default=20))
         offset = search.decode_cursor(query.validated_data.get("cursor"))
         page = list(selectors.card_queryset(pros)[offset : offset + size + 1])
@@ -103,7 +104,7 @@ class ProMapView(PublicProView):
         query.is_valid(raise_exception=True)
         maximum = int(get_setting("search.map_max_points", default=500))
         pros = (
-            search.search(_params(query.validated_data))
+            search.search(_params(query.validated_data, request))
             .filter(location__isnull=False)
             .prefetch_related("trades")
         )
@@ -147,8 +148,7 @@ class MapConfigView(APIView):
         responses=s.MapConfigSerializer,
     )
     def get(self, request):
-        code = (request.query_params.get("country") or "").upper()[:2]
-        country = Country.objects.filter(code=code).first() if code else None
+        country = viewer_country(request, request.query_params.get("country") or "")
         center = get_setting(
             "maps.default_center",
             country=country,

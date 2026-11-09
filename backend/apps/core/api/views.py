@@ -67,7 +67,8 @@ class CountrySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Country
-        fields = ["code", "name", "phone_prefix", "default_currency"]
+        # The time zone lets the app find a visitor's country on her first visit.
+        fields = ["code", "name", "phone_prefix", "default_currency", "timezone"]
 
 
 class CountryListView(APIView):

@@ -33,7 +33,14 @@
     "search": "Your city",
     "everywhere": "Everywhere",
     "everywhereCta": "See everywhere",
-    "chooseShort": "My city"
+    "chooseShort": "My city",
+    "country": {
+      "label": "Country shown",
+      "all": "Every country",
+      "hint": "The feed, professionals, lives and courses of this country.",
+      "saved": "You now see: {country}",
+      "everywhere": "You now see every country"
+    }
   },
   "audio": {
     "mode": "Audio",
@@ -3569,7 +3576,8 @@
       "button": "Invite",
       "text": "I'm live: « {title} ». Come!",
       "copied": "Link copied: paste it in WhatsApp or a text message."
-    }
+    },
+    "leave": "Leave the live"
   },
   "gifts": {
     "titles": {

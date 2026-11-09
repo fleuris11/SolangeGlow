@@ -15,6 +15,7 @@ from django.utils.translation import get_language
 from rest_framework.response import Response
 
 from apps.core.selectors import get_setting
+from apps.core.viewer import viewer_country_key
 
 SETTING = "performance.visitor_cache_seconds"
 
@@ -29,7 +30,7 @@ def visitor_cache_seconds() -> int:
 
 
 def visitor_cache_key(request) -> str:
-    raw = f"{request.get_full_path()}|{get_language() or ''}"
+    raw = f"{request.get_full_path()}|{get_language() or ''}|{viewer_country_key(request)}"
     return "visitor-answer:" + hashlib.sha256(raw.encode()).hexdigest()
 
 

@@ -33,7 +33,14 @@
     "search": "Ta ville",
     "everywhere": "Partout",
     "everywhereCta": "Voir partout",
-    "chooseShort": "Ma ville"
+    "chooseShort": "Ma ville",
+    "country": {
+      "label": "Pays affiché",
+      "all": "Tous les pays",
+      "hint": "Le fil, les professionnels, les lives et les formations de ce pays.",
+      "saved": "Tu vois maintenant : {country}",
+      "everywhere": "Tu vois maintenant tous les pays"
+    }
   },
   "audio": {
     "mode": "Audio",
@@ -3569,7 +3576,8 @@
       "button": "Inviter",
       "text": "Je suis en direct : « {title} ». Viens !",
       "copied": "Lien copié : colle-le dans WhatsApp ou un SMS."
-    }
+    },
+    "leave": "Quitter le live"
   },
   "gifts": {
     "titles": {

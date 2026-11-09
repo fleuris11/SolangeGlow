@@ -15,6 +15,7 @@ from apps.accounts.models import User
 from apps.accounts.throttling import SettingRateThrottle
 from apps.accounts.views_base import OptionalAuthView
 from apps.core.api.caching import VisitorCacheMixin
+from apps.core.viewer import viewer_country
 from apps.pros import errors as pro_errors
 from apps.pros import services as pro_services
 from apps.pros.models import ProProfile
@@ -77,12 +78,14 @@ class FeedView(VisitorCacheMixin, OptionalAuthView):
                 near = Point(float(params["lng"]), float(params["lat"]), srid=4326)
         except ValueError:
             near = None
+        seen = viewer_country(request, params.get("country", ""))
         rows, next_cursor = feed(
             request.user,
             city=params.get("city", "")[:80],
-            country=params.get("country", "")[:2].upper(),
+            country=seen.code if seen else "",
             near=near,
             cursor=params.get("cursor"),
+            only_country=seen is not None,
         )
         ids = [row.pk for row in rows]
         flagged = {

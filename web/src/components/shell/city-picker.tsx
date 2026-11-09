@@ -3,15 +3,21 @@
 import { CaretDown, MapPin } from "@phosphor-icons/react";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { Chip } from "@/components/ui/chip";
 import { useToast } from "@/components/ui/toast";
 import { cn } from "@/lib/cn";
+import { readViewerCountry, writeViewerCountry } from "@/lib/geo/viewer-country";
 import { usePreferences } from "@/lib/preferences/preferences-provider";
 
 // The sheet (and its dialog library) is only downloaded when the picker is opened.
 const Sheet = dynamic(() => import("@/components/ui/sheet").then((m) => m.Sheet), { ssr: false });
+const CountryChoice = dynamic(
+  () => import("@/components/features/geo/country-choice").then((m) => m.CountryChoice),
+  { ssr: false },
+);
 const CityField = dynamic(
   () => import("@/components/features/geo/city-field").then((m) => m.CityField),
   { ssr: false },
@@ -22,10 +28,16 @@ export function CityPicker({ className }: { className?: string }) {
   const t = useTranslations("city");
   const { city, update } = usePreferences();
   const toast = useToast();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [typed, setTyped] = useState("");
-  const choose = (name: string) => {
+  const choose = (name: string, country?: string) => {
     update({ city: name });
+    // A city chosen in another country: that country is the one shown from now on.
+    if (country && country !== readViewerCountry()) {
+      writeViewerCountry(country);
+      router.refresh();
+    }
     setOpen(false);
     setTyped("");
     toast(name ? t("saved", { city: name }) : t("everywhere"));
@@ -56,11 +68,12 @@ export function CityPicker({ className }: { className?: string }) {
               label={t("search")}
               value={typed}
               onChange={setTyped}
-              onPick={(picked) => choose(picked.name)}
+              onPick={(picked) => choose(picked.name, picked.country)}
             />
             <Chip selected={!city} onClick={() => choose("")}>
               {t("everywhereCta")}
             </Chip>
+            <CountryChoice />
           </div>
         </Sheet>
       )}

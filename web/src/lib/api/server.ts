@@ -25,12 +25,16 @@ async function visitorHeaders(): Promise<Record<string, string>> {
 }
 
 async function serverApi(locale: string) {
-  const cookieHeader = (await cookies()).toString();
+  const jar = await cookies();
+  const cookieHeader = jar.toString();
+  // The country she sees, as in her browser (lib/geo/viewer-country.ts).
+  const country = jar.get("sg_country")?.value;
   return createClient<paths>({
     baseUrl: API_INTERNAL_URL,
     headers: {
       ...CLIENT_HEADER,
       ...(await visitorHeaders()),
+      ...(country ? { "X-SG-Country": country } : {}),
       "Accept-Language": locale,
       cookie: cookieHeader,
     },

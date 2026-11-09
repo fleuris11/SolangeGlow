@@ -7059,6 +7059,8 @@ export interface components {
       phone_prefix: string;
       /** @description ISO 4217 code, e.g. XOF or EUR. */
       readonly default_currency: string;
+      /** Time zone */
+      timezone?: string;
     };
     Counts: {
       like_count: number;

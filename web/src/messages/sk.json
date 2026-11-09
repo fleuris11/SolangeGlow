@@ -33,7 +33,14 @@
     "search": "Tvoje mesto",
     "everywhere": "Všade",
     "everywhereCta": "Zobraziť všade",
-    "chooseShort": "Moje mesto"
+    "chooseShort": "Moje mesto",
+    "country": {
+      "label": "Zobrazená krajina",
+      "all": "Všetky krajiny",
+      "hint": "Príspevky, profesionáli, živé vysielania a kurzy tejto krajiny.",
+      "saved": "Teraz vidíš: {country}",
+      "everywhere": "Teraz vidíš všetky krajiny"
+    }
   },
   "audio": {
     "mode": "Zvuk",
@@ -3569,7 +3576,8 @@
       "button": "Pozvať",
       "text": "Som naživo: « {title} ». Príď!",
       "copied": "Odkaz skopírovaný: vlož ho do WhatsAppu alebo SMS."
-    }
+    },
+    "leave": "Opustiť live"
   },
   "gifts": {
     "titles": {

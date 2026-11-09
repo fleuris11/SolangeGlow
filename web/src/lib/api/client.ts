@@ -8,6 +8,7 @@
 import createClient, { type Middleware } from "openapi-fetch";
 
 import type { components, paths } from "./schema";
+import { readViewerCountry } from "@/lib/geo/viewer-country";
 
 export type Schemas = components["schemas"];
 
@@ -93,6 +94,9 @@ const sessionMiddleware: Middleware = {
   onRequest({ request }) {
     request.headers.set("Accept-Language", currentLocale());
     for (const [name, value] of Object.entries(CLIENT_HEADER)) request.headers.set(name, value);
+    // The country she sees: the same everywhere in the app (lib/geo/viewer-country.ts).
+    const country = readViewerCountry();
+    if (country) request.headers.set("X-SG-Country", country);
     retryCopies.set(request, request.clone());
     return request;
   },

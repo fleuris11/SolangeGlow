@@ -3,6 +3,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useCallback, useState, type ReactNode } from "react";
 
+import { CountryDetect } from "@/components/shell/country-detect";
 import { ToastProvider } from "@/components/ui/toast";
 import { meQueryKey, updateMe, type Me } from "@/lib/api/accounts";
 import type { Preferences } from "@/lib/preferences/preferences";
@@ -35,6 +36,7 @@ export function Providers({ children }: { children: ReactNode }) {
     <QueryClientProvider client={queryClient}>
       <PreferencesProvider onUserChange={saveToProfile}>
         <PreferencesSync />
+        <CountryDetect />
         <ToastProvider>{children}</ToastProvider>
       </PreferencesProvider>
     </QueryClientProvider>

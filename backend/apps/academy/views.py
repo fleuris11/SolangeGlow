@@ -12,6 +12,7 @@ from apps.accounts.views import client_ip
 from apps.accounts.views_base import OptionalAuthView
 from apps.core.api.caching import VisitorCacheMixin
 from apps.core.providers import livekit
+from apps.core.viewer import viewer_country
 from apps.glowpro.serializers import CheckoutUrlSerializer
 from apps.pros.models import ProProfile
 from apps.pros.search import decode_cursor, encode_cursor
@@ -37,12 +38,11 @@ PAGE = 20
 
 
 def _country(request, wanted: str = "") -> str:
+    """The catalogue of the country she sees (apps/core/viewer.py); Benin when none is known."""
     if wanted:
-        return wanted.upper()
-    user = request.user
-    if user.is_authenticated and user.country_id:
-        return user.country.code
-    return "BJ"
+        return wanted.upper()[:2]
+    seen = viewer_country(request)
+    return seen.code if seen else "BJ"
 
 
 class AcademyView(APIView):

@@ -16,6 +16,7 @@ import {
   VideoCamera,
   VideoCameraSlash,
   WifiLow,
+  X,
 } from "@phosphor-icons/react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
@@ -49,6 +50,7 @@ import { rememberReturnPath } from "@/lib/auth/return-path";
 import { cn } from "@/lib/cn";
 import { Link, usePathname, useRouter } from "@/lib/i18n/navigation";
 import { mediaSrc } from "@/lib/media";
+import { SPACE_HOME, useSpace } from "@/lib/navigation/space";
 import { usePreferences } from "@/lib/preferences/preferences-provider";
 import { RtcSession, weakNetwork, type RtcEvent } from "@/lib/rtc/room";
 
@@ -117,6 +119,7 @@ export function LiveRoom({ kind, id }: { kind: LiveKind; id: string }) {
   const locale = useLocale();
   const toast = useToast();
   const router = useRouter();
+  const space = useSpace();
   const pathname = usePathname();
   const queryClient = useQueryClient();
   const { dataSaver } = usePreferences();
@@ -325,6 +328,19 @@ export function LiveRoom({ kind, id }: { kind: LiveKind; id: string }) {
           </p>
         </div>
         <SpeakButton text={live.title} />
+        {/* Leaving is always one touch away: the sound and the image stop at once. */}
+        {!live.is_host && (
+          <Button
+            variant="secondary"
+            className="shrink-0 px-3"
+            onClick={() => {
+              void leave().then(() => router.push(SPACE_HOME[space]));
+            }}
+          >
+            <X aria-hidden size={20} weight="bold" />
+            {t("leave")}
+          </Button>
+        )}
       </header>
 
       {/* The stage: video, waiting screen or replay. */}

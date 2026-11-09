@@ -92,8 +92,13 @@ def visible_to(viewer, queryset):
 
 
 def feed(viewer=None, *, city: str = "", country: str = "", near: Point | None = None,
-         cursor: str | None = None, size: int | None = None):  # fmt: skip
-    """One page of the feed and the cursor of the next one."""
+         cursor: str | None = None, size: int | None = None,
+         only_country: bool = False):  # fmt: skip
+    """One page of the feed and the cursor of the next one.
+
+    ``only_country``: the posts of that country only (and of the people she follows, wherever
+    they are). It is the platform's rule: each one sees her own country unless she changes it
+    (apps/core/viewer.py)."""
     weights = {**DEFAULT_WEIGHTS, **(get_setting("social.feed_weights", default={}) or {})}
     size = size or int(get_setting("social.feed_page_size", default=12))
     window = int(get_setting("social.feed_window_days", default=60))
@@ -115,6 +120,11 @@ def feed(viewer=None, *, city: str = "", country: str = "", near: Point | None =
     )
     if signed_in:
         posts = posts.exclude(author=viewer)
+    if only_country and country:
+        # Posts tied to no country (an author who gave none) are shown everywhere.
+        posts = posts.filter(
+            Q(country__code=country) | Q(country__isnull=True) | Q(author_id__in=followed)
+        )
 
     age_hours = ExpressionWrapper(
         Extract(Value(as_of) - F("published_at"), "epoch") / 3600.0, output_field=FloatField()

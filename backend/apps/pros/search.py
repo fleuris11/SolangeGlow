@@ -85,6 +85,8 @@ class SearchParams:
     q: str = ""
     trade: str = ""
     city: str = ""
+    # The country the visitor sees (apps/core/viewer.py): empty for every country.
+    country: str = ""
     district: str = ""
     near: Point | None = None
     radius_km: float | None = None
@@ -113,6 +115,8 @@ def search(params: SearchParams) -> QuerySet[ProProfile]:
 
     if params.trade:
         pros = pros.filter(trades__key=params.trade, trades__is_active=True)
+    if params.country:
+        pros = pros.filter(country__code=params.country)
     if params.city:
         pros = pros.filter(city__iexact=params.city.strip())
     if params.district:
