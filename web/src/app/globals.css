@@ -517,6 +517,66 @@ html[data-navigating] {
   cursor: progress;
 }
 
+/* When the next page takes longer: the logo fills with its colour, from the bottom up, until the
+   page is there. A pale copy underneath shows the shape that is filling. With fewer animations,
+   the logo simply stands there, full. */
+#sg-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  background: color-mix(in srgb, var(--lait) 94%, transparent);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 180ms ease-out,
+    visibility 0s linear 180ms;
+}
+
+#sg-loader[data-state="show"] {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    opacity 220ms ease-out,
+    visibility 0s;
+}
+
+#sg-loader .sg-loader-logo {
+  position: relative;
+  width: min(11rem, 48vw);
+  aspect-ratio: 240 / 109;
+}
+
+#sg-loader .sg-loader-logo::before,
+#sg-loader .sg-loader-logo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/brand/logo-loader.webp") center / contain no-repeat;
+}
+
+#sg-loader .sg-loader-logo::before {
+  opacity: 0.16;
+  filter: grayscale(1);
+}
+
+#sg-loader[data-state="show"] .sg-loader-logo::after {
+  animation: sg-loader-fill 1.5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes sg-loader-fill {
+  0% {
+    clip-path: inset(100% 0 0 0);
+  }
+  72%,
+  100% {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
 /* A live happening now: its dot breathes (still with fewer animations asked). */
 .sg-live-dot {
   animation: sg-live-dot 1.6s ease-in-out infinite;

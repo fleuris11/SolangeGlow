@@ -104,6 +104,9 @@ export default async function LocaleLayout({ children, params }: Props) {
       </head>
       <body className="antialiased">
         <div id="sg-progress" aria-hidden />
+        <div id="sg-loader" aria-hidden>
+          <span className="sg-loader-logo" />
+        </div>
         <script dangerouslySetInnerHTML={{ __html: progressScript }} />
         <script dangerouslySetInnerHTML={{ __html: countryDetectScript }} />
         <ImpersonationBanner />
