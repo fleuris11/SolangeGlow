@@ -218,6 +218,7 @@ def test_countries_are_public():
         "name": "Bénin",
         "phone_prefix": "+229",
         "default_currency": "XOF",
+        "timezone": "Africa/Porto-Novo",
     }
 
 

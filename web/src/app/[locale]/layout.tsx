@@ -10,6 +10,7 @@ import { ImpersonationBanner } from "@/components/shell/impersonation-banner";
 import { PrivacyNotice } from "@/components/shell/privacy-notice";
 import { brand } from "@/lib/brand";
 import { scopedMessages } from "@/lib/i18n/client-messages";
+import { countryDetectScript } from "@/lib/geo/viewer-country";
 import { progressScript } from "@/lib/navigation/progress";
 import { routing } from "@/lib/i18n/routing";
 import { preferencesInitScript } from "@/lib/preferences/preferences";
@@ -104,6 +105,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body className="antialiased">
         <div id="sg-progress" aria-hidden />
         <script dangerouslySetInnerHTML={{ __html: progressScript }} />
+        <script dangerouslySetInnerHTML={{ __html: countryDetectScript }} />
         <ImpersonationBanner />
         <NextIntlClientProvider messages={await scopedMessages("shell", locale)}>
           <PrivacyNotice />
