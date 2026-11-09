@@ -225,12 +225,14 @@ class QuoteView(ShopWriteView):
     def post(self, request):
         data = s.QuoteInputSerializer(data=request.data)
         data.is_valid(raise_exception=True)
-        quotes = checkout.quote(request.user, _choices(data.validated_data))
+        values = data.validated_data
+        quotes = checkout.quote(request.user, _choices(values), pay=values.get("pay", ""))
         return Response(s.quote_payload(quotes))
 
 
 class CheckoutView(ShopWriteView):
-    """Creates the orders and their grouped payment, and opens the payment page."""
+    """Creates the orders and their grouped payment, and opens the payment page. Paid at the
+    hand-over: the orders go to the sellers at once (no payment page)."""
 
     @extend_schema(
         tags=["shop"],
@@ -247,12 +249,14 @@ class CheckoutView(ShopWriteView):
             address=values.get("address", ""),
             landmarks=values.get("landmarks", ""),
             phone=values.get("phone", ""),
+            pay=values.get("pay", ""),
         )
-        group = payment_services.start_group_checkout(group, buyer=request.user)
+        if group is not None:
+            group = payment_services.start_group_checkout(group, buyer=request.user)
         return Response(
             {
-                "group_id": str(group.pk),
-                "checkout_url": group.checkout_url,
+                "group_id": str(group.pk) if group else None,
+                "checkout_url": group.checkout_url if group else "",
                 "orders": [str(o.pk) for o in placed],
             },
             status=status.HTTP_201_CREATED,
@@ -315,7 +319,7 @@ class OrderShipView(ShopWriteView):
         orders.ship(
             request.user,
             _order(request, order_id),
-            proof_media_id=values["proof"],
+            proof_media_id=values.get("proof"),
             carrier=values.get("carrier", ""),
             tracking_number=values.get("tracking_number", ""),
         )
@@ -326,6 +330,15 @@ class OrderReadyView(ShopWriteView):
     @extend_schema(tags=["shop"], request=None, responses=s.OrderSerializer)
     def post(self, request, order_id):
         orders.ready_for_pickup(request.user, _order(request, order_id))
+        return _order_answer(request, order_id)
+
+
+class OrderHandOverView(ShopWriteView):
+    """Paid at the hand-over: the seller gave the order and received the money."""
+
+    @extend_schema(tags=["shop"], request=None, responses=s.OrderSerializer)
+    def post(self, request, order_id):
+        orders.hand_over(request.user, _order(request, order_id))
         return _order_answer(request, order_id)
 
 
@@ -342,7 +355,11 @@ class OrderPayView(ShopWriteView):
     @extend_schema(tags=["shop"], request=None, responses=s.CheckoutResultSerializer)
     def post(self, request, order_id):
         order = _order(request, order_id)
-        if order.buyer_id != request.user.pk or order.payment.group_id is None:
+        if (
+            order.buyer_id != request.user.pk
+            or order.payment is None
+            or order.payment.group_id is None
+        ):
             raise errors.OrderNotFound()
         group = payment_services.start_group_checkout(order.payment.group, buyer=request.user)
         return Response(

@@ -1604,9 +1604,9 @@
       "save": "Enregistrer"
     },
     "soon": {
-      "title": "Le paiement en ligne ouvre bientôt",
-      "text": "Pour l'instant, rien ne se paie dans l'appli.",
-      "shop": "Ton panier reste gardé. En attendant, écris au vendeur depuis sa boutique pour vous arranger.",
+      "title": "Paiement en ligne : activation en cours",
+      "text": "En attendant, rien ne se paie dans l'appli.",
+      "shop": "Tu peux déjà commander et payer à la remise : à la livraison ou au retrait.",
       "selection": "Garde ce produit en tête : tu pourras le commander dès l'ouverture du paiement.",
       "course": "Cette formation sera payante à l'ouverture du paiement. Les formations gratuites sont déjà ouvertes.",
       "pass": "Le pass ouvrira avec le paiement en ligne. Les formations gratuites sont déjà ouvertes.",
@@ -1615,7 +1615,8 @@
       "premium": "Pendant le lancement, Premium est offert : tout est déjà ouvert pour toi.",
       "salon": "Les cartes cadeaux et les forfaits s'achètent pour l'instant directement auprès du professionnel.",
       "freeCourses": "Voir les formations gratuites",
-      "giftTitle": "Offrir arrive bientôt"
+      "giftTitle": "Offrir arrive bientôt",
+      "badge": "Bientôt"
     }
   },
   "shop": {
@@ -1718,7 +1719,8 @@
       "protection": "La livraison et la protection acheteur s'ajoutent à l'étape suivante.",
       "twoCurrencies": "Tu as des articles de deux pays : paie d'abord ceux-ci, les autres restent dans ton panier.",
       "checkout": "Commander, {amount}",
-      "nothingReady": "Rien ne peut être commandé pour l'instant."
+      "nothingReady": "Rien ne peut être commandé pour l'instant.",
+      "payHandOver": "Tu paies à la remise : à la livraison ou au retrait, en espèces ou Mobile Money."
     },
     "modes": {
       "pickup": "Retrait chez le professionnel",
@@ -1729,7 +1731,7 @@
     "checkout": {
       "step1": "Comment la recevoir",
       "step2": "Récapitulatif",
-      "step3": "Paiement sécurisé",
+      "step3": "Paiement",
       "error": "Ça n'a pas marché. Réessaie.",
       "nothing": "Ton panier ne contient rien à commander.",
       "backToCart": "Retour au panier",
@@ -1739,7 +1741,7 @@
       "promo": "Code promo (facultatif)",
       "note": "Un mot pour le professionnel (facultatif)",
       "whereTitle": "Où te livrer",
-      "whereHelp": "Le professionnel voit ton adresse et ton numéro seulement après le paiement.",
+      "whereHelp": "Seul le professionnel de ta commande voit ton adresse et ton numéro.",
       "address": "Adresse ou quartier",
       "landmarks": "Repères (facultatif)",
       "phone": "Téléphone pour la livraison",
@@ -1758,7 +1760,23 @@
       "toPayment": "Continuer vers le paiement",
       "held": "Ton argent est bloqué jusqu'à ce que tu reçoives ta commande.",
       "code": "Tu reçois un code par commande : donne-le seulement quand tu as ta commande en main.",
-      "pay": "Payer {amount}"
+      "pay": "Payer {amount}",
+      "totalHandOver": "Total à payer à la remise",
+      "payTitle": "Comment payer",
+      "payOnline": "Payer en ligne",
+      "payOnlineHelp": "Ton argent reste bloqué jusqu'à la réception.",
+      "onlineSoon": "Activation en cours",
+      "soonBadge": "Bientôt",
+      "payHandOver": "Payer à la remise",
+      "payHandOverHelp": "En espèces ou Mobile Money, directement au professionnel.",
+      "handOverRefused": "{shop} ne prend pas le paiement à la remise.",
+      "handOverDelivery": "{shop} : tu paies à la livraison",
+      "handOverPickup": "{shop} : tu paies au retrait, chez le professionnel",
+      "handOverOutside": "Ce paiement se fait hors de l'appli : l'argent bloqué et la protection acheteur ne s'appliquent pas. Vérifie ta commande avant de payer.",
+      "send": "Envoyer ma commande ({amount} à la remise)",
+      "sentTitle": "Commande envoyée",
+      "sentText": "{count, plural, one {Le professionnel a reçu ta commande.} other {Les professionnels ont reçu ta commande.}} Tu paies à la remise. Suis tout depuis « Mes commandes ».",
+      "seeOrders": "Voir mes commandes"
     },
     "done": {
       "error": "Ça n'a pas marché. Réessaie.",
@@ -1804,7 +1822,9 @@
       "ready": "Prête à retirer",
       "handed": "Remise (code donné)",
       "yes": "fait",
-      "no": "pas encore"
+      "no": "pas encore",
+      "received": "Reçue par le professionnel",
+      "handedPaid": "Remise et payée"
     },
     "amounts": {
       "items": "Articles",
@@ -1814,7 +1834,9 @@
       "protection": "Protection acheteur",
       "total": "Total payé",
       "commission": "Commission Solange Glow",
-      "net": "Pour toi"
+      "net": "Pour toi",
+      "toPay": "À payer à la remise",
+      "toCollect": "À encaisser à la remise"
     },
     "handover": {
       "voice": "Écouter les repères",
@@ -1838,7 +1860,15 @@
       "carrier": "Transporteur ou livreur",
       "tracking": "Numéro de suivi (facultatif)",
       "ship": "Expédier",
-      "shippedDone": "Expédiée : le client est prévenu."
+      "shippedDone": "Expédiée : le client est prévenu.",
+      "photoOptional": "Prendre en photo le colis (facultatif)",
+      "handOver": "Remise et payée",
+      "handOverHelp": "Touche ici quand le client a sa commande en main et t'a payé.",
+      "handOverDone": "Commande terminée. Merci !",
+      "cancel": "Annuler la commande",
+      "noShow": "Le client n'est pas venu : annuler",
+      "cancelConfirm": "Annuler cette commande ? Les articles reviennent dans ton stock.",
+      "cancelDone": "Commande annulée. Le client est prévenu."
     },
     "detail": {
       "error": "Ça n'a pas marché. Réessaie.",
@@ -1853,7 +1883,15 @@
       "carrier": "Avec {carrier}, suivi {tracking}",
       "carrierOnly": "Avec {carrier}",
       "review": "Laisser un avis",
-      "payment": "Voir le paiement sécurisé"
+      "payment": "Voir le paiement sécurisé",
+      "payAtDelivery": "À payer à la livraison : {amount}, en espèces ou Mobile Money.",
+      "payAtPickup": "À payer au retrait : {amount}, en espèces ou Mobile Money.",
+      "collectAtDelivery": "Le client paie à la livraison : {amount} à encaisser.",
+      "collectAtPickup": "Le client paie au retrait : {amount} à encaisser.",
+      "outside": "Paiement hors de l'appli : l'argent bloqué ne s'applique pas. Vérifie ta commande avant de payer.",
+      "cancel": "Annuler ma commande",
+      "cancelConfirm": "Annuler cette commande ?",
+      "cancelDone": "Commande annulée. Le professionnel est prévenu."
     },
     "wishlist": {
       "title": "Mes envies",
@@ -1964,7 +2002,13 @@
         "zoneName": "Nom de la zone",
         "zoneFee": "Frais ({currency})",
         "addZone": "Ajouter la zone",
-        "zoneAdded": "Zone ajoutée"
+        "zoneAdded": "Zone ajoutée",
+        "handOverTitle": "Paiement à la remise",
+        "handOverHelp": "Le client paie directement, en espèces ou Mobile Money. Hors de l'appli : pas d'argent bloqué ni de commission.",
+        "payOnDelivery": "À la livraison",
+        "payOnDeliveryHelp": "Le client paie le livreur en recevant sa commande.",
+        "payOnPickup": "Au retrait",
+        "payOnPickupHelp": "Le client paie en venant chercher sa commande."
       },
       "stats": {
         "period": "Les {days} derniers jours",
@@ -2271,7 +2315,10 @@
       "atHome": "Chez moi, le professionnel se déplace",
       "travelFee": "Frais de déplacement : {amount}",
       "paused": "{name} ne prend pas de réservation en ligne pour le moment. Tu peux lui écrire.",
-      "homeAddress": "Ton adresse"
+      "homeAddress": "Ton adresse",
+      "paymentLabel": "Paiement",
+      "payOnSite": "Le jour du rendez-vous, au professionnel : espèces ou Mobile Money.",
+      "payRestOnSite": "Le reste le jour du rendez-vous, au professionnel : espèces ou Mobile Money."
     },
     "group": {
       "created": "Groupe réservé !",

@@ -4,6 +4,7 @@ import {
   Broadcast,
   ChartBar,
   Eye,
+  HandCoins,
   Moped,
   Package,
   Pause,
@@ -593,6 +594,30 @@ function DeliveryTab({ shop, onChange }: { shop: MyShop; onChange: (shop: MyShop
           onChange={(value) => void save({ partner_delivery: value })}
         />
       </div>
+      {delivery.hand_over_open && (
+        <section aria-labelledby="hand-over-pay" className="flex flex-col gap-2">
+          <h2 id="hand-over-pay" className="text-title font-bold">
+            {t("handOverTitle")}
+          </h2>
+          <p className="text-small text-prune-doux">{t("handOverHelp")}</p>
+          <SwitchRow
+            icon={icon(<HandCoins size={24} />)}
+            label={t("payOnDelivery")}
+            description={t("payOnDeliveryHelp")}
+            checked={delivery.pay_on_delivery}
+            disabled={busy}
+            onChange={(value) => void save({ pay_on_delivery: value })}
+          />
+          <SwitchRow
+            icon={icon(<HandCoins size={24} />)}
+            label={t("payOnPickup")}
+            description={t("payOnPickupHelp")}
+            checked={delivery.pay_on_pickup}
+            disabled={busy}
+            onChange={(value) => void save({ pay_on_pickup: value })}
+          />
+        </section>
+      )}
       <form
         className="flex flex-col gap-3"
         onSubmit={(event) => {

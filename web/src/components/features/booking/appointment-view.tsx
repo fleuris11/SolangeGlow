@@ -294,6 +294,14 @@ export function AppointmentView({ holder }: { holder: Holder }) {
             </dd>
           </div>
         )}
+        {a.price_minor !== null && (
+          <div>
+            <dt className="text-small text-prune-doux">{tFlow("paymentLabel")}</dt>
+            <dd className="font-bold">
+              {a.deposit_minor > 0 ? tFlow("payRestOnSite") : tFlow("payOnSite")}
+            </dd>
+          </div>
+        )}
         <div>
           <dt className="text-small text-prune-doux">{t("reference")}</dt>
           <dd className="font-bold">{a.reference}</dd>

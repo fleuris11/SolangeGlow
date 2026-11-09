@@ -120,6 +120,16 @@ class ShopProfile(BaseModel):
         _("delivery partner"), max_length=80, blank=True, help_text=_("Gozem, a zem, a carrier…")
     )
     return_policy = models.TextField(_("returns and exchanges"), max_length=1000, blank=True)
+    pay_on_delivery = models.BooleanField(
+        _("paid at the delivery"),
+        default=True,
+        help_text=_("The client pays the delivery person (cash or mobile money), outside the app."),
+    )
+    pay_on_pickup = models.BooleanField(
+        _("paid at the pick-up"),
+        default=True,
+        help_text=_("The client pays when she picks the order up, outside the app."),
+    )
 
     class Meta:
         verbose_name = _("shop")
@@ -501,8 +511,21 @@ class StockAlert(BaseModel):
 # --- Orders --------------------------------------------------------------------------------------
 
 
+class PaymentMethod(models.TextChoices):
+    """Online, the money waits in a secure payment. At the hand-over, the client pays the
+    seller herself (cash or mobile money), outside the app: no payment, no protection."""
+
+    ONLINE = "online", _("Paid online")
+    ON_DELIVERY = "on_delivery", _("Paid at the delivery")
+    ON_PICKUP = "on_pickup", _("Paid at the pick-up")
+
+
+HAND_OVER_METHODS = (PaymentMethod.ON_DELIVERY, PaymentMethod.ON_PICKUP)
+
+
 class Order(BaseModel):
-    """What a client bought in one shop. Its money lives in a secure payment (module 5)."""
+    """What a client bought in one shop. Paid online, its money lives in a secure payment
+    (module 5); paid at the hand-over, it has no payment at all."""
 
     class Status(models.TextChoices):
         PENDING_PAYMENT = "pending_payment", _("Waiting for payment")
@@ -521,7 +544,19 @@ class Order(BaseModel):
         "pros.ProProfile", on_delete=models.PROTECT, related_name="orders", verbose_name=_("shop")
     )
     payment = models.OneToOneField(
-        Payment, on_delete=models.PROTECT, related_name="order", verbose_name=_("payment")
+        Payment,
+        on_delete=models.PROTECT,
+        related_name="order",
+        verbose_name=_("payment"),
+        null=True,
+        blank=True,
+    )
+    payment_method = models.CharField(
+        _("payment"),
+        max_length=12,
+        choices=PaymentMethod.choices,
+        default=PaymentMethod.ONLINE,
+        db_index=True,
     )
     status = models.CharField(
         _("status"),
@@ -579,9 +614,21 @@ class Order(BaseModel):
             models.Index(fields=["pro", "status"]),
             models.Index(fields=["buyer", "created_at"]),
         ]
+        constraints = [
+            # Paid online ⇔ a secure payment holds the money.
+            models.CheckConstraint(
+                condition=models.Q(payment_method="online", payment__isnull=False)
+                | (~models.Q(payment_method="online") & models.Q(payment__isnull=True)),
+                name="shop_order_payment_matches_method",
+            ),
+        ]
 
     def __str__(self):
         return self.reference
+
+    @property
+    def paid_at_hand_over(self) -> bool:
+        return self.payment_method != PaymentMethod.ONLINE
 
 
 class OrderLine(BaseModel):

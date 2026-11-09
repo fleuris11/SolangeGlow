@@ -5639,7 +5639,10 @@ export interface paths {
     };
     get?: never;
     put?: never;
-    /** @description Creates the orders and their grouped payment, and opens the payment page. */
+    /**
+     * @description Creates the orders and their grouped payment, and opens the payment page. Paid at the
+     *     hand-over: the orders go to the sellers at once (no payment page).
+     */
     post: operations["shop_checkout_create"];
     delete?: never;
     options?: never;
@@ -5706,6 +5709,23 @@ export interface paths {
     get?: never;
     put?: never;
     post: operations["shop_orders_cancel_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/shop/orders/{order_id}/handed-over": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description Paid at the hand-over: the seller gave the order and received the money. */
+    post: operations["shop_orders_handed_over_create"];
     delete?: never;
     options?: never;
     head?: never;
@@ -6826,13 +6846,23 @@ export interface components {
     };
     CheckoutInputRequest: {
       shops: components["schemas"]["ShopChoiceRequest"][];
+      /**
+       * @description online: a secure payment. hand_over: each seller is paid at the delivery or the pick-up, outside the app. Empty: online when online payment is open, else hand_over.
+       *
+       *     * `online` - online
+       *     * `hand_over` - hand_over
+       */
+      pay?: components["schemas"]["PayEnum"] | components["schemas"]["BlankEnum"];
       address?: string;
       landmarks?: string;
       phone?: string;
     };
     CheckoutResult: {
-      /** Format: uuid */
-      group_id: string;
+      /**
+       * Format: uuid
+       * @description None when paid at the hand-over.
+       */
+      group_id: string | null;
       checkout_url: string;
       orders: string[];
     };
@@ -7234,6 +7264,9 @@ export interface components {
       partner_delivery: boolean;
       partner_name: string;
       return_policy: string;
+      pay_on_delivery: boolean;
+      pay_on_pickup: boolean;
+      hand_over_open: boolean;
       zones: components["schemas"]["Zone"][];
     };
     /**
@@ -9087,6 +9120,7 @@ export interface components {
       delivery_minor: number;
       buyer_fee_minor: number;
       total_minor: number;
+      payment_method: components["schemas"]["PaymentMethodEnum"];
       promo_code: string;
       delivery_mode: components["schemas"]["OrderDeliveryModeEnum"];
       zone_name: string;
@@ -9116,6 +9150,8 @@ export interface components {
       ready: boolean;
       cancel: boolean;
       pay: boolean;
+      /** @description Seller: handed over and paid (no payment). */
+      hand_over: boolean;
     };
     /**
      * @description * `pickup` - Pick-up at the seller
@@ -9475,6 +9511,8 @@ export interface components {
       partner_delivery?: boolean;
       partner_name?: string;
       return_policy?: string;
+      pay_on_delivery?: boolean;
+      pay_on_pickup?: boolean;
     };
     PatchedStaffInputRequest: {
       name?: string;
@@ -9496,6 +9534,12 @@ export interface components {
       name?: string;
       fee_minor?: number;
     };
+    /**
+     * @description * `online` - online
+     *     * `hand_over` - hand_over
+     * @enum {string}
+     */
+    PayEnum: "online" | "hand_over";
     Payment: {
       /** Format: uuid */
       id: string;
@@ -9584,6 +9628,13 @@ export interface components {
     PaymentList: {
       results: components["schemas"]["Payment"][];
     };
+    /**
+     * @description * `online` - Paid online
+     *     * `on_delivery` - Paid at the delivery
+     *     * `on_pickup` - Paid at the pick-up
+     * @enum {string}
+     */
+    PaymentMethodEnum: "online" | "on_delivery" | "on_pickup";
     PaymentMethods: {
       methods: components["schemas"]["OnSiteMethodEnum"][];
       terminal_configured: boolean;
@@ -10204,9 +10255,18 @@ export interface components {
       currency: string;
       orders: components["schemas"]["QuoteRow"][];
       total_minor: number;
+      pay: components["schemas"]["PayEnum"];
+      online_open: boolean;
     };
     QuoteInputRequest: {
       shops: components["schemas"]["ShopChoiceRequest"][];
+      /**
+       * @description online: a secure payment. hand_over: each seller is paid at the delivery or the pick-up, outside the app. Empty: online when online payment is open, else hand_over.
+       *
+       *     * `online` - online
+       *     * `hand_over` - hand_over
+       */
+      pay?: components["schemas"]["PayEnum"] | components["schemas"]["BlankEnum"];
     };
     QuoteRow: {
       /** Format: uuid */
@@ -10222,6 +10282,8 @@ export interface components {
       buyer_fee_minor: number;
       total_minor: number;
       prep_days: number;
+      /** @description This shop takes payment at the hand-over. */
+      hand_over: boolean;
     };
     Ranking: {
       /** Format: date */
@@ -10747,8 +10809,11 @@ export interface components {
      */
     SharedCardKindEnum: "post" | "product" | "service" | "slot";
     ShipInputRequest: {
-      /** Format: uuid */
-      proof: string;
+      /**
+       * Format: uuid
+       * @description Required for an order paid online.
+       */
+      proof?: string | null;
       carrier?: string;
       tracking_number?: string;
     };
@@ -21274,6 +21339,27 @@ export interface operations {
       };
     };
   };
+  shop_orders_handed_over_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        order_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Order"];
+        };
+      };
+    };
+  };
   shop_orders_pay_create: {
     parameters: {
       query?: never;
@@ -21346,7 +21432,7 @@ export interface operations {
       };
       cookie?: never;
     };
-    requestBody: {
+    requestBody?: {
       content: {
         "application/json": components["schemas"]["ShipInputRequest"];
         "application/x-www-form-urlencoded": components["schemas"]["ShipInputRequest"];

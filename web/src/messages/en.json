@@ -1604,9 +1604,9 @@
       "save": "Save"
     },
     "soon": {
-      "title": "Online payment opens soon",
-      "text": "For now, nothing is paid in the app.",
-      "shop": "Your cart is kept. Meanwhile, write to the seller from their shop to arrange it together.",
+      "title": "Online payment: being switched on",
+      "text": "Meanwhile, nothing is paid in the app.",
+      "shop": "You can already order and pay at the hand-over: at the delivery or the pick-up.",
       "selection": "Keep this product in mind: you can order it as soon as payment opens.",
       "course": "This course will be paid once payment opens. Free courses are already open.",
       "pass": "The pass opens with online payment. Free courses are already open.",
@@ -1615,7 +1615,8 @@
       "premium": "During the launch, Premium is offered: everything is already open for you.",
       "salon": "For now, gift cards and packages are bought directly from the professional.",
       "freeCourses": "See the free courses",
-      "giftTitle": "Gifts are coming soon"
+      "giftTitle": "Gifts are coming soon",
+      "badge": "Soon"
     }
   },
   "shop": {
@@ -1718,7 +1719,8 @@
       "protection": "Delivery and buyer protection are added at the next step.",
       "twoCurrencies": "You have items from two countries: pay these first, the others stay in your cart.",
       "checkout": "Order, {amount}",
-      "nothingReady": "Nothing can be ordered for now."
+      "nothingReady": "Nothing can be ordered for now.",
+      "payHandOver": "You pay at the hand-over: at the delivery or the pick-up, cash or mobile money."
     },
     "modes": {
       "pickup": "Pick-up at the professional's",
@@ -1729,7 +1731,7 @@
     "checkout": {
       "step1": "How to get it",
       "step2": "Summary",
-      "step3": "Secure payment",
+      "step3": "Payment",
       "error": "That did not work. Try again.",
       "nothing": "Your cart has nothing to order.",
       "backToCart": "Back to the cart",
@@ -1739,7 +1741,7 @@
       "promo": "Promo code (optional)",
       "note": "A note for the professional (optional)",
       "whereTitle": "Where to deliver",
-      "whereHelp": "The professional sees your address and number only after payment.",
+      "whereHelp": "Only the professional of your order sees your address and number.",
       "address": "Address or area",
       "landmarks": "Landmarks (optional)",
       "phone": "Phone for the delivery",
@@ -1758,7 +1760,23 @@
       "toPayment": "Go on to payment",
       "held": "Your money is held until you receive your order.",
       "code": "You get one code per order: give it only once you hold your order.",
-      "pay": "Pay {amount}"
+      "pay": "Pay {amount}",
+      "totalHandOver": "Total to pay at the hand-over",
+      "payTitle": "How to pay",
+      "payOnline": "Pay online",
+      "payOnlineHelp": "Your money stays held until you receive it.",
+      "onlineSoon": "Being switched on",
+      "soonBadge": "Soon",
+      "payHandOver": "Pay at the hand-over",
+      "payHandOverHelp": "Cash or mobile money, straight to the professional.",
+      "handOverRefused": "{shop} does not take payment at the hand-over.",
+      "handOverDelivery": "{shop}: you pay at the delivery",
+      "handOverPickup": "{shop}: you pay at the pick-up, at the professional's place",
+      "handOverOutside": "This payment happens outside the app: held money and buyer protection do not apply. Check your order before you pay.",
+      "send": "Send my order ({amount} at the hand-over)",
+      "sentTitle": "Order sent",
+      "sentText": "{count, plural, one {The professional received your order.} other {The professionals received your order.}} You pay at the hand-over. Follow everything from « My orders ».",
+      "seeOrders": "See my orders"
     },
     "done": {
       "error": "That did not work. Try again.",
@@ -1804,7 +1822,9 @@
       "ready": "Ready to pick up",
       "handed": "Handed over (code given)",
       "yes": "done",
-      "no": "not yet"
+      "no": "not yet",
+      "received": "Received by the professional",
+      "handedPaid": "Handed over and paid"
     },
     "amounts": {
       "items": "Items",
@@ -1814,7 +1834,9 @@
       "protection": "Buyer protection",
       "total": "Total paid",
       "commission": "Solange Glow commission",
-      "net": "For you"
+      "net": "For you",
+      "toPay": "To pay at the hand-over",
+      "toCollect": "To collect at the hand-over"
     },
     "handover": {
       "voice": "Listen to the landmarks",
@@ -1838,7 +1860,15 @@
       "carrier": "Carrier or courier",
       "tracking": "Tracking number (optional)",
       "ship": "Ship",
-      "shippedDone": "Shipped: the client is told."
+      "shippedDone": "Shipped: the client is told.",
+      "photoOptional": "Take a photo of the parcel (optional)",
+      "handOver": "Handed over and paid",
+      "handOverHelp": "Tap here when the client has the order in hand and paid you.",
+      "handOverDone": "Order finished. Thank you!",
+      "cancel": "Cancel the order",
+      "noShow": "The client did not come: cancel",
+      "cancelConfirm": "Cancel this order? The items go back to your stock.",
+      "cancelDone": "Order cancelled. The client is told."
     },
     "detail": {
       "error": "That did not work. Try again.",
@@ -1853,7 +1883,15 @@
       "carrier": "With {carrier}, tracking {tracking}",
       "carrierOnly": "With {carrier}",
       "review": "Leave a review",
-      "payment": "See the secure payment"
+      "payment": "See the secure payment",
+      "payAtDelivery": "To pay at the delivery: {amount}, cash or mobile money.",
+      "payAtPickup": "To pay at the pick-up: {amount}, cash or mobile money.",
+      "collectAtDelivery": "The client pays at the delivery: {amount} to collect.",
+      "collectAtPickup": "The client pays at the pick-up: {amount} to collect.",
+      "outside": "Payment outside the app: held money does not apply. Check your order before you pay.",
+      "cancel": "Cancel my order",
+      "cancelConfirm": "Cancel this order?",
+      "cancelDone": "Order cancelled. The professional is told."
     },
     "wishlist": {
       "title": "My wishlist",
@@ -1964,7 +2002,13 @@
         "zoneName": "Name of the area",
         "zoneFee": "Fee ({currency})",
         "addZone": "Add the area",
-        "zoneAdded": "Area added"
+        "zoneAdded": "Area added",
+        "handOverTitle": "Payment at the hand-over",
+        "handOverHelp": "The client pays you directly, cash or mobile money. Outside the app: no held money, no commission.",
+        "payOnDelivery": "At the delivery",
+        "payOnDeliveryHelp": "The client pays the delivery person on receiving the order.",
+        "payOnPickup": "At the pick-up",
+        "payOnPickupHelp": "The client pays when picking the order up."
       },
       "stats": {
         "period": "The last {days} days",
@@ -2271,7 +2315,10 @@
       "atHome": "At my home, the professional comes to me",
       "travelFee": "Travel fee: {amount}",
       "paused": "{name} is not taking online bookings for now. You can message her.",
-      "homeAddress": "Your address"
+      "homeAddress": "Your address",
+      "paymentLabel": "Payment",
+      "payOnSite": "On the day, to the professional: cash or mobile money.",
+      "payRestOnSite": "The rest on the day, to the professional: cash or mobile money."
     },
     "group": {
       "created": "Group booked!",

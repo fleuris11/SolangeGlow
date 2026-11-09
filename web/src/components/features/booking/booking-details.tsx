@@ -136,6 +136,10 @@ export function DetailsStep({
             <dd className="text-small text-prune-doux">{t("depositHelp")}</dd>
           </div>
         )}
+        <div>
+          <dt className="text-small text-prune-doux">{t("paymentLabel")}</dt>
+          <dd className="font-bold">{deposit > 0 ? t("payRestOnSite") : t("payOnSite")}</dd>
+        </div>
       </dl>
       <p className="text-small text-prune-doux">
         {deposit > 0 ? t("cancelRule", { hours: freeCancelHours }) : t("cancelFree")}

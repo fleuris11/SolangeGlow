@@ -225,8 +225,23 @@ class ZoneInline(TabularInline):
 
 @admin.register(ShopProfile)
 class ShopProfileAdmin(AuditedModelAdmin):
-    list_display = ["pro", "is_open", "pickup", "seller_delivery", "partner_delivery"]
-    list_filter = ["is_open", "pickup", "seller_delivery", "partner_delivery"]
+    list_display = [
+        "pro",
+        "is_open",
+        "pickup",
+        "seller_delivery",
+        "partner_delivery",
+        "pay_on_delivery",
+        "pay_on_pickup",
+    ]
+    list_filter = [
+        "is_open",
+        "pickup",
+        "seller_delivery",
+        "partner_delivery",
+        "pay_on_delivery",
+        "pay_on_pickup",
+    ]
     search_fields = ["pro__business_name", "pro__slug"]
     readonly_fields = ["pro"]
     inlines = [ZoneInline]
@@ -248,10 +263,20 @@ class OrderLineInline(TabularInline):
 
 @admin.register(Order)
 class OrderAdmin(AuditedModelAdmin):
-    """Read only: what happens to the money is decided in Finance (payments, disputes)."""
+    """Read only: what happens to the money is decided in Finance (payments, disputes). An
+    order paid at the hand-over has no payment: its money never goes through the app."""
 
-    list_display = ["reference", "pro", "buyer", "status", "total", "delivery_mode", "created_at"]
-    list_filter = ["status", "delivery_mode", "currency"]
+    list_display = [
+        "reference",
+        "pro",
+        "buyer",
+        "status",
+        "total",
+        "payment_method",
+        "delivery_mode",
+        "created_at",
+    ]
+    list_filter = ["status", "payment_method", "delivery_mode", "currency"]
     search_fields = ["reference", "pro__business_name", "buyer__first_name"]
     date_hierarchy = "created_at"
     inlines = [OrderLineInline]
@@ -274,6 +299,8 @@ class OrderAdmin(AuditedModelAdmin):
 
     @display(description=_("payment"))
     def payment_link(self, order):
+        if order.payment_id is None:
+            return order.get_payment_method_display()
         url = reverse("admin:payments_payment_change", args=[order.payment_id])
         return format_html('<a href="{}">{}</a>', url, order.payment.reference)
 

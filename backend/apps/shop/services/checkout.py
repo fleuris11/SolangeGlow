@@ -1,10 +1,14 @@
 """From the cart to the orders: one order per shop, paid together through one grouped
 secure payment (module 5). The stock is taken when the orders are created and given back
-if the payment never comes."""
+if the payment never comes.
+
+Paid at the hand-over (``pay="hand_over"``): the orders go to the sellers at once, without any
+payment; the client pays each seller at the delivery or at the pick-up, outside the app."""
 
 from __future__ import annotations
 
 import re
+import secrets
 import uuid
 from dataclasses import dataclass
 
@@ -15,14 +19,52 @@ from django.db.models import F
 
 from apps.accounts.selectors import can_purchase
 from apps.core.audit.services import record
+from apps.core.money import Money
+from apps.core.selectors import get_setting, payments_open
+from apps.notifications.services import notify
 from apps.payments import services as payment_services
 from apps.payments.models import PaymentGroup, Purpose
 
 from .. import errors
-from ..models import CartItem, DeliveryMode, DeliveryZone, FlashSale, Order, OrderLine, Variant
+from ..models import (
+    HAND_OVER_METHODS,
+    CartItem,
+    DeliveryMode,
+    DeliveryZone,
+    FlashSale,
+    Order,
+    OrderLine,
+    PaymentMethod,
+    Variant,
+)
 from ..selectors import on_sale, shop_enabled, shop_of
 from .cart import CartShop, cart_summary
 from .promotions import discount_for, find_promo
+
+ONLINE = "online"
+HAND_OVER = "hand_over"
+PAY_CHOICES = (ONLINE, HAND_OVER)
+
+
+def hand_over_method(mode: str) -> str:
+    return PaymentMethod.ON_PICKUP if mode == DeliveryMode.PICKUP else PaymentMethod.ON_DELIVERY
+
+
+def hand_over_accepted(shop, mode: str) -> bool:
+    """The platform allows it in the shop's country, and the seller takes it for this way."""
+    pro = shop.pro
+    if not get_setting("shop.hand_over_payment", country=pro.country, default=True):
+        return False
+    return shop.pay_on_pickup if mode == DeliveryMode.PICKUP else shop.pay_on_delivery
+
+
+def money_for(user, amount_minor: int, currency: str) -> str:
+    """An amount written in the language of the person who reads it."""
+    return Money(amount_minor, currency).format(getattr(user, "preferred_language", "") or "fr")
+
+
+def default_pay() -> str:
+    return ONLINE if payments_open() else HAND_OVER
 
 
 @dataclass(frozen=True)
@@ -44,6 +86,11 @@ class Quote:
     discount_minor: int
     delivery_minor: int
     buyer_fee_minor: int
+    pay: str = ONLINE
+
+    @property
+    def hand_over_ok(self) -> bool:
+        return hand_over_accepted(self.cart.shop, self.mode)
 
     @property
     def subtotal_minor(self) -> int:
@@ -103,8 +150,11 @@ def _delivery(user, cart: CartShop, choice: ShopChoice) -> DeliveryZone | None:
     return zone
 
 
-def quote(user, choices: list[ShopChoice]) -> list[Quote]:
-    """What each order will cost (also checks everything that can be checked before)."""
+def quote(user, choices: list[ShopChoice], *, pay: str = "") -> list[Quote]:
+    """What each order will cost (also checks everything that can be checked before).
+
+    Paid at the hand-over, there is no buyer protection, so no fee for it."""
+    pay = pay or default_pay()
     if not can_purchase(user):
         raise errors.CannotBuy()
     carts = {cart.pro.pk: cart for cart in cart_summary(user)}
@@ -130,14 +180,19 @@ def quote(user, choices: list[ShopChoice]) -> list[Quote]:
             # Something is always left to pay: the secure payment needs an amount.
             discount = min(discount_for(promo, cart.subtotal_minor), cart.subtotal_minor - 1)
         delivery = zone.fee_minor if zone else 0
-        fee = payment_services.buyer_fee(
-            pro.user,
-            purpose=Purpose.ORDER,
-            items_minor=cart.subtotal_minor - discount,
-            delivery_minor=delivery,
-            currency=cart.currency,
-            category=cart.category_key,
-        )
+        if pay == HAND_OVER:
+            if not hand_over_accepted(cart.shop, choice.delivery_mode):
+                raise errors.HandOverNotAccepted(details={"shop": pro.display_name})
+            fee = 0
+        else:
+            fee = payment_services.buyer_fee(
+                pro.user,
+                purpose=Purpose.ORDER,
+                items_minor=cart.subtotal_minor - discount,
+                delivery_minor=delivery,
+                currency=cart.currency,
+                category=cart.category_key,
+            )
         quotes.append(
             Quote(
                 cart=cart,
@@ -148,6 +203,7 @@ def quote(user, choices: list[ShopChoice]) -> list[Quote]:
                 discount_minor=discount,
                 delivery_minor=delivery,
                 buyer_fee_minor=fee,
+                pay=pay,
             )
         )
     if len({q.cart.currency for q in quotes}) > 1:
@@ -179,6 +235,38 @@ def _description(quote: Quote) -> str:
     return f"{quote.cart.pro.display_name} — {items}"[:200]
 
 
+def _new_reference() -> str:
+    """A reference like the payments' ones, free in both tables."""
+    from apps.payments.models import Payment
+
+    alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
+    while True:
+        reference = "SG-" + "".join(secrets.choice(alphabet) for _ in range(8))
+        taken = (
+            Order.objects.filter(reference=reference).exists()
+            or Payment.objects.filter(reference=reference).exists()
+        )
+        if not taken:
+            return reference
+
+
+def unpaid_hand_overs(user) -> int:
+    """Orders to pay at the hand-over that are still under way."""
+    S = Order.Status
+    return Order.objects.filter(
+        buyer=user,
+        payment_method__in=HAND_OVER_METHODS,
+        status__in=[S.NEW, S.PREPARING, S.SHIPPED, S.READY],
+    ).count()
+
+
+def _check_unpaid(user, adding: int) -> None:
+    country = user.country if user.country_id else None
+    most = int(get_setting("shop.hand_over_max_open", country=country, default=3))
+    if most and unpaid_hand_overs(user) + adding > most:
+        raise errors.TooManyUnpaid(details={"max": most})
+
+
 @transaction.atomic
 def place_orders(
     user,
@@ -187,40 +275,49 @@ def place_orders(
     address: str = "",
     landmarks: str = "",
     phone: str = "",
-) -> tuple[PaymentGroup, list[Order]]:
-    """Creates the orders (one per shop) and their grouped payment, waiting to be paid."""
-    quotes = quote(user, choices)
+    pay: str = "",
+) -> tuple[PaymentGroup | None, list[Order]]:
+    """Creates the orders (one per shop). Online: with their grouped payment, waiting to be
+    paid. At the hand-over: sent to the sellers at once, no payment (the group is None)."""
+    pay = pay or default_pay()
+    quotes = quote(user, choices, pay=pay)
     delivering = any(q.mode != DeliveryMode.PICKUP for q in quotes)
     address = re.sub(r"\s+", " ", address or "").strip()[:255]
     phone = normalize_phone(phone) if phone else ""
     if delivering and (not address or not phone):
         raise errors.AddressNeeded()
+    if pay == HAND_OVER:
+        _check_unpaid(user, len(quotes))
     payments, orders = [], []
     for q in quotes:
         cart, pro = q.cart, q.cart.pro
         _take_stock(q)
         order_id = uuid.uuid4()
-        payment = payment_services.create_payment(
-            user,
-            pro.user,
-            purpose=Purpose.ORDER,
-            items_minor=q.items_minor,
-            currency=cart.currency,
-            description=_description(q),
-            delivery_minor=q.delivery_minor,
-            delivery_mode=q.mode,
-            category=cart.category_key,
-            source_type="order",
-            source_id=order_id,
-            prep_days=cart.prep_days,
-        )
+        payment = None
+        if pay == ONLINE:
+            payment = payment_services.create_payment(
+                user,
+                pro.user,
+                purpose=Purpose.ORDER,
+                items_minor=q.items_minor,
+                currency=cart.currency,
+                description=_description(q),
+                delivery_minor=q.delivery_minor,
+                delivery_mode=q.mode,
+                category=cart.category_key,
+                source_type="order",
+                source_id=order_id,
+                prep_days=cart.prep_days,
+            )
         delivered = q.mode != DeliveryMode.PICKUP
         order = Order.objects.create(
             id=order_id,
-            reference=payment.reference,
+            reference=payment.reference if payment else _new_reference(),
             buyer=user,
             pro=pro,
             payment=payment,
+            payment_method=PaymentMethod.ONLINE if payment else hand_over_method(q.mode),
+            status=Order.Status.PENDING_PAYMENT if payment else Order.Status.NEW,
             currency=cart.currency,
             subtotal_minor=q.subtotal_minor,
             discount_minor=q.discount_minor,
@@ -265,11 +362,35 @@ def place_orders(
             for line in cart.lines
         )
         CartItem.objects.filter(pk__in=[line.item.pk for line in cart.lines]).delete()
-        record("shop.order_created", order, actor=user)
-        payments.append(payment)
+        record("shop.order_created", order, actor=user, metadata={"payment": order.payment_method})
+        if payment is None:
+            _tell_seller(order)
+        else:
+            payments.append(payment)
         orders.append(order)
-    group = payment_services.create_group(user, payments)
+    group = payment_services.create_group(user, payments) if payments else None
     return group, orders
+
+
+def _tell_seller(order: Order) -> None:
+    """A new order to pay at the hand-over: the seller learns it now (online, the payment
+    tells her once it is paid)."""
+    seller = order.pro.user
+    total = money_for(seller, order.items_minor + order.delivery_minor, order.currency)
+
+    def send():
+        notify(
+            seller,
+            "shop.order_new",
+            {"reference": order.reference, "amount": total},
+            link=f"/orders/{order.pk}",
+        )
+        if order.sale_live_id:
+            from .lives import count_purchase
+
+            count_purchase(order)
+
+    transaction.on_commit(send)
 
 
 @transaction.atomic

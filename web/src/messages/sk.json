@@ -1604,9 +1604,9 @@
       "save": "Uložiť"
     },
     "soon": {
-      "title": "Online platba sa čoskoro otvorí",
-      "text": "Zatiaľ sa v aplikácii nič neplatí.",
-      "shop": "Tvoj košík ostáva uložený. Zatiaľ napíš predajcovi z jeho obchodu a dohodnite sa.",
+      "title": "Online platba: spúšťa sa",
+      "text": "Medzitým sa v aplikácii nič neplatí.",
+      "shop": "Už teraz môžeš objednať a zaplatiť pri odovzdaní: pri doručení alebo vyzdvihnutí.",
       "selection": "Zapamätaj si tento produkt: objednáš ho hneď, ako sa platba otvorí.",
       "course": "Tento kurz bude platený po otvorení platby. Bezplatné kurzy sú už otvorené.",
       "pass": "Pas sa otvorí s online platbou. Bezplatné kurzy sú už otvorené.",
@@ -1615,7 +1615,8 @@
       "premium": "Počas spustenia je Premium zadarmo: všetko máš už otvorené.",
       "salon": "Darčekové karty a balíčky sa zatiaľ kupujú priamo u profesionála.",
       "freeCourses": "Pozrieť bezplatné kurzy",
-      "giftTitle": "Darčeky čoskoro"
+      "giftTitle": "Darčeky čoskoro",
+      "badge": "Čoskoro"
     }
   },
   "shop": {
@@ -1718,7 +1719,8 @@
       "protection": "Doručenie a ochrana kupujúcej sa pridajú v ďalšom kroku.",
       "twoCurrencies": "Máš položky z dvoch krajín: najprv zaplať tieto, ostatné zostanú v košíku.",
       "checkout": "Objednať, {amount}",
-      "nothingReady": "Momentálne sa nedá nič objednať."
+      "nothingReady": "Momentálne sa nedá nič objednať.",
+      "payHandOver": "Platíš pri odovzdaní: pri doručení alebo vyzdvihnutí, v hotovosti alebo mobilnými peniazmi."
     },
     "modes": {
       "pickup": "Vyzdvihnutie u profesionálky",
@@ -1729,7 +1731,7 @@
     "checkout": {
       "step1": "Ako ju dostaneš",
       "step2": "Zhrnutie",
-      "step3": "Bezpečná platba",
+      "step3": "Platba",
       "error": "Nepodarilo sa. Skús znova.",
       "nothing": "V košíku nie je nič na objednanie.",
       "backToCart": "Späť do košíka",
@@ -1739,7 +1741,7 @@
       "promo": "Promo kód (nepovinné)",
       "note": "Odkaz pre profesionálku (nepovinné)",
       "whereTitle": "Kam doručiť",
-      "whereHelp": "Profesionálka uvidí adresu a číslo až po zaplatení.",
+      "whereHelp": "Tvoju adresu a číslo vidí iba profesionál tvojej objednávky.",
       "address": "Adresa alebo štvrť",
       "landmarks": "Orientačné body (nepovinné)",
       "phone": "Telefón pre doručenie",
@@ -1758,7 +1760,23 @@
       "toPayment": "Pokračovať na platbu",
       "held": "Peniaze sú blokované, kým nedostaneš objednávku.",
       "code": "Dostaneš kód ku každej objednávke: daj ho až keď ju máš v rukách.",
-      "pay": "Zaplatiť {amount}"
+      "pay": "Zaplatiť {amount}",
+      "totalHandOver": "Spolu na zaplatenie pri odovzdaní",
+      "payTitle": "Ako zaplatiť",
+      "payOnline": "Zaplatiť online",
+      "payOnlineHelp": "Tvoje peniaze sú blokované až do prevzatia.",
+      "onlineSoon": "Spúšťa sa",
+      "soonBadge": "Čoskoro",
+      "payHandOver": "Zaplatiť pri odovzdaní",
+      "payHandOverHelp": "V hotovosti alebo mobilnými peniazmi priamo profesionálovi.",
+      "handOverRefused": "{shop} neprijíma platbu pri odovzdaní.",
+      "handOverDelivery": "{shop}: platíš pri doručení",
+      "handOverPickup": "{shop}: platíš pri vyzdvihnutí u profesionála",
+      "handOverOutside": "Táto platba prebieha mimo aplikácie: blokované peniaze ani ochrana kupujúceho neplatia. Pred zaplatením si skontroluj objednávku.",
+      "send": "Odoslať objednávku ({amount} pri odovzdaní)",
+      "sentTitle": "Objednávka odoslaná",
+      "sentText": "{count, plural, one {Profesionál dostal tvoju objednávku.} other {Profesionáli dostali tvoju objednávku.}} Platíš pri odovzdaní. Všetko sleduj v « Moje objednávky ».",
+      "seeOrders": "Moje objednávky"
     },
     "done": {
       "error": "Nepodarilo sa. Skús znova.",
@@ -1804,7 +1822,9 @@
       "ready": "Pripravená na vyzdvihnutie",
       "handed": "Odovzdaná (kód zadaný)",
       "yes": "hotovo",
-      "no": "ešte nie"
+      "no": "ešte nie",
+      "received": "Prijatá profesionálom",
+      "handedPaid": "Odovzdaná a zaplatená"
     },
     "amounts": {
       "items": "Položky",
@@ -1814,7 +1834,9 @@
       "protection": "Ochrana kupujúcej",
       "total": "Zaplatené spolu",
       "commission": "Provízia Solange Glow",
-      "net": "Pre teba"
+      "net": "Pre teba",
+      "toPay": "Na zaplatenie pri odovzdaní",
+      "toCollect": "Na vybratie pri odovzdaní"
     },
     "handover": {
       "voice": "Vypočuť si orientačné body",
@@ -1838,7 +1860,15 @@
       "carrier": "Prepravca alebo kuriér",
       "tracking": "Sledovacie číslo (nepovinné)",
       "ship": "Odoslať",
-      "shippedDone": "Odoslané: klientka je upozornená."
+      "shippedDone": "Odoslané: klientka je upozornená.",
+      "photoOptional": "Odfotiť balík (nepovinné)",
+      "handOver": "Odovzdaná a zaplatená",
+      "handOverHelp": "Ťukni sem, keď má klient objednávku v rukách a zaplatil ti.",
+      "handOverDone": "Objednávka ukončená. Ďakujeme!",
+      "cancel": "Zrušiť objednávku",
+      "noShow": "Klient neprišiel: zrušiť",
+      "cancelConfirm": "Zrušiť túto objednávku? Tovar sa vráti na sklad.",
+      "cancelDone": "Objednávka zrušená. Klient je informovaný."
     },
     "detail": {
       "error": "Nepodarilo sa. Skús znova.",
@@ -1853,7 +1883,15 @@
       "carrier": "Cez {carrier}, sledovanie {tracking}",
       "carrierOnly": "Cez {carrier}",
       "review": "Zanechať hodnotenie",
-      "payment": "Pozrieť bezpečnú platbu"
+      "payment": "Pozrieť bezpečnú platbu",
+      "payAtDelivery": "Na zaplatenie pri doručení: {amount}, v hotovosti alebo mobilnými peniazmi.",
+      "payAtPickup": "Na zaplatenie pri vyzdvihnutí: {amount}, v hotovosti alebo mobilnými peniazmi.",
+      "collectAtDelivery": "Klient platí pri doručení: {amount} na vybratie.",
+      "collectAtPickup": "Klient platí pri vyzdvihnutí: {amount} na vybratie.",
+      "outside": "Platba mimo aplikácie: blokované peniaze neplatia. Pred zaplatením si skontroluj objednávku.",
+      "cancel": "Zrušiť moju objednávku",
+      "cancelConfirm": "Zrušiť túto objednávku?",
+      "cancelDone": "Objednávka zrušená. Profesionál je informovaný."
     },
     "wishlist": {
       "title": "Moje želania",
@@ -1964,7 +2002,13 @@
         "zoneName": "Názov zóny",
         "zoneFee": "Poplatok ({currency})",
         "addZone": "Pridať zónu",
-        "zoneAdded": "Zóna pridaná"
+        "zoneAdded": "Zóna pridaná",
+        "handOverTitle": "Platba pri odovzdaní",
+        "handOverHelp": "Klient ti platí priamo, v hotovosti alebo mobilnými peniazmi. Mimo aplikácie: bez blokovania a bez provízie.",
+        "payOnDelivery": "Pri doručení",
+        "payOnDeliveryHelp": "Klient platí kuriérovi pri prevzatí.",
+        "payOnPickup": "Pri vyzdvihnutí",
+        "payOnPickupHelp": "Klient platí, keď si príde po objednávku."
       },
       "stats": {
         "period": "Posledných {days} dní",
@@ -2271,7 +2315,10 @@
       "atHome": "U mňa doma, profesionálka príde",
       "travelFee": "Poplatok za cestu: {amount}",
       "paused": "{name} teraz neprijíma online rezervácie. Môžeš jej napísať.",
-      "homeAddress": "Tvoja adresa"
+      "homeAddress": "Tvoja adresa",
+      "paymentLabel": "Platba",
+      "payOnSite": "V deň termínu profesionálovi: v hotovosti alebo mobilnými peniazmi.",
+      "payRestOnSite": "Zvyšok v deň termínu profesionálovi: v hotovosti alebo mobilnými peniazmi."
     },
     "group": {
       "created": "Skupina rezervovaná!",

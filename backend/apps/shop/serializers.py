@@ -7,6 +7,7 @@ from rest_framework import serializers
 
 from apps.core.media.api import MediaSerializer
 from apps.core.media.services import asset_payload
+from apps.core.selectors import get_setting, payments_open
 from apps.live.serializers import LiveQuotaSerializer
 from apps.messaging.payloads import person_payload
 from apps.messaging.serializers import PersonSerializer
@@ -18,6 +19,7 @@ from .models import (
     DeliveryMode,
     DeliveryZone,
     Order,
+    PaymentMethod,
     Product,
     PromoCode,
     SaleLive,
@@ -168,6 +170,12 @@ def delivery_payload(shop) -> dict:
         "partner_delivery": shop.partner_delivery,
         "partner_name": shop.partner_name,
         "return_policy": shop.return_policy,
+        "pay_on_delivery": shop.pay_on_delivery,
+        "pay_on_pickup": shop.pay_on_pickup,
+        # Paying at the hand-over is allowed by the platform in the shop's country.
+        "hand_over_open": bool(
+            get_setting("shop.hand_over_payment", country=shop.pro.country, default=True)
+        ),
         "zones": [zone_payload(z) for z in zones],
     }
 
@@ -191,6 +199,9 @@ class DeliverySerializer(serializers.Serializer):
     partner_delivery = serializers.BooleanField()
     partner_name = serializers.CharField(allow_blank=True)
     return_policy = serializers.CharField(allow_blank=True)
+    pay_on_delivery = serializers.BooleanField()
+    pay_on_pickup = serializers.BooleanField()
+    hand_over_open = serializers.BooleanField()
     zones = ZoneSerializer(many=True)
 
 
@@ -372,6 +383,8 @@ class ShopSettingsInputSerializer(serializers.Serializer):
     partner_delivery = serializers.BooleanField(required=False)
     partner_name = serializers.CharField(required=False, allow_blank=True, max_length=80)
     return_policy = serializers.CharField(required=False, allow_blank=True, max_length=1000)
+    pay_on_delivery = serializers.BooleanField(required=False)
+    pay_on_pickup = serializers.BooleanField(required=False)
 
 
 class ZoneInputSerializer(serializers.Serializer):
@@ -594,8 +607,17 @@ class ShopChoiceSerializer(serializers.Serializer):
     note = serializers.CharField(required=False, allow_blank=True, max_length=300)
 
 
+PAY_HELP = (
+    "online: a secure payment. hand_over: each seller is paid at the delivery or the pick-up, "
+    "outside the app. Empty: online when online payment is open, else hand_over."
+)
+
+
 class QuoteInputSerializer(serializers.Serializer):
     shops = ShopChoiceSerializer(many=True)
+    pay = serializers.ChoiceField(
+        choices=["online", "hand_over"], required=False, allow_blank=True, help_text=PAY_HELP
+    )
 
 
 class CheckoutInputSerializer(QuoteInputSerializer):
@@ -619,6 +641,7 @@ def quote_payload(quotes) -> dict:
             "buyer_fee_minor": q.buyer_fee_minor,
             "total_minor": q.total_minor,
             "prep_days": q.cart.prep_days,
+            "hand_over": q.hand_over_ok,
         }
         for q in quotes
     ]
@@ -626,6 +649,8 @@ def quote_payload(quotes) -> dict:
         "currency": quotes[0].cart.currency,
         "orders": rows,
         "total_minor": sum(q.total_minor for q in quotes),
+        "pay": quotes[0].pay,
+        "online_open": payments_open(),
     }
 
 
@@ -642,16 +667,19 @@ class QuoteRowSerializer(serializers.Serializer):
     buyer_fee_minor = serializers.IntegerField()
     total_minor = serializers.IntegerField()
     prep_days = serializers.IntegerField()
+    hand_over = serializers.BooleanField(help_text="This shop takes payment at the hand-over.")
 
 
 class QuoteSerializer(serializers.Serializer):
     currency = serializers.CharField()
     orders = QuoteRowSerializer(many=True)
     total_minor = serializers.IntegerField()
+    pay = serializers.ChoiceField(choices=["online", "hand_over"])
+    online_open = serializers.BooleanField()
 
 
 class CheckoutResultSerializer(serializers.Serializer):
-    group_id = serializers.UUIDField()
+    group_id = serializers.UUIDField(allow_null=True, help_text="None when paid at the hand-over.")
     checkout_url = serializers.CharField(allow_blank=True)
     orders = serializers.ListField(child=serializers.UUIDField())
 
@@ -662,6 +690,7 @@ class CheckoutResultSerializer(serializers.Serializer):
 def order_payload(order: Order, viewer, *, with_payment: bool = True) -> dict:
     is_seller = order.pro.user_id == viewer.pk
     payment = order.payment
+    hand_over = payment is None
     status = order.status
     OS = Order.Status
     pickup = order.delivery_mode == DeliveryMode.PICKUP
@@ -677,8 +706,9 @@ def order_payload(order: Order, viewer, *, with_payment: bool = True) -> dict:
         "discount_minor": order.discount_minor,
         "items_minor": order.items_minor,
         "delivery_minor": order.delivery_minor,
-        "buyer_fee_minor": payment.buyer_fee_minor,
-        "total_minor": payment.total_minor,
+        "buyer_fee_minor": payment.buyer_fee_minor if payment else 0,
+        "total_minor": payment.total_minor if payment else order.items_minor + order.delivery_minor,
+        "payment_method": order.payment_method,
         "promo_code": order.promo_label,
         "delivery_mode": order.delivery_mode,
         "zone_name": order.zone_name,
@@ -722,14 +752,18 @@ def order_payload(order: Order, viewer, *, with_payment: bool = True) -> dict:
             }
             for line in order.lines.all()
         ],
-        "payment": payment_payload(payment, viewer) if with_payment else None,
+        "payment": payment_payload(payment, viewer) if with_payment and payment else None,
         "can": {
             "prepare": is_seller and status == OS.NEW,
             "ship": is_seller and status in (OS.NEW, OS.PREPARING) and not pickup,
             "ready": is_seller and status in (OS.NEW, OS.PREPARING) and pickup,
             "cancel": (is_seller and status in (OS.NEW, OS.PREPARING))
+            or (is_seller and hand_over and status in (OS.SHIPPED, OS.READY))
             or (not is_seller and status == OS.NEW),
-            "pay": not is_seller and status == OS.PENDING_PAYMENT,
+            "pay": not is_seller and status == OS.PENDING_PAYMENT and payment is not None,
+            "hand_over": is_seller
+            and hand_over
+            and status in (OS.NEW, OS.PREPARING, OS.SHIPPED, OS.READY),
         },
     }
 
@@ -764,6 +798,7 @@ class OrderAbilitiesSerializer(serializers.Serializer):
     ready = serializers.BooleanField()
     cancel = serializers.BooleanField()
     pay = serializers.BooleanField()
+    hand_over = serializers.BooleanField(help_text="Seller: handed over and paid (no payment).")
 
 
 class OrderSerializer(serializers.Serializer):
@@ -779,6 +814,7 @@ class OrderSerializer(serializers.Serializer):
     delivery_minor = serializers.IntegerField()
     buyer_fee_minor = serializers.IntegerField()
     total_minor = serializers.IntegerField()
+    payment_method = serializers.ChoiceField(choices=PaymentMethod.choices)
     promo_code = serializers.CharField(allow_blank=True)
     delivery_mode = serializers.ChoiceField(choices=DeliveryMode.choices)
     zone_name = serializers.CharField(allow_blank=True)
@@ -805,7 +841,9 @@ class OrderListSerializer(serializers.Serializer):
 
 
 class ShipInputSerializer(serializers.Serializer):
-    proof = serializers.UUIDField()
+    proof = serializers.UUIDField(
+        required=False, allow_null=True, help_text="Required for an order paid online."
+    )
     carrier = serializers.CharField(required=False, allow_blank=True, max_length=80)
     tracking_number = serializers.CharField(required=False, allow_blank=True, max_length=80)
 

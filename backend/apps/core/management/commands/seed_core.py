@@ -947,6 +947,22 @@ SETTINGS += [
         "Stock under which « My shop » warns that a product runs out.",
     ),
     _s(
+        "shop.hand_over_payment",
+        BOOL,
+        "true",
+        "Les clients peuvent payer à la remise (livraison ou retrait), hors de l'appli, "
+        "dans les boutiques qui l'acceptent.",
+        "Clients can pay at the hand-over (delivery or pick-up), outside the app, "
+        "in the shops that accept it.",
+    ),
+    _s(
+        "shop.hand_over_max_open",
+        INT,
+        "3",
+        "Nombre maximum de commandes à payer à la remise qu'un client peut avoir en cours.",
+        "Most orders to pay at the hand-over that a client can have under way.",
+    ),
+    _s(
         "throttle.shop",
         STR,
         "120/minute",

@@ -55,8 +55,11 @@ export const removeFromCart = (itemId: string) =>
     api.DELETE("/api/v1/shop/cart/items/{item_id}", { params: { path: { item_id: itemId } } }),
   );
 
-export const getQuote = (shops: ShopChoice[]) =>
-  unwrap(api.POST("/api/v1/shop/checkout/quote", { body: { shops } }));
+/** online: a secure payment; hand_over: each seller is paid at the delivery or the pick-up. */
+export type PayWay = "online" | "hand_over";
+
+export const getQuote = (shops: ShopChoice[], pay?: PayWay) =>
+  unwrap(api.POST("/api/v1/shop/checkout/quote", { body: { shops, pay } }));
 
 export const placeOrders = (body: Schemas["CheckoutInputRequest"]) =>
   unwrap(api.POST("/api/v1/shop/checkout", { body }));
@@ -88,6 +91,9 @@ export const shipOrder = (id: string, body: Schemas["ShipInputRequest"]) =>
 
 export const orderReady = (id: string) =>
   unwrap(api.POST("/api/v1/shop/orders/{order_id}/ready", order(id)));
+
+export const orderHandedOver = (id: string) =>
+  unwrap(api.POST("/api/v1/shop/orders/{order_id}/handed-over", order(id)));
 
 export const cancelOrder = (id: string) =>
   unwrap(api.POST("/api/v1/shop/orders/{order_id}/cancel", order(id)));

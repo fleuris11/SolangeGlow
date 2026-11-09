@@ -6,12 +6,15 @@ import {
   Circle,
   CookingPot,
   CreditCard,
+  HandCoins,
+  Info,
   MapPin,
   Package,
   Phone,
   Star,
   Storefront,
   Waveform,
+  XCircle,
 } from "@phosphor-icons/react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
@@ -31,7 +34,9 @@ import { useToast } from "@/components/ui/toast";
 import { ApiError } from "@/lib/api/client";
 import type { Payment } from "@/lib/api/payments";
 import {
+  cancelOrder,
   getOrder,
+  orderHandedOver,
   orderReady,
   payOrder,
   prepareOrder,
@@ -51,18 +56,21 @@ const VideoPlayer = dynamic(() =>
 function OrderSteps({ order }: { order: Order }) {
   const t = useTranslations("shop.steps");
   const pickup = order.delivery_mode === "pickup";
+  const handOver = order.payment_method !== "online";
   const reached = ["new", "preparing", "shipped", "ready", "completed", "disputed", "refunded"];
   const done = {
     paid: reached.includes(order.status),
     preparing: !!order.preparing_at || ["shipped", "ready", "completed"].includes(order.status),
-    sent: !!order.payment?.shipped_at,
+    sent: handOver
+      ? ["shipped", "ready", "completed"].includes(order.status)
+      : !!order.payment?.shipped_at,
     handed: order.status === "completed",
   };
   const steps = [
-    ["paid", t("paid")],
+    ["paid", handOver ? t("received") : t("paid")],
     ["preparing", t("preparing")],
     ["sent", pickup ? t("ready") : t("shipped")],
-    ["handed", t("handed")],
+    ["handed", handOver ? t("handedPaid") : t("handed")],
   ] as const;
   return (
     <ol className="flex flex-col gap-2" aria-label={t("label")}>
@@ -98,7 +106,13 @@ function Amounts({ order }: { order: Order }) {
       : []),
     [t("delivery"), order.delivery_minor ? money(order.delivery_minor) : t("free")],
   ];
-  if (order.role === "buyer") {
+  if (order.payment_method !== "online") {
+    rows.push([
+      order.role === "buyer" ? t("toPay") : t("toCollect"),
+      money(order.total_minor),
+      true,
+    ]);
+  } else if (order.role === "buyer") {
     rows.push([t("protection"), money(order.buyer_fee_minor)]);
     rows.push([t("total"), money(order.total_minor), true]);
   } else if (payment?.seller_net_minor !== null && payment?.seller_net_minor !== undefined) {
@@ -204,6 +218,7 @@ function SellerSteps({ order, onChange }: { order: Order; onChange: (o: Order) =
   const [proof, setProof] = useState<string | null>(null);
   const proofInput = useRef<HTMLInputElement>(null);
   const can = order.can;
+  const handOver = order.payment_method !== "online";
 
   const run = async (step: () => Promise<Order>, done: string) => {
     setBusy(true);
@@ -247,7 +262,7 @@ function SellerSteps({ order, onChange }: { order: Order; onChange: (o: Order) =
           className="border-trait rounded-card flex flex-col gap-3 border p-4"
           onSubmit={(event) => {
             event.preventDefault();
-            if (!proof) return;
+            if (!proof && !handOver) return;
             void run(
               () => shipOrder(order.id, { proof, carrier, tracking_number: tracking }),
               t("shippedDone"),
@@ -286,7 +301,7 @@ function SellerSteps({ order, onChange }: { order: Order; onChange: (o: Order) =
             onClick={() => proofInput.current?.click()}
           >
             <Camera aria-hidden size={22} weight="bold" />
-            {proof ? t("photoAgain") : t("photo")}
+            {proof ? t("photoAgain") : handOver ? t("photoOptional") : t("photo")}
           </Button>
           {proof && (
             <p className="text-feuille flex items-center gap-2 font-bold">
@@ -306,11 +321,71 @@ function SellerSteps({ order, onChange }: { order: Order; onChange: (o: Order) =
             maxLength={80}
             onChange={(e) => setTracking(e.target.value)}
           />
-          <Button type="submit" size="lg" disabled={busy || !proof}>
+          <Button type="submit" size="lg" disabled={busy || (!proof && !handOver)}>
             {t("ship")}
           </Button>
         </form>
       )}
+      {can.hand_over && (
+        <div className="border-trait rounded-card flex flex-col gap-3 border p-4">
+          <p className="flex items-start gap-2">
+            <HandCoins aria-hidden size={24} className="text-hibiscus shrink-0" />
+            {t("handOverHelp")}
+          </p>
+          <Button
+            size="lg"
+            fullWidth
+            variant={can.prepare || can.ready || can.ship ? "secondary" : "primary"}
+            disabled={busy}
+            onClick={() => void run(() => orderHandedOver(order.id), t("handOverDone"))}
+          >
+            <CheckCircle aria-hidden size={24} weight="bold" />
+            {t("handOver")}
+          </Button>
+        </div>
+      )}
+      {handOver && can.cancel && (
+        <Button
+          variant="quiet"
+          disabled={busy}
+          onClick={() => {
+            if (window.confirm(t("cancelConfirm"))) {
+              void run(() => cancelOrder(order.id), t("cancelDone"));
+            }
+          }}
+        >
+          <XCircle aria-hidden size={22} weight="bold" />
+          {["shipped", "ready"].includes(order.status) ? t("noShow") : t("cancel")}
+        </Button>
+      )}
+    </div>
+  );
+}
+
+/** Paid at the hand-over: how much, where, and that it happens outside the app. */
+function HandOverPayment({ order }: { order: Order }) {
+  const t = useTranslations("shop.detail");
+  const locale = useLocale();
+  const amount = formatMoney(order.total_minor, order.currency, locale);
+  const pickup = order.payment_method === "on_pickup";
+  if (order.role === "seller") {
+    return (
+      <p className="bg-poudre flex items-start gap-3 rounded-2xl p-4">
+        <HandCoins aria-hidden size={24} className="text-hibiscus shrink-0" />
+        <span>{t(pickup ? "collectAtPickup" : "collectAtDelivery", { amount })}</span>
+      </p>
+    );
+  }
+  return (
+    <div className="flex flex-col gap-2">
+      <p className="bg-poudre flex items-start gap-3 rounded-2xl p-4">
+        <HandCoins aria-hidden size={24} className="text-hibiscus shrink-0" />
+        <span className="font-bold">{t(pickup ? "payAtPickup" : "payAtDelivery", { amount })}</span>
+      </p>
+      <p className="text-small text-prune-doux flex items-start gap-2">
+        <Info aria-hidden size={18} className="mt-0.5 shrink-0" />
+        {t("outside")}
+      </p>
     </div>
   );
 }
@@ -392,6 +467,10 @@ export function OrderDetail({ orderId }: { orderId: string }) {
         </div>
       )}
 
+      {order.payment_method !== "online" && !["completed", "cancelled"].includes(order.status) && (
+        <HandOverPayment order={order} />
+      )}
+
       {payment?.receipt_code && <ReceiptCode code={payment.receipt_code} />}
       {!["pending_payment", "cancelled"].includes(order.status) && <OrderSteps order={order} />}
 
@@ -461,6 +540,26 @@ export function OrderDetail({ orderId }: { orderId: string }) {
         ) : (
           <SellerActions payment={payment} onChange={setPayment} />
         ))}
+
+      {buyer && !payment && order.can.cancel && (
+        <Button
+          variant="quiet"
+          onClick={() => {
+            if (!window.confirm(t("cancelConfirm"))) return;
+            cancelOrder(order.id)
+              .then((next) => {
+                setOrder(next);
+                toast(t("cancelDone"), "success");
+              })
+              .catch((failure: unknown) =>
+                toast(failure instanceof ApiError ? failure.message : t("error"), "warning"),
+              );
+          }}
+        >
+          <XCircle aria-hidden size={22} weight="bold" />
+          {t("cancel")}
+        </Button>
+      )}
 
       {buyer && order.status === "completed" && (
         <Link href="/me/reviews" className={buttonClasses({ variant: "secondary" })}>

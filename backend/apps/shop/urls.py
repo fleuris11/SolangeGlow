@@ -32,6 +32,7 @@ urlpatterns = [
     path(f"{ORDER}/ship", views.OrderShipView.as_view(), name="shop-order-ship"),
     path(f"{ORDER}/ready", views.OrderReadyView.as_view(), name="shop-order-ready"),
     path(f"{ORDER}/cancel", views.OrderCancelView.as_view(), name="shop-order-cancel"),
+    path(f"{ORDER}/handed-over", views.OrderHandOverView.as_view(), name="shop-order-handed-over"),
     path(f"{ORDER}/pay", views.OrderPayView.as_view(), name="shop-order-pay"),
     path("shop/wishlist", views.WishlistView.as_view(), name="shop-wishlist"),
     path(

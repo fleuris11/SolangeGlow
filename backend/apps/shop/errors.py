@@ -185,6 +185,20 @@ class MixedCurrencies(DomainError):
     message = _("Pay the shops of each country separately.")
 
 
+class HandOverNotAccepted(DomainError):
+    code = "hand_over_not_accepted"
+    message = _("%(shop)s does not take payment at the hand-over for this way. Choose another way.")
+
+
+class TooManyUnpaid(DomainError):
+    code = "too_many_unpaid"
+    status_code = 429
+    message = _(
+        "You already have %(max)s orders to pay at the hand-over. Receive them first, "
+        "then order again."
+    )
+
+
 # --- Orders --------------------------------------------------------------------------------------
 
 

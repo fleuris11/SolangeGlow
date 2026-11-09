@@ -22,6 +22,9 @@ const DELIVERY = {
   partner_delivery: false,
   partner_name: "",
   return_policy: "",
+  pay_on_delivery: true,
+  pay_on_pickup: true,
+  hand_over_open: true,
   zones: [],
 };
 
@@ -166,16 +169,15 @@ describe("CartScreen", () => {
     expect(order).toHaveAttribute("href", "/fr/checkout");
   });
 
-  it("keeps the cart but says payment opens soon while the owner keeps it closed", async () => {
+  it("still orders while online payment is closed: paid at the hand-over", async () => {
     signIn();
     mockApi([
       { path: "/shop/cart", body: oneShop() },
       { path: "/platform", body: { payments_open: false } },
     ]);
     renderWithProviders(<CartScreen />);
-    expect(await screen.findByText("Le paiement en ligne ouvre bientôt")).toBeVisible();
-    expect(screen.getByText("Caramel")).toBeVisible();
-    expect(screen.queryByRole("link", { name: /Commander/ })).not.toBeInTheDocument();
+    expect(await screen.findByText(/Tu paies à la remise/)).toBeVisible();
+    expect(screen.getByRole("link", { name: /Commander/ })).toHaveAttribute("href", "/fr/checkout");
   });
 
   it("invites to explore when it is empty", async () => {

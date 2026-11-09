@@ -406,7 +406,14 @@ def unblock(product: Product, *, actor) -> Product:
 @transaction.atomic
 def update_shop(user, **changes) -> ShopProfile:
     shop = shop_of(pro_of(user))
-    for field in ("is_open", "pickup", "seller_delivery", "partner_delivery"):
+    for field in (
+        "is_open",
+        "pickup",
+        "seller_delivery",
+        "partner_delivery",
+        "pay_on_delivery",
+        "pay_on_pickup",
+    ):
         if field in changes:
             setattr(shop, field, bool(changes[field]))
     for field, size in (("pickup_note", 300), ("partner_name", 80), ("return_policy", 1000)):

@@ -150,3 +150,48 @@ test("a visitor signs in to buy and comes back to the product", async ({ page })
   await page.getByRole("button", { name: /Ajouter au panier/ }).click();
   await expect(page).toHaveURL(/\/fr\/auth$/);
 });
+
+test("order now, pay the professional at the pick-up", async ({ browser }) => {
+  test.setTimeout(240_000);
+  const client = await browser.newContext({ viewport: VIEWPORTS.mobile });
+  const page = await client.newPage();
+  await signInAsNewClient(page, "Inès");
+  await openWith(page, "/fr/gloria/shop", LOOK);
+  await page.getByRole("link", { name: /Fond de teint Velours/ }).click();
+  await page.getByRole("button", { name: /^Caramel/ }).click();
+  await page.getByRole("button", { name: /Ajouter au panier/ }).click();
+  await page.getByRole("link", { name: "Voir mon panier" }).click();
+  await page.getByRole("link", { name: /^Commander/ }).click();
+
+  await expect(page.getByText("Étape 1 sur 3")).toBeVisible();
+  await page.getByRole("button", { name: "Voir le récapitulatif" }).click();
+  await page.getByRole("button", { name: "Continuer vers le paiement" }).click();
+  await page.getByText("Payer à la remise").click();
+  await expect(page.getByText(/tu paies au retrait/)).toBeVisible();
+  await expect(page.getByText("Protection acheteur", { exact: true })).toHaveCount(0);
+  await expectNoSeriousA11yIssue(page);
+  await page.screenshot({ path: "e2e/screenshots/shop-checkout-hand-over.png", fullPage: true });
+  await page.getByRole("button", { name: /^Envoyer ma commande/ }).click();
+  await expect(page.getByRole("heading", { name: "Commande envoyée" })).toBeVisible();
+  await page.getByRole("link", { name: "Voir mes commandes" }).click();
+  await page
+    .getByRole("link", { name: /Gloria Make-up/ })
+    .first()
+    .click();
+  await expect(page).toHaveURL(/\/fr\/orders\/[0-9a-f-]+$/);
+  const orderUrl = new URL(page.url()).pathname;
+  await expect(page.getByText(/À payer au retrait/)).toBeVisible();
+  await page.screenshot({ path: "e2e/screenshots/shop-order-hand-over.png", fullPage: true });
+
+  const shop = await browser.newContext({ viewport: VIEWPORTS.mobile });
+  const sellerPage = await shop.newPage();
+  await signInWithPhone(sellerPage, SELLER_PHONE);
+  await openWith(sellerPage, orderUrl, LOOK);
+  await expect(sellerPage.getByText(/Le client paie au retrait/)).toBeVisible();
+  await sellerPage.getByRole("button", { name: "C'est prêt à retirer" }).click();
+  await expect(sellerPage.getByRole("heading", { name: "Prête à retirer" })).toBeVisible();
+  await sellerPage.getByRole("button", { name: "Remise et payée" }).click();
+  await expect(sellerPage.getByRole("heading", { name: "Remise, terminée" })).toBeVisible();
+  await client.close();
+  await shop.close();
+});

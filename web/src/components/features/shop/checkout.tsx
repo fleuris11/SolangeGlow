@@ -1,6 +1,16 @@
 "use client";
 
-import { LockKey, Moped, ShieldCheck, Storefront, Truck } from "@phosphor-icons/react";
+import {
+  CheckCircle,
+  Clock,
+  HandCoins,
+  Info,
+  LockKey,
+  Moped,
+  ShieldCheck,
+  Storefront,
+  Truck,
+} from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
 import { useState, type ReactNode } from "react";
@@ -18,6 +28,7 @@ import {
   placeOrders,
   type CartShop,
   type DeliveryMode,
+  type PayWay,
   type Quote,
   type ShopChoice,
 } from "@/lib/api/shop";
@@ -28,7 +39,6 @@ import { formatMoney } from "@/lib/money";
 import { usePaymentsOpen } from "@/lib/platform/use-payments-open";
 
 import { GlowCardPay } from "../gifts/screens";
-import { PaymentsSoon } from "../payments/payments-soon";
 import { CART_KEY } from "./cart";
 
 type Choice = { mode: DeliveryMode; zoneId: string | null; promo: string; note: string };
@@ -54,21 +64,31 @@ function Option({
   selected,
   onSelect,
   name,
+  disabled = false,
   children,
 }: {
   selected: boolean;
   onSelect: () => void;
   name: string;
+  disabled?: boolean;
   children: ReactNode;
 }) {
   return (
     <label
       className={cn(
-        "flex min-h-14 cursor-pointer items-center gap-3 rounded-2xl border-2 px-4 py-2",
-        selected ? "border-hibiscus bg-poudre" : "border-trait",
+        "flex min-h-14 items-center gap-3 rounded-2xl border-2 px-4 py-2",
+        disabled ? "border-trait cursor-not-allowed opacity-70" : "cursor-pointer",
+        !disabled && (selected ? "border-hibiscus bg-poudre" : "border-trait"),
       )}
     >
-      <input type="radio" name={name} checked={selected} onChange={onSelect} className="sr-only" />
+      <input
+        type="radio"
+        name={name}
+        checked={selected}
+        disabled={disabled}
+        onChange={onSelect}
+        className="sr-only"
+      />
       {children}
     </label>
   );
@@ -200,7 +220,7 @@ function Summary({ quote }: { quote: Quote }) {
                 ? [[t("discount", { code: order.promo_code }), `− ${money(order.discount_minor)}`]]
                 : []),
               [t("delivery"), order.delivery_minor ? money(order.delivery_minor) : t("free")],
-              [t("protection"), money(order.buyer_fee_minor)],
+              ...(quote.pay === "online" ? [[t("protection"), money(order.buyer_fee_minor)]] : []),
             ].map(([label, value]) => (
               <div key={label} className="flex justify-between gap-4">
                 <dt>{label}</dt>
@@ -214,16 +234,88 @@ function Summary({ quote }: { quote: Quote }) {
           </dl>
         </section>
       ))}
-      <p className="text-small text-prune-doux">{t("protectionHelp")}</p>
+      {quote.pay === "online" && (
+        <p className="text-small text-prune-doux">{t("protectionHelp")}</p>
+      )}
       <p className="text-title flex justify-between font-bold">
-        <span>{t("total")}</span>
+        <span>{quote.pay === "online" ? t("total") : t("totalHandOver")}</span>
         <span>{money(quote.total_minor)}</span>
       </p>
     </div>
   );
 }
 
-/** The checkout in 3 steps: hand-over, summary, payment (one payment for every shop). */
+/** Step 3: online (secure payment), or at the hand-over (paid to each seller, outside the app).
+ * While online payment is being opened, its card stays visible, marked « Soon ». */
+function PayChoice({ quote, onPay }: { quote: Quote; onPay: (pay: PayWay) => void }) {
+  const t = useTranslations("shop.checkout");
+  const refused = quote.orders.filter((order) => !order.hand_over);
+  const onlineOpen = quote.online_open;
+  return (
+    <fieldset className="flex flex-col gap-3">
+      <legend className="text-lead mb-2 font-bold">{t("payTitle")}</legend>
+      <Option
+        name="pay"
+        selected={quote.pay === "online"}
+        disabled={!onlineOpen}
+        onSelect={() => onPay("online")}
+      >
+        <span className="text-hibiscus shrink-0">
+          <LockKey aria-hidden size={26} />
+        </span>
+        <span className="flex flex-1 flex-col">
+          <span className="font-bold">{t("payOnline")}</span>
+          <span className="text-small text-prune-doux">
+            {onlineOpen ? t("payOnlineHelp") : t("onlineSoon")}
+          </span>
+        </span>
+        {!onlineOpen && (
+          <span className="bg-prune text-lait text-mention flex shrink-0 items-center gap-1 rounded-full px-3 py-1 font-bold">
+            <Clock aria-hidden size={14} weight="bold" />
+            {t("soonBadge")}
+          </span>
+        )}
+      </Option>
+      <Option
+        name="pay"
+        selected={quote.pay === "hand_over"}
+        disabled={refused.length > 0}
+        onSelect={() => onPay("hand_over")}
+      >
+        <span className="text-hibiscus shrink-0">
+          <HandCoins aria-hidden size={26} />
+        </span>
+        <span className="flex flex-1 flex-col">
+          <span className="font-bold">{t("payHandOver")}</span>
+          <span className="text-small text-prune-doux">{t("payHandOverHelp")}</span>
+        </span>
+      </Option>
+      {refused.map((order) => (
+        <p key={order.pro_id} className="text-small text-alerte">
+          {t("handOverRefused", { shop: order.shop })}
+        </p>
+      ))}
+    </fieldset>
+  );
+}
+
+/** Sent to the sellers (paid at the hand-over): what happens next. */
+function Sent({ count }: { count: number }) {
+  const t = useTranslations("shop.checkout");
+  return (
+    <div role="status" className="flex flex-col items-center gap-4 py-6 text-center">
+      <CheckCircle aria-hidden size={64} weight="fill" className="text-feuille" />
+      <h1 className="text-headline font-bold">{t("sentTitle")}</h1>
+      <p className="max-w-md">{t("sentText", { count })}</p>
+      <Link href="/orders" className={buttonClasses({ size: "lg", fullWidth: true })}>
+        {t("seeOrders")}
+      </Link>
+    </div>
+  );
+}
+
+/** The checkout in 3 steps: hand-over, summary, payment (one payment for every shop, or each
+ * seller paid at the hand-over). */
 export function CheckoutFlow() {
   const t = useTranslations("shop.checkout");
   const locale = useLocale();
@@ -237,12 +329,18 @@ export function CheckoutFlow() {
   const [landmarks, setLandmarks] = useState("");
   const [phone, setPhone] = useState<string | null>(null);
   const [quote, setQuote] = useState<Quote | null>(null);
-  const [placed, setPlaced] = useState<{ group_id: string; checkout_url: string } | null>(null);
+  const [placed, setPlaced] = useState<{
+    group_id: string | null;
+    checkout_url: string;
+    orders: string[];
+  } | null>(null);
   const [busy, setBusy] = useState(false);
   const paymentsOpen = usePaymentsOpen();
+  const [chosenPay, setChosenPay] = useState<PayWay | null>(null);
+  const pay: PayWay = chosenPay ?? (paymentsOpen ? "online" : "hand_over");
 
   if (cart.isPending) return <Skeleton className="rounded-card h-80" />;
-  if (!paymentsOpen) return <PaymentsSoon meanwhile="shop" />;
+  if (placed && !placed.group_id) return <Sent count={placed.orders.length} />;
   const allShops = cart.data?.shops ?? [];
   const ready = allShops.filter(
     (shop) =>
@@ -303,8 +401,15 @@ export function CheckoutFlow() {
 
   const toSummary = () =>
     run(async () => {
-      setQuote(await getQuote(body));
+      setQuote(await getQuote(body, pay));
       setStep(2);
+    });
+
+  // Another way to pay changes the fees (no buyer protection at the hand-over).
+  const choosePay = (way: PayWay) =>
+    run(async () => {
+      setChosenPay(way);
+      setQuote(await getQuote(body, way));
     });
 
   // The orders are created once: paying by the provider or with a Glow gift card.
@@ -315,14 +420,21 @@ export function CheckoutFlow() {
       address: delivering ? address : "",
       landmarks: delivering ? landmarks : "",
       phone: delivering ? phoneValue : "",
+      pay: quote?.pay ?? pay,
     });
     setPlaced(result);
     return result;
   };
 
-  const pay = () =>
+  const payOnline = () =>
     run(async () => {
       window.location.assign((await place()).checkout_url);
+    });
+
+  const send = () =>
+    run(async () => {
+      await place();
+      window.scrollTo({ top: 0 });
     });
 
   const titles = [t("step1"), t("step2"), t("step3")];
@@ -386,8 +498,38 @@ export function CheckoutFlow() {
         </div>
       )}
 
-      {step === 3 && quote && (
+      {step === 3 && quote && quote.pay === "hand_over" && (
         <div className="flex flex-col gap-6">
+          <PayChoice quote={quote} onPay={(way) => void choosePay(way)} />
+          <ul className="flex flex-col gap-3">
+            {quote.orders.map((order) => (
+              <li key={order.pro_id} className="bg-poudre flex items-start gap-3 rounded-2xl p-4">
+                <span className="text-hibiscus shrink-0">{MODE_ICONS[order.delivery_mode]}</span>
+                <span className="flex flex-col">
+                  <span className="font-bold">
+                    {order.delivery_mode === "pickup"
+                      ? t("handOverPickup", { shop: order.shop })
+                      : t("handOverDelivery", { shop: order.shop })}
+                  </span>
+                  <span>{formatMoney(order.total_minor, quote.currency, locale)}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-trait flex items-start gap-3 rounded-2xl border p-4">
+            <Info aria-hidden size={24} className="text-prune-doux shrink-0" />
+            <span>{t("handOverOutside")}</span>
+          </p>
+          <Button size="lg" fullWidth disabled={busy} onClick={() => void send()}>
+            <HandCoins aria-hidden size={24} weight="bold" />
+            {t("send", { amount: formatMoney(quote.total_minor, quote.currency, locale) })}
+          </Button>
+        </div>
+      )}
+
+      {step === 3 && quote && quote.pay === "online" && (
+        <div className="flex flex-col gap-6">
+          <PayChoice quote={quote} onPay={(way) => void choosePay(way)} />
           <ul className="flex flex-col gap-4">
             {[
               [<LockKey key="l" aria-hidden size={28} />, t("held")],
@@ -399,13 +541,13 @@ export function CheckoutFlow() {
               </li>
             ))}
           </ul>
-          <Button size="lg" fullWidth disabled={busy} onClick={() => void pay()}>
+          <Button size="lg" fullWidth disabled={busy} onClick={() => void payOnline()}>
             <LockKey aria-hidden size={24} weight="bold" />
             {t("pay", { amount: formatMoney(quote.total_minor, quote.currency, locale) })}
           </Button>
           {quote.currency === "XOF" && (
             <GlowCardPay
-              prepare={async () => ({ groupId: (await place()).group_id })}
+              prepare={async () => ({ groupId: (await place()).group_id ?? "" })}
               onPaid={(target) =>
                 router.push(`/checkout/done/${"groupId" in target ? target.groupId : ""}`)
               }

@@ -17,8 +17,6 @@ import { mediaSrc } from "@/lib/media";
 import { formatMoney } from "@/lib/money";
 import { usePaymentsOpen } from "@/lib/platform/use-payments-open";
 
-import { PaymentsSoon } from "../payments/payments-soon";
-
 export const CART_KEY = ["cart"];
 
 /** The cart: one block per shop, the checkout opens for all the shops that can sell. */
@@ -160,11 +158,11 @@ export function CartScreen() {
           </p>
         </section>
       ))}
-      <p className="text-small text-prune-doux">{t("protection")}</p>
+      <p className="text-small text-prune-doux">
+        {paymentsOpen ? t("protection") : t("payHandOver")}
+      </p>
       {!sameCurrency && <p className="bg-poudre rounded-2xl p-3">{t("twoCurrencies")}</p>}
-      {!paymentsOpen ? (
-        <PaymentsSoon meanwhile="shop" />
-      ) : ready.length > 0 ? (
+      {ready.length > 0 ? (
         <Link href="/checkout" className={buttonClasses({ size: "lg", fullWidth: true })}>
           {t("checkout", { amount: formatMoney(total, currency, locale) })}
         </Link>

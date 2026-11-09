@@ -3,6 +3,10 @@
 New (paid) → being prepared → shipped (parcel photo + tracking) or ready to pick up →
 handed over (receipt code, money to the seller). The money states come from the payment
 (module 5), which calls `on_payment_change` at every move.
+
+Paid at the hand-over, an order has no payment: it is new at once, the parcel photo is
+optional, and the seller closes it herself with « Handed over and paid » (`hand_over`). She can
+also cancel it once shipped or ready, when the client never came or refused the parcel.
 """
 
 from __future__ import annotations
@@ -25,12 +29,22 @@ PS = Payment.Status
 
 
 def _locked(order: Order) -> Order:
-    return Order.objects.select_for_update().select_related("payment", "pro").get(pk=order.pk)
+    # Only the order's row is locked: its payment may be missing (paid at the hand-over).
+    return (
+        Order.objects.select_for_update(of=("self",))
+        .select_related("payment", "pro")
+        .get(pk=order.pk)
+    )
 
 
 def _seller_only(order: Order, user) -> None:
     if order.pro.user_id != user.pk:
         raise errors.OrderNotFound()
+
+
+def _tell(person, event: str, order: Order, **extra) -> None:
+    context = {"reference": order.reference, "shop": order.pro.display_name, **extra}
+    transaction.on_commit(lambda: notify(person, event, context, link=f"/orders/{order.pk}"))
 
 
 @transaction.atomic
@@ -61,10 +75,22 @@ def ship(user, order: Order, *, proof_media_id, carrier: str = "", tracking_numb
     _seller_only(order, user)
     if order.status not in (OS.NEW, OS.PREPARING) or order.delivery_mode == DeliveryMode.PICKUP:
         raise errors.InvalidStep()
-    proof = MediaAsset.objects.filter(
-        pk=proof_media_id, owner=user, purpose="delivery_proof"
-    ).first()
-    if proof is None or proof.status in (MediaAsset.Status.REJECTED, MediaAsset.Status.FAILED):
+    proof = (
+        MediaAsset.objects.filter(pk=proof_media_id, owner=user, purpose="delivery_proof").first()
+        if proof_media_id
+        else None
+    )
+    if proof is not None and proof.status in (MediaAsset.Status.REJECTED, MediaAsset.Status.FAILED):
+        proof = None
+    if order.payment is None:
+        # Paid at the hand-over: no money waits, the photo is only a help.
+        order.status = OS.SHIPPED
+        order.shipping_proof = proof
+        order.save(update_fields=["status", "shipping_proof", "updated_at"])
+        record("shop.order_shipped", order, actor=user)
+        _tell(order.buyer, "shop.order_on_the_way", order)
+        return order
+    if proof is None:
         raise errors.ParcelPhotoNeeded()
     payment_services.ship(
         order.payment,
@@ -84,20 +110,67 @@ def ready_for_pickup(user, order: Order) -> Order:
     _seller_only(order, user)
     if order.status not in (OS.NEW, OS.PREPARING) or order.delivery_mode != DeliveryMode.PICKUP:
         raise errors.InvalidStep()
-    payment_services.ship(order.payment, actor=user)
+    if order.payment is None:
+        record("shop.order_ready", order, actor=user)
+        _tell(order.buyer, "shop.order_ready", order)
+    else:
+        payment_services.ship(order.payment, actor=user)
     order.status = OS.READY
     order.save(update_fields=["status", "updated_at"])
     return order
 
 
+@transaction.atomic
+def hand_over(user, order: Order) -> Order:
+    """Paid at the hand-over: the seller gave the order and received the money."""
+    order = _locked(order)
+    _seller_only(order, user)
+    under_way = (OS.NEW, OS.PREPARING, OS.SHIPPED, OS.READY)
+    if order.payment is not None or order.status not in under_way:
+        raise errors.InvalidStep()
+    order.status = OS.COMPLETED
+    order.completed_at = timezone.now()
+    _count_sold(order)
+    order.save()
+    record("shop.order_handed_over", order, actor=user)
+    _tell(order.buyer, "shop.order_handed_over", order)
+    return order
+
+
 def cancel(user, order: Order) -> Order:
-    """The client while it is new, the seller until she ships: everything is refunded."""
+    """The client while it is new, the seller until she ships: everything is refunded.
+
+    Paid at the hand-over, the seller can also cancel once shipped or ready (the client never
+    came, or refused the parcel): the products go back to the stock."""
     if user.pk not in (order.buyer_id, order.pro.user_id):
         raise errors.OrderNotFound()
+    if order.payment is None:
+        return _cancel_unpaid(user, order)
     if order.status not in (OS.NEW, OS.PREPARING):
         raise errors.InvalidStep()
     payment_services.cancel(order.payment, actor=user)
     order.refresh_from_db()
+    return order
+
+
+def _cancel_unpaid(user, order: Order) -> Order:
+    seller = user.pk == order.pro.user_id
+    with transaction.atomic():
+        order = _locked(order)
+        allowed = (OS.NEW, OS.PREPARING, OS.SHIPPED, OS.READY) if seller else (OS.NEW,)
+        if order.status not in allowed:
+            raise errors.InvalidStep()
+        order.status = OS.CANCELLED
+        order.cancelled_at = timezone.now()
+        restocked = _give_stock_back(order)
+        order.save()
+        record("shop.order_cancelled", order, actor=user)
+        other = order.buyer if seller else order.pro.user
+        _tell(other, "shop.order_cancelled", order)
+    if restocked:
+        from . import alerts
+
+        alerts.notify_back_in_stock(restocked)
     return order
 
 
