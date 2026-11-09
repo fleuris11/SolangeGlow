@@ -149,6 +149,13 @@ export const updateLesson = (lessonId: string, body: Schemas["PatchedLessonInput
       body,
     }),
   );
+export const moveLesson = (lessonId: string, up: boolean) =>
+  unwrap(
+    api.POST("/api/v1/academy/studio/lessons/{lesson_id}/move", {
+      params: { path: { lesson_id: lessonId } },
+      body: { up },
+    }),
+  );
 export const deleteLesson = (lessonId: string) =>
   unwrap(
     api.DELETE("/api/v1/academy/studio/lessons/{lesson_id}", {

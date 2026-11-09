@@ -3327,7 +3327,10 @@
       "published": "Publiée.",
       "seePage": "Voir la page de la formation",
       "archive": "Retirer du catalogue",
-      "archived": "Retirée du catalogue."
+      "archived": "Retirée du catalogue.",
+      "dropHint": "ou glisse ton fichier ici",
+      "moveUp": "Monter « {title} »",
+      "moveDown": "Descendre « {title} »"
     },
     "certificate": {
       "unknown": "Certificat introuvable",

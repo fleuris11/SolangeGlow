@@ -1,6 +1,8 @@
 "use client";
 
 import {
+  ArrowDown,
+  ArrowUp,
   ArrowLeft,
   CheckCircle,
   CircleNotch,
@@ -29,6 +31,7 @@ import {
   addResource,
   archiveCourse,
   deleteLesson,
+  moveLesson,
   deleteModule,
   deleteQuestion,
   deleteResource,
@@ -302,7 +305,10 @@ function CoverField({ course }: { course: StudioCourse }) {
   );
 }
 
-/** Picks a file and sends it, with a progress bar (videos can be big). */
+/**
+ * Drop a file here or touch to pick it, then watch it go: a real progress bar and the file's name
+ * (videos can be big, on a slow line). The same box for covers, lessons and documents.
+ */
 function FilePick({
   accept,
   purpose,
@@ -321,34 +327,74 @@ function FilePick({
   const t = useTranslations("academy.editor");
   const toast = useToast();
   const [share, setShare] = useState<number | null>(null);
+  const [name, setName] = useState("");
+  const [over, setOver] = useState(false);
+  const locked = disabled || share !== null;
+
+  const send = (file: File | undefined) => {
+    if (!file || locked) return;
+    setName(file.name);
+    setShare(0);
+    uploadAcademyFile(file, purpose, setShare)
+      .then(onUploaded)
+      .catch((error: unknown) =>
+        toast(error instanceof ApiError ? error.message : t("uploadFailed"), "warning"),
+      )
+      .finally(() => {
+        setShare(null);
+        setName("");
+      });
+  };
+
   return (
     <label
+      onDragOver={(event) => {
+        event.preventDefault();
+        if (!locked) setOver(true);
+      }}
+      onDragLeave={() => setOver(false)}
+      onDrop={(event) => {
+        event.preventDefault();
+        setOver(false);
+        send(event.dataTransfer.files?.[0]);
+      }}
       className={cn(
-        buttonClasses({ variant: "secondary", fullWidth: true }),
-        "cursor-pointer",
-        (disabled || share !== null) && "pointer-events-none opacity-50",
+        "flex min-h-28 w-full cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed p-4 text-center transition-colors",
+        over ? "border-hibiscus bg-poudre" : "border-trait hover:bg-poudre",
+        locked && "pointer-events-none",
       )}
     >
       <input
         type="file"
         accept={accept}
         className="sr-only"
-        disabled={disabled || share !== null}
+        disabled={locked}
         onChange={(event) => {
           const file = event.target.files?.[0];
           event.target.value = "";
-          if (!file) return;
-          setShare(0);
-          uploadAcademyFile(file, purpose, setShare)
-            .then(onUploaded)
-            .catch((error: unknown) =>
-              toast(error instanceof ApiError ? error.message : t("uploadFailed"), "warning"),
-            )
-            .finally(() => setShare(null));
+          send(file);
         }}
       />
-      {icon}
-      {share === null ? label : t("uploading", { percent: Math.round(share * 100) })}
+      {share === null ? (
+        <>
+          <span className="flex items-center gap-2 font-semibold">
+            {icon}
+            {label}
+          </span>
+          <span className="text-small text-prune-doux">{t("dropHint")}</span>
+        </>
+      ) : (
+        <span className="flex w-full flex-col gap-2" role="status">
+          <span className="text-small truncate font-semibold">{name}</span>
+          <span className="bg-poudre h-2 w-full overflow-hidden rounded-full">
+            <span
+              className="bg-hibiscus block h-full rounded-full transition-[width] duration-300"
+              style={{ width: `${Math.max(4, Math.round(share * 100))}%` }}
+            />
+          </span>
+          <span className="text-small">{t("uploading", { percent: Math.round(share * 100) })}</span>
+        </span>
+      )}
     </label>
   );
 }
@@ -448,9 +494,30 @@ function ModuleCard({
         </Button>
       </div>
       <ol className="flex flex-col gap-3">
-        {module.lessons.map((lesson) => (
+        {module.lessons.map((lesson, place) => (
           <li key={lesson.id} className="bg-poudre flex flex-col gap-2 rounded-xl p-3">
-            <span className="font-bold">{lesson.title}</span>
+            <span className="flex items-center gap-2">
+              <span className="min-w-0 flex-1 font-bold">{lesson.title}</span>
+              {/* The order the students follow: one place up or down. */}
+              <Button
+                variant="quiet"
+                className="size-11 shrink-0 p-0"
+                disabled={busy || place === 0}
+                aria-label={t("moveUp", { title: lesson.title })}
+                onClick={() => void run(() => moveLesson(lesson.id, true))}
+              >
+                <ArrowUp aria-hidden size={20} weight="bold" />
+              </Button>
+              <Button
+                variant="quiet"
+                className="size-11 shrink-0 p-0"
+                disabled={busy || place === module.lessons.length - 1}
+                aria-label={t("moveDown", { title: lesson.title })}
+                onClick={() => void run(() => moveLesson(lesson.id, false))}
+              >
+                <ArrowDown aria-hidden size={20} weight="bold" />
+              </Button>
+            </span>
             <span className="text-small flex flex-wrap items-center gap-x-3 gap-y-1">
               <VideoState video={lesson.video} />
               {lesson.duration_seconds > 0 && <Duration seconds={lesson.duration_seconds} />}

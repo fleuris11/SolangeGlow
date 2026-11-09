@@ -3327,7 +3327,10 @@
       "published": "Published.",
       "seePage": "See the page of the course",
       "archive": "Take out of the catalogue",
-      "archived": "Taken out of the catalogue."
+      "archived": "Taken out of the catalogue.",
+      "dropHint": "or drop your file here",
+      "moveUp": "Move « {title} » up",
+      "moveDown": "Move « {title} » down"
     },
     "certificate": {
       "unknown": "Certificate not found",

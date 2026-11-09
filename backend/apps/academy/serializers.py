@@ -687,3 +687,7 @@ class LiveInputSerializer(serializers.Serializer):
     course_id = serializers.UUIDField(required=False, allow_null=True)
     platform = serializers.BooleanField(required=False, default=False)
     country = serializers.CharField(max_length=2, required=False, allow_blank=True)
+
+
+class LessonMoveInputSerializer(serializers.Serializer):
+    up = serializers.BooleanField()

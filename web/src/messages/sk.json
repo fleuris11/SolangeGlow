@@ -3327,7 +3327,10 @@
       "published": "Zverejnené.",
       "seePage": "Pozrieť stránku kurzu",
       "archive": "Stiahnuť z katalógu",
-      "archived": "Stiahnuté z katalógu."
+      "archived": "Stiahnuté z katalógu.",
+      "dropHint": "alebo sem presuň súbor",
+      "moveUp": "Posunúť « {title} » vyššie",
+      "moveDown": "Posunúť « {title} » nižšie"
     },
     "certificate": {
       "unknown": "Certifikát sa nenašiel",

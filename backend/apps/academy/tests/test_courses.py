@@ -157,3 +157,27 @@ def test_a_draft_can_lose_a_module_a_lesson_a_resource_and_a_question():
     assert draft.modules.count() == 1 and draft.duration_seconds == 240
     with pytest.raises(errors.InvalidLesson):
         courses.add_resource(first.lessons.first(), pro.user, title="Sans fichier", file_id=None)
+
+
+def test_the_trainer_moves_a_lesson_up_and_down():
+    pro = trainer()
+    draft = new_course(pro)
+    module = courses.save_module(draft, pro.user, title="Préparer la peau")
+    titles = ["Nettoyer", "Hydrater", "Protéger"]
+    lessons = [
+        courses.save_lesson(module, pro.user, title=title, video_id=video(pro.user).pk)
+        for title in titles
+    ]
+
+    def order():
+        return list(module.lessons.order_by("position").values_list("title", flat=True))
+
+    courses.move_lesson(lessons[2], pro.user, up=True)
+    assert order() == ["Nettoyer", "Protéger", "Hydrater"]
+    courses.move_lesson(lessons[0], pro.user, up=False)
+    assert order() == ["Protéger", "Nettoyer", "Hydrater"]
+    # Already first: nothing moves.
+    courses.move_lesson(lessons[2], pro.user, up=True)
+    assert order() == ["Protéger", "Nettoyer", "Hydrater"]
+    with pytest.raises(errors.NotTrainer):
+        courses.move_lesson(lessons[1], adult("Awa"), up=True)

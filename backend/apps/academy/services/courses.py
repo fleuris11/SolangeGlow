@@ -223,6 +223,24 @@ def delete_lesson(lesson: Lesson, user) -> None:
     refresh_duration(course)
 
 
+def move_lesson(lesson: Lesson, user, *, up: bool) -> None:
+    """The trainer moves a lesson one place up or down in its module (the students follow the
+    new order; nothing else changes)."""
+    course = lesson.module.course
+    _check_trainer(user, course)
+    lessons = list(lesson.module.lessons.order_by("position", "created_at"))
+    index = next(i for i, item in enumerate(lessons) if item.pk == lesson.pk)
+    other = index - 1 if up else index + 1
+    if not 0 <= other < len(lessons):
+        return
+    lessons[index], lessons[other] = lessons[other], lessons[index]
+    for position, item in enumerate(lessons):
+        if item.position != position:
+            item.position = position
+            item.save(update_fields=["position", "updated_at"])
+    _touch(course)
+
+
 def add_resource(lesson: Lesson, user, *, title: str, file_id) -> Resource:
     course = lesson.module.course
     _check_trainer(user, course)

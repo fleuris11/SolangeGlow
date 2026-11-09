@@ -377,6 +377,22 @@ export interface paths {
     patch: operations["academy_studio_lessons_partial_update"];
     trace?: never;
   };
+  "/api/v1/academy/studio/lessons/{lesson_id}/move": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["academy_studio_lessons_move_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/academy/studio/lessons/{lesson_id}/resources": {
     parameters: {
       query?: never;
@@ -8158,6 +8174,9 @@ export interface components {
       /** @default false */
       is_preview: boolean;
     };
+    LessonMoveInputRequest: {
+      up: boolean;
+    };
     LessonPlayback: {
       /** Format: uuid */
       id: string;
@@ -12183,6 +12202,33 @@ export interface operations {
         "application/json": components["schemas"]["PatchedLessonInputRequest"];
         "application/x-www-form-urlencoded": components["schemas"]["PatchedLessonInputRequest"];
         "multipart/form-data": components["schemas"]["PatchedLessonInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["StudioCourse"];
+        };
+      };
+    };
+  };
+  academy_studio_lessons_move_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        lesson_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["LessonMoveInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["LessonMoveInputRequest"];
+        "multipart/form-data": components["schemas"]["LessonMoveInputRequest"];
       };
     };
     responses: {

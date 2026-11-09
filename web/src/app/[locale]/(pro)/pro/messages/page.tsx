@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { use } from "react";
 
 import { MessagesHome } from "@/components/features/messaging/screens";
+import { MySection } from "@/components/features/pros/my/my-section";
 import { SpeakButton } from "@/components/ui/speak-button";
 import { withClientMessages } from "@/lib/i18n/client-messages";
 import type { Locale } from "@/lib/i18n/routing";
@@ -16,7 +17,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: t("messages") };
 }
 
-/** Her messages without leaving her professional space (its menu stays). */
+/**
+ * Her messages without leaving her professional space (its menu stays): the conversations, then
+ * her quick replies and away message.
+ */
 function ProMessagesPage({ params }: Props) {
   const { locale } = use(params);
   setRequestLocale(locale);
@@ -28,6 +32,7 @@ function ProMessagesPage({ params }: Props) {
         <SpeakButton text={`${t("title")}. ${t("help")}`} />
       </div>
       <MessagesHome visitor={null} />
+      <MySection section="messages" />
     </div>
   );
 }

@@ -89,6 +89,11 @@ urlpatterns = [
         name="studio-lesson",
     ),
     path(
+        "academy/studio/lessons/<uuid:lesson_id>/move",
+        views.StudioLessonMoveView.as_view(),
+        name="studio-lesson-move",
+    ),
+    path(
         "academy/studio/lessons/<uuid:lesson_id>/resources",
         views.StudioResourcesView.as_view(),
         name="studio-resources",

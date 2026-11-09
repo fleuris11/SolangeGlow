@@ -488,6 +488,18 @@ class StudioLessonView(AcademyView):
         return _studio(course)
 
 
+class StudioLessonMoveView(AcademyView):
+    @extend_schema(
+        tags=["academy"], request=s.LessonMoveInputSerializer, responses=s.StudioCourseSerializer
+    )
+    def post(self, request, lesson_id):
+        data = s.LessonMoveInputSerializer(data=request.data)
+        data.is_valid(raise_exception=True)
+        lesson = _studio_lesson(request, lesson_id)
+        courses.move_lesson(lesson, request.user, up=data.validated_data["up"])
+        return _studio(lesson.module.course)
+
+
 class StudioResourcesView(AcademyView):
     @extend_schema(
         tags=["academy"],
