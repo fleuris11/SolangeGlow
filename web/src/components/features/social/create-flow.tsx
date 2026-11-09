@@ -27,6 +27,7 @@ import {
 import { useMe } from "@/lib/auth/use-me";
 import { useRouter } from "@/lib/i18n/navigation";
 import { mediaSrc, type Media } from "@/lib/media";
+import { SPACE_HOME, useSpace } from "@/lib/navigation/space";
 
 type Kind =
   "photo" | "carousel" | "video" | "before_after" | "story_photo" | "story_text" | "free_slots";
@@ -68,6 +69,7 @@ export function CreateFlow() {
   const tTrades = useTranslations("trades");
   const toast = useToast();
   const router = useRouter();
+  const space = useSpace();
   const me = useMe();
   const isPro = me.data?.roles.includes("pro") ?? false;
   const pro = useQuery({ queryKey: ["me", "pro"], queryFn: getMyPro, enabled: isPro });
@@ -166,7 +168,7 @@ export function CreateFlow() {
                 };
         await createStory(body);
         toast(t("storyDone"), "success");
-        router.push("/");
+        router.push(SPACE_HOME[space]);
       } else {
         const body: PostInput = {
           kind: kind as PostInput["kind"],
@@ -183,7 +185,10 @@ export function CreateFlow() {
           when === "now" ? t("published") : when === "later" ? t("scheduled") : t("drafted"),
           "success",
         );
-        router.push(when === "now" ? `/p/${post.id}` : "/me/posts");
+        // In her professional space she stays there; on her client side she sees her post.
+        router.push(
+          space === "pro" ? SPACE_HOME.pro : when === "now" ? `/p/${post.id}` : "/me/posts",
+        );
       }
     } catch (failure) {
       setError(failure instanceof ApiError ? failure.message : t("error"));

@@ -4,7 +4,7 @@ import { hasLocale, useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { use, type ReactNode } from "react";
 
-import { Link } from "@/lib/i18n/navigation";
+import { SpaceBack } from "@/components/shell/space-back";
 import { routing } from "@/lib/i18n/routing";
 
 type Props = { children: ReactNode; params: Promise<{ locale: string }> };
@@ -19,13 +19,11 @@ export default function FocusLayout({ children, params }: Props) {
   return (
     <div className="mx-auto flex min-h-dvh w-full max-w-[480px] flex-col px-4 pb-10">
       <header className="flex items-center justify-between py-3">
-        <Link
-          href="/"
-          aria-label={t("backHome")}
+        <SpaceBack
+          label={t("backHome")}
+          icon={<ArrowLeft aria-hidden size={26} weight="bold" />}
           className="hover:bg-poudre -ml-2 inline-flex size-12 items-center justify-center rounded-full"
-        >
-          <ArrowLeft aria-hidden size={26} weight="bold" />
-        </Link>
+        />
         <Image src="/brand/logo-red.png" alt={tMeta("title")} width={96} height={47} priority />
         <span aria-hidden className="size-12" />
       </header>

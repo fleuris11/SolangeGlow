@@ -5119,5 +5119,26 @@
       "cta": "Vytvoriť",
       "line": "Je to zadarmo. Vytvor si účet a potom vyplň stránku."
     }
+  },
+  "goTo": {
+    "open": "Prejsť na…",
+    "keys": "Ctrl K",
+    "title": "Prejsť na…",
+    "search": "Hľadať obrazovku",
+    "placeholder": "Diár, správy, obchod…",
+    "none": "Žiadna obrazovka nezodpovedá.",
+    "clientSide": "Moja klientska strana",
+    "proSide": "Moja činnosť",
+    "client": {
+      "appointments": "Moje termíny",
+      "orders": "Moje objednávky",
+      "cart": "Môj košík",
+      "notifications": "Upozornenia",
+      "academy": "Akadémia",
+      "selection": "Výber z Francúzska",
+      "gifts": "Darovať",
+      "points": "Moje body",
+      "help": "Pomoc"
+    }
   }
 }

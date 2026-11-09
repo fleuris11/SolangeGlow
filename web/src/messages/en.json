@@ -5119,5 +5119,26 @@
       "cta": "Create",
       "line": "It's free. Create your account, then fill in your page."
     }
+  },
+  "goTo": {
+    "open": "Go to…",
+    "keys": "Ctrl K",
+    "title": "Go to…",
+    "search": "Search a screen",
+    "placeholder": "Agenda, messages, shop…",
+    "none": "No screen matches.",
+    "clientSide": "My client side",
+    "proSide": "My business",
+    "client": {
+      "appointments": "My appointments",
+      "orders": "My orders",
+      "cart": "My cart",
+      "notifications": "Notifications",
+      "academy": "Academy",
+      "selection": "France Selection",
+      "gifts": "Give a gift",
+      "points": "My points",
+      "help": "Help"
+    }
   }
 }

@@ -16,6 +16,7 @@ import { AudioToggle } from "../audio-toggle";
 import { NotificationBell } from "../notification-bell";
 import { SignOutButton } from "../sign-out-button";
 import { activeProKey, PRO_BAR, PRO_GROUPS, PRO_NAV, STAFF_NAV, type ProNavKey } from "./pro-nav";
+import { GoTo } from "../go-to";
 
 const MessagesBadge = dynamic(() => import("../messages-badge").then((m) => m.MessagesBadge));
 
@@ -95,6 +96,9 @@ function Leave({ icons, slug }: { icons: ProChromeIcons; slug?: string | null })
       {slug && (
         <Link
           href={`/${slug}`}
+          // A new tab: her professional space stays open behind.
+          target="_blank"
+          rel="noopener"
           className="lg:hover:bg-lait/60 max-lg:hover:bg-poudre flex min-h-11 items-center gap-3 rounded-lg px-3 font-semibold lg:min-h-9 lg:text-[0.9375rem]"
         >
           {icons.see}
@@ -128,6 +132,7 @@ export function ProSidebar({ icons }: { icons: ProChromeIcons }) {
         </span>
       </div>
       {pro && <p className="font-display text-lead px-3 break-words">{pro.business_name}</p>}
+      <GoTo space="pro" />
       {/* The menu scrolls on a short screen: leaving always stays in sight. */}
       <nav aria-label={t("menu")} className="min-h-0 flex-1 overflow-y-auto">
         <NavList icons={icons} />
@@ -156,6 +161,9 @@ export function ProHeader({ icons }: { icons: ProChromeIcons }) {
         {pro?.slug && (
           <Link
             href={`/${pro.slug}`}
+            // A new tab: her professional space stays open behind.
+            target="_blank"
+            rel="noopener"
             className="text-mention hover:bg-poudre inline-flex min-h-12 min-w-14 flex-col items-center justify-center rounded-lg font-semibold"
           >
             {icons.see}

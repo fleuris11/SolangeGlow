@@ -7,6 +7,7 @@ import { BottomNav } from "@/components/ui/bottom-nav";
 import { DesktopSidebar } from "./desktop-sidebar";
 import { navIcons } from "./nav-icons";
 import { MobileHeader } from "./mobile-header";
+import { SpaceMark } from "@/lib/navigation/space";
 
 /**
  * Mobile: header, content, bottom bar.
@@ -33,6 +34,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         />
         <div className="min-w-0">
           <MobileHeader />
+          <SpaceMark space="client" />
           <main
             id="main"
             className="mx-auto w-full max-w-[640px] px-4 pt-6 pb-32 has-[[data-wide]]:max-w-[1240px] lg:pb-16"

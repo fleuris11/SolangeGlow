@@ -34,6 +34,7 @@ import type { ReactNode } from "react";
 
 import type { ProNavKey } from "./pro-nav";
 import { ProBottomBar, ProHeader, ProSidebar, type ProChromeIcons } from "./pro-chrome";
+import { SpaceMark } from "@/lib/navigation/space";
 
 const SHAPES: Record<ProNavKey, typeof House> = {
   today: House,
@@ -99,6 +100,7 @@ export function ProShell({ children }: { children: ReactNode }) {
         <div className="min-w-0 lg:py-2 lg:pr-2 lg:pl-[248px]">
           <ProHeader icons={drawn} />
           <div className="lg:bg-lait lg:border-trait lg:min-h-[calc(100svh-1rem)] lg:rounded-2xl lg:border">
+            <SpaceMark space="pro" />
             <main
               id="main"
               className="mx-auto w-full max-w-[1180px] px-4 pt-6 pb-32 lg:px-6 lg:pb-12"

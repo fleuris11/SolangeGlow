@@ -36,7 +36,7 @@ export const PRO_GROUPS: ProNavGroup[] = [
     key: "main",
     items: [
       { key: "today", href: "/pro" },
-      { key: "messages", href: "/messages" },
+      { key: "messages", href: "/pro/messages" },
     ],
   },
   {
@@ -62,7 +62,7 @@ export const PRO_GROUPS: ProNavGroup[] = [
     items: [
       { key: "page", href: "/pro/ma-page" },
       { key: "share", href: "/pro/share" },
-      { key: "publish", href: "/create" },
+      { key: "publish", href: "/pro/publier" },
       { key: "lives", href: "/pro/lives" },
       { key: "academy", href: "/pro/academy" },
       { key: "reviews", href: "/pro/reviews" },

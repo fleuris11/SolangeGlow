@@ -5119,5 +5119,26 @@
       "cta": "Créer",
       "line": "C'est gratuit. Tu crées ton compte, puis tu remplis ta vitrine."
     }
+  },
+  "goTo": {
+    "open": "Aller à…",
+    "keys": "Ctrl K",
+    "title": "Aller à…",
+    "search": "Chercher un écran",
+    "placeholder": "Agenda, messages, boutique…",
+    "none": "Aucun écran ne correspond.",
+    "clientSide": "Mon côté client",
+    "proSide": "Mon activité",
+    "client": {
+      "appointments": "Mes rendez-vous",
+      "orders": "Mes commandes",
+      "cart": "Mon panier",
+      "notifications": "Notifications",
+      "academy": "Académie",
+      "selection": "Sélection France",
+      "gifts": "Offrir",
+      "points": "Mes points",
+      "help": "Aide"
+    }
   }
 }

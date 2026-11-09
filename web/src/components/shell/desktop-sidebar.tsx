@@ -14,6 +14,7 @@ import { AudioToggle } from "./audio-toggle";
 import { CityPicker } from "./city-picker";
 import type { NavIcons } from "./nav-icons";
 import { isActive, NAV_ITEMS } from "./nav-items";
+import { GoTo } from "./go-to";
 import { NotificationBell } from "./notification-bell";
 
 const MessagesBadge = dynamic(() => import("./messages-badge").then((m) => m.MessagesBadge));
@@ -69,6 +70,7 @@ export function DesktopSidebar({
         <CityPicker />
         <AudioToggle />
       </div>
+      {me && <GoTo space="client" />}
       {me && <LeaveLinks icons={leave} />}
       <LocaleSwitcher className="mt-auto" />
     </aside>

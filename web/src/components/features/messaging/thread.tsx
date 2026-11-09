@@ -31,6 +31,7 @@ import {
 } from "@/lib/api/messaging";
 import { messagingUnreadKey } from "@/lib/api/messaging-unread";
 import { useMe } from "@/lib/auth/use-me";
+import { SPACE_MESSAGES, useSpace } from "@/lib/navigation/space";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { isConnected, send as sendEvent, subscribe } from "@/lib/messaging/bus";
 import * as outbox from "@/lib/messaging/outbox";
@@ -97,6 +98,7 @@ export function Thread({
   const locale = useLocale();
   const toast = useToast();
   const router = useRouter();
+  const space = useSpace();
   const queryClient = useQueryClient();
   const dayLabel = useDayLabel();
   const { data: me } = useMe();
@@ -281,7 +283,7 @@ export function Thread({
         <p role="alert" className="font-bold">
           {conversation.error instanceof ApiError ? conversation.error.message : t("error")}
         </p>
-        <Link href="/messages" className={buttonClasses({ variant: "secondary" })}>
+        <Link href={SPACE_MESSAGES[space]} className={buttonClasses({ variant: "secondary" })}>
           {t("back")}
         </Link>
       </div>
@@ -292,7 +294,7 @@ export function Thread({
     <div className="flex min-h-dvh flex-col">
       <header className="bg-carte border-trait sticky top-0 z-10 flex items-center gap-1 border-b px-2 py-2 sm:gap-3">
         <Link
-          href="/messages"
+          href={SPACE_MESSAGES[space]}
           aria-label={t("back")}
           className="hover:bg-poudre inline-flex size-12 shrink-0 items-center justify-center rounded-full"
         >
@@ -446,7 +448,7 @@ export function Thread({
               <Button
                 variant="secondary"
                 onClick={() =>
-                  void declineRequest(conversationId).then(() => router.push("/messages"))
+                  void declineRequest(conversationId).then(() => router.push(SPACE_MESSAGES[space]))
                 }
               >
                 {t("decline")}
