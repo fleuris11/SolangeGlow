@@ -4797,7 +4797,7 @@
         "cta": "Nájsť profesionála"
       },
       "shops": {
-        "title": "Nakupovať u profesionálov krásy",
+        "title": "Nakupovať u profesionálov",
         "text": "Ich produkty, bezpečne zaplatené: peniaze čakajú, kým tovar dostaneš.",
         "cta": "Pozrieť obchody"
       },
@@ -4940,7 +4940,7 @@
         "d": "Tvoj QR kód na vystavenie: rezervácia jedným dotykom"
       },
       "cta": "Ponúknuť moje služby",
-      "start": "Vytvoriť vitrínu",
+      "start": "Otvoriť bezplatnú vitrínu",
       "ui": {
         "label": "Ukážka: denný diár v počítači a vitrína kaderníčky v telefóne.",
         "day": "Sobota",

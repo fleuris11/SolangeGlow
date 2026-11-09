@@ -4797,7 +4797,7 @@
         "cta": "Trouver un professionnel"
       },
       "shops": {
-        "title": "Acheter chez les pros de la beauté",
+        "title": "Acheter chez les professionnels",
         "text": "Leurs produits, payés en sécurité : ton argent attend que tu aies reçu.",
         "cta": "Voir les boutiques"
       },
@@ -4940,7 +4940,7 @@
         "d": "Ton QR code à afficher : on réserve chez toi en un geste"
       },
       "cta": "Proposer mes services",
-      "start": "Créer ma vitrine",
+      "start": "Ouvrir ma vitrine gratuite",
       "ui": {
         "label": "Exemple : l'agenda du jour sur un ordinateur et la vitrine d'une coiffeuse sur un téléphone.",
         "day": "Samedi",

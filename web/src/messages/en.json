@@ -4797,7 +4797,7 @@
         "cta": "Find a professional"
       },
       "shops": {
-        "title": "Shop from beauty professionals",
+        "title": "Shop from professionals",
         "text": "Their products, paid safely: your money waits until you have received.",
         "cta": "See the shops"
       },
@@ -4940,7 +4940,7 @@
         "d": "Your QR code to display: people book with you in one tap"
       },
       "cta": "Offer my services",
-      "start": "Create my showcase",
+      "start": "Open my free showcase",
       "ui": {
         "label": "Example: the day's agenda on a computer and a hairdresser's showcase on a phone.",
         "day": "Saturday",

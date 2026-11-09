@@ -35,15 +35,17 @@ for (const [label, viewport] of Object.entries(VIEWPORTS)) {
       "/fr/auth?as=pro",
     );
 
+    // Every service of the platform, at a glance, each with its door.
+    await expect(main.getByRole("heading", { name: /Tout Solange Glow/ })).toBeAttached();
     for (const service of [
-      "Boutiques",
+      "Prendre rendez-vous",
+      "Acheter chez les professionnels",
       "Sélection France",
-      "Académie",
-      "Lives",
-      "Offrir",
-      "Messages",
-      "Jeux",
-      "Écouter",
+      "Se former",
+      "Offrir à un proche",
+      "Écrire et appeler",
+      "Les lives",
+      "Jouer et gagner",
     ]) {
       await expect(main.getByRole("link", { name: new RegExp(service) }).first()).toBeAttached();
     }
