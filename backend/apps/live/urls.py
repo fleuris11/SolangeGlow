@@ -30,6 +30,18 @@ urlpatterns = [
         views.LiveAnsweredView.as_view(),
         name="live-answered",
     ),
+    path(
+        f"{ROOT}/questions/<uuid:question_id>/reply",
+        views.LiveReplyView.as_view(),
+        name="live-reply",
+    ),
+    path(
+        f"{ROOT}/questions/<uuid:question_id>/remove",
+        views.LiveRemoveCommentView.as_view(),
+        name="live-remove-comment",
+    ),
+    path(f"{ROOT}/comments", views.LiveCommentsView.as_view(), name="live-comments"),
+    path(f"{ROOT}/block/<uuid:user_id>", views.LiveBlockView.as_view(), name="live-block"),
     path(f"{ROOT}/hand", views.LiveHandView.as_view(), name="live-hand"),
     path(f"{ROOT}/hands/<uuid:user_id>/floor", views.LiveFloorView.as_view(), name="live-floor"),
 ]

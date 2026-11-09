@@ -2111,6 +2111,38 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/live/{kind}/{source_id}/block/{user_id}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["live_block_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/live/{kind}/{source_id}/comments": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["live_comments_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/live/{kind}/{source_id}/end": {
     parameters: {
       query?: never;
@@ -2202,6 +2234,38 @@ export interface paths {
     get?: never;
     put?: never;
     post: operations["live_questions_answered_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/live/{kind}/{source_id}/questions/{question_id}/remove": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["live_questions_remove_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/live/{kind}/{source_id}/questions/{question_id}/reply": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["live_questions_reply_create"];
     delete?: never;
     options?: never;
     head?: never;
@@ -8161,6 +8225,9 @@ export interface components {
       course_title: string | null;
       registered: boolean;
     };
+    LiveCommentsInputRequest: {
+      off: boolean;
+    };
     LiveHand: {
       /** Format: uuid */
       user_id: string;
@@ -8211,6 +8278,12 @@ export interface components {
      * @enum {string}
      */
     LiveKindEnum: "training" | "sale";
+    LivePerson: {
+      /** Format: uuid */
+      user_id: string;
+      name: string;
+      photo_url: string;
+    };
     LivePin: {
       /** Format: uuid */
       product_id: string;
@@ -8230,6 +8303,9 @@ export interface components {
       text: string;
       at_second: number;
       answered: boolean;
+      reply: string;
+      /** Format: uuid */
+      author_id: string | null;
       mine: boolean;
       held: boolean;
       /** Format: date-time */
@@ -8302,6 +8378,8 @@ export interface components {
       can_watch: boolean;
       can_ask: boolean;
       can_raise_hand: boolean;
+      comments_off: boolean;
+      people: components["schemas"]["LivePerson"][];
       signed_in: boolean;
       viewers: number;
       max_viewers: number;
@@ -14775,6 +14853,57 @@ export interface operations {
       };
     };
   };
+  live_block_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        kind: string;
+        source_id: string;
+        user_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LiveState"];
+        };
+      };
+    };
+  };
+  live_comments_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        kind: string;
+        source_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["LiveCommentsInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["LiveCommentsInputRequest"];
+        "multipart/form-data": components["schemas"]["LiveCommentsInputRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LiveState"];
+        };
+      };
+    };
+  };
   live_end_create: {
     parameters: {
       query?: never;
@@ -14949,6 +15078,58 @@ export interface operations {
       cookie?: never;
     };
     requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LiveState"];
+        };
+      };
+    };
+  };
+  live_questions_remove_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        kind: string;
+        question_id: string;
+        source_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LiveState"];
+        };
+      };
+    };
+  };
+  live_questions_reply_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        kind: string;
+        question_id: string;
+        source_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["LiveQuestionInputRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["LiveQuestionInputRequest"];
+        "multipart/form-data": components["schemas"]["LiveQuestionInputRequest"];
+      };
+    };
     responses: {
       200: {
         headers: {

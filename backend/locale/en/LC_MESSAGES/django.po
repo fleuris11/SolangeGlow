@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-05 23:50+0100\n"
+"POT-Creation-Date: 2026-11-09 10:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3868,6 +3868,9 @@ msgstr ""
 msgid "This document was already cancelled by a credit note."
 msgstr ""
 
+msgid "people removed from the comments"
+msgstr "people removed from the comments"
+
 msgid "host"
 msgstr ""
 
@@ -3934,6 +3937,15 @@ msgstr "You have used your %(max)s lives of the month. Glow Premium gives you mo
 msgid "The live video is not available right now. Try again in a few minutes."
 msgstr ""
 
+msgid "The host turned the comments off for now."
+msgstr "The host turned the comments off for now."
+
+msgid "The host removed you from the comments of this live."
+msgstr "The host removed you from the comments of this live."
+
+msgid "Write a reply of 300 characters at most."
+msgstr "Write a reply of 300 characters at most."
+
 msgid "Training live"
 msgstr ""
 
@@ -3979,6 +3991,12 @@ msgstr ""
 msgid "has the floor"
 msgstr ""
 
+msgid "comments turned off"
+msgstr "comments turned off"
+
+msgid "The host turned the comments off for everyone."
+msgstr "The host turned the comments off for everyone."
+
 msgid "cut by the team"
 msgstr ""
 
@@ -4015,6 +4033,12 @@ msgstr ""
 msgid "answered"
 msgstr ""
 
+msgid "reply of the host"
+msgstr "reply of the host"
+
+msgid "replied at"
+msgstr ""
+
 msgid "question in a live"
 msgstr ""
 
@@ -4047,6 +4071,15 @@ msgstr ""
 
 msgid "presences"
 msgstr ""
+
+msgid "blocked by"
+msgstr "blocked by"
+
+msgid "person blocked in a live"
+msgstr "person blocked in a live"
+
+msgid "people blocked in lives"
+msgstr "people blocked in lives"
 
 msgid "Calls are only for dispute rooms."
 msgstr ""
@@ -6945,9 +6978,6 @@ msgstr ""
 
 msgid "reply of the pro"
 msgstr "reply of the professional"
-
-msgid "replied at"
-msgstr ""
 
 msgid "review"
 msgstr ""

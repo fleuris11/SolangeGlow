@@ -84,6 +84,9 @@ class TrainingLives(registry.LiveSource):
                     u, "academy.live_on_air", {"live": live.title}, link=room_link(live.pk)
                 )
             )
+        from .tasks import notify_live_followers
+
+        transaction.on_commit(lambda: notify_live_followers.delay(str(live.pk)))
 
     def ended(self, source_id, room) -> None:
         LiveSession.objects.filter(pk=source_id, status__in=[L.SCHEDULED, L.LIVE]).update(

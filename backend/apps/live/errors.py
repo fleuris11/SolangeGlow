@@ -74,3 +74,19 @@ class VideoUnavailable(DomainError):
     code = "video_unavailable"
     status_code = 503
     message = _("The live video is not available right now. Try again in a few minutes.")
+
+
+class CommentsOff(DomainError):
+    code = "live_comments_off"
+    message = _("The host turned the comments off for now.")
+
+
+class BlockedInLive(DomainError):
+    code = "live_blocked"
+    status_code = 403
+    message = _("The host removed you from the comments of this live.")
+
+
+class EmptyReply(DomainError):
+    code = "live_empty_reply"
+    message = _("Write a reply of 300 characters at most.")

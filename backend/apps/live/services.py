@@ -26,7 +26,7 @@ from apps.moderation import services as moderation
 from apps.moderation.selectors import can_post
 
 from . import errors, registry
-from .models import LiveAttendance, LiveHand, LiveQuestion, LiveRoom
+from .models import LiveAttendance, LiveBlock, LiveHand, LiveQuestion, LiveRoom
 
 logger = logging.getLogger("solangeglow.live")
 
@@ -176,6 +176,7 @@ def end(room: LiveRoom, *, by=None, staff: bool = False, reason: str = "host") -
         status=LiveHand.Status.DONE
     )
     record("live.ended", room, actor=by, metadata={"reason": reason, "staff": staff})
+    _tell_host_summary(room)
     name = room.name
 
     def close():
@@ -189,6 +190,23 @@ def end(room: LiveRoom, *, by=None, staff: bool = False, reason: str = "host") -
 
     transaction.on_commit(close)
     return room
+
+
+def _tell_host_summary(room: LiveRoom) -> None:
+    """When the live ends, the host gets its figures (in the app and by e-mail)."""
+    from apps.notifications.services import notify
+
+    comments = LiveQuestion.objects.filter(room=room).exclude(
+        visibility=LiveQuestion.Visibility.REMOVED
+    )
+    context = {
+        "live": room.title,
+        "peak": room.peak_viewers,
+        "total": room.total_viewers,
+        "comments": comments.count(),
+    }
+    host = room.host
+    transaction.on_commit(lambda: notify(host, "live.summary", context, link="/pro/lives"))
 
 
 def end_by_host(user, kind: str, source_id) -> LiveRoom:
@@ -259,9 +277,14 @@ def _on_air_room(user, kind: str, source_id) -> tuple[registry.LiveSource, objec
 def ask(user, kind: str, source_id, text: str) -> LiveQuestion:
     if not _signed_in(user):
         raise errors.SignInToAsk()
-    _source, _plan, room = _on_air_room(user, kind, source_id)
+    _source, plan, room = _on_air_room(user, kind, source_id)
     if not can_post(user):
         raise errors.CannotAsk()
+    if not is_host(user, plan):
+        if room.comments_off:
+            raise errors.CommentsOff()
+        if LiveBlock.objects.filter(room=room, user=user).exists():
+            raise errors.BlockedInLive()
     text = (text or "").strip()
     if not text or len(text) > 300:
         raise errors.EmptyQuestion()
@@ -285,6 +308,98 @@ def mark_answered(user, kind: str, source_id, question_id) -> LiveQuestion:
         question.save(update_fields=["answered_at", "updated_at"])
         push(room, "questions")
     return question
+
+
+def _hosted_room(user, kind: str, source_id) -> LiveRoom:
+    _source, plan = source_and_plan(kind, source_id)
+    if not is_host(user, plan):
+        raise errors.NotHost()
+    return room_for(kind, plan)
+
+
+def reply(user, kind: str, source_id, question_id, text: str) -> LiveQuestion:
+    """The host answers a comment in writing: shown under it, for everyone, at once."""
+    room = _hosted_room(user, kind, source_id)
+    text = (text or "").strip()
+    if not text or len(text) > 300:
+        raise errors.EmptyReply()
+    question = LiveQuestion.objects.filter(pk=question_id, room=room).first()
+    if question is None:
+        raise errors.LiveNotFound()
+    now = timezone.now()
+    question.reply, question.replied_at = text, now
+    question.answered_at = question.answered_at or now
+    question.save(update_fields=["reply", "replied_at", "answered_at", "updated_at"])
+    push(room, "questions")
+    return question
+
+
+def remove_comment(user, kind: str, source_id, question_id) -> None:
+    """The host takes a comment away: nobody sees it any more (kept for the moderation team)."""
+    room = _hosted_room(user, kind, source_id)
+    updated = LiveQuestion.objects.filter(pk=question_id, room=room).update(
+        visibility=LiveQuestion.Visibility.REMOVED, updated_at=timezone.now()
+    )
+    if not updated:
+        raise errors.LiveNotFound()
+    record("live.comment_removed", room, actor=user, metadata={"comment": str(question_id)})
+    push(room, "questions")
+
+
+def set_comments(user, kind: str, source_id, *, off: bool) -> LiveRoom:
+    """Comments on or off for everyone (a host speaking alone, or a live that goes wrong)."""
+    room = _hosted_room(user, kind, source_id)
+    if room.comments_off != off:
+        room.comments_off = off
+        room.save(update_fields=["comments_off", "updated_at"])
+        record("live.comments_off" if off else "live.comments_on", room, actor=user)
+        push(room, "comments", off=off)
+    return room
+
+
+def block(user, kind: str, source_id, author_id) -> None:
+    """Someone leaves the comments of this live: her comments go away, she can still watch."""
+    room = _hosted_room(user, kind, source_id)
+    if str(author_id) == str(user.pk):
+        raise errors.LiveNotFound()
+    LiveBlock.objects.get_or_create(room=room, user_id=author_id, defaults={"blocked_by": user})
+    LiveQuestion.objects.filter(room=room, author_id=author_id).update(
+        visibility=LiveQuestion.Visibility.REMOVED, updated_at=timezone.now()
+    )
+    record("live.blocked", room, actor=user, metadata={"person": str(author_id)})
+    push(room, "questions")
+
+
+def present_people(room: LiveRoom, limit: int = 200) -> list[dict]:
+    """Who is watching now (the host only sees it): signed-in people by name, guests counted."""
+    from django.contrib.auth import get_user_model
+
+    identities = set(
+        LiveAttendance.objects.filter(room=room, left_at__isnull=True).values_list(
+            "identity", flat=True
+        )
+    )
+    ids = []
+    for identity in identities:
+        try:
+            ids.append(uuid.UUID(identity))
+        except ValueError:
+            continue
+    users = (
+        get_user_model()
+        .objects.filter(pk__in=ids)
+        .exclude(pk=room.host_id)
+        .select_related("photo")
+        .order_by("first_name")[:limit]
+    )
+    return [
+        {
+            "user_id": person.pk,
+            "name": person.first_name or "",
+            "photo_url": variant_url(person.photo, "thumb") if person.photo_id else "",
+        }
+        for person in users
+    ]
 
 
 def visible_questions(room: LiveRoom, user):
@@ -509,6 +624,8 @@ def state(user, kind: str, source_id) -> dict:
                 "text": q.text,
                 "at_second": q.at_second,
                 "answered": q.answered_at is not None,
+                "reply": q.reply,
+                "author_id": q.author_id if host else None,
                 "mine": _signed_in(user) and q.author_id == user.pk,
                 "held": q.visibility != LiveQuestion.Visibility.VISIBLE,
                 "created_at": q.created_at,
@@ -516,6 +633,7 @@ def state(user, kind: str, source_id) -> dict:
             for q in visible_questions(room, user)
         ]
     early = int(setting("live.start_early_minutes", plan.country, 15))
+    blocked = _signed_in(user) and LiveBlock.objects.filter(room=room, user=user).exists()
     return {
         "kind": kind,
         "source_id": plan.source_id,
@@ -530,7 +648,14 @@ def state(user, kind: str, source_id) -> dict:
         "host": _host_payload(plan),
         "is_host": host,
         "can_watch": allowed,
-        "can_ask": allowed and _signed_in(user) and status == "on_air" and not host,
+        "can_ask": allowed
+        and _signed_in(user)
+        and status == "on_air"
+        and not host
+        and not room.comments_off
+        and not blocked,
+        "comments_off": room.comments_off,
+        "people": present_people(room) if host and status == "on_air" else [],
         "can_raise_hand": allowed and _signed_in(user) and source.hands and not host,
         "signed_in": _signed_in(user),
         "viewers": room.viewers,

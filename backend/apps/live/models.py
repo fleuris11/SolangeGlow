@@ -68,6 +68,11 @@ class LiveRoom(BaseModel):
     peak_viewers = models.PositiveIntegerField(_("most at the same time"), default=0)
     total_viewers = models.PositiveIntegerField(_("people who came"), default=0)
     speaker_identity = models.CharField(_("has the floor"), max_length=60, blank=True)
+    comments_off = models.BooleanField(
+        _("comments turned off"),
+        default=False,
+        help_text=_("The host turned the comments off for everyone."),
+    )
     ended_by_staff = models.BooleanField(_("cut by the team"), default=False)
     egress_id = models.CharField(max_length=80, blank=True, editable=False)
     replay_status = models.CharField(
@@ -118,6 +123,8 @@ class LiveQuestion(BaseModel):
         _("second of the live"), default=0, help_text=_("Places it in the replay.")
     )
     answered_at = models.DateTimeField(_("answered"), null=True, blank=True)
+    reply = models.CharField(_("reply of the host"), max_length=300, blank=True)
+    replied_at = models.DateTimeField(_("replied at"), null=True, blank=True)
     visibility = models.CharField(
         _("visibility"), max_length=8, choices=Visibility.choices, default=Visibility.VISIBLE
     )
@@ -173,3 +180,32 @@ class LiveAttendance(BaseModel):
         verbose_name = _("presence")
         verbose_name_plural = _("presences")
         indexes = [models.Index(fields=["room", "identity"])]
+
+
+class LiveBlock(BaseModel):
+    """Someone the host removed from the comments of her live: she can watch, not write."""
+
+    room = models.ForeignKey(
+        LiveRoom, on_delete=models.CASCADE, related_name="blocks", verbose_name=_("live")
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="+",
+        verbose_name=_("person"),
+    )
+    blocked_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name="+",
+        verbose_name=_("blocked by"),
+    )
+
+    class Meta:
+        verbose_name = _("person blocked in a live")
+        verbose_name_plural = _("people blocked in lives")
+        constraints = [models.UniqueConstraint(fields=["room", "user"], name="live_one_block")]
+
+    def __str__(self):
+        return str(self.user_id)

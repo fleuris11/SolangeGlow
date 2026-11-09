@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-05 23:50+0100\n"
+"POT-Creation-Date: 2026-11-09 10:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3868,6 +3868,9 @@ msgstr "Ce document n'existe pas ou n'est pas le tien."
 msgid "This document was already cancelled by a credit note."
 msgstr "Ce document a déjà été annulé par un avoir."
 
+msgid "people removed from the comments"
+msgstr "personnes retirées des commentaires"
+
 msgid "host"
 msgstr "animatrice"
 
@@ -3934,6 +3937,15 @@ msgstr "Tu as utilisé tes %(max)s lives du mois. Glow Premium t'en donne plus."
 msgid "The live video is not available right now. Try again in a few minutes."
 msgstr "La vidéo du live n'est pas disponible pour le moment. Réessaie dans quelques minutes."
 
+msgid "The host turned the comments off for now."
+msgstr "Les commentaires sont coupés pour l'instant."
+
+msgid "The host removed you from the comments of this live."
+msgstr "Tu ne peux plus commenter ce live."
+
+msgid "Write a reply of 300 characters at most."
+msgstr "Écris une réponse de 300 caractères au plus."
+
 msgid "Training live"
 msgstr "Live de formation"
 
@@ -3979,6 +3991,12 @@ msgstr "personnes venues"
 msgid "has the floor"
 msgstr "a la parole"
 
+msgid "comments turned off"
+msgstr "commentaires coupés"
+
+msgid "The host turned the comments off for everyone."
+msgstr "Les commentaires sont coupés pour tout le monde."
+
 msgid "cut by the team"
 msgstr "coupé par l'équipe"
 
@@ -4015,6 +4033,12 @@ msgstr "La place dans le replay."
 msgid "answered"
 msgstr "répondue"
 
+msgid "reply of the host"
+msgstr "réponse du professionnel"
+
+msgid "replied at"
+msgstr "répondu le"
+
 msgid "question in a live"
 msgstr "question dans un live"
 
@@ -4047,6 +4071,15 @@ msgstr "présence"
 
 msgid "presences"
 msgstr "présences"
+
+msgid "blocked by"
+msgstr "bloquée par"
+
+msgid "person blocked in a live"
+msgstr "personne bloquée dans un live"
+
+msgid "people blocked in lives"
+msgstr "personnes bloquées dans les lives"
 
 msgid "Calls are only for dispute rooms."
 msgstr "Les appels sont réservés aux salles de litige."
@@ -6945,9 +6978,6 @@ msgstr "étoiles"
 
 msgid "reply of the pro"
 msgstr "réponse du professionnel"
-
-msgid "replied at"
-msgstr "répondu le"
 
 msgid "review"
 msgstr "avis"

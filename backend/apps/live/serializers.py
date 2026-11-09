@@ -25,9 +25,18 @@ class LiveQuestionSerializer(serializers.Serializer):
     text = serializers.CharField()
     at_second = serializers.IntegerField()
     answered = serializers.BooleanField()
+    reply = serializers.CharField(allow_blank=True)
+    # Only for the host, who can block the author.
+    author_id = serializers.UUIDField(allow_null=True)
     mine = serializers.BooleanField()
     held = serializers.BooleanField()
     created_at = serializers.DateTimeField()
+
+
+class LivePersonSerializer(serializers.Serializer):
+    user_id = serializers.UUIDField()
+    name = serializers.CharField()
+    photo_url = serializers.CharField(allow_blank=True)
 
 
 class LiveHandSerializer(serializers.Serializer):
@@ -79,6 +88,8 @@ class LiveStateSerializer(serializers.Serializer):
     can_watch = serializers.BooleanField()
     can_ask = serializers.BooleanField()
     can_raise_hand = serializers.BooleanField()
+    comments_off = serializers.BooleanField()
+    people = LivePersonSerializer(many=True)
     signed_in = serializers.BooleanField()
     viewers = serializers.IntegerField()
     max_viewers = serializers.IntegerField()
@@ -104,6 +115,10 @@ class LiveJoinSerializer(serializers.Serializer):
 
 class LiveQuestionInputSerializer(serializers.Serializer):
     text = serializers.CharField(max_length=300)
+
+
+class LiveCommentsInputSerializer(serializers.Serializer):
+    off = serializers.BooleanField()
 
 
 class UpcomingLiveSerializer(serializers.Serializer):

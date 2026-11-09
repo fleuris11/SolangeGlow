@@ -13,15 +13,28 @@ from unfold.decorators import action, display
 from apps.core.audit.admin import AuditedModelAdmin
 
 from . import services
-from .models import LiveQuestion, LiveRoom
+from .models import LiveBlock, LiveQuestion, LiveRoom
 
 
 class QuestionInline(TabularInline):
     model = LiveQuestion
-    fields = ["created_at", "author", "text", "answered_at", "visibility"]
-    readonly_fields = ["created_at", "author", "text", "answered_at"]
+    fields = ["created_at", "author", "text", "reply", "answered_at", "visibility"]
+    readonly_fields = ["created_at", "author", "text", "reply", "answered_at"]
     extra = 0
     tab = True
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+
+class BlockInline(TabularInline):
+    model = LiveBlock
+    extra = 0
+    fields = ("user", "blocked_by", "created_at")
+    readonly_fields = fields
+    can_delete = True
+    tab = True
+    verbose_name_plural = _("people removed from the comments")
 
     def has_add_permission(self, request, obj=None):
         return False
@@ -65,7 +78,7 @@ class LiveRoomAdmin(AuditedModelAdmin):
         "replay_until",
     ]
     fields = readonly_fields
-    inlines = [QuestionInline]
+    inlines = [QuestionInline, BlockInline]
     actions_detail = ["cut_detail", "delete_replay_detail"]
 
     def has_add_permission(self, request):

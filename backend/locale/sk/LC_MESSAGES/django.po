@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-05 23:50+0100\n"
+"POT-Creation-Date: 2026-11-09 10:00+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3872,6 +3872,9 @@ msgstr "Tento doklad neexistuje alebo nie je tvoj."
 msgid "This document was already cancelled by a credit note."
 msgstr "Tento doklad už bol zrušený dobropisom."
 
+msgid "people removed from the comments"
+msgstr "ľudia odstránení z komentárov"
+
 msgid "host"
 msgstr "moderátorka"
 
@@ -3938,6 +3941,15 @@ msgstr "Využila si svojich %(max)s live tento mesiac. Glow Premium ti dá viac.
 msgid "The live video is not available right now. Try again in a few minutes."
 msgstr "Video live momentálne nie je dostupné. Skús to o pár minút."
 
+msgid "The host turned the comments off for now."
+msgstr "Komentáre sú zatiaľ vypnuté."
+
+msgid "The host removed you from the comments of this live."
+msgstr "V tomto live už nemôžeš komentovať."
+
+msgid "Write a reply of 300 characters at most."
+msgstr "Napíš odpoveď s najviac 300 znakmi."
+
 msgid "Training live"
 msgstr "Školiaci live"
 
@@ -3983,6 +3995,12 @@ msgstr "prišlo ľudí"
 msgid "has the floor"
 msgstr "má slovo"
 
+msgid "comments turned off"
+msgstr "komentáre vypnuté"
+
+msgid "The host turned the comments off for everyone."
+msgstr "Komentáre sú vypnuté pre všetkých."
+
 msgid "cut by the team"
 msgstr "ukončil tím"
 
@@ -4019,6 +4037,12 @@ msgstr "Umiestni ju v zázname."
 msgid "answered"
 msgstr "zodpovedaná"
 
+msgid "reply of the host"
+msgstr "odpoveď profesionála"
+
+msgid "replied at"
+msgstr "odpovedané"
+
 msgid "question in a live"
 msgstr "otázka v live"
 
@@ -4051,6 +4075,15 @@ msgstr "prítomnosť"
 
 msgid "presences"
 msgstr "prítomnosti"
+
+msgid "blocked by"
+msgstr "zablokoval(a)"
+
+msgid "person blocked in a live"
+msgstr "osoba zablokovaná v live"
+
+msgid "people blocked in lives"
+msgstr "osoby zablokované v live"
 
 msgid "Calls are only for dispute rooms."
 msgstr "Hovory sú len pre miestnosti sporov."
@@ -6961,9 +6994,6 @@ msgstr "hviezdičky"
 
 msgid "reply of the pro"
 msgstr "odpoveď profesionálky"
-
-msgid "replied at"
-msgstr "odpovedané"
 
 msgid "review"
 msgstr "hodnotenie"

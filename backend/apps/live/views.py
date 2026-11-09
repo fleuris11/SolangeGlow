@@ -11,6 +11,7 @@ from apps.core.models import Country
 
 from . import selectors, services
 from .serializers import (
+    LiveCommentsInputSerializer,
     LiveJoinSerializer,
     LiveQuestionInputSerializer,
     LiveQuotaSerializer,
@@ -76,6 +77,40 @@ class LiveAnsweredView(LiveView):
     @extend_schema(tags=TAGS, request=None, responses=LiveStateSerializer)
     def post(self, request, kind, source_id, question_id):
         services.mark_answered(request.user, kind, source_id, question_id)
+        return _state(request, kind, source_id)
+
+
+class LiveReplyView(LiveView):
+    throttle_scope = "live_write"
+
+    @extend_schema(tags=TAGS, request=LiveQuestionInputSerializer, responses=LiveStateSerializer)
+    def post(self, request, kind, source_id, question_id):
+        data = LiveQuestionInputSerializer(data=request.data)
+        data.is_valid(raise_exception=True)
+        services.reply(request.user, kind, source_id, question_id, data.validated_data["text"])
+        return _state(request, kind, source_id)
+
+
+class LiveRemoveCommentView(LiveView):
+    @extend_schema(tags=TAGS, request=None, responses=LiveStateSerializer)
+    def post(self, request, kind, source_id, question_id):
+        services.remove_comment(request.user, kind, source_id, question_id)
+        return _state(request, kind, source_id)
+
+
+class LiveCommentsView(LiveView):
+    @extend_schema(tags=TAGS, request=LiveCommentsInputSerializer, responses=LiveStateSerializer)
+    def post(self, request, kind, source_id):
+        data = LiveCommentsInputSerializer(data=request.data)
+        data.is_valid(raise_exception=True)
+        services.set_comments(request.user, kind, source_id, off=data.validated_data["off"])
+        return _state(request, kind, source_id)
+
+
+class LiveBlockView(LiveView):
+    @extend_schema(tags=TAGS, request=None, responses=LiveStateSerializer)
+    def post(self, request, kind, source_id, user_id):
+        services.block(request.user, kind, source_id, user_id)
         return _state(request, kind, source_id)
 
 
