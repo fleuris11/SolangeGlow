@@ -14,10 +14,14 @@ Compte environ 2 heures, dont une bonne partie d'attente.
 
 | Quoi | Où | Pourquoi |
 | --- | --- | --- |
-| Un serveur VPS sous **Ubuntu 24.04**, avec au moins 4 processeurs (vCore), 8 Go de mémoire et 80 Go de disque | OVH, « VPS » | Fait tourner le site |
+| Un serveur VPS sous **Ubuntu 24.04**, conseillé : 6 processeurs (vCore), 12 Go de mémoire, 100 Go de disque, datacenter en France (Gravelines ou Strasbourg) ; minimum : 4 vCore et 8 Go | OVH, « VPS » | Fait tourner le site, la base, les tâches de fond, les lives et les sauvegardes |
 | Un **nom de domaine** | OVH, « Noms de domaine », ou un autre vendeur | L'adresse du site |
 | Un projet **Public Cloud** avec **2 conteneurs Object Storage (S3)** | OVH, « Public Cloud », « Object Storage » | Les photos et vidéos, et les sauvegardes |
+| Un service d'**envoi d'e-mails** (SMTP), par exemple Brevo (offre gratuite pour commencer) | brevo.com, ou l'e-mail inclus avec le domaine OVH | Les codes de connexion et les notifications par e-mail |
 | Un gestionnaire de mots de passe | Bitwarden, 1Password… | Pour garder les clés secrètes hors du serveur |
+
+L'e-mail inclus avec un domaine OVH convient pour lire ta boîte, mais il limite les envois par heure :
+pour les codes de connexion, un service d'envoi comme Brevo est plus sûr.
 
 Les paiements, WhatsApp, SMS, etc. peuvent attendre : le site démarre sans eux. Ils sont
 listés dans `docs/checklist-mise-en-ligne.md`. Mais **sans WhatsApp, SMS ni e-mail, personne ne
@@ -127,7 +131,32 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 ```
 sudo mkdir -p /opt/solangeglow
 sudo chown ubuntu:ubuntu /opt/solangeglow
+```
+
+**Dépôt GitHub public :**
+
+```
 git clone https://github.com/fleuris11/SolangeGlow.git /opt/solangeglow
+```
+
+**Dépôt GitHub privé :** le serveur a besoin d'une clé qui lit le dépôt sans pouvoir le modifier.
+
+```
+ssh-keygen -t ed25519 -N "" -f ~/.ssh/github_deploy
+cat ~/.ssh/github_deploy.pub
+```
+
+Copie la ligne affichée dans GitHub : le dépôt, **Settings**, **Deploy keys**, **Add deploy key**
+(laisse « Allow write access » décoché). Puis :
+
+```
+printf 'Host github.com\n  IdentityFile ~/.ssh/github_deploy\n' >> ~/.ssh/config
+git clone git@github.com:fleuris11/SolangeGlow.git /opt/solangeglow
+```
+
+**Dans les deux cas, ensuite :**
+
+```
 cd /opt/solangeglow
 ./deploy/generate-secrets.sh solangeglow.com moi@exemple.com
 ```
