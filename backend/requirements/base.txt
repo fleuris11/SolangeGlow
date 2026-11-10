@@ -14,6 +14,8 @@ phonenumbers==9.0.40
 
 # Database
 psycopg[binary]==3.3.6
+# A few connections kept open and shared by the requests (production settings).
+psycopg-pool==3.3.3
 
 # Real time, cache, background jobs
 channels==4.3.2

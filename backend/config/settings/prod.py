@@ -39,8 +39,15 @@ ALLOWED_HOSTS = [*ALLOWED_HOSTS, "backend"]
 CSRF_TRUSTED_ORIGINS = env.list("DJANGO_CSRF_TRUSTED_ORIGINS", default=[SITE_URL])
 
 # Under ASGI a request has its own thread: kept connections would pile up until PostgreSQL
-# refuses new ones (Django documentation, "Persistent connections").
+# refuses new ones (Django documentation, "Persistent connections"). A pool keeps a few open
+# and lends them to the requests instead: no new connection to open on every API call.
+# Each web worker has its own pool: workers x DATABASE_POOL_MAX stays under PostgreSQL's limit.
 DATABASES["default"]["CONN_MAX_AGE"] = 0
+DATABASES["default"].setdefault("OPTIONS", {})["pool"] = {
+    "min_size": env.int("DATABASE_POOL_MIN", default=2),
+    "max_size": env.int("DATABASE_POOL_MAX", default=10),
+    "timeout": env.int("DATABASE_POOL_TIMEOUT", default=10),
+}
 
 # Serve static files (admin assets) straight from the application server.
 MIDDLEWARE.insert(1, "whitenoise.middleware.WhiteNoiseMiddleware")

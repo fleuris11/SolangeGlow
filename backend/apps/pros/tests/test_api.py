@@ -135,6 +135,26 @@ def test_printables(api_client, pro, name, content_type, magic):
     assert response["Content-Disposition"].startswith("attachment")
 
 
+def test_a_printable_is_drawn_once_until_the_showcase_changes(api_client, pro, monkeypatch):
+    from apps.pros import views
+
+    drawn = []
+
+    def card(target):
+        drawn.append(target.business_name)
+        return b"\x89PNG card"
+
+    monkeypatch.setitem(views.PRINTABLES, "card.png", (card, "image/png"))
+    url = reverse("v1:pro-printable", args=["aicha", "card.png"])
+    assert api_client.get(url).content == b"\x89PNG card"
+    api_client.get(url)
+    assert len(drawn) == 1
+    pro.business_name = "Aïcha Beauté"
+    pro.save()
+    api_client.get(url)
+    assert drawn == [drawn[0], "Aïcha Beauté"]
+
+
 def test_unknown_printable_is_404(api_client, pro):
     url = reverse("v1:pro-printable", args=["aicha", "flyer.doc"])
     assert api_client.get(url).status_code == 404

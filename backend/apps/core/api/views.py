@@ -9,6 +9,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from apps.accounts.throttling import SettingRateThrottle
+from apps.core.api.caching import VisitorCacheMixin
 from apps.core.geo import search_cities
 from apps.core.models import Country
 from apps.core.providers import livekit
@@ -71,7 +72,7 @@ class CountrySerializer(serializers.ModelSerializer):
         fields = ["code", "name", "phone_prefix", "default_currency", "timezone"]
 
 
-class CountryListView(APIView):
+class CountryListView(VisitorCacheMixin, APIView):
     """Countries open on the platform (phone prefixes, default currency)."""
 
     authentication_classes = []

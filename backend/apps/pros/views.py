@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from django.contrib.gis.geos import Point
+from django.core.cache import cache
 from django.db import transaction
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
@@ -184,6 +185,8 @@ class ShowcaseView(VisitorCacheMixin, PublicProView):
         return Response(s.showcase_payload(pro, private=private, viewer=request.user))
 
 
+PRINTABLE_CACHE_SECONDS = 86_400
+
 PRINTABLES = {
     "card.png": (printables.card_png, "image/png"),
     "poster.pdf": (printables.poster_pdf, "application/pdf"),
@@ -204,7 +207,15 @@ class PrintableView(PublicProView):
         if pro is None or name not in PRINTABLES:
             raise exceptions.NotFound(errors.ProNotFound.message)
         render, content_type = PRINTABLES[name]
-        response = HttpResponse(render(pro), content_type=content_type)
+        # Drawing a QR card or poster takes a few hundred milliseconds: kept a day, and drawn
+        # again as soon as the showcase changes (its date is in the key) or its language does.
+        language = pro.user.preferred_language
+        key = f"printable:{pro.pk}:{pro.updated_at.timestamp()}:{name}:{language}"
+        content = cache.get(key)
+        if content is None:
+            content = render(pro)
+            cache.set(key, content, PRINTABLE_CACHE_SECONDS)
+        response = HttpResponse(content, content_type=content_type)
         filename = f"solangeglow-{slugify(pro.slug)}-{name}"
         download = request.query_params.get("download") == "1"
         response["Content-Disposition"] = (
