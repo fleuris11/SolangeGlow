@@ -3,7 +3,7 @@
 import { ArrowRight, Check } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
 
 import { Portrait } from "@/components/features/illustrations/portrait";
 import { TradeIcon, TRADES, type Trade } from "@/components/features/trades/trade-icon";
@@ -48,27 +48,21 @@ export function WelcomeFlow({ as }: { as?: Mode }) {
   const [chosenTrades, setChosenTrades] = useState<string[]>([]);
   const [language, setLanguage] = useState<Locale>(locale);
   const [city, setCity] = useState(prefs.city);
-  const [country, setCountry] = useState(me?.country ?? "FR");
+  const [chosenCountry, setChosenCountry] = useState<string | null>(null);
   const [birthDate, setBirthDate] = useState<BirthDate>(EMPTY_BIRTH_DATE);
-  const [phoneCountry, setPhoneCountry] = useState(me?.country ?? "FR");
+  const [chosenPhoneCountry, setChosenPhoneCountry] = useState<string | null>(null);
   const [phone, setPhone] = useState("");
   const [accepted, setAccepted] = useState(false);
   const [done, setDone] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string>();
 
-  // The country of the account, else the one found on the device (time zone, or chosen),
-  // as soon as they are known; never over what the person picked herself.
-  const countryTouched = useRef(false);
-  useEffect(() => {
-    if (countryTouched.current || isPending) return;
-    const detected = readViewerCountry();
-    const best = me?.country ?? (detected && detected !== EVERYWHERE ? detected : "");
-    if (best) {
-      setCountry(best);
-      setPhoneCountry(best);
-    }
-  }, [me?.country, isPending]);
+  // What the person picked, else the country of the account, else the one found on the device
+  // (time zone, or chosen in the app). Read after the first paint: the server cannot know it.
+  const detected = useSyncExternalStore(noSubscription, readViewerCountry, () => "");
+  const country =
+    chosenCountry ?? me?.country ?? (detected && detected !== EVERYWHERE ? detected : "FR");
+  const phoneCountry = chosenPhoneCountry ?? country;
 
   // Only for signed-in people who have not finished the welcome yet.
   useEffect(() => {
@@ -230,21 +224,13 @@ export function WelcomeFlow({ as }: { as?: Mode }) {
 
       {step === 3 && (
         <>
-          <CountrySelect
-            label={t("city.country")}
-            value={country}
-            onChange={(code) => {
-              countryTouched.current = true;
-              setCountry(code);
-              if (!phone) setPhoneCountry(code);
-            }}
-          />
+          <CountrySelect label={t("city.country")} value={country} onChange={setChosenCountry} />
           <CityField label={t("city.other")} value={city} onChange={setCity} country={country} />
           {needsPhone && (
             <div className="flex flex-col gap-2">
               <PhoneField
                 country={phoneCountry}
-                onCountryChange={setPhoneCountry}
+                onCountryChange={setChosenPhoneCountry}
                 value={phone}
                 onChange={setPhone}
               />
@@ -297,6 +283,11 @@ export function WelcomeFlow({ as }: { as?: Mode }) {
       </Button>
     </section>
   );
+}
+
+/** The country found on the device does not change while the screen is open. */
+function noSubscription() {
+  return () => {};
 }
 
 function BigChoice({
