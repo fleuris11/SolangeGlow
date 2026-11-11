@@ -263,6 +263,28 @@ Puis lance `./deploy/update.sh --force-build`.
 
 ## Mettre à jour le site
 
+**Automatiquement.** Dès que la CI est verte sur `main`, GitHub lance la mise à jour sur le serveur
+(workflow « Deploy »). On peut aussi la lancer à la main : onglet **Actions**, « Deploy », **Run
+workflow**. Ce qui est fusionné dans `main` part donc en ligne : on travaille sur une autre branche.
+
+La clé de GitHub ne peut rien faire d'autre sur le serveur que lancer `deploy/ci-deploy.sh`.
+Pour la mettre en place (une fois) :
+
+1. Crée une clé réservée à GitHub, sur ton ordinateur : `ssh-keygen -t ed25519 -N "" -f github-deploy`.
+2. Sur le serveur, ajoute sa partie publique à `~/.ssh/authorized_keys`, précédée de la restriction :
+   ```
+   restrict,command="/opt/solangeglow/deploy/ci-deploy.sh" ssh-ed25519 AAAA... github-deploy
+   ```
+3. Dans GitHub, dépôt, **Settings**, **Secrets and variables**, **Actions**, crée :
+   - `DEPLOY_SSH_KEY` : le contenu du fichier `github-deploy` (la partie privée) ;
+   - `DEPLOY_HOST` : l'adresse IP du serveur ;
+   - `DEPLOY_KNOWN_HOSTS` : le résultat de `ssh-keyscan -t ed25519 IP_DU_SERVEUR`.
+4. Efface le fichier `github-deploy` de ton ordinateur.
+
+Le journal des mises à jour lancées par GitHub est dans `~/deploy.log` sur le serveur.
+
+**À la main**, sur le serveur :
+
 ```
 cd /opt/solangeglow
 ./deploy/update.sh
