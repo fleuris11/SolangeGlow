@@ -241,6 +241,34 @@ def _s(key, value_type, value, fr, en):
 # Accounts: ages, minors, deletion grace period.
 SETTINGS += [
     _s(
+        "accounts.email_link_hours",
+        INT,
+        "48",
+        "Durée de validité du lien de confirmation de l'adresse e-mail (heures).",
+        "How long the e-mail confirmation link works (hours).",
+    ),
+    _s(
+        "accounts.reset_link_hours",
+        INT,
+        "2",
+        "Durée de validité du lien « Mot de passe oublié » (heures).",
+        "How long the « Forgot password » link works (hours).",
+    ),
+    _s(
+        "accounts.password_max_failures",
+        INT,
+        "5",
+        "Mots de passe faux de suite avant de bloquer la connexion d'une adresse.",
+        "Wrong passwords in a row before sign-in is blocked for an address.",
+    ),
+    _s(
+        "accounts.password_lock_minutes",
+        INT,
+        "15",
+        "Durée du blocage après trop de mots de passe faux (minutes).",
+        "How long sign-in stays blocked after too many wrong passwords (minutes).",
+    ),
+    _s(
         "accounts.minimum_age",
         INT,
         "16",

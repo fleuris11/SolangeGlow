@@ -39,6 +39,29 @@ class CodeVerifySerializer(serializers.Serializer):
     locale = serializers.ChoiceField(choices=LANGUAGE_CHOICES, required=False)
 
 
+class SignUpSerializer(serializers.Serializer):
+    email = serializers.EmailField(max_length=254)
+    password = serializers.CharField(max_length=128, trim_whitespace=False)
+    first_name = serializers.CharField(max_length=150, required=False, allow_blank=True)
+    locale = serializers.CharField(max_length=10, required=False, allow_blank=True)
+
+
+class EmailOnlySerializer(serializers.Serializer):
+    email = serializers.EmailField(max_length=254)
+
+
+class LinkTokenSerializer(serializers.Serializer):
+    token = serializers.CharField(max_length=300)
+
+
+class PasswordResetSerializer(LinkTokenSerializer):
+    password = serializers.CharField(max_length=128, trim_whitespace=False)
+
+
+class LinkSentSerializer(serializers.Serializer):
+    sent_to = serializers.CharField(help_text="The address, partly hidden (aw***@gmail.com).")
+
+
 class PasswordLoginSerializer(serializers.Serializer):
     identifier = serializers.CharField(max_length=254)
     password = serializers.CharField(max_length=128, trim_whitespace=False)
@@ -155,6 +178,12 @@ class OnboardingSerializer(serializers.Serializer):
     language = serializers.ChoiceField(choices=LANGUAGE_CHOICES, required=False)
     city = serializers.CharField(max_length=80, required=False, allow_blank=True)
     accept_terms = serializers.BooleanField(required=False, default=False)
+    phone = serializers.CharField(
+        max_length=32,
+        required=False,
+        allow_blank=True,
+        help_text="International number (+229...), to be reached; not checked by a code.",
+    )
 
     def validate(self, attrs):
         if attrs["mode"] == Role.PRO and not attrs.get("trades"):

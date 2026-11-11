@@ -7,6 +7,11 @@ urlpatterns = [
     path("auth/otp/request", views.CodeRequestView.as_view(), name="otp-request"),
     path("auth/otp/verify", views.CodeVerifyView.as_view(), name="otp-verify"),
     path("auth/password/login", views.PasswordLoginView.as_view(), name="password-login"),
+    path("auth/signup", views.SignUpView.as_view(), name="signup"),
+    path("auth/email/confirm", views.EmailConfirmView.as_view(), name="email-confirm"),
+    path("auth/email/resend", views.EmailResendView.as_view(), name="email-resend"),
+    path("auth/password/forgot", views.PasswordForgotView.as_view(), name="password-forgot"),
+    path("auth/password/reset", views.PasswordResetView.as_view(), name="password-reset"),
     path("auth/refresh", views.RefreshView.as_view(), name="token-refresh"),
     path("auth/logout", views.LogoutView.as_view(), name="logout"),
     path("auth/logout-all", views.LogoutAllView.as_view(), name="logout-all"),
@@ -26,3 +31,4 @@ urlpatterns = [
 
 if settings.ACCOUNTS_DEV_OTP_ENDPOINT:
     urlpatterns.append(path("dev/last-code", views.DevLastCodeView.as_view(), name="dev-last-code"))
+    urlpatterns.append(path("dev/last-link", views.DevLastLinkView.as_view(), name="dev-last-link"))

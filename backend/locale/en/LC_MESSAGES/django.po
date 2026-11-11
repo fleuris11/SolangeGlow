@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-09 10:00+0100\n"
+"POT-Creation-Date: 2026-11-11 23:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -555,6 +555,15 @@ msgstr ""
 msgid "Deleted"
 msgstr ""
 
+msgid "e-mail confirmed"
+msgstr ""
+
+msgid "Confirmed"
+msgstr ""
+
+msgid "Waiting for confirmation"
+msgstr ""
+
 msgid "Sign in as this person"
 msgstr ""
 
@@ -569,6 +578,18 @@ msgstr ""
 
 msgid "Dates"
 msgstr ""
+
+msgid "Send the confirmation link again"
+msgstr ""
+
+msgid "Confirmation link sent again"
+msgstr ""
+
+#, python-format
+msgid "%(count)d link sent."
+msgid_plural "%(count)d links sent."
+msgstr[0] ""
+msgstr[1] ""
 
 msgid "Suspend the selected accounts"
 msgstr ""
@@ -603,6 +624,48 @@ msgstr ""
 msgid "You were signed out. Sign in again."
 msgstr ""
 
+#, python-format
+msgid "Hello %(name)s,"
+msgstr ""
+
+msgid "Hello,"
+msgstr ""
+
+msgid "Confirm your e-mail address"
+msgstr ""
+
+msgid "Welcome to Solange Glow! One click to confirm your address:"
+msgstr ""
+
+#, python-format
+msgid "This link works for %(hours)s hours."
+msgstr ""
+
+msgid "Choose a new password"
+msgstr ""
+
+msgid "To choose a new password, open this link:"
+msgstr ""
+
+#, python-format
+msgid "This link works for %(hours)s hours and only once."
+msgstr ""
+
+msgid "You already have a Solange Glow account"
+msgstr ""
+
+msgid "Someone tried to create an account with this address: you already have one."
+msgstr ""
+
+msgid "To sign in, choose a new password with this link:"
+msgstr ""
+
+msgid "If you did not ask for this, ignore this e-mail: nothing changes."
+msgstr ""
+
+msgid "The Solange Glow team"
+msgstr ""
+
 msgid "This number or e-mail address is not valid. Check it and try again."
 msgstr ""
 
@@ -630,7 +693,7 @@ msgstr ""
 msgid "This account is suspended. Write to our team to find out why."
 msgstr ""
 
-msgid "The number, e-mail or password is not correct. You can also sign in with a code."
+msgid "The e-mail or the password is not correct. Check them, or choose a new password."
 msgstr ""
 
 msgid "This file is not a photo we can use. Choose a JPEG, PNG or WebP photo."
@@ -654,6 +717,22 @@ msgstr ""
 
 #, python-format
 msgid "Solange Glow is for people aged %(age)s and over."
+msgstr ""
+
+msgid "Confirm your e-mail address first: we sent you a new link."
+msgstr ""
+
+msgid "This link no longer works: it was already used or it is too old. Ask for a new one."
+msgstr ""
+
+msgid "Choose a stronger password."
+msgstr ""
+
+#, python-format
+msgid "Too many wrong passwords. Wait %(minutes)s minutes or choose a new password."
+msgstr ""
+
+msgid "Give a phone number so the professionals can reach you."
 msgstr ""
 
 msgid "Phone"
@@ -1954,9 +2033,6 @@ msgid "resources of the steps"
 msgstr ""
 
 msgid "Waiting for the shares"
-msgstr ""
-
-msgid "Confirmed"
 msgstr ""
 
 msgid "organiser"
@@ -6509,6 +6585,14 @@ msgstr ""
 msgid "Pay the shops of each country separately."
 msgstr ""
 
+#, python-format
+msgid "%(shop)s does not take payment at the hand-over for this way. Choose another way."
+msgstr ""
+
+#, python-format
+msgid "You already have %(max)s orders to pay at the hand-over. Receive them first, then order again."
+msgstr ""
+
 msgid "Add a photo of the parcel."
 msgstr ""
 
@@ -6580,6 +6664,18 @@ msgid "Gozem, a zem, a carrier…"
 msgstr ""
 
 msgid "returns and exchanges"
+msgstr ""
+
+msgid "paid at the delivery"
+msgstr ""
+
+msgid "The client pays the delivery person (cash or mobile money), outside the app."
+msgstr ""
+
+msgid "paid at the pick-up"
+msgstr ""
+
+msgid "The client pays when she picks the order up, outside the app."
 msgstr ""
 
 msgid "shop"
@@ -6721,6 +6817,15 @@ msgid "back-in-stock alert"
 msgstr ""
 
 msgid "back-in-stock alerts"
+msgstr ""
+
+msgid "Paid online"
+msgstr ""
+
+msgid "Paid at the delivery"
+msgstr ""
+
+msgid "Paid at the pick-up"
 msgstr ""
 
 msgid "Ready to pick up"

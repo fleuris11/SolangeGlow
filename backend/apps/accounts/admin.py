@@ -9,7 +9,7 @@ from django.utils.translation import gettext_lazy as _
 from django.utils.translation import ngettext
 from unfold.admin import ModelAdmin, TabularInline
 from unfold.contrib.filters.admin import RangeDateFilter
-from unfold.decorators import action
+from unfold.decorators import action, display
 from unfold.forms import AdminPasswordChangeForm, UserChangeForm, UserCreationForm
 from unfold.widgets import UnfoldAdminCheckboxSelectMultipleWidget
 
@@ -86,6 +86,21 @@ class StatusFilter(admin.SimpleListFilter):
         return queryset
 
 
+class EmailConfirmedFilter(admin.SimpleListFilter):
+    title = _("e-mail confirmed")
+    parameter_name = "email_confirmed"
+
+    def lookups(self, request, model_admin):
+        return [("yes", _("Confirmed")), ("no", _("Waiting for confirmation"))]
+
+    def queryset(self, request, queryset):
+        if self.value() == "yes":
+            return queryset.filter(email_verified_at__isnull=False)
+        if self.value() == "no":
+            return queryset.filter(email__isnull=False, email_verified_at__isnull=True)
+        return queryset
+
+
 class LoginEventInline(TabularInline):
     model = LoginEvent
     extra = 0
@@ -110,11 +125,13 @@ class UserAdmin(BaseUserAdmin, AuditedModelAdmin):
         "country",
         "roles",
         "signup_channel",
+        "email_confirmed",
         "is_active",
         "created_at",
     ]
     list_filter = [
         StatusFilter,
+        EmailConfirmedFilter,
         RoleFilter,
         "country",
         "signup_channel",
@@ -137,7 +154,7 @@ class UserAdmin(BaseUserAdmin, AuditedModelAdmin):
         "deleted_at",
     ]
     autocomplete_fields = ["country", "preferred_currency"]
-    actions = ["suspend_users", "reactivate_users"]
+    actions = ["suspend_users", "reactivate_users", "resend_confirmation"]
     actions_detail = ["impersonate_detail"]
 
     @action(
@@ -221,6 +238,26 @@ class UserAdmin(BaseUserAdmin, AuditedModelAdmin):
         if not change:
             obj.signup_channel = SignupChannel.ADMIN
         super().save_model(request, obj, form, change)
+
+    @display(description=_("e-mail confirmed"), boolean=True)
+    def email_confirmed(self, user):
+        return user.email_verified_at is not None if user.email else None
+
+    @admin.action(description=_("Send the confirmation link again"))
+    def resend_confirmation(self, request, queryset):
+        count = 0
+        waiting = queryset.filter(
+            email__isnull=False, email_verified_at__isnull=True, is_active=True
+        )
+        for user in waiting:
+            services.send_link(user, "confirm")
+            self.log_change(request, user, _("Confirmation link sent again"))
+            count += 1
+        self.message_user(
+            request,
+            ngettext("%(count)d link sent.", "%(count)d links sent.", count) % {"count": count},
+            messages.SUCCESS,
+        )
 
     @admin.action(description=_("Suspend the selected accounts"))
     def suspend_users(self, request, queryset):

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-09 10:00+0100\n"
+"POT-Creation-Date: 2026-11-11 23:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -555,6 +555,15 @@ msgstr "Pozastavený"
 msgid "Deleted"
 msgstr "Zmazaný"
 
+msgid "e-mail confirmed"
+msgstr "e-mail potvrdený"
+
+msgid "Confirmed"
+msgstr "Potvrdené"
+
+msgid "Waiting for confirmation"
+msgstr "Čaká na potvrdenie"
+
 msgid "Sign in as this person"
 msgstr "Prihlásiť sa namiesto nej"
 
@@ -569,6 +578,20 @@ msgstr "Roly a oprávnenia"
 
 msgid "Dates"
 msgstr "Dátumy"
+
+msgid "Send the confirmation link again"
+msgstr "Znova poslať potvrdzovací odkaz"
+
+msgid "Confirmation link sent again"
+msgstr "Potvrdzovací odkaz znova odoslaný"
+
+#, python-format
+msgid "%(count)d link sent."
+msgid_plural "%(count)d links sent."
+msgstr[0] "%(count)d odkaz odoslaný."
+msgstr[1] "%(count)d odkazy odoslané."
+msgstr[2] "%(count)d odkazov odoslaných."
+msgstr[3] "%(count)d odkazov odoslaných."
 
 msgid "Suspend the selected accounts"
 msgstr "Pozastaviť vybrané účty"
@@ -607,6 +630,48 @@ msgstr "Požiadavka zamietnutá. Obnov stránku a skús znova."
 msgid "You were signed out. Sign in again."
 msgstr "Bola si odhlásená. Prihlás sa znova."
 
+#, python-format
+msgid "Hello %(name)s,"
+msgstr "Dobrý deň, %(name)s,"
+
+msgid "Hello,"
+msgstr "Dobrý deň,"
+
+msgid "Confirm your e-mail address"
+msgstr "Potvrď svoju e-mailovú adresu"
+
+msgid "Welcome to Solange Glow! One click to confirm your address:"
+msgstr "Vitaj v Solange Glow! Jedným kliknutím potvrdíš svoju adresu:"
+
+#, python-format
+msgid "This link works for %(hours)s hours."
+msgstr "Tento odkaz platí %(hours)s hodín."
+
+msgid "Choose a new password"
+msgstr "Vyber si nové heslo"
+
+msgid "To choose a new password, open this link:"
+msgstr "Ak si chceš vybrať nové heslo, otvor tento odkaz:"
+
+#, python-format
+msgid "This link works for %(hours)s hours and only once."
+msgstr "Tento odkaz platí %(hours)s hodín a iba raz."
+
+msgid "You already have a Solange Glow account"
+msgstr "Už máš účet Solange Glow"
+
+msgid "Someone tried to create an account with this address: you already have one."
+msgstr "Niekto chcel s touto adresou vytvoriť účet: už jeden máš."
+
+msgid "To sign in, choose a new password with this link:"
+msgstr "Ak sa chceš prihlásiť, vyber si nové heslo cez tento odkaz:"
+
+msgid "If you did not ask for this, ignore this e-mail: nothing changes."
+msgstr "Ak si o nič nežiadal(a), tento e-mail ignoruj: nič sa nezmení."
+
+msgid "The Solange Glow team"
+msgstr "Tím Solange Glow"
+
 msgid "This number or e-mail address is not valid. Check it and try again."
 msgstr "Toto číslo alebo e-mail nie je platný. Skontroluj ho a skús znova."
 
@@ -634,8 +699,8 @@ msgstr "Tento kód už neplatí. Vyžiadaj si nový kód."
 msgid "This account is suspended. Write to our team to find out why."
 msgstr "Tento účet je pozastavený. Napíš nášmu tímu a zistíš prečo."
 
-msgid "The number, e-mail or password is not correct. You can also sign in with a code."
-msgstr "Číslo, e-mail alebo heslo nie je správne. Môžeš sa prihlásiť aj kódom."
+msgid "The e-mail or the password is not correct. Check them, or choose a new password."
+msgstr "E-mail alebo heslo nie je správne. Skontroluj ich alebo si vyber nové heslo."
 
 msgid "This file is not a photo we can use. Choose a JPEG, PNG or WebP photo."
 msgstr "Tento súbor nie je použiteľná fotka. Vyber fotku JPEG, PNG alebo WebP."
@@ -659,6 +724,22 @@ msgstr "Pre pokračovanie prijmi podmienky používania a zásady ochrany súkro
 #, python-format
 msgid "Solange Glow is for people aged %(age)s and over."
 msgstr "Solange Glow je pre ľudí od %(age)s rokov."
+
+msgid "Confirm your e-mail address first: we sent you a new link."
+msgstr "Najprv potvrď svoju e-mailovú adresu: poslali sme ti nový odkaz."
+
+msgid "This link no longer works: it was already used or it is too old. Ask for a new one."
+msgstr "Tento odkaz už nefunguje: bol už použitý alebo je príliš starý. Požiadaj o nový."
+
+msgid "Choose a stronger password."
+msgstr "Vyber si silnejšie heslo."
+
+#, python-format
+msgid "Too many wrong passwords. Wait %(minutes)s minutes or choose a new password."
+msgstr "Príliš veľa nesprávnych hesiel. Počkaj %(minutes)s minút alebo si vyber nové heslo."
+
+msgid "Give a phone number so the professionals can reach you."
+msgstr "Zadaj telefónne číslo, aby ťa profesionáli mohli kontaktovať."
 
 msgid "Phone"
 msgstr "Telefón"
@@ -1959,9 +2040,6 @@ msgstr "vybavenie krokov"
 
 msgid "Waiting for the shares"
 msgstr "Čaká sa na podiely"
-
-msgid "Confirmed"
-msgstr "Potvrdené"
 
 msgid "organiser"
 msgstr "organizátorka"
@@ -6525,6 +6603,14 @@ msgstr "%(shop)s doručuje len vo svojej krajine. Objednávku si môžeš vyzdvi
 msgid "Pay the shops of each country separately."
 msgstr "Obchody z každej krajiny zaplať zvlášť."
 
+#, python-format
+msgid "%(shop)s does not take payment at the hand-over for this way. Choose another way."
+msgstr "%(shop)s pri tomto spôsobe neprijíma platbu pri odovzdaní. Vyber iný spôsob."
+
+#, python-format
+msgid "You already have %(max)s orders to pay at the hand-over. Receive them first, then order again."
+msgstr "Už máš %(max)s objednávky na zaplatenie pri odovzdaní. Najprv ich prevezmi, potom objednaj znova."
+
 msgid "Add a photo of the parcel."
 msgstr "Pridaj fotku balíka."
 
@@ -6597,6 +6683,18 @@ msgstr "Gozem, zem, prepravca…"
 
 msgid "returns and exchanges"
 msgstr "vrátenie a výmena"
+
+msgid "paid at the delivery"
+msgstr "platba pri doručení"
+
+msgid "The client pays the delivery person (cash or mobile money), outside the app."
+msgstr "Klient platí kuriérovi (v hotovosti alebo mobilnými peniazmi) mimo aplikácie."
+
+msgid "paid at the pick-up"
+msgstr "platba pri vyzdvihnutí"
+
+msgid "The client pays when she picks the order up, outside the app."
+msgstr "Klient platí pri vyzdvihnutí objednávky mimo aplikácie."
 
 msgid "shop"
 msgstr "obchod"
@@ -6738,6 +6836,15 @@ msgstr "upozornenie na naskladnenie"
 
 msgid "back-in-stock alerts"
 msgstr "upozornenia na naskladnenie"
+
+msgid "Paid online"
+msgstr "Zaplatené online"
+
+msgid "Paid at the delivery"
+msgstr "Zaplatené pri doručení"
+
+msgid "Paid at the pick-up"
+msgstr "Zaplatené pri vyzdvihnutí"
 
 msgid "Ready to pick up"
 msgstr "Pripravená na vyzdvihnutie"
@@ -7367,6 +7474,9 @@ msgstr "Registrácie za deň"
 #, python-format
 msgid "Sales paid per day (%(currency)s)"
 msgstr "Zaplatené predaje za deň (%(currency)s)"
+
+#~ msgid "The number, e-mail or password is not correct. You can also sign in with a code."
+#~ msgstr "Číslo, e-mail alebo heslo nie je správne. Môžeš sa prihlásiť aj kódom."
 
 #~ msgid "Ads"
 #~ msgstr "Reklama"

@@ -14,10 +14,14 @@ import logging
 import secrets
 from dataclasses import dataclass
 from datetime import timedelta
+from urllib.parse import quote
 
 import phonenumbers
 from django.conf import settings
 from django.contrib.auth import authenticate
+from django.contrib.auth.password_validation import validate_password
+from django.core import signing
+from django.core.cache import cache
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.db import transaction
@@ -33,7 +37,7 @@ from apps.core.selectors import get_setting
 from apps.notifications.services import notify
 from apps.pros.models import ProProfile, Trade
 
-from . import errors, selectors
+from . import emails, errors, selectors
 from .models import GuestIdentity, LoginEvent, OtpChallenge, SignupChannel, User
 from .otp.base import OtpDeliveryError, OtpMessage
 from .otp.registry import get_sender
@@ -362,6 +366,18 @@ def _get_or_create_user(challenge: OtpChallenge, locale: str | None) -> tuple[Us
     )
     user = User.objects.filter(**lookup).first()
     created = False
+    if (
+        is_phone
+        and user is not None
+        and user.phone_verified_at is None
+        and user.email
+        and user.signup_channel == SignupChannel.EMAIL
+    ):
+        # The number was typed at the welcome screen of an e-mail account, never proven:
+        # whoever receives the code owns it, and gets an account of her own.
+        user.phone = None
+        user.save(update_fields=["phone", "updated_at"])
+        user = None
 
     if user is None:
         country = Country.objects.filter(code=challenge.country_code).first() if is_phone else None
@@ -385,11 +401,26 @@ def _get_or_create_user(challenge: OtpChallenge, locale: str | None) -> tuple[Us
 # --- Password (optional) -------------------------------------------------------------
 
 
+def _failures_key(identifier: str) -> str:
+    return "login-failures:" + destination_hash(identifier.strip().lower())
+
+
 def login_with_password(
     *, identifier: str, password: str, ip: str | None = None, user_agent: str = ""
 ) -> SignInResult:
+    """E-mail (or number) and password. After too many wrong passwords for one address, its
+    sign-in waits a few minutes (settings); « Forgot password » stays open."""
+    key = _failures_key(identifier)
+    most = int(get_setting("accounts.password_max_failures", default=5))
+    minutes = int(get_setting("accounts.password_lock_minutes", default=15))
+    if most and (cache.get(key) or 0) >= most:
+        raise errors.PasswordLocked(details={"minutes": minutes})
     user = authenticate(username=identifier, password=password)
     if user is None:
+        try:
+            cache.incr(key)
+        except ValueError:
+            cache.set(key, 1, minutes * 60)
         # No lookup of who it was: the journal must not help guessing accounts.
         record_login(
             user=None,
@@ -400,8 +431,210 @@ def login_with_password(
             user_agent=user_agent,
         )
         raise errors.InvalidCredentials()
+    cache.delete(key)
+    if user.email and user.email_verified_at is None and not user.phone_verified_at:
+        # Right password, address never confirmed: a new link leaves, no session yet.
+        send_link(user, "confirm")
+        raise errors.EmailNotConfirmed()
     record_login(
         user=user, method=LoginEvent.Method.PASSWORD, success=True, ip=ip, user_agent=user_agent
+    )
+    return SignInResult(user, False, deletion_cancelled=cancel_deletion(user))
+
+
+# --- Sign-up with an e-mail and a password -------------------------------------------
+#
+# The classic way: e-mail, password, then a link in the mailbox confirms the address and signs
+# the person in. Answers never say whether an address has an account: the mailbox does.
+
+LINK_KINDS = ("confirm", "reset", "exists")
+DEV_LINK_CACHE_PREFIX = "dev:link:"
+
+
+def _link_hours(kind: str) -> int:
+    if kind == "confirm":
+        return int(get_setting("accounts.email_link_hours", default=48))
+    return int(get_setting("accounts.reset_link_hours", default=2))
+
+
+def _link_state(user: User, kind: str) -> str:
+    """What makes a link work once: confirming sets the date, a new password changes the hash."""
+    if kind == "confirm":
+        raw = f"{user.email}|{user.email_verified_at}"
+    else:
+        raw = f"{user.password}|{user.last_login}"
+    return _hmac("account-link", kind, raw)[:24]
+
+
+def _signer(kind: str) -> signing.TimestampSigner:
+    return signing.TimestampSigner(
+        salt=f"accounts.link.{'confirm' if kind == 'confirm' else 'reset'}"
+    )
+
+
+def make_link_token(user: User, kind: str) -> str:
+    return _signer(kind).sign(f"{user.pk}:{_link_state(user, kind)}")
+
+
+def user_from_link(token: str, kind: str) -> User:
+    try:
+        value = _signer(kind).unsign(token or "", max_age=_link_hours(kind) * 3600)
+        user_id, state = value.split(":", 1)
+        user = User.objects.get(pk=user_id)
+    except (signing.BadSignature, ValueError, User.DoesNotExist) as exc:
+        raise errors.InvalidLink() from exc
+    if not hmac.compare_digest(state, _link_state(user, kind)) or not user.is_active:
+        raise errors.InvalidLink()
+    return user
+
+
+def link_url(user: User, kind: str) -> str:
+    language = user.preferred_language or settings.LANGUAGE_CODE
+    path = "confirm" if kind == "confirm" else "reset"
+    token = make_link_token(user, "confirm" if kind == "confirm" else "reset")
+    return f"{settings.SITE_URL.rstrip('/')}/{language}/auth/{path}?token={quote(token)}"
+
+
+def send_link(user: User, kind: str) -> None:
+    """The e-mail leaves in the background (with retries): the answer does not wait for it."""
+    from .tasks import send_account_link
+
+    transaction.on_commit(lambda: send_account_link.delay(str(user.pk), kind))
+
+
+def deliver_link(user_id: str, kind: str) -> str:
+    """Builds the link at sending time and e-mails it. Raises on a failed delivery."""
+    from django.core.mail import send_mail
+
+    user = User.objects.filter(pk=user_id, is_active=True).first()
+    if user is None or not user.email or kind not in LINK_KINDS:
+        return "skipped"
+    if kind == "confirm" and user.email_verified_at:
+        return "skipped"
+    link = link_url(user, kind)
+    message = emails.build(
+        kind,
+        link=link,
+        first_name=user.first_name,
+        hours=_link_hours(kind),
+        language=user.preferred_language or settings.LANGUAGE_CODE,
+    )
+    if settings.ACCOUNTS_DEV_OTP_ENDPOINT:
+        cache.set(f"{DEV_LINK_CACHE_PREFIX}{kind}:{user.email}", link, 3600)
+    send_mail(message.subject, message.body, settings.DEFAULT_FROM_EMAIL, [user.email])
+    return "sent"
+
+
+def _check_new_password(password: str, user: User) -> None:
+    try:
+        validate_password(password, user)
+    except ValidationError as exc:
+        raise errors.WeakPassword(details={"fields": {"password": list(exc.messages)}}) from exc
+
+
+@transaction.atomic
+def sign_up(*, email: str, password: str, first_name: str = "", locale: str | None = None) -> str:
+    """Creates the account (not confirmed yet) and e-mails the link. Returns the masked address.
+
+    An address that already has a confirmed account gets an e-mail saying so, with a link to
+    choose a new password: the answer here is the same, so nobody learns who is registered.
+    """
+    address = parse_destination(email=email).value
+    first_name = (first_name or "").strip()[:150]
+    user = User.objects.select_for_update().filter(email__iexact=address).first()
+    if user is not None and (user.email_verified_at or user.phone_verified_at):
+        send_link(user, "exists")
+        return mask(address)
+    candidate = user or User(email=address, first_name=first_name)
+    _check_new_password(password, candidate)
+    if user is None:
+        user = User.objects.create_user(
+            email=address,
+            password=password,
+            first_name=first_name,
+            signup_channel=SignupChannel.EMAIL,
+            preferred_language=_clean_locale(locale),
+        )
+    else:
+        # Never confirmed (maybe typed by someone else): whoever opens the mailbox decides.
+        user.set_password(password)
+        if first_name:
+            user.first_name = first_name
+        user.preferred_language = _clean_locale(locale)
+        user.save(update_fields=["password", "first_name", "preferred_language", "updated_at"])
+    audit("accounts.signed_up", user, actor=user)
+    send_link(user, "confirm")
+    return mask(address)
+
+
+def resend_confirmation(email: str) -> str:
+    """Same answer whatever the address: only an account waiting for confirmation gets mail."""
+    address = parse_destination(email=email).value
+    user = User.objects.filter(email__iexact=address, email_verified_at__isnull=True).first()
+    if user is not None and user.is_active and user.has_usable_password():
+        send_link(user, "confirm")
+    return mask(address)
+
+
+@transaction.atomic
+def confirm_email(
+    token: str, *, ip: str | None = None, user_agent: str = "", guest_id: str | None = None
+) -> SignInResult:
+    """The link of the mailbox: the address is confirmed and the person is signed in."""
+    user = user_from_link(token, "confirm")
+    user = User.objects.select_for_update().get(pk=user.pk)
+    created = user.email_verified_at is None
+    user.email_verified_at = timezone.now()
+    user.save(update_fields=["email_verified_at", "updated_at"])
+    if guest_id:
+        attach_guest(user, guest_id)
+    record_login(
+        user=user,
+        method=LoginEvent.Method.PASSWORD,
+        channel="email_link",
+        success=True,
+        ip=ip,
+        user_agent=user_agent,
+    )
+    if created:
+        transaction.on_commit(lambda: notify(user, "account.welcome"))
+    return SignInResult(user, created, deletion_cancelled=cancel_deletion(user))
+
+
+def request_password_reset(email: str) -> str:
+    """« Forgot password »: a link if the address has an account, the same answer otherwise."""
+    address = parse_destination(email=email).value
+    user = User.objects.filter(email__iexact=address, is_active=True).first()
+    if user is not None:
+        send_link(user, "reset")
+    return mask(address)
+
+
+@transaction.atomic
+def reset_password(
+    token: str, password: str, *, ip: str | None = None, user_agent: str = ""
+) -> SignInResult:
+    """New password from the e-mailed link: other sessions are closed, this one opens."""
+    user = user_from_link(token, "reset")
+    user = User.objects.select_for_update().get(pk=user.pk)
+    _check_new_password(password, user)
+    user.set_password(password)
+    fields = ["password", "updated_at"]
+    if user.email_verified_at is None:
+        # The link came through the mailbox: the address is proven too.
+        user.email_verified_at = timezone.now()
+        fields.append("email_verified_at")
+    user.save(update_fields=fields)
+    revoke_all_tokens(user)
+    cache.delete(_failures_key(user.email or ""))
+    audit("account.password_reset", user, actor=user)
+    record_login(
+        user=user,
+        method=LoginEvent.Method.PASSWORD,
+        channel="reset_link",
+        success=True,
+        ip=ip,
+        user_agent=user_agent,
     )
     return SignInResult(user, False, deletion_cancelled=cancel_deletion(user))
 
@@ -530,6 +763,7 @@ def complete_onboarding(
     language: str | None = None,
     city: str = "",
     accept_terms: bool = False,
+    phone: str = "",
 ) -> User:
     """End of the welcome screens: client or pro (with trades), birth date, language, city;
     the terms are accepted here (date and version kept)."""
@@ -542,6 +776,10 @@ def complete_onboarding(
 
     if user.terms_accepted_at is None and not accept_terms:
         raise errors.TermsRequired()
+    if phone:
+        _set_contact_phone(user, phone)
+    elif not user.phone:
+        raise errors.PhoneNeeded()
     user.birth_date = birth_date
     if accept_terms and user.terms_accepted_at is None:
         user.terms_accepted_at = timezone.now()
@@ -561,6 +799,25 @@ def complete_onboarding(
         user.onboarded_at = timezone.now()
     user.save()
     return user
+
+
+def _set_contact_phone(user: User, raw: str) -> None:
+    """The number to reach the person: kept as typed (E.164), not proven by a code."""
+    number = parse_destination(phone=raw).value
+    if user.phone and str(user.phone) == number:
+        return
+    if User.objects.filter(phone=number).exclude(pk=user.pk).exists():
+        raise errors.ContactTaken()
+    if user.phone_verified_at:
+        # A proven number is changed only with a code (« me/contact »).
+        return
+    user.phone = number
+    if not user.country_id:
+        region = phonenumbers.region_code_for_number(phonenumbers.parse(number))
+        country = Country.objects.filter(code=region, is_active=True).first()
+        if country is not None:
+            user.country = country
+            user.preferred_currency = user.preferred_currency or country.default_currency
 
 
 def set_photo(user: User, uploaded) -> User:

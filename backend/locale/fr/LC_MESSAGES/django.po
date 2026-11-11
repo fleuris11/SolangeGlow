@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-09 10:00+0100\n"
+"POT-Creation-Date: 2026-11-11 23:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -555,6 +555,15 @@ msgstr "Suspendu"
 msgid "Deleted"
 msgstr "Supprimé"
 
+msgid "e-mail confirmed"
+msgstr "e-mail confirmé"
+
+msgid "Confirmed"
+msgstr "Confirmé"
+
+msgid "Waiting for confirmation"
+msgstr "En attente de confirmation"
+
 msgid "Sign in as this person"
 msgstr "Se connecter à sa place"
 
@@ -569,6 +578,18 @@ msgstr "Rôles et permissions"
 
 msgid "Dates"
 msgstr "Dates"
+
+msgid "Send the confirmation link again"
+msgstr "Renvoyer le lien de confirmation"
+
+msgid "Confirmation link sent again"
+msgstr "Lien de confirmation renvoyé"
+
+#, python-format
+msgid "%(count)d link sent."
+msgid_plural "%(count)d links sent."
+msgstr[0] "%(count)d lien envoyé."
+msgstr[1] "%(count)d liens envoyés."
 
 msgid "Suspend the selected accounts"
 msgstr "Suspendre les comptes choisis"
@@ -603,6 +624,48 @@ msgstr "Demande refusée. Recharge la page et réessaie."
 msgid "You were signed out. Sign in again."
 msgstr "Tu as été déconnectée. Reconnecte-toi."
 
+#, python-format
+msgid "Hello %(name)s,"
+msgstr "Bonjour %(name)s,"
+
+msgid "Hello,"
+msgstr "Bonjour,"
+
+msgid "Confirm your e-mail address"
+msgstr "Confirme ton adresse e-mail"
+
+msgid "Welcome to Solange Glow! One click to confirm your address:"
+msgstr "Bienvenue sur Solange Glow ! Un clic pour confirmer ton adresse :"
+
+#, python-format
+msgid "This link works for %(hours)s hours."
+msgstr "Ce lien fonctionne pendant %(hours)s heures."
+
+msgid "Choose a new password"
+msgstr "Choisis un nouveau mot de passe"
+
+msgid "To choose a new password, open this link:"
+msgstr "Pour choisir un nouveau mot de passe, ouvre ce lien :"
+
+#, python-format
+msgid "This link works for %(hours)s hours and only once."
+msgstr "Ce lien fonctionne pendant %(hours)s heures, et une seule fois."
+
+msgid "You already have a Solange Glow account"
+msgstr "Tu as déjà un compte Solange Glow"
+
+msgid "Someone tried to create an account with this address: you already have one."
+msgstr "Quelqu'un a voulu créer un compte avec cette adresse : tu en as déjà un."
+
+msgid "To sign in, choose a new password with this link:"
+msgstr "Pour te connecter, choisis un nouveau mot de passe avec ce lien :"
+
+msgid "If you did not ask for this, ignore this e-mail: nothing changes."
+msgstr "Si tu n'as rien demandé, ignore cet e-mail : rien ne change."
+
+msgid "The Solange Glow team"
+msgstr "L'équipe Solange Glow"
+
 msgid "This number or e-mail address is not valid. Check it and try again."
 msgstr "Ce numéro ou cet e-mail n'est pas valide. Vérifie-le et réessaie."
 
@@ -630,8 +693,8 @@ msgstr "Ce code n'est plus valable. Demande un nouveau code."
 msgid "This account is suspended. Write to our team to find out why."
 msgstr "Ce compte est suspendu. Écris à notre équipe pour savoir pourquoi."
 
-msgid "The number, e-mail or password is not correct. You can also sign in with a code."
-msgstr "Le numéro, l'e-mail ou le mot de passe n'est pas correct. Tu peux aussi te connecter avec un code."
+msgid "The e-mail or the password is not correct. Check them, or choose a new password."
+msgstr "L'e-mail ou le mot de passe n'est pas correct. Vérifie-les, ou choisis un nouveau mot de passe."
 
 msgid "This file is not a photo we can use. Choose a JPEG, PNG or WebP photo."
 msgstr "Ce fichier n'est pas une photo utilisable. Choisis une photo JPEG, PNG ou WebP."
@@ -655,6 +718,22 @@ msgstr "Accepte les conditions d'utilisation et la politique de confidentialité
 #, python-format
 msgid "Solange Glow is for people aged %(age)s and over."
 msgstr "Solange Glow est réservé aux personnes de %(age)s ans et plus."
+
+msgid "Confirm your e-mail address first: we sent you a new link."
+msgstr "Confirme d'abord ton adresse e-mail : on t'a envoyé un nouveau lien."
+
+msgid "This link no longer works: it was already used or it is too old. Ask for a new one."
+msgstr "Ce lien ne fonctionne plus : il a déjà servi ou il est trop ancien. Demande-en un nouveau."
+
+msgid "Choose a stronger password."
+msgstr "Choisis un mot de passe plus solide."
+
+#, python-format
+msgid "Too many wrong passwords. Wait %(minutes)s minutes or choose a new password."
+msgstr "Trop de mots de passe faux. Attends %(minutes)s minutes ou choisis un nouveau mot de passe."
+
+msgid "Give a phone number so the professionals can reach you."
+msgstr "Donne un numéro de téléphone pour que les professionnels puissent te joindre."
 
 msgid "Phone"
 msgstr "Téléphone"
@@ -1955,9 +2034,6 @@ msgstr "matériel des étapes"
 
 msgid "Waiting for the shares"
 msgstr "En attente des parts"
-
-msgid "Confirmed"
-msgstr "Confirmé"
 
 msgid "organiser"
 msgstr "organisatrice"
@@ -6509,6 +6585,14 @@ msgstr "%(shop)s livre seulement dans son pays. Tu peux retirer ta commande chez
 msgid "Pay the shops of each country separately."
 msgstr "Paie séparément les boutiques de chaque pays."
 
+#, python-format
+msgid "%(shop)s does not take payment at the hand-over for this way. Choose another way."
+msgstr "%(shop)s ne prend pas le paiement à la remise pour ce mode. Choisis-en un autre."
+
+#, python-format
+msgid "You already have %(max)s orders to pay at the hand-over. Receive them first, then order again."
+msgstr "Tu as déjà %(max)s commandes à payer à la remise. Reçois-les d'abord, puis commande à nouveau."
+
 msgid "Add a photo of the parcel."
 msgstr "Ajoute une photo du colis."
 
@@ -6581,6 +6665,18 @@ msgstr "Gozem, un zem, un transporteur…"
 
 msgid "returns and exchanges"
 msgstr "retours et échanges"
+
+msgid "paid at the delivery"
+msgstr "payé à la livraison"
+
+msgid "The client pays the delivery person (cash or mobile money), outside the app."
+msgstr "Le client paie le livreur (espèces ou Mobile Money), hors de l'appli."
+
+msgid "paid at the pick-up"
+msgstr "payé au retrait"
+
+msgid "The client pays when she picks the order up, outside the app."
+msgstr "Le client paie en venant chercher sa commande, hors de l'appli."
 
 msgid "shop"
 msgstr "boutique"
@@ -6722,6 +6818,15 @@ msgstr "alerte de retour en stock"
 
 msgid "back-in-stock alerts"
 msgstr "alertes de retour en stock"
+
+msgid "Paid online"
+msgstr "Payé en ligne"
+
+msgid "Paid at the delivery"
+msgstr "Payé à la livraison"
+
+msgid "Paid at the pick-up"
+msgstr "Payé au retrait"
 
 msgid "Ready to pick up"
 msgstr "Prête à retirer"
@@ -7349,6 +7454,9 @@ msgstr "Inscriptions par jour"
 #, python-format
 msgid "Sales paid per day (%(currency)s)"
 msgstr "Ventes payées par jour (%(currency)s)"
+
+#~ msgid "The number, e-mail or password is not correct. You can also sign in with a code."
+#~ msgstr "Le numéro, l'e-mail ou le mot de passe n'est pas correct. Tu peux aussi te connecter avec un code."
 
 #~ msgid "Ads"
 #~ msgstr "Publicité"

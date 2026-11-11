@@ -34,13 +34,18 @@ from .serializers import (
     ContactChangeRequestSerializer,
     DeleteAccountSerializer,
     DeletionScheduledSerializer,
+    EmailOnlySerializer,
     GuestSerializer,
+    LinkSentSerializer,
+    LinkTokenSerializer,
     MeSerializer,
     OnboardingSerializer,
     PasswordLoginSerializer,
+    PasswordResetSerializer,
     PasswordSetSerializer,
     PhotoSerializer,
     SignInSerializer,
+    SignUpSerializer,
 )
 from .throttling import SettingRateThrottle
 
@@ -143,6 +148,100 @@ class PasswordLoginView(PublicView):
         result = services.login_with_password(
             identifier=serializer.validated_data["identifier"],
             password=serializer.validated_data["password"],
+            ip=client_ip(request),
+            user_agent=user_agent(request),
+        )
+        return signed_in_response(request, result)
+
+
+def _link_sent(sent_to: str) -> Response:
+    return Response(LinkSentSerializer({"sent_to": sent_to}).data, status=status.HTTP_202_ACCEPTED)
+
+
+class SignUpView(PublicView):
+    throttle_scope = "otp_request"
+
+    @extend_schema(
+        tags=["auth"],
+        request=SignUpSerializer,
+        responses={202: LinkSentSerializer},
+        summary="Create an account with an e-mail and a password; a link confirms the address.",
+    )
+    def post(self, request):
+        serializer = SignUpSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        data = serializer.validated_data
+        return _link_sent(
+            services.sign_up(
+                email=data["email"],
+                password=data["password"],
+                first_name=data.get("first_name", ""),
+                locale=data.get("locale") or request.LANGUAGE_CODE,
+            )
+        )
+
+
+class EmailConfirmView(PublicView):
+    throttle_scope = "auth"
+
+    @extend_schema(
+        tags=["auth"],
+        request=LinkTokenSerializer,
+        responses={200: SignInSerializer, 201: SignInSerializer},
+        summary="The link of the confirmation e-mail: confirms the address and signs in.",
+    )
+    def post(self, request):
+        serializer = LinkTokenSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        result = services.confirm_email(
+            serializer.validated_data["token"],
+            ip=client_ip(request),
+            user_agent=user_agent(request),
+            guest_id=request.COOKIES.get(GUEST_COOKIE),
+        )
+        return signed_in_response(request, result)
+
+
+class EmailResendView(PublicView):
+    throttle_scope = "otp_request"
+
+    @extend_schema(tags=["auth"], request=EmailOnlySerializer, responses={202: LinkSentSerializer})
+    def post(self, request):
+        serializer = EmailOnlySerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        return _link_sent(services.resend_confirmation(serializer.validated_data["email"]))
+
+
+class PasswordForgotView(PublicView):
+    throttle_scope = "otp_request"
+
+    @extend_schema(
+        tags=["auth"],
+        request=EmailOnlySerializer,
+        responses={202: LinkSentSerializer},
+        summary="« Forgot password »: a link by e-mail (same answer for any address).",
+    )
+    def post(self, request):
+        serializer = EmailOnlySerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        return _link_sent(services.request_password_reset(serializer.validated_data["email"]))
+
+
+class PasswordResetView(PublicView):
+    throttle_scope = "auth"
+
+    @extend_schema(
+        tags=["auth"],
+        request=PasswordResetSerializer,
+        responses={200: SignInSerializer},
+        summary="New password from the e-mailed link; other sessions are closed.",
+    )
+    def post(self, request):
+        serializer = PasswordResetSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        result = services.reset_password(
+            serializer.validated_data["token"],
+            serializer.validated_data["password"],
             ip=client_ip(request),
             user_agent=user_agent(request),
         )
@@ -345,6 +444,7 @@ class OnboardingView(APIView):
             language=data.get("language"),
             city=data.get("city", ""),
             accept_terms=data["accept_terms"],
+            phone=data.get("phone", ""),
         )
         return Response(MeSerializer(user, context={"request": request}).data)
 
@@ -372,6 +472,23 @@ class GuestView(PublicView):
         response = Response(GuestSerializer(guest).data, status=status.HTTP_201_CREATED)
         set_guest_cookie(response, str(guest.pk))
         return response
+
+
+class DevLastLinkView(PublicView):
+    """Development only (never routed in production): last account link e-mailed."""
+
+    throttle_classes = []
+
+    @extend_schema(exclude=True)
+    def get(self, request):
+        if not settings.ACCOUNTS_DEV_OTP_ENDPOINT:
+            raise exceptions.NotFound()
+        kind = request.query_params.get("kind", "confirm")
+        email = request.query_params.get("email", "").strip().lower()
+        link = cache.get(f"{services.DEV_LINK_CACHE_PREFIX}{kind}:{email}")
+        if link is None:
+            raise exceptions.NotFound()
+        return Response({"link": link})
 
 
 class DevLastCodeView(PublicView):

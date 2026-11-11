@@ -57,7 +57,7 @@ class AccountSuspended(DomainError):
 class InvalidCredentials(DomainError):
     code = "invalid_credentials"
     status_code = 401
-    message = _("The number, e-mail or password is not correct. You can also sign in with a code.")
+    message = _("The e-mail or the password is not correct. Check them, or choose a new password.")
 
 
 class InvalidImage(DomainError):
@@ -94,3 +94,32 @@ class TooYoung(DomainError):
     code = "too_young"
     status_code = 403
     message = _("Solange Glow is for people aged %(age)s and over.")
+
+
+class EmailNotConfirmed(DomainError):
+    code = "email_not_confirmed"
+    status_code = 403
+    message = _("Confirm your e-mail address first: we sent you a new link.")
+
+
+class InvalidLink(DomainError):
+    code = "invalid_link"
+    message = _(
+        "This link no longer works: it was already used or it is too old. Ask for a new one."
+    )
+
+
+class WeakPassword(DomainError):
+    code = "weak_password"
+    message = _("Choose a stronger password.")
+
+
+class PasswordLocked(DomainError):
+    code = "password_locked"
+    status_code = 429
+    message = _("Too many wrong passwords. Wait %(minutes)s minutes or choose a new password.")
+
+
+class PhoneNeeded(DomainError):
+    code = "phone_needed"
+    message = _("Give a phone number so the professionals can reach you.")
