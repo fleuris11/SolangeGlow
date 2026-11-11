@@ -13,20 +13,21 @@ const LOOK = { theme: "light", textSize: "normal" } as const;
 const BOOKING_PRO_PHONE = "+2290196000109";
 const SELLER_PHONE = "+2290196000102";
 
-async function firstCode(page: Page, international: string): Promise<string> {
-  const url = `/api/v1/dev/last-code?destination=${encodeURIComponent(international)}`;
-  let code = "";
+async function lastLink(page: Page, email: string): Promise<string> {
+  const url = `/api/v1/dev/last-link?kind=confirm&email=${encodeURIComponent(email)}`;
+  let link = "";
   await expect
     .poll(
       async () => {
         const response = await page.request.get(url);
-        code = response.ok() ? (await response.json()).code : "";
-        return code;
+        link = response.ok() ? (await response.json()).link : "";
+        return link;
       },
-      { timeout: 30_000, message: "code sent by the worker (dev endpoint)" },
+      { timeout: 30_000, message: "e-mail sent by the worker (dev endpoint)" },
     )
-    .toMatch(/^\d{6}$/);
-  return code;
+    .toContain("token=");
+  const address = new URL(link);
+  return `${address.pathname}${address.search}`;
 }
 
 test("sign up, find, book, buy, receipt code, rules and my data", async ({ browser }) => {
@@ -37,14 +38,14 @@ test("sign up, find, book, buy, receipt code, rules and my data", async ({ brows
   const page = await context.newPage();
 
   // --- Sign up ----------------------------------------------------------------------------------
-  await openWith(page, "/fr/auth", LOOK);
-  await page.getByRole("button", { name: "Téléphone" }).click();
-  await page.getByLabel("Pays").selectOption("BJ");
-  await page.getByLabel("Ton numéro de téléphone").fill(national);
-  await page.getByRole("button", { name: "Recevoir mon code" }).click();
-  await expect(page.getByRole("heading", { name: "Tape ton code" })).toBeVisible();
-  await page.getByLabel("Chiffre 1 sur 6").click();
-  await page.keyboard.type(await firstCode(page, `+229${national}`));
+  const email = `lina-${national}@example.com`;
+  await openWith(page, "/fr/auth?mode=signup", LOOK);
+  await page.getByLabel("Ton prénom").fill(name);
+  await page.getByLabel("Ton adresse e-mail").fill(email);
+  await page.getByLabel("Choisis un mot de passe").fill("Cotonou-Glow-2026");
+  await page.getByRole("button", { name: "Créer mon compte" }).click();
+  await expect(page.getByRole("heading", { name: "Regarde tes e-mails" })).toBeVisible();
+  await page.goto(await lastLink(page, email));
 
   await expect(page).toHaveURL(/\/fr\/welcome/);
   await page.getByRole("button", { name: /Je cherche/ }).click();
@@ -52,6 +53,8 @@ test("sign up, find, book, buy, receipt code, rules and my data", async ({ brows
   await expect(page.getByRole("heading", { name: "Ta langue" })).toBeVisible();
   await page.getByRole("button", { name: "Continuer" }).click();
   await page.getByRole("combobox", { name: "Ta ville" }).fill("Cotonou");
+  await page.getByLabel("Pays", { exact: true }).selectOption("BJ");
+  await page.getByLabel("Ton numéro de téléphone").fill(national);
   await page.getByLabel("Jour").selectOption("12");
   await page.getByLabel("Mois").selectOption("4");
   await page.getByLabel("Année").selectOption("1995");

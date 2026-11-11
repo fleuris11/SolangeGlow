@@ -8,23 +8,24 @@ function newBeninNumber(): string {
 }
 
 /**
- * Reads the code the way the person would read it on WhatsApp (dev-only endpoint).
- * The code is sent by the Celery worker: wait until it is there.
+ * Opens the link of the e-mail the way the person would, from her mailbox (dev-only endpoint).
+ * The e-mail is sent by the Celery worker: wait until it is there.
  */
-async function lastCode(page: Page, international: string): Promise<string> {
-  const url = `/api/v1/dev/last-code?destination=${encodeURIComponent(international)}`;
-  let code = "";
+async function lastLink(page: Page, email: string, kind = "confirm"): Promise<string> {
+  const url = `/api/v1/dev/last-link?kind=${kind}&email=${encodeURIComponent(email)}`;
+  let link = "";
   await expect
     .poll(
       async () => {
         const response = await page.request.get(url);
-        code = response.ok() ? (await response.json()).code : "";
-        return code;
+        link = response.ok() ? (await response.json()).link : "";
+        return link;
       },
-      { timeout: 30_000, message: "code sent by the worker (dev endpoint)" },
+      { timeout: 30_000, message: "e-mail sent by the worker (dev endpoint)" },
     )
-    .toMatch(/^\d{6}$/);
-  return code;
+    .toContain("token=");
+  const address = new URL(link);
+  return `${address.pathname}${address.search}`;
 }
 
 /** A small PNG, generated in the page, as an uploaded profile photo. */
@@ -48,40 +49,40 @@ test.describe("sign-up on a small phone", () => {
     await page.setViewportSize(VIEWPORTS.mobile);
   });
 
-  test("phone number → code → welcome → my showcase → published", async ({ page, context }) => {
+  test("e-mail and password → link → welcome → my showcase → published", async ({
+    page,
+    context,
+  }) => {
     test.setTimeout(420_000);
     // The pro is at her salon in Abomey-Calavi: her phone gives this position.
     await context.grantPermissions(["geolocation"]);
     await context.setGeolocation({ latitude: 6.4486, longitude: 2.3418 });
     const national = newBeninNumber();
     const international = `+229${national}`;
+    const email = `pro-${national}@example.com`;
 
-    await openWith(page, "/fr/auth", { theme: "light", textSize: "normal" });
+    await openWith(page, "/fr/auth?mode=signup", { theme: "light", textSize: "normal" });
+    await expect(page.getByRole("heading", { name: "Crée ton compte" })).toBeVisible();
     await expectNoSeriousA11yIssue(page);
-    await page.screenshot({ path: "e2e/screenshots/auth-1-phone.png", fullPage: true });
+    await page.screenshot({ path: "e2e/screenshots/auth-1-signup.png", fullPage: true });
 
-    await page.getByRole("button", { name: "Téléphone" }).click();
-    await page.getByLabel("Pays").selectOption("BJ");
-    await page.getByLabel("Ton numéro de téléphone").fill(national);
-    await page.getByRole("button", { name: "Recevoir mon code" }).click();
+    await page.getByLabel("Ton prénom").fill("Adjoa");
+    await page.getByLabel("Ton adresse e-mail").fill(email);
+    // Too simple first: the reason is shown under the field.
+    await page.getByLabel("Choisis un mot de passe").fill("12345678");
+    await page.getByRole("button", { name: "Créer mon compte" }).click();
+    await expect(page.getByRole("alert").first()).toBeVisible();
+    await page.screenshot({ path: "e2e/screenshots/auth-2-weak-password.png", fullPage: true });
+    await page.getByLabel("Choisis un mot de passe").fill("Tresses-Abomey-2026");
+    await page.getByRole("button", { name: "Créer mon compte" }).click();
 
-    await expect(page.getByRole("heading", { name: "Tape ton code" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Regarde tes e-mails" })).toBeVisible();
     await expect(page.getByRole("button", { name: /Renvoyer dans/ })).toBeDisabled();
-    await page.screenshot({ path: "e2e/screenshots/auth-2-code.png", fullPage: true });
+    await expectNoSeriousA11yIssue(page);
+    await page.screenshot({ path: "e2e/screenshots/auth-3-check-mail.png", fullPage: true });
 
-    // A wrong code first: clear message, the person stays on the screen.
-    await page.getByLabel("Chiffre 1 sur 6").click();
-    await page.keyboard.type("000000");
-    await expect(
-      page.getByRole("alert").filter({ hasText: "Le code ne correspond pas" }),
-    ).toBeVisible();
-    await page.screenshot({ path: "e2e/screenshots/auth-3-wrong-code.png", fullPage: true });
-
-    // The boxes are emptied and the cursor is back in the first one.
-    await expect(page.getByLabel("Chiffre 1 sur 6")).toBeFocused();
-    await expect(page.getByLabel("Chiffre 1 sur 6")).toHaveValue("");
-    const code = await lastCode(page, international);
-    await page.keyboard.type(code);
+    // The link of the e-mail confirms the address and signs in.
+    await page.goto(await lastLink(page, email));
 
     // Welcome screens, at most three.
     await expect(page).toHaveURL(/\/fr\/welcome/);
@@ -97,10 +98,11 @@ test.describe("sign-up on a small phone", () => {
     await expect(page.getByRole("heading", { name: "Ta langue" })).toBeVisible();
     await page.getByRole("button", { name: "Continuer" }).click();
 
-    await expect(
-      page.getByRole("heading", { name: "Ta ville et ta date de naissance" }),
-    ).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Ta ville et ton numéro" })).toBeVisible();
     await page.getByRole("combobox", { name: "Ta ville" }).fill("Abomey-Calavi");
+    await page.getByLabel("Pays", { exact: true }).selectOption("BJ");
+    await expect(page.getByLabel("Indicatif du pays")).toHaveValue("BJ");
+    await page.getByLabel("Ton numéro de téléphone").fill(national);
     await page.getByLabel("Jour").selectOption("12");
     await page.getByLabel("Mois").selectOption("4");
     await page.getByLabel("Année").selectOption("1995");
