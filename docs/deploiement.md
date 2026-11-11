@@ -189,11 +189,15 @@ AWS_S3_ENDPOINT_URL=https://s3.gra.io.cloud.ovh.net
 AWS_S3_REGION_NAME=gra
 AWS_ACCESS_KEY_ID=ta-access-key
 AWS_SECRET_ACCESS_KEY=ta-secret-key
+AWS_S3_ADDRESSING_STYLE=virtual
 BACKUP_BUCKET=solangeglow-sauvegardes
 ```
 
 Si le conteneur de sauvegarde est dans une autre région, remplis aussi `BACKUP_S3_ENDPOINT_URL` et
 `BACKUP_S3_REGION_NAME`.
+
+`AWS_S3_ADDRESSING_STYLE=virtual` est indispensable chez OVH : sans lui, les photos publiques ne
+s'affichent pas (`first-run.sh` s'arrête sur « A public file cannot be read »).
 
 Pour enregistrer : `Ctrl+O`, `Entrée`, puis `Ctrl+X`. Chaque variable est expliquée dans le fichier.
 

@@ -27,6 +27,7 @@ x-backend-env: &backend-env
   AWS_S3_REGION_NAME: ${AWS_S3_REGION_NAME:?see .env.prod.example}
   AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:?see .env.prod.example}
   AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:?see .env.prod.example}
+  AWS_S3_ADDRESSING_STYLE: ${AWS_S3_ADDRESSING_STYLE:-path}
   MEDIA_PUBLIC_BASE_URL: ${MEDIA_PUBLIC_BASE_URL:-}
   MEDIA_PUBLIC_ACL: ${MEDIA_PUBLIC_ACL:-public-read}
   # Recent AWS libraries add checksums that other S3 providers may refuse.
