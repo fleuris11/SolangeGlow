@@ -3,7 +3,7 @@
 import { ArrowRight, Check } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 import { Portrait } from "@/components/features/illustrations/portrait";
 import { TradeIcon, TRADES, type Trade } from "@/components/features/trades/trade-icon";
@@ -22,9 +22,11 @@ import { Link, useRouter } from "@/lib/i18n/navigation";
 import { routing, type Locale } from "@/lib/i18n/routing";
 import { usePreferences } from "@/lib/preferences/preferences-provider";
 import { takeReturnPath } from "@/lib/auth/return-path";
+import { EVERYWHERE, readViewerCountry } from "@/lib/geo/viewer-country";
 
 import { BirthDateField, EMPTY_BIRTH_DATE, toIsoDate, type BirthDate } from "./birth-date-field";
 import { ErrorMessage } from "./error-message";
+import { PhoneField, toInternational } from "./phone-field";
 import { track } from "@/lib/analytics";
 
 type Mode = "client" | "pro";
@@ -48,10 +50,25 @@ export function WelcomeFlow({ as }: { as?: Mode }) {
   const [city, setCity] = useState(prefs.city);
   const [country, setCountry] = useState(me?.country ?? "FR");
   const [birthDate, setBirthDate] = useState<BirthDate>(EMPTY_BIRTH_DATE);
+  const [phoneCountry, setPhoneCountry] = useState(me?.country ?? "FR");
+  const [phone, setPhone] = useState("");
   const [accepted, setAccepted] = useState(false);
   const [done, setDone] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string>();
+
+  // The country of the account, else the one found on the device (time zone, or chosen),
+  // as soon as they are known; never over what the person picked herself.
+  const countryTouched = useRef(false);
+  useEffect(() => {
+    if (countryTouched.current || isPending) return;
+    const detected = readViewerCountry();
+    const best = me?.country ?? (detected && detected !== EVERYWHERE ? detected : "");
+    if (best) {
+      setCountry(best);
+      setPhoneCountry(best);
+    }
+  }, [me?.country, isPending]);
 
   // Only for signed-in people who have not finished the welcome yet.
   useEffect(() => {
@@ -65,11 +82,14 @@ export function WelcomeFlow({ as }: { as?: Mode }) {
     TRADES.map((key) => ({ key, name: tTrades(key) }));
 
   const birthIso = toIsoDate(birthDate);
+  // The number to be reached by the professionals (or the clients): asked once, here.
+  const needsPhone = !me?.phone;
+  const phoneReady = !needsPhone || phone.replace(/\D/g, "").length >= 6;
   const canContinue =
     step === 1
       ? mode === "client" || (mode === "pro" && chosenTrades.length > 0)
       : step === 3
-        ? birthIso !== null && accepted
+        ? birthIso !== null && accepted && phoneReady
         : true;
 
   const finish = async () => {
@@ -85,6 +105,7 @@ export function WelcomeFlow({ as }: { as?: Mode }) {
         language,
         city: finalCity,
         accept_terms: accepted,
+        phone: needsPhone ? toInternational(phoneCountry, phone) : undefined,
       });
       track("signup");
       prefs.update({ city: finalCity });
@@ -209,8 +230,27 @@ export function WelcomeFlow({ as }: { as?: Mode }) {
 
       {step === 3 && (
         <>
-          <CountrySelect label={t("city.country")} value={country} onChange={setCountry} />
+          <CountrySelect
+            label={t("city.country")}
+            value={country}
+            onChange={(code) => {
+              countryTouched.current = true;
+              setCountry(code);
+              if (!phone) setPhoneCountry(code);
+            }}
+          />
           <CityField label={t("city.other")} value={city} onChange={setCity} country={country} />
+          {needsPhone && (
+            <div className="flex flex-col gap-2">
+              <PhoneField
+                country={phoneCountry}
+                onCountryChange={setPhoneCountry}
+                value={phone}
+                onChange={setPhone}
+              />
+              <p className="text-small text-prune-doux">{t("phoneWhy")}</p>
+            </div>
+          )}
           <BirthDateField value={birthDate} onChange={setBirthDate} />
           <label className="flex min-h-12 items-start gap-3">
             <input

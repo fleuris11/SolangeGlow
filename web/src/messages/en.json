@@ -466,7 +466,7 @@
   "auth": {
     "metaTitle": "Sign in",
     "title": "Welcome to Solange Glow",
-    "titlePro": "Join Solange Glow as a professional",
+    "titlePro": "Offer your services on Solange Glow",
     "subtitle": "Your e-mail is enough. We send you a 6-digit code.",
     "method": "How do you want to get your code?",
     "byPhone": "Phone",
@@ -477,7 +477,7 @@
     "welcomeBack": "Welcome back!",
     "phone": {
       "label": "Your phone number",
-      "country": "Country",
+      "country": "Country code",
       "placeholder": "Your number"
     },
     "channels": {
@@ -500,12 +500,59 @@
       "use": "I have a password",
       "useCode": "Get a code instead",
       "label": "Your password",
-      "submit": "Sign in"
+      "submit": "Sign in",
+      "choose": "Choose a password",
+      "hint": "At least 8 characters, not too simple.",
+      "show": "Show the password",
+      "hide": "Hide the password"
     },
     "errors": {
       "network": "The connection failed. Check your internet, then try again."
     },
-    "deletionCancelled": "Welcome back! Your account will not be deleted."
+    "deletionCancelled": "Welcome back! Your account will not be deleted.",
+    "tabs": "Sign in or sign up",
+    "signin": {
+      "tab": "Sign in",
+      "title": "Welcome back",
+      "subtitle": "Your e-mail and your password.",
+      "submit": "Sign me in",
+      "forgot": "Forgot your password?"
+    },
+    "signup": {
+      "tab": "Sign up",
+      "title": "Create your account",
+      "subtitle": "It is free. We send you a link to confirm your e-mail.",
+      "firstName": "Your first name",
+      "submit": "Create my account"
+    },
+    "forgot": {
+      "title": "Forgot your password",
+      "subtitle": "Give your e-mail: we send you a link to choose a new one.",
+      "submit": "Send me the link"
+    },
+    "mail": {
+      "title": "Check your e-mails",
+      "text": "We sent a link to {email}. Open it to confirm your address.",
+      "spam": "Nothing yet? Look in your spam folder.",
+      "resend": "Send the link again",
+      "resendIn": "Send again in {seconds} s",
+      "change": "Use another address"
+    },
+    "reset": {
+      "sentTitle": "Link sent",
+      "sentText": "If an account exists with {email}, a link is on its way. It works only once.",
+      "back": "Back to sign in",
+      "title": "Choose a new password",
+      "submit": "Save and sign me in",
+      "again": "Ask for a new link"
+    },
+    "confirm": {
+      "metaTitle": "Confirmation",
+      "working": "Confirming your address…",
+      "failedTitle": "This link no longer works",
+      "error": "We could not confirm. Check your internet, then try again.",
+      "signIn": "Sign me in"
+    }
   },
   "welcome": {
     "metaTitle": "Welcome",
@@ -522,7 +569,7 @@
       "title": "Your language"
     },
     "city": {
-      "title": "Your city and date of birth",
+      "title": "Your city and your number",
       "other": "Your city",
       "country": "Country"
     },
@@ -540,7 +587,8 @@
       "year": "Year",
       "why": "It protects the youngest. It is never shown."
     },
-    "terms": "I accept the <terms>terms of use</terms> and the <privacy>privacy policy</privacy>."
+    "terms": "I accept the <terms>terms of use</terms> and the <privacy>privacy policy</privacy>.",
+    "phoneWhy": "So the professionals and delivery people can reach you. It is never shown."
   },
   "profile": {
     "noName": "Your profile",

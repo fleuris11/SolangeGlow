@@ -466,7 +466,7 @@
   "auth": {
     "metaTitle": "Prihlásenie",
     "title": "Vitaj v Solange Glow",
-    "titlePro": "Pridaj sa k Solange Glow ako profesionálka",
+    "titlePro": "Ponúkni svoje služby na Solange Glow",
     "subtitle": "Stačí tvoj e-mail. Pošleme ti 6-miestny kód.",
     "method": "Ako chceš dostať kód?",
     "byPhone": "Telefón",
@@ -477,7 +477,7 @@
     "welcomeBack": "Vitaj späť!",
     "phone": {
       "label": "Tvoje telefónne číslo",
-      "country": "Krajina",
+      "country": "Predvoľba krajiny",
       "placeholder": "Tvoje číslo"
     },
     "channels": {
@@ -500,12 +500,59 @@
       "use": "Mám heslo",
       "useCode": "Radšej poslať kód",
       "label": "Tvoje heslo",
-      "submit": "Prihlásiť sa"
+      "submit": "Prihlásiť sa",
+      "choose": "Vyber si heslo",
+      "hint": "Aspoň 8 znakov, nie príliš jednoduché.",
+      "show": "Zobraziť heslo",
+      "hide": "Skryť heslo"
     },
     "errors": {
       "network": "Pripojenie zlyhalo. Skontroluj internet a skús znova."
     },
-    "deletionCancelled": "Vitaj späť! Tvoj účet sa nezmaže."
+    "deletionCancelled": "Vitaj späť! Tvoj účet sa nezmaže.",
+    "tabs": "Prihlásenie alebo registrácia",
+    "signin": {
+      "tab": "Prihlásenie",
+      "title": "Vitaj späť",
+      "subtitle": "Tvoj e-mail a heslo.",
+      "submit": "Prihlásiť ma",
+      "forgot": "Zabudnuté heslo?"
+    },
+    "signup": {
+      "tab": "Registrácia",
+      "title": "Vytvor si účet",
+      "subtitle": "Je to zadarmo. Pošleme ti odkaz na potvrdenie e-mailu.",
+      "firstName": "Tvoje meno",
+      "submit": "Vytvoriť môj účet"
+    },
+    "forgot": {
+      "title": "Zabudnuté heslo",
+      "subtitle": "Zadaj e-mail: pošleme ti odkaz na výber nového hesla.",
+      "submit": "Poslať odkaz"
+    },
+    "mail": {
+      "title": "Pozri si e-maily",
+      "text": "Poslali sme odkaz na {email}. Otvor ho a potvrď svoju adresu.",
+      "spam": "Nič neprišlo? Pozri sa do nevyžiadanej pošty (spam).",
+      "resend": "Poslať odkaz znova",
+      "resendIn": "Znova o {seconds} s",
+      "change": "Zmeniť adresu"
+    },
+    "reset": {
+      "sentTitle": "Odkaz odoslaný",
+      "sentText": "Ak existuje účet s {email}, odkaz je na ceste. Funguje iba raz.",
+      "back": "Späť na prihlásenie",
+      "title": "Vyber si nové heslo",
+      "submit": "Uložiť a prihlásiť ma",
+      "again": "Požiadať o nový odkaz"
+    },
+    "confirm": {
+      "metaTitle": "Potvrdenie",
+      "working": "Potvrdzujeme tvoju adresu…",
+      "failedTitle": "Tento odkaz už nefunguje",
+      "error": "Nepodarilo sa potvrdiť. Skontroluj internet a skús to znova.",
+      "signIn": "Prihlásiť ma"
+    }
   },
   "welcome": {
     "metaTitle": "Vitaj",
@@ -522,7 +569,7 @@
       "title": "Tvoj jazyk"
     },
     "city": {
-      "title": "Tvoje mesto a dátum narodenia",
+      "title": "Tvoje mesto a číslo",
       "other": "Tvoje mesto",
       "country": "Krajina"
     },
@@ -540,7 +587,8 @@
       "year": "Rok",
       "why": "Chráni najmladších. Nikdy sa nezobrazuje."
     },
-    "terms": "Súhlasím s <terms>podmienkami používania</terms> a <privacy>zásadami ochrany súkromia</privacy>."
+    "terms": "Súhlasím s <terms>podmienkami používania</terms> a <privacy>zásadami ochrany súkromia</privacy>.",
+    "phoneWhy": "Aby ťa profesionáli a kuriéri mohli kontaktovať. Nikdy sa nezobrazuje."
   },
   "profile": {
     "noName": "Tvoj profil",

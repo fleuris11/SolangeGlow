@@ -477,7 +477,7 @@
     "welcomeBack": "Te revoilà !",
     "phone": {
       "label": "Ton numéro de téléphone",
-      "country": "Pays",
+      "country": "Indicatif du pays",
       "placeholder": "Ton numéro"
     },
     "channels": {
@@ -500,12 +500,59 @@
       "use": "J'ai un mot de passe",
       "useCode": "Recevoir un code à la place",
       "label": "Ton mot de passe",
-      "submit": "Me connecter"
+      "submit": "Me connecter",
+      "choose": "Choisis un mot de passe",
+      "hint": "8 caractères au moins, pas trop simple.",
+      "show": "Afficher le mot de passe",
+      "hide": "Masquer le mot de passe"
     },
     "errors": {
       "network": "La connexion a échoué. Vérifie ton internet, puis réessaie."
     },
-    "deletionCancelled": "Te revoilà ! Ton compte ne sera pas supprimé."
+    "deletionCancelled": "Te revoilà ! Ton compte ne sera pas supprimé.",
+    "tabs": "Connexion ou inscription",
+    "signin": {
+      "tab": "Connexion",
+      "title": "Te revoilà",
+      "subtitle": "Ton e-mail et ton mot de passe.",
+      "submit": "Me connecter",
+      "forgot": "Mot de passe oublié ?"
+    },
+    "signup": {
+      "tab": "Inscription",
+      "title": "Crée ton compte",
+      "subtitle": "C'est gratuit. On t'envoie un lien pour confirmer ton e-mail.",
+      "firstName": "Ton prénom",
+      "submit": "Créer mon compte"
+    },
+    "forgot": {
+      "title": "Mot de passe oublié",
+      "subtitle": "Donne ton e-mail : on t'envoie un lien pour en choisir un nouveau.",
+      "submit": "Recevoir le lien"
+    },
+    "mail": {
+      "title": "Regarde tes e-mails",
+      "text": "On a envoyé un lien à {email}. Ouvre-le pour confirmer ton adresse.",
+      "spam": "Rien reçu ? Regarde dans les courriers indésirables (spam).",
+      "resend": "Renvoyer le lien",
+      "resendIn": "Renvoyer dans {seconds} s",
+      "change": "Changer d'adresse"
+    },
+    "reset": {
+      "sentTitle": "Lien envoyé",
+      "sentText": "Si un compte existe avec {email}, un lien vient de partir. Il ne marche qu'une fois.",
+      "back": "Retour à la connexion",
+      "title": "Choisis un nouveau mot de passe",
+      "submit": "Enregistrer et me connecter",
+      "again": "Demander un nouveau lien"
+    },
+    "confirm": {
+      "metaTitle": "Confirmation",
+      "working": "Confirmation de ton adresse…",
+      "failedTitle": "Ce lien ne marche plus",
+      "error": "On n'a pas pu confirmer. Vérifie ton internet, puis réessaie.",
+      "signIn": "Me connecter"
+    }
   },
   "welcome": {
     "metaTitle": "Bienvenue",
@@ -522,7 +569,7 @@
       "title": "Ta langue"
     },
     "city": {
-      "title": "Ta ville et ta date de naissance",
+      "title": "Ta ville et ton numéro",
       "other": "Ta ville",
       "country": "Pays"
     },
@@ -540,7 +587,8 @@
       "year": "Année",
       "why": "Elle sert à protéger les plus jeunes. Elle n'est jamais affichée."
     },
-    "terms": "J'accepte les <terms>conditions d'utilisation</terms> et la <privacy>politique de confidentialité</privacy>."
+    "terms": "J'accepte les <terms>conditions d'utilisation</terms> et la <privacy>politique de confidentialité</privacy>.",
+    "phoneWhy": "Pour que les professionnels et les livreurs puissent te joindre. Il n'est jamais affiché."
   },
   "profile": {
     "noName": "Ton profil",

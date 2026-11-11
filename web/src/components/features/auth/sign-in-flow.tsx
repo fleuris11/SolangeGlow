@@ -1,40 +1,38 @@
 "use client";
 
-import { ArrowLeft, Envelope, Key, Phone, WhatsappLogo } from "@phosphor-icons/react";
+import { ArrowLeft, EnvelopeSimple, SignIn as SignInIcon, UserPlus } from "@phosphor-icons/react";
 import { useLocale, useTranslations } from "next-intl";
-import { type FormEvent, useEffect, useState } from "react";
+import { type FormEvent, type ReactNode, useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import { Chip } from "@/components/ui/chip";
-import { CodeInput } from "@/components/ui/code-input";
 import { Input } from "@/components/ui/input";
 import { SpeakButton } from "@/components/ui/speak-button";
-import { Stepper } from "@/components/ui/stepper";
-import { useToast } from "@/components/ui/toast";
-import {
-  loginWithPassword,
-  requestCode,
-  updateMe,
-  verifyCode,
-  type CodeRequest,
-  type SignIn,
-} from "@/lib/api/accounts";
+import { forgotPassword, loginWithPassword, resendConfirmation, signUp } from "@/lib/api/accounts";
 import { ApiError } from "@/lib/api/client";
-import { useSetMe } from "@/lib/auth/use-me";
-import { useRouter } from "@/lib/i18n/navigation";
-import { usePreferences } from "@/lib/preferences/preferences-provider";
-import { toProfile } from "@/lib/preferences/profile-sync";
-import { takeReturnPath } from "@/lib/auth/return-path";
+import { cn } from "@/lib/cn";
 
 import { ErrorMessage } from "./error-message";
-import { DEFAULT_PHONE_COUNTRY, PhoneField, toInternational } from "./phone-field";
+import { PasswordField } from "./password-field";
 import { useCountdown } from "./use-countdown";
+import { useSignedIn } from "./use-signed-in";
 
-type Method = "phone" | "email";
-type Step = "identifier" | "code" | "password";
+type View = "signin" | "signup" | "forgot" | "checkMail" | "resetSent";
 
-/** Sign-up and sign-in are one flow: number or e-mail, then the 6-digit code. */
-export function SignInFlow({ as, pageName }: { as?: "client" | "pro"; pageName?: string }) {
+const RESEND_SECONDS = 60;
+
+/**
+ * The classic way, on one screen: « Sign in » or « Create my account » (e-mail and password).
+ * A new account is confirmed by a link in the mailbox; « Forgot password » sends another link.
+ */
+export function SignInFlow({
+  as,
+  pageName,
+  mode,
+}: {
+  as?: "client" | "pro";
+  pageName?: string;
+  mode?: "signin" | "signup";
+}) {
   useEffect(() => {
     if (!pageName) return;
     try {
@@ -46,214 +44,187 @@ export function SignInFlow({ as, pageName }: { as?: "client" | "pro"; pageName?:
 
   const t = useTranslations("auth");
   const locale = useLocale();
-  const router = useRouter();
-  const toast = useToast();
-  const setMe = useSetMe();
-  const prefs = usePreferences();
+  const signedIn = useSignedIn(as);
 
-  const [step, setStep] = useState<Step>("identifier");
-  const [method, setMethod] = useState<Method>("email");
-  const [country, setCountry] = useState(DEFAULT_PHONE_COUNTRY);
-  const [phone, setPhone] = useState("");
+  const [view, setView] = useState<View>(mode ?? (as ? "signup" : "signin"));
+  const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [challenge, setChallenge] = useState<(CodeRequest & { destination: string }) | null>(null);
+  const [sentTo, setSentTo] = useState("");
   const [resendAt, setResendAt] = useState<number | null>(null);
-  const [codeKey, setCodeKey] = useState(0);
   const [error, setError] = useState<string>();
+  const [passwordError, setPasswordError] = useState<string>();
   const [busy, setBusy] = useState(false);
   const secondsLeft = useCountdown(resendAt);
 
-  const destination = method === "phone" ? toInternational(country, phone) : email.trim();
-  const messageOf = (err: unknown) =>
-    err instanceof ApiError && err.body.message ? err.body.message : t("errors.network");
-
-  const sendCode = async () => {
+  const address = email.trim();
+  const go = (next: View) => {
     setError(undefined);
+    setPasswordError(undefined);
+    setView(next);
+  };
+
+  const run = async (action: () => Promise<void>) => {
+    setError(undefined);
+    setPasswordError(undefined);
     setBusy(true);
     try {
-      const result = await requestCode(
-        method === "phone" ? { phone: destination, locale } : { email: destination, locale },
-      );
-      setChallenge({ ...result, destination });
-      setResendAt(Date.now() + result.resend_after * 1000);
-      setCodeKey((key) => key + 1);
-      setStep("code");
+      await action();
     } catch (err) {
-      setError(messageOf(err));
-      if (err instanceof ApiError && err.body.retry_after) {
-        setResendAt(Date.now() + err.body.retry_after * 1000);
+      if (err instanceof ApiError) {
+        const fields = (err.body.fields ?? {}) as Record<string, string[] | undefined>;
+        if (fields.password?.length) setPasswordError(fields.password.join(" "));
+        else setError(err.body.message || t("errors.network"));
+        if (err.body.code === "email_not_confirmed") {
+          setSentTo(address);
+          setResendAt(Date.now() + RESEND_SECONDS * 1000);
+          setView("checkMail");
+        }
+      } else {
+        setError(t("errors.network"));
       }
     } finally {
       setBusy(false);
     }
   };
 
-  const signedIn = async ({ created, user, deletion_cancelled: deletionCancelled }: SignIn) => {
-    let me = user;
-    if (created) {
-      // Nothing is lost: choices made as a visitor become the profile's.
-      me = await updateMe(toProfile(prefs)).catch(() => user);
-    }
-    setMe(me);
-    if (me.onboarding_required) {
-      router.replace(as ? { pathname: "/welcome", query: { as } } : "/welcome");
-    } else {
-      toast(deletionCancelled ? t("deletionCancelled") : t("welcomeBack"));
-      router.replace(takeReturnPath() ?? (me.roles.includes("pro") ? "/pro" : "/"));
-    }
-  };
-
-  const onCode = async (code: string) => {
-    if (!challenge) return;
-    setError(undefined);
-    setBusy(true);
-    try {
-      await signedIn(await verifyCode({ challenge_id: challenge.challenge_id, code, locale }));
-    } catch (err) {
-      setError(messageOf(err));
-      // Empty boxes and the cursor back in the first one: the person types the code again.
-      setCodeKey((key) => key + 1);
-    } finally {
-      setBusy(false);
-    }
-  };
-
-  const onPassword = async (event: FormEvent) => {
+  const submit = (event: FormEvent) => {
     event.preventDefault();
-    setError(undefined);
-    setBusy(true);
-    try {
-      await signedIn(await loginWithPassword({ identifier: destination, password }));
-    } catch (err) {
-      setError(messageOf(err));
-    } finally {
-      setBusy(false);
+    if (view === "signin") {
+      void run(async () => signedIn(await loginWithPassword({ identifier: address, password })));
+    } else if (view === "signup") {
+      void run(async () => {
+        const result = await signUp({ email: address, password, first_name: firstName, locale });
+        setSentTo(result.sent_to);
+        setResendAt(Date.now() + RESEND_SECONDS * 1000);
+        setView("checkMail");
+      });
+    } else if (view === "forgot") {
+      void run(async () => {
+        const result = await forgotPassword(address);
+        setSentTo(result.sent_to);
+        setView("resetSent");
+      });
     }
   };
 
-  const back = () => {
-    setError(undefined);
-    setStep("identifier");
-  };
+  const resend = () =>
+    void run(async () => {
+      await resendConfirmation(address);
+      setResendAt(Date.now() + RESEND_SECONDS * 1000);
+    });
 
-  if (step === "code" && challenge) {
-    const sentText =
-      challenge.channel === "console"
-        ? t("code.sentToConsole")
-        : t("code.sentTo", {
-            channel: t(`channels.${challenge.channel}`),
-            destination: challenge.destination,
-          });
+  if (view === "checkMail" || view === "resetSent") {
+    const title = view === "checkMail" ? t("mail.title") : t("reset.sentTitle");
+    const text =
+      view === "checkMail"
+        ? t("mail.text", { email: sentTo || address })
+        : t("reset.sentText", { email: sentTo || address });
     return (
-      <section aria-labelledby="code-title" className="flex flex-col gap-6">
-        <Stepper current={2} total={2} onBack={back} />
+      <section aria-labelledby="mail-title" className="flex flex-col gap-6">
+        <span
+          aria-hidden
+          className="bg-poudre text-hibiscus grid size-20 place-items-center self-start rounded-full"
+        >
+          <EnvelopeSimple size={40} weight="duotone" />
+        </span>
         <div className="flex items-start justify-between gap-3">
-          <h1 id="code-title" className="font-display text-headline font-black">
-            {t("code.title")}
+          <h1 id="mail-title" className="font-display text-headline font-black">
+            {title}
           </h1>
-          <SpeakButton text={`${t("code.title")}. ${sentText}`} />
+          <SpeakButton text={`${title}. ${text}`} />
         </div>
-        <p className="flex items-start gap-2">
-          {challenge.channel === "whatsapp" ? (
-            <WhatsappLogo
-              aria-hidden
-              size={24}
-
-              className="text-feuille shrink-0"
-            />
-          ) : (
-            <Envelope aria-hidden size={24} className="shrink-0" />
-          )}
-          <span>{sentText}</span>
+        <p className="text-lead" role="status">
+          {text}
         </p>
-        <CodeInput
-          key={codeKey}
-          label={t("code.label")}
-          onComplete={onCode}
-          disabled={busy}
-          autoFocus
-        />
+        <p className="text-prune-doux">{t("mail.spam")}</p>
         <ErrorMessage message={error} />
-        <div className="flex flex-col items-start gap-2">
-          <Button variant="secondary" disabled={secondsLeft > 0 || busy} onClick={sendCode}>
-            {secondsLeft > 0 ? t("code.resendIn", { seconds: secondsLeft }) : t("code.resend")}
+        {view === "checkMail" && (
+          <Button variant="secondary" disabled={secondsLeft > 0 || busy} onClick={resend}>
+            {secondsLeft > 0 ? t("mail.resendIn", { seconds: secondsLeft }) : t("mail.resend")}
           </Button>
-          <Button variant="quiet" icon={<ArrowLeft size={20} weight="bold" />} onClick={back}>
-            {method === "phone" ? t("code.changePhone") : t("code.changeEmail")}
-          </Button>
-        </div>
+        )}
+        <Button
+          variant="quiet"
+          icon={<ArrowLeft size={20} weight="bold" />}
+          className="self-start"
+          onClick={() => go(view === "checkMail" ? "signup" : "signin")}
+        >
+          {view === "checkMail" ? t("mail.change") : t("reset.back")}
+        </Button>
       </section>
     );
   }
 
+  const titles: Record<"signin" | "signup" | "forgot", string> = {
+    signin: t("signin.title"),
+    signup: as === "pro" ? t("titlePro") : t("signup.title"),
+    forgot: t("forgot.title"),
+  };
+  const title = titles[view];
+  const subtitles: Record<"signin" | "signup" | "forgot", string> = {
+    signin: t("signin.subtitle"),
+    signup: t("signup.subtitle"),
+    forgot: t("forgot.subtitle"),
+  };
+  const ready =
+    !!address &&
+    (view === "forgot" || password.length > 0) &&
+    (view !== "signup" || firstName.trim().length > 0);
+
   return (
     <section aria-labelledby="auth-title" className="flex flex-col gap-6">
-      <Stepper current={1} total={2} />
+      {view !== "forgot" && (
+        <div
+          role="tablist"
+          aria-label={t("tabs")}
+          className="bg-poudre grid grid-cols-2 gap-1 rounded-full p-1"
+        >
+          <Tab selected={view === "signin"} onClick={() => go("signin")}>
+            {t("signin.tab")}
+          </Tab>
+          <Tab selected={view === "signup"} onClick={() => go("signup")}>
+            {t("signup.tab")}
+          </Tab>
+        </div>
+      )}
+
       <div className="flex items-start justify-between gap-3">
         <h1 id="auth-title" className="font-display text-headline font-black">
-          {as === "pro" ? t("titlePro") : t("title")}
+          {title}
         </h1>
-        <SpeakButton text={`${t("title")}. ${t("subtitle")}`} />
+        <SpeakButton text={`${title}. ${subtitles[view]}`} />
       </div>
-      <p className="text-prune-doux">{t("subtitle")}</p>
+      <p className="text-prune-doux">{subtitles[view]}</p>
 
-      <div role="group" aria-label={t("method")} className="flex flex-wrap gap-2">
-        <Chip
-          selected={method === "email"}
-          icon={<Envelope size={22} />}
-          onClick={() => setMethod("email")}
-        >
-          {t("byEmail")}
-        </Chip>
-        <Chip
-          selected={method === "phone"}
-          icon={<Phone size={22} />}
-          onClick={() => setMethod("phone")}
-        >
-          {t("byPhone")}
-        </Chip>
-      </div>
-
-      <form
-        onSubmit={
-          step === "password"
-            ? onPassword
-            : (event) => {
-                event.preventDefault();
-                void sendCode();
-              }
-        }
-        className="flex flex-col gap-5"
-        noValidate
-      >
-        {method === "phone" ? (
-          <PhoneField
-            country={country}
-            onCountryChange={setCountry}
-            value={phone}
-            onChange={setPhone}
-            autoFocus
-          />
-        ) : (
+      <form onSubmit={submit} className="flex flex-col gap-5" noValidate>
+        {view === "signup" && (
           <Input
-            label={t("emailLabel")}
-            type="email"
-            inputMode="email"
-            autoComplete="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            placeholder="awa@exemple.com"
+            label={t("signup.firstName")}
+            autoComplete="given-name"
+            value={firstName}
+            maxLength={150}
+            onChange={(event) => setFirstName(event.target.value)}
           />
         )}
-
-        {step === "password" && (
-          <Input
-            label={t("password.label")}
-            type="password"
-            autoComplete="current-password"
+        <Input
+          label={t("emailLabel")}
+          type="email"
+          inputMode="email"
+          autoComplete="email"
+          autoCapitalize="none"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
+          placeholder="awa@exemple.com"
+        />
+        {view !== "forgot" && (
+          <PasswordField
+            label={view === "signup" ? t("password.choose") : t("password.label")}
+            autoComplete={view === "signup" ? "new-password" : "current-password"}
+            hint={view === "signup" ? t("password.hint") : undefined}
+            error={passwordError}
             value={password}
-            onChange={(event) => setPassword(event.target.value)}
+            onChange={setPassword}
           />
         )}
 
@@ -263,24 +234,66 @@ export function SignInFlow({ as, pageName }: { as?: "client" | "pro"; pageName?:
           type="submit"
           size="lg"
           fullWidth
-          disabled={busy || !destination || (step === "password" && !password)}
+          disabled={busy || !ready}
+          icon={
+            view === "signup" ? (
+              <UserPlus size={22} weight="bold" />
+            ) : view === "signin" ? (
+              <SignInIcon size={22} weight="bold" />
+            ) : (
+              <EnvelopeSimple size={22} weight="bold" />
+            )
+          }
         >
-          {step === "password" ? t("password.submit") : t("sendCode")}
+          {view === "signup"
+            ? t("signup.submit")
+            : view === "signin"
+              ? t("signin.submit")
+              : t("forgot.submit")}
         </Button>
       </form>
 
-      <Button
-        variant="quiet"
-        icon={<Key size={20} />}
-        className="self-start"
-        onClick={() => {
-          setError(undefined);
-          setStep(step === "password" ? "identifier" : "password");
-        }}
-      >
-        {step === "password" ? t("password.useCode") : t("password.use")}
-      </Button>
+      {view === "signin" && (
+        <Button variant="quiet" className="self-start" onClick={() => go("forgot")}>
+          {t("signin.forgot")}
+        </Button>
+      )}
+      {view === "forgot" && (
+        <Button
+          variant="quiet"
+          icon={<ArrowLeft size={20} weight="bold" />}
+          className="self-start"
+          onClick={() => go("signin")}
+        >
+          {t("reset.back")}
+        </Button>
+      )}
       <p className="text-small text-prune-doux">{t("privacy")}</p>
     </section>
+  );
+}
+
+function Tab({
+  selected,
+  onClick,
+  children,
+}: {
+  selected: boolean;
+  onClick: () => void;
+  children: ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      role="tab"
+      aria-selected={selected}
+      onClick={onClick}
+      className={cn(
+        "min-h-12 rounded-full px-4 font-bold transition-colors",
+        selected ? "bg-carte text-prune border-trait border" : "text-prune-doux",
+      )}
+    >
+      {children}
+    </button>
   );
 }

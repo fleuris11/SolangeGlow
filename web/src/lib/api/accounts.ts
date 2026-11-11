@@ -32,6 +32,25 @@ export const verifyCode = (body: Schemas["CodeVerifyRequest"]) =>
 export const loginWithPassword = (body: Schemas["PasswordLoginRequest"]) =>
   unwrap(api.POST("/api/v1/auth/password/login", { body }));
 
+/** Sign-up with an e-mail and a password: a link in the mailbox confirms the address. */
+export const signUp = (body: Schemas["SignUpRequest"]) =>
+  unwrap(api.POST("/api/v1/auth/signup", { body }));
+
+/** The link of the confirmation e-mail: confirms the address and signs in. */
+export const confirmEmail = (token: string) =>
+  unwrap(api.POST("/api/v1/auth/email/confirm", { body: { token } }));
+
+export const resendConfirmation = (email: string) =>
+  unwrap(api.POST("/api/v1/auth/email/resend", { body: { email } }));
+
+/** « Forgot password »: a link by e-mail (same answer for any address). */
+export const forgotPassword = (email: string) =>
+  unwrap(api.POST("/api/v1/auth/password/forgot", { body: { email } }));
+
+/** New password from the e-mailed link; signs in. */
+export const resetPassword = (token: string, password: string) =>
+  unwrap(api.POST("/api/v1/auth/password/reset", { body: { token, password } }));
+
 export const logout = () => unwrap(api.POST("/api/v1/auth/logout"));
 export const logoutEverywhere = () => unwrap(api.POST("/api/v1/auth/logout-all"));
 

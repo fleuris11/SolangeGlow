@@ -6032,16 +6032,29 @@
     "stepper.back",
     "stepper.progress"
   ],
+  "[locale]/(focus)/auth/confirm/page.tsx": [
+    "audio.listen",
+    "audio.listenTo",
+    "audio.stop",
+    "audio.stopShort",
+    "auth",
+    "common.close"
+  ],
   "[locale]/(focus)/auth/page.tsx": [
     "audio.listen",
     "audio.listenTo",
     "audio.stop",
     "audio.stopShort",
     "auth",
-    "code.digit",
-    "common.close",
-    "stepper.back",
-    "stepper.progress"
+    "common.close"
+  ],
+  "[locale]/(focus)/auth/reset/page.tsx": [
+    "audio.listen",
+    "audio.listenTo",
+    "audio.stop",
+    "audio.stopShort",
+    "auth",
+    "common.close"
   ],
   "[locale]/(focus)/cadeau/[token]/page.tsx": [
     "audio.listen",
@@ -8822,6 +8835,9 @@
     "audio.listenTo",
     "audio.stop",
     "audio.stopShort",
+    "auth.phone.country",
+    "auth.phone.label",
+    "auth.phone.placeholder",
     "geo.placeholder",
     "geo.results",
     "locales",
@@ -8845,6 +8861,7 @@
     "welcome.finish",
     "welcome.language.title",
     "welcome.next",
+    "welcome.phoneWhy",
     "welcome.role.client",
     "welcome.role.pro",
     "welcome.role.title",

@@ -590,6 +590,39 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/auth/email/confirm": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** The link of the confirmation e-mail: confirms the address and signs in. */
+    post: operations["auth_email_confirm_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/auth/email/resend": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post: operations["auth_email_resend_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/auth/logout": {
     parameters: {
       query?: never;
@@ -655,6 +688,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/auth/password/forgot": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** « Forgot password »: a link by e-mail (same answer for any address). */
+    post: operations["auth_password_forgot_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/auth/password/login": {
     parameters: {
       query?: never;
@@ -665,6 +715,23 @@ export interface paths {
     get?: never;
     put?: never;
     post: operations["auth_password_login_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/auth/password/reset": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** New password from the e-mailed link; other sessions are closed. */
+    post: operations["auth_password_reset_create"];
     delete?: never;
     options?: never;
     head?: never;
@@ -682,6 +749,23 @@ export interface paths {
     put?: never;
     /** @description Rotate the tokens from the refresh cookie (the old refresh token is blacklisted). */
     post: operations["auth_refresh_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  "/api/v1/auth/signup": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Create an account with an e-mail and a password; a link confirms the address. */
+    post: operations["auth_signup_create"];
     delete?: never;
     options?: never;
     head?: never;
@@ -7356,6 +7440,10 @@ export interface components {
      * @enum {string}
      */
     EInvoiceStatusEnum: "not_sent" | "sent" | "failed";
+    EmailOnlyRequest: {
+      /** Format: email */
+      email: string;
+    };
     /**
      * @description * `free` - Free
      *     * `purchase` - Bought
@@ -8242,6 +8330,13 @@ export interface components {
       is_preview: boolean;
       done: boolean;
     };
+    LinkSent: {
+      /** @description The address, partly hidden (aw***@gmail.com). */
+      sent_to: string;
+    };
+    LinkTokenRequest: {
+      token: string;
+    };
     LinkedProduct: {
       /** Format: uuid */
       id: string;
@@ -9056,6 +9151,8 @@ export interface components {
       city?: string;
       /** @default false */
       accept_terms: boolean;
+      /** @description International number (+229...), to be reached; not checked by a code. */
+      phone?: string;
     };
     /**
      * @description * `not_received` - Not received
@@ -9296,6 +9393,10 @@ export interface components {
     };
     PasswordLoginRequest: {
       identifier: string;
+      password: string;
+    };
+    PasswordResetRequest: {
+      token: string;
       password: string;
     };
     PasswordSetRequest: {
@@ -10909,6 +11010,13 @@ export interface components {
       /** @description The account was waiting to be deleted: signing in kept it. */
       deletion_cancelled: boolean;
       user: components["schemas"]["Me"];
+    };
+    SignUpRequest: {
+      /** Format: email */
+      email: string;
+      password: string;
+      first_name?: string;
+      locale?: string;
     };
     SitemapEntry: {
       path: string;
@@ -12670,6 +12778,64 @@ export interface operations {
       };
     };
   };
+  auth_email_confirm_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["LinkTokenRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["LinkTokenRequest"];
+        "multipart/form-data": components["schemas"]["LinkTokenRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SignIn"];
+        };
+      };
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SignIn"];
+        };
+      };
+    };
+  };
+  auth_email_resend_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["EmailOnlyRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["EmailOnlyRequest"];
+        "multipart/form-data": components["schemas"]["EmailOnlyRequest"];
+      };
+    };
+    responses: {
+      202: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LinkSent"];
+        };
+      };
+    };
+  };
   auth_logout_create: {
     parameters: {
       query?: never;
@@ -12766,6 +12932,31 @@ export interface operations {
       };
     };
   };
+  auth_password_forgot_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["EmailOnlyRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["EmailOnlyRequest"];
+        "multipart/form-data": components["schemas"]["EmailOnlyRequest"];
+      };
+    };
+    responses: {
+      202: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LinkSent"];
+        };
+      };
+    };
+  };
   auth_password_login_create: {
     parameters: {
       query?: never;
@@ -12778,6 +12969,31 @@ export interface operations {
         "application/json": components["schemas"]["PasswordLoginRequest"];
         "application/x-www-form-urlencoded": components["schemas"]["PasswordLoginRequest"];
         "multipart/form-data": components["schemas"]["PasswordLoginRequest"];
+      };
+    };
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["SignIn"];
+        };
+      };
+    };
+  };
+  auth_password_reset_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["PasswordResetRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["PasswordResetRequest"];
+        "multipart/form-data": components["schemas"]["PasswordResetRequest"];
       };
     };
     responses: {
@@ -12806,6 +13022,31 @@ export interface operations {
         };
         content: {
           "application/json": components["schemas"]["Ok"];
+        };
+      };
+    };
+  };
+  auth_signup_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["SignUpRequest"];
+        "application/x-www-form-urlencoded": components["schemas"]["SignUpRequest"];
+        "multipart/form-data": components["schemas"]["SignUpRequest"];
+      };
+    };
+    responses: {
+      202: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["LinkSent"];
         };
       };
     };

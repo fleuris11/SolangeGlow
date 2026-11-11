@@ -8,7 +8,7 @@ import { withClientMessages } from "@/lib/i18n/client-messages";
 
 type Props = {
   params: Promise<{ locale: Locale }>;
-  searchParams: Promise<{ as?: string; vitrine?: string }>;
+  searchParams: Promise<{ as?: string; vitrine?: string; mode?: string }>;
 };
 
 export async function generateMetadata({ params }: Pick<Props, "params">): Promise<Metadata> {
@@ -20,11 +20,12 @@ export async function generateMetadata({ params }: Pick<Props, "params">): Promi
 function AuthPage({ params, searchParams }: Props) {
   const { locale } = use(params);
   setRequestLocale(locale);
-  const { as, vitrine } = use(searchParams);
+  const { as, vitrine, mode } = use(searchParams);
   return (
     <SignInFlow
       as={as === "pro" || as === "client" ? as : undefined}
       pageName={vitrine?.slice(0, 60)}
+      mode={mode === "signin" || mode === "signup" ? mode : undefined}
     />
   );
 }
