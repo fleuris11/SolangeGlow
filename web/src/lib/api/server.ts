@@ -305,12 +305,21 @@ export async function adsOnServer(
 
 // --- Contents and help center (module 12) ---------------------------------------------------
 
-/** The home banners written by the team (none when they cannot be reached). */
-export async function homeBannersOnServer(locale: string): Promise<Schemas["Banner"][]> {
+/** The announcements written by the team for one place (none when they cannot be reached). */
+export async function bannersOnServer(
+  locale: string,
+  placement: NonNullable<
+    NonNullable<paths["/api/v1/content/banners"]["get"]["parameters"]["query"]>["placement"]
+  > = "home",
+): Promise<Schemas["Banner"][]> {
   const api = await serverApi(locale);
-  const { data } = await api.GET("/api/v1/content/banners");
+  const { data } = await api.GET("/api/v1/content/banners", {
+    params: { query: { placement } },
+  });
   return data ?? [];
 }
+
+export const homeBannersOnServer = (locale: string) => bannersOnServer(locale, "home");
 
 /** The published pages: the same for everyone (no cookies), so « Me » stays a static page. */
 export async function pagesOnServer(locale: string): Promise<Schemas["PageSummary"][]> {

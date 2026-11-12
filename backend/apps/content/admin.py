@@ -8,15 +8,18 @@ from django.contrib import admin, messages
 from django.shortcuts import get_object_or_404, redirect
 from django.template.response import TemplateResponse
 from django.urls import reverse
+from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 from modeltranslation.admin import TabbedTranslationAdmin
 from unfold import widgets
-from unfold.decorators import action
+from unfold.decorators import action, display
 
 from apps.core.audit.admin import AuditedModelAdmin
-from apps.core.media.services import create_asset
+from apps.core.errors import DomainError
+from apps.core.media.services import check_upload, create_asset, variant_url
+from apps.core.models import Country
 
-from .models import Banner, ContentVersion, FaqItem, Page, Ticket
+from .models import Banner, ContentVersion, FaqItem, Page, Placement, Ticket
 from .services import help as help_services
 from .services import versions
 
@@ -72,8 +75,39 @@ class PageAdmin(VersionedAdmin, TabbedTranslationAdmin):
     actions_detail = ["versions_detail"]
 
 
+def safe_link(link: str) -> bool:
+    """A page of the app (/explore) or an https:// address; nothing that runs a script."""
+    link = (link or "").strip()
+    if not link:
+        return True
+    if link.startswith("/"):
+        return not link.startswith("//")
+    return link.startswith("https://")
+
+
 class BannerForm(forms.ModelForm):
-    upload = forms.ImageField(label=_("new picture"), required=False)
+    upload = forms.FileField(
+        label=_("picture or short video"),
+        required=False,
+        help_text=_(
+            "A picture (JPEG, PNG, WebP) or a short video (MP4). Wide pictures look best "
+            "(16:7). It replaces the current one."
+        ),
+        widget=forms.ClearableFileInput(attrs={"accept": "image/*,video/mp4,video/quicktime"}),
+    )
+    remove_media = forms.BooleanField(label=_("remove the picture or video"), required=False)
+    placements = forms.MultipleChoiceField(
+        label=_("where it is shown"),
+        choices=Placement.choices,
+        widget=forms.CheckboxSelectMultiple,
+        help_text=_("Tick one place or more."),
+    )
+    countries = forms.MultipleChoiceField(
+        label=_("countries"),
+        required=False,
+        widget=forms.CheckboxSelectMultiple,
+        help_text=_("None ticked: every country."),
+    )
 
     class Meta:
         model = Banner
@@ -82,6 +116,8 @@ class BannerForm(forms.ModelForm):
             "text",
             "cta",
             "link",
+            "promo_code",
+            "placements",
             "countries",
             "starts_at",
             "ends_at",
@@ -89,23 +125,139 @@ class BannerForm(forms.ModelForm):
             "is_active",
         ]
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["countries"].choices = [
+            (country.code, country.name)
+            for country in Country.objects.filter(is_active=True).order_by("name")
+        ]
+        self.upload_kind = None
+
+    def clean_upload(self):
+        upload = self.cleaned_data.get("upload")
+        if not upload:
+            return upload
+        kind = "video" if (upload.content_type or "").startswith("video/") else "image"
+        try:
+            self.upload_kind = check_upload(upload, "content_banner", kind)
+        except DomainError as error:
+            raise forms.ValidationError(error.text()) from error
+        return upload
+
+    def clean_link(self):
+        link = (self.cleaned_data.get("link") or "").strip()
+        if not safe_link(link):
+            raise forms.ValidationError(_("Write a page of the app (/…) or an https:// address."))
+        return link
+
+    def clean_promo_code(self):
+        return (self.cleaned_data.get("promo_code") or "").strip().upper()
+
+    def clean(self):
+        data = super().clean()
+        # The button text is translated: one field per language (cta_fr, cta_en...).
+        has_button = any(value for name, value in data.items() if name.startswith("cta"))
+        if has_button and not data.get("link"):
+            self.add_error("link", _("A button needs a link: where does it lead?"))
+        starts, ends = data.get("starts_at"), data.get("ends_at")
+        if starts and ends and ends <= starts:
+            self.add_error("ends_at", _("The end must come after the beginning."))
+        return data
+
+
+STATE_LABELS = {
+    "live": _("Online"),
+    "scheduled": _("Scheduled"),
+    "ended": _("Ended"),
+    "off": _("Switched off"),
+}
+
 
 @admin.register(Banner)
 class BannerAdmin(VersionedAdmin, TabbedTranslationAdmin):
+    """The announcements of the team: a picture or a video, a text, a button, a promo code,
+    shown where and when the team chooses (home, Explore, Selection, Academy, pros)."""
+
     form = BannerForm
-    list_display = ["title", "starts_at", "ends_at", "countries", "position", "is_active"]
+    list_display = ["preview", "title", "where", "country_list", "state_label", "position"]
+    list_display_links = ["preview", "title"]
     list_filter = ["is_active"]
-    list_editable = ["position", "is_active"]
-    search_fields = ["title", "text"]
+    list_editable = ["position"]
+    search_fields = ["title", "text", "promo_code"]
+    readonly_fields = ["preview_large"]
+    actions = ["switch_on", "switch_off"]
     actions_detail = ["versions_detail"]
+    fieldsets = (
+        (_("What it says"), {"fields": ("title", "text", "promo_code")}),
+        (_("Picture or video"), {"fields": ("preview_large", "upload", "remove_media")}),
+        (_("Button"), {"fields": ("cta", "link")}),
+        (_("Where and when"), {"fields": ("placements", "countries", "starts_at", "ends_at")}),
+        (_("Order and state"), {"fields": ("position", "is_active")}),
+    )
 
     def save_model(self, request, obj, form, change):
         upload = form.cleaned_data.get("upload")
         if upload:
             obj.image = create_asset(
-                owner=request.user, uploaded=upload, purpose="content_banner", kind="image"
+                owner=request.user,
+                uploaded=upload,
+                purpose="content_banner",
+                kind=form.upload_kind,
             )
+        elif form.cleaned_data.get("remove_media"):
+            obj.image = None
         super().save_model(request, obj, form, change)
+
+    def _thumb(self, banner, width):
+        if not banner.pk or not banner.image_id:
+            return "—"
+        media = banner.image
+        if not media.is_ready:
+            return _("Being prepared…")
+        url = variant_url(media, "thumb") or variant_url(media, "poster_medium")
+        if not url:
+            return "—"
+        return format_html('<img src="{}" width="{}" alt="" style="border-radius:8px">', url, width)
+
+    @display(description=_("picture"))
+    def preview(self, banner):
+        return self._thumb(banner, 96)
+
+    @display(description=_("current picture or video"))
+    def preview_large(self, banner):
+        return self._thumb(banner, 320)
+
+    @display(description=_("where it is shown"))
+    def where(self, banner):
+        labels = dict(Placement.choices)
+        names = [str(labels.get(key, key)).split(":")[0] for key in banner.placements or []]
+        return ", ".join(names) or "—"
+
+    @display(description=_("countries"))
+    def country_list(self, banner):
+        return ", ".join(banner.countries) if banner.countries else _("Every country")
+
+    @display(
+        description=_("state"),
+        label={
+            STATE_LABELS["live"]: "success",
+            STATE_LABELS["scheduled"]: "info",
+            STATE_LABELS["ended"]: "warning",
+            STATE_LABELS["off"]: "danger",
+        },
+    )
+    def state_label(self, banner):
+        return STATE_LABELS[banner.state()]
+
+    @admin.action(description=_("Switch on the selected announcements"))
+    def switch_on(self, request, queryset):
+        count = queryset.update(is_active=True)
+        self.message_user(request, _("%(count)s switched on.") % {"count": count})
+
+    @admin.action(description=_("Switch off the selected announcements"))
+    def switch_off(self, request, queryset):
+        count = queryset.update(is_active=False)
+        self.message_user(request, _("%(count)s switched off.") % {"count": count})
 
 
 @admin.register(FaqItem)

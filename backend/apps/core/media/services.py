@@ -28,10 +28,10 @@ def guess_kind(uploaded) -> str | None:
     return {"image": "image", "video": "video", "audio": "audio"}.get(family)
 
 
-def create_asset(*, owner, uploaded, purpose: str, kind: str | None = None) -> MediaAsset:
-    """Stores the original (private) and schedules its processing.
+def check_upload(uploaded, purpose: str, kind: str | None = None) -> str:
+    """The kind of a file that may be stored for this use; raises the reason otherwise.
 
-    The real type is checked again by the pipeline: the browser can lie.
+    Forms call it before saving, so a file too large is said next to the field.
     """
     rule = PURPOSES.get(purpose)
     if rule is None:
@@ -47,6 +47,16 @@ def create_asset(*, owner, uploaded, purpose: str, kind: str | None = None) -> M
         )
     if uploaded.size > max_bytes:
         raise errors.FileTooLarge(errors.FileTooLarge.message % {"size": max_bytes // MB})
+    return kind
+
+
+def create_asset(*, owner, uploaded, purpose: str, kind: str | None = None) -> MediaAsset:
+    """Stores the original (private) and schedules its processing.
+
+    The real type is checked again by the pipeline: the browser can lie.
+    """
+    kind = check_upload(uploaded, purpose, kind)
+    rule = PURPOSES[purpose]
 
     asset = MediaAsset(
         id=uuid.uuid4(),

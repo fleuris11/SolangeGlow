@@ -42,7 +42,12 @@ PURPOSES: dict[str, Purpose] = {
     ),
     "review_photo": Purpose(("image",), "public"),
     # Contents (module 12): pictures of the home banners, added in the admin.
-    "content_banner": Purpose(("image",), "public", uploadable=False),
+    "content_banner": Purpose(
+        ("image", "video"),
+        "public",
+        Duration(max_setting="content.banner_video_max_seconds", max_default=45),
+        uploadable=False,
+    ),
     # Ads (module 12): pictures and short videos of the campaigns, added in the admin.
     "ad_media": Purpose(
         ("image", "video"),

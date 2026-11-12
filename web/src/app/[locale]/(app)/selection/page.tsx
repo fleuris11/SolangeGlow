@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { AdSlot } from "@/components/features/ads/ad-cards";
 import { SelectionHome } from "@/components/features/selection/selection-home";
 import type { Schemas } from "@/lib/api/client";
+import { Announcements } from "@/components/features/help/home-banner";
 import { adsOnServer, selectionOnServer } from "@/lib/api/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { alternatesFor } from "@/lib/seo/alternates";
@@ -40,7 +41,12 @@ async function SelectionPage({ params, searchParams }: Props) {
     selectionOnServer(locale, aisle),
     adsOnServer(locale, { placement: "product" }).catch(() => null),
   ]);
-  return <SelectionHome page={page} aisle={aisle} sponsored={<AdSlot list={sponsored} />} />;
+  return (
+    <div className="flex flex-col gap-6">
+      <Announcements placement="selection" locale={locale} />
+      <SelectionHome page={page} aisle={aisle} sponsored={<AdSlot list={sponsored} />} />
+    </div>
+  );
 }
 
 export default withClientMessages(SelectionPage, "[locale]/(app)/selection/page.tsx");

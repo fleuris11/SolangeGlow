@@ -41,8 +41,24 @@ class Page(BaseModel):
         return self.title
 
 
+class Placement(models.TextChoices):
+    """Where an announcement of the team is shown."""
+
+    HOME = "home", _("Home: above the feed (visitors and members)")
+    EXPLORE = "explore", _("Explore: above the search results")
+    SELECTION = "selection", _("France Selection: top of the shop")
+    ACADEMY = "academy", _("Academy: top of the courses")
+    FOR_PROS = "for_pros", _("Public page « Offer my services »")
+    PRO_SPACE = "pro_space", _("Professional space: top of « Today »")
+
+
+def default_placements():
+    return [Placement.HOME.value]
+
+
 class Banner(BaseModel):
-    """An editorial message at the top of the home page (not an ad: no « Sponsored »)."""
+    """An announcement of the team (not an ad: no « Sponsored »): a picture or a short video,
+    a text, a button, a promo code to copy, shown where and when the team chooses."""
 
     title = models.CharField(_("title"), max_length=90)
     text = models.CharField(_("text"), max_length=200, blank=True)
@@ -54,10 +70,17 @@ class Banner(BaseModel):
         null=True,
         blank=True,
         related_name="+",
-        verbose_name=_("picture"),
+        verbose_name=_("picture or video"),
     )
+    promo_code = models.CharField(
+        _("promo code"),
+        max_length=30,
+        blank=True,
+        help_text=_("Shown on the announcement with a « Copy » button. Empty: none."),
+    )
+    placements = models.JSONField(_("where it is shown"), default=default_placements)
     countries = models.JSONField(
-        _("countries"), default=list, blank=True, help_text=_('e.g. ["BJ"]. Empty: everywhere.')
+        _("countries"), default=list, blank=True, help_text=_("None ticked: every country.")
     )
     starts_at = models.DateTimeField(_("from"), null=True, blank=True)
     ends_at = models.DateTimeField(_("until"), null=True, blank=True)
@@ -66,12 +89,25 @@ class Banner(BaseModel):
     version = models.PositiveIntegerField(_("version"), default=1, editable=False)
 
     class Meta:
-        verbose_name = _("home banner")
-        verbose_name_plural = _("home banners")
+        verbose_name = _("announcement")
+        verbose_name_plural = _("announcements")
         ordering = ["position", "-created_at"]
 
     def __str__(self):
         return self.title
+
+    def state(self, now=None) -> str:
+        """off | scheduled | ended | live: what the list of the back-office says."""
+        from django.utils import timezone
+
+        now = now or timezone.now()
+        if not self.is_active:
+            return "off"
+        if self.starts_at and self.starts_at > now:
+            return "scheduled"
+        if self.ends_at and self.ends_at <= now:
+            return "ended"
+        return "live"
 
 
 class FaqItem(BaseModel):

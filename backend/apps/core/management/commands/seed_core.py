@@ -1960,9 +1960,16 @@ SETTINGS += [
     _s(
         "content.banners_max",
         INT,
-        "1",
-        "Bannières d'accueil montrées en même temps.",
-        "Home banners shown at the same time.",
+        "2",
+        "Annonces de l'équipe montrées en même temps à un même endroit.",
+        "Announcements of the team shown at the same time in one place.",
+    ),
+    _s(
+        "content.banner_video_max_seconds",
+        INT,
+        "45",
+        "Durée maximum de la vidéo d'une annonce de l'équipe (secondes).",
+        "Longest video of an announcement of the team (seconds).",
     ),
     _s(
         "throttle.content",

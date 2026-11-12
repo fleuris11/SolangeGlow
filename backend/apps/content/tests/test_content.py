@@ -63,7 +63,9 @@ def test_every_save_is_a_version_that_can_come_back(client, boss):
 
 def test_home_banners_by_date_and_country():
     from apps.content.models import Banner
+    from apps.core.tests.factories import CountryFactory
 
+    CountryFactory(code="BJ", is_active=True)
     Banner.objects.create(title="Fête des mères", countries=["FR"])
     Banner.objects.create(title="Rentrée au Bénin", countries=["BJ"], position=1)
     found = APIClient().get("/api/v1/content/banners?country=BJ").json()

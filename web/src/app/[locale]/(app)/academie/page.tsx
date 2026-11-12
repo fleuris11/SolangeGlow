@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { CatalogueView, type CatalogueFilters } from "@/components/features/academy/catalogue-view";
+import { Announcements } from "@/components/features/help/home-banner";
 import { catalogueOnServer, tradesOnServer, type CatalogueQuery } from "@/lib/api/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { alternatesFor } from "@/lib/seo/alternates";
@@ -47,7 +48,12 @@ async function AcademyPage({ params, searchParams }: Props) {
     catalogueOnServer(query, locale),
     tradesOnServer(locale),
   ]);
-  return <CatalogueView page={page} trades={trades} filters={filters} />;
+  return (
+    <div className="flex flex-col gap-6">
+      <Announcements placement="academy" locale={locale} />
+      <CatalogueView page={page} trades={trades} filters={filters} />
+    </div>
+  );
 }
 
 export default withClientMessages(AcademyPage, "[locale]/(app)/academie/page.tsx");

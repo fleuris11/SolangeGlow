@@ -1,6 +1,7 @@
 import { Check } from "@phosphor-icons/react/dist/ssr";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import type { ReactNode } from "react";
 
 import { StepsWatcher } from "@/components/features/home/steps-watcher";
 import "@/components/features/home/home.css";
@@ -36,7 +37,14 @@ function Ticks({ items }: { items: string[] }) {
 }
 
 /** Everything someone who offers services gets, what is free and how to start. */
-export function ForProsPage({ signedIn }: { signedIn: boolean }) {
+export function ForProsPage({
+  signedIn,
+  announcement,
+}: {
+  signedIn: boolean;
+  /** The announcements of the team for this page, shown under the first screen. */
+  announcement?: ReactNode;
+}) {
   const t = useTranslations("marketing.pros");
   return (
     <MarketingPage>
@@ -77,6 +85,11 @@ export function ForProsPage({ signedIn }: { signedIn: boolean }) {
           />
         </div>
       </EditorialSection>
+      {announcement && (
+        <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 py-6 empty:hidden md:px-8">
+          {announcement}
+        </div>
+      )}
 
       <EditorialSection
         aria-labelledby="pros-who"

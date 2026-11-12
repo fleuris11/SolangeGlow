@@ -4242,7 +4242,10 @@
     "pages": "Information",
     "banner": {
       "aria": "Solange Glow news",
-      "discover": "Discover"
+      "discover": "Discover",
+      "code": "Promo code",
+      "copy": "Copy",
+      "copied": "Copied"
     },
     "page": {
       "updated": "Updated on {date}"

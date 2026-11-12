@@ -9,9 +9,10 @@ from apps.core.api.caching import VisitorCacheMixin
 from apps.core.media.api import MediaSerializer
 from apps.core.media.services import asset_payload
 from apps.core.selectors import get_setting
+from apps.core.viewer import viewer_country
 
 from . import errors, seo
-from .models import Banner, FaqItem, Page, Ticket
+from .models import Banner, FaqItem, Page, Placement, Ticket
 from .services import help as help_services
 
 TAGS = ["content"]
@@ -71,10 +72,15 @@ class BannerSerializer(serializers.Serializer):
     cta = serializers.CharField(allow_blank=True)
     link = serializers.CharField(allow_blank=True)
     image = MediaSerializer(allow_null=True)
+    video = MediaSerializer(allow_null=True)
+    promo_code = serializers.CharField(allow_blank=True)
 
 
 class BannerQuerySerializer(serializers.Serializer):
     country = serializers.CharField(required=False, default="", allow_blank=True, max_length=2)
+    placement = serializers.ChoiceField(
+        choices=Placement.choices, required=False, default=Placement.HOME
+    )
 
 
 class BannersView(VisitorCacheMixin, ContentView):
@@ -84,28 +90,41 @@ class BannersView(VisitorCacheMixin, ContentView):
     def get(self, request):
         query = BannerQuerySerializer(data=request.query_params)
         query.is_valid(raise_exception=True)
-        viewer = _viewer(request)
-        country = (
-            viewer.country.code if viewer and viewer.country_id else query.validated_data["country"]
-        ).upper()
+        # The country a person sees: the same rule as the feed and the search (core.viewer).
+        seen = viewer_country(request, query.validated_data["country"])
+        country = seen.code if seen else ""
+        placement = query.validated_data["placement"]
         now = timezone.now()
-        rows = Banner.objects.filter(is_active=True).filter(
-            Q(starts_at__isnull=True) | Q(starts_at__lte=now),
-            Q(ends_at__isnull=True) | Q(ends_at__gt=now),
+        rows = (
+            Banner.objects.filter(is_active=True)
+            .filter(
+                Q(starts_at__isnull=True) | Q(starts_at__lte=now),
+                Q(ends_at__isnull=True) | Q(ends_at__gt=now),
+            )
+            .select_related("image")
         )
-        found = [b for b in rows if not b.countries or not country or country in b.countries]
-        most = int(get_setting("content.banners_max", default=1))
-        payload = [
-            {
-                "id": b.pk,
-                "title": b.title,
-                "text": b.text,
-                "cta": b.cta,
-                "link": b.link,
-                "image": asset_payload(b.image) if b.image_id and b.image.is_ready else None,
-            }
-            for b in found[:most]
+        found = [
+            b
+            for b in rows
+            if placement in (b.placements or [])
+            and (not b.countries or not country or country in b.countries)
         ]
+        most = int(get_setting("content.banners_max", default=1))
+        payload = []
+        for b in found[:most]:
+            media = b.image if b.image_id and b.image.is_ready else None
+            payload.append(
+                {
+                    "id": b.pk,
+                    "title": b.title,
+                    "text": b.text,
+                    "cta": b.cta,
+                    "link": b.link,
+                    "image": asset_payload(media) if media and media.kind == "image" else None,
+                    "video": asset_payload(media) if media and media.kind == "video" else None,
+                    "promo_code": b.promo_code,
+                }
+            )
         return Response(BannerSerializer(payload, many=True).data)
 
 

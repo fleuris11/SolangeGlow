@@ -20,6 +20,7 @@ import { SearchBar } from "@/components/features/search/search-bar";
 import { buttonClasses } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import { SpeakButton } from "@/components/ui/speak-button";
+import { Announcements } from "@/components/features/help/home-banner";
 import { adsOnServer, placesOnServer, searchProsOnServer } from "@/lib/api/server";
 import { Link } from "@/lib/i18n/navigation";
 import type { Locale } from "@/lib/i18n/routing";
@@ -78,6 +79,7 @@ async function ExplorePage({ params, searchParams }: Props) {
         <SpeakButton text={t("intro")} />
       </div>
       <SearchBar key={filters.q} defaultValue={filters.q} />
+      <Announcements placement="explore" locale={locale} />
       <TradeNav filters={filters} />
       <Suspense>
         <ExploreControls

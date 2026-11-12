@@ -4242,7 +4242,10 @@
     "pages": "Informations",
     "banner": {
       "aria": "Nouveauté Solange Glow",
-      "discover": "Découvrir"
+      "discover": "Découvrir",
+      "code": "Code promo",
+      "copy": "Copier",
+      "copied": "Copié"
     },
     "page": {
       "updated": "Mis à jour le {date}"

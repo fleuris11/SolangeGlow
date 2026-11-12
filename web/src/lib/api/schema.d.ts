@@ -6361,6 +6361,8 @@ export interface components {
       cta: string;
       link: string;
       image: components["schemas"]["Media"] | null;
+      video: components["schemas"]["Media"] | null;
+      promo_code: string;
     };
     BasicStats: {
       /** Format: date */
@@ -13581,6 +13583,15 @@ export interface operations {
     parameters: {
       query?: {
         country?: string;
+        /**
+         * @description * `home` - Home: above the feed (visitors and members)
+         *     * `explore` - Explore: above the search results
+         *     * `selection` - France Selection: top of the shop
+         *     * `academy` - Academy: top of the courses
+         *     * `for_pros` - Public page « Offer my services »
+         *     * `pro_space` - Professional space: top of « Today »
+         */
+        placement?: "home" | "explore" | "selection" | "academy" | "for_pros" | "pro_space";
       };
       header?: never;
       path?: never;

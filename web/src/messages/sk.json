@@ -4242,7 +4242,10 @@
     "pages": "Informácie",
     "banner": {
       "aria": "Novinka Solange Glow",
-      "discover": "Objaviť"
+      "discover": "Objaviť",
+      "code": "Promo kód",
+      "copy": "Kopírovať",
+      "copied": "Skopírované"
     },
     "page": {
       "updated": "Aktualizované {date}"

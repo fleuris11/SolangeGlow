@@ -1,3 +1,4 @@
+import { Announcements } from "@/components/features/help/home-banner";
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
@@ -23,6 +24,7 @@ async function Page({ params, searchParams }: Props) {
   setRequestLocale(locale);
   return (
     <SignedIn>
+      <Announcements placement="pro_space" locale={locale} />
       <TodayScreen welcome={bienvenue === "1"} />
     </SignedIn>
   );

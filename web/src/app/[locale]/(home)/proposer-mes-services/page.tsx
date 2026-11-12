@@ -1,3 +1,4 @@
+import { Announcements } from "@/components/features/help/home-banner";
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -22,7 +23,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 async function Page({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <ForProsPage signedIn={(await cookies()).get("sg_signed_in")?.value === "1"} />;
+  return (
+    <ForProsPage
+      signedIn={(await cookies()).get("sg_signed_in")?.value === "1"}
+      announcement={<Announcements placement="for_pros" locale={locale} />}
+    />
+  );
 }
 
 export default withClientMessages(Page, "[locale]/(home)/proposer-mes-services/page.tsx");

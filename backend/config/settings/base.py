@@ -98,6 +98,7 @@ MIDDLEWARE = [
     "apps.backoffice.middleware.StaffTwoFactorMiddleware",
     "apps.core.audit.context.AuditContextMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
+    "apps.core.admin_errors.AdminDomainErrorMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
