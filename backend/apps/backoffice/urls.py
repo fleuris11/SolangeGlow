@@ -10,4 +10,5 @@ urlpatterns = [
         name="impersonation-stop",
     ),
     path("prospects/claim", views.ProspectClaimView.as_view(), name="prospects-claim"),
+    path("prospects/<str:code>/stop", views.prospect_stop, name="prospects-stop"),
 ]

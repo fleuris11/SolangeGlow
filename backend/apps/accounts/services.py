@@ -28,7 +28,7 @@ from django.db import transaction
 from django.utils import timezone
 from rest_framework_simplejwt.token_blacklist.models import BlacklistedToken, OutstandingToken
 
-from apps.core import crypto
+from apps.core import crypto, events
 from apps.core.audit.services import record as audit
 from apps.core.choices import Role
 from apps.core.media.services import create_asset, delete_asset
@@ -447,13 +447,16 @@ def login_with_password(
 # The classic way: e-mail, password, then a link in the mailbox confirms the address and signs
 # the person in. Answers never say whether an address has an account: the mailbox does.
 
-LINK_KINDS = ("confirm", "reset", "exists")
+# "invite": an account prepared by the team for a professional; she chooses her password.
+LINK_KINDS = ("confirm", "reset", "exists", "invite")
 DEV_LINK_CACHE_PREFIX = "dev:link:"
 
 
 def _link_hours(kind: str) -> int:
     if kind == "confirm":
         return int(get_setting("accounts.email_link_hours", default=48))
+    if kind == "invite":
+        return int(get_setting("accounts.invite_link_days", default=14)) * 24
     return int(get_setting("accounts.reset_link_hours", default=2))
 
 
@@ -467,9 +470,12 @@ def _link_state(user: User, kind: str) -> str:
 
 
 def _signer(kind: str) -> signing.TimestampSigner:
-    return signing.TimestampSigner(
-        salt=f"accounts.link.{'confirm' if kind == 'confirm' else 'reset'}"
-    )
+    return signing.TimestampSigner(salt=f"accounts.link.{_link_purpose(kind)}")
+
+
+def _link_purpose(kind: str) -> str:
+    """« exists » e-mails carry a reset link; the others are their own purpose."""
+    return kind if kind in ("confirm", "invite") else "reset"
 
 
 def make_link_token(user: User, kind: str) -> str:
@@ -491,7 +497,7 @@ def user_from_link(token: str, kind: str) -> User:
 def link_url(user: User, kind: str) -> str:
     language = user.preferred_language or settings.LANGUAGE_CODE
     path = "confirm" if kind == "confirm" else "reset"
-    token = make_link_token(user, "confirm" if kind == "confirm" else "reset")
+    token = make_link_token(user, _link_purpose(kind))
     return f"{settings.SITE_URL.rstrip('/')}/{language}/auth/{path}?token={quote(token)}"
 
 
@@ -614,8 +620,13 @@ def request_password_reset(email: str) -> str:
 def reset_password(
     token: str, password: str, *, ip: str | None = None, user_agent: str = ""
 ) -> SignInResult:
-    """New password from the e-mailed link: other sessions are closed, this one opens."""
-    user = user_from_link(token, "reset")
+    """New password from the e-mailed link: other sessions are closed, this one opens.
+
+    The link is « forgot password » or the invitation of an account prepared by the team."""
+    try:
+        user = user_from_link(token, "reset")
+    except errors.InvalidLink:
+        user = user_from_link(token, "invite")
     user = User.objects.select_for_update().get(pk=user.pk)
     _check_new_password(password, user)
     user.set_password(password)
@@ -628,6 +639,7 @@ def reset_password(
     revoke_all_tokens(user)
     cache.delete(_failures_key(user.email or ""))
     audit("account.password_reset", user, actor=user)
+    events.emit("accounts.password_chosen", user=user)
     record_login(
         user=user,
         method=LoginEvent.Method.PASSWORD,

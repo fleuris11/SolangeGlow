@@ -11,8 +11,13 @@ class BackofficeConfig(AppConfig):
     def ready(self):
         from django.contrib import admin
 
+        from apps.core import events
+
         from . import admin_views
-        from .services import exports, team
+        from .services import exports, prospects, team
+
+        # A prospect who chose her password with the invitation link is signed up.
+        events.subscribe("accounts.password_chosen", prospects.on_password_chosen)
 
         post_migrate.connect(team.create_groups, sender=self)
         # « Export as CSV » on every list of the admin.

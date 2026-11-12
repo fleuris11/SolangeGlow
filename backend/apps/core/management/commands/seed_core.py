@@ -248,6 +248,13 @@ SETTINGS += [
         "How long the e-mail confirmation link works (hours).",
     ),
     _s(
+        "accounts.invite_link_days",
+        INT,
+        "14",
+        "Durée de validité du lien envoyé à un professionnel dont la vitrine a été préparée (jours).",
+        "How long the link sent to a professional whose showcase was prepared works (days).",
+    ),
+    _s(
         "accounts.reset_link_hours",
         INT,
         "2",
@@ -1956,6 +1963,20 @@ SETTINGS += [
         "50000",
         "Exports CSV : nombre maximum de lignes.",
         "CSV exports: most rows.",
+    ),
+    _s(
+        "prospects.daily_email_limit",
+        INT,
+        "100",
+        "Nombre maximum d'e-mails envoyés aux prospects par jour (protège la réputation du domaine).",
+        "Most e-mails sent to prospects per day (protects the reputation of the domain).",
+    ),
+    _s(
+        "prospects.reply_to",
+        STR,
+        "",
+        "Adresse à laquelle un prospect répond (par exemple contact@solangeglow.com).",
+        "Address a prospect answers to (for instance contact@solangeglow.com).",
     ),
     _s(
         "content.banners_max",

@@ -1,0 +1,51 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+  <div style="max-width:760px;display:flex;flex-direction:column;gap:16px">
+    <p>
+      {% blocktranslate with email=prospect.email|default:"—" language=prospect.get_language_display %}To: <strong>{{ email }}</strong>, written in {{ language }}.{% endblocktranslate %}
+      <span class="text-subtle">{% blocktranslate %}E-mails to prospects today: {{ sent_today }}.{% endblocktranslate %}</span>
+    </p>
+
+    {% if declined %}
+      <p class="font-semibold" role="alert">{% translate "This prospect asked not to be contacted any more: nothing can be sent." %}</p>
+    {% elif not templates %}
+      <p role="alert">{% translate "No standard e-mail is active: write one first." %}</p>
+    {% else %}
+      <form method="get" style="display:flex;flex-wrap:wrap;gap:8px;align-items:end">
+        <label style="display:flex;flex-direction:column;gap:4px;flex:1;min-width:240px">
+          <span class="font-semibold">{% translate "Standard e-mail" %}</span>
+          <select name="template" onchange="this.form.submit()" class="border border-base-200 rounded-default px-3 py-2 bg-white dark:bg-base-900">
+            {% for template in templates %}
+              <option value="{{ template.key }}" {% if chosen and template.key == chosen.key %}selected{% endif %}>
+                {{ template.name }}{% if template.needs_showcase and not prospect.pro_id %} — {% translate "needs a prepared showcase" %}{% endif %}
+              </option>
+            {% endfor %}
+          </select>
+        </label>
+        <noscript><button type="submit" class="border border-base-200 rounded-default px-4 py-2 font-semibold">{% translate "Show" %}</button></noscript>
+      </form>
+
+      {% if problem %}
+        <p class="font-semibold" role="alert">{{ problem }}</p>
+      {% elif preview %}
+        <div class="border border-base-200 rounded-default" style="padding:16px;display:flex;flex-direction:column;gap:12px">
+          <p class="text-subtle" style="margin:0">{% translate "What she will receive" %}</p>
+          <p class="font-semibold" style="margin:0">{{ preview.0 }}</p>
+          <pre style="white-space:pre-wrap;font:inherit;margin:0">{{ preview.1 }}</pre>
+        </div>
+        <form method="post" style="display:flex;gap:12px;align-items:center">
+          {% csrf_token %}
+          <input type="hidden" name="template" value="{{ chosen.key }}">
+          <button type="submit" class="bg-primary-600 text-white rounded-default px-4 py-2 font-semibold">{% translate "Send this e-mail" %}</button>
+          <a href="{{ back }}">{% translate "Back to the prospect" %}</a>
+        </form>
+        <p class="text-subtle">{% translate "To change the words for everyone, edit the standard e-mail. To change them for this prospect only, fill in « our proposal » on her file." %}</p>
+      {% endif %}
+    {% endif %}
+    {% if declined or not templates or problem %}<p><a href="{{ back }}">{% translate "Back to the prospect" %}</a></p>{% endif %}
+  </div>
+{% endblock %}

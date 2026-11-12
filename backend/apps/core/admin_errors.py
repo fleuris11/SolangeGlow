@@ -22,4 +22,9 @@ class AdminDomainErrorMiddleware:
         if not request.path.startswith("/admin/") or not isinstance(exception, DomainError):
             return None
         messages.error(request, exception.text())
-        return redirect(request.get_full_path())
+        if request.method == "POST":
+            # Back to the form that was sent (shown again, empty of the refused change).
+            return redirect(request.get_full_path())
+        # A link that acts (« prepare », « send »): back to the screen it was on, one step up.
+        parent = request.path.rstrip("/").rsplit("/", 1)[0] + "/"
+        return redirect(parent if parent.startswith("/admin/") else "/admin/")

@@ -1,0 +1,33 @@
+{% load i18n %}<!doctype html>
+<html lang="{{ language }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>Solange Glow</title>
+    <style>
+      body { margin: 0; font: 17px/1.55 system-ui, sans-serif; }
+      main { max-width: 34rem; margin: 0 auto; padding: 3rem 1rem; }
+      h1 { font-size: 1.5rem; line-height: 1.25; margin: 0 0 1rem; }
+      button { font: inherit; font-weight: 700; min-height: 3.5rem; width: 100%; border: 0; border-radius: 999px; padding: 0 1.5rem; cursor: pointer; background: CanvasText; color: Canvas; }
+      p { margin: 0 0 1rem; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p><strong>Solange Glow</strong></p>
+      {% if not found %}
+        <h1>{% translate "This link is no longer valid." %}</h1>
+      {% elif done %}
+        <h1>{% translate "Understood: we will not write to you again." %}</h1>
+        <p>{% translate "Thank you for your time. If you change your mind one day, you are welcome on Solange Glow." %}</p>
+      {% else %}
+        <h1>{% translate "Stop receiving our e-mails?" %}</h1>
+        <p>{% translate "Confirm, and we will not write to you again." %}</p>
+        <form method="post">
+          <button type="submit">{% translate "Yes, stop the e-mails" %}</button>
+        </form>
+      {% endif %}
+    </main>
+  </body>
+</html>

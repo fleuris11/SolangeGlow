@@ -143,6 +143,29 @@ class Prospect(BaseModel):
         _("status"), max_length=10, choices=Status.choices, default=Status.NEW, db_index=True
     )
     notes = models.TextField(_("notes"), blank=True)
+    language = models.CharField(
+        _("language of the messages"), max_length=5, choices=settings.LANGUAGES, default="fr"
+    )
+    services = models.TextField(
+        _("what they do"), blank=True, help_text=_("Their services, their prices, their style.")
+    )
+    pitch = models.TextField(
+        _("our proposal"),
+        blank=True,
+        help_text=_("One or two sentences written for them; shown in the e-mails ({{ pitch }})."),
+    )
+    website = models.CharField(
+        _("site or social page"), max_length=300, blank=True, help_text=_("Instagram, Facebook…")
+    )
+    pro = models.ForeignKey(
+        "pros.ProProfile",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="+",
+        verbose_name=_("prepared showcase"),
+    )
+    last_message_at = models.DateTimeField(_("last e-mail"), null=True, blank=True)
     invite_code = models.CharField(
         _("invitation code"), max_length=20, unique=True, default=_invite_code, editable=False
     )
@@ -171,3 +194,69 @@ class Prospect(BaseModel):
 
     def __str__(self):
         return self.business_name or self.name
+
+
+class ProspectEmailTemplate(BaseModel):
+    """A standard e-mail for the prospects, written once per language and edited in the admin.
+
+    Words between braces are replaced: {{ name }}, {{ business }}, {{ city }}, {{ pitch }},
+    {{ link }} (their personal link) and {{ stop_link }} (« not interested »).
+    """
+
+    key = models.SlugField(_("key"), max_length=40, unique=True)
+    name = models.CharField(_("name"), max_length=80)
+    subject = models.CharField(_("subject"), max_length=150)
+    body = models.TextField(_("text"))
+    needs_showcase = models.BooleanField(
+        _("needs a prepared showcase"),
+        default=False,
+        help_text=_("Sent only to a prospect whose showcase was prepared: the link opens it."),
+    )
+    position = models.PositiveSmallIntegerField(_("position"), default=0)
+    is_active = models.BooleanField(_("active"), default=True)
+
+    class Meta:
+        verbose_name = _("standard e-mail")
+        verbose_name_plural = _("standard e-mails")
+        ordering = ["position", "name"]
+
+    def __str__(self):
+        return self.name
+
+
+class ProspectMessage(BaseModel):
+    """One e-mail sent to a prospect: what was written, when, by whom, and whether it left."""
+
+    class Status(models.TextChoices):
+        QUEUED = "queued", _("Leaving")
+        SENT = "sent", _("Sent")
+        FAILED = "failed", _("Not sent")
+
+    prospect = models.ForeignKey(
+        Prospect, on_delete=models.CASCADE, related_name="messages", verbose_name=_("prospect")
+    )
+    template_key = models.CharField(_("standard e-mail"), max_length=40, blank=True)
+    to_email = models.EmailField(_("to"))
+    subject = models.CharField(_("subject"), max_length=200)
+    body = models.TextField(_("text"))
+    status = models.CharField(
+        _("status"), max_length=10, choices=Status.choices, default=Status.QUEUED
+    )
+    error = models.CharField(_("error"), max_length=200, blank=True)
+    sent_at = models.DateTimeField(_("sent at"), null=True, blank=True)
+    sent_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="+",
+        verbose_name=_("by"),
+    )
+
+    class Meta:
+        verbose_name = _("e-mail sent to a prospect")
+        verbose_name_plural = _("e-mails sent to prospects")
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"{self.to_email} · {self.subject}"

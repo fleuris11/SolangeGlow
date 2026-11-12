@@ -25,7 +25,7 @@ from apps.core.audit.services import record
 from apps.core.errors import DomainError
 from apps.core.models import Country, FeatureFlag
 
-from .models import Prospect, StaffDevice, TranslationOverride
+from .models import Prospect, ProspectEmailTemplate, StaffDevice, TranslationOverride
 from .services import impersonation, prospects, team, translations, twofactor
 
 
@@ -359,6 +359,51 @@ def prospects_import(site):
     return view
 
 
+# --- E-mail to a prospect ------------------------------------------------------------------------
+
+
+def prospect_email(site):
+    """Choose a standard e-mail, read exactly what she will receive, then send it."""
+
+    def view(request, prospect_id):
+        if not (request.user.is_superuser or request.user.has_perm("backoffice.change_prospect")):
+            raise PermissionDenied
+        prospect = get_object_or_404(Prospect, pk=prospect_id)
+        back = reverse("admin:backoffice_prospect_change", args=[prospect.pk])
+        templates = list(ProspectEmailTemplate.objects.filter(is_active=True))
+        key = request.POST.get("template") or request.GET.get("template") or ""
+        chosen = next((t for t in templates if t.key == key), None)
+        if chosen is None and templates:
+            ready = [t for t in templates if prospect.pro_id or not t.needs_showcase]
+            chosen = (ready or templates)[0]
+        preview = problem = None
+        if chosen is not None:
+            try:
+                preview = prospects.compose(prospect, chosen)
+            except DomainError as error:
+                problem = error.text()
+        if request.method == "POST" and chosen is not None and not problem:
+            prospects.send_email(prospect, chosen, actor=request.user)
+            messages.success(request, _("E-mail « %(name)s » on its way.") % {"name": chosen.name})
+            return redirect(back)
+        return _page(
+            site,
+            request,
+            "prospect_email.html",
+            _("E-mail to %(name)s") % {"name": prospect.business_name or prospect.name},
+            prospect=prospect,
+            templates=templates,
+            chosen=chosen,
+            preview=preview,
+            problem=problem,
+            back=back,
+            declined=prospect.status == Prospect.Status.DECLINED,
+            sent_today=prospects.sent_today(),
+        )
+
+    return view
+
+
 # --- Sign in as ----------------------------------------------------------------------------------
 
 
@@ -433,6 +478,11 @@ def urls(site) -> list:
             name="backoffice_selection_console",
         ),
         path("prospects/import/", wrap(prospects_import(site)), name="backoffice_prospects_import"),
+        path(
+            "prospects/<uuid:prospect_id>/email/",
+            wrap(prospect_email(site)),
+            name="backoffice_prospect_email",
+        ),
         path(
             "impersonate/<uuid:user_id>/",
             wrap(impersonate_view(site)),
