@@ -129,8 +129,9 @@ describe("ShowcaseView", () => {
     expect(
       screen.getByRole("heading", { name: "Vitrine préparée par Solange Glow" }),
     ).toBeVisible();
-    const [whatsapp] = screen.getAllByRole("link", { name: /Contacter sur WhatsApp/ });
-    expect(whatsapp.getAttribute("href")).toMatch(/^https:\/\/wa\.me\/2290197123456\?text=/);
+    for (const whatsapp of screen.getAllByRole("link", { name: /Contacter sur WhatsApp/ })) {
+      expect(whatsapp.getAttribute("href")).toMatch(/^https:\/\/wa\.me\/2290197123456\?text=/);
+    }
     expect(screen.queryByRole("link", { name: /Réserver/ })).not.toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Récupère-la/ })).toHaveAttribute(
       "href",
