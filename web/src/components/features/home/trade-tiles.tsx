@@ -11,7 +11,7 @@ const MEDIA = library as Record<string, { src: string; poster?: string }>;
 /** Each print has a tag tied to it. The pairs of colours make a plain grid look alive. */
 const TILES = [
   { key: "braids", photo: "braids-lilac", tag: "bg-nuit text-blanc" },
-  { key: "hair", photo: "curls-teal", tag: "bg-rouge-fixe text-blanc" },
+  { key: "hair", photo: "barber-comb", tag: "bg-rouge-fixe text-blanc" },
   { key: "makeup", photo: "makeup-artist-studio", tag: "bg-poudre-fixe text-encre" },
   { key: "nails", photo: "nails-salon", tag: "bg-nuit text-blanc" },
   { key: "sewing", photo: "wax-rolls", tag: "bg-poudre-fixe text-encre" },

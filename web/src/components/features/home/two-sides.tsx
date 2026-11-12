@@ -12,7 +12,7 @@ const MEDIA = library as Record<string, { src: string }>;
 
 const SIDES = [
   { key: "seek", door: "client", photo: "curls-blue", focus: "50% 22%", href: "/auth?as=client" },
-  { key: "offer", door: "pro", photo: "salon-pink", focus: "50% 30%", href: "/auth?as=pro" },
+  { key: "offer", door: "pro", photo: "barber-smile", focus: "55% 30%", href: "/auth?as=pro" },
 ] as const;
 
 /**

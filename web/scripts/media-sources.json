@@ -802,5 +802,113 @@
     "author": "Dave Hettrick",
     "license": "Unsplash License: free for commercial use, credit appreciated",
     "licenseUrl": "https://unsplash.com/license"
+  },
+  {
+    "slug": "barber-comb",
+    "kind": "image",
+    "category": "coiffure",
+    "source": "Wikimedia Commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Barber_cutting_hair_with_comb._Back_view_of_young_man_in_barber_shop.jpg/1920px-Barber_cutting_hair_with_comb._Back_view_of_young_man_in_barber_shop.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "page": "https://commons.wikimedia.org/wiki/File:Barber_cutting_hair_with_comb._Back_view_of_young_man_in_barber_shop.jpg",
+    "title": "Barber cutting hair with comb. Back view of young man in barber shop",
+    "author": "Nenad Stojkovic",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+  },
+  {
+    "slug": "barber-shop",
+    "kind": "image",
+    "category": "coiffure",
+    "source": "Wikimedia Commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9b/Young_men_with_trendy_haircut_at_barber_shop.jpg/1920px-Young_men_with_trendy_haircut_at_barber_shop.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "page": "https://commons.wikimedia.org/wiki/File:Young_men_with_trendy_haircut_at_barber_shop.jpg",
+    "title": "Young men with trendy haircut at barber shop",
+    "author": "Nenad Stojkovic",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+  },
+  {
+    "slug": "beard-shave",
+    "kind": "image",
+    "category": "coiffure",
+    "source": "Wikimedia Commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a4/Attractive_hairdresser_is_shaving_male_beard_with_the_knife.jpg/1920px-Attractive_hairdresser_is_shaving_male_beard_with_the_knife.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "page": "https://commons.wikimedia.org/wiki/File:Attractive_hairdresser_is_shaving_male_beard_with_the_knife.jpg",
+    "title": "Attractive hairdresser is shaving male beard with the knife",
+    "author": "Nenad Stojkovic",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+  },
+  {
+    "slug": "barber-smile",
+    "kind": "image",
+    "category": "coiffure",
+    "source": "Wikimedia Commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Barber_and_smiling_customer_in_a_Kenyan_barbershop.jpg/1920px-Barber_and_smiling_customer_in_a_Kenyan_barbershop.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "page": "https://commons.wikimedia.org/wiki/File:Barber_and_smiling_customer_in_a_Kenyan_barbershop.jpg",
+    "title": "Barber and smiling customer in a Kenyan barbershop",
+    "author": "Lebu Ayiga",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "slug": "barber-clippers",
+    "kind": "image",
+    "category": "coiffure",
+    "source": "Wikimedia Commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Barber_at_work_%282%29.jpg/1920px-Barber_at_work_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "page": "https://commons.wikimedia.org/wiki/File:Barber_at_work_(2).jpg",
+    "title": "Barber at work (2)",
+    "author": "Zarerh",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "slug": "makeup-mirror",
+    "kind": "image",
+    "category": "maquillage",
+    "source": "Wikimedia Commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Tattooed_woman_putting_a_makeup_on_her_face.jpg/1920px-Tattooed_woman_putting_a_makeup_on_her_face.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "page": "https://commons.wikimedia.org/wiki/File:Tattooed_woman_putting_a_makeup_on_her_face.jpg",
+    "title": "Tattooed woman putting a makeup on her face",
+    "author": "Nenad Stojkovic",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+  },
+  {
+    "slug": "haircut-grey",
+    "kind": "image",
+    "category": "coiffure",
+    "source": "Wikimedia Commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/da/Barbershop_In_Iran_-_Barber%2C_Hairdresser_18.jpg/1920px-Barbershop_In_Iran_-_Barber%2C_Hairdresser_18.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "page": "https://commons.wikimedia.org/wiki/File:Barbershop_In_Iran_-_Barber,_Hairdresser_18.jpg",
+    "title": "Barbershop In Iran - Barber, Hairdresser 18",
+    "author": "Mostafameraji",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+  },
+  {
+    "slug": "barber-dryer",
+    "kind": "image",
+    "category": "coiffure",
+    "source": "Wikimedia Commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0c/Barbershop_In_Iran_-_Barber%2C_Hairdresser_14.jpg/1920px-Barbershop_In_Iran_-_Barber%2C_Hairdresser_14.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "page": "https://commons.wikimedia.org/wiki/File:Barbershop_In_Iran_-_Barber,_Hairdresser_14.jpg",
+    "title": "Barbershop In Iran - Barber, Hairdresser 14",
+    "author": "Mostafameraji",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+  },
+  {
+    "slug": "bride-flowers",
+    "kind": "image",
+    "category": "maquillage",
+    "source": "Wikimedia Commons",
+    "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b5/Meribindiya_Bridal_Makeup.jpg/1920px-Meribindiya_Bridal_Makeup.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+    "page": "https://commons.wikimedia.org/wiki/File:Meribindiya_Bridal_Makeup.jpg",
+    "title": "Meribindiya Bridal Makeup",
+    "author": "Bridalglamguide",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
   }
 ]

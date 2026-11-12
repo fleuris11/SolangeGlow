@@ -14,7 +14,7 @@ const MEDIA = library as Record<string, { src: string }>;
 /** Each photo has its own focus, so that the ticket never covers a face. */
 const PHOTOS: Record<Trade, { photo: string; focus: string }> = {
   braids: { photo: "braids-yellow", focus: "62% 12%" },
-  hair: { photo: "hair-blow-dry", focus: "55% 30%" },
+  hair: { photo: "barber-shop", focus: "50% 38%" },
   makeup: { photo: "makeup-lipstick", focus: "50% 40%" },
   nails: { photo: "nails-glitter", focus: "50% 50%" },
   sewing: { photo: "sewing", focus: "70% 50%" },
@@ -25,11 +25,12 @@ const FIRST: Trade = "braids";
 const ORDER: Trade[] = [FIRST, ...TRADES.filter((trade) => trade !== FIRST)];
 const TIMES = ["morning", "noon", "evening"] as const;
 
-/* Written into the page, no JavaScript file (ADR-004). The trades follow one another every few
-   seconds, so the visitor sees every kind of beauty without touching anything. It stops for good as
+/* Written into the page, no JavaScript file (ADR-004). The trades follow one another in less
+   than a second (ROTATE_MS), so the visitor sees every kind of beauty without touching anything. It stops for good as
    soon as the visitor chooses a trade, waits while the pointer is on the ticket, has a pause button
    (WCAG 2.2.2), and never runs with fewer animations asked. The next photo is fetched ahead. */
-const ROTATE = `(function(){var r=document.getElementById("sg-hero"),h=document.documentElement;
+const ROTATE_MS = 900;
+const ROTATE = `(function(){var ROTATE_MS=${ROTATE_MS};var r=document.getElementById("sg-hero"),h=document.documentElement;
 if(!r||h.dataset.motion==="reduced"||matchMedia("(prefers-reduced-motion: reduce)").matches)return;
 var rs=[].slice.call(r.querySelectorAll('input[name="home-trade"]')),b=document.getElementById("sg-hero-pause");
 if(rs.length<2||!b)return;var off=false,hold=false;b.hidden=false;
@@ -37,7 +38,7 @@ function warm(i){var im=r.querySelector('[data-show="'+rs[i].value+'"] img');if(
 function at(){for(var i=0;i<rs.length;i++)if(rs[i].checked)return i;return 0}
 function stop(){off=true;b.hidden=true}
 warm((at()+1)%rs.length);
-setInterval(function(){if(off||hold||document.hidden)return;var n=(at()+1)%rs.length;rs[n].checked=true;warm((n+1)%rs.length)},3200);
+setInterval(function(){if(off||hold||document.hidden)return;var n=(at()+1)%rs.length;rs[n].checked=true;warm((n+1)%rs.length)},ROTATE_MS);
 rs.forEach(function(x){x.addEventListener("click",function(e){if(e.isTrusted)stop()})});
 var t=r.querySelector(".sg-ticket");if(t){t.addEventListener("mouseenter",function(){hold=true});t.addEventListener("mouseleave",function(){hold=false})}
 b.addEventListener("click",function(){var on=b.getAttribute("aria-pressed")!=="true";b.setAttribute("aria-pressed",on?"true":"false");hold=on;off=false})})()`;

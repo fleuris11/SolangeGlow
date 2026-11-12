@@ -17,7 +17,7 @@ import { QrPoster } from "./qr-poster";
 const MEDIA = library as Record<string, { src: string }>;
 const CHAPTERS = [
   { key: "showcase", id: "page", photo: "braids-hoops", alt: "braids" },
-  { key: "agenda", id: "agenda", photo: "salon-pink", alt: "salon" },
+  { key: "agenda", id: "agenda", photo: "barber-clippers", alt: "salon" },
   { key: "shop", id: "shop", photo: "wax-rolls", alt: "palette" },
   { key: "academy", id: "academy", photo: "bride-makeup-gold", alt: "hands" },
   { key: "social", id: "social", photo: "curls-teal", alt: "curls" },

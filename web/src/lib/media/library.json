@@ -636,5 +636,95 @@
     "blurhash": "UFG8_$s.IV~q%MD*WBt7-:ofayWB~qxuxuxu",
     "color": "#383828",
     "bytes": 96882
+  },
+  "barber-comb": {
+    "kind": "image",
+    "category": "coiffure",
+    "src": "/media/barber-comb.webp",
+    "width": 1068,
+    "height": 1600,
+    "blurhash": "U7HKzracIA=x00Di-pwI?^o~.74:~p009uJC",
+    "color": "#080808",
+    "bytes": 169456
+  },
+  "barber-shop": {
+    "kind": "image",
+    "category": "coiffure",
+    "src": "/media/barber-shop.webp",
+    "width": 1068,
+    "height": 1600,
+    "blurhash": "UDDS{[8{00%M~qIV8{M{bwxujExa%MRjIUxu",
+    "color": "#080808",
+    "bytes": 153704
+  },
+  "beard-shave": {
+    "kind": "image",
+    "category": "coiffure",
+    "src": "/media/beard-shave.webp",
+    "width": 1600,
+    "height": 1068,
+    "blurhash": "UDAS;}xa0fad~BWW57RjX8axn%R*t7xtjtR*",
+    "color": "#080808",
+    "bytes": 94454
+  },
+  "barber-smile": {
+    "kind": "image",
+    "category": "coiffure",
+    "src": "/media/barber-smile.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurhash": "UoO3%?to?aoe%jxU%Koh-,M|N2xu-nWFR.xp",
+    "color": "#f8f8f8",
+    "bytes": 154880
+  },
+  "barber-clippers": {
+    "kind": "image",
+    "category": "coiffure",
+    "src": "/media/barber-clippers.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurhash": "UCF=aR?bE3$d~px]D*ng?HE0M{f+flbIIpM{",
+    "color": "#281818",
+    "bytes": 100226
+  },
+  "makeup-mirror": {
+    "kind": "image",
+    "category": "maquillage",
+    "src": "/media/makeup-mirror.webp",
+    "width": 1068,
+    "height": 1600,
+    "blurhash": "U69%ejMy0L0K~VIB%gIU01D*^+?G0fW=ofsm",
+    "color": "#081818",
+    "bytes": 93430
+  },
+  "haircut-grey": {
+    "kind": "image",
+    "category": "coiffure",
+    "src": "/media/haircut-grey.webp",
+    "width": 1066,
+    "height": 1600,
+    "blurhash": "U6BM-.014o-nnOD+?a?G02~URkWY01?Z-;4;",
+    "color": "#282828",
+    "bytes": 82876
+  },
+  "barber-dryer": {
+    "kind": "image",
+    "category": "coiffure",
+    "src": "/media/barber-dryer.webp",
+    "width": 1600,
+    "height": 1067,
+    "blurhash": "U37wj6^P0g5Su6J.%0^M_N^*$y9b?bsqV?tQ",
+    "color": "#181818",
+    "bytes": 49386
+  },
+  "bride-flowers": {
+    "kind": "image",
+    "category": "maquillage",
+    "src": "/media/bride-flowers.webp",
+    "width": 1600,
+    "height": 1163,
+    "blurhash": "UFGRC,}qp_L#16I.,;Z$E4E29aWA%0J8Se%3",
+    "color": "#080808",
+    "bytes": 126736
   }
 }

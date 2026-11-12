@@ -281,11 +281,11 @@
   display: inline;
 }
 
-/* One photo follows another: a slow fade and a slow zoom, like a page turned in a magazine. */
+/* One photo follows another in less than a second: a quick fade, a short zoom that settles. */
 .sg-chooser [data-show] .sg-photo-settle {
   animation:
-    photo-settle 3400ms var(--courbe-sortie) both,
-    fade-in 700ms var(--courbe-sortie) both;
+    photo-settle 900ms var(--courbe-sortie) both,
+    fade-in 260ms var(--courbe-sortie) both;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -374,4 +374,9 @@
   .sg-device-phone {
     transform: none;
   }
+}
+
+/* The band of portraits: fifteen photos pass in about forty seconds, sideways. */
+.sg-portraits-track {
+  animation-duration: 42s;
 }
