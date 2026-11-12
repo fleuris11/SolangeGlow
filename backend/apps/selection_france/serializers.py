@@ -79,10 +79,22 @@ class SelectionProductSummarySerializer(serializers.Serializer):
     group = SelectionGroupSerializer(allow_null=True)
 
 
+class DeliveryCountrySerializer(serializers.Serializer):
+    code = serializers.CharField()
+    name = serializers.CharField()
+
+
+def delivery_countries_payload() -> list[dict]:
+    return [{"code": c.code, "name": c.name} for c in selectors.delivery_countries()]
+
+
 class SelectionProductListSerializer(serializers.Serializer):
     results = SelectionProductSummarySerializer(many=True)
     grouped = SelectionEstimateSerializer()
     express = SelectionEstimateSerializer()
+    delivery_countries = DeliveryCountrySerializer(
+        many=True, help_text="Where parcels are delivered now (opened in the admin)."
+    )
 
 
 def product_detail(product: SelectionProduct) -> dict:
@@ -106,6 +118,7 @@ def product_detail(product: SelectionProduct) -> dict:
             "express": _estimate(ShippingMode.EXPRESS),
             "group": _estimate(ShippingMode.GROUPED, after=after) if after else None,
         },
+        "delivery_countries": delivery_countries_payload(),
     }
 
 
@@ -122,6 +135,7 @@ class SelectionProductDetailSerializer(SelectionProductSummarySerializer):
     options = serializers.ListField(child=serializers.CharField())
     photos = MediaSerializer(many=True)
     estimates = SelectionEstimatesSerializer()
+    delivery_countries = DeliveryCountrySerializer(many=True)
 
 
 class SelectionPickupPointSerializer(serializers.Serializer):

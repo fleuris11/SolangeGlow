@@ -31,6 +31,7 @@ const PRODUCT: SelectionProduct = {
   options: ["330", "385"],
   photos: [],
   estimates: { grouped: ESTIMATE, express: ESTIMATE, group: null },
+  delivery_countries: [{ code: "BJ", name: "Bénin" }],
 };
 
 const POINTS: PickupPoint[] = [

@@ -47,6 +47,19 @@ def house_account():
     return user
 
 
+def delivery_country_codes() -> list[str]:
+    """Countries whose clients can order (setting « selection.countries », ticked in the admin)."""
+    codes = get_setting("selection.countries", default=["BJ"]) or []
+    return [str(code).upper() for code in codes]
+
+
+def delivery_countries() -> list[Country]:
+    """The same, as countries the app can name (« Delivery open now: Benin »)."""
+    return list(
+        Country.objects.filter(code__in=delivery_country_codes(), is_active=True).order_by("name")
+    )
+
+
 def selection_enabled(country) -> bool:
     return is_feature_enabled("selection", country=country)
 

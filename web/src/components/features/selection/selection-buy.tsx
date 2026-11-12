@@ -240,6 +240,15 @@ export function SelectionBuy({
 
       <fieldset className="flex flex-col gap-2">
         <legend className="mb-2 font-bold">{t("pickup")}</legend>
+        <p className="text-small text-prune-doux">
+          {product.delivery_countries.length
+            ? t("deliveryOpen", {
+                countries: new Intl.ListFormat(locale).format(
+                  product.delivery_countries.map((c) => c.name),
+                ),
+              })
+            : t("deliverySoon")}
+        </p>
         {points.map((item) => (
           <Choice
             key={item.id}

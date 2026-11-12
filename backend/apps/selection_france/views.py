@@ -53,6 +53,7 @@ class ProductListView(VisitorCacheMixin, OptionalAuthView):
                 ],
                 "grouped": s._estimate(ShippingMode.GROUPED),
                 "express": s._estimate(ShippingMode.EXPRESS),
+                "delivery_countries": s.delivery_countries_payload(),
             }
         )
 

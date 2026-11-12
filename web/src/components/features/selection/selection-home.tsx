@@ -6,6 +6,7 @@ import {
   MagnifyingGlass,
   Package,
   Tag,
+  MapPin,
 } from "@phosphor-icons/react/dist/ssr";
 import { useLocale, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
@@ -41,6 +42,12 @@ export function SelectionHome({
   const t = useTranslations("selection.home");
   const tAisles = useTranslations("selection.aisles");
   const locale = useLocale();
+  const deliveryLine = (countries: { name: string }[]) =>
+    countries.length
+      ? t("deliveryOpen", {
+          countries: new Intl.ListFormat(locale).format(countries.map((c) => c.name)),
+        })
+      : t("deliverySoon");
   const grouped = t("delay", {
     from: shortDate(page.grouped.from, locale),
     to: shortDate(page.grouped.to, locale),
@@ -64,6 +71,7 @@ export function SelectionHome({
             [<Tag key="t" aria-hidden size={22} />, t("finalPrice")],
             [<LockKey key="l" aria-hidden size={22} />, t("held")],
             [<Airplane key="a" aria-hidden size={22} />, grouped],
+            [<MapPin key="m" aria-hidden size={22} />, deliveryLine(page.delivery_countries)],
           ].map(([icon, text]) => (
             <li key={String(text)} className="flex items-start gap-2">
               <span className="text-hibiscus mt-0.5 shrink-0">{icon}</span>

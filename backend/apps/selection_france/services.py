@@ -105,8 +105,8 @@ def _pickup(pickup_point_id) -> PickupPoint:
 def _check_buyer(buyer) -> None:
     if not can_purchase(buyer):
         raise errors.CannotBuy()
-    # Parcels arrive at pick-up points in Benin, prices are in FCFA.
-    countries = get_setting("selection.countries", default=["BJ"]) or []
+    # Parcels arrive at the pick-up points of the countries opened in the admin.
+    countries = selectors.delivery_country_codes()
     code = buyer.country.code if buyer.country_id else ""
     if code not in countries or not selectors.selection_enabled(buyer.country):
         raise errors.SelectionUnavailable()
