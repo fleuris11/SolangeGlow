@@ -504,7 +504,9 @@
       "choose": "Vyber si heslo",
       "hint": "Aspoň 8 znakov, nie príliš jednoduché.",
       "show": "Zobraziť heslo",
-      "hide": "Skryť heslo"
+      "hide": "Skryť heslo",
+      "showShort": "Ukázať",
+      "hideShort": "Skryť"
     },
     "errors": {
       "network": "Pripojenie zlyhalo. Skontroluj internet a skús znova."

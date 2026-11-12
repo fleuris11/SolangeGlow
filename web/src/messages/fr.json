@@ -504,7 +504,9 @@
       "choose": "Choisis un mot de passe",
       "hint": "8 caractères au moins, pas trop simple.",
       "show": "Afficher le mot de passe",
-      "hide": "Masquer le mot de passe"
+      "hide": "Masquer le mot de passe",
+      "showShort": "Voir",
+      "hideShort": "Cacher"
     },
     "errors": {
       "network": "La connexion a échoué. Vérifie ton internet, puis réessaie."

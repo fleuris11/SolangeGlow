@@ -38,13 +38,14 @@ export function PasswordField({ label, value, onChange, autoComplete, hint, erro
           onClick={() => setVisible((shown) => !shown)}
           aria-pressed={visible}
           aria-label={visible ? t("hide") : t("show")}
-          className="text-prune-doux -mr-2 inline-flex size-12 shrink-0 items-center justify-center rounded-full"
+          className="text-prune text-small -mr-2 inline-flex min-h-12 shrink-0 items-center gap-1 rounded-full px-2 font-bold"
         >
           {visible ? (
-            <EyeSlash aria-hidden size={24} weight="bold" />
+            <EyeSlash aria-hidden size={22} weight="bold" />
           ) : (
-            <Eye aria-hidden size={24} weight="bold" />
+            <Eye aria-hidden size={22} weight="bold" />
           )}
+          {visible ? t("hideShort") : t("showShort")}
         </button>
       }
     />
