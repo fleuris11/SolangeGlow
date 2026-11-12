@@ -324,7 +324,8 @@ def publish(pro: ProProfile, *, actor) -> ProProfile:
     pro.published_at = pro.published_at or timezone.now()
     pro.save(update_fields=["status", "published_at", "updated_at"])
     record("pros.published", pro, actor=actor)
-    if first_time:
+    if first_time and not pro.prepared_by_team:
+        # A page prepared by the team: the team writes to them itself, in their name.
         notify(pro.user, "pros.published", {"link": short_link(pro)}, link=f"/{pro.slug}")
     return pro
 
@@ -336,6 +337,24 @@ def unpublish(pro: ProProfile, *, actor) -> ProProfile:
     pro.save(update_fields=["status", "updated_at"])
     record("pros.unpublished", pro, actor=actor)
     return pro
+
+
+@transaction.atomic
+def remove_prepared(pro: ProProfile) -> bool:
+    """« Remove my page », on a page the team prepared: offline at once, no question asked.
+
+    Anyone may use it (the professional has no account yet): the team sees it in the journal
+    and the prospect is never contacted again."""
+    from apps.core.events import emit
+
+    pro = ProProfile.objects.select_for_update().get(pk=pro.pk)
+    if not pro.prepared_by_team or pro.status != ProProfile.Status.PUBLISHED:
+        return False
+    pro.status = ProProfile.Status.DRAFT
+    pro.save(update_fields=["status", "updated_at"])
+    record("pros.prepared_removed", pro, actor=None)
+    emit("pros.prepared_removed", pro=pro)
+    return True
 
 
 def suspend(pro: ProProfile, *, actor, reason: str) -> ProProfile:

@@ -190,6 +190,13 @@ class ProProfile(BaseModel):
     published_at = models.DateTimeField(_("published at"), null=True, blank=True)
     suspended_at = models.DateTimeField(_("suspended at"), null=True, blank=True)
     suspension_reason = models.TextField(_("reason of the suspension"), blank=True)
+    # Prepared by the team to put the work of a professional forward, before they have their
+    # account: the page says so, offers to contact them directly, and can be removed in one click.
+    prepared_by_team = models.BooleanField(
+        _("prepared by the team"),
+        default=False,
+        help_text=_("On until the professional chooses their password and takes the page."),
+    )
     verification_status = models.CharField(
         _("verification"),
         max_length=10,

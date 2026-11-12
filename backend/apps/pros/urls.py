@@ -11,6 +11,9 @@ urlpatterns = [
     path("pros/<slug:slug>", views.ShowcaseView.as_view(), name="pro-showcase"),
     path("pros/<slug:slug>/arrival", views.ArrivalView.as_view(), name="pro-arrival"),
     path(
+        "pros/<slug:slug>/removal", views.PreparedRemovalView.as_view(), name="pro-prepared-removal"
+    ),
+    path(
         "pros/<slug:slug>/print/<str:name>",
         views.PrintableView.as_view(),
         name="pro-printable",

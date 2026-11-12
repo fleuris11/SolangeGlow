@@ -247,6 +247,19 @@ class ArrivalView(PublicProView):
         return Response({"sent": True})
 
 
+class PreparedRemovalView(PublicProView):
+    """« Remove my page »: a page prepared by the team goes offline at once."""
+
+    throttle_scope = "arrival"
+
+    @extend_schema(tags=["pros"], request=None, responses=s.PreparedRemovalSerializer)
+    def post(self, request, slug):
+        pro = selectors.published_pro(slug)
+        if pro is None or not pro.prepared_by_team:
+            raise exceptions.NotFound(errors.ProNotFound.message)
+        return Response({"removed": services.remove_prepared(pro)})
+
+
 # --- My showcase ---------------------------------------------------------------------------
 
 

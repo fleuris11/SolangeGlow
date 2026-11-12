@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import re
+
 from django.utils import timezone
 from drf_spectacular.utils import extend_schema_field
 from rest_framework import serializers
@@ -309,8 +311,20 @@ class OtherPlaceSerializer(serializers.Serializer):
     address = serializers.CharField(allow_blank=True)
 
 
+class PreparedSerializer(serializers.Serializer):
+    """A page the team prepared to put a professional forward, before they took it."""
+
+    whatsapp = serializers.CharField(help_text="Digits only, country code first; may be empty.")
+
+
+class PreparedRemovalSerializer(serializers.Serializer):
+    removed = serializers.BooleanField()
+
+
 class ShowcaseSerializer(serializers.Serializer):
     """Public page of a pro (also its preview for herself)."""
+
+    prepared = PreparedSerializer(allow_null=True)
 
     other_places = OtherPlaceSerializer(many=True)
 
@@ -356,6 +370,11 @@ def showcase_payload(pro: ProProfile, *, private: bool = False, viewer=None) -> 
         services = list(selectors.visible_services().filter(pro=pro))
     portfolio = [item for item in pro.portfolio.all() if private or item.media.is_ready]
     return {
+        "prepared": (
+            {"whatsapp": re.sub(r"\D", "", pro.social_links.get(SocialNetwork.WHATSAPP, ""))}
+            if pro.prepared_by_team
+            else None
+        ),
         "owner_id": pro.user_id,
         "follower_count": pro.user.followers.count(),
         "followed": bool(
