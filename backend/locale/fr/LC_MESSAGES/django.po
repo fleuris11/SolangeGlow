@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-12 17:10+0100\n"
+"POT-Creation-Date: 2026-11-12 21:09+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1312,6 +1312,27 @@ msgstr "Aucun visuel actif avec un emplacement pour l'instant."
 msgid "e-mails sent"
 msgstr "e-mails envoyés"
 
+msgid "their name"
+msgstr "son nom"
+
+msgid "the address of the page"
+msgstr "l'adresse de la page"
+
+msgid "their trade"
+msgstr "son métier"
+
+msgid "their city"
+msgstr "sa ville"
+
+msgid "their place on the map"
+msgstr "sa position sur la carte"
+
+msgid "at least one service"
+msgstr "au moins une prestation"
+
+msgid "where they receive clients"
+msgstr "où il reçoit ses clients"
+
 msgid "Who they are"
 msgstr "Qui c'est"
 
@@ -1349,6 +1370,32 @@ msgstr "Compléter sa vitrine (à sa place)"
 msgid "Prepare her showcase first."
 msgstr "Prépare d'abord sa vitrine."
 
+msgid "Publish the showcase"
+msgstr "Publier sa vitrine"
+
+#, python-format
+msgid "Still missing before publishing: %(missing)s. Use « Complete the showcase »."
+msgstr "Il manque encore, avant de publier : %(missing)s. Utilise « Compléter sa vitrine »."
+
+#, python-format
+msgid "Showcase online: %(link)s. Write to them now, on WhatsApp or by e-mail."
+msgstr "Vitrine en ligne : %(link)s. Écris-lui maintenant, sur WhatsApp ou par e-mail."
+
+msgid "Write on WhatsApp"
+msgstr "Lui écrire sur WhatsApp"
+
+msgid "They asked not to be contacted any more."
+msgstr "Ce prospect a demandé à ne plus être contacté."
+
+msgid "Add their phone number, with the country code."
+msgstr "Ajoute son numéro de téléphone, avec l'indicatif du pays."
+
+msgid "Share on WhatsApp"
+msgstr "Partager sur WhatsApp"
+
+msgid "Publish the showcase first."
+msgstr "Publie d'abord sa vitrine."
+
 msgid "Send an e-mail"
 msgstr "Envoyer un e-mail"
 
@@ -1361,6 +1408,13 @@ msgstr "L'e-mail type « presentation » manque."
 #, python-format
 msgid "%(sent)s e-mails leaving, %(skipped)s skipped (no address, or asked to stop)."
 msgstr "%(sent)s e-mails en cours d'envoi, %(skipped)s ignorés (pas d'adresse, ou demande d'arrêt)."
+
+msgid "Publish the prepared showcases"
+msgstr "Publier les vitrines préparées"
+
+#, python-format
+msgid "%(done)s showcases online, %(skipped)s not complete yet (open them one by one)."
+msgstr "%(done)s vitrines en ligne, %(skipped)s pas encore complètes (ouvre-les une par une)."
 
 msgid "Prepare the showcases"
 msgstr "Préparer les vitrines"
@@ -1385,8 +1439,8 @@ msgstr "E-mails types"
 msgid "Text"
 msgstr "Texte"
 
-msgid "Replaced for each prospect: {{ name }} (first name), {{ business }}, {{ city }}, {{ pitch }} (our proposal), {{ link }} (her personal link) and {{ stop_link }} (« not interested », to keep at the bottom)."
-msgstr "Remplacés pour chaque prospect : {{ name }} (prénom), {{ business }}, {{ city }}, {{ pitch }} (notre proposition), {{ link }} (son lien personnel) et {{ stop_link }} (« pas intéressé », à garder en bas)."
+msgid "Replaced for each prospect: {{ name }} (first name), {{ business }}, {{ activity }} (trade and city), {{ city }}, {{ pitch }} (our proposal), {{ showcase_link }} (their showcase online), {{ link }} (their personal link) and {{ stop_link }} (« not interested », to keep at the bottom)."
+msgstr "Remplacés pour chaque prospect : {{ name }} (prénom), {{ business }}, {{ activity }} (métier et ville), {{ city }}, {{ pitch }} (notre proposition), {{ showcase_link }} (sa vitrine en ligne), {{ link }} (son lien personnel) et {{ stop_link }} (« pas intéressé », à garder en bas)."
 
 msgid "Search a text"
 msgstr "Chercher un texte"
@@ -1535,6 +1589,12 @@ msgstr "%(max)s e-mails ont déjà été envoyés aux prospects aujourd'hui. Con
 msgid "This standard e-mail does not exist or is switched off."
 msgstr "Cet e-mail type n'existe pas ou est désactivé."
 
+msgid "Publish the showcase first: this message gives its address."
+msgstr "Publie d'abord la vitrine : ce message donne son adresse."
+
+msgid "Prepare the showcase of this prospect first."
+msgstr "Prépare d'abord la vitrine de ce prospect."
+
 msgid "team member"
 msgstr "membre de l'équipe"
 
@@ -1631,6 +1691,12 @@ msgstr "Pas intéressée"
 msgid "business"
 msgstr "activité"
 
+msgid "address"
+msgstr "adresse"
+
+msgid "Shown on the prepared showcase."
+msgstr "Affichée sur la vitrine préparée."
+
 msgid "source"
 msgstr "origine"
 
@@ -1720,6 +1786,34 @@ msgstr "Impossible de se connecter à la place de cette personne (compte de l'é
 
 msgid "Not possible while signed in as a member (payments, codes, account)."
 msgstr "Impossible pendant une connexion à la place d'un membre (paiements, codes, compte)."
+
+#, python-format
+msgid ""
+"Hello %(name)s, I am writing from Solange Glow, the beauty and fashion platform. We put the work of %(business)s (%(activity)s) forward on our site, in your name, with your contact: %(showcase)s\n"
+"\n"
+"This page is yours. Choose your password to change it, add your services and receive your bookings, free: %(link)s\n"
+"\n"
+"If you prefer that we remove it, just tell me."
+msgstr ""
+"Bonjour %(name)s, je vous écris de la part de Solange Glow, la plateforme beauté et mode. Nous mettons en lumière le travail de %(business)s (%(activity)s) sur notre site, à votre nom, avec votre contact : %(showcase)s\n"
+"\n"
+"Cette page est à vous. Choisissez votre mot de passe pour la modifier, ajouter vos prestations et recevoir vos rendez-vous, gratuitement : %(link)s\n"
+"\n"
+"Si vous préférez qu'on la retire, dites-le-moi simplement."
+
+#, python-format
+msgid ""
+"Hello %(name)s, I am writing from Solange Glow, the beauty and fashion platform. We would like to put the work of %(business)s (%(activity)s) forward: a showcase in your name, online bookings and our advertising, free.\n"
+"\n"
+"Create your showcase in a few minutes: %(link)s"
+msgstr ""
+"Bonjour %(name)s, je vous écris de la part de Solange Glow, la plateforme beauté et mode. Nous aimerions mettre en lumière le travail de %(business)s (%(activity)s) : une vitrine à votre nom, les rendez-vous en ligne et notre publicité, gratuitement.\n"
+"\n"
+"Créez votre vitrine en quelques minutes : %(link)s"
+
+#, python-format
+msgid "Discover the work of %(business)s (%(activity)s) on Solange Glow: %(link)s"
+msgstr "Découvrez le travail de %(business)s (%(activity)s) sur Solange Glow : %(link)s"
 
 msgid "Moderation"
 msgstr "Modération"
@@ -2006,6 +2100,9 @@ msgstr "Ne plus recevoir nos e-mails ?"
 msgid "Confirm, and we will not write to you again."
 msgstr "Confirmez, et nous ne vous écrirons plus."
 
+msgid "The showcase we prepared for you will be taken offline at once."
+msgstr "La vitrine que nous avons préparée pour vous sera retirée tout de suite."
+
 msgid "Yes, stop the e-mails"
 msgstr "Oui, arrêter les e-mails"
 
@@ -2285,9 +2382,6 @@ msgstr "réservations de groupe"
 
 msgid "district"
 msgstr "quartier"
-
-msgid "address"
-msgstr "adresse"
 
 msgid "place"
 msgstr "lieu"
@@ -5838,6 +5932,12 @@ msgstr "suspendue le"
 msgid "reason of the suspension"
 msgstr "raison de la suspension"
 
+msgid "prepared by the team"
+msgstr "préparée par l'équipe"
+
+msgid "On until the professional chooses their password and takes the page."
+msgstr "Actif tant que le professionnel n'a pas choisi son mot de passe et récupéré sa page."
+
 msgid "trained on Solange Glow since"
 msgstr "formée sur Solange Glow depuis"
 
@@ -7755,6 +7855,9 @@ msgstr "Inscriptions par jour"
 #, python-format
 msgid "Sales paid per day (%(currency)s)"
 msgstr "Ventes payées par jour (%(currency)s)"
+
+#~ msgid "Replaced for each prospect: {{ name }} (first name), {{ business }}, {{ city }}, {{ pitch }} (our proposal), {{ link }} (her personal link) and {{ stop_link }} (« not interested », to keep at the bottom)."
+#~ msgstr "Remplacés pour chaque prospect : {{ name }} (prénom), {{ business }}, {{ city }}, {{ pitch }} (notre proposition), {{ link }} (son lien personnel) et {{ stop_link }} (« pas intéressé », à garder en bas)."
 
 #~ msgid "home banner"
 #~ msgstr "bannière d'accueil"

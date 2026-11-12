@@ -18,6 +18,8 @@ class BackofficeConfig(AppConfig):
 
         # A prospect who chose her password with the invitation link is signed up.
         events.subscribe("accounts.password_chosen", prospects.on_password_chosen)
+        # « Remove my page » on a prepared showcase: never contacted again.
+        events.subscribe("pros.prepared_removed", prospects.on_prepared_removed)
 
         post_migrate.connect(team.create_groups, sender=self)
         # « Export as CSV » on every list of the admin.

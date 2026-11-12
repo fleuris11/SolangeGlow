@@ -136,6 +136,9 @@ class Prospect(BaseModel):
     phone = models.CharField(_("phone"), max_length=30, blank=True)
     email = models.EmailField(_("e-mail"), blank=True)
     city = models.CharField(_("city"), max_length=80, blank=True)
+    address = models.CharField(
+        _("address"), max_length=200, blank=True, help_text=_("Shown on the prepared showcase.")
+    )
     country = models.CharField(_("country"), max_length=2, default="BJ")
     trade = models.CharField(_("trade"), max_length=40, blank=True)
     source = models.CharField(_("source"), max_length=80, blank=True)

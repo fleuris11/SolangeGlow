@@ -24,6 +24,7 @@
       {% else %}
         <h1>{% translate "Stop receiving our e-mails?" %}</h1>
         <p>{% translate "Confirm, and we will not write to you again." %}</p>
+        {% if has_page %}<p>{% translate "The showcase we prepared for you will be taken offline at once." %}</p>{% endif %}
         <form method="post">
           <button type="submit">{% translate "Yes, stop the e-mails" %}</button>
         </form>

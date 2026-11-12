@@ -17,6 +17,7 @@ from apps.backoffice.models import Prospect, ProspectEmailTemplate, ProspectMess
 from apps.backoffice.services import prospects
 from apps.core.tests.factories import CountryFactory, PlatformSettingFactory
 from apps.pros.models import ProProfile, Trade
+from apps.pros.tests.factories import COTONOU, add_service
 
 pytestmark = pytest.mark.django_db
 User = get_user_model()
@@ -43,6 +44,13 @@ def lea():
         services="Tresses, nattes collées, soins du cuir chevelu.",
         pitch="Vos tresses méritent d'être vues par tout Lyon.",
     )
+
+
+def complete(pro):
+    """What the team adds as her: her place on the map and a service."""
+    pro.location = COTONOU
+    pro.save(update_fields=["location"])
+    add_service(pro)
 
 
 def template(key):
@@ -103,6 +111,10 @@ def test_a_prepared_showcase_then_her_own_password(boss, lea, settings):
     assert APIClient().get(f"/api/v1/pros/{pro.slug}").status_code == 404
 
     lea.refresh_from_db()
+    with pytest.raises(errors.ShowcaseNotOnline):  # the e-mail gives the address of the page
+        prospects.send_email(lea, template("showcase_ready"), actor=boss)
+    complete(pro)
+    prospects.publish_showcase(lea, actor=boss)
     prospects.send_email(lea, template("showcase_ready"), actor=boss)
     body = mail.outbox[-1].body
     token = unquote(re.search(r"/fr/auth/reset\?token=(\S+)", body).group(1))
@@ -198,6 +210,8 @@ def test_the_whole_thing_from_the_admin(client, boss, lea):
     opened = client.get(reverse("admin:backoffice_prospect_open_showcase_detail", args=[lea.pk]))
     assert opened.status_code == 302 and str(lea.pro.user_id) in opened["Location"]
 
+    complete(lea.pro)
+    prospects.publish_showcase(lea, actor=boss)
     sent = client.post(email_page, {"template": "showcase_ready"})
     assert sent.status_code == 302 and len(mail.outbox) == 1
     listed = client.get(reverse("admin:backoffice_prospect_changelist"))

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-12 17:10+0100\n"
+"POT-Creation-Date: 2026-11-12 21:09+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1318,6 +1318,27 @@ msgstr "Zatiaľ žiadna aktívna kreatíva s umiestnením."
 msgid "e-mails sent"
 msgstr "odoslané e-maily"
 
+msgid "their name"
+msgstr "meno"
+
+msgid "the address of the page"
+msgstr "adresa stránky"
+
+msgid "their trade"
+msgstr "profesia"
+
+msgid "their city"
+msgstr "mesto"
+
+msgid "their place on the map"
+msgstr "poloha na mape"
+
+msgid "at least one service"
+msgstr "aspoň jedna služba"
+
+msgid "where they receive clients"
+msgstr "kde prijíma klientov"
+
 msgid "Who they are"
 msgstr "Kto to je"
 
@@ -1355,6 +1376,32 @@ msgstr "Doplniť prezentáciu (namiesto nej)"
 msgid "Prepare her showcase first."
 msgstr "Najprv priprav prezentáciu."
 
+msgid "Publish the showcase"
+msgstr "Zverejniť prezentáciu"
+
+#, python-format
+msgid "Still missing before publishing: %(missing)s. Use « Complete the showcase »."
+msgstr "Pred zverejnením ešte chýba: %(missing)s. Použite „Doplniť prezentáciu“."
+
+#, python-format
+msgid "Showcase online: %(link)s. Write to them now, on WhatsApp or by e-mail."
+msgstr "Prezentácia je online: %(link)s. Napíšte teraz, cez WhatsApp alebo e-mailom."
+
+msgid "Write on WhatsApp"
+msgstr "Napísať cez WhatsApp"
+
+msgid "They asked not to be contacted any more."
+msgstr "Tento kontakt požiadal, aby sme ho už nekontaktovali."
+
+msgid "Add their phone number, with the country code."
+msgstr "Pridajte telefónne číslo s predvoľbou krajiny."
+
+msgid "Share on WhatsApp"
+msgstr "Zdieľať cez WhatsApp"
+
+msgid "Publish the showcase first."
+msgstr "Najprv zverejnite prezentáciu."
+
 msgid "Send an e-mail"
 msgstr "Poslať e-mail"
 
@@ -1367,6 +1414,13 @@ msgstr "Chýba vzorový e-mail « presentation »."
 #, python-format
 msgid "%(sent)s e-mails leaving, %(skipped)s skipped (no address, or asked to stop)."
 msgstr "%(sent)s e-mailov sa odosiela, %(skipped)s preskočených (bez adresy alebo žiadosť o zastavenie)."
+
+msgid "Publish the prepared showcases"
+msgstr "Zverejniť pripravené prezentácie"
+
+#, python-format
+msgid "%(done)s showcases online, %(skipped)s not complete yet (open them one by one)."
+msgstr "Online prezentácie: %(done)s, ešte nedokončené: %(skipped)s (otvorte ich jednu po druhej)."
 
 msgid "Prepare the showcases"
 msgstr "Pripraviť prezentácie"
@@ -1391,8 +1445,8 @@ msgstr "Vzorové e-maily"
 msgid "Text"
 msgstr "Text"
 
-msgid "Replaced for each prospect: {{ name }} (first name), {{ business }}, {{ city }}, {{ pitch }} (our proposal), {{ link }} (her personal link) and {{ stop_link }} (« not interested », to keep at the bottom)."
-msgstr "Nahradí sa pre každého: {{ name }} (meno), {{ business }}, {{ city }}, {{ pitch }} (naša ponuka), {{ link }} (osobný odkaz) a {{ stop_link }} (« nemám záujem », nechať na konci)."
+msgid "Replaced for each prospect: {{ name }} (first name), {{ business }}, {{ activity }} (trade and city), {{ city }}, {{ pitch }} (our proposal), {{ showcase_link }} (their showcase online), {{ link }} (their personal link) and {{ stop_link }} (« not interested », to keep at the bottom)."
+msgstr "Pre každý kontakt sa nahradí: {{ name }} (krstné meno), {{ business }}, {{ activity }} (profesia a mesto), {{ city }}, {{ pitch }} (náš návrh), {{ showcase_link }} (prezentácia online), {{ link }} (osobný odkaz) a {{ stop_link }} („nemám záujem“, nechajte na konci)."
 
 msgid "Search a text"
 msgstr "Hľadať text"
@@ -1541,6 +1595,12 @@ msgstr "Dnes už bolo odoslaných %(max)s e-mailov. Pokračuj zajtra."
 msgid "This standard e-mail does not exist or is switched off."
 msgstr "Tento vzorový e-mail neexistuje alebo je vypnutý."
 
+msgid "Publish the showcase first: this message gives its address."
+msgstr "Najprv zverejnite prezentáciu: táto správa uvádza jej adresu."
+
+msgid "Prepare the showcase of this prospect first."
+msgstr "Najprv pripravte prezentáciu tohto kontaktu."
+
 msgid "team member"
 msgstr "členka tímu"
 
@@ -1637,6 +1697,12 @@ msgstr "Nemá záujem"
 msgid "business"
 msgstr "podnik"
 
+msgid "address"
+msgstr "adresa"
+
+msgid "Shown on the prepared showcase."
+msgstr "Zobrazí sa na pripravenej prezentácii."
+
 msgid "source"
 msgstr "zdroj"
 
@@ -1726,6 +1792,34 @@ msgstr "Prihlásiť sa namiesto tejto osoby nie je možné (účet tímu alebo n
 
 msgid "Not possible while signed in as a member (payments, codes, account)."
 msgstr "Nie je možné počas prihlásenia namiesto členky (platby, kódy, účet)."
+
+#, python-format
+msgid ""
+"Hello %(name)s, I am writing from Solange Glow, the beauty and fashion platform. We put the work of %(business)s (%(activity)s) forward on our site, in your name, with your contact: %(showcase)s\n"
+"\n"
+"This page is yours. Choose your password to change it, add your services and receive your bookings, free: %(link)s\n"
+"\n"
+"If you prefer that we remove it, just tell me."
+msgstr ""
+"Dobrý deň, %(name)s, píšem vám zo Solange Glow, platformy krásy a módy. Na našej stránke predstavujeme prácu %(business)s (%(activity)s), pod vaším menom a s vaším kontaktom: %(showcase)s\n"
+"\n"
+"Táto stránka patrí vám. Vyberte si heslo, upravte ju, pridajte svoje služby a prijímajte rezervácie, zadarmo: %(link)s\n"
+"\n"
+"Ak chcete, aby sme ju odstránili, stačí mi to napísať."
+
+#, python-format
+msgid ""
+"Hello %(name)s, I am writing from Solange Glow, the beauty and fashion platform. We would like to put the work of %(business)s (%(activity)s) forward: a showcase in your name, online bookings and our advertising, free.\n"
+"\n"
+"Create your showcase in a few minutes: %(link)s"
+msgstr ""
+"Dobrý deň, %(name)s, píšem vám zo Solange Glow, platformy krásy a módy. Radi by sme predstavili prácu %(business)s (%(activity)s): prezentácia pod vaším menom, online rezervácie a naša reklama, zadarmo.\n"
+"\n"
+"Vytvorte si prezentáciu za pár minút: %(link)s"
+
+#, python-format
+msgid "Discover the work of %(business)s (%(activity)s) on Solange Glow: %(link)s"
+msgstr "Objavte prácu %(business)s (%(activity)s) na Solange Glow: %(link)s"
 
 msgid "Moderation"
 msgstr "Moderovanie"
@@ -2012,6 +2106,9 @@ msgstr "Už nedostávať naše e-maily?"
 msgid "Confirm, and we will not write to you again."
 msgstr "Potvrďte a už vám nebudeme písať."
 
+msgid "The showcase we prepared for you will be taken offline at once."
+msgstr "Prezentácia, ktorú sme pre vás pripravili, bude okamžite odstránená."
+
 msgid "Yes, stop the e-mails"
 msgstr "Áno, zastaviť e-maily"
 
@@ -2291,9 +2388,6 @@ msgstr "skupinové rezervácie"
 
 msgid "district"
 msgstr "štvrť"
-
-msgid "address"
-msgstr "adresa"
 
 msgid "place"
 msgstr "miesto"
@@ -5854,6 +5948,12 @@ msgstr "pozastavené"
 msgid "reason of the suspension"
 msgstr "dôvod pozastavenia"
 
+msgid "prepared by the team"
+msgstr "pripravené tímom"
+
+msgid "On until the professional chooses their password and takes the page."
+msgstr "Zapnuté, kým si profesionál nevyberie heslo a neprevezme stránku."
+
 msgid "trained on Solange Glow since"
 msgstr "vyškolená na Solange Glow od"
 
@@ -7775,6 +7875,9 @@ msgstr "Registrácie za deň"
 #, python-format
 msgid "Sales paid per day (%(currency)s)"
 msgstr "Zaplatené predaje za deň (%(currency)s)"
+
+#~ msgid "Replaced for each prospect: {{ name }} (first name), {{ business }}, {{ city }}, {{ pitch }} (our proposal), {{ link }} (her personal link) and {{ stop_link }} (« not interested », to keep at the bottom)."
+#~ msgstr "Nahradí sa pre každého: {{ name }} (meno), {{ business }}, {{ city }}, {{ pitch }} (naša ponuka), {{ link }} (osobný odkaz) a {{ stop_link }} (« nemám záujem », nechať na konci)."
 
 #~ msgid "home banner"
 #~ msgstr "banner na úvode"

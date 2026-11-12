@@ -11,6 +11,7 @@ from django.db import transaction
 from django.utils import timezone
 
 from apps.core.audit.services import record
+from apps.core.errors import DomainError
 from apps.core.selectors import get_setting
 from apps.notifications.services import notify_contact
 
@@ -129,12 +130,14 @@ def promote_active() -> int:
     )
 
 
-# --- Prospecting by e-mail, with a showcase prepared for them ---------------------------------
+# --- Prospecting with a showcase prepared for them --------------------------------------------
 #
-# The team prepares a draft showcase for a professional (nothing public), then e-mails her a
-# personal link: she chooses her password, sees her showcase, corrects it and puts it online
-# herself. Every e-mail carries a « not interested » link, and a prospect who used it is never
-# written to again.
+# The team prepares the showcase of a professional from what they already show (name, trade,
+# address, photos of their work, their WhatsApp), puts it online to put their work forward,
+# then writes to them (e-mail or WhatsApp) with a personal link: they choose their password
+# and the page is theirs. Until then the page says it was prepared by the team, sends clients
+# to their own WhatsApp (no online booking) and can be removed in one click. Every message
+# carries a « not interested » link, and a prospect who used it is never written to again.
 
 FRENCH_SPEAKING = {"FR", "BJ", "BE", "CH", "LU", "MC", "CI", "SN", "TG", "CM", "GA", "ML", "BF"}
 
@@ -165,8 +168,9 @@ def prepare_showcase(prospect: Prospect, *, actor):
     from apps.core.models import Country
     from apps.pros import services as pro_services
 
-    prospect = Prospect.objects.select_for_update().get(pk=prospect.pk)
+    given, prospect = prospect, Prospect.objects.select_for_update().get(pk=prospect.pk)
     if prospect.pro_id:
+        given.pro = prospect.pro
         return prospect.pro
     email = (prospect.email or "").strip().lower()
     if not email:
@@ -189,13 +193,197 @@ def prepare_showcase(prospect: Prospect, *, actor):
         trade_keys=[prospect.trade] if prospect.trade else None,
         city=prospect.city,
     )
-    if prospect.services and not pro.bio:
-        pro.bio = prospect.services.strip()[:1000]
-        pro.save(update_fields=["bio", "updated_at"])
-    prospect.pro = pro
+    changes = {}
+    if prospect.address.strip():
+        changes.update(address=prospect.address.strip()[:200], receives_clients=True)
+    if prospect.services.strip():
+        changes["bio"] = prospect.services.strip()[:1000]
+    links = social_links(prospect)
+    try:
+        pro = pro_services.update_profile(pro, actor=actor, social_links=links, **changes)
+    except DomainError:
+        # A page we cannot read is left out; their WhatsApp is enough to reach them.
+        links = {k: v for k, v in links.items() if k == "whatsapp"}
+        pro = pro_services.update_profile(pro, actor=actor, social_links=links, **changes)
+    pro.prepared_by_team = True
+    pro.save(update_fields=["prepared_by_team", "updated_at"])
+    _pause_online_booking(pro)
+    prospect.pro = given.pro = pro
     prospect.save(update_fields=["pro", "updated_at"])
     record("backoffice.prospect_showcase_prepared", prospect, actor=actor)
     return pro
+
+
+def _pause_online_booking(pro) -> None:
+    """Clients cannot book with someone who does not know the page yet: they write on WhatsApp.
+    The professional switches online booking on once the page is theirs."""
+    from apps.booking.models import BookingSettings
+    from apps.booking.services import common as booking_common
+
+    BookingSettings.objects.update_or_create(pro=pro, defaults={"online_paused": True})
+    booking_common.changed(pro)
+
+
+def whatsapp_number(prospect: Prospect) -> str:
+    """Their number with the country code, digits only (as WhatsApp links want it), or ""."""
+    import phonenumbers
+
+    raw = (prospect.phone or "").strip()
+    if not raw:
+        return ""
+    try:
+        number = phonenumbers.parse(raw, (prospect.country or "BJ").upper())
+    except phonenumbers.NumberParseException:
+        return ""
+    if not phonenumbers.is_possible_number(number):
+        return ""
+    return phonenumbers.format_number(number, phonenumbers.PhoneNumberFormat.E164).lstrip("+")
+
+
+NETWORKS = ("instagram", "tiktok", "facebook", "youtube")
+
+
+def social_links(prospect: Prospect) -> dict:
+    """Their WhatsApp and their page (Instagram, Facebook… or their site), for the showcase."""
+    links = {}
+    number = whatsapp_number(prospect)
+    if number:
+        links["whatsapp"] = "+" + number
+    site = (prospect.website or "").strip()
+    if not site:
+        return links
+    lowered = site.lower()
+    network = next((n for n in NETWORKS if f"{n}.com" in lowered), None)
+    if network:
+        links[network] = site if lowered.startswith("http") else f"https://{site}"
+    elif site.startswith("@"):
+        links["instagram"] = site
+    else:
+        links["website"] = site if lowered.startswith("http") else f"https://{site}"
+    return links
+
+
+def showcase_link(prospect: Prospect) -> str:
+    """The public address of their showcase, once it is online."""
+    from apps.pros.models import ProProfile
+
+    pro = prospect.pro
+    if pro is None or pro.status != ProProfile.Status.PUBLISHED or not pro.slug:
+        return ""
+    return f"{settings.SITE_URL.rstrip('/')}/{prospect.language}/{pro.slug}"
+
+
+@transaction.atomic
+def publish_showcase(prospect: Prospect, *, actor):
+    """Puts the prepared showcase online. Raises NotReadyToPublish with what is missing."""
+    from apps.pros import services as pro_services
+
+    given, prospect = prospect, Prospect.objects.select_for_update().get(pk=prospect.pk)
+    if prospect.status == S.DECLINED:
+        raise errors.ProspectDeclined()
+    if not prospect.pro_id:
+        raise errors.ShowcaseNotPrepared()
+    pro = given.pro = pro_services.publish(prospect.pro, actor=actor)
+    record("backoffice.prospect_showcase_published", prospect, actor=actor)
+    return pro
+
+
+def activity(prospect: Prospect) -> str:
+    """« Hairdressing, Cotonou »: their trade in their language, and their city."""
+    from django.utils import translation
+
+    from apps.pros.models import Trade
+
+    trade = ""
+    if prospect.trade:
+        found = Trade.objects.filter(key=prospect.trade).first()
+        if found is not None:
+            with translation.override(prospect.language):
+                trade = found.name
+        else:
+            trade = prospect.trade
+    return ", ".join(part for part in (trade, prospect.city.strip()) if part)
+
+
+def personal_link(prospect: Prospect) -> str:
+    """With a prepared showcase not taken yet: the link to choose a password (single use).
+    Otherwise: the sign-up link of their invitation."""
+    from apps.accounts import services as account_services
+
+    if prospect.pro_id and not prospect.pro.user.has_usable_password():
+        return account_services.link_url(prospect.pro.user, "invite")
+    return signup_link(prospect)
+
+
+def whatsapp_text(prospect: Prospect) -> str:
+    """The message written for them, in their language, sent from the team's own WhatsApp."""
+    from django.utils import translation
+    from django.utils.translation import gettext as _
+
+    values = {
+        "name": prospect.name.split(" ")[0],
+        "business": prospect.business_name or prospect.name,
+        "activity": activity(prospect) or prospect.city or "Solange Glow",
+        "showcase": showcase_link(prospect),
+        "link": personal_link(prospect),
+    }
+    with translation.override(prospect.language):
+        if values["showcase"]:
+            text = _(
+                "Hello %(name)s, I am writing from Solange Glow, the beauty and fashion platform. "
+                "We put the work of %(business)s (%(activity)s) forward on our site, in your "
+                "name, with your contact: %(showcase)s\n\n"
+                "This page is yours. Choose your password to change it, add your services and "
+                "receive your bookings, free: %(link)s\n\n"
+                "If you prefer that we remove it, just tell me."
+            )
+        else:
+            text = _(
+                "Hello %(name)s, I am writing from Solange Glow, the beauty and fashion platform. "
+                "We would like to put the work of %(business)s (%(activity)s) forward: a "
+                "showcase in your name, online bookings and our advertising, free.\n\n"
+                "Create your showcase in a few minutes: %(link)s"
+            )
+    return text % values
+
+
+def mark_written(prospect: Prospect, *, actor, channel: str) -> None:
+    """The team opened WhatsApp with the message for them: contacted, written in the journal."""
+    now = timezone.now()
+    prospect.invited_at = prospect.invited_at or now
+    if prospect.status == S.NEW:
+        prospect.status = S.CONTACTED
+    prospect.save(update_fields=["invited_at", "status", "updated_at"])
+    record("backoffice.prospect_written", prospect, actor=actor, metadata={"channel": channel})
+
+
+def whatsapp_to_prospect(prospect: Prospect) -> str:
+    """Opens WhatsApp on their number with the message already written. "" without a number."""
+    from urllib.parse import quote
+
+    number = whatsapp_number(prospect)
+    if not number:
+        return ""
+    return f"https://wa.me/{number}?text={quote(whatsapp_text(prospect))}"
+
+
+def whatsapp_share(prospect: Prospect) -> str:
+    """Opens WhatsApp to share their showcase (status, groups) with a text ready."""
+    from urllib.parse import quote
+
+    from django.utils import translation
+    from django.utils.translation import gettext as _
+
+    link = showcase_link(prospect)
+    if not link:
+        return ""
+    with translation.override(prospect.language):
+        text = _("Discover the work of %(business)s (%(activity)s) on Solange Glow: %(link)s") % {
+            "business": prospect.business_name or prospect.name,
+            "activity": activity(prospect) or prospect.city or "Solange Glow",
+            "link": link,
+        }
+    return f"https://wa.me/?text={quote(text)}"
 
 
 def _text(template: ProspectEmailTemplate, field: str, language: str) -> str:
@@ -206,21 +394,21 @@ def compose(prospect: Prospect, template: ProspectEmailTemplate) -> tuple[str, s
     """Subject and text of a standard e-mail for this prospect, in her language."""
     from django.template import Context, Template
 
-    from apps.accounts import services as account_services
-
-    if template.needs_showcase:
-        if not prospect.pro_id:
-            raise errors.ShowcaseNeeded()
-        link = account_services.link_url(prospect.pro.user, "invite")
-    else:
-        link = signup_link(prospect)
+    if template.needs_showcase and not prospect.pro_id:
+        raise errors.ShowcaseNeeded()
+    if "showcase_link" in _text(template, "body", prospect.language) and not showcase_link(
+        prospect
+    ):
+        raise errors.ShowcaseNotOnline()
     context = Context(
         {
             "name": prospect.name.split(" ")[0],
             "business": prospect.business_name or prospect.name,
             "city": prospect.city,
+            "activity": activity(prospect),
+            "showcase_link": showcase_link(prospect),
             "pitch": prospect.pitch.strip(),
-            "link": link,
+            "link": personal_link(prospect),
             "stop_link": stop_link(prospect),
         },
         autoescape=False,
@@ -310,11 +498,28 @@ def decline(code: str) -> bool:
         found.status = S.DECLINED
         found.save(update_fields=["status", "updated_at"])
         record("backoffice.prospect_declined", found, actor=None)
+    if found.pro_id and found.pro.prepared_by_team:
+        from apps.pros import services as pro_services
+
+        pro_services.remove_prepared(found.pro)
     return True
 
 
+def on_prepared_removed(pro) -> None:
+    """« Remove my page » used on a prepared showcase: never contacted again."""
+    for prospect in Prospect.objects.filter(pro=pro).exclude(status=S.DECLINED):
+        prospect.status = S.DECLINED
+        prospect.save(update_fields=["status", "updated_at"])
+        record("backoffice.prospect_declined", prospect, actor=None)
+
+
 def on_password_chosen(user) -> None:
-    """She opened the link and chose her password: the prospect is signed up."""
+    """They opened the link and chose their password: signed up, and the page is theirs."""
+    from apps.pros.models import ProProfile
+
     Prospect.objects.filter(pro__user=user, status__in=[S.NEW, S.CONTACTED]).update(
         status=S.SIGNED_UP, signed_up_user=user, updated_at=timezone.now()
+    )
+    ProProfile.objects.filter(user=user, prepared_by_team=True).update(
+        prepared_by_team=False, updated_at=timezone.now()
     )

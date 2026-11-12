@@ -98,7 +98,12 @@ def prospect_stop(request, code: str):
         response = render(
             request,
             "backoffice/prospect_stop.html",
-            {"found": prospect is not None, "done": done, "language": language},
+            {
+                "found": prospect is not None,
+                "done": done,
+                "language": language,
+                "has_page": bool(prospect and prospect.pro_id and prospect.pro.prepared_by_team),
+            },
             status=200 if prospect is not None else 404,
         )
     response["X-Robots-Tag"] = "noindex"

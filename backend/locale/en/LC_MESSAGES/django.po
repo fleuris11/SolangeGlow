@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-12 17:10+0100\n"
+"POT-Creation-Date: 2026-11-12 21:09+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1312,6 +1312,27 @@ msgstr ""
 msgid "e-mails sent"
 msgstr ""
 
+msgid "their name"
+msgstr ""
+
+msgid "the address of the page"
+msgstr ""
+
+msgid "their trade"
+msgstr ""
+
+msgid "their city"
+msgstr ""
+
+msgid "their place on the map"
+msgstr ""
+
+msgid "at least one service"
+msgstr ""
+
+msgid "where they receive clients"
+msgstr ""
+
 msgid "Who they are"
 msgstr ""
 
@@ -1349,6 +1370,32 @@ msgstr ""
 msgid "Prepare her showcase first."
 msgstr ""
 
+msgid "Publish the showcase"
+msgstr ""
+
+#, python-format
+msgid "Still missing before publishing: %(missing)s. Use « Complete the showcase »."
+msgstr ""
+
+#, python-format
+msgid "Showcase online: %(link)s. Write to them now, on WhatsApp or by e-mail."
+msgstr ""
+
+msgid "Write on WhatsApp"
+msgstr ""
+
+msgid "They asked not to be contacted any more."
+msgstr ""
+
+msgid "Add their phone number, with the country code."
+msgstr ""
+
+msgid "Share on WhatsApp"
+msgstr ""
+
+msgid "Publish the showcase first."
+msgstr ""
+
 msgid "Send an e-mail"
 msgstr ""
 
@@ -1360,6 +1407,13 @@ msgstr ""
 
 #, python-format
 msgid "%(sent)s e-mails leaving, %(skipped)s skipped (no address, or asked to stop)."
+msgstr ""
+
+msgid "Publish the prepared showcases"
+msgstr ""
+
+#, python-format
+msgid "%(done)s showcases online, %(skipped)s not complete yet (open them one by one)."
 msgstr ""
 
 msgid "Prepare the showcases"
@@ -1385,7 +1439,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-msgid "Replaced for each prospect: {{ name }} (first name), {{ business }}, {{ city }}, {{ pitch }} (our proposal), {{ link }} (her personal link) and {{ stop_link }} (« not interested », to keep at the bottom)."
+msgid "Replaced for each prospect: {{ name }} (first name), {{ business }}, {{ activity }} (trade and city), {{ city }}, {{ pitch }} (our proposal), {{ showcase_link }} (their showcase online), {{ link }} (their personal link) and {{ stop_link }} (« not interested », to keep at the bottom)."
 msgstr ""
 
 msgid "Search a text"
@@ -1535,6 +1589,12 @@ msgstr ""
 msgid "This standard e-mail does not exist or is switched off."
 msgstr ""
 
+msgid "Publish the showcase first: this message gives its address."
+msgstr ""
+
+msgid "Prepare the showcase of this prospect first."
+msgstr ""
+
 msgid "team member"
 msgstr ""
 
@@ -1631,6 +1691,12 @@ msgstr ""
 msgid "business"
 msgstr ""
 
+msgid "address"
+msgstr ""
+
+msgid "Shown on the prepared showcase."
+msgstr ""
+
 msgid "source"
 msgstr ""
 
@@ -1719,6 +1785,26 @@ msgid "Signing in as this person is not allowed (team account or inactive accoun
 msgstr ""
 
 msgid "Not possible while signed in as a member (payments, codes, account)."
+msgstr ""
+
+#, python-format
+msgid ""
+"Hello %(name)s, I am writing from Solange Glow, the beauty and fashion platform. We put the work of %(business)s (%(activity)s) forward on our site, in your name, with your contact: %(showcase)s\n"
+"\n"
+"This page is yours. Choose your password to change it, add your services and receive your bookings, free: %(link)s\n"
+"\n"
+"If you prefer that we remove it, just tell me."
+msgstr ""
+
+#, python-format
+msgid ""
+"Hello %(name)s, I am writing from Solange Glow, the beauty and fashion platform. We would like to put the work of %(business)s (%(activity)s) forward: a showcase in your name, online bookings and our advertising, free.\n"
+"\n"
+"Create your showcase in a few minutes: %(link)s"
+msgstr ""
+
+#, python-format
+msgid "Discover the work of %(business)s (%(activity)s) on Solange Glow: %(link)s"
 msgstr ""
 
 msgid "Moderation"
@@ -2006,6 +2092,9 @@ msgstr ""
 msgid "Confirm, and we will not write to you again."
 msgstr ""
 
+msgid "The showcase we prepared for you will be taken offline at once."
+msgstr ""
+
 msgid "Yes, stop the e-mails"
 msgstr ""
 
@@ -2284,9 +2373,6 @@ msgid "group bookings"
 msgstr ""
 
 msgid "district"
-msgstr ""
-
-msgid "address"
 msgstr ""
 
 msgid "place"
@@ -5836,6 +5922,12 @@ msgid "suspended at"
 msgstr ""
 
 msgid "reason of the suspension"
+msgstr ""
+
+msgid "prepared by the team"
+msgstr ""
+
+msgid "On until the professional chooses their password and takes the page."
 msgstr ""
 
 msgid "trained on Solange Glow since"

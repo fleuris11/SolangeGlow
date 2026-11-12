@@ -35,3 +35,13 @@ class TemplateNotFound(DomainError):
     code = "template_not_found"
     status_code = 404
     message = _("This standard e-mail does not exist or is switched off.")
+
+
+class ShowcaseNotOnline(DomainError):
+    code = "showcase_not_online"
+    message = _("Publish the showcase first: this message gives its address.")
+
+
+class ShowcaseNotPrepared(DomainError):
+    code = "showcase_not_prepared"
+    message = _("Prepare the showcase of this prospect first.")
