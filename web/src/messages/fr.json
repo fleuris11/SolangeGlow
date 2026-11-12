@@ -784,7 +784,20 @@
       "trained": "Formation Solange Glow",
       "offer": "Offrir une prestation",
       "bookSticky": "Choisir un créneau",
-      "otherPlaces": "Autres adresses"
+      "otherPlaces": "Autres adresses",
+      "prepared": {
+        "title": "Vitrine préparée par Solange Glow",
+        "text": "Nous mettons en lumière le travail de {name}. Les photos et les réalisations sont les siennes. Pour un rendez-vous, contacte {name} directement.",
+        "whatsapp": "Contacter sur WhatsApp",
+        "whatsappText": "Bonjour {name}, j'ai vu votre travail sur Solange Glow et j'aimerais prendre rendez-vous.",
+        "claim": "C'est ta vitrine ? Récupère-la",
+        "remove": "Retirer ma vitrine",
+        "removeConfirm": "Retirer cette vitrine ? Elle disparaît tout de suite.",
+        "removeYes": "Oui, retirer",
+        "cancel": "Annuler",
+        "removed": "La vitrine de {name} est retirée. Nous ne te contacterons plus.",
+        "removeFailed": "La vitrine n'a pas pu être retirée. Réessaie."
+      }
     },
     "my": {
       "title": "Ma vitrine",

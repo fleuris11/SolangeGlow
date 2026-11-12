@@ -4,6 +4,7 @@ import {
   Clock,
   DoorOpen,
   Gift,
+  Key,
   MapTrifold,
   NavigationArrow,
   ShareNetwork,
@@ -16,10 +17,12 @@ import {
   Star,
   Storefront,
   Translate,
+  Trash,
   Van,
   UserCheck,
   UserPlus,
   Waveform,
+  WhatsappLogo,
 } from "@phosphor-icons/react/dist/ssr";
 import { useLocale, useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
@@ -51,7 +54,7 @@ import {
 } from "@/lib/pros/format";
 
 import { MapPreview } from "./map-preview";
-import { ArrivalButton, ShowcaseActions } from "./showcase-actions";
+import { ArrivalButton, RemovePreparedPage, ShowcaseActions } from "./showcase-actions";
 
 // Downloaded only when the page has a video (ADR-004).
 const VideoPlayer = dynamic(() => import("./video-player").then((m) => m.VideoPlayer));
@@ -104,7 +107,15 @@ function OpeningLine({ showcase }: { showcase: Showcase }) {
   );
 }
 
-function ServiceRow({ service, slug }: { service: Service; slug: string }) {
+function ServiceRow({
+  service,
+  slug,
+  bookable,
+}: {
+  service: Service;
+  slug: string;
+  bookable: boolean;
+}) {
   const t = useTranslations("pros.showcase");
   const duration = durationParts(service.duration_minutes);
   return (
@@ -149,13 +160,15 @@ function ServiceRow({ service, slug }: { service: Service; slug: string }) {
           ))}
         </ul>
       )}
-      <Link
-        href={`/${slug}/rdv?service=${service.id}`}
-        className={buttonClasses({ variant: "secondary", className: "self-start lg:self-end" })}
-      >
-        <CalendarCheck aria-hidden size={22} />
-        {t("bookService")}
-      </Link>
+      {bookable && (
+        <Link
+          href={`/${slug}/rdv?service=${service.id}`}
+          className={buttonClasses({ variant: "secondary", className: "self-start lg:self-end" })}
+        >
+          <CalendarCheck aria-hidden size={22} />
+          {t("bookService")}
+        </Link>
+      )}
     </li>
   );
 }
@@ -199,6 +212,14 @@ export function ShowcaseView({
     })),
     ...(uncategorised.length ? [{ key: "other", title: "", services: uncategorised }] : []),
   ].filter((group) => group.services.length > 0);
+  // Prepared by the team before the professional took the page: clients write to them on
+  // WhatsApp (no online booking), and the page says who did the work.
+  const prepared = showcase.prepared;
+  const whatsappHref = prepared?.whatsapp
+    ? `https://wa.me/${prepared.whatsapp}?text=${encodeURIComponent(
+        t("prepared.whatsappText", { name }),
+      )}`
+    : null;
 
   return (
     <article className="flex flex-col gap-10">
@@ -211,6 +232,43 @@ export function ShowcaseView({
             {t("previewEdit")}
           </Link>
         </div>
+      )}
+
+      {prepared && (
+        <section
+          aria-labelledby="prepared-title"
+          className="border-trait rounded-card flex flex-col items-start gap-3 border-2 p-4"
+        >
+          <h2 id="prepared-title" className="font-bold">
+            {t("prepared.title")}
+          </h2>
+          <p>{t("prepared.text", { name })}</p>
+          <div className="flex flex-wrap gap-3">
+            {whatsappHref && (
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={buttonClasses({ variant: "secondary" })}
+              >
+                <WhatsappLogo aria-hidden size={22} weight="bold" />
+                {t("prepared.whatsapp")}
+              </a>
+            )}
+            <Link
+              href={{ pathname: "/auth", query: { mode: "forgot" } }}
+              className={buttonClasses({ variant: "quiet" })}
+            >
+              <Key aria-hidden size={22} weight="bold" />
+              {t("prepared.claim")}
+            </Link>
+          </div>
+          <RemovePreparedPage
+            slug={showcase.slug}
+            name={name}
+            icon={<Trash aria-hidden size={22} weight="bold" />}
+          />
+        </section>
       )}
 
       <header
@@ -288,7 +346,19 @@ export function ShowcaseView({
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px] lg:gap-12">
         <aside className="lg:bg-poudre lg:rounded-card order-first flex flex-col gap-3 self-start lg:sticky lg:top-20 lg:order-last lg:p-4">
           <OpeningLine showcase={showcase} />
+          {whatsappHref && (
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonClasses({ size: "lg", fullWidth: true, className: "max-lg:hidden" })}
+            >
+              <WhatsappLogo aria-hidden size={26} weight="bold" />
+              {t("prepared.whatsapp")}
+            </a>
+          )}
           <ShowcaseActions
+            bookable={!prepared}
             name={name}
             slug={showcase.slug}
             shortLink={showcase.short_link}
@@ -304,10 +374,12 @@ export function ShowcaseView({
               gift: <Gift aria-hidden size={22} weight="bold" />,
             }}
           />
-          <WriteButton
-            personId={showcase.owner_id}
-            icon={<ChatCircleText aria-hidden size={22} weight="bold" />}
-          />
+          {!prepared && (
+            <WriteButton
+              personId={showcase.owner_id}
+              icon={<ChatCircleText aria-hidden size={22} weight="bold" />}
+            />
+          )}
           <FollowButton
             userId={showcase.owner_id}
             followed={showcase.followed}
@@ -330,7 +402,12 @@ export function ShowcaseView({
                   )}
                   <ul className="flex flex-col">
                     {group.services.map((service) => (
-                      <ServiceRow key={service.id} service={service} slug={showcase.slug} />
+                      <ServiceRow
+                        key={service.id}
+                        service={service}
+                        slug={showcase.slug}
+                        bookable={!prepared}
+                      />
                     ))}
                   </ul>
                 </div>
@@ -635,7 +712,20 @@ export function ShowcaseView({
           )}
         </div>
       </div>
-      {showcase.slug && showcase.status === "published" && (
+      {whatsappHref && (
+        <div className="bg-carte border-trait pb-safe fixed inset-x-0 bottom-0 z-40 border-t p-3 lg:hidden">
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={buttonClasses({ size: "lg", fullWidth: true })}
+          >
+            <WhatsappLogo aria-hidden size={26} weight="bold" />
+            {t("prepared.whatsapp")}
+          </a>
+        </div>
+      )}
+      {!prepared && showcase.slug && showcase.status === "published" && (
         <div className="bg-carte border-trait pb-safe fixed inset-x-0 bottom-0 z-40 border-t p-3 lg:hidden">
           <Link
             href={`/${showcase.slug}/rdv`}

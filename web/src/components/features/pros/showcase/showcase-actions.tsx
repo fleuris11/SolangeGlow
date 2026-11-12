@@ -6,7 +6,7 @@ import { useState, type ReactNode } from "react";
 import { Button, buttonClasses } from "@/components/ui/button";
 import { useToast } from "@/components/ui/toast";
 import { ApiError } from "@/lib/api/client";
-import { announceArrival } from "@/lib/api/pros";
+import { announceArrival, removePreparedPage } from "@/lib/api/pros";
 import { Link } from "@/lib/i18n/navigation";
 
 type Props = {
@@ -16,12 +16,22 @@ type Props = {
   directionsUrl?: string | null;
   /** A service of hers can be offered from abroad (fixed price in FCFA). */
   giftable?: boolean;
+  /** Off on a page prepared by the team: clients write to the professional instead. */
+  bookable?: boolean;
   /** Drawn by the server page: no icon code is sent to the phone. */
   icons: { book: ReactNode; directions: ReactNode; share: ReactNode; gift?: ReactNode };
 };
 
 /** The main action (book), then directions and sharing. */
-export function ShowcaseActions({ name, slug, shortLink, directionsUrl, giftable, icons }: Props) {
+export function ShowcaseActions({
+  name,
+  slug,
+  shortLink,
+  directionsUrl,
+  giftable,
+  bookable = true,
+  icons,
+}: Props) {
   const t = useTranslations("pros.showcase");
   const toast = useToast();
 
@@ -41,13 +51,15 @@ export function ShowcaseActions({ name, slug, shortLink, directionsUrl, giftable
 
   return (
     <div className="flex flex-col gap-3">
-      <Link
-        href={`/${slug}/rdv`}
-        className={buttonClasses({ size: "lg", fullWidth: true, className: "max-lg:hidden" })}
-      >
-        {icons.book}
-        {t("book")}
-      </Link>
+      {bookable && (
+        <Link
+          href={`/${slug}/rdv`}
+          className={buttonClasses({ size: "lg", fullWidth: true, className: "max-lg:hidden" })}
+        >
+          {icons.book}
+          {t("book")}
+        </Link>
+      )}
       <div className="grid grid-cols-2 gap-3">
         {directionsUrl ? (
           <a
@@ -70,7 +82,7 @@ export function ShowcaseActions({ name, slug, shortLink, directionsUrl, giftable
           {t("share")}
         </Button>
       </div>
-      {giftable && (
+      {giftable && bookable && (
         <Link
           href={`/offrir?kind=service&pro=${slug}`}
           className={buttonClasses({ variant: "quiet", fullWidth: true })}
@@ -122,6 +134,61 @@ export function ArrivalButton({
         {state === "sent" ? t("arrivedDone") : t("arrived")}
       </Button>
       <p className="text-small text-prune-doux">{t("arrivedHelp", { name })}</p>
+    </div>
+  );
+}
+
+/** « Remove my page », on a page prepared by the team: asks once, then offline at once. */
+export function RemovePreparedPage({
+  slug,
+  name,
+  icon,
+}: {
+  slug: string;
+  name: string;
+  icon: ReactNode;
+}) {
+  const t = useTranslations("pros.showcase");
+  const [state, setState] = useState<"idle" | "asking" | "sending" | "done" | "failed">("idle");
+
+  const remove = async () => {
+    setState("sending");
+    try {
+      await removePreparedPage(slug);
+      setState("done");
+    } catch {
+      setState("failed");
+    }
+  };
+
+  if (state === "done") {
+    return (
+      <p role="status" className="font-semibold">
+        {t("prepared.removed", { name })}
+      </p>
+    );
+  }
+  if (state === "idle") {
+    return (
+      <Button variant="quiet" className="self-start" onClick={() => setState("asking")}>
+        {icon}
+        {t("prepared.remove")}
+      </Button>
+    );
+  }
+  return (
+    <div className="flex flex-col gap-3" role="group" aria-label={t("prepared.remove")}>
+      <p className="font-semibold">{t("prepared.removeConfirm")}</p>
+      {state === "failed" && <p role="alert">{t("prepared.removeFailed")}</p>}
+      <div className="flex flex-wrap gap-3">
+        <Button variant="secondary" onClick={() => void remove()} disabled={state === "sending"}>
+          {icon}
+          {t("prepared.removeYes")}
+        </Button>
+        <Button variant="quiet" onClick={() => setState("idle")}>
+          {t("prepared.cancel")}
+        </Button>
+      </div>
     </div>
   );
 }

@@ -31,7 +31,7 @@ export function SignInFlow({
 }: {
   as?: "client" | "pro";
   pageName?: string;
-  mode?: "signin" | "signup";
+  mode?: "signin" | "signup" | "forgot";
 }) {
   useEffect(() => {
     if (!pageName) return;

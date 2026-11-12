@@ -42,6 +42,10 @@ export const getShowcase = (slug: string) =>
 export const announceArrival = (slug: string) =>
   unwrap(api.POST("/api/v1/pros/{slug}/arrival", { params: { path: { slug } } }));
 
+/** « Remove my page », on a page prepared by the team: offline at once. */
+export const removePreparedPage = (slug: string) =>
+  unwrap(api.POST("/api/v1/pros/{slug}/removal", { params: { path: { slug } } }));
+
 /** Link of a QR code card, A4 poster or sticker sheet (served by the backend). */
 export function printableUrl(slug: string, name: PrintableName, download = false): string {
   return `/api/v1/pros/${encodeURIComponent(slug)}/print/${name}${download ? "?download=1" : ""}`;

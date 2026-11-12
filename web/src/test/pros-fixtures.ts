@@ -25,6 +25,7 @@ export const SERVICE: Service = {
 };
 
 export const SHOWCASE: Showcase = {
+  prepared: null,
   other_places: [],
   owner_id: "00000000-0000-4000-8000-000000000001",
   follower_count: 12,

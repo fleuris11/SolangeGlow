@@ -25,7 +25,7 @@ function AuthPage({ params, searchParams }: Props) {
     <SignInFlow
       as={as === "pro" || as === "client" ? as : undefined}
       pageName={vitrine?.slice(0, 60)}
-      mode={mode === "signin" || mode === "signup" ? mode : undefined}
+      mode={mode === "signin" || mode === "signup" || mode === "forgot" ? mode : undefined}
     />
   );
 }

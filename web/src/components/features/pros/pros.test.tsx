@@ -119,6 +119,29 @@ describe("ShowcaseView", () => {
     expect(await screen.findByText("Aïcha Tresses sait que tu es devant.")).toBeInTheDocument();
     expect(fetchMock.records.some((r) => r.path === "/api/v1/pros/aicha/arrival")).toBe(true);
   });
+
+  it("a page prepared by the team: their WhatsApp instead of booking, removable", async () => {
+    const fetchMock = mockApi([
+      { method: "POST", path: "/pros/aicha/removal", body: { removed: true } },
+    ]);
+    const prepared = { ...SHOWCASE, prepared: { whatsapp: "2290197123456" } };
+    renderWithProviders(<ShowcaseView showcase={prepared} />);
+    expect(
+      screen.getByRole("heading", { name: "Vitrine préparée par Solange Glow" }),
+    ).toBeVisible();
+    const [whatsapp] = screen.getAllByRole("link", { name: /Contacter sur WhatsApp/ });
+    expect(whatsapp.getAttribute("href")).toMatch(/^https:\/\/wa\.me\/2290197123456\?text=/);
+    expect(screen.queryByRole("link", { name: /Réserver/ })).not.toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Récupère-la/ })).toHaveAttribute(
+      "href",
+      expect.stringContaining("mode=forgot"),
+    );
+
+    await userEvent.click(screen.getByRole("button", { name: /Retirer ma vitrine/ }));
+    await userEvent.click(screen.getByRole("button", { name: /Oui, retirer/ }));
+    expect(await screen.findByText(/est retirée/)).toBeInTheDocument();
+    expect(fetchMock.records.some((r) => r.path === "/api/v1/pros/aicha/removal")).toBe(true);
+  });
 });
 
 describe("Ma vitrine", () => {

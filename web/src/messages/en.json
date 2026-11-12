@@ -784,7 +784,20 @@
       "trained": "Trained on Solange Glow",
       "offer": "Offer a service",
       "bookSticky": "Choose a time",
-      "otherPlaces": "Other addresses"
+      "otherPlaces": "Other addresses",
+      "prepared": {
+        "title": "Showcase prepared by Solange Glow",
+        "text": "We put the work of {name} in the spotlight. The photos and the work are theirs. For an appointment, contact {name} directly.",
+        "whatsapp": "Contact on WhatsApp",
+        "whatsappText": "Hello {name}, I saw your work on Solange Glow and I would like to book an appointment.",
+        "claim": "Is this your showcase? Take it",
+        "remove": "Remove my showcase",
+        "removeConfirm": "Remove this showcase? It disappears right away.",
+        "removeYes": "Yes, remove",
+        "cancel": "Cancel",
+        "removed": "The showcase of {name} is removed. We will not contact you again.",
+        "removeFailed": "The showcase could not be removed. Try again."
+      }
     },
     "my": {
       "title": "My showcase",

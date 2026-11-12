@@ -784,7 +784,20 @@
       "trained": "Vyškolená na Solange Glow",
       "offer": "Darovať službu",
       "bookSticky": "Vybrať si termín",
-      "otherPlaces": "Ďalšie adresy"
+      "otherPlaces": "Ďalšie adresy",
+      "prepared": {
+        "title": "Prezentáciu pripravilo Solange Glow",
+        "text": "Predstavujeme prácu {name}. Fotky a práce sú ich vlastné. Ak chcete termín, kontaktujte {name} priamo.",
+        "whatsapp": "Kontaktovať cez WhatsApp",
+        "whatsappText": "Dobrý deň, {name}, videl(a) som vašu prácu na Solange Glow a rád(a) by som si rezervoval(a) termín.",
+        "claim": "Je to vaša prezentácia? Prevezmite ju",
+        "remove": "Odstrániť moju prezentáciu",
+        "removeConfirm": "Odstrániť túto prezentáciu? Zmizne okamžite.",
+        "removeYes": "Áno, odstrániť",
+        "cancel": "Zrušiť",
+        "removed": "Prezentácia {name} je odstránená. Už vás nebudeme kontaktovať.",
+        "removeFailed": "Prezentáciu sa nepodarilo odstrániť. Skúste to znova."
+      }
     },
     "my": {
       "title": "Moja vitrína",

@@ -5267,6 +5267,23 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  "/api/v1/pros/{slug}/removal": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** @description « Remove my page »: a page prepared by the team goes offline at once. */
+    post: operations["pros_removal_create"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
   "/api/v1/pros/{slug}/reviews": {
     parameters: {
       query?: never;
@@ -8945,6 +8962,7 @@ export interface components {
     };
     /** @description The pro's own showcase, with what only she sees. */
     MyPro: {
+      prepared: components["schemas"]["Prepared"] | null;
       other_places: components["schemas"]["OtherPlace"][];
       /** Format: uuid */
       owner_id: string;
@@ -10109,6 +10127,14 @@ export interface components {
      * @enum {string}
      */
     PostStatusEnum: "draft" | "scheduled" | "published";
+    /** @description A page the team prepared to put a professional forward, before they took it. */
+    Prepared: {
+      /** @description Digits only, country code first; may be empty. */
+      whatsapp: string;
+    };
+    PreparedRemoval: {
+      removed: boolean;
+    };
     /**
      * @description * `fixed` - Fixed price
      *     * `from` - From
@@ -10975,6 +11001,7 @@ export interface components {
     };
     /** @description Public page of a pro (also its preview for herself). */
     Showcase: {
+      prepared: components["schemas"]["Prepared"] | null;
       other_places: components["schemas"]["OtherPlace"][];
       /** Format: uuid */
       owner_id: string;
@@ -20777,6 +20804,27 @@ export interface operations {
         };
         content: {
           "application/octet-stream": string;
+        };
+      };
+    };
+  };
+  pros_removal_create: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        slug: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["PreparedRemoval"];
         };
       };
     };
