@@ -7355,6 +7355,10 @@ export interface components {
       hand_over_open: boolean;
       zones: components["schemas"]["Zone"][];
     };
+    DeliveryCountry: {
+      code: string;
+      name: string;
+    };
     /**
      * @description * `seller` - Delivered by the seller
      *     * `partner` - Delivered by a partner
@@ -10715,11 +10719,14 @@ export interface components {
       options: string[];
       photos: components["schemas"]["Media"][];
       estimates: components["schemas"]["SelectionEstimates"];
+      delivery_countries: components["schemas"]["DeliveryCountry"][];
     };
     SelectionProductList: {
       results: components["schemas"]["SelectionProductSummary"][];
       grouped: components["schemas"]["SelectionEstimate"];
       express: components["schemas"]["SelectionEstimate"];
+      /** @description Where parcels are delivered now (opened in the admin). */
+      delivery_countries: components["schemas"]["DeliveryCountry"][];
     };
     SelectionProductSummary: {
       /** Format: uuid */

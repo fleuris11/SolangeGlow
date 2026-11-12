@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-11 23:51+0100\n"
+"POT-Creation-Date: 2026-11-12 17:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1315,8 +1315,65 @@ msgstr "Sponzorované"
 msgid "No active creative with a placement yet."
 msgstr "Zatiaľ žiadna aktívna kreatíva s umiestnením."
 
+msgid "e-mails sent"
+msgstr "odoslané e-maily"
+
+msgid "Who they are"
+msgstr "Kto to je"
+
+msgid "How to reach them"
+msgstr "Ako ich kontaktovať"
+
+msgid "What they do, what we offer"
+msgstr "Čo robia, čo im ponúkame"
+
+msgid "Follow-up"
+msgstr "Sledovanie"
+
+msgid "Showcase and account"
+msgstr "Prezentácia a účet"
+
+msgid "showcase"
+msgstr "prezentácia"
+
+msgid "Not prepared"
+msgstr "Nepripravená"
+
 msgid "sign-up link"
 msgstr "odkaz na registráciu"
+
+msgid "Prepare her showcase"
+msgstr "Pripraviť prezentáciu"
+
+#, python-format
+msgid "Draft showcase « %(name)s » ready. Complete it, then send the e-mail."
+msgstr "Koncept prezentácie « %(name)s » je pripravený. Doplň ho a potom pošli e-mail."
+
+msgid "Complete her showcase (as her)"
+msgstr "Doplniť prezentáciu (namiesto nej)"
+
+msgid "Prepare her showcase first."
+msgstr "Najprv priprav prezentáciu."
+
+msgid "Send an e-mail"
+msgstr "Poslať e-mail"
+
+msgid "Send the presentation e-mail"
+msgstr "Poslať predstavovací e-mail"
+
+msgid "The standard e-mail « presentation » is missing."
+msgstr "Chýba vzorový e-mail « presentation »."
+
+#, python-format
+msgid "%(sent)s e-mails leaving, %(skipped)s skipped (no address, or asked to stop)."
+msgstr "%(sent)s e-mailov sa odosiela, %(skipped)s preskočených (bez adresy alebo žiadosť o zastavenie)."
+
+msgid "Prepare the showcases"
+msgstr "Pripraviť prezentácie"
+
+#, python-format
+msgid "%(done)s showcases prepared, %(skipped)s skipped (no e-mail, or account exists)."
+msgstr "%(done)s prezentácií pripravených, %(skipped)s preskočených (bez e-mailu alebo účet už existuje)."
 
 msgid "Send the invitation (WhatsApp, else SMS)"
 msgstr "Poslať pozvánku (WhatsApp, inak SMS)"
@@ -1327,6 +1384,15 @@ msgstr "Odoslaných pozvánok: %(count)s (kontakt bez čísla sa preskočí)."
 
 msgid "Import a CSV file"
 msgstr "Importovať súbor CSV"
+
+msgid "Standard e-mails"
+msgstr "Vzorové e-maily"
+
+msgid "Text"
+msgstr "Text"
+
+msgid "Replaced for each prospect: {{ name }} (first name), {{ business }}, {{ city }}, {{ pitch }} (our proposal), {{ link }} (her personal link) and {{ stop_link }} (« not interested », to keep at the bottom)."
+msgstr "Nahradí sa pre každého: {{ name }} (meno), {{ business }}, {{ city }}, {{ pitch }} (naša ponuka), {{ link }} (osobný odkaz) a {{ stop_link }} (« nemám záujem », nechať na konci)."
 
 msgid "Search a text"
 msgstr "Hľadať text"
@@ -1379,6 +1445,9 @@ msgstr "Konzola moderovania"
 msgid "Disputes console"
 msgstr "Konzola sporov"
 
+msgid "Delivery countries of the France Selection saved."
+msgstr "Krajiny doručenia France Selection uložené."
+
 msgid "France Selection console"
 msgstr "Konzola Výber Francúzsko"
 
@@ -1397,6 +1466,14 @@ msgstr "Pridané: %(added)s, už známe alebo prázdne: %(skipped)s."
 
 msgid "Import prospects"
 msgstr "Importovať kontakty"
+
+#, python-format
+msgid "E-mail « %(name)s » on its way."
+msgstr "E-mail « %(name)s » sa odosiela."
+
+#, python-format
+msgid "E-mail to %(name)s"
+msgstr "E-mail pre %(name)s"
 
 msgid "Why (written in the journal)"
 msgstr "Prečo (zapíše sa do denníka)"
@@ -1429,6 +1506,40 @@ msgstr "Otvorené spory"
 
 msgid "Moderation queue"
 msgstr "Moderačný rad"
+
+msgid "New announcement"
+msgstr "Nové oznámenie"
+
+msgid "New prospect"
+msgstr "Nový potenciálny klient"
+
+msgid "Ad campaign"
+msgstr "Reklamná kampaň"
+
+msgid "Settings"
+msgstr "Nastavenia"
+
+msgid "Translations"
+msgstr "Preklady"
+
+msgid "This prospect has no e-mail address: add it first."
+msgstr "Tento kontakt nemá e-mailovú adresu: najprv ju doplň."
+
+msgid "An account already uses this e-mail address: this person is already on Solange Glow."
+msgstr "Túto e-mailovú adresu už používa účet: táto osoba už je na Solange Glow."
+
+msgid "Prepare the showcase of this prospect first: this e-mail presents it."
+msgstr "Najprv priprav prezentáciu tohto kontaktu: tento e-mail ju predstavuje."
+
+msgid "This prospect asked not to be contacted any more."
+msgstr "Tento kontakt požiadal, aby sme ho už nekontaktovali."
+
+#, python-format
+msgid "%(max)s e-mails to prospects were already sent today. Continue tomorrow."
+msgstr "Dnes už bolo odoslaných %(max)s e-mailov. Pokračuj zajtra."
+
+msgid "This standard e-mail does not exist or is switched off."
+msgstr "Tento vzorový e-mail neexistuje alebo je vypnutý."
 
 msgid "team member"
 msgstr "členka tímu"
@@ -1529,6 +1640,33 @@ msgstr "podnik"
 msgid "source"
 msgstr "zdroj"
 
+msgid "language of the messages"
+msgstr "jazyk správ"
+
+msgid "what they do"
+msgstr "čo robia"
+
+msgid "Their services, their prices, their style."
+msgstr "Ich služby, ceny, štýl."
+
+msgid "our proposal"
+msgstr "naša ponuka"
+
+msgid "One or two sentences written for them; shown in the e-mails ({{ pitch }})."
+msgstr "Jedna či dve vety napísané pre nich; zobrazia sa v e-mailoch ({{ pitch }})."
+
+msgid "site or social page"
+msgstr "web alebo sociálna sieť"
+
+msgid "Instagram, Facebook…"
+msgstr "Instagram, Facebook…"
+
+msgid "prepared showcase"
+msgstr "pripravená prezentácia"
+
+msgid "last e-mail"
+msgstr "posledný e-mail"
+
 msgid "invitation code"
 msgstr "kód pozvánky"
 
@@ -1543,6 +1681,42 @@ msgstr "kontakt"
 
 msgid "prospects"
 msgstr "kontakty"
+
+msgid "subject"
+msgstr "predmet"
+
+msgid "needs a prepared showcase"
+msgstr "vyžaduje pripravenú prezentáciu"
+
+msgid "Sent only to a prospect whose showcase was prepared: the link opens it."
+msgstr "Posiela sa len kontaktu s pripravenou prezentáciou: odkaz ju otvorí."
+
+msgid "standard e-mail"
+msgstr "vzorový e-mail"
+
+msgid "standard e-mails"
+msgstr "vzorové e-maily"
+
+msgid "Leaving"
+msgstr "Odosiela sa"
+
+msgid "Sent"
+msgstr "Odoslané"
+
+msgid "Not sent"
+msgstr "Neodoslané"
+
+msgid "to"
+msgstr "posledný deň"
+
+msgid "error"
+msgstr "chyba"
+
+msgid "e-mail sent to a prospect"
+msgstr "e-mail odoslaný kontaktu"
+
+msgid "e-mails sent to prospects"
+msgstr "e-maily odoslané kontaktom"
 
 msgid "Export as CSV"
 msgstr "Exportovať do CSV"
@@ -1654,6 +1828,38 @@ msgstr "Podrobnosti"
 msgid "Nothing to review. Well done!"
 msgstr "Nič na kontrolu. Výborne!"
 
+#, python-format
+msgid "To: <strong>%(email)s</strong>, written in %(language)s."
+msgstr "Komu: <strong>%(email)s</strong>, v jazyku %(language)s."
+
+#, python-format
+msgid "E-mails to prospects today: %(sent_today)s."
+msgstr "Dnešné e-maily kontaktom: %(sent_today)s."
+
+msgid "This prospect asked not to be contacted any more: nothing can be sent."
+msgstr "Tento kontakt požiadal o ukončenie kontaktu: nič sa nedá odoslať."
+
+msgid "No standard e-mail is active: write one first."
+msgstr "Žiadny vzorový e-mail nie je aktívny: najprv nejaký napíš."
+
+msgid "Standard e-mail"
+msgstr "Vzorový e-mail"
+
+msgid "Show"
+msgstr "Zobraziť"
+
+msgid "What she will receive"
+msgstr "Čo dostane"
+
+msgid "Send this e-mail"
+msgstr "Poslať tento e-mail"
+
+msgid "Back to the prospect"
+msgstr "Späť na kontakt"
+
+msgid "To change the words for everyone, edit the standard e-mail. To change them for this prospect only, fill in « our proposal » on her file."
+msgstr "Ak chceš zmeniť text pre všetkých, uprav vzorový e-mail. Len pre tento kontakt vyplň « naša ponuka » v jeho karte."
+
 msgid "A CSV file (commas or semicolons) with a first line of titles: name, business, phone, e-mail, city, country, trade, source. Only the name is needed. A phone or e-mail already known is skipped."
 msgstr "Súbor CSV (čiarky alebo bodkočiarky) s prvým riadkom nadpisov: name, business, phone, e-mail, city, country, trade, source. Povinné je len meno. Už známe číslo alebo e-mail sa preskočí."
 
@@ -1669,6 +1875,21 @@ msgstr "Dvojstupňové prihlásenie je zapnuté. Uchovaj tieto záložné kódy 
 
 msgid "I kept them, continue"
 msgstr "Uložila som si ich, pokračovať"
+
+msgid "Countries where the France Selection delivers"
+msgstr "Krajiny, kam France Selection doručuje"
+
+msgid "Tick a country when you have people there to hand the parcels over. Clients of an unticked country see the products but cannot order yet. Add its pick-up points too."
+msgstr "Zaškrtni krajinu, keď tam máš ľudí na odovzdávanie balíkov. Klienti nezaškrtnutej krajiny produkty vidia, ale zatiaľ nemôžu objednať. Pridaj aj výdajné miesta."
+
+msgid "Save the countries"
+msgstr "Uložiť krajiny"
+
+msgid "Pick-up points"
+msgstr "Výdajné miesta"
+
+msgid "No pick-up point yet."
+msgstr "Zatiaľ žiadne výdajné miesto."
 
 #, python-format
 msgid "To order at the merchant (%(count)s)"
@@ -1775,6 +1996,24 @@ msgstr "Záložný kód"
 
 msgid "Continue"
 msgstr "Pokračovať"
+
+msgid "This link is no longer valid."
+msgstr "Tento odkaz už neplatí."
+
+msgid "Understood: we will not write to you again."
+msgstr "Rozumieme: už vám nebudeme písať."
+
+msgid "Thank you for your time. If you change your mind one day, you are welcome on Solange Glow."
+msgstr "Ďakujeme za váš čas. Ak raz zmeníte názor, na Solange Glow ste vítaní."
+
+msgid "Stop receiving our e-mails?"
+msgstr "Už nedostávať naše e-maily?"
+
+msgid "Confirm, and we will not write to you again."
+msgstr "Potvrďte a už vám nebudeme písať."
+
+msgid "Yes, stop the e-mails"
+msgstr "Áno, zastaviť e-maily"
 
 msgid "deposit"
 msgstr "záloha"
@@ -1992,9 +2231,6 @@ msgstr "tím"
 
 msgid "person"
 msgstr "osoba"
-
-msgid "to"
-msgstr "posledný deň"
 
 msgid "working hours"
 msgstr "pracovný čas"
@@ -2286,8 +2522,73 @@ msgstr "Verzia %(number)s obnovená."
 msgid "Versions of %(name)s"
 msgstr "Verzie: %(name)s"
 
-msgid "new picture"
-msgstr "nový obrázok"
+msgid "A picture (JPEG, PNG, WebP) or a short video (MP4). Wide pictures look best (16:7). It replaces the current one."
+msgstr "Obrázok (JPEG, PNG, WebP) alebo krátke video (MP4). Najlepšie vyzerajú široké obrázky (16:7). Nahradí aktuálny."
+
+msgid "remove the picture or video"
+msgstr "odstrániť obrázok alebo video"
+
+msgid "where it is shown"
+msgstr "kde sa zobrazuje"
+
+msgid "Tick one place or more."
+msgstr "Zaškrtni jedno alebo viac miest."
+
+msgid "None ticked: every country."
+msgstr "Nič nezaškrtnuté: všetky krajiny."
+
+msgid "A button needs a link: where does it lead?"
+msgstr "Tlačidlo potrebuje odkaz: kam vedie?"
+
+msgid "The end must come after the beginning."
+msgstr "Koniec musí byť po začiatku."
+
+msgid "Scheduled"
+msgstr "Naplánované"
+
+msgid "Switched off"
+msgstr "Vypnuté"
+
+msgid "What it says"
+msgstr "Čo hovorí"
+
+msgid "Picture or video"
+msgstr "Fotka alebo video"
+
+msgid "Button"
+msgstr "Tlačidlo"
+
+msgid "Where and when"
+msgstr "Kde a kedy"
+
+msgid "Order and state"
+msgstr "Poradie a stav"
+
+msgid "Being prepared…"
+msgstr "Pripravuje sa…"
+
+msgid "current picture or video"
+msgstr "aktuálny obrázok alebo video"
+
+msgid "Every country"
+msgstr "Všetky krajiny"
+
+msgid "state"
+msgstr "stav"
+
+msgid "Switch on the selected announcements"
+msgstr "Zapnúť vybrané oznámenia"
+
+#, python-format
+msgid "%(count)s switched on."
+msgstr "Zapnuté: %(count)s."
+
+msgid "Switch off the selected announcements"
+msgstr "Vypnúť vybrané oznámenia"
+
+#, python-format
+msgid "%(count)s switched off."
+msgstr "Vypnuté: %(count)s."
 
 msgid "Answer"
 msgstr "Odpovedať"
@@ -2347,11 +2648,35 @@ msgstr "stránka"
 msgid "pages"
 msgstr "stránky"
 
-msgid "home banner"
-msgstr "banner na úvode"
+msgid "Home: above the feed (visitors and members)"
+msgstr "Domov: nad príspevkami (návštevníci aj členovia)"
 
-msgid "home banners"
-msgstr "bannery na úvode"
+msgid "Explore: above the search results"
+msgstr "Objavovať: nad výsledkami"
+
+msgid "France Selection: top of the shop"
+msgstr "France Selection: navrchu obchodu"
+
+msgid "Academy: top of the courses"
+msgstr "Akadémia: navrchu kurzov"
+
+msgid "Public page « Offer my services »"
+msgstr "Verejná stránka « Ponúkam svoje služby »"
+
+msgid "Professional space: top of « Today »"
+msgstr "Priestor profesionála: navrchu « Dnes »"
+
+msgid "promo code"
+msgstr "promo kód"
+
+msgid "Shown on the announcement with a « Copy » button. Empty: none."
+msgstr "Zobrazí sa na oznámení s tlačidlom « Kopírovať ». Prázdne: žiadny."
+
+msgid "announcement"
+msgstr "oznámenie"
+
+msgid "announcements"
+msgstr "oznámenia"
 
 msgid "My account"
 msgstr "Môj účet"
@@ -2611,9 +2936,6 @@ msgstr "verzie"
 msgid "blur preview"
 msgstr "rozmazaný náhľad"
 
-msgid "error"
-msgstr "chyba"
-
 msgid "processed at"
 msgstr "spracované"
 
@@ -2674,9 +2996,6 @@ msgstr "PSČ"
 
 msgid "population"
 msgstr "počet obyvateľov"
-
-msgid "Text"
-msgstr "Text"
 
 msgid "Whole number"
 msgstr "Celé číslo"
@@ -2831,6 +3150,9 @@ msgstr "zľava"
 
 msgid "chance (everywhere)"
 msgstr "šanca (všade)"
+
+msgid "new picture"
+msgstr "nový obrázok"
 
 msgid "new audio"
 msgstr "nové audio"
@@ -3517,9 +3839,6 @@ msgstr "Darčeková karta Glow"
 msgid "Paid, sent on the chosen day"
 msgstr "Zaplatené, odoslané vo zvolený deň"
 
-msgid "Sent"
-msgstr "Odoslané"
-
 msgid "Opened"
 msgstr "Otvorené"
 
@@ -3534,9 +3853,6 @@ msgstr "Zatiaľ bez fotky"
 
 msgid "Photo sent"
 msgstr "Fotka odoslaná"
-
-msgid "Not sent"
-msgstr "Neodoslané"
 
 msgid "offered by"
 msgstr "daroval(a)"
@@ -4417,9 +4733,6 @@ msgstr "V hovore"
 msgid "Hung up"
 msgstr "Zavesila"
 
-msgid "state"
-msgstr "stav"
-
 msgid "joined at"
 msgstr "pripojená o"
 
@@ -4617,9 +4930,6 @@ msgstr "upozornenie"
 
 msgid "notifications"
 msgstr "upozornenia"
-
-msgid "Scheduled"
-msgstr "Naplánované"
 
 msgid "Not sent (channel off)"
 msgstr "Neodoslané (kanál vypnutý)"
@@ -6020,9 +6330,6 @@ msgstr "kto"
 msgid "not come for (days)"
 msgstr "neprišla (dní)"
 
-msgid "subject"
-msgstr "predmet"
-
 msgid "in the segment"
 msgstr "v segmente"
 
@@ -6804,9 +7111,6 @@ msgstr "použití spolu"
 msgid "uses per client"
 msgstr "použití na klientku"
 
-msgid "promo code"
-msgstr "promo kód"
-
 msgid "promo codes"
 msgstr "promo kódy"
 
@@ -7008,9 +7312,6 @@ msgstr "príspevok"
 
 msgid "posts"
 msgstr "príspevky"
-
-msgid "Picture or video"
-msgstr "Fotka alebo video"
 
 msgid "Before"
 msgstr "Pred"
@@ -7216,9 +7517,6 @@ msgstr "Skupinové predobjednávky"
 msgid "Categories and prices"
 msgstr "Kategórie a ceny"
 
-msgid "Pick-up points"
-msgstr "Výdajné miesta"
-
 msgid "Glow Pro"
 msgstr "Glow Premium"
 
@@ -7413,6 +7711,12 @@ msgstr "nutné pre spustenie"
 msgid "optional"
 msgstr "voliteľné"
 
+msgid "Quick actions"
+msgstr "Rýchle akcie"
+
+msgid "Prospecting"
+msgstr "Získavanie klientov"
+
 msgid "Period"
 msgstr "Obdobie"
 
@@ -7433,9 +7737,6 @@ msgstr "Krajina"
 
 msgid "All"
 msgstr "Všetky"
-
-msgid "Show"
-msgstr "Zobraziť"
 
 #, python-format
 msgid "Before: %(before)s"
@@ -7474,6 +7775,12 @@ msgstr "Registrácie za deň"
 #, python-format
 msgid "Sales paid per day (%(currency)s)"
 msgstr "Zaplatené predaje za deň (%(currency)s)"
+
+#~ msgid "home banner"
+#~ msgstr "banner na úvode"
+
+#~ msgid "home banners"
+#~ msgstr "bannery na úvode"
 
 #~ msgid "The number, e-mail or password is not correct. You can also sign in with a code."
 #~ msgstr "Číslo, e-mail alebo heslo nie je správne. Môžeš sa prihlásiť aj kódom."

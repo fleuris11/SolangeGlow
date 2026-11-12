@@ -1041,8 +1041,8 @@ SETTINGS += [
         "selection.countries",
         JSON,
         '["BJ"]',
-        "Pays dont les clientes peuvent commander (retrait au Bénin, prix en FCFA).",
-        "Countries whose clients can order (pick-up in Benin, prices in FCFA).",
+        "Pays où la Sélection France livre (à cocher dans la console Sélection France).",
+        "Countries where the France Selection delivers (ticked in the France Selection console).",
     ),
     _s(
         "selection.max_quantity",

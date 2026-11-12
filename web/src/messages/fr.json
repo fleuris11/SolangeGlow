@@ -75,7 +75,7 @@
     "question": "Tu cherches quoi aujourd'hui ?",
     "france": {
       "title": "Sélection France",
-      "subtitle": "Les produits tendance de France, livrés au Bénin.",
+      "subtitle": "Les produits tendance de France, livrés là où tu es.",
       "shelves": {
         "smallPrices": "Petits prix",
         "trending": "Tendance",
@@ -110,7 +110,7 @@
         "skincare": "Trouver un professionnel : esthétique"
       },
       "alt": {
-        "hair": "Coiffeuse qui fait un brushing à une cliente aux cheveux châtains.",
+        "hair": "Deux hommes dans un salon de coiffure : le barbier coupe les cheveux de son client.",
         "braids": "Femme aux longues tresses, pull jaune, sur fond noir.",
         "makeup": "Maquilleuse qui applique du rouge à lèvres, en gros plan.",
         "nails": "Vernis à paillettes posé sur des ongles roses.",
@@ -147,7 +147,7 @@
       "more": {
         "title": "Boutiques et formations",
         "shop": "Sélection France",
-        "shopText": "Les produits de France livrés au Bénin, prix final affiché.",
+        "shopText": "Les produits de France, livrés près de chez toi, prix final affiché.",
         "academy": "Académie",
         "academyText": "Apprends les gestes des professionnels, à ton rythme, même hors ligne."
       },
@@ -2155,7 +2155,7 @@
     },
     "home": {
       "title": "Sélection France",
-      "intro": "Les produits tendance de France, achetés pour toi et envoyés au Bénin.",
+      "intro": "Les produits tendance de France, achetés pour toi et livrés jusqu'à un point de retrait près de chez toi.",
       "finalPrice": "Prix final : transport et douane compris, rien à payer en plus.",
       "held": "Ton argent reste bloqué jusqu'à ce que tu récupères ton colis.",
       "delay": "Envoi groupé chaque semaine : chez toi entre le {from} et le {to}",
@@ -2166,7 +2166,9 @@
       "specialTitle": "Tu ne trouves pas ton produit ?",
       "specialText": "Colle un lien ou envoie une photo : on t'envoie un prix, tu décides.",
       "specialCta": "Faire une demande spéciale",
-      "myOrders": "Suivre mes commandes"
+      "myOrders": "Suivre mes commandes",
+      "deliveryOpen": "Livraison ouverte actuellement : {countries}.",
+      "deliverySoon": "Livraison bientôt ouverte dans de nouveaux pays."
     },
     "product": {
       "photos": "Photos du produit",
@@ -2175,7 +2177,7 @@
       "protected": "Paiement sécurisé : ton argent est bloqué jusqu'à ce que tu récupères ton colis avec ton code. Remboursée si on ne peut pas l'envoyer.",
       "description": "Description",
       "metaTitle": "{title}, Sélection France",
-      "metaDescription": "Acheté en France, livré au Bénin, prix final sans surprise."
+      "metaDescription": "Acheté en France, livré jusqu'à toi, prix final sans surprise."
     },
     "buy": {
       "between": "Chez toi entre le {from} et le {to}",
@@ -2199,7 +2201,9 @@
       "pay": "Payer {amount}",
       "offer": "Offrir ce produit",
       "voucher": "Bon Glow (facultatif)",
-      "voucherHint": "Ton code GLOW-… gagné avec tes points. La réduction s'affiche au paiement."
+      "voucherHint": "Ton code GLOW-… gagné avec tes points. La réduction s'affiche au paiement.",
+      "deliveryOpen": "Livraison ouverte actuellement : {countries}.",
+      "deliverySoon": "Livraison bientôt ouverte dans ton pays."
     },
     "requests": {
       "title": "Demande spéciale",
@@ -2244,7 +2248,7 @@
       "to_order": "Payée, bientôt commandée",
       "ordered": "Commandée en France",
       "received": "Reçue en France",
-      "shipped": "En route vers le Bénin",
+      "shipped": "En route vers ton point de retrait",
       "arrived": "Prête au point de retrait",
       "completed": "Récupérée",
       "cancelled": "Annulée",
@@ -2256,7 +2260,7 @@
       "paid": "Payée, argent bloqué",
       "ordered": "Commandée chez le marchand",
       "received": "Reçue en France",
-      "shipped": "En route vers le Bénin",
+      "shipped": "En route vers ton point de retrait",
       "arrived": "Au point de retrait",
       "completed": "Récupérée avec ton code",
       "yes": "fait",
@@ -4399,7 +4403,7 @@
       },
       "france": {
         "title": "Sélection France",
-        "text": "Des produits de France livrés au Bénin."
+        "text": "Des produits de France livrés jusqu'à toi."
       },
       "academy": {
         "title": "Te former à l'Académie",
@@ -4586,7 +4590,7 @@
       },
       "alt": {
         "braids": "Femme aux longues tresses et grandes créoles, de profil.",
-        "salon": "Intérieur d'un salon de beauté rose.",
+        "salon": "Un barbier passe la tondeuse sur la tempe d'un client.",
         "palette": "Rouleaux de wax vert, jaune et rouge.",
         "hands": "Une maquilleuse prépare une mariée.",
         "curls": "Femme aux cheveux bouclés."
@@ -5002,14 +5006,14 @@
       "seeAll": "Tout voir",
       "alt": {
         "seek": "Femme souriante, chemise jaune, sur un mur bleu.",
-        "offer": "Une coiffeuse au travail dans son salon rose."
+        "offer": "Un barbier souriant avec son client, devant son salon."
       }
     },
     "everyone": {
       "first": "Toutes les peaux.",
       "second": "Tous les cheveux.",
-      "line": "Peau noire, métisse, blanche, albinos ou avec du vitiligo : chacun trouve le professionnel qui sait le sublimer.",
-      "label": "Des portraits de toutes les beautés",
+      "line": "Femmes et hommes, peau noire, métisse, blanche, asiatique, albinos ou avec du vitiligo : chacun trouve le professionnel qui sait le sublimer.",
+      "label": "Des portraits de toutes les beautés, femmes et hommes",
       "alt": {
         "albinism-braids": "Femme albinos aux tresses collées et au rouge à lèvres, une branche verte à la main.",
         "makeup-red-hair": "Femme rousse qui se maquille devant un miroir.",
@@ -5018,7 +5022,14 @@
         "bride-makeup-gold": "Mariée maquillée, parée de bijoux dorés.",
         "albinism-cornrows-man": "Homme albinos aux tresses et à la barbe, collier argenté.",
         "vitiligo-lips": "Femme avec du vitiligo, lèvres rouges, bras croisés.",
-        "hair-colour-foils": "Coloration en salon, mèches dans des feuilles d'aluminium."
+        "hair-colour-foils": "Coloration en salon, mèches dans des feuilles d'aluminium.",
+        "barber-comb": "Coupe d'homme au peigne et à la tondeuse, vue de dos.",
+        "barber-smile": "Un barbier ajuste la cape d'un client qui sourit, cape jaune.",
+        "beard-shave": "Barbe taillée au rasoir par un barbier, en gros plan.",
+        "bride-flowers": "Mariée indienne coiffée de roses rouges, bijoux dorés.",
+        "makeup-mirror": "Femme tatouée qui se maquille devant un petit miroir.",
+        "haircut-grey": "Homme aux cheveux gris qui se fait couper les cheveux aux ciseaux.",
+        "barber-dryer": "Un barbier aux cheveux longs sèche les cheveux d'un client."
       }
     },
     "steps": {
@@ -5188,7 +5199,7 @@
       },
       "hair": {
         "name": "Coiffure",
-        "alt": "Femme aux boucles cuivrées, de trois quarts.",
+        "alt": "Coupe d'homme au peigne et à la tondeuse.",
         "subs": {
           "a": "Coupe",
           "b": "Couleur",

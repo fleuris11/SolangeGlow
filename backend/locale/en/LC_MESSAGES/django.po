@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-11 23:51+0100\n"
+"POT-Creation-Date: 2026-11-12 17:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1309,7 +1309,64 @@ msgstr ""
 msgid "No active creative with a placement yet."
 msgstr ""
 
+msgid "e-mails sent"
+msgstr ""
+
+msgid "Who they are"
+msgstr ""
+
+msgid "How to reach them"
+msgstr ""
+
+msgid "What they do, what we offer"
+msgstr ""
+
+msgid "Follow-up"
+msgstr ""
+
+msgid "Showcase and account"
+msgstr ""
+
+msgid "showcase"
+msgstr ""
+
+msgid "Not prepared"
+msgstr ""
+
 msgid "sign-up link"
+msgstr ""
+
+msgid "Prepare her showcase"
+msgstr ""
+
+#, python-format
+msgid "Draft showcase « %(name)s » ready. Complete it, then send the e-mail."
+msgstr ""
+
+msgid "Complete her showcase (as her)"
+msgstr ""
+
+msgid "Prepare her showcase first."
+msgstr ""
+
+msgid "Send an e-mail"
+msgstr ""
+
+msgid "Send the presentation e-mail"
+msgstr ""
+
+msgid "The standard e-mail « presentation » is missing."
+msgstr ""
+
+#, python-format
+msgid "%(sent)s e-mails leaving, %(skipped)s skipped (no address, or asked to stop)."
+msgstr ""
+
+msgid "Prepare the showcases"
+msgstr ""
+
+#, python-format
+msgid "%(done)s showcases prepared, %(skipped)s skipped (no e-mail, or account exists)."
 msgstr ""
 
 msgid "Send the invitation (WhatsApp, else SMS)"
@@ -1320,6 +1377,15 @@ msgid "%(count)s invitations sent (a prospect without a phone is skipped)."
 msgstr ""
 
 msgid "Import a CSV file"
+msgstr ""
+
+msgid "Standard e-mails"
+msgstr ""
+
+msgid "Text"
+msgstr ""
+
+msgid "Replaced for each prospect: {{ name }} (first name), {{ business }}, {{ city }}, {{ pitch }} (our proposal), {{ link }} (her personal link) and {{ stop_link }} (« not interested », to keep at the bottom)."
 msgstr ""
 
 msgid "Search a text"
@@ -1373,6 +1439,9 @@ msgstr ""
 msgid "Disputes console"
 msgstr ""
 
+msgid "Delivery countries of the France Selection saved."
+msgstr ""
+
 msgid "France Selection console"
 msgstr ""
 
@@ -1390,6 +1459,14 @@ msgid "%(added)s added, %(skipped)s already known or empty."
 msgstr ""
 
 msgid "Import prospects"
+msgstr ""
+
+#, python-format
+msgid "E-mail « %(name)s » on its way."
+msgstr ""
+
+#, python-format
+msgid "E-mail to %(name)s"
 msgstr ""
 
 msgid "Why (written in the journal)"
@@ -1422,6 +1499,40 @@ msgid "Open disputes"
 msgstr ""
 
 msgid "Moderation queue"
+msgstr ""
+
+msgid "New announcement"
+msgstr ""
+
+msgid "New prospect"
+msgstr ""
+
+msgid "Ad campaign"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Translations"
+msgstr ""
+
+msgid "This prospect has no e-mail address: add it first."
+msgstr ""
+
+msgid "An account already uses this e-mail address: this person is already on Solange Glow."
+msgstr ""
+
+msgid "Prepare the showcase of this prospect first: this e-mail presents it."
+msgstr ""
+
+msgid "This prospect asked not to be contacted any more."
+msgstr ""
+
+#, python-format
+msgid "%(max)s e-mails to prospects were already sent today. Continue tomorrow."
+msgstr ""
+
+msgid "This standard e-mail does not exist or is switched off."
 msgstr ""
 
 msgid "team member"
@@ -1523,6 +1634,33 @@ msgstr ""
 msgid "source"
 msgstr ""
 
+msgid "language of the messages"
+msgstr ""
+
+msgid "what they do"
+msgstr ""
+
+msgid "Their services, their prices, their style."
+msgstr ""
+
+msgid "our proposal"
+msgstr ""
+
+msgid "One or two sentences written for them; shown in the e-mails ({{ pitch }})."
+msgstr ""
+
+msgid "site or social page"
+msgstr ""
+
+msgid "Instagram, Facebook…"
+msgstr ""
+
+msgid "prepared showcase"
+msgstr ""
+
+msgid "last e-mail"
+msgstr ""
+
 msgid "invitation code"
 msgstr ""
 
@@ -1536,6 +1674,42 @@ msgid "prospect"
 msgstr ""
 
 msgid "prospects"
+msgstr ""
+
+msgid "subject"
+msgstr ""
+
+msgid "needs a prepared showcase"
+msgstr ""
+
+msgid "Sent only to a prospect whose showcase was prepared: the link opens it."
+msgstr ""
+
+msgid "standard e-mail"
+msgstr ""
+
+msgid "standard e-mails"
+msgstr ""
+
+msgid "Leaving"
+msgstr ""
+
+msgid "Sent"
+msgstr ""
+
+msgid "Not sent"
+msgstr ""
+
+msgid "to"
+msgstr ""
+
+msgid "error"
+msgstr ""
+
+msgid "e-mail sent to a prospect"
+msgstr ""
+
+msgid "e-mails sent to prospects"
 msgstr ""
 
 msgid "Export as CSV"
@@ -1648,6 +1822,38 @@ msgstr ""
 msgid "Nothing to review. Well done!"
 msgstr ""
 
+#, python-format
+msgid "To: <strong>%(email)s</strong>, written in %(language)s."
+msgstr ""
+
+#, python-format
+msgid "E-mails to prospects today: %(sent_today)s."
+msgstr ""
+
+msgid "This prospect asked not to be contacted any more: nothing can be sent."
+msgstr ""
+
+msgid "No standard e-mail is active: write one first."
+msgstr ""
+
+msgid "Standard e-mail"
+msgstr ""
+
+msgid "Show"
+msgstr ""
+
+msgid "What she will receive"
+msgstr ""
+
+msgid "Send this e-mail"
+msgstr ""
+
+msgid "Back to the prospect"
+msgstr ""
+
+msgid "To change the words for everyone, edit the standard e-mail. To change them for this prospect only, fill in « our proposal » on her file."
+msgstr ""
+
 msgid "A CSV file (commas or semicolons) with a first line of titles: name, business, phone, e-mail, city, country, trade, source. Only the name is needed. A phone or e-mail already known is skipped."
 msgstr ""
 
@@ -1662,6 +1868,21 @@ msgid "Two-factor is on. Keep these backup codes in a safe place: each one opens
 msgstr ""
 
 msgid "I kept them, continue"
+msgstr ""
+
+msgid "Countries where the France Selection delivers"
+msgstr ""
+
+msgid "Tick a country when you have people there to hand the parcels over. Clients of an unticked country see the products but cannot order yet. Add its pick-up points too."
+msgstr ""
+
+msgid "Save the countries"
+msgstr ""
+
+msgid "Pick-up points"
+msgstr ""
+
+msgid "No pick-up point yet."
 msgstr ""
 
 #, python-format
@@ -1768,6 +1989,24 @@ msgid "Backup code"
 msgstr ""
 
 msgid "Continue"
+msgstr ""
+
+msgid "This link is no longer valid."
+msgstr ""
+
+msgid "Understood: we will not write to you again."
+msgstr ""
+
+msgid "Thank you for your time. If you change your mind one day, you are welcome on Solange Glow."
+msgstr ""
+
+msgid "Stop receiving our e-mails?"
+msgstr ""
+
+msgid "Confirm, and we will not write to you again."
+msgstr ""
+
+msgid "Yes, stop the e-mails"
 msgstr ""
 
 msgid "deposit"
@@ -1985,9 +2224,6 @@ msgid "staff members"
 msgstr ""
 
 msgid "person"
-msgstr ""
-
-msgid "to"
 msgstr ""
 
 msgid "working hours"
@@ -2280,7 +2516,72 @@ msgstr ""
 msgid "Versions of %(name)s"
 msgstr ""
 
-msgid "new picture"
+msgid "A picture (JPEG, PNG, WebP) or a short video (MP4). Wide pictures look best (16:7). It replaces the current one."
+msgstr ""
+
+msgid "remove the picture or video"
+msgstr ""
+
+msgid "where it is shown"
+msgstr ""
+
+msgid "Tick one place or more."
+msgstr ""
+
+msgid "None ticked: every country."
+msgstr ""
+
+msgid "A button needs a link: where does it lead?"
+msgstr ""
+
+msgid "The end must come after the beginning."
+msgstr ""
+
+msgid "Scheduled"
+msgstr ""
+
+msgid "Switched off"
+msgstr ""
+
+msgid "What it says"
+msgstr ""
+
+msgid "Picture or video"
+msgstr ""
+
+msgid "Button"
+msgstr ""
+
+msgid "Where and when"
+msgstr ""
+
+msgid "Order and state"
+msgstr ""
+
+msgid "Being prepared…"
+msgstr ""
+
+msgid "current picture or video"
+msgstr ""
+
+msgid "Every country"
+msgstr ""
+
+msgid "state"
+msgstr ""
+
+msgid "Switch on the selected announcements"
+msgstr ""
+
+#, python-format
+msgid "%(count)s switched on."
+msgstr ""
+
+msgid "Switch off the selected announcements"
+msgstr ""
+
+#, python-format
+msgid "%(count)s switched off."
 msgstr ""
 
 msgid "Answer"
@@ -2341,10 +2642,34 @@ msgstr ""
 msgid "pages"
 msgstr ""
 
-msgid "home banner"
+msgid "Home: above the feed (visitors and members)"
 msgstr ""
 
-msgid "home banners"
+msgid "Explore: above the search results"
+msgstr ""
+
+msgid "France Selection: top of the shop"
+msgstr ""
+
+msgid "Academy: top of the courses"
+msgstr ""
+
+msgid "Public page « Offer my services »"
+msgstr ""
+
+msgid "Professional space: top of « Today »"
+msgstr ""
+
+msgid "promo code"
+msgstr ""
+
+msgid "Shown on the announcement with a « Copy » button. Empty: none."
+msgstr ""
+
+msgid "announcement"
+msgstr ""
+
+msgid "announcements"
 msgstr ""
 
 msgid "My account"
@@ -2605,9 +2930,6 @@ msgstr ""
 msgid "blur preview"
 msgstr ""
 
-msgid "error"
-msgstr ""
-
 msgid "processed at"
 msgstr ""
 
@@ -2667,9 +2989,6 @@ msgid "postal code"
 msgstr ""
 
 msgid "population"
-msgstr ""
-
-msgid "Text"
 msgstr ""
 
 msgid "Whole number"
@@ -2824,6 +3143,9 @@ msgid "discount"
 msgstr ""
 
 msgid "chance (everywhere)"
+msgstr ""
+
+msgid "new picture"
 msgstr ""
 
 msgid "new audio"
@@ -3511,9 +3833,6 @@ msgstr ""
 msgid "Paid, sent on the chosen day"
 msgstr ""
 
-msgid "Sent"
-msgstr ""
-
 msgid "Opened"
 msgstr ""
 
@@ -3527,9 +3846,6 @@ msgid "No photo yet"
 msgstr ""
 
 msgid "Photo sent"
-msgstr ""
-
-msgid "Not sent"
 msgstr ""
 
 msgid "offered by"
@@ -4411,9 +4727,6 @@ msgstr ""
 msgid "Hung up"
 msgstr ""
 
-msgid "state"
-msgstr ""
-
 msgid "joined at"
 msgstr ""
 
@@ -4610,9 +4923,6 @@ msgid "notification"
 msgstr ""
 
 msgid "notifications"
-msgstr ""
-
-msgid "Scheduled"
 msgstr ""
 
 msgid "Not sent (channel off)"
@@ -6002,9 +6312,6 @@ msgstr ""
 msgid "not come for (days)"
 msgstr ""
 
-msgid "subject"
-msgstr ""
-
 msgid "in the segment"
 msgstr ""
 
@@ -6786,9 +7093,6 @@ msgstr ""
 msgid "uses per client"
 msgstr ""
 
-msgid "promo code"
-msgstr ""
-
 msgid "promo codes"
 msgstr ""
 
@@ -6989,9 +7293,6 @@ msgid "post"
 msgstr ""
 
 msgid "posts"
-msgstr ""
-
-msgid "Picture or video"
 msgstr ""
 
 msgid "Before"
@@ -7198,9 +7499,6 @@ msgstr ""
 msgid "Categories and prices"
 msgstr ""
 
-msgid "Pick-up points"
-msgstr ""
-
 msgid "Glow Pro"
 msgstr "Glow Premium"
 
@@ -7393,6 +7691,12 @@ msgstr ""
 msgid "optional"
 msgstr ""
 
+msgid "Quick actions"
+msgstr ""
+
+msgid "Prospecting"
+msgstr ""
+
 msgid "Period"
 msgstr ""
 
@@ -7412,9 +7716,6 @@ msgid "Country"
 msgstr ""
 
 msgid "All"
-msgstr ""
-
-msgid "Show"
 msgstr ""
 
 #, python-format

@@ -4,6 +4,26 @@
 {% block breadcrumbs %}{% endblock %}
 
 {% block content %}
+  <section class="border border-base-200 rounded-default p-4 dark:border-base-800" style="margin-bottom:16px">
+    <h2 class="font-semibold" style="margin-bottom:8px">{% translate "Countries where the France Selection delivers" %}</h2>
+    <p class="text-subtle" style="margin-bottom:12px">{% translate "Tick a country when you have people there to hand the parcels over. Clients of an unticked country see the products but cannot order yet. Add its pick-up points too." %}</p>
+    <form method="post" style="display:flex;flex-direction:column;gap:12px">
+      {% csrf_token %}
+      <div style="display:flex;flex-wrap:wrap;gap:8px 20px">
+        {% for country, open in countries %}
+          <label style="display:flex;align-items:center;gap:8px;min-height:32px">
+            <input type="checkbox" name="countries" value="{{ country.code }}" {% if open %}checked{% endif %}>
+            <span>{{ country.name }}</span>
+          </label>
+        {% endfor %}
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center">
+        <button type="submit" class="bg-primary-600 text-white rounded-default px-4 py-2 font-semibold">{% translate "Save the countries" %}</button>
+        <a class="underline" href="{% url 'admin:selection_france_pickuppoint_changelist' %}">{% translate "Pick-up points" %}</a>
+        <span class="text-subtle">{% for city, count in pickup_cities %}{{ city }} ({{ count }}){% if not forloop.last %}, {% endif %}{% empty %}{% translate "No pick-up point yet." %}{% endfor %}</span>
+      </div>
+    </form>
+  </section>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:16px">
     <section class="border border-base-200 rounded-default p-4 dark:border-base-800">
       <h2 class="font-semibold" style="margin-bottom:8px">{% blocktranslate with count=to_order|length %}To order at the merchant ({{ count }}){% endblocktranslate %}</h2>

@@ -37,6 +37,31 @@
         </details>
       </section>
     {% endif %}
+    {% if shortcuts %}
+      <section aria-labelledby="shortcuts-title" style="margin-bottom:24px">
+        <h2 id="shortcuts-title" class="font-semibold" style="font-size:18px;margin-bottom:8px">{% translate "Quick actions" %}</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px">
+          {% for item in shortcuts %}
+            <a href="{{ item.link }}" class="bg-white border border-base-200 rounded-default dark:bg-base-900 dark:border-base-800 font-semibold" style="display:flex;align-items:center;gap:8px;padding:12px 14px;min-height:52px">
+              <span class="material-symbols-outlined text-primary-600" aria-hidden="true">{{ item.icon }}</span>{{ item.title }}
+            </a>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
+    {% if prospecting %}
+      <section aria-labelledby="prospecting-title" style="margin-bottom:24px">
+        <h2 id="prospecting-title" class="font-semibold" style="font-size:18px;margin-bottom:8px">{% translate "Prospecting" %}</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px">
+          {% for step in prospecting %}
+            <a href="{{ step.link }}" class="bg-white border border-base-200 rounded-default p-4 dark:bg-base-900 dark:border-base-800" style="display:block">
+              <p class="text-subtle">{{ step.title }}</p>
+              <p class="font-semibold" style="font-size:24px;margin-top:4px">{{ step.value }}</p>
+            </a>
+          {% endfor %}
+        </div>
+      </section>
+    {% endif %}
     <form method="get" style="display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin-bottom:24px">
       <label style="display:flex;flex-direction:column;gap:4px">
         <span class="font-semibold">{% translate "Period" %}</span>

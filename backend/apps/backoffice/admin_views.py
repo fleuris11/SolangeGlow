@@ -3,6 +3,7 @@ team, the switches, the translations, the consoles, « sign in as » a member.""
 
 from __future__ import annotations
 
+import json
 from urllib.parse import quote
 
 import segno
@@ -293,7 +294,34 @@ def disputes_console(site):
 def selection_console(site):
     def view(request):
         _require(request, "use_selection_console")
-        from apps.selection_france.models import SelectionOrder, Shipment
+        from apps.core.models import PlatformSetting
+        from apps.selection_france import selectors as selection_selectors
+        from apps.selection_france.models import PickupPoint, SelectionOrder, Shipment
+
+        active = list(Country.objects.filter(is_active=True).order_by("name"))
+        if request.method == "POST":
+            chosen = [c.code for c in active if c.code in request.POST.getlist("countries")]
+            setting, _created = PlatformSetting.objects.get_or_create(
+                key="selection.countries",
+                country=None,
+                defaults={"value_type": PlatformSetting.ValueType.JSON, "value": "[]"},
+            )
+            before = setting.value
+            setting.value = json.dumps(chosen)
+            setting.save()
+            record(
+                "backoffice.selection_countries",
+                setting,
+                actor=request.user,
+                before={"value": before},
+                after={"value": setting.value},
+            )
+            messages.success(request, _("Delivery countries of the France Selection saved."))
+            return redirect(reverse("admin:backoffice_selection_console"))
+        open_codes = set(selection_selectors.delivery_country_codes())
+        points = {}
+        for point in PickupPoint.objects.filter(is_active=True):
+            points[point.city] = points.get(point.city, 0) + 1
 
         O = SelectionOrder.Status  # noqa: E741
         orders = SelectionOrder.objects.select_related("buyer", "pickup_point")
@@ -310,6 +338,8 @@ def selection_console(site):
                 "-created_at"
             )[:30],
             at_points=orders.filter(status=O.ARRIVED).order_by("pickup_point", "created_at")[:100],
+            countries=[(c, c.code in open_codes) for c in active],
+            pickup_cities=sorted(points.items()),
         )
 
     return view

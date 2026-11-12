@@ -75,7 +75,7 @@
     "question": "What are you looking for today?",
     "france": {
       "title": "France Selection",
-      "subtitle": "Trendy products from France, delivered to Benin.",
+      "subtitle": "Trending products from France, delivered where you are.",
       "shelves": {
         "smallPrices": "Small prices",
         "trending": "Trending",
@@ -110,7 +110,7 @@
         "skincare": "Find my skincare professional"
       },
       "alt": {
-        "hair": "Hairdresser blow-drying a client's light brown hair.",
+        "hair": "Two men in a hair salon: the barber cuts his client's hair.",
         "braids": "Woman with long braids, yellow sweater, black background.",
         "makeup": "Makeup artist applying lipstick, close up.",
         "nails": "Glitter polish on pink nails.",
@@ -147,7 +147,7 @@
       "more": {
         "title": "Shops and courses",
         "shop": "France Selection",
-        "shopText": "Products from France delivered to Benin, final price shown.",
+        "shopText": "Products from France, delivered near you, final price shown.",
         "academy": "Academy",
         "academyText": "Learn the professionals' skills at your pace, even offline."
       },
@@ -2155,7 +2155,7 @@
     },
     "home": {
       "title": "France Selection",
-      "intro": "Trendy products from France, bought for you and sent to Benin.",
+      "intro": "Trending products from France, bought for you and delivered to a pick-up point near you.",
       "finalPrice": "Final price: transport and customs included, nothing more to pay.",
       "held": "Your money stays held until you pick up your parcel.",
       "delay": "Grouped shipment every week: with you between {from} and {to}",
@@ -2166,7 +2166,9 @@
       "specialTitle": "Cannot find your product?",
       "specialText": "Paste a link or send a photo: we send you a price, you decide.",
       "specialCta": "Send a special request",
-      "myOrders": "Follow my orders"
+      "myOrders": "Follow my orders",
+      "deliveryOpen": "Delivery open now: {countries}.",
+      "deliverySoon": "Delivery soon open in new countries."
     },
     "product": {
       "photos": "Product pictures",
@@ -2175,7 +2177,7 @@
       "protected": "Secure payment: your money is held until you pick up your parcel with your code. Refunded if we cannot send it.",
       "description": "Description",
       "metaTitle": "{title}, France Selection",
-      "metaDescription": "Bought in France, delivered in Benin, final price without surprise."
+      "metaDescription": "Bought in France, delivered to you, final price with no surprise."
     },
     "buy": {
       "between": "With you between {from} and {to}",
@@ -2199,7 +2201,9 @@
       "pay": "Pay {amount}",
       "offer": "Offer this product",
       "voucher": "Glow voucher (optional)",
-      "voucherHint": "Your GLOW-… code won with your points. The discount shows at payment."
+      "voucherHint": "Your GLOW-… code won with your points. The discount shows at payment.",
+      "deliveryOpen": "Delivery open now: {countries}.",
+      "deliverySoon": "Delivery soon open in your country."
     },
     "requests": {
       "title": "Special request",
@@ -2244,7 +2248,7 @@
       "to_order": "Paid, ordered soon",
       "ordered": "Ordered in France",
       "received": "Received in France",
-      "shipped": "On its way to Benin",
+      "shipped": "On its way to your pick-up point",
       "arrived": "Ready at the pick-up point",
       "completed": "Picked up",
       "cancelled": "Cancelled",
@@ -2256,7 +2260,7 @@
       "paid": "Paid, money held",
       "ordered": "Ordered at the merchant",
       "received": "Received in France",
-      "shipped": "On its way to Benin",
+      "shipped": "On its way to your pick-up point",
       "arrived": "At the pick-up point",
       "completed": "Picked up with your code",
       "yes": "done",
@@ -4399,7 +4403,7 @@
       },
       "france": {
         "title": "France Selection",
-        "text": "Products from France delivered to Benin."
+        "text": "Products from France delivered to you."
       },
       "academy": {
         "title": "Learn at the Academy",
@@ -4586,7 +4590,7 @@
       },
       "alt": {
         "braids": "Woman with long braids and large hoops, in profile.",
-        "salon": "Inside a pink beauty salon.",
+        "salon": "A barber runs the clippers along a client's temple.",
         "palette": "Rolls of green, yellow and red wax print.",
         "hands": "A makeup artist preparing a bride.",
         "curls": "Woman with curly hair."
@@ -5002,14 +5006,14 @@
       "seeAll": "See everything",
       "alt": {
         "seek": "Smiling woman, yellow shirt, against a blue wall.",
-        "offer": "A hairdresser at work in her pink salon."
+        "offer": "A smiling barber with his client, in front of his salon."
       }
     },
     "everyone": {
       "first": "Every skin.",
       "second": "Every hair.",
-      "line": "Black, mixed, white, with albinism or vitiligo: everyone finds the professional who knows how to make them shine.",
-      "label": "Portraits of every kind of beauty",
+      "line": "Women and men, Black, mixed, white, Asian skin, albinism or vitiligo: everyone finds the professional who knows how to make them shine.",
+      "label": "Portraits of every beauty, women and men",
       "alt": {
         "albinism-braids": "Woman with albinism, cornrows and red lipstick, holding a green branch.",
         "makeup-red-hair": "Red-haired woman doing her makeup in front of a mirror.",
@@ -5018,7 +5022,14 @@
         "bride-makeup-gold": "Bride with makeup and gold jewellery.",
         "albinism-cornrows-man": "Man with albinism, braids, beard and a silver necklace.",
         "vitiligo-lips": "Woman with vitiligo, red lips, arms crossed.",
-        "hair-colour-foils": "Hair colouring in a salon, strands in foil."
+        "hair-colour-foils": "Hair colouring in a salon, strands in foil.",
+        "barber-comb": "A man's haircut with comb and clippers, seen from behind.",
+        "barber-smile": "A barber adjusts the yellow cape of a smiling client.",
+        "beard-shave": "A beard trimmed with a razor by a barber, close-up.",
+        "bride-flowers": "Indian bride with red roses in her hair and golden jewellery.",
+        "makeup-mirror": "Tattooed woman doing her makeup with a small mirror.",
+        "haircut-grey": "Grey-haired man getting a scissor haircut.",
+        "barber-dryer": "A long-haired barber blow-dries a client's hair."
       }
     },
     "steps": {
@@ -5188,7 +5199,7 @@
       },
       "hair": {
         "name": "Hair",
-        "alt": "Woman with copper curls, three-quarter view.",
+        "alt": "A man's haircut with comb and clippers.",
         "subs": {
           "a": "Cut",
           "b": "Colour",

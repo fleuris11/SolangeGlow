@@ -75,7 +75,7 @@
     "question": "Čo dnes hľadáš?",
     "france": {
       "title": "Výber z Francúzska",
-      "subtitle": "Trendové produkty z Francúzska, doručené do Beninu.",
+      "subtitle": "Trendové produkty z Francúzska, doručené tam, kde ste.",
       "shelves": {
         "smallPrices": "Nízke ceny",
         "trending": "Trendy",
@@ -110,7 +110,7 @@
         "skincare": "Nájsť kozmetičku"
       },
       "alt": {
-        "hair": "Kaderníčka fúka klientke gaštanové vlasy.",
+        "hair": "Dvaja muži v kaderníctve: holič strihá klientovi vlasy.",
         "braids": "Žena s dlhými vrkočmi, žltý sveter, čierne pozadie.",
         "makeup": "Vizážistka nanáša rúž, zblízka.",
         "nails": "Trblietavý lak na ružových nechtoch.",
@@ -147,7 +147,7 @@
       "more": {
         "title": "Obchody a kurzy",
         "shop": "Výber z Francúzska",
-        "shopText": "Produkty z Francúzska doručené do Beninu, konečná cena.",
+        "shopText": "Produkty z Francúzska doručené vo vašej blízkosti, konečná cena.",
         "academy": "Akadémia",
         "academyText": "Nauč sa postupy profesionálok vlastným tempom, aj offline."
       },
@@ -2155,7 +2155,7 @@
     },
     "home": {
       "title": "Výber z Francúzska",
-      "intro": "Trendy produkty z Francúzska, kúpené pre teba a poslané do Beninu.",
+      "intro": "Trendové produkty z Francúzska, kúpené pre teba a doručené na výdajné miesto blízko teba.",
       "finalPrice": "Konečná cena: doprava a clo v cene, nič navyše.",
       "held": "Peniaze sú blokované, kým si nevyzdvihneš balík.",
       "delay": "Zoskupená zásielka každý týždeň: u teba medzi {from} a {to}",
@@ -2166,7 +2166,9 @@
       "specialTitle": "Nenašla si svoj produkt?",
       "specialText": "Vlož odkaz alebo pošli fotku: pošleme ti cenu a ty rozhodneš.",
       "specialCta": "Poslať špeciálnu požiadavku",
-      "myOrders": "Sledovať moje objednávky"
+      "myOrders": "Sledovať moje objednávky",
+      "deliveryOpen": "Doručenie je teraz otvorené: {countries}.",
+      "deliverySoon": "Doručenie čoskoro aj do ďalších krajín."
     },
     "product": {
       "photos": "Fotky produktu",
@@ -2175,7 +2177,7 @@
       "protected": "Bezpečná platba: peniaze sú blokované, kým si balík nevyzdvihneš s kódom. Vrátime ich, ak ho nemôžeme poslať.",
       "description": "Popis",
       "metaTitle": "{title}, výber z Francúzska",
-      "metaDescription": "Kúpené vo Francúzsku, doručené do Beninu, konečná cena bez prekvapení."
+      "metaDescription": "Kúpené vo Francúzsku, doručené až k tebe, konečná cena bez prekvapení."
     },
     "buy": {
       "between": "U teba medzi {from} a {to}",
@@ -2199,7 +2201,9 @@
       "pay": "Zaplatiť {amount}",
       "offer": "Darovať tento produkt",
       "voucher": "Poukážka Glow (nepovinné)",
-      "voucherHint": "Tvoj kód GLOW-… získaný za body. Zľava sa zobrazí pri platbe."
+      "voucherHint": "Tvoj kód GLOW-… získaný za body. Zľava sa zobrazí pri platbe.",
+      "deliveryOpen": "Doručenie je teraz otvorené: {countries}.",
+      "deliverySoon": "Doručenie čoskoro aj do tvojej krajiny."
     },
     "requests": {
       "title": "Špeciálna požiadavka",
@@ -2244,7 +2248,7 @@
       "to_order": "Zaplatené, čoskoro objednáme",
       "ordered": "Objednané vo Francúzsku",
       "received": "Prijaté vo Francúzsku",
-      "shipped": "Na ceste do Beninu",
+      "shipped": "Na ceste na tvoje výdajné miesto",
       "arrived": "Pripravené na výdajnom mieste",
       "completed": "Vyzdvihnuté",
       "cancelled": "Zrušené",
@@ -2256,7 +2260,7 @@
       "paid": "Zaplatené, peniaze blokované",
       "ordered": "Objednané u obchodníka",
       "received": "Prijaté vo Francúzsku",
-      "shipped": "Na ceste do Beninu",
+      "shipped": "Na ceste na tvoje výdajné miesto",
       "arrived": "Na výdajnom mieste",
       "completed": "Vyzdvihnuté s tvojím kódom",
       "yes": "hotovo",
@@ -4399,7 +4403,7 @@
       },
       "france": {
         "title": "Výber z Francúzska",
-        "text": "Produkty z Francúzska s doručením do Beninu."
+        "text": "Produkty z Francúzska doručené až k tebe."
       },
       "academy": {
         "title": "Vzdelávaj sa v Akadémii",
@@ -4586,7 +4590,7 @@
       },
       "alt": {
         "braids": "Žena s dlhými vrkočmi a veľkými kruhmi, z profilu.",
-        "salon": "Interiér ružového salónu krásy.",
+        "salon": "Holič prechádza strojčekom po spánku klienta.",
         "palette": "Rolky zelenej, žltej a červenej látky wax.",
         "hands": "Vizážistka pripravuje nevestu.",
         "curls": "Žena s kučeravými vlasmi."
@@ -5002,14 +5006,14 @@
       "seeAll": "Pozrieť všetko",
       "alt": {
         "seek": "Usmiata žena v žltej košeli pred modrou stenou.",
-        "offer": "Kaderníčka pri práci vo svojom ružovom salóne."
+        "offer": "Usmievavý holič s klientom pred svojím salónom."
       }
     },
     "everyone": {
       "first": "Každá pleť.",
       "second": "Každé vlasy.",
-      "line": "Tmavá, zmiešaná, svetlá pleť, albinizmus či vitiligo: každý nájde profesionála, ktorý ho zvýrazní.",
-      "label": "Portréty všetkých druhov krásy",
+      "line": "Ženy aj muži, čierna, zmiešaná, biela či ázijská pleť, albinizmus alebo vitiligo: každý nájde profesionála, ktorý ho vie skrášliť.",
+      "label": "Portréty každej krásy, ženy aj muži",
       "alt": {
         "albinism-braids": "Žena s albinizmom, s vrkôčikmi a červeným rúžom, so zelenou vetvičkou.",
         "makeup-red-hair": "Ryšavá žena sa líči pred zrkadlom.",
@@ -5018,7 +5022,14 @@
         "bride-makeup-gold": "Nalíčená nevesta so zlatými šperkami.",
         "albinism-cornrows-man": "Muž s albinizmom, s vrkôčikmi, bradou a strieborným náhrdelníkom.",
         "vitiligo-lips": "Žena s vitiligom, červené pery, prekrížené ruky.",
-        "hair-colour-foils": "Farbenie vlasov v salóne, prameňe vo fólii."
+        "hair-colour-foils": "Farbenie vlasov v salóne, prameňe vo fólii.",
+        "barber-comb": "Pánsky strih hrebeňom a strojčekom, pohľad zozadu.",
+        "barber-smile": "Holič upravuje žltý plášť usmievavému klientovi.",
+        "beard-shave": "Brada upravovaná britvou u holiča, detail.",
+        "bride-flowers": "Indická nevesta s červenými ružami vo vlasoch a zlatými šperkmi.",
+        "makeup-mirror": "Potetovaná žena sa líči pred malým zrkadlom.",
+        "haircut-grey": "Muž so šedivými vlasmi pri strihaní nožnicami.",
+        "barber-dryer": "Holič s dlhými vlasmi fúka klientovi vlasy."
       }
     },
     "steps": {
@@ -5188,7 +5199,7 @@
       },
       "hair": {
         "name": "Vlasy",
-        "alt": "Žena s medenými kučerami.",
+        "alt": "Pánsky strih hrebeňom a strojčekom.",
         "subs": {
           "a": "Strih",
           "b": "Farba",

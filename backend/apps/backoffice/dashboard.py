@@ -10,9 +10,10 @@ from dataclasses import dataclass
 from django.contrib.auth import get_user_model
 from django.db.models import Count, Sum
 from django.db.models.functions import TruncDate
-from django.urls import reverse
+from django.urls import NoReverseMatch, reverse
 from django.utils import timezone
 from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy
 
 from apps.core import readiness
 from apps.core.models import Country
@@ -260,6 +261,75 @@ def dashboard_callback(request, context: dict) -> dict:
                 },
             ],
             "charts": charts(window),
+            "shortcuts": shortcuts(user),
+            "prospecting": prospecting(),
         }
     )
     return context
+
+
+SHORTCUTS = [
+    # (title, icon, admin url name, permission needed)
+    (
+        gettext_lazy("New announcement"),
+        "campaign",
+        "admin:content_banner_add",
+        "content.add_banner",
+    ),
+    (
+        gettext_lazy("New prospect"),
+        "person_search",
+        "admin:backoffice_prospect_add",
+        "backoffice.add_prospect",
+    ),
+    (
+        gettext_lazy("Import prospects"),
+        "upload_file",
+        "admin:backoffice_prospects_import",
+        "backoffice.add_prospect",
+    ),
+    (
+        gettext_lazy("Standard e-mails"),
+        "drafts",
+        "admin:backoffice_prospectemailtemplate_changelist",
+        "backoffice.change_prospectemailtemplate",
+    ),
+    (gettext_lazy("Ad campaign"), "ads_click", "admin:ads_campaign_add", "ads.add_campaign"),
+    (gettext_lazy("France Selection"), "flight", "admin:backoffice_selection_console", None),
+    (
+        gettext_lazy("Settings"),
+        "tune",
+        "admin:core_platformsetting_changelist",
+        "core.change_platformsetting",
+    ),
+    (gettext_lazy("Translations"), "translate", "admin:backoffice_translations", None),
+]
+
+
+def shortcuts(user) -> list[dict]:
+    """The most frequent actions of the owner, one click away from the home of the admin."""
+    found = []
+    for title, icon, name, permission in SHORTCUTS:
+        if permission and not (user.is_superuser or user.has_perm(permission)):
+            continue
+        try:
+            found.append({"title": title, "icon": icon, "link": reverse(name)})
+        except NoReverseMatch:
+            continue
+    return found
+
+
+def prospecting() -> list[dict]:
+    """How many prospects at each step, each one a link to the filtered list."""
+    from .models import Prospect
+
+    counts = dict(
+        Prospect.objects.values_list("status")
+        .annotate(total=Count("id"))
+        .values_list("status", "total")
+    )
+    base = reverse("admin:backoffice_prospect_changelist")
+    return [
+        {"title": label, "value": counts.get(value, 0), "link": f"{base}?status__exact={value}"}
+        for value, label in Prospect.Status.choices
+    ]

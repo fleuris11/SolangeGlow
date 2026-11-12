@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-11 23:51+0100\n"
+"POT-Creation-Date: 2026-11-12 17:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1309,8 +1309,65 @@ msgstr "Sponsorisé"
 msgid "No active creative with a placement yet."
 msgstr "Aucun visuel actif avec un emplacement pour l'instant."
 
+msgid "e-mails sent"
+msgstr "e-mails envoyés"
+
+msgid "Who they are"
+msgstr "Qui c'est"
+
+msgid "How to reach them"
+msgstr "Comment les joindre"
+
+msgid "What they do, what we offer"
+msgstr "Ce qu'ils font, ce qu'on leur propose"
+
+msgid "Follow-up"
+msgstr "Suivi"
+
+msgid "Showcase and account"
+msgstr "Vitrine et compte"
+
+msgid "showcase"
+msgstr "vitrine"
+
+msgid "Not prepared"
+msgstr "Pas préparée"
+
 msgid "sign-up link"
 msgstr "lien d'inscription"
+
+msgid "Prepare her showcase"
+msgstr "Préparer sa vitrine"
+
+#, python-format
+msgid "Draft showcase « %(name)s » ready. Complete it, then send the e-mail."
+msgstr "Brouillon de vitrine « %(name)s » prêt. Complète-le, puis envoie l'e-mail."
+
+msgid "Complete her showcase (as her)"
+msgstr "Compléter sa vitrine (à sa place)"
+
+msgid "Prepare her showcase first."
+msgstr "Prépare d'abord sa vitrine."
+
+msgid "Send an e-mail"
+msgstr "Envoyer un e-mail"
+
+msgid "Send the presentation e-mail"
+msgstr "Envoyer l'e-mail de présentation"
+
+msgid "The standard e-mail « presentation » is missing."
+msgstr "L'e-mail type « presentation » manque."
+
+#, python-format
+msgid "%(sent)s e-mails leaving, %(skipped)s skipped (no address, or asked to stop)."
+msgstr "%(sent)s e-mails en cours d'envoi, %(skipped)s ignorés (pas d'adresse, ou demande d'arrêt)."
+
+msgid "Prepare the showcases"
+msgstr "Préparer les vitrines"
+
+#, python-format
+msgid "%(done)s showcases prepared, %(skipped)s skipped (no e-mail, or account exists)."
+msgstr "%(done)s vitrines préparées, %(skipped)s ignorées (pas d'e-mail, ou compte déjà existant)."
 
 msgid "Send the invitation (WhatsApp, else SMS)"
 msgstr "Envoyer l'invitation (WhatsApp, sinon SMS)"
@@ -1321,6 +1378,15 @@ msgstr "%(count)s invitations envoyées (un prospect sans numéro est ignoré)."
 
 msgid "Import a CSV file"
 msgstr "Importer un CSV"
+
+msgid "Standard e-mails"
+msgstr "E-mails types"
+
+msgid "Text"
+msgstr "Texte"
+
+msgid "Replaced for each prospect: {{ name }} (first name), {{ business }}, {{ city }}, {{ pitch }} (our proposal), {{ link }} (her personal link) and {{ stop_link }} (« not interested », to keep at the bottom)."
+msgstr "Remplacés pour chaque prospect : {{ name }} (prénom), {{ business }}, {{ city }}, {{ pitch }} (notre proposition), {{ link }} (son lien personnel) et {{ stop_link }} (« pas intéressé », à garder en bas)."
 
 msgid "Search a text"
 msgstr "Chercher un texte"
@@ -1373,6 +1439,9 @@ msgstr "Console de modération"
 msgid "Disputes console"
 msgstr "Console des litiges"
 
+msgid "Delivery countries of the France Selection saved."
+msgstr "Pays de livraison de la Sélection France enregistrés."
+
 msgid "France Selection console"
 msgstr "Console Sélection France"
 
@@ -1391,6 +1460,14 @@ msgstr "%(added)s ajoutés, %(skipped)s déjà connus ou vides."
 
 msgid "Import prospects"
 msgstr "Importer des prospects"
+
+#, python-format
+msgid "E-mail « %(name)s » on its way."
+msgstr "E-mail « %(name)s » en cours d'envoi."
+
+#, python-format
+msgid "E-mail to %(name)s"
+msgstr "E-mail à %(name)s"
 
 msgid "Why (written in the journal)"
 msgstr "Pourquoi (noté dans le journal)"
@@ -1423,6 +1500,40 @@ msgstr "Litiges ouverts"
 
 msgid "Moderation queue"
 msgstr "File de modération"
+
+msgid "New announcement"
+msgstr "Nouvelle annonce"
+
+msgid "New prospect"
+msgstr "Nouveau prospect"
+
+msgid "Ad campaign"
+msgstr "Campagne de pub"
+
+msgid "Settings"
+msgstr "Réglages"
+
+msgid "Translations"
+msgstr "Traductions"
+
+msgid "This prospect has no e-mail address: add it first."
+msgstr "Ce prospect n'a pas d'adresse e-mail : ajoute-la d'abord."
+
+msgid "An account already uses this e-mail address: this person is already on Solange Glow."
+msgstr "Un compte utilise déjà cette adresse e-mail : cette personne est déjà sur Solange Glow."
+
+msgid "Prepare the showcase of this prospect first: this e-mail presents it."
+msgstr "Prépare d'abord la vitrine de ce prospect : cet e-mail la présente."
+
+msgid "This prospect asked not to be contacted any more."
+msgstr "Ce prospect a demandé à ne plus être contacté."
+
+#, python-format
+msgid "%(max)s e-mails to prospects were already sent today. Continue tomorrow."
+msgstr "%(max)s e-mails ont déjà été envoyés aux prospects aujourd'hui. Continue demain."
+
+msgid "This standard e-mail does not exist or is switched off."
+msgstr "Cet e-mail type n'existe pas ou est désactivé."
 
 msgid "team member"
 msgstr "membre de l'équipe"
@@ -1523,6 +1634,33 @@ msgstr "activité"
 msgid "source"
 msgstr "origine"
 
+msgid "language of the messages"
+msgstr "langue des messages"
+
+msgid "what they do"
+msgstr "ce qu'ils font"
+
+msgid "Their services, their prices, their style."
+msgstr "Leurs prestations, leurs prix, leur style."
+
+msgid "our proposal"
+msgstr "notre proposition"
+
+msgid "One or two sentences written for them; shown in the e-mails ({{ pitch }})."
+msgstr "Une ou deux phrases écrites pour eux ; reprises dans les e-mails ({{ pitch }})."
+
+msgid "site or social page"
+msgstr "site ou page sur les réseaux"
+
+msgid "Instagram, Facebook…"
+msgstr "Instagram, Facebook…"
+
+msgid "prepared showcase"
+msgstr "vitrine préparée"
+
+msgid "last e-mail"
+msgstr "dernier e-mail"
+
 msgid "invitation code"
 msgstr "code d'invitation"
 
@@ -1537,6 +1675,42 @@ msgstr "prospect"
 
 msgid "prospects"
 msgstr "prospects"
+
+msgid "subject"
+msgstr "objet"
+
+msgid "needs a prepared showcase"
+msgstr "demande une vitrine préparée"
+
+msgid "Sent only to a prospect whose showcase was prepared: the link opens it."
+msgstr "Envoyé seulement à un prospect dont la vitrine est préparée : le lien l'ouvre."
+
+msgid "standard e-mail"
+msgstr "e-mail type"
+
+msgid "standard e-mails"
+msgstr "e-mails types"
+
+msgid "Leaving"
+msgstr "En cours d'envoi"
+
+msgid "Sent"
+msgstr "Envoyé"
+
+msgid "Not sent"
+msgstr "Pas envoyée"
+
+msgid "to"
+msgstr "dernier jour"
+
+msgid "error"
+msgstr "erreur"
+
+msgid "e-mail sent to a prospect"
+msgstr "e-mail envoyé à un prospect"
+
+msgid "e-mails sent to prospects"
+msgstr "e-mails envoyés aux prospects"
 
 msgid "Export as CSV"
 msgstr "Exporter en CSV"
@@ -1648,6 +1822,38 @@ msgstr "Détails"
 msgid "Nothing to review. Well done!"
 msgstr "Rien à vérifier. Bravo !"
 
+#, python-format
+msgid "To: <strong>%(email)s</strong>, written in %(language)s."
+msgstr "À : <strong>%(email)s</strong>, écrit en %(language)s."
+
+#, python-format
+msgid "E-mails to prospects today: %(sent_today)s."
+msgstr "E-mails aux prospects aujourd'hui : %(sent_today)s."
+
+msgid "This prospect asked not to be contacted any more: nothing can be sent."
+msgstr "Ce prospect a demandé à ne plus être contacté : rien ne peut être envoyé."
+
+msgid "No standard e-mail is active: write one first."
+msgstr "Aucun e-mail type n'est actif : écris-en un d'abord."
+
+msgid "Standard e-mail"
+msgstr "E-mail type"
+
+msgid "Show"
+msgstr "Afficher"
+
+msgid "What she will receive"
+msgstr "Ce qu'elle recevra"
+
+msgid "Send this e-mail"
+msgstr "Envoyer cet e-mail"
+
+msgid "Back to the prospect"
+msgstr "Retour au prospect"
+
+msgid "To change the words for everyone, edit the standard e-mail. To change them for this prospect only, fill in « our proposal » on her file."
+msgstr "Pour changer le texte pour tout le monde, modifie l'e-mail type. Pour ce prospect seulement, remplis « notre proposition » sur sa fiche."
+
 msgid "A CSV file (commas or semicolons) with a first line of titles: name, business, phone, e-mail, city, country, trade, source. Only the name is needed. A phone or e-mail already known is skipped."
 msgstr "Un fichier CSV (virgules ou points-virgules) avec une première ligne de titres : nom, activité, téléphone, e-mail, ville, pays, métier, source. Seul le nom est obligatoire. Un numéro ou un e-mail déjà connu est ignoré."
 
@@ -1663,6 +1869,21 @@ msgstr "La double authentification est active. Garde ces codes de secours en lie
 
 msgid "I kept them, continue"
 msgstr "Je les ai gardés, continuer"
+
+msgid "Countries where the France Selection delivers"
+msgstr "Pays où la Sélection France livre"
+
+msgid "Tick a country when you have people there to hand the parcels over. Clients of an unticked country see the products but cannot order yet. Add its pick-up points too."
+msgstr "Coche un pays quand tu as des personnes sur place pour remettre les colis. Les clients d'un pays non coché voient les produits mais ne peuvent pas encore commander. Ajoute aussi ses points de retrait."
+
+msgid "Save the countries"
+msgstr "Enregistrer les pays"
+
+msgid "Pick-up points"
+msgstr "Points de retrait"
+
+msgid "No pick-up point yet."
+msgstr "Aucun point de retrait pour l'instant."
 
 #, python-format
 msgid "To order at the merchant (%(count)s)"
@@ -1769,6 +1990,24 @@ msgstr "Code de secours"
 
 msgid "Continue"
 msgstr "Continuer"
+
+msgid "This link is no longer valid."
+msgstr "Ce lien n'est plus valable."
+
+msgid "Understood: we will not write to you again."
+msgstr "C'est noté : nous ne vous écrirons plus."
+
+msgid "Thank you for your time. If you change your mind one day, you are welcome on Solange Glow."
+msgstr "Merci pour votre temps. Si vous changez d'avis un jour, vous serez le bienvenu sur Solange Glow."
+
+msgid "Stop receiving our e-mails?"
+msgstr "Ne plus recevoir nos e-mails ?"
+
+msgid "Confirm, and we will not write to you again."
+msgstr "Confirmez, et nous ne vous écrirons plus."
+
+msgid "Yes, stop the e-mails"
+msgstr "Oui, arrêter les e-mails"
 
 msgid "deposit"
 msgstr "acompte"
@@ -1986,9 +2225,6 @@ msgstr "équipe"
 
 msgid "person"
 msgstr "personne"
-
-msgid "to"
-msgstr "dernier jour"
 
 msgid "working hours"
 msgstr "horaires de travail"
@@ -2280,8 +2516,73 @@ msgstr "Version %(number)s remise."
 msgid "Versions of %(name)s"
 msgstr "Versions de %(name)s"
 
-msgid "new picture"
-msgstr "nouvelle image"
+msgid "A picture (JPEG, PNG, WebP) or a short video (MP4). Wide pictures look best (16:7). It replaces the current one."
+msgstr "Une image (JPEG, PNG, WebP) ou une courte vidéo (MP4). Les images larges rendent le mieux (16:7). Elle remplace l'actuelle."
+
+msgid "remove the picture or video"
+msgstr "retirer l'image ou la vidéo"
+
+msgid "where it is shown"
+msgstr "où elle s'affiche"
+
+msgid "Tick one place or more."
+msgstr "Coche un endroit ou plusieurs."
+
+msgid "None ticked: every country."
+msgstr "Aucun coché : tous les pays."
+
+msgid "A button needs a link: where does it lead?"
+msgstr "Un bouton a besoin d'un lien : où mène-t-il ?"
+
+msgid "The end must come after the beginning."
+msgstr "La fin doit venir après le début."
+
+msgid "Scheduled"
+msgstr "Programmé"
+
+msgid "Switched off"
+msgstr "Désactivée"
+
+msgid "What it says"
+msgstr "Ce qu'elle dit"
+
+msgid "Picture or video"
+msgstr "Photo ou vidéo"
+
+msgid "Button"
+msgstr "Bouton"
+
+msgid "Where and when"
+msgstr "Où et quand"
+
+msgid "Order and state"
+msgstr "Ordre et état"
+
+msgid "Being prepared…"
+msgstr "En préparation…"
+
+msgid "current picture or video"
+msgstr "image ou vidéo actuelle"
+
+msgid "Every country"
+msgstr "Tous les pays"
+
+msgid "state"
+msgstr "état"
+
+msgid "Switch on the selected announcements"
+msgstr "Activer les annonces choisies"
+
+#, python-format
+msgid "%(count)s switched on."
+msgstr "%(count)s activée(s)."
+
+msgid "Switch off the selected announcements"
+msgstr "Désactiver les annonces choisies"
+
+#, python-format
+msgid "%(count)s switched off."
+msgstr "%(count)s désactivée(s)."
 
 msgid "Answer"
 msgstr "Répondre"
@@ -2341,11 +2642,35 @@ msgstr "page"
 msgid "pages"
 msgstr "pages"
 
-msgid "home banner"
-msgstr "bannière d'accueil"
+msgid "Home: above the feed (visitors and members)"
+msgstr "Accueil : au-dessus du fil (visiteurs et membres)"
 
-msgid "home banners"
-msgstr "bannières d'accueil"
+msgid "Explore: above the search results"
+msgstr "Explorer : au-dessus des résultats"
+
+msgid "France Selection: top of the shop"
+msgstr "Sélection France : en haut de la boutique"
+
+msgid "Academy: top of the courses"
+msgstr "Académie : en haut des formations"
+
+msgid "Public page « Offer my services »"
+msgstr "Page publique « Proposer mes services »"
+
+msgid "Professional space: top of « Today »"
+msgstr "Espace professionnel : en haut de « Aujourd'hui »"
+
+msgid "promo code"
+msgstr "code promo"
+
+msgid "Shown on the announcement with a « Copy » button. Empty: none."
+msgstr "Affiché sur l'annonce avec un bouton « Copier ». Vide : aucun."
+
+msgid "announcement"
+msgstr "annonce"
+
+msgid "announcements"
+msgstr "annonces"
 
 msgid "My account"
 msgstr "Mon compte"
@@ -2605,9 +2930,6 @@ msgstr "versions"
 msgid "blur preview"
 msgstr "aperçu flou"
 
-msgid "error"
-msgstr "erreur"
-
 msgid "processed at"
 msgstr "traité le"
 
@@ -2668,9 +2990,6 @@ msgstr "code postal"
 
 msgid "population"
 msgstr "population"
-
-msgid "Text"
-msgstr "Texte"
 
 msgid "Whole number"
 msgstr "Nombre entier"
@@ -2825,6 +3144,9 @@ msgstr "remise"
 
 msgid "chance (everywhere)"
 msgstr "chance (partout)"
+
+msgid "new picture"
+msgstr "nouvelle image"
 
 msgid "new audio"
 msgstr "nouvel audio"
@@ -3511,9 +3833,6 @@ msgstr "Carte cadeau Glow"
 msgid "Paid, sent on the chosen day"
 msgstr "Payé, envoyé le jour choisi"
 
-msgid "Sent"
-msgstr "Envoyé"
-
 msgid "Opened"
 msgstr "Ouvert"
 
@@ -3528,9 +3847,6 @@ msgstr "Pas encore de photo"
 
 msgid "Photo sent"
 msgstr "Photo envoyée"
-
-msgid "Not sent"
-msgstr "Pas envoyée"
 
 msgid "offered by"
 msgstr "offert par"
@@ -4411,9 +4727,6 @@ msgstr "Dans l'appel"
 msgid "Hung up"
 msgstr "A raccroché"
 
-msgid "state"
-msgstr "état"
-
 msgid "joined at"
 msgstr "entrée à"
 
@@ -4611,9 +4924,6 @@ msgstr "notification"
 
 msgid "notifications"
 msgstr "notifications"
-
-msgid "Scheduled"
-msgstr "Programmé"
 
 msgid "Not sent (channel off)"
 msgstr "Non envoyé (canal coupé)"
@@ -6002,9 +6312,6 @@ msgstr "qui"
 msgid "not come for (days)"
 msgstr "pas venue depuis (jours)"
 
-msgid "subject"
-msgstr "objet"
-
 msgid "in the segment"
 msgstr "dans le segment"
 
@@ -6786,9 +7093,6 @@ msgstr "utilisations au total"
 msgid "uses per client"
 msgstr "utilisations par client"
 
-msgid "promo code"
-msgstr "code promo"
-
 msgid "promo codes"
 msgstr "codes promo"
 
@@ -6990,9 +7294,6 @@ msgstr "publication"
 
 msgid "posts"
 msgstr "publications"
-
-msgid "Picture or video"
-msgstr "Photo ou vidéo"
 
 msgid "Before"
 msgstr "Avant"
@@ -7198,9 +7499,6 @@ msgstr "Précommandes groupées"
 msgid "Categories and prices"
 msgstr "Catégories et prix"
 
-msgid "Pick-up points"
-msgstr "Points de retrait"
-
 msgid "Glow Pro"
 msgstr "Glow Premium"
 
@@ -7393,6 +7691,12 @@ msgstr "indispensable pour ouvrir"
 msgid "optional"
 msgstr "facultatif"
 
+msgid "Quick actions"
+msgstr "Actions rapides"
+
+msgid "Prospecting"
+msgstr "Prospection"
+
 msgid "Period"
 msgstr "Période"
 
@@ -7413,9 +7717,6 @@ msgstr "Pays"
 
 msgid "All"
 msgstr "Tous"
-
-msgid "Show"
-msgstr "Afficher"
 
 #, python-format
 msgid "Before: %(before)s"
@@ -7454,6 +7755,12 @@ msgstr "Inscriptions par jour"
 #, python-format
 msgid "Sales paid per day (%(currency)s)"
 msgstr "Ventes payées par jour (%(currency)s)"
+
+#~ msgid "home banner"
+#~ msgstr "bannière d'accueil"
+
+#~ msgid "home banners"
+#~ msgstr "bannières d'accueil"
 
 #~ msgid "The number, e-mail or password is not correct. You can also sign in with a code."
 #~ msgstr "Le numéro, l'e-mail ou le mot de passe n'est pas correct. Tu peux aussi te connecter avec un code."

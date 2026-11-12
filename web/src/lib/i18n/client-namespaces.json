@@ -4721,6 +4721,8 @@
     "payments.soon",
     "selection.buy.between",
     "selection.buy.choose",
+    "selection.buy.deliveryOpen",
+    "selection.buy.deliverySoon",
     "selection.buy.error",
     "selection.buy.final",
     "selection.buy.groupHelp",
