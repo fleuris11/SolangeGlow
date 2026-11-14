@@ -1,0 +1,83 @@
+# Agent RSSI — audit de sécurité hebdomadaire d'un dépôt produit.
+# À copier dans .github/workflows/agent-rssi.yml de chaque dépôt produit.
+# Ouvre une issue « securite » (visible dans le QG) seulement s'il y a quelque chose à corriger.
+# Secret requis dans le dépôt : CLAUDE_CODE_OAUTH_TOKEN.
+name: Agent RSSI — audit hebdo
+
+on:
+  schedule:
+    - cron: "23 5 * * 3" # mercredi ~6 h 23 à Paris
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  id-token: write
+
+concurrency:
+  group: agent-rssi
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 200
+
+      - name: Collecter les preuves (outils classiques, sans IA)
+        run: |
+          set -uo pipefail
+          mkdir -p /tmp/audit
+          # Dépendances JavaScript
+          for f in $(git ls-files '*package-lock.json' | grep -v node_modules); do
+            d=$(dirname "$f")
+            (cd "$d" && npm audit --omit=dev --json > "/tmp/audit/npm-$(echo "$d" | tr '/' '_').json" 2>/dev/null || true)
+          done
+          # Dépendances Python
+          pip install --quiet pip-audit >/dev/null 2>&1
+          for f in $(git ls-files '*requirements*.txt' 'requirements/*.txt' '*/requirements/*.txt' | sort -u); do
+            pip-audit -r "$f" -f json > "/tmp/audit/pip-$(echo "$f" | tr '/' '_').json" 2>/dev/null || true
+          done
+          # Secrets commités (historique récent)
+          curl -sSL https://github.com/gitleaks/gitleaks/releases/download/v8.24.2/gitleaks_8.24.2_linux_x64.tar.gz | tar xz -C /tmp gitleaks
+          /tmp/gitleaks git --log-opts="-n 200" --redact --report-format json --report-path /tmp/audit/secrets.json --exit-code 0 . || true
+          # Changements de la semaine
+          git log --since="8 days ago" --stat --format="%h %ad %s" --date=short > /tmp/audit/commits.txt
+          git diff "$(git rev-list -n1 --before='8 days ago' HEAD || git rev-list --max-parents=0 HEAD)" HEAD \
+            -- . ':!*.lock' ':!*package-lock.json' ':!*.json' ':!*.svg' ':!*.po' | head -c 150000 > /tmp/audit/diff.patch || true
+          cp -r /tmp/audit ./.audit
+          ls -la .audit
+
+      - name: Le RSSI analyse
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ github.token }}
+          prompt: |
+            Tu es le RSSI de l'entreprise (tu rends compte au DG). Lis le CLAUDE.md du dépôt s'il existe,
+            puis les preuves dans .audit/ : vulnérabilités npm et pip, secrets détectés (déjà masqués),
+            commits et diff des 8 derniers jours.
+            Écris ton rapport dans .audit/RAPPORT.md :
+            - 1re ligne exactement « RAS » s'il n'y a rien de gravité moyenne ou plus ;
+            - sinon un tableau : gravité (critique/haute/moyenne/basse), quoi, preuve (fichier:ligne ou
+              paquet@version + CVE), correctif proposé, délai conseillé ; puis les vérifications RGPD
+              si le diff touche des données personnelles, cookies ou traceurs.
+            Ne recopie jamais un secret, même partiel. Ne modifie aucun autre fichier.
+          claude_args: >-
+            --model sonnet
+            --max-turns 25
+            --allowedTools Read,Write,Glob,Grep
+
+      - name: Ouvrir une alerte si nécessaire
+        run: |
+          set -euo pipefail
+          test -f .audit/RAPPORT.md || { echo "Pas de rapport"; exit 1; }
+          if head -n1 .audit/RAPPORT.md | grep -qx "RAS"; then echo "Rien à signaler"; exit 0; fi
+          gh label create securite --color b60205 --description "Alerte sécurité" --force >/dev/null
+          gh issue create --title "🛡️ Audit RSSI du $(TZ=Europe/Paris date +%F)" \
+            --label securite --body-file .audit/RAPPORT.md
