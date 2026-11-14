@@ -5,12 +5,17 @@ import { useEffect } from "react";
 
 const SCRIPT_ID = "sg-adsense";
 
-type Window = typeof globalThis & { adsbygoogle?: unknown[] };
+type Window = typeof globalThis & {
+  adsbygoogle?: unknown[];
+  sgConsent?: { ads: () => boolean };
+};
 
 /** The Google AdSense filler: loaded only when the owner set it in the admin. */
 export function AdSense({ client, slot }: { client: string; slot: string }) {
   const t = useTranslations("ads");
   useEffect(() => {
+    // Advertising cookies: never without a « yes » in the cookie banner (lib/consent).
+    if (!(window as Window).sgConsent?.ads()) return;
     if (!document.getElementById(SCRIPT_ID)) {
       const script = document.createElement("script");
       script.id = SCRIPT_ID;

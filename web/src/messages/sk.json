@@ -4291,7 +4291,11 @@
     "aria": "Tvoje údaje",
     "text": "Žiadne reklamné cookies. Tvoje údaje slúžia len na fungovanie aplikácie.",
     "more": "Viac informácií",
-    "ok": "Rozumiem"
+    "ok": "Rozumiem",
+    "consentText": "S tvojím súhlasom používame cookies od Meta na meranie našich reklám na Instagrame a Facebooku. Ak odmietneš, aplikácia funguje úplne rovnako.",
+    "accept": "Prijať",
+    "refuse": "Odmietnuť",
+    "manage": "Spravovať cookies"
   },
   "voice": {
     "speak": "Diktovať",
@@ -4510,7 +4514,8 @@
       "helpCentre": "Centrum pomoci",
       "terms": "Podmienky",
       "privacy": "Súkromie",
-      "credits": "Autori fotiek"
+      "credits": "Autori fotiek",
+      "cookies": "Spravovať cookies"
     },
     "pros": {
       "metaTitle": "Ponúkať služby",
