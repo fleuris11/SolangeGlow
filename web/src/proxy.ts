@@ -41,9 +41,11 @@ const DEV = process.env.NODE_ENV !== "production";
  */
 function contentSecurityPolicy(ancestors: string[]): string {
   const ads = "https://pagead2.googlesyndication.com https://*.googlesyndication.com";
+  // The Meta pixel script, loaded only after a « yes » in the cookie banner (lib/consent).
+  const meta = "https://connect.facebook.net";
   return [
     "default-src 'self'",
-    `script-src 'self' 'unsafe-inline'${DEV ? " 'unsafe-eval'" : ""} ${ads}`,
+    `script-src 'self' 'unsafe-inline'${DEV ? " 'unsafe-eval'" : ""} ${ads} ${meta}`,
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob: https:",
     "media-src 'self' blob: https:",

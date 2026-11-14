@@ -117,6 +117,7 @@ test("every key screen passes the check-list at 360 px, dark, very large text, a
       JSON.stringify({ theme: "dark", textSize: "xlarge", audioMode: true }),
     );
     window.localStorage.setItem("sg.privacy-notice", "1");
+    window.localStorage.setItem("sg.consent", JSON.stringify({ ads: false, at: Date.now(), v: 1 }));
   });
   const product = await firstPath(
     page,
