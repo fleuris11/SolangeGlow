@@ -3,7 +3,7 @@
 import { CheckCircle, Flask, Prohibit, XCircle } from "@phosphor-icons/react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Bloom } from "@/components/ui/bloom";
 import { Button, buttonClasses } from "@/components/ui/button";
@@ -13,7 +13,7 @@ import { useToast } from "@/components/ui/toast";
 import { ApiError } from "@/lib/api/client";
 import { getPaymentGroup, testGroupOutcome } from "@/lib/api/shop";
 import { Link, useRouter } from "@/lib/i18n/navigation";
-import { formatMoney } from "@/lib/money";
+import { currencyExponent, formatMoney } from "@/lib/money";
 
 import { CART_KEY } from "./cart";
 import { track } from "@/lib/analytics";
@@ -98,12 +98,15 @@ export function CheckoutDone({ groupId }: { groupId: string }) {
     refetchInterval: (q) => (q.state.data?.status === "pending" ? 3000 : false),
   });
   const status = query.data?.status;
+  const counted = useRef(false);
   useEffect(() => {
     // The cart was emptied on the server: show it as it is now.
-    if (status !== "paid") return;
-    track("order");
+    if (status !== "paid" || !query.data || counted.current) return;
+    counted.current = true;
+    const { total_minor, currency } = query.data;
+    track("order", { amount: total_minor / 10 ** currencyExponent(currency), currency });
     void queryClient.invalidateQueries({ queryKey: CART_KEY });
-  }, [status, queryClient]);
+  }, [status, queryClient, query.data]);
 
   if (query.isPending) return <Skeleton className="rounded-card h-80" />;
   if (!query.data) {

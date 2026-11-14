@@ -4291,7 +4291,11 @@
     "aria": "Your data",
     "text": "No advertising cookies. Your data is only used to run the app.",
     "more": "Learn more",
-    "ok": "Got it"
+    "ok": "Got it",
+    "consentText": "With your consent, we use Meta cookies to measure our ads on Instagram and Facebook. If you decline, the app works exactly the same.",
+    "accept": "Accept",
+    "refuse": "Decline",
+    "manage": "Manage cookies"
   },
   "voice": {
     "speak": "Dictate",
@@ -4510,7 +4514,8 @@
       "helpCentre": "Help centre",
       "terms": "Terms",
       "privacy": "Privacy",
-      "credits": "Photo credits"
+      "credits": "Photo credits",
+      "cookies": "Manage cookies"
     },
     "pros": {
       "metaTitle": "Offer my services",

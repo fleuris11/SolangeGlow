@@ -105,6 +105,12 @@ export function SiteFooter() {
         <a href="/media/CREDITS.md" className="inline-flex min-h-12 items-center">
           {t("footer.credits")}
         </a>
+        {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
+          // Opens the consent banner again (inline handler in lib/consent/consent-script.ts).
+          <button type="button" data-consent-open className="inline-flex min-h-12 items-center">
+            {t("footer.cookies")}
+          </button>
+        )}
       </nav>
       <div className="text-prune-doux flex flex-wrap items-center gap-x-4 xl:justify-end">
         <LocaleSwitcher />

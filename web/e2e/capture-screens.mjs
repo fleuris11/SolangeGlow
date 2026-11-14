@@ -140,6 +140,7 @@ for (const [who, list] of Object.entries(screens)) {
   console.log(who, "signed in:", signedIn);
   await context.addInitScript(() => {
     localStorage.setItem("sg.privacy-notice", "1");
+    localStorage.setItem("sg.consent", JSON.stringify({ ads: false, at: Date.now(), v: 1 }));
   });
   const page = await context.newPage();
   for (const [name, path] of list) {

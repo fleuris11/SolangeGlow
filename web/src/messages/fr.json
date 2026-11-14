@@ -4291,7 +4291,11 @@
     "aria": "Tes données",
     "text": "Aucun cookie publicitaire. Tes données servent seulement à faire marcher l'appli.",
     "more": "En savoir plus",
-    "ok": "J'ai compris"
+    "ok": "J'ai compris",
+    "consentText": "Avec ton accord, on utilise les cookies de Meta pour mesurer nos pubs sur Instagram et Facebook. Si tu refuses, l'appli marche exactement pareil.",
+    "accept": "Accepter",
+    "refuse": "Refuser",
+    "manage": "Gérer mes cookies"
   },
   "voice": {
     "speak": "Dicter",
@@ -4510,7 +4514,8 @@
       "helpCentre": "Centre d'aide",
       "terms": "Conditions",
       "privacy": "Confidentialité",
-      "credits": "Crédits photos"
+      "credits": "Crédits photos",
+      "cookies": "Gérer mes cookies"
     },
     "pros": {
       "metaTitle": "Proposer mes services",

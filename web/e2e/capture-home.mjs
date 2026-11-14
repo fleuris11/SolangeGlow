@@ -38,6 +38,7 @@ for (const size of [
       ([value]) => {
         localStorage.setItem("sg.preferences", JSON.stringify({ theme: value }));
         localStorage.setItem("sg.privacy-notice", "1");
+        localStorage.setItem("sg.consent", JSON.stringify({ ads: false, at: Date.now(), v: 1 }));
       },
       [theme],
     );
@@ -74,6 +75,7 @@ for (const size of [
   await context.addInitScript(() => {
     localStorage.setItem("sg.preferences", JSON.stringify({ textSize: "xlarge" }));
     localStorage.setItem("sg.privacy-notice", "1");
+    localStorage.setItem("sg.consent", JSON.stringify({ ads: false, at: Date.now(), v: 1 }));
   });
   const page = await context.newPage();
   await page.goto(`${BASE}/fr`, { waitUntil: "load", timeout: 240_000 });
@@ -98,7 +100,10 @@ for (const size of [
     viewport: size,
     recordVideo: { dir: `${OUT}/tmp`, size },
   });
-  await context.addInitScript(() => localStorage.setItem("sg.privacy-notice", "1"));
+  await context.addInitScript(() => {
+    localStorage.setItem("sg.privacy-notice", "1");
+    localStorage.setItem("sg.consent", JSON.stringify({ ads: false, at: Date.now(), v: 1 }));
+  });
   const page = await context.newPage();
   await page.goto(`${BASE}/fr`, { waitUntil: "load", timeout: 240_000 });
   await page.waitForTimeout(1200);
