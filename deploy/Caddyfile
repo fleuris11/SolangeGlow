@@ -52,6 +52,12 @@ live.{$DOMAIN} {
 	reverse_proxy livekit:7880
 }
 
+# QG: the company command center (repo fleuris11/entreprise, qg/compose.yml), on the front network.
+qg.{$DOMAIN} {
+	encode zstd gzip
+	reverse_proxy qg:8080
+}
+
 # Audience dashboard.
 stats.{$DOMAIN} {
 	reverse_proxy umami:3000
